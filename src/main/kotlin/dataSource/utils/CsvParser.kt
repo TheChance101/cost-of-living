@@ -107,7 +107,7 @@ class CsvParser {
     private fun constructRealStatesPricesFromTokens(tokenizedList: List<String>): RealEstatesPrices{
         return RealEstatesPrices(
             apartmentOneBedroomInCityCentre = tokenizedList.getFloat(ColumnIndex.APARTMENT_ONE_BEDROOM_IN_CITY_CENTRE),
-            apartmentOneBedroomOutsideOfCentre = tokenizedList.getFloat(ColumnIndex.APARTMENT_ONE_BEDROOM_IN_CITY_CENTRE),
+            apartmentOneBedroomOutsideOfCentre = tokenizedList.getFloat(ColumnIndex.APARTMENT_ONE_BEDROOM_OUTSIDE_OF_CENTRE),
             apartment3BedroomsInCityCentre = tokenizedList.getFloat(ColumnIndex.APARTMENT_3_BEDROOMS_IN_CITY_CENTRE),
             apartment3BedroomsOutsideOfCentre = tokenizedList.getFloat(ColumnIndex.APARTMENT_3_BEDROOMS_OUTSIDE_OF_CENTRE),
             pricePerSquareMeterToBuyApartmentInCityCentre = tokenizedList.getFloat(ColumnIndex.PRICE_PER_SQUARE_METER_TO_BUY_APARTMENT_IN_CITY_CENTRE),
