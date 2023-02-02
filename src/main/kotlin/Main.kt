@@ -1,13 +1,14 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import interactor.CostOfLivingDataSource
+import interactor.GetHighestSalaryAverageCititesNamesInteractor
 
-fun main(args: Array<String>) {
+fun main() {
     val csvParser = CsvParser()
     val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
-    startApp(dataSource)
+
+    val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
+    println(getHighestSalaryAverageCities.execute(limit = 10))
+
 }
 
-fun startApp(dataSource: CostOfLivingDataSource){
-    println(dataSource.getAllCitiesData())
-}

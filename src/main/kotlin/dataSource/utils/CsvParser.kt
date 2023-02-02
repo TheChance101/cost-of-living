@@ -7,7 +7,7 @@ class CsvParser {
     fun parseLine(csvLine: String): CityEntity{
         val tokenizedList: List<String> = csvLine.split(",")
         return CityEntity(
-            city = tokenizedList[ColumnIndex.CITY],
+            cityName = tokenizedList[ColumnIndex.CITY],
             country = tokenizedList[ColumnIndex.COUNTRY],
             mealsPrices = constructMealsPricesFromTokens(tokenizedList),
             drinksPrices = constructDrinksPricesFromTokens(tokenizedList),
