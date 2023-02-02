@@ -19,7 +19,7 @@ class CsvParser {
             carsPrices = constructCarsPricesFromTokens(tokenizedList),
             realEstatesPrices = constructRealStatesPricesFromTokens(tokenizedList),
             averageMonthlyNetSalaryAfterTax = tokenizedList[ColumnIndex.AVERAGE_MONTHLY_NET_SALARY_AFTER_TAX].toFloatOrNull(),
-            dataQuality = tokenizedList[ColumnIndex.DATA_QUALITY].toBoolean(),
+            dataQuality = tokenizedList[ColumnIndex.DATA_QUALITY].toIntOrNull() == 1,
         )
     }
 
