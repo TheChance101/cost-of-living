@@ -6,10 +6,13 @@ class GetCityHasCheapestInternetConnectionInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
 
-    fun execute(): CityEntity{
-        throw Throwable("Not Implemented yet")
+    fun execute(): CityEntity {
+       throw NotImplementedError()
     }
 
+    private fun excludeNullSalaries(city: CityEntity): Boolean {
+        return city.averageMonthlyNetSalaryAfterTax != null
+    }
 
 
 }
