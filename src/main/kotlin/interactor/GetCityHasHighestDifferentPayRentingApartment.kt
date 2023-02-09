@@ -34,7 +34,7 @@ class GetCityHasHighestDifferentPayRentingApartment (
         return dataSource
             .getAllCitiesData()
             .filter(::excludeNullSalariesAndLowQualityData)
-            .sortedByDescending { it.realEstatesPrices.apartmentOneBedroomOutsideOfCentre }
+            .sortedByDescending { it.realEstatesPrices.apartment3BedroomsOutsideOfCentre }
             .take(limit)
             .map { it.cityName }
     }
