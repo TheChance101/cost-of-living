@@ -24,7 +24,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
     @Test
     fun should_returnCity_when_allCountriesIncluded() {
         // Given all countries included
-        val countries = listOf("usa", "canda", "mexcio")
+        val countries = listOf("united states", "canada", "mexico")
         // When return the city that match manager expectations
         val result = getCityThatMatchTheManagerExpectationsInteractor.execute(countries)
         // Then check the final result
@@ -34,7 +34,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
     @Test
     fun should_returnCity_when_namesOfCountriesIsUpperCase() {
         // Given all countries included and all names uppercase
-        val countries = listOf("USA", "CANADA", "MEXCIO")
+        val countries = listOf("UNITED STATES", "CANADA", "MEXICO")
         // When return the city that match manager expectations
         val result = getCityThatMatchTheManagerExpectationsInteractor.execute(countries)
         // Then check the final result
@@ -44,7 +44,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
     @Test
     fun should_returnCity_when_namesOfCountriesIsMixedUpperCaseAndLowCase() {
         // Given all countries included and all names mixed
-        val countries = listOf("UsA", "CaNAdA", "MeXCiO")
+        val countries = listOf("UnItEd STaTeS", "CaNAdA", "MeXCiO")
         // When return the city that match manager expectations
         val result = getCityThatMatchTheManagerExpectationsInteractor.execute(countries)
         // Then check the final result
@@ -54,7 +54,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
     @Test
     fun should_returnCity_when_notAllCountriesIncluded() {
         // Given not all countries included
-        val countries = listOf("usa", "canda", "iraq")
+        val countries = listOf("united states", "canada", "iraq")
         // When return the city that match manager expectations
         val result = getCityThatMatchTheManagerExpectationsInteractor.execute(countries)
         // Then check the final result
