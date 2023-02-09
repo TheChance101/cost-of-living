@@ -1,0 +1,5 @@
+package interactor
+
+class GetCityHasHighestDifferentRentBetweenCityCenterAndOutsideInteractor {
+
+}
