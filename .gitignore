@@ -51,6 +51,7 @@ bin/
 *.aar
 *.ap_
 *.aab
+*.xml
 
 # Files for the ART/Dalvik VM
 *.dex
