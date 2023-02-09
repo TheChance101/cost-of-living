@@ -18,10 +18,6 @@ fun main() {
     println(getCityHasCheapestInternetConnectionInteractor.execute())
     printSeparationLine()
 
-    println()
-
-
-
 }
 private fun printSeparationLine(){
     print("\n_______________________________\n")
