@@ -6,7 +6,7 @@ import model.CityEntity
 import java.io.File
 import java.io.IOException
 
-class CsvDataSource(private val parser: CsvParser): CostOfLivingDataSource {
+class CsvDataSource(private val parser: CsvParser,private val file :String= FILE_NAME): CostOfLivingDataSource {
 
     override fun getAllCitiesData(): List<CityEntity> {
         return getCsvFile().readLines().map { csvLine ->
@@ -15,7 +15,7 @@ class CsvDataSource(private val parser: CsvParser): CostOfLivingDataSource {
     }
 
     private fun getCsvFile(): File {
-        val costOfLivingCsvFile = File(FILE_NAME)
+        val costOfLivingCsvFile = File(file)
         if (costOfLivingCsvFile.exists()) {
             return costOfLivingCsvFile
         }
