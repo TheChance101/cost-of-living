@@ -38,5 +38,45 @@ internal class GetCityHasHighestDifferentPayRentingApartmentTest {
         assertEquals(cityName,largestRating)
     }
 
+    @Test
+    fun should_Return_Correct_CityName_3BedroomsInCityCentre() {
+        //given
+        val cityName="Egypt"
+        //when
+        val largestRating = ratingHighest.execute_OneBedroomInCityCentre(1)
+        //then
+        assertEquals(cityName,largestRating)
+    }
+
+    @Test
+    fun should_Return_Correct_CityName_3BedroomsOutsideOfCentre() {
+        //given
+        val cityName="Egypt"
+        //when
+        val largestRating = ratingHighest.execute_OneBedroomInCityCentre(1)
+        //then
+        assertEquals(cityName,largestRating)
+    }
+
+
+//    @Test
+//    fun should_Return_Correct_CityName_pricePerSquareMeterToBuyApartmentInCityCentre() {
+//        //given
+//        val cityName="Egypt"
+//        //when
+//        val largestRating = ratingHighest.execute_OneBedroomInCityCentre(1)
+//        //then
+//        assertEquals(cityName,largestRating)
+//    }
+//    @Test
+//    fun pricePerSquareMeterToBuyApartmentOutsideOfCentre() {
+//        //given
+//        val cityName="Egypt"
+//        //when
+//        val largestRating = ratingHighest.execute_OneBedroomInCityCentre(1)
+//        //then
+//        assertEquals(cityName,largestRating)
+//    }
+
 
 }
