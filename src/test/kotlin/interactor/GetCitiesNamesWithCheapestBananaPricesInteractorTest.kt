@@ -9,15 +9,15 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class GetCitiesNamesWithSCheapestBananaPricesInteractorTest {
-    lateinit var getCitiesNamesWithSCheapestBananaPricesInteractor: GetCitiesNamesWithSCheapestBananaPricesInteractor
+internal class GetCitiesNamesWithCheapestBananaPricesInteractorTest {
+    lateinit var getCitiesNamesWithCheapestBananaPricesInteractor: GetCitiesNamesWithCheapestBananaPricesInteractor
     lateinit var fakeDataSource: FakeDataSource
 
     @BeforeAll
     fun setup() {
         fakeDataSource = FakeDataSource()
-        getCitiesNamesWithSCheapestBananaPricesInteractor =
-            GetCitiesNamesWithSCheapestBananaPricesInteractor(fakeDataSource)
+        getCitiesNamesWithCheapestBananaPricesInteractor =
+            GetCitiesNamesWithCheapestBananaPricesInteractor(fakeDataSource)
     }
 
     // region one city
@@ -27,7 +27,7 @@ internal class GetCitiesNamesWithSCheapestBananaPricesInteractorTest {
         val city = "Santiago de Cuba"
 
         // when the output is list of one city
-        val result = getCitiesNamesWithSCheapestBananaPricesInteractor.execute(city)
+        val result = getCitiesNamesWithCheapestBananaPricesInteractor.execute(city)
 
         // then check
         assertEquals(listOf("Santiago de Cuba"), result)
@@ -39,7 +39,7 @@ internal class GetCitiesNamesWithSCheapestBananaPricesInteractorTest {
         val city = "Galaxy"
 
         // when the output is list of one city
-        val result = getCitiesNamesWithSCheapestBananaPricesInteractor.execute(city)
+        val result = getCitiesNamesWithCheapestBananaPricesInteractor.execute(city)
 
         // then check
         assertEquals(emptyList<String>(), result)
@@ -53,7 +53,7 @@ internal class GetCitiesNamesWithSCheapestBananaPricesInteractorTest {
         val cities = arrayOf("Santiago de Cuba", "Sancti Spiritus")
 
         // when the output is list of sorted cities by Banana Price
-        val result = getCitiesNamesWithSCheapestBananaPricesInteractor
+        val result = getCitiesNamesWithCheapestBananaPricesInteractor
             .execute(citiesNames = cities)
 
         // then check
@@ -66,7 +66,7 @@ internal class GetCitiesNamesWithSCheapestBananaPricesInteractorTest {
         val cities = arrayOf("Santiago de Cuba", "Sancti Spiritus", "Galaxy")
 
         // when the output is list of sorted cities by Banana Price
-        val result = getCitiesNamesWithSCheapestBananaPricesInteractor
+        val result = getCitiesNamesWithCheapestBananaPricesInteractor
             .execute(citiesNames = cities)
 
         // then check
@@ -79,7 +79,7 @@ internal class GetCitiesNamesWithSCheapestBananaPricesInteractorTest {
         val cities = arrayOf("", "Farwala", "Galaxy")
 
         // when the output is empty list
-        val result = getCitiesNamesWithSCheapestBananaPricesInteractor
+        val result = getCitiesNamesWithCheapestBananaPricesInteractor
             .execute(citiesNames = cities)
 
         // then check
