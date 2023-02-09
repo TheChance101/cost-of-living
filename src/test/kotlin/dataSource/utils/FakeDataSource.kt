@@ -291,8 +291,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 dataQuality = false
             ),
             CityEntity(
-                cityName = "Solue",
-                country = "Koura",
+                cityName = "Seoul",
+                country = "Korean",
                 mealsPrices = MealsPrices(
                     mealInexpensiveRestaurant = 6.5f,
                     mealFor2PeopleMidRangeRestaurant = 15.0f,

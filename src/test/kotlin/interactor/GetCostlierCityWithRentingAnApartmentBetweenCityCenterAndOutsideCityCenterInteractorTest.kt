@@ -26,23 +26,23 @@ internal class GetCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideC
     fun should_ReturnCorrectCity_When_OptionIsOneBedroom() {
         //given one bedroom
         val option = Option.ONE_BEDROOM
-        //when
+        //when the  city is correct
         val highest = getCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideCityCenterInteractor
             .execute(option)
-        //then
-        assertEquals("sancti spiritus",highest?.cityName)
-    }
-    @Test
-    fun should_ReturnCorrectCity_When_OptionIsThreeBedroom() {
-        //given one bedroom
-        val option = Option.THREE_BEDROOM
-        //when
-        val highest = getCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideCityCenterInteractor
-            .execute(option)
-        //then
-        assertEquals("santa clara",highest?.cityName)
+        //then check names cities are equals
+        assertEquals("Sancti Spiritus", highest.cityName)
     }
 
+    @Test
+    fun should_ReturnCorrectCity_When_OptionIsThreeBedroom() {
+        //given Three bedroom
+        val option = Option.THREE_BEDROOM
+        //when the  city is correct
+        val highest = getCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideCityCenterInteractor
+            .execute(option)
+        //then check names cities are equals
+        assertEquals("Seoul", highest.cityName)
+    }
 
 
 }
