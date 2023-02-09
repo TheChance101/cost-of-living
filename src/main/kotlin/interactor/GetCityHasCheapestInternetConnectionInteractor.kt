@@ -10,9 +10,6 @@ class GetCityHasCheapestInternetConnectionInteractor(
        throw NotImplementedError()
     }
 
-    private fun excludeNullSalaries(city: CityEntity): Boolean {
-        return city.averageMonthlyNetSalaryAfterTax != null
-    }
 
 
 }
