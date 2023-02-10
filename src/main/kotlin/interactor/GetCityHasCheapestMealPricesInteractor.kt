@@ -10,7 +10,7 @@ class GetCityHasCheapestMealPricesInteractor(
         throw Throwable("Not Implemented yet")
     }
 
-    private fun citiesInUSACanadaAndMexico(city: CityEntity): List<String> {
+    fun citiesInUSACanadaAndMexico(city: CityEntity): Boolean {
         TODO("Not Implemented yet")
     }
 }
