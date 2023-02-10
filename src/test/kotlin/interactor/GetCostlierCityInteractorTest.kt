@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class GetCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideCityCenterInteractorTest {
-    lateinit var getCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideCityCenterInteractor:
-            GetCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideCityCenterInteractor
+internal class GetCostlierCityInteractorTest {
+    lateinit var getCostlierCityInteractor:
+            GetCostlierCityInteractor
 
     lateinit var fakeDataSource: FakeDataSource
 
@@ -18,8 +18,8 @@ internal class GetCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideC
     @BeforeAll
     fun setup() {
         fakeDataSource = FakeDataSource()
-        getCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideCityCenterInteractor =
-            GetCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideCityCenterInteractor(fakeDataSource)
+        getCostlierCityInteractor =
+            GetCostlierCityInteractor(fakeDataSource)
 
     }
 
@@ -28,7 +28,7 @@ internal class GetCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideC
         //given one bedroom
         val option = BedroomOption.ONE_BEDROOM
         //when the  city is correct
-        val highest = getCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideCityCenterInteractor
+        val highest = getCostlierCityInteractor
             .execute(option)
         //then check names cities are equals
         assertEquals("Sancti Spiritus", highest.cityName)
@@ -39,7 +39,7 @@ internal class GetCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideC
         //given Three bedroom
         val option = BedroomOption.THREE_BEDROOM
         //when the  city is correct
-        val highest = getCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideCityCenterInteractor
+        val highest = getCostlierCityInteractor
             .execute(option)
         //then check names cities are equals
         assertEquals("Seoul", highest.cityName)

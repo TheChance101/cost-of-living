@@ -5,7 +5,7 @@ import model.CityEntity
 import kotlin.math.abs
 
 
-class GetCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideCityCenterInteractor(
+class GetCostlierCityInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
 
