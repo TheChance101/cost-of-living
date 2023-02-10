@@ -159,6 +159,7 @@ internal class GetCitiesHasLowestFruitVegPricesComparingSalariesPaidTest {
 // all cities have same fruit-veg prices but different salaries
 // Iran and Egypt should not be in the new list after the test
 
+    val testedList = list.filter { it.cityName != "Ciro" && it.cityName != "Tahran" }
     @BeforeEach
     fun setup(){
         getCities = GetCitiesHasLowestFruitVegPricesComparingSalariesPaid(list)
@@ -168,9 +169,9 @@ internal class GetCitiesHasLowestFruitVegPricesComparingSalariesPaidTest {
     fun shouldReturnCorrectResultWhenCorrectListIsGiven() {
     //given correct list that has more than 10 objects of CityEntity
     val innerList = list
-    // when find 10 cities that las lowest fruitVeg prices comparing to salaries paid there
+    // when find 10 cities that has lowest fruitVeg prices comparing to salaries paid there
         val newList = getCities.execute()
     //then
-
+        assertEquals(testedList,newList)
     }
 }
