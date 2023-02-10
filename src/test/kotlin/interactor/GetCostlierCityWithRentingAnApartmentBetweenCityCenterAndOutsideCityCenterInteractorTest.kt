@@ -1,6 +1,7 @@
 package interactor
 
 import dataSource.utils.FakeDataSource
+import interactor.utils.BedroomOption
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -25,7 +26,7 @@ internal class GetCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideC
     @Test
     fun should_ReturnCorrectCity_When_OptionIsOneBedroom() {
         //given one bedroom
-        val option = Option.ONE_BEDROOM
+        val option = BedroomOption.ONE_BEDROOM
         //when the  city is correct
         val highest = getCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideCityCenterInteractor
             .execute(option)
@@ -36,7 +37,7 @@ internal class GetCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideC
     @Test
     fun should_ReturnCorrectCity_When_OptionIsThreeBedroom() {
         //given Three bedroom
-        val option = Option.THREE_BEDROOM
+        val option = BedroomOption.THREE_BEDROOM
         //when the  city is correct
         val highest = getCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideCityCenterInteractor
             .execute(option)

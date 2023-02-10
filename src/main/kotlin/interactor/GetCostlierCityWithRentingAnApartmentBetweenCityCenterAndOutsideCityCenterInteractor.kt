@@ -1,22 +1,19 @@
 package interactor
 
+import interactor.utils.BedroomOption
 import model.CityEntity
 import kotlin.math.abs
-import kotlin.math.max
 
-enum class Option {
-    ONE_BEDROOM,
-    THREE_BEDROOM,
-}
+
 
 class GetCostlierCityWithRentingAnApartmentBetweenCityCenterAndOutsideCityCenterInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
 
-    fun execute(option: Option): CityEntity {
+    fun execute(option: BedroomOption): CityEntity {
         return when (option) {
-            Option.ONE_BEDROOM -> getOneBedroom()
-            Option.THREE_BEDROOM -> getThreeBedroom()
+            BedroomOption.ONE_BEDROOM -> getOneBedroom()
+            BedroomOption.THREE_BEDROOM -> getThreeBedroom()
         }
     }
 
