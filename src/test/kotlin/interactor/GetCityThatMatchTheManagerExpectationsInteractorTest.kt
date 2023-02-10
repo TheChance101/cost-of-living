@@ -28,7 +28,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
         // When return the city that match manager expectations
         val result = getCityThatMatchTheManagerExpectationsInteractor.execute(countries)
         // Then check the final result
-        assertEquals("Chetumal", result.cityName)
+        assertEquals("Chetumal", result?.cityName)
     }
 
     @Test
@@ -38,7 +38,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
         // When return the city that match manager expectations
         val result = getCityThatMatchTheManagerExpectationsInteractor.execute(countries)
         // Then check the final result
-        assertEquals("Chetumal", result.cityName)
+        assertEquals("Chetumal", result?.cityName)
     }
 
     @Test
@@ -48,7 +48,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
         // When return the city that match manager expectations
         val result = getCityThatMatchTheManagerExpectationsInteractor.execute(countries)
         // Then check the final result
-        assertEquals("Chetumal", result.cityName)
+        assertEquals("Chetumal", result?.cityName)
     }
 
     @Test
@@ -58,7 +58,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
         // When return the city that match manager expectations
         val result = getCityThatMatchTheManagerExpectationsInteractor.execute(countries)
         // Then check the final result
-        assertEquals("Great Falls", result.cityName)
+        assertEquals("Great Falls", result?.cityName)
     }
 
     @Test
@@ -68,7 +68,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
         // When return empty result
         val result = getCityThatMatchTheManagerExpectationsInteractor.execute(countries)
         // Then check the final result
-        assertEquals("", result.cityName)
+        assertNull(null, result?.cityName)
     }
 
     @Test
@@ -78,7 +78,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
         // When return  empty result
         val result = getCityThatMatchTheManagerExpectationsInteractor.execute(countries)
         // Then check the final result
-        assertEquals("", result.cityName)
+        assertNull(null, result?.cityName)
     }
 
 }
