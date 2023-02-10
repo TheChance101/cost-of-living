@@ -1,0 +1,4 @@
+package interactor
+
+class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor {
+}
