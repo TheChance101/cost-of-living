@@ -288,19 +288,19 @@ class FakeDataSource : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = 203.49f
                 ),
                 averageMonthlyNetSalaryAfterTax = 81.4f,
-                dataQuality = false
+                dataQuality = true
             ),
             CityEntity(
-                cityName = "Damanhur",
+                cityName = "cairo",
                 country = "Egypt",
                 mealsPrices = MealsPrices(
-                    mealInexpensiveRestaurant = 3.05f,
+                    mealInexpensiveRestaurant = 5.05f,
                     mealFor2PeopleMidRangeRestaurant = 23.4f,
-                    mealAtMcDonaldSOrEquivalent = 4.07f
+                    mealAtMcDonaldSOrEquivalent = 6.07f
                 ),
                 drinksPrices = DrinksPrices(
-                    cappuccinoRegularInRestaurants = 1.19f,
-                    cokePepsiAThirdOfLiterBottleInRestaurants = 0.35f,
+                    cappuccinoRegularInRestaurants = 7.19f,
+                    cokePepsiAThirdOfLiterBottleInRestaurants = 8.35f,
                     waterAThirdOfLiterBottleInRestaurants = 0.2f,
                     milkRegularOneLiter = 0.51f,
                     waterOneAndHalfLiterBottleAtTheMarket = 0.27f
@@ -325,7 +325,7 @@ class FakeDataSource : CostOfLivingDataSource {
                 servicesPrices = ServicesPrices(
                     basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 47.48f,
                     oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.02f,
-                    internet60MbpsOrMoreUnlimitedDataCableAdsl = 12.21f,
+                    internet60MbpsOrMoreUnlimitedDataCableAdsl = 52.21f,
                     fitnessClubMonthlyFeeForOneAdult = 16.28f,
                     tennisCourtRentOneHourOnWeekend = null,
                     cinemaInternationalReleaseOneSeat = 3.26f,
@@ -359,7 +359,7 @@ class FakeDataSource : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = 203.49f
                 ),
                 averageMonthlyNetSalaryAfterTax = 81.4f,
-                dataQuality = false
+                dataQuality = true
             ),
             CityEntity(
                 cityName = "Dushanbe",
@@ -643,9 +643,77 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 321.28f,
                 dataQuality = false
+            ), CityEntity(
+                cityName = "Dehra Dun",
+                country = "India",
+                mealsPrices = MealsPrices(
+                    mealInexpensiveRestaurant = 1.84f,
+                    mealFor2PeopleMidRangeRestaurant = 18.42f,
+                    mealAtMcDonaldSOrEquivalent = 5.22f
+                ),
+                drinksPrices = DrinksPrices(
+                    cappuccinoRegularInRestaurants = 1.41f,
+                    cokePepsiAThirdOfLiterBottleInRestaurants = 0.37f,
+                    waterAThirdOfLiterBottleInRestaurants = 0.19f,
+                    milkRegularOneLiter = 0.71f,
+                    waterOneAndHalfLiterBottleAtTheMarket = 0.37f
+                ),
+                fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                    apples1kg = 1.45f,
+                    banana1kg = 0.67f,
+                    oranges1kg = 0.93f,
+                    tomato1kg = 0.54f,
+                    potato1kg = 0.32f,
+                    onion1kg = 0.43f,
+                    lettuceOneHead = 0.52f
+                ),
+                foodPrices = FoodPrices(
+                    loafOfFreshWhiteBread500g = 0.44f,
+                    riceWhite1kg = 0.56f,
+                    eggsRegular12 = 0.88f,
+                    localCheese1kg = 4.38f,
+                    chickenFillets1kg = 3.19f,
+                    beefRound1kgOrEquivalentBackLegRedMeat = 3.93f
+                ),
+                servicesPrices = ServicesPrices(
+                    basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 58.34f,
+                    oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.01f,
+                    internet60MbpsOrMoreUnlimitedDataCableAdsl = 8.75f,
+                    fitnessClubMonthlyFeeForOneAdult = 17.69f,
+                    tennisCourtRentOneHourOnWeekend = 11.05f,
+                    cinemaInternationalReleaseOneSeat = 4.3f,
+                    preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 51.28f,
+                    internationalPrimarySchoolYearlyForOneChild = 1321.52f
+                ),
+                clothesPrices = ClothesPrices(
+                    onePairOfJeansLevis50oneOrSimilar = 28.66f,
+                    oneSummerDressInAChainStoreZaraHAndM = 31.63f,
+                    onePairOfNikeRunningShoesMidRange = 63.87f,
+                    onePairOfMenLeatherBusinessShoes = 51.58f
+                ),
+                transportationsPrices = TransportationsPrices(
+                    oneWayTicketLocalTransport = 0.43f,
+                    monthlyPassRegularPrice = 4.91f,
+                    taxiStartNormalTariff = 0.61f,
+                    taxi1kmNormalTariff = 0.2f,
+                    taxi1hourWaitingNormalTariff = 1.84f,
+                    gasolineOneLiter = 1.21f
+                ),
+                carsPrices = CarsPrices(
+                    volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = null,
+                    toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 18422.64f
+                ),
+                realEstatesPrices = RealEstatesPrices(
+                    apartmentOneBedroomInCityCentre = 145.85f,
+                    apartmentOneBedroomOutsideOfCentre = 74.92f,
+                    apartment3BedroomsInCityCentre = 331.61f,
+                    apartment3BedroomsOutsideOfCentre = 186.68f,
+                    pricePerSquareMeterToBuyApartmentInCityCentre = 2897.58f,
+                    pricePerSquareMeterToBuyApartmentOutsideOfCentre = 615.45f
+                ),
+                averageMonthlyNetSalaryAfterTax = 358.14f,
+                dataQuality = true
             )
-
-
         )
     }
 }

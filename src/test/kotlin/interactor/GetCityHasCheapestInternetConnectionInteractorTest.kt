@@ -25,11 +25,11 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
     @Test
     fun should_ReturnTheSameCity_When_GivenOneCityIncluded(){
         // given list of cityEntity of one city
-        val cities = fakeDataSource.getAllCitiesData()[9]
+        val citiesEntity = fakeDataSource.getAllCitiesData()[4]
         // when the cheapest city in list with given 1 city in list
-        val result = cityHasCheapestInternet.execute(listOf(cities))
+        val operation = cityHasCheapestInternet.execute(listOf(citiesEntity))
         // then check the result
-        assertEquals(cities.cityName,result?.cityName)
+        assertEquals(citiesEntity.cityName,operation?.cityName)
     }
 
 
@@ -37,9 +37,9 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
     @Test
     fun should_ReturnNull_WhenCityEntity_IsEmpty(){
         // given an Empty list
-        val cities = emptyList<CityEntity>()
+        val citiesEntity = emptyList<CityEntity>()
         // when the given is an empty list
-        val result = cityHasCheapestInternet.execute(cities)
+        val result = cityHasCheapestInternet.execute(citiesEntity)
         // then check the result
         assertNull(result)
     }
@@ -47,10 +47,10 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
     @Test
     fun should_Return_CheapestCity_When_GivenListOfCities(){
         // given list of cityEntity
-        val cities = fakeDataSource.getAllCitiesData()
+        val citiesEntity = fakeDataSource.getAllCitiesData()
         // when check for the cheapest city in the list
-        val result = cityHasCheapestInternet.execute(cities)
+        val result = cityHasCheapestInternet.execute(citiesEntity)
         // then check the result
-        assertEquals(cities[5].cityName,result?.cityName)
+        assertEquals(citiesEntity[9].cityName,result?.cityName)
     }
 }
