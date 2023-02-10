@@ -1,10 +1,10 @@
 import interactor.CostOfLivingDataSource
 import model.*
 
-class FakeData : CostOfLivingDataSource {
+class FakeDataSource : CostOfLivingDataSource {
 
-    private val fakeData = listOf(
-        CityEntity(cityName="Caracas", country="Venezuela",
+    private val fakeDataSource = listOf(
+        CityEntity(cityName=null, country="Venezuela",
             mealsPrices=MealsPrices(mealInexpensiveRestaurant=10.0f, mealFor2PeopleMidRangeRestaurant=50.0f, mealAtMcDonaldSOrEquivalent=10.0f),
             drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.74f, cokePepsiAThirdOfLiterBottleInRestaurants=1.12f, waterAThirdOfLiterBottleInRestaurants=0.82f, milkRegularOneLiter=1.84f, waterOneAndHalfLiterBottleAtTheMarket=1.23f),
             fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.17f, banana1kg=1.09f, oranges1kg=1.52f, tomato1kg=1.41f, potato1kg=1.56f, onion1kg=1.62f, lettuceOneHead=1.03f),
@@ -13,10 +13,10 @@ class FakeData : CostOfLivingDataSource {
             clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=41.43f, oneSummerDressInAChainStoreZaraHAndM=40.0f, onePairOfNikeRunningShoesMidRange=70.83f, onePairOfMenLeatherBusinessShoes=66.08f),
             transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.35f, monthlyPassRegularPrice=30.0f, taxiStartNormalTariff=4.0f, taxi1kmNormalTariff=2.0f, taxi1hourWaitingNormalTariff=11.0f, gasolineOneLiter=0.5f),
             carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=32000.0f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=34714.29f),
-            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=383.33f, apartmentOneBedroomOutsideOfCentre=322.22f, apartment3BedroomsInCityCentre=831.25f, apartment3BedroomsOutsideOfCentre=587.5f, pricePerSquareMeterToBuyApartmentInCityCentre=805.57f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=1140.96f),
-            averageMonthlyNetSalaryAfterTax=185.12f, dataQuality=true)
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=383.33f, apartmentOneBedroomOutsideOfCentre=322.22f, apartment3BedroomsInCityCentre=831.25f, apartment3BedroomsOutsideOfCentre=587.5f, pricePerSquareMeterToBuyApartmentInCityCentre=805.57f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=550.69f),
+            averageMonthlyNetSalaryAfterTax=4450.97f, dataQuality=true)
         ,
-        CityEntity(cityName="Accra", country="Ghana",
+        CityEntity(cityName=null, country="Ghana",
             mealsPrices=MealsPrices(mealInexpensiveRestaurant=2.5f, mealFor2PeopleMidRangeRestaurant=26.79f, mealAtMcDonaldSOrEquivalent=4.46f),
             drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.51f, waterAThirdOfLiterBottleInRestaurants=0.17f, milkRegularOneLiter=1.19f, waterOneAndHalfLiterBottleAtTheMarket=0.28f),
             fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=1.45f, banana1kg=0.68f, oranges1kg=0.73f, tomato1kg=1.15f, potato1kg=1.24f, onion1kg=1.01f, lettuceOneHead=0.6f),
@@ -99,6 +99,7 @@ class FakeData : CostOfLivingDataSource {
             carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=20348.95f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=19766.46f),
             realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=142.44f, apartmentOneBedroomOutsideOfCentre=82.85f, apartment3BedroomsInCityCentre=299.58f, apartment3BedroomsOutsideOfCentre=175.24f, pricePerSquareMeterToBuyApartmentInCityCentre=696.65f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=245.54f),
             averageMonthlyNetSalaryAfterTax=163.76f, dataQuality=true)
+
         ,CityEntity(cityName="Kampala", country="Uganda",
             mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.74f, mealFor2PeopleMidRangeRestaurant=26.79f, mealAtMcDonaldSOrEquivalent=8.57f),
             drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=2.75f, cokePepsiAThirdOfLiterBottleInRestaurants=0.48f, waterAThirdOfLiterBottleInRestaurants=0.31f, milkRegularOneLiter=0.77f, waterOneAndHalfLiterBottleAtTheMarket=0.54f),
@@ -223,6 +224,7 @@ class FakeData : CostOfLivingDataSource {
             realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=54.05f, apartmentOneBedroomOutsideOfCentre=45.44f, apartment3BedroomsInCityCentre=182.47f, apartment3BedroomsOutsideOfCentre=131.87f, pricePerSquareMeterToBuyApartmentInCityCentre=236.34f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=202.81f),
             averageMonthlyNetSalaryAfterTax=125.87f,
             dataQuality=true),
+
         CityEntity(cityName="Colombo", country="Sri Lanka",
             mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
             drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
@@ -239,7 +241,7 @@ class FakeData : CostOfLivingDataSource {
     )
 
     override fun getAllCitiesData(): List<CityEntity> {
-        return fakeData
+        return fakeDataSource
     }
 }
 

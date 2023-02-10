@@ -1,6 +1,6 @@
 package interactor
 
-import FakeData
+import FakeDataSource
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -10,12 +10,12 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetHighestSalaryAverageCititesNamesInteractorTest {
 
-    private lateinit var fakeData: FakeData
+    private lateinit var fakeData: FakeDataSource
     private lateinit var GetHighestSalaryAverageCititesNames: GetHighestSalaryAverageCititesNamesInteractor
 
     @BeforeEach
     fun setUp() {
-        fakeData = FakeData()
+        fakeData = FakeDataSource()
         GetHighestSalaryAverageCititesNames = GetHighestSalaryAverageCititesNamesInteractor(fakeData)
     }
 

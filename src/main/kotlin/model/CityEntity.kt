@@ -1,7 +1,7 @@
 package model
 
 data class CityEntity(
-    val cityName: String,
+    val cityName: String?,
     val country: String,
     val mealsPrices: MealsPrices,
     val drinksPrices: DrinksPrices,
