@@ -1,6 +1,7 @@
-package model
+package fakeData
 
 import interactor.CostOfLivingDataSource
+import model.*
 
 class FakeData : CostOfLivingDataSource {
     override fun getAllCitiesData(): List<CityEntity> {
@@ -68,8 +69,10 @@ class FakeData : CostOfLivingDataSource {
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = 200.0f,
                     apartmentOneBedroomOutsideOfCentre =100.0f ,
+                    //100
                     apartment3BedroomsInCityCentre = 600.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
+                    //500
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
                 ),
@@ -139,8 +142,10 @@ class FakeData : CostOfLivingDataSource {
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = 300.0f,
                     apartmentOneBedroomOutsideOfCentre = 180.0f,
+                    //120
                     apartment3BedroomsInCityCentre = 800.0f,
                     apartment3BedroomsOutsideOfCentre = 550.0f,
+                    //250
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
                 ),
@@ -209,8 +214,10 @@ class FakeData : CostOfLivingDataSource {
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = 1000.0f,
                     apartmentOneBedroomOutsideOfCentre = 970.0f,
+                    //30
                     apartment3BedroomsInCityCentre =2567.0f ,
                     apartment3BedroomsOutsideOfCentre = 999.0f,
+                    //1568
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
                 ),
@@ -280,8 +287,10 @@ class FakeData : CostOfLivingDataSource {
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = 6000.0f,
                     apartmentOneBedroomOutsideOfCentre =100.0f ,
+                    //5900
                     apartment3BedroomsInCityCentre = 600.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
+                    //500
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
                 ),
@@ -352,6 +361,7 @@ class FakeData : CostOfLivingDataSource {
                     apartmentOneBedroomOutsideOfCentre =null ,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
+                    //6900
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
                 ),
