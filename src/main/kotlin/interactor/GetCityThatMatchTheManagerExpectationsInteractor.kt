@@ -1,25 +1,37 @@
 package interactor
 
 import model.CityEntity
+import java.util.*
 
 class GetCityThatMatchTheManagerExpectationsInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
-    fun execute(countries: List<String>): CityEntity {
+    fun execute(countries: List<String>): CityEntity? {
+        val data = dataSource.getAllCitiesData()
+        val formatCountriesNames = formatCountriesNames(countries)
+        val existCountries = excludeTheCountryThatNotExist(formatCountriesNames)
 
-         dataSource
-            .getAllCitiesData()
-             .filter{countries.contains(it.country)}
-             .filter (::excludeNullMealFor2PeopleMidRangeRestaurant)
-            .map {
-                print(it.mealsPrices.mealFor2PeopleMidRangeRestaurant)
+        return if (existCountries.isEmpty())
+            null
+        else
+            data.random()
+    }
+
+    private fun formatCountriesNames(countriesNames: List<String>) =
+        if (countriesNames.isEmpty()) emptyList() else countriesNames.map { country ->
+            country.lowercase().trim().split("\\s+".toRegex()).joinToString(" ") {
+                it.replaceFirstChar { char ->
+                    if (char.isLowerCase()) char.titlecase(Locale.getDefault()) else it
+                }
             }
-        return dataSource.getAllCitiesData().random()
+        }
+
+    private fun excludeTheCountryThatNotExist(countriesNames: List<String>): List<String> {
+        val selectedCountries = listOf("United States", "Canada", "Mexico")
+        val countries = mutableListOf<String>()
+        countriesNames.filter { selectedCountries.contains(it) }.map {
+            countries.add(it)
+        }
+        return countries
     }
-
-
-    private fun excludeNullMealFor2PeopleMidRangeRestaurant(city: CityEntity): Boolean {
-        return city.mealsPrices.mealFor2PeopleMidRangeRestaurant != null
-    }
-
 }

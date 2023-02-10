@@ -13,12 +13,13 @@ fun main() {
 //    println(getHighestSalaryAverageCities.execute(limit = 10))
 //    printSeparationLine()
 
-    val countries = listOf("United State", "Canada", "Mexico")
+    val countries = listOf("United States", "Mexico", "cAnAda", "iraq")
     val getCityThatMatchTheManagerExpectationsInteractor = GetCityThatMatchTheManagerExpectationsInteractor(dataSource)
     getCityThatMatchTheManagerExpectationsInteractor.execute(countries)
 
 }
-private fun printSeparationLine(){
+
+private fun printSeparationLine() {
     print("\n_______________________________\n")
 }
 
