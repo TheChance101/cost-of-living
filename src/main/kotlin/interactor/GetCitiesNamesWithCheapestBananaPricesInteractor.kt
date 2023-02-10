@@ -16,32 +16,37 @@ class GetCitiesNamesWithCheapestBananaPricesInteractor(private val dataSource: C
         when {
             (citiesNames.size == 1) &&
                     dataNames.contains(citiesNames.first())
-            -> return citiesNames.toList()
+            -> {
+                return citiesNames.toList()
+            }
 
             (citiesNames.size != 1)
                     && dataNames.containsAll(citiesNames.toList())
-            -> return dataEntities.sortedBy { cityEntity -> cityEntity.fruitAndVegetablesPrices.banana1kg }
-                .filter { cityEntity -> cityEntity.cityName in citiesNames }
-                .map(CityEntity::cityName)
+            -> {
+                return dataEntities.sortedBy { cityEntity -> cityEntity.fruitAndVegetablesPrices.banana1kg }
+                    .filter { cityEntity -> cityEntity.cityName in citiesNames }
+                    .map(CityEntity::cityName)
+            }
 
             (citiesNames.size != 1)
                     && citiesNames.any { it in dataNames }
-            -> return dataEntities.sortedBy { cityEntity ->
-                cityEntity.fruitAndVegetablesPrices.banana1kg
+            -> {
+                return dataEntities.sortedBy { cityEntity ->
+                    cityEntity.fruitAndVegetablesPrices.banana1kg
+                }
+                    .filter { cityEntity -> cityEntity.cityName in citiesNames }
+                    .map(CityEntity::cityName)
             }
-                .filter { cityEntity -> cityEntity.cityName in citiesNames }
-                .map(CityEntity::cityName)
 
-            else ->
+            else -> {
                 return emptyList()
+            }
 
         }
 
     }
 
-    companion object {
-        private fun excludeNullBananaPrice(city: CityEntity): Boolean {
-            return city.fruitAndVegetablesPrices.banana1kg != null
-        }
+    private fun excludeNullBananaPrice(city: CityEntity): Boolean {
+        return city.fruitAndVegetablesPrices.banana1kg != null
     }
 }
