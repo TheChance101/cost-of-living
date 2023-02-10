@@ -10,7 +10,17 @@ class GetCityHasCheapestInternetConnectionInteractor{
 
 
     fun execute(cities:List<CityEntity>): CityEntity? {
-       throw Throwable("Not Implemented yet")
+        return if (cities.isNotEmpty()) {
+            val result = cities.filter { excludeNullSalariesAndLowQualityDataAndNullInternetPrice(it) }
+                    .sortedBy { cityEntity -> (cityEntity.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl
+                            ?.div(cityEntity.averageMonthlyNetSalaryAfterTax!!))?.times(
+                                100) }[0]
+
+            result
+
+        } else {
+            null
+        }
     }
 
 

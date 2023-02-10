@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.TestInstance
 
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetCityHasCheapestInternetConnectionInteractorTest {
 
@@ -18,6 +19,8 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
         fakeDataSource = FakeDataSource()
         cityHasCheapestInternet = GetCityHasCheapestInternetConnectionInteractor()
     }
+
+
 
     @Test
     fun should_ReturnTheOnlyCity_When_GivenOnly1CityIncluded(){
