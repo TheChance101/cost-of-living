@@ -1,227 +1,31 @@
 package model
 
+import com.appmattus.kotlinfixture.decorator.nullability.NeverNullStrategy
+import com.appmattus.kotlinfixture.decorator.nullability.nullabilityStrategy
+import com.appmattus.kotlinfixture.kotlinFixture
+
 class FakeDataSource() {
 
-    fun getNormalData() = List(20) {
-        CityEntity(
-            "Cairo",
-            "Egypt",
-            MealsPrices(
-                4.07f,
-                20.35f,
-                4.07f
-            ),
-            DrinksPrices(
-                1.75f,
-                0.25f,
-                0.15f,
-                0.82f,
-                0.52f,
-            ),
-            FruitAndVegetablesPrices(
-                7.62f,
-                1.18f,
-                0.66f,
-                0.42f,
-                0.31f,
-                0.34f,
-                0.27f,
-            ),
-            FoodPrices(
-                0.24f,
-                0.22f,
-                8.14f,
-                1.29f,
-                1.99f,
-                2.03f,
-            ),
-            ServicesPrices(
-                0.28f,
-                13.23f,
-                0.41f,
-                0.14f,
-                1.02f,
-                0.4f,
-                21061.16f,
-                21147.47f,
-            ),
-            ClothesPrices(
-                26.53f,
-                0.01f,
-                16.37f,
-                23.44f,
-            ),
-            TransportationsPrices(
-                8.49f,
-                4.48f,
-                146.82f,
-                2909.45f,
-                39.37f,
-                37.51f,
-            ),
-            CarsPrices(
-                89.61f,
-                48.65f,
-            ),
-            RealEstatesPrices(
-                196.83f,
-                117.45f,
-                400.03f,
-                233.92f,
-                549.42f,
-                380.62f
-            ),
-            10.87f,
-            true
-        )
+    val normalFixture = kotlinFixture {
+        nullabilityStrategy(NeverNullStrategy)
+        property(CityEntity::dataQuality) { true }
+        repeatCount { 20 }
     }
 
-    fun getDataWithLowQuality() = List(20) {
-        CityEntity(
-            "Cairo",
-            "Egypt",
-            MealsPrices(
-                4.07f,
-                20.35f,
-                4.07f
-            ),
-            DrinksPrices(
-                1.75f,
-                0.25f,
-                0.15f,
-                0.82f,
-                0.52f,
-            ),
-            FruitAndVegetablesPrices(
-                7.62f,
-                1.18f,
-                0.66f,
-                0.42f,
-                0.31f,
-                0.34f,
-                0.27f,
-            ),
-            FoodPrices(
-                0.24f,
-                0.22f,
-                8.14f,
-                1.29f,
-                1.99f,
-                2.03f,
-            ),
-            ServicesPrices(
-                0.28f,
-                13.23f,
-                0.41f,
-                0.14f,
-                1.02f,
-                0.4f,
-                21061.16f,
-                21147.47f,
-            ),
-            ClothesPrices(
-                26.53f,
-                0.01f,
-                16.37f,
-                23.44f,
-            ),
-            TransportationsPrices(
-                8.49f,
-                4.48f,
-                146.82f,
-                2909.45f,
-                39.37f,
-                37.51f,
-            ),
-            CarsPrices(
-                89.61f,
-                48.65f,
-            ),
-            RealEstatesPrices(
-                196.83f,
-                117.45f,
-                400.03f,
-                233.92f,
-                549.42f,
-                380.62f
-            ),
-            10.87f,
-            false
-        )
+    fun getNormalData() = normalFixture<List<CityEntity>>()
+
+    val nullableFixture = kotlinFixture {
+        property(CityEntity::dataQuality) { true }
+        repeatCount { 20 }
     }
 
-    fun getDataWithNullValues() = List(20) {
-        CityEntity(
-            "Cairo",
-            "Egypt",
-            MealsPrices(
-                4.07f,
-                20.35f,
-                4.07f
-            ),
-            DrinksPrices(
-                null,
-                null,
-                null,
-                0.82f,
-                0.52f,
-            ),
-            FruitAndVegetablesPrices(
-                7.62f,
-                1.18f,
-                0.66f,
-                0.42f,
-                0.31f,
-                0.34f,
-                0.27f,
-            ),
-            FoodPrices(
-                0.24f,
-                0.22f,
-                8.14f,
-                null,
-                null,
-                2.03f,
-            ),
-            ServicesPrices(
-                null,
-                13.23f,
-                0.41f,
-                null,
-                1.02f,
-                0.4f,
-                21061.16f,
-                21147.47f,
-            ),
-            ClothesPrices(
-                null,
-                null,
-                16.37f,
-                23.44f,
-            ),
-            TransportationsPrices(
-                8.49f,
-                4.48f,
-                null,
-                2909.45f,
-                39.37f,
-                37.51f,
-            ),
-            CarsPrices(
-                89.61f,
-                48.65f,
-            ),
-            RealEstatesPrices(
-                null,
-                117.45f,
-                400.03f,
-                null,
-                549.42f,
-                380.62f
-            ),
-            10.87f,
-            true
-        )
+    fun getDataWithNullValues() = nullableFixture<List<CityEntity>>()
+
+    val lowQualityFixture = kotlinFixture {
+        nullabilityStrategy(NeverNullStrategy)
+        property(CityEntity::dataQuality) { false }
+        repeatCount { 20 }
     }
 
+    fun getDataWithLowQuality() = lowQualityFixture<List<CityEntity>>()
 }
