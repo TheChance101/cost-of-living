@@ -3,7 +3,7 @@ package interactor
 class GetTenCitiesHaveTheAverageOfFruitsAndVegetablesPricesInteractor
     (private val dataSource: CostOfLivingDataSource){
 
-        fun execute(limit: Int): List<String> {
+        fun execute(): List<String> {
             return emptyList()
         }
 }
