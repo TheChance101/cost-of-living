@@ -1,6 +1,10 @@
 package interactor
 
-class GetSalaryAverageAndCitiesNamesInCountryInteractor {
+import dataSource.FakeDataSource
+
+class GetSalaryAverageAndCitiesNamesInCountryInteractor(
+    private val fakeDataSource: FakeDataSource
+    ) {
 
     fun execute(countryName:String):List<Pair<String,Float>>{
         throw Throwable("Not Implemented yet")
