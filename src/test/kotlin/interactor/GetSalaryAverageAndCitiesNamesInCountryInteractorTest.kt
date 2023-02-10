@@ -8,10 +8,10 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
 
-@TestInstance(TestInstance.Lifecycle.PER_METHOD)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
 
-    private lateinit var fakeDataSource: FakeDataSource
+    private lateinit var fakeDataSource: CostOfLivingDataSource
     lateinit var interactor: GetSalaryAverageAndCitiesNamesInCountryInteractor
 
     @BeforeAll
@@ -23,7 +23,7 @@ internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
     @Test
     fun `should return correct list when the country name is correct and lowercase`() {
         //given lowercase country name
-        val country = fakeDataSource.getAllCitiesData()[6].country.lowercase()
+        val country = fakeDataSource.getAllCitiesData()[3].country.lowercase()
         //when getting a list of pair contains the city name and average salary of country with lowercase name
         val getSalaryAverageAndCitiesNamesInCountry = interactor.execute(country)
         //then
@@ -33,7 +33,7 @@ internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
     @Test
     fun `should return correct list when the country name is correct and uppercase`() {
         //given uppercase country name
-        val country = fakeDataSource.getAllCitiesData()[6].country.uppercase()
+        val country = fakeDataSource.getAllCitiesData()[3].country.uppercase()
         //when getting a list of pair contains the city name and average salary of country with uppercase name
         val getSalaryAverageAndCitiesNamesInCountry = interactor.execute(country)
         //then
