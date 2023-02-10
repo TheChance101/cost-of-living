@@ -4,8 +4,11 @@ import model.*
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 
 internal class GetCitiesHasLowestFruitVegPricesComparingSalariesPaidTest {
+    lateinit var getCities: GetCitiesHasLowestFruitVegPricesComparingSalariesPaid
 
     val list:List<CityEntity> = listOf(
         CityEntity("Baghdad","Iraq", MealsPrices(null,null,null)
@@ -153,13 +156,20 @@ internal class GetCitiesHasLowestFruitVegPricesComparingSalariesPaidTest {
             ,true
         )
     )
-// Iran and Egypt should not be in the list
+// all cities have same fruit-veg prices but different salaries
+// Iran and Egypt should not be in the new list after the test
+
+    @BeforeEach
+    fun setup(){
+        getCities = GetCitiesHasLowestFruitVegPricesComparingSalariesPaid(list)
+    }
+
     @Test
     fun shouldReturnCorrectResultWhenCorrectListIsGiven() {
-    //given
+    //given correct list that has more than 10 objects of CityEntity
     val innerList = list
-    // when
-
+    // when find 10 cities that las lowest fruitVeg prices comparing to salaries paid there
+        val newList = getCities.execute()
     //then
 
     }
