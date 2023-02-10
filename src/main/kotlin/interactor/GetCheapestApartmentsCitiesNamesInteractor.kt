@@ -1,11 +1,13 @@
 package interactor
 
+import model.CityEntity
+
 class GetCheapestApartmentsCitiesNamesInteractor(
-    dataSource: CostOfLivingDataSource
+    private val dataSource: CostOfLivingDataSource
 ) {
 
-    fun execute(limit:Int):List<Pair<String,Float>>{
+    fun execute(limit: Int): List<Pair<String, Float>> {
 
-        return emptyList()
+        return emptyList<Pair<String, Float>>()
     }
 }

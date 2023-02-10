@@ -14,7 +14,7 @@ fun main() {
     printSeparationLine()
 
     val getCheapestApartmentsCitiesNamesInteractor = GetCheapestApartmentsCitiesNamesInteractor(dataSource)
-    print(getCheapestApartmentsCitiesNamesInteractor.execute(10))
+    println(getCheapestApartmentsCitiesNamesInteractor.execute(10))
     printSeparationLine()
 
     val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
