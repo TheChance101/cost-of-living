@@ -11,6 +11,6 @@ class GetCityHasCheapestMealPricesInteractor(
     }
 
     fun citiesInUSACanadaAndMexico(city: CityEntity): Boolean {
-        TODO("Not Implemented yet")
+        return city.country == "United States" || city.country == "Canada" || city.country == "Mexico"
     }
 }
