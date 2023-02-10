@@ -1,7 +1,6 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import interactor.CostOfLivingDataSource
-import interactor.GetCityHasCheapestInternetConnectionInteractor
 import interactor.GetCityThatMatchTheManagerExpectationsInteractor
 import interactor.GetHighestSalaryAverageCititesNamesInteractor
 
@@ -9,13 +8,14 @@ fun main() {
     val csvParser = CsvParser()
     val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
 
-//    val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
-//    println(getHighestSalaryAverageCities.execute(limit = 10))
-//    printSeparationLine()
+    val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
+    println(getHighestSalaryAverageCities.execute(limit = 10))
 
-    val countries = listOf("United States", "Mexico", "cAnAda", "iraq")
+    printSeparationLine()
+
+    val countries = listOf("UnItEd STaTeS", "CaNAdA", "MexIco")
     val getCityThatMatchTheManagerExpectationsInteractor = GetCityThatMatchTheManagerExpectationsInteractor(dataSource)
-    getCityThatMatchTheManagerExpectationsInteractor.execute(countries)
+    print(getCityThatMatchTheManagerExpectationsInteractor.execute(countries))
 
 }
 

@@ -3,6 +3,7 @@ package interactor
 import model.CityEntity
 import java.util.*
 
+
 class GetCityThatMatchTheManagerExpectationsInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
@@ -10,12 +11,32 @@ class GetCityThatMatchTheManagerExpectationsInteractor(
         val data = dataSource.getAllCitiesData()
         val formatCountriesNames = formatCountriesNames(countries)
         val existCountries = excludeTheCountryThatNotExist(formatCountriesNames)
+        val pricesOfMeals = mutableListOf<Float>()
 
         return if (existCountries.isEmpty())
             null
         else
-            data.random()
+            data
+                .filter { it.country in existCountries }
+                .filter { it.mealsPrices.mealFor2PeopleMidRangeRestaurant != null }
+                .map {
+                    pricesOfMeals.add(it.mealsPrices.mealFor2PeopleMidRangeRestaurant!!)
+                    it
+                }
+                .let {
+                    bestRestaurantThatMatchExpectation(pricesOfMeals, it)
+                }
     }
+
+    private fun bestRestaurantThatMatchExpectation(
+        pricesOfMeals: MutableList<Float>,
+        cityEntity: List<CityEntity>
+    ): CityEntity {
+        val mid = (pricesOfMeals.maxOf { it } - pricesOfMeals.minOf { it }).div(2)
+        return cityEntity.filter { it.mealsPrices.mealFor2PeopleMidRangeRestaurant!! >= mid }
+            .sortedBy { it.mealsPrices.mealFor2PeopleMidRangeRestaurant }.first()
+    }
+
 
     private fun formatCountriesNames(countriesNames: List<String>) =
         if (countriesNames.isEmpty()) emptyList() else countriesNames.map { country ->
@@ -34,4 +55,5 @@ class GetCityThatMatchTheManagerExpectationsInteractor(
         }
         return countries
     }
+
 }

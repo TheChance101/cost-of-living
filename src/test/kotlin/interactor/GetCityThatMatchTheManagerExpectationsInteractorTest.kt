@@ -44,7 +44,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
     @Test
     fun should_returnCity_when_namesOfCountriesIsMixedUpperCaseAndLowCase() {
         // Given all countries included and all names mixed
-        val countries = listOf("UnItEd STaTeS", "CaNAdA", "MeXCiO")
+        val countries = listOf("UnItEd STaTeS", "CaNAdA", "MeXiCo")
         // When return the city that match manager expectations
         val result = getCityThatMatchTheManagerExpectationsInteractor.execute(countries)
         // Then check the final result
