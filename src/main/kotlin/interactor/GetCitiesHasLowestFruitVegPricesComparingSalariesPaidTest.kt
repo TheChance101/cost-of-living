@@ -2,18 +2,18 @@ package interactor
 
 import model.*
 import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.TestInstance
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetCitiesHasLowestFruitVegPricesComparingSalariesPaidTest {
     lateinit var getCities: GetCitiesHasLowestFruitVegPricesComparingSalariesPaid
 
     val list:List<CityEntity> = listOf(
         CityEntity("Baghdad","Iraq", MealsPrices(null,null,null)
         , DrinksPrices(null,null,null,null,null)
-        , FruitAndVegetablesPrices(1F,1.5F,1F,0.4F,0.5F,0.6F,2.7F)
+            , FruitAndVegetablesPrices(2F,2.5F,1.5F,1.4F,1.5F,3.6F,3.7F)
         , FoodPrices(null,null,null,null,null,null)
         , ServicesPrices(null,null,null,null,null,null,null,null,)
         , ClothesPrices(null,null,null,null)
@@ -37,7 +37,7 @@ internal class GetCitiesHasLowestFruitVegPricesComparingSalariesPaidTest {
         )
         ,CityEntity("Ciro","Egypt", MealsPrices(null,null,null)
             , DrinksPrices(null,null,null,null,null)
-            , FruitAndVegetablesPrices(1F,1.5F,1F,0.4F,0.5F,0.6F,2.7F)
+            , FruitAndVegetablesPrices(2F,2.5F,1.5F,1.4F,1.5F,3.6F,3.7F)
             , FoodPrices(null,null,null,null,null,null)
             , ServicesPrices(null,null,null,null,null,null,null,null,)
             ,ClothesPrices(null,null,null,null)
@@ -49,7 +49,7 @@ internal class GetCitiesHasLowestFruitVegPricesComparingSalariesPaidTest {
         )
         ,CityEntity("Reyad","Saudi", MealsPrices(null,null,null)
             , DrinksPrices(null,null,null,null,null)
-            , FruitAndVegetablesPrices(1F,1.5F,1F,0.4F,0.5F,0.6F,2.7F)
+            , FruitAndVegetablesPrices(2F,2.5F,1.5F,1.4F,1.5F,3.6F,3.7F)
             , FoodPrices(null,null,null,null,null,null)
             , ServicesPrices(null,null,null,null,null,null,null,null,)
             ,ClothesPrices(null,null,null,null)
@@ -61,7 +61,7 @@ internal class GetCitiesHasLowestFruitVegPricesComparingSalariesPaidTest {
         )
         ,CityEntity("Dubai","UAE", MealsPrices(null,null,null)
             , DrinksPrices(null,null,null,null,null)
-            , FruitAndVegetablesPrices(1F,1.5F,1F,0.4F,0.5F,0.6F,2.7F)
+            , FruitAndVegetablesPrices(2F,2.5F,1.5F,1.4F,1.5F,3.6F,3.7F)
             , FoodPrices(null,null,null,null,null,null)
             , ServicesPrices(null,null,null,null,null,null,null,null,)
             , ClothesPrices(null,null,null,null)
@@ -85,7 +85,7 @@ internal class GetCitiesHasLowestFruitVegPricesComparingSalariesPaidTest {
         )
         ,CityEntity("Qudis","Palistine", MealsPrices(null,null,null)
             , DrinksPrices(null,null,null,null,null)
-            , FruitAndVegetablesPrices(1F,1.5F,1F,0.4F,0.5F,0.6F,2.7F)
+            , FruitAndVegetablesPrices(2F,2.5F,1.5F,1.4F,1.5F,3.6F,3.7F)
             , FoodPrices(null,null,null,null,null,null)
             , ServicesPrices(null,null,null,null,null,null,null,null,)
             ,ClothesPrices(null,null,null,null)
@@ -97,7 +97,7 @@ internal class GetCitiesHasLowestFruitVegPricesComparingSalariesPaidTest {
         )
         ,CityEntity("Paris","France", MealsPrices(null,null,null)
             , DrinksPrices(null,null,null,null,null)
-            , FruitAndVegetablesPrices(1F,1.5F,1F,0.4F,0.5F,0.6F,2.7F)
+            , FruitAndVegetablesPrices(2F,2.5F,1.5F,1.4F,1.5F,3.6F,3.7F)
             , FoodPrices(null,null,null,null,null,null)
             , ServicesPrices(null,null,null,null,null,null,null,null,)
             ,ClothesPrices(null,null,null,null)
@@ -109,7 +109,7 @@ internal class GetCitiesHasLowestFruitVegPricesComparingSalariesPaidTest {
         )
         ,CityEntity("London","England", MealsPrices(null,null,null)
             , DrinksPrices(null,null,null,null,null)
-            , FruitAndVegetablesPrices(1F,1.5F,1F,0.4F,0.5F,0.6F,2.7F)
+            , FruitAndVegetablesPrices(2F,2.5F,1.5F,1.4F,1.5F,3.6F,3.7F)
             , FoodPrices(null,null,null,null,null,null)
             , ServicesPrices(null,null,null,null,null,null,null,null,)
             , ClothesPrices(null,null,null,null)
@@ -133,7 +133,7 @@ internal class GetCitiesHasLowestFruitVegPricesComparingSalariesPaidTest {
         )
         ,CityEntity("Mexico","Mexico", MealsPrices(null,null,null)
             , DrinksPrices(null,null,null,null,null)
-            , FruitAndVegetablesPrices(1F,1.5F,1F,0.4F,0.5F,0.6F,2.7F)
+            , FruitAndVegetablesPrices(2F,2.5F,1.5F,1.4F,1.5F,3.6F,3.7F)
             , FoodPrices(null,null,null,null,null,null)
             , ServicesPrices(null,null,null,null,null,null,null,null,)
             ,ClothesPrices(null,null,null,null)
@@ -145,7 +145,7 @@ internal class GetCitiesHasLowestFruitVegPricesComparingSalariesPaidTest {
         )
         ,CityEntity("Madrid","Spain", MealsPrices(null,null,null)
             , DrinksPrices(null,null,null,null,null)
-            , FruitAndVegetablesPrices(1F,1.5F,1F,0.4F,0.5F,0.6F,2.7F)
+            , FruitAndVegetablesPrices(2F,2.5F,1.5F,1.4F,1.5F,3.6F,3.7F)
             , FoodPrices(null,null,null,null,null,null)
             , ServicesPrices(null,null,null,null,null,null,null,null,)
             ,ClothesPrices(null,null,null,null)
@@ -159,8 +159,8 @@ internal class GetCitiesHasLowestFruitVegPricesComparingSalariesPaidTest {
 // all cities have same fruit-veg prices but different salaries
 // Iran and Egypt should not be in the new list after the test
 
-    val testedList = list.filter { it.cityName != "Ciro" && it.cityName != "Tahran" }
-    @BeforeEach
+    val correctTestedList = list.filter { it.cityName != "Ciro" && it.cityName != "Tahran" }
+    @BeforeAll
     fun setup(){
         getCities = GetCitiesHasLowestFruitVegPricesComparingSalariesPaid(list)
     }
@@ -170,8 +170,8 @@ internal class GetCitiesHasLowestFruitVegPricesComparingSalariesPaidTest {
     //given correct list that has more than 10 objects of CityEntity
     val innerList = list
     // when find 10 cities that has lowest fruitVeg prices comparing to salaries paid there
-        val newList = getCities.execute()
+        val listToTest = getCities.execute()
     //then
-        assertEquals(testedList,newList)
+        assertEquals(correctTestedList,listToTest)
     }
 }
