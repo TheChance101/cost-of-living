@@ -52,4 +52,13 @@ class GetCityHasCheapestMealPricesInteractorTest {
 
         assertEquals(true, result)
     }
+
+    @Test
+    fun `should return false when the city is in Egypt`() {
+        val city: CityEntity = mockk()
+        every { city.country } returns "Egypt"
+        val result = sut.citiesInUSACanadaAndMexico(city)
+
+        assertEquals(false, result)
+    }
 }
