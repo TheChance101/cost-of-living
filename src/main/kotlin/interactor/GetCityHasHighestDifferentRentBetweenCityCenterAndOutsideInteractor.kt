@@ -1,8 +1,12 @@
 package interactor
 
-class GetCityHasHighestDifferentRentBetweenCityCenterAndOutsideInteractor {
+import model.CityEntity
 
-    fun execute():String{
+class GetCityHasHighestDifferentRentBetweenCityCenterAndOutsideInteractor(
+    private val dataSource:CostOfLivingDataSource
+    ) {
+
+    fun execute(type: Int): String {
         return "Re"
     }
 }
