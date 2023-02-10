@@ -1,9 +1,9 @@
 package interactor
 
-import model.CityEntity
+import model.NameCityClothesPrices
 
 class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor (
-    private val dataSource: CostOfLivingDataSource,
+    private val dataSource: List<NameCityClothesPrices>,
 ) {
 
     fun execute( ): List<String> {
