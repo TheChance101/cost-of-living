@@ -218,7 +218,7 @@ class FakeDataSource : CostOfLivingDataSource {
                         pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
                     ),
                     averageMonthlyNetSalaryAfterTax = 25.0f,
-                    dataQuality = false
+                    dataQuality = true
                 )
             )
     }
