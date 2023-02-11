@@ -7,6 +7,7 @@ class GetTopFashionCitiesNamesInteractor(
 ) {
 
     fun execute(limit: Int): List<String> {
+        if (limit <= 0) return emptyList()
         return dataSource
             .getAllCitiesData()
             .filter(::excludeNullPricesAndLowQualityData)
@@ -16,17 +17,17 @@ class GetTopFashionCitiesNamesInteractor(
     }
 
     private fun excludeNullPricesAndLowQualityData(city: CityEntity): Boolean {
-        with(city.clothesPrices!!) {
+        with(city.clothesPrices) {
             return onePairOfJeansLevis50oneOrSimilar != null &&
                     onePairOfMenLeatherBusinessShoes != null &&
                     onePairOfNikeRunningShoesMidRange != null &&
                     oneSummerDressInAChainStoreZaraHAndM != null &&
-                    city.dataQuality!!
+                    city.dataQuality
         }
     }
 
     private fun CityEntity.getAveragePrice(): Float {
-        with(clothesPrices!!) {
+        with(clothesPrices) {
             return (onePairOfJeansLevis50oneOrSimilar!! +
                     onePairOfMenLeatherBusinessShoes!! +
                     onePairOfNikeRunningShoesMidRange!! +
