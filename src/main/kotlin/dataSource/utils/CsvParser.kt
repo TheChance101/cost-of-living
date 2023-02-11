@@ -57,7 +57,7 @@ class CsvParser {
         return FoodPrices(
             loafOfFreshWhiteBread500g = tokenizedList.getFloat(ColumnIndex.LOAF_OF_FRESH_WHITE_BREAD_500G),
             riceWhite1kg = tokenizedList.getFloat(ColumnIndex.RICE_WHITE_1KG),
-            eggsRegular12 = tokenizedList.getFloat(ColumnIndex.EGGS_REGULAR_12)!!,
+            eggsRegular12 = tokenizedList.getFloat(ColumnIndex.EGGS_REGULAR_12),
             localCheese1kg = tokenizedList.getFloat(ColumnIndex.LOCAL_CHEESE_1KG),
             chickenFillets1kg = tokenizedList.getFloat(ColumnIndex.CHICKEN_FILLETS_1KG),
             beefRound1kgOrEquivalentBackLegRedMeat = tokenizedList.getFloat(ColumnIndex.BEEF_ROUND_1KG_OR_EQUIVALENT_BACK_LEG_RED_MEAT),
