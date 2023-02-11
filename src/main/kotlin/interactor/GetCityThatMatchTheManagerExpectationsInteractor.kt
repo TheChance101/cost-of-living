@@ -7,9 +7,11 @@ import java.util.*
 class GetCityThatMatchTheManagerExpectationsInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
+
     fun execute(countries: List<String>): CityEntity? {
-        val formatCountriesNames = formatCountriesNames(countries)
-        val existCountries = excludeTheCountryThatNotExist(formatCountriesNames)
+        val existCountries = countries.map(::formatCountriesNames)
+                                     .filter { selectedCountries.contains(it) }
+
         val pricesOfMeals = mutableListOf<Float>()
 
         return if (existCountries.isEmpty())
@@ -19,34 +21,23 @@ class GetCityThatMatchTheManagerExpectationsInteractor(
                 .getAllCitiesData()
                 .filter { it.country in existCountries }
                 .filter(::excludeNullPricesOfMeals)
-                .map {
+                .onEach {
                     pricesOfMeals.add(it.mealsPrices.mealFor2PeopleMidRangeRestaurant!!)
-                    it
                 }.let { citiesEntity ->
                     getCityThatMatchExpectations(pricesOfMeals, citiesEntity)
                 }
     }
 
 
-    private fun formatCountriesNames(countriesNames: List<String>): List<String> {
-        return if (countriesNames.isEmpty())
-            emptyList()
-        else
-            countriesNames.map { country ->
-                country.lowercase()
-                    .trim()
-                    .split("\\s+".toRegex())
-                    .joinToString(" ") {
-                        it.replaceFirstChar { char ->
-                            if (char.isLowerCase()) char.titlecase(Locale.getDefault()) else it
-                        }
+    private fun formatCountriesNames(countryName: String): String {
+            return countryName.lowercase()
+                .trim()
+                .split("\\s+".toRegex())
+                .joinToString(" ") {
+                    it.replaceFirstChar { char ->
+                        if (char.isLowerCase()) char.titlecase(Locale.getDefault()) else it
                     }
-            }
-    }
-
-    private fun excludeTheCountryThatNotExist(countriesNames: List<String>): List<String> {
-        val selectedCountries = listOf("United States", "Canada", "Mexico")
-        return countriesNames.filter { selectedCountries.contains(it) }.map { it }
+                }
     }
 
     private fun excludeNullPricesOfMeals(city: CityEntity): Boolean {
@@ -63,4 +54,7 @@ class GetCityThatMatchTheManagerExpectationsInteractor(
             .sortedBy { it.mealsPrices.mealFor2PeopleMidRangeRestaurant }.first()
     }
 
+     companion object {
+        private val selectedCountries = listOf("United States", "Canada", "Mexico")
+     }
 }
