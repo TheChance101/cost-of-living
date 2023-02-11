@@ -28,9 +28,31 @@ class GetHighestApartmentPriceDifferenceCityInteractorTest {
     fun isEmpty_theListIsEmpty_returnNull(){
         // given an empty list
         val cityNames = emptyList<CityEntity>()
-        // when check if the highst city is an empty list
+        // when check if the highest city is an empty list
         val highestCity = GetHighestApartmentPrice.execute(cityNames)
         // then check the result
         assertEquals(null,highestCity)
     }
+
+/*
+if we have
+CityEntity(
+                cityName = "Paris",
+                country = "France",
+                realEstatesPrices = RealEstatesPrices(
+                    apartmentOneBedroomInCityCentre = null,
+                    apartmentOneBedroomOutsideOfCentre = 1000f,
+                    dataQuality = true
+                )
+ */
+    @Test
+    fun isCityMissing_cityMissingApartmentPrice_returnNull(){
+        // given make object from FakeData class
+        val cityNames = fakeData.getAllCitiesData()
+        // when check if the apartment price is missing
+        val highestCity = GetHighestApartmentPrice.execute(cityNames)
+        // then check the result
+        assertEquals(null,highestCity)
+    }
+
 }
