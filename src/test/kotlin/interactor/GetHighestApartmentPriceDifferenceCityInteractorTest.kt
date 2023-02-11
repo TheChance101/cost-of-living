@@ -47,7 +47,7 @@ CityEntity(
  */
     @Test
     fun isPriceMissing_cityMissingApartmentPrice_returnNull(){
-        // given make object from FakeData class
+        // given make an object from FakeData class
         val cityNames = fakeData.getAllCitiesData()
         // when check if the apartment price is missing
         val highestCity = GetHighestApartmentPrice.execute(cityNames)
