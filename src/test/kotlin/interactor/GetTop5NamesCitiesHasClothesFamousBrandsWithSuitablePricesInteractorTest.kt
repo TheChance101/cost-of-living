@@ -79,6 +79,106 @@ internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInterac
     }
 
 
+    @Test
+    fun should_TrowException_when_allCitisHaveNotAnyOnePairOfJeansLevis50oneOrSimilar()
+    {
+        //Given city has not onePairOfJeansLevis50oneOrSimilar
+        val  insertNameCityClothesPrice = NameCityClothesPrices(
+            cityName="cairo",
+            onePairOfJeansLevis50oneOrSimilar = null ,
+            oneSummerDressInAChainStoreZaraHAndM = 33.0f ,
+            onePairOfNikeRunningShoesMidRange = 33.0f,
+            onePairOfMenLeatherBusinessShoes = 36.0f ,
+        )
+        inputData.add(insertNameCityClothesPrice)
+        inputData.add(insertNameCityClothesPrice)
+        inputData.add(insertNameCityClothesPrice)
+        inputData.add(insertNameCityClothesPrice)
+        inputData.add(insertNameCityClothesPrice)
+
+        //when
+        val nameTop5City : Executable = Executable{getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor.execute() }
+
+        //then
+        assertThrows(Exception::class.java , nameTop5City )
+    }
+
+
+    @Test
+    fun should_TrowException_when_allCitisHaveNotAnyOneSummerDressInAChainStoreZaraHAndM()
+    {
+        //Given city has not any oneSummerDressInAChainStoreZaraHAndM
+        val  insertNameCityClothesPrice = NameCityClothesPrices(
+            cityName="cairo",
+            onePairOfJeansLevis50oneOrSimilar = 44.0f ,
+            oneSummerDressInAChainStoreZaraHAndM = null ,
+            onePairOfNikeRunningShoesMidRange = 33.0f,
+            onePairOfMenLeatherBusinessShoes = 36.0f ,
+        )
+        inputData.add(insertNameCityClothesPrice)
+        inputData.add(insertNameCityClothesPrice)
+        inputData.add(insertNameCityClothesPrice)
+        inputData.add(insertNameCityClothesPrice)
+        inputData.add(insertNameCityClothesPrice)
+
+        //when
+        val nameTop5City : Executable = Executable{getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor.execute() }
+
+        //then
+        assertThrows(Exception::class.java , nameTop5City )
+    }
+
+
+
+    @Test
+    fun should_TrowException_when_allCitisHaveNotAnyOnePairOfNikeRunningShoesMidRange()
+    {
+        //Given city has not any onePairOfNikeRunningShoesMidRange
+        val  insertNameCityClothesPrice = NameCityClothesPrices(
+            cityName="cairo",
+            onePairOfJeansLevis50oneOrSimilar = 44.0f ,
+            oneSummerDressInAChainStoreZaraHAndM = 56.0f ,
+            onePairOfNikeRunningShoesMidRange = null,
+            onePairOfMenLeatherBusinessShoes = 36.0f ,
+        )
+        inputData.add(insertNameCityClothesPrice)
+        inputData.add(insertNameCityClothesPrice)
+        inputData.add(insertNameCityClothesPrice)
+        inputData.add(insertNameCityClothesPrice)
+        inputData.add(insertNameCityClothesPrice)
+
+        //when
+        val nameTop5City : Executable = Executable{getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor.execute() }
+
+        //then
+        assertThrows(Exception::class.java , nameTop5City )
+    }
+
+
+    @Test
+    fun should_TrowException_when_allCitisHaveNotAnyOnePairOfMenLeatherBusinessShoes()
+    {
+        //Given city has not any onePairOfMenLeatherBusinessShoes
+        val  insertNameCityClothesPrice = NameCityClothesPrices(
+            cityName="cairo",
+            onePairOfJeansLevis50oneOrSimilar = 44.0f ,
+            oneSummerDressInAChainStoreZaraHAndM = 56.0f ,
+            onePairOfNikeRunningShoesMidRange = 50.8f,
+            onePairOfMenLeatherBusinessShoes = null ,
+        )
+        inputData.add(insertNameCityClothesPrice)
+        inputData.add(insertNameCityClothesPrice)
+        inputData.add(insertNameCityClothesPrice)
+        inputData.add(insertNameCityClothesPrice)
+        inputData.add(insertNameCityClothesPrice)
+
+        //when
+        val nameTop5City : Executable = Executable{getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor.execute() }
+
+        //then
+        assertThrows(Exception::class.java , nameTop5City )
+    }
+
 
 
 }
