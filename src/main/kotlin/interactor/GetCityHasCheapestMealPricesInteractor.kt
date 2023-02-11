@@ -2,6 +2,13 @@ package interactor
 
 import model.CityEntity
 
+enum class ThreeSpecificCountries(val nameOFCountry: String) {
+    USA("United States"),
+    CANADA("Canada"),
+    MEXICO("Mexico"),
+    EGYPT("Egypt")
+}
+
 class GetCityHasCheapestMealPricesInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
@@ -11,6 +18,8 @@ class GetCityHasCheapestMealPricesInteractor(
     }
 
     fun citiesInUSACanadaAndMexico(city: CityEntity): Boolean {
-        return city.country == "United States" || city.country == "Canada" || city.country == "Mexico"
+        return city.country == ThreeSpecificCountries.USA.nameOFCountry
+                || city.country == ThreeSpecificCountries.CANADA.nameOFCountry
+                || city.country == ThreeSpecificCountries.MEXICO.nameOFCountry
     }
 }
