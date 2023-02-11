@@ -1,5 +1,6 @@
 package interactor
 
+import model.CityNameSumClothesPrices
 import model.NameCityClothesPrices
 
 class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor (
@@ -8,11 +9,10 @@ class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor (
 
     fun execute( ): List<String> {
 
-        if(dataSource.size == 0  ) throw  Exception ("the dataSource is empty")
+        if(dataSource.size < 5  ) throw  Exception ("the dataSource has less than 5 city ")
 
         return listOf()
     }
 
-
-    
 }
+
