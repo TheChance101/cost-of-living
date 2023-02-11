@@ -9,14 +9,14 @@ class GetHighestSalaryAverageCititesNamesInteractor(
     fun execute(limit: Int): List<String> {
         return dataSource
             .getAllCitiesData()
-            .filter(::excludeNullSalariesAndLowQualityData)
+//            .filter(::excludeNullSalariesAndLowQualityData)
             .sortedByDescending { it.averageMonthlyNetSalaryAfterTax }
             .take(limit)
-            .map { it.cityName }
+            .map { it.cityName!! }
     }
 
-    private fun excludeNullSalariesAndLowQualityData(city: CityEntity): Boolean {
-        return city.averageMonthlyNetSalaryAfterTax != null && city.dataQuality
-    }
+//    private fun excludeNullSalariesAndLowQualityData(city: CityEntity): Boolean {
+//        return city.averageMonthlyNetSalaryAfterTax != null && city.dataQuality!!
+//    }
 
 }

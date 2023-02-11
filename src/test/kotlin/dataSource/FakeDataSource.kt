@@ -3,6 +3,7 @@ package dataSource
 import interactor.CostOfLivingDataSource
 import model.*
 
+
 class FakeDataSource : CostOfLivingDataSource {
     override fun getAllCitiesData(): List<CityEntity> {
         return listOf(

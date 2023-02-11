@@ -12,21 +12,21 @@ class GetTopFashionCitiesNamesInteractor(
             .filter(::excludeNullPricesAndLowQualityData)
             .sortedBy { it.getAveragePrice() }
             .take(limit)
-            .map { it.cityName }
+            .map { it.cityName!! }
     }
 
     private fun excludeNullPricesAndLowQualityData(city: CityEntity): Boolean {
-        with(city.clothesPrices) {
+        with(city.clothesPrices!!) {
             return onePairOfJeansLevis50oneOrSimilar != null &&
                     onePairOfMenLeatherBusinessShoes != null &&
                     onePairOfNikeRunningShoesMidRange != null &&
                     oneSummerDressInAChainStoreZaraHAndM != null &&
-                    city.dataQuality
+                    city.dataQuality!!
         }
     }
 
     private fun CityEntity.getAveragePrice(): Float {
-        with(clothesPrices) {
+        with(clothesPrices!!) {
             return (onePairOfJeansLevis50oneOrSimilar!! +
                     onePairOfMenLeatherBusinessShoes!! +
                     onePairOfNikeRunningShoesMidRange!! +

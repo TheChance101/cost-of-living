@@ -8,7 +8,7 @@ data class CityEntity(
     val fruitAndVegetablesPrices: FruitAndVegetablesPrices,
     val foodPrices: FoodPrices,
     val servicesPrices: ServicesPrices,
-    val clothesPrices: ClothesPrices,
+    val clothesPrices: ClothesPrices?,
     val transportationsPrices: TransportationsPrices,
     val carsPrices: CarsPrices,
     val realEstatesPrices: RealEstatesPrices,
