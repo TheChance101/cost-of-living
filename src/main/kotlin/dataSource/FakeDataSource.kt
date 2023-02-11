@@ -3,7 +3,7 @@ package dataSource
 import interactor.CostOfLivingDataSource
 import model.*
 
-class FakeDataSource : CostOfLivingDataSource {
+class FakeDataSource: CostOfLivingDataSource {
     override fun getAllCitiesData(): List<CityEntity> {
         return listOf(
             CityEntity(
@@ -1407,6 +1407,11 @@ class FakeDataSource : CostOfLivingDataSource {
                 averageMonthlyNetSalaryAfterTax = 81.36f,
                 dataQuality = true
             )
+
+
+
+
+
 
 
         )
