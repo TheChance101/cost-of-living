@@ -78,7 +78,7 @@ class FakeData : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentInCityCentre = null
                 ),
                 averageMonthlyNetSalaryAfterTax = 18.0f,
-                dataQuality = false
+                dataQuality = true
             )
         )
         listData.add(
