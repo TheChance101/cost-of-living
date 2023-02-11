@@ -10,6 +10,7 @@ class GetCityHasMoreSavingsPerMonthInteractor(
 
 
     fun execute(): CityEntity?{
+
         return  dataSource.getAllCitiesData()
             .asSequence()
             .filter(::excludeNullFoodPrices)
@@ -54,8 +55,10 @@ class GetCityHasMoreSavingsPerMonthInteractor(
 
 
     }
+
     private  fun excludeNullAverageMonthly(city: CityEntity):Boolean{
      return city.averageMonthlyNetSalaryAfterTax!=null
+
   }
 
 
