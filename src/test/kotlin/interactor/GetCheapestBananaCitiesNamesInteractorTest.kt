@@ -62,8 +62,9 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
     @Test
     fun `should return sorted correct cities when have all correct cities data`() {
         // given varargs of correct cities with true data quality and correct banana price
+        val citiesList = listOf("Havana", "Damascus", "Alexandria")
         // when get sorted cities list by cheapest price
-        val cities = interactor.execute("Havana", "Damascus", "Alexandria")
+        val cities = interactor.execute(*citiesList.toTypedArray())
         // then if getting correct list
         assertEquals(listOf("Alexandria", "Havana", "Damascus"), cities)
     }
@@ -71,8 +72,9 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
     @Test
     fun `should return sorted correct cities when have list of correct cities with one or more city is not correct typing`() {
         // given varargs of correct cities with true data quality and correct banana price but there is one incorrect typing
+        val citiesList = listOf("Havana", "Damascus", "Alexandria", "BlaBlaBla")
         // when get sorted cities list by cheapest price
-        val cities = interactor.execute("Havana", "Damascus", "Alexandria", "BlaBlaBla")
+        val cities = interactor.execute(*citiesList.toTypedArray())
         // then if getting correct list
         assertEquals(listOf("Alexandria", "Havana", "Damascus"), cities)
     }
@@ -80,8 +82,9 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
     @Test
     fun `should return sorted correct cities when have list of correct cities with one or more city has incorrect dataQuality or banana price`() {
         // given varargs of correct cities with true data quality and correct banana price but there is one or more city is not incorrect dataQuality or incorrect banana price
+        val citiesList = listOf("Havana", "Damascus", "Alexandria", "Moratuwa")
         // when get sorted cities list by cheapest price
-        val cities = interactor.execute("Havana", "Damascus", "Alexandria", "Moratuwa")
+        val cities = interactor.execute(*citiesList.toTypedArray())
         // then if getting correct list
         assertEquals(listOf("Alexandria", "Havana", "Damascus"), cities)
     }
@@ -89,8 +92,9 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
     @Test
     fun `should return empty list when have all cities incorrect typing , incorrect dataQuality or incorrect banana price`() {
         // given varargs of all Incorrect cities
+        val citiesList = listOf("BlaBlaBla", "Uyo", "Tamale", "Moratuwa")
         // when get empty list
-        val cities = interactor.execute("BlaBlaBla", "Uyo", "Tamale", "Moratuwa")
+        val cities = interactor.execute(*citiesList.toTypedArray())
         // then if getting empty list
         assertEquals(listOf(), cities)
     }
@@ -98,8 +102,9 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
     @Test
     fun `should return the only correct city from many incorrect cities when  all given only one city satisfies conditions in all given cities`() {
         // given varargs of all Incorrect cities except only one city satisfies all conditions
+        val citiesList = listOf("BlaBlaBla", "Uyo", "Tamale", "Moratuwa" , "Alexandria")
         // when get sorted cities list by cheapest price
-        val cities = interactor.execute("BlaBlaBla", "Uyo", "Tamale", "Moratuwa", "Alexandria")
+        val cities = interactor.execute(*citiesList.toTypedArray())
         // then if the only correct city
         assertEquals(listOf("Alexandria"), cities)
     }
