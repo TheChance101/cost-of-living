@@ -9,11 +9,19 @@ class GetSalaryAverageForCitiesInCountryInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
     fun execute(countryName: String): List<Pair<String, Float>> {
-        return listOf(Pair("", 1.0f))
+        val citiesInCountry = dataSource.getAllCitiesData()
+            .filter { it.country.equals(countryName, true) }
+
+        if (citiesInCountry.isEmpty()) {
+            throw Exception("No cities found in country $countryName")
+        }
+
+        return citiesInCountry
+            .filter(::excludeNullSalariesAndLowQualityData)
+            .map { Pair(it.cityName, it.averageMonthlyNetSalaryAfterTax!!) }
     }
 
     fun excludeNullSalariesAndLowQualityData(city: CityEntity): Boolean {
-
-        return true
+        return city.averageMonthlyNetSalaryAfterTax != null && city.dataQuality
     }
 }
