@@ -1,9 +1,9 @@
 package interactor
 
-import model.NameCityClothesPrices
+import model.CityNameClothesPrices
 
 class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor (
-    private val dataSource: List<NameCityClothesPrices>,
+    private val dataSource: List<CityNameClothesPrices>,
 ) {
 
     private val numberOfReturnCityName = 5
@@ -19,12 +19,12 @@ class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor (
     }
 
 
-    private val calculateSumClothesPrices = { city: NameCityClothesPrices ->
-        city.onePairOfMenLeatherBusinessShoes!! + city.onePairOfJeansLevis50oneOrSimilar!! + city.onePairOfNikeRunningShoesMidRange!! + city.oneSummerDressInAChainStoreZaraHAndM!!
+    private val calculateSumClothesPrices = { cityName: CityNameClothesPrices ->
+        cityName.onePairOfMenLeatherBusinessShoes!! + cityName.onePairOfJeansLevis50oneOrSimilar!! + cityName.onePairOfNikeRunningShoesMidRange!! + cityName.oneSummerDressInAChainStoreZaraHAndM!!
     }
 
-    private val deletAllCityHasNotClothes = { city: NameCityClothesPrices ->
-        city.onePairOfJeansLevis50oneOrSimilar != null && city.onePairOfMenLeatherBusinessShoes != null  && city.onePairOfNikeRunningShoesMidRange != null && city.oneSummerDressInAChainStoreZaraHAndM != null
+    private val deletAllCityHasNotClothes = { cityName: CityNameClothesPrices ->
+        cityName.onePairOfJeansLevis50oneOrSimilar != null && cityName.onePairOfMenLeatherBusinessShoes != null  && cityName.onePairOfNikeRunningShoesMidRange != null && cityName.oneSummerDressInAChainStoreZaraHAndM != null
     }
 
 }

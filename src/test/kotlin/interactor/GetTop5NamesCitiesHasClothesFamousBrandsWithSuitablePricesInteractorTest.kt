@@ -1,16 +1,15 @@
 package interactor
 
-import model.NameCityClothesPrices
+import model.CityNameClothesPrices
 import org.junit.jupiter.api.*
 
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractorTest {
 
-    lateinit var inputData : MutableList<NameCityClothesPrices>
+    lateinit var inputData : MutableList<CityNameClothesPrices>
     lateinit var getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor: GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor
 
     @BeforeEach
@@ -38,7 +37,7 @@ internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInterac
     fun should_TrowException_when_listHasLessThanFiveCities()
     {
         //Given less than 5 city
-        val  insertNameCityClothesPrice = NameCityClothesPrices(
+        val  insertNameCityClothesPrice = CityNameClothesPrices(
             cityName="cairo",
             onePairOfJeansLevis50oneOrSimilar = 24.0f ,
             oneSummerDressInAChainStoreZaraHAndM = 9.0f ,
@@ -58,7 +57,7 @@ internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInterac
     fun should_TrowException_when_allCitisHaveNotAnyClothes()
     {
         //Given city has not any clothes
-        val  insertNameCityClothesPrice = NameCityClothesPrices(
+        val  insertNameCityClothesPrice = CityNameClothesPrices(
             cityName="cairo",
             onePairOfJeansLevis50oneOrSimilar = null ,
             oneSummerDressInAChainStoreZaraHAndM = null ,
@@ -83,7 +82,7 @@ internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInterac
     fun should_TrowException_when_allCitisHaveNotAnyOnePairOfJeansLevis50oneOrSimilar()
     {
         //Given city has not onePairOfJeansLevis50oneOrSimilar
-        val  insertNameCityClothesPrice = NameCityClothesPrices(
+        val  insertNameCityClothesPrice = CityNameClothesPrices(
             cityName="cairo",
             onePairOfJeansLevis50oneOrSimilar = null ,
             oneSummerDressInAChainStoreZaraHAndM = 33.0f ,
@@ -108,7 +107,7 @@ internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInterac
     fun should_TrowException_when_allCitisHaveNotAnyOneSummerDressInAChainStoreZaraHAndM()
     {
         //Given city has not any oneSummerDressInAChainStoreZaraHAndM
-        val  insertNameCityClothesPrice = NameCityClothesPrices(
+        val  insertNameCityClothesPrice = CityNameClothesPrices(
             cityName="cairo",
             onePairOfJeansLevis50oneOrSimilar = 44.0f ,
             oneSummerDressInAChainStoreZaraHAndM = null ,
@@ -134,7 +133,7 @@ internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInterac
     fun should_TrowException_when_allCitisHaveNotAnyOnePairOfNikeRunningShoesMidRange()
     {
         //Given city has not any onePairOfNikeRunningShoesMidRange
-        val  insertNameCityClothesPrice = NameCityClothesPrices(
+        val  insertNameCityClothesPrice = CityNameClothesPrices(
             cityName="cairo",
             onePairOfJeansLevis50oneOrSimilar = 44.0f ,
             oneSummerDressInAChainStoreZaraHAndM = 56.0f ,
@@ -159,7 +158,7 @@ internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInterac
     fun should_TrowException_when_allCitisHaveNotAnyOnePairOfMenLeatherBusinessShoes()
     {
         //Given city has not any onePairOfMenLeatherBusinessShoes
-        val  insertNameCityClothesPrice = NameCityClothesPrices(
+        val  insertNameCityClothesPrice = CityNameClothesPrices(
             cityName="cairo",
             onePairOfJeansLevis50oneOrSimilar = 44.0f ,
             oneSummerDressInAChainStoreZaraHAndM = 56.0f ,

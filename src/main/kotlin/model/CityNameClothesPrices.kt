@@ -1,6 +1,6 @@
 package model
 
-data class NameCityClothesPrices(
+data class CityNameClothesPrices(
     val cityName: String,
     val onePairOfJeansLevis50oneOrSimilar: Float?,
     val oneSummerDressInAChainStoreZaraHAndM: Float?,
