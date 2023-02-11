@@ -23,7 +23,7 @@ class GetCountryCitiesAverageSalaryInteractorTest {
     @Test
     fun should_return_cities_salaries_when_entring_country_name_with_spaces() {
         //given
-        val country = "siri   lanka"
+        val country = "sri   lanka"
         // when
         val result = GetCountryCitiesAverageSalary.execute(country = country)
         //then
