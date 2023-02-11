@@ -7,7 +7,12 @@ class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor (
 ) {
 
     fun execute( ): List<String> {
+
+        if(dataSource.size == 0  ) throw  Exception ("the dataSource is empty")
+
         return listOf()
     }
+
+
     
 }
