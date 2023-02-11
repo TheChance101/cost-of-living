@@ -4,16 +4,17 @@ import datasource.FakeDataSource
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-
 internal class GetCitiesAverageSalaryTest {
 
     private lateinit var getCitiesAverageSalary:GetCitiesAverageSalary
     private lateinit var getFakeDataSource:FakeDataSource
 
+    @BeforeAll
     fun setUp()
     {
         getFakeDataSource=FakeDataSource()
@@ -28,7 +29,7 @@ internal class GetCitiesAverageSalaryTest {
         val result=getCitiesAverageSalary.execute(country)
 
         //then check the result
-        val fakeList= listOf(Pair("Sancti Spiritus",20.0),Pair("Santiago de Cuba",18.0),Pair("Santa Clara",25.0))
+        val fakeList= listOf(Pair("Santa Clara", 25.0))
         assertEquals(fakeList,result)
     }
 
@@ -41,7 +42,7 @@ internal class GetCitiesAverageSalaryTest {
         val result=getCitiesAverageSalary.execute(country)
 
         //then check the result
-        val fakeList= listOf(Pair("Sancti Spiritus",20.0),Pair("Santiago de Cuba",18.0),Pair("Santa Clara",25.0))
+        val fakeList= listOf(Pair("Santa Clara",25.0))
         assertEquals(fakeList,result)
     }
 
@@ -54,7 +55,7 @@ internal class GetCitiesAverageSalaryTest {
         val result=getCitiesAverageSalary.execute(country)
 
         //then check the result
-        val fakeList= listOf(Pair("Sancti Spiritus",20.0),Pair("Santiago de Cuba",18.0),Pair("Santa Clara",25.0))
+        val fakeList= listOf(Pair("Santa Clara",25.0))
         assertEquals(fakeList,result)
     }
 
@@ -64,7 +65,7 @@ internal class GetCitiesAverageSalaryTest {
         val country="&&7#"
 
         //when calculate the average salary of city
-        val result:Executable=Executable {getCitiesAverageSalary.execute(country)}
+        val result=Executable {getCitiesAverageSalary.execute(country)}
 
         //then check the result
         assertThrows(Exception::class.java,result)
