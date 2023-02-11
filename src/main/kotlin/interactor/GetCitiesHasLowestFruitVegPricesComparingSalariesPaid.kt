@@ -3,23 +3,13 @@ package interactor
 import model.CityEntity
 import model.FruitAndVegetablesPrices
 
-class GetCitiesHasLowestFruitVegPricesComparingSalariesPaid
-{
-    private var dataSource: CostOfLivingDataSource? = null
-    private var cityEntitylist: List<CityEntity> = listOf()
 
-    constructor(dataSource: CostOfLivingDataSource){
-        this.dataSource = dataSource
-    }
-    constructor(cityEntitylist: List<CityEntity>){
-        this.cityEntitylist = cityEntitylist
-    }
+
+class GetCitiesHasLowestFruitVegPricesComparingSalariesPaid(private val dataSource: CostOfLivingDataSource)
+{
 
     fun execute(): List<CityEntity> {
-        if(dataSource != null)
-            cityEntitylist = dataSource!!.getAllCitiesData()
-
-        return cityEntitylist
+        return dataSource.getAllCitiesData()
             .filter(::excludeNullSalaries)
             .sortedBy { excludeNullFruitVegPrices(it.fruitAndVegetablesPrices).div(it.averageMonthlyNetSalaryAfterTax!!) }
             .subList(0,10)
@@ -44,7 +34,4 @@ class GetCitiesHasLowestFruitVegPricesComparingSalariesPaid
                     } ?: 0f
             } ?: 0f
     }
-
-
-
 }
