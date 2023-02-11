@@ -1,19 +1,19 @@
 package interactor
 
 import model.CityEntity
-import java.io.IOException
+
 
 class GetSalaryAverageAndCitiesNamesInCountryInteractor(
     private val dataSource: CostOfLivingDataSource
     ) {
 
-    fun execute(countryName:String):List<Pair<String,Float?>> {
+    fun execute(countryName:String):List<Pair<String,Float>> {
         return if (checkIfCountryIsValid(countryName))
             dataSource.getAllCitiesData()
                 .filter{excludeNullSalariesAndLowQualityData(it) && it.country.lowercase() == countryName.lowercase()}
-                .map{Pair(it.cityName,it.averageMonthlyNetSalaryAfterTax)}
+                .map{Pair(it.cityName,it.averageMonthlyNetSalaryAfterTax!!)}
         else
-            throw IOException("Invalid country name")
+            throw Exception("Invalid country name")
     }
 
     private fun checkIfCountryIsValid(countryName: String):Boolean{
