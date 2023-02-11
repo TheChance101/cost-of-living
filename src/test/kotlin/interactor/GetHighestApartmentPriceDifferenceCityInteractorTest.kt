@@ -29,9 +29,9 @@ class GetHighestApartmentPriceDifferenceCityInteractorTest {
         // given an empty list
         val cityNames = emptyList<CityEntity>()
         // when check if the highest city is an empty list
-        val highestCity = GetHighestApartmentPrice.execute(cityNames)
+        val result = GetHighestApartmentPrice.execute(cityNames)
         // then check the result
-        assertEquals(null,highestCity)
+        assertEquals(null,result)
     }
 
 /*
@@ -48,20 +48,20 @@ CityEntity(
     @Test
     fun isPriceMissing_cityMissingApartmentPrice_returnNull(){
         // given make an object from FakeData class
-        val cityNames = fakeData.getAllCitiesData()
+        val cities = fakeData.getAllCitiesData()
         // when check if the apartment price is missing
-        val highestCity = GetHighestApartmentPrice.execute(cityNames)
+        val result = GetHighestApartmentPrice.execute(cities)
         // then check the result
-        assertEquals(null,highestCity)
+        assertEquals(null,result)
     }
     @Test
     fun isLowQuality_cityWithLowQualityData_returnNull(){
         // given make an object from FakeData class
-        val cityNames = fakeData.getAllCitiesData()
+        val city = fakeData.getAllCitiesData()
         // when check if the data is low quality
-        val highestCity = GetHighestApartmentPrice.execute(cityNames)
+        val result = GetHighestApartmentPrice.execute(city)
         // then check the result
-        assertEquals(null,highestCity)
+        assertEquals(null,result)
     }
 
 }
