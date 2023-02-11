@@ -35,7 +35,7 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
 
 
     @Test
-    fun should_ReturnNull_WhenCityEntity_IsEmpty(){
+    fun  should_ReturnNull_WhenCityEntityEmpty(){
         // given an Empty list
         val citiesEntity = emptyList<CityEntity>()
         // when the given is an empty list
