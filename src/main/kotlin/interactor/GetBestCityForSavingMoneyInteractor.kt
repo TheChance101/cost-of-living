@@ -42,7 +42,7 @@ class GetBestCityForSavingMoneyInteractor(private val dataSource: CostOfLivingDa
                 (city.foodPrices.riceWhite1kg!! * 2) - 250.0f - requireApartment
     }
 
-    private fun checkNullFields(city: CityEntity): Boolean {
+    fun checkNullFields(city: CityEntity): Boolean {
 
         var determineApartment = city.realEstatesPrices.apartment3BedroomsOutsideOfCentre != null
         if (isAppartmentInCenter) determineApartment =
