@@ -22,7 +22,7 @@ fun main() {
 
 
     val getCityHasMoreSavingsPerMonthInteractor = GetCityHasMoreSavingsPerMonthInteractor(dataSource)
-    println(getCityHasMoreSavingsPerMonthInteractor.execute(limit = 1))
+    println(getCityHasMoreSavingsPerMonthInteractor.execute(limit =12))
     printSeparationLine()
 
 
