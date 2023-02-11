@@ -13,7 +13,7 @@ fun main() {
 
     printSeparationLine()
 
-    val countries = listOf("UnItEd STaTeS", "CaNAdA", "MexIco")
+    val countries = listOf("UnItEd STaTeS", "CaNAdA", "MexIco","irAq")
     val getCityThatMatchTheManagerExpectationsInteractor = GetCityThatMatchTheManagerExpectationsInteractor(dataSource)
     print(getCityThatMatchTheManagerExpectationsInteractor.execute(countries))
 
