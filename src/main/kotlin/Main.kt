@@ -4,10 +4,12 @@ import interactor.CostOfLivingDataSource
 import interactor.GetCitiesNamesSortedCheapestBananPrices
 import interactor.GetCityHasCheapestInternetConnectionInteractor
 import interactor.GetHighestSalaryAverageCititesNamesInteractor
+import interactor.GetMostSuitableCityInteractor
 
 fun main() {
     val csvParser = CsvParser()
     val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
+    val data = dataSource.getAllCitiesData()
 
     val inputCitiesEntity= arrayOf(
         dataSource.getAllCitiesData()[11],
@@ -23,6 +25,16 @@ fun main() {
     val getCitiesNamesSortedCheapestBananPrices = GetCitiesNamesSortedCheapestBananPrices()
     println(getCitiesNamesSortedCheapestBananPrices.excute(*inputCitiesEntity))
 
+   val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor()
+    println(getCityHasCheapestInternetConnectionInteractor.execute(data))
+
+
+
+    val getMostSuitableCity = GetMostSuitableCityInteractor()
+    val list = getMostSuitableCity.getAllCities(dataSource)
+    val cityNameResult = getMostSuitableCity.findTheMostSuitableCity(list)
+
+    println(cityNameResult)
 }
 private fun printSeparationLine(){
     print("\n_______________________________\n")
