@@ -2,8 +2,6 @@ package interactor
 
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
-import io.mockk.clearAllMocks
-import io.mockk.unmockkAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -15,12 +13,9 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
     private lateinit var interactor: GetCheapestBananaCitiesNamesInteractor
     private val csvParser = CsvParser()
     private val dataSource = CsvDataSource(csvParser)
-//    private val entity: CityEntity = mockk()
 
     @BeforeAll
     fun setup() {
-        clearAllMocks()
-        unmockkAll()
         interactor = GetCheapestBananaCitiesNamesInteractor(dataSource)
     }
 
@@ -104,7 +99,7 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
     fun `should return the only correct city from many incorrect cities when  all given only one city satisfies conditions in all given cities`() {
         // given varargs of all Incorrect cities except only one city satisfies all conditions
         // when get sorted cities list by cheapest price
-        val cities = interactor.execute("BlaBlaBla", "Uyo", "Tamale", "Moratuwa" , "Alexandria")
+        val cities = interactor.execute("BlaBlaBla", "Uyo", "Tamale", "Moratuwa", "Alexandria")
         // then if the only correct city
         assertEquals(listOf("Alexandria"), cities)
     }
