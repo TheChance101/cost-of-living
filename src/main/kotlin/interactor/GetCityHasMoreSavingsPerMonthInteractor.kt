@@ -10,6 +10,7 @@ class GetCityHasMoreSavingsPerMonthInteractor(
     fun execute(limit: Int): CityEntity? {
         return if (limit > 0) dataSource
             .getAllCitiesData()
+            .asSequence()
             .filter(::excludeNullFoodPrices)
             .filter(::excludeNullApartment)
             .filter(::excludeTransportationsPrices)
