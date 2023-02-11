@@ -25,5 +25,16 @@ internal class GetCityNamesClothesPricesTest {
         getCityNamesClothesPrices = GetCityNamesClothesPrices(listCityEntity)
     }
 
+    @Test
+    fun should_TrowException_when_listIsEmpty()
+    {
+        //Given empty mutablelist
+
+        //when
+        val listCityNamesClothesPrices: Executable = Executable{getCityNamesClothesPrices.execute() }
+
+        //then
+        assertThrows(Exception::class.java , listCityNamesClothesPrices )
+    }
 
 }
