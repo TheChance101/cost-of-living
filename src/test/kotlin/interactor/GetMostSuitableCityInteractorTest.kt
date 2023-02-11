@@ -1,20 +1,21 @@
+package interactor
+
 import dataSource.FakeDataSource
-import interactor.GetMostSuitableCityInteractor
 import model.CityEntity
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class GetMostSuitableCityTest {
+class GetMostSuitableCityInteractorTest {
 
     private lateinit var getMostSuitableCityInteractor: GetMostSuitableCityInteractor
     private lateinit var fakeDataSource: FakeDataSource
 
-    @BeforeEach
+    @BeforeAll
     fun setUp() {
         getMostSuitableCityInteractor = GetMostSuitableCityInteractor()
         fakeDataSource = FakeDataSource()
@@ -22,30 +23,41 @@ class GetMostSuitableCityTest {
 
     @Test
     fun should_ReturnCityName_when_GivenListOfCities() {
+        //given
         val cityList = fakeDataSource.getAllCitiesData()
+        //when
         val cityNameResult = getMostSuitableCityInteractor.findTheMostSuitableCity(cityList)
+        //then
         assertEquals("Banjul", cityNameResult)
     }
 
     @Test
     fun should_ReturnException_when_ListOfCitiesIsEmpty() {
-
+        //given
         val cityList = listOf<CityEntity>()
+        //when
         val cityNameResult = Executable { getMostSuitableCityInteractor.findTheMostSuitableCity(cityList) }
+        //then
         assertThrows(Exception::class.java, cityNameResult)
     }
 
     @Test
     fun should_ReturnCityName_when_ListHasOneItem() {
+        //given
         val cityList = listOf(fakeDataSource.getAllCitiesData().first())
+        //when
         val cityNameResult = getMostSuitableCityInteractor.findTheMostSuitableCity(cityList)
+        //then
         assertEquals("Santiago de Cuba", cityNameResult)
     }
 
     @Test
     fun should_ReturnException_when_CityListEquelNull() {
+        //given
         val cityList: List<CityEntity>? = null
-        val cityNameResult = Executable { getMostSuitableCityInteractor.findTheMostSuitableCity(cityList!!)}
+        //when
+        val cityNameResult = Executable { getMostSuitableCityInteractor.findTheMostSuitableCity(cityList!!) }
+        //then
         assertThrows(Exception::class.java, cityNameResult)
     }
 

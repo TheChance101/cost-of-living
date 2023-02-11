@@ -12,7 +12,7 @@ class GetTopFashionCitiesNamesInteractor(
             .filter(::excludeNullPricesAndLowQualityData)
             .sortedBy { it.getAveragePrice() }
             .take(limit)
-            .map { it.cityName!! }
+            .map { it.cityName }
     }
 
     private fun excludeNullPricesAndLowQualityData(city: CityEntity): Boolean {
