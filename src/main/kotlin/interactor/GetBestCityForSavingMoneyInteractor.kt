@@ -4,8 +4,13 @@ import model.CityEntity
 
 class GetBestCityForSavingMoneyInteractor(private val dataSource: CostOfLivingDataSource) {
 
-    fun execute() : CityEntity{
+    fun execute(isAppartmentInTheCityCentre : Boolean) : CityEntity{
 
-       return dataSource.getAllCitiesData().random()
+       return dataSource.getAllCitiesData()[0]
+    }
+
+    fun checkNullFields(city : CityEntity , isAppartmentInTheCityCentre : Boolean) : Boolean{
+
+        return false
     }
 }

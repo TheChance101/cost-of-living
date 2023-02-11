@@ -1,9 +1,9 @@
 package interactor
 
+import dataSource.CsvDataSource
+import dataSource.utils.CsvParser
 import dataSource.utils.FakeDataProvider
 import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Assertions.assertFalse
-import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
@@ -13,17 +13,67 @@ internal class GetBestCityForSavingMoneyInteractorTest {
 
 
     lateinit var bestCity: GetBestCityForSavingMoneyInteractor
+    val csvParser = CsvParser()
+    val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
+
     @BeforeAll
     fun setUp() {
 
         bestCity = GetBestCityForSavingMoneyInteractor(FakeDataProvider)
-
     }
 
 
     @Test
-    fun should_ReturnHavanaCity_When_WePassTheFakeData(){
+    fun should_ReturnTrue_When_TheCityHasNotNullRequireValues(){
 
-        Assertions.assertEquals("Havana", bestCity.execute().cityName)
+        // given a city haven't null fields
+        val cityWithoutNullFields = dataSource.getAllCitiesData()[4]
+
+        // when check if the output is true
+        val result = bestCity.checkNullFields(cityWithoutNullFields,true)
+        val result2 = bestCity.checkNullFields(cityWithoutNullFields,false)
+        // then check the result
+        Assertions.assertTrue(result && result2)
+    }
+
+    @Test
+    fun should_ReturnFalse_When_TheCityHasNullRequireValues(){
+
+        // given a city have null fields
+        val cityWithNullFields = dataSource.getAllCitiesData()[1]
+
+        // when check if the output is false
+        val result = bestCity.checkNullFields(cityWithNullFields,true)
+        val result2 = bestCity.checkNullFields(cityWithNullFields,false)
+        // then check the result
+        Assertions.assertFalse(result && result2)
+    }
+
+    @Test
+    fun should_ReturnTrue_When_WePassTheFakeData(){
+
+        // Given a city name and the name of returned city
+        val cityName = "Havana"
+        val nameOfReturnedCity = bestCity.execute(true).cityName
+
+        // when check if the two names are the same
+        val areEqual = cityName == nameOfReturnedCity
+
+        // then check the result
+        Assertions.assertTrue(areEqual)
+    }
+
+    @Test
+    fun should_ReturnFalse_When_WePassTheFakeData(){
+
+        // Given a city name and the name of returned city
+        val cityName = "Cairo"
+        val nameOfReturnedCity = bestCity.execute(true).cityName
+
+        // when check if the two names are the same
+        val areEqual = cityName == nameOfReturnedCity
+
+        // then check the result
+        Assertions.assertFalse(areEqual)
     }
 }
