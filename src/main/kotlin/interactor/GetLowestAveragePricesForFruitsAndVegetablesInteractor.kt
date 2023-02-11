@@ -7,8 +7,15 @@ class GetLowestAveragePricesForFruitsAndVegetablesInteractor (
 ){
     fun execute(limit: Int): List<String> {
 
-        return listOf()
+        val mapOfCitiesNamesAndPricesRatio =
+            createMap(
+                data.
+                getAllCitiesData().
+                filter(::excludeNullSalariesAndLowQualityDataAndNullFruitsAndVegetablesPrices))
+
+        return mapOfCitiesNamesAndPricesRatio.toList().sortedBy { it.second }.map { it.first }.take(limit)
     }
+
 
     private fun createMap(city: List<CityEntity>): Map<String, Float>  {
         val mapOfCitiesNamesAndPricesRatio = mutableMapOf<String, Float>()
