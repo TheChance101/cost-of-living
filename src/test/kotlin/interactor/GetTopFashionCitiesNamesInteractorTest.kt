@@ -1,7 +1,6 @@
 package interactor
 
-import dataSource.CsvDataSource
-import dataSource.utils.CsvParser
+import dataSource.FakeDataSource
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
@@ -12,12 +11,12 @@ import org.junit.jupiter.api.function.Executable
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetTopFashionCitiesNamesInteractorTest {
     private lateinit var getTopFashionCitiesNamesInteractor: GetTopFashionCitiesNamesInteractor
+    private lateinit var fakeDataSource: FakeDataSource
 
     @BeforeAll
     fun setUp() {
-        val csvParser = CsvParser()
-        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
-        getTopFashionCitiesNamesInteractor = GetTopFashionCitiesNamesInteractor(dataSource)
+        fakeDataSource = FakeDataSource()
+        getTopFashionCitiesNamesInteractor = GetTopFashionCitiesNamesInteractor(fakeDataSource)
     }
 
     @Test
