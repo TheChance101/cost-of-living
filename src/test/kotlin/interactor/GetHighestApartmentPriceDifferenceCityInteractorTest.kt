@@ -54,5 +54,14 @@ CityEntity(
         // then check the result
         assertEquals(null,highestCity)
     }
+    @Test
+    fun isLowQuality_cityWithLowQualityData_returnNull(){
+        // given make an object from FakeData class
+        val cityNames = fakeData.getAllCitiesData()
+        // when check if the data is low quality
+        val highestCity = GetHighestApartmentPrice.execute(cityNames)
+        // then check the result
+        assertEquals(null,highestCity)
+    }
 
 }
