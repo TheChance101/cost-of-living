@@ -7,14 +7,15 @@ class GetCityHasMoreSavingsPerMonthInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
 
-    fun execute(limit: Int): List<String>? {
+    fun execute(limit: Int): CityEntity? {
         return if (limit > 0) dataSource
             .getAllCitiesData()
             .filter(::excludeNullFoodPrices)
             .filter(::excludeNullApartment)
             .filter(::excludeTransportationsPrices)
             .take(limit)
-            .map { it.cityName }
+            .firstOrNull()
+
         else if (limit == 0) null
         else null
 
