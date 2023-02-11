@@ -1,11 +1,8 @@
 package interactor
 
 import FakeData
-import model.CityEntity
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
-import org.junit.jupiter.api.function.Executable
 import kotlin.test.assertEquals
 
 class GetCitiesNamesSortedByCheapestBananaPricesTest {
