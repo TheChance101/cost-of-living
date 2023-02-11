@@ -24,33 +24,33 @@ internal class GetBestCityForSavingMoneyInteractorTest {
 
 
     @Test
-    fun should_ReturnTrue_When_TheCityHasNotNullRequireValues(){
+    fun should_ReturnTrue_When_TheCityHasNotNullRequireValues() {
 
         // given a city haven't null fields
         val cityWithoutNullFields = dataSource.getAllCitiesData()[4]
 
         // when check if the output is true
-        val result = bestCity.checkNullFields(cityWithoutNullFields,true)
-        val result2 = bestCity.checkNullFields(cityWithoutNullFields,false)
+        val result = bestCity.checkNullFields(cityWithoutNullFields, true)
+        val result2 = bestCity.checkNullFields(cityWithoutNullFields, false)
         // then check the result
         Assertions.assertTrue(result && result2)
     }
 
     @Test
-    fun should_ReturnFalse_When_TheCityHasNullRequireValues(){
+    fun should_ReturnFalse_When_TheCityHasNullRequireValues() {
 
         // given a city have null fields
         val cityWithNullFields = dataSource.getAllCitiesData()[1]
 
         // when check if the output is false
-        val result = bestCity.checkNullFields(cityWithNullFields,true)
-        val result2 = bestCity.checkNullFields(cityWithNullFields,false)
+        val result = bestCity.checkNullFields(cityWithNullFields, true)
+        val result2 = bestCity.checkNullFields(cityWithNullFields, false)
         // then check the result
         Assertions.assertFalse(result && result2)
     }
 
     @Test
-    fun should_ReturnTrue_When_WePassTheFakeData(){
+    fun should_ReturnTrue_When_WePassTheFakeData() {
 
         // Given a city name and the name of returned city
         val cityName = "Havana"
@@ -64,7 +64,7 @@ internal class GetBestCityForSavingMoneyInteractorTest {
     }
 
     @Test
-    fun should_ReturnFalse_When_WePassTheFakeData(){
+    fun should_ReturnFalse_When_WePassTheFakeData() {
 
         // Given a city name and the name of returned city
         val cityName = "Cairo"
