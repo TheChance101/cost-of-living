@@ -9,14 +9,15 @@ import org.junit.jupiter.api.function.Executable
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractorTest {
 
-    lateinit var inputData : MutableList<CityNameClothesPrices>
-    lateinit var getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor: GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor
+    //fakeData
+    lateinit var fakeData : MutableList<CityNameClothesPrices>
+    lateinit var getTop5CitiesNameHasSuitableClothesPricesInteractor: GetTop5CitiesNameHasSuitableClothesPricesInteractor
 
     @BeforeEach
     fun Setup()
     {
-        inputData = mutableListOf()
-        getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor= GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor(inputData)
+        fakeData = mutableListOf()
+        getTop5CitiesNameHasSuitableClothesPricesInteractor= GetTop5CitiesNameHasSuitableClothesPricesInteractor(fakeData)
     }
 
 
@@ -26,7 +27,7 @@ internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInterac
         //Given empty mutablelist
 
         //when
-        val nameTop5City : Executable = Executable{getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor.execute() }
+        val nameTop5City : Executable = Executable{getTop5CitiesNameHasSuitableClothesPricesInteractor.execute() }
 
         //then
         assertThrows(Exception::class.java , nameTop5City )
@@ -44,9 +45,9 @@ internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInterac
             onePairOfNikeRunningShoesMidRange =8.3f,
             onePairOfMenLeatherBusinessShoes = 3.2f,
         )
-        inputData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
         //when
-        val nameTop5City : Executable = Executable{getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor.execute() }
+        val nameTop5City : Executable = Executable{getTop5CitiesNameHasSuitableClothesPricesInteractor.execute() }
 
         //then
         assertThrows(Exception::class.java , nameTop5City )
@@ -64,14 +65,14 @@ internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInterac
             onePairOfNikeRunningShoesMidRange =null,
             onePairOfMenLeatherBusinessShoes = null,
         )
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
 
         //when
-        val nameTop5City : Executable = Executable{getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor.execute() }
+        val nameTop5City : Executable = Executable{getTop5CitiesNameHasSuitableClothesPricesInteractor.execute() }
 
         //then
         assertThrows(Exception::class.java , nameTop5City )
@@ -89,14 +90,14 @@ internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInterac
             onePairOfNikeRunningShoesMidRange = 33.0f,
             onePairOfMenLeatherBusinessShoes = 36.0f ,
         )
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
 
         //when
-        val nameTop5City : Executable = Executable{getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor.execute() }
+        val nameTop5City : Executable = Executable{getTop5CitiesNameHasSuitableClothesPricesInteractor.execute() }
 
         //then
         assertThrows(Exception::class.java , nameTop5City )
@@ -114,14 +115,14 @@ internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInterac
             onePairOfNikeRunningShoesMidRange = 33.0f,
             onePairOfMenLeatherBusinessShoes = 36.0f ,
         )
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
 
         //when
-        val nameTop5City : Executable = Executable{getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor.execute() }
+        val nameTop5City : Executable = Executable{getTop5CitiesNameHasSuitableClothesPricesInteractor.execute() }
 
         //then
         assertThrows(Exception::class.java , nameTop5City )
@@ -140,14 +141,14 @@ internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInterac
             onePairOfNikeRunningShoesMidRange = null,
             onePairOfMenLeatherBusinessShoes = 36.0f ,
         )
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
 
         //when
-        val nameTop5City : Executable = Executable{getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor.execute() }
+        val nameTop5City : Executable = Executable{getTop5CitiesNameHasSuitableClothesPricesInteractor.execute() }
 
         //then
         assertThrows(Exception::class.java , nameTop5City )
@@ -165,14 +166,14 @@ internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInterac
             onePairOfNikeRunningShoesMidRange = 50.8f,
             onePairOfMenLeatherBusinessShoes = null ,
         )
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
-        inputData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
+        fakeData.add(insertNameCityClothesPrice)
 
         //when
-        val nameTop5City : Executable = Executable{getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor.execute() }
+        val nameTop5City : Executable = Executable{getTop5CitiesNameHasSuitableClothesPricesInteractor.execute() }
 
         //then
         assertThrows(Exception::class.java , nameTop5City )

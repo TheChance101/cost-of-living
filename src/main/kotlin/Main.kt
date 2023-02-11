@@ -2,8 +2,6 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import interactor.*
-import model.CityEntity
-import model.CityNameClothesPrices
 
 fun main() {
     val csvParser = CsvParser()
@@ -16,7 +14,7 @@ fun main() {
 
     //Mohamed Ragab Ali
     val gitCityNamesClothesPrices=  GetCityNamesClothesPrices(dataSource .getAllCitiesData() )
-    val getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor =   GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor ( gitCityNamesClothesPrices.execute() )
+    val getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor =   GetTop5CitiesNameHasSuitableClothesPricesInteractor ( gitCityNamesClothesPrices.execute() )
     println ( getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor.execute() )
     printSeparationLine()
 

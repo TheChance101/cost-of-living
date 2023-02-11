@@ -2,7 +2,7 @@ package interactor
 
 import model.CityNameClothesPrices
 
-class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor (
+class GetTop5CitiesNameHasSuitableClothesPricesInteractor (
     private val dataSource: List<CityNameClothesPrices>,
 ) {
 
