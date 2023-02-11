@@ -12,13 +12,13 @@ import java.lang.ArithmeticException
 class GetCitiesNameToBuyApartmentFasterInteractorTest {
 
     private lateinit var dataSource: CostOfLivingDataSource
-    private lateinit var interactor: GetTenCitiesNameToBuyDepartmentFaster
+    private lateinit var interactor: GetCitiesNameToBuyApartmentFasterInteractor
 
 
     @BeforeEach
     fun setup() {
         dataSource = FakeDataSource()
-        interactor = GetTenCitiesNameToBuyDepartmentFaster(dataSource)
+        interactor = GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
     }
 
     @Test
@@ -28,8 +28,12 @@ class GetCitiesNameToBuyApartmentFasterInteractorTest {
         val limit = 5
         val squareMeter = 100
         //When execute the use case
-        val actual =GetTenCitiesNameToBuyDepartmentFaster(dataSource)
-            .execute(salary, limit, squareMeter)
+        val actual = GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
+            .execute(
+                salary = salary,
+                limit = limit,
+                squareMeter = squareMeter
+            )
         //Then return the top 5 cities names that he can buy this apartment faster
         val expected = listOf(
             Pair("Havana", 2.235250162760417),
@@ -49,11 +53,15 @@ class GetCitiesNameToBuyApartmentFasterInteractorTest {
         val squareMeter = 100
         //When execute the use case
         val actual = Executable {
-            GetTenCitiesNameToBuyDepartmentFaster(dataSource)
-                .execute(salary, limit, squareMeter)
+            GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
+                .execute(
+                    salary = salary,
+                    limit = limit,
+                    squareMeter = squareMeter
+                )
         }
         //Then
-        assertThrows(Exception::class.java, actual)
+        assertThrows(ArithmeticException::class.java, actual)
     }
 
 
@@ -65,8 +73,12 @@ class GetCitiesNameToBuyApartmentFasterInteractorTest {
         val squareMeter = 100
         //When execute the use case
         val actual =
-            GetTenCitiesNameToBuyDepartmentFaster(dataSource)
-                .execute(salary, limit, squareMeter)
+            GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
+                .execute(
+                    salary = salary,
+                    limit = limit,
+                    squareMeter = squareMeter
+                )
         val expected = emptyList<Pair<String, Float>>()
         //Then
         assertEquals(expected, actual)
@@ -81,8 +93,12 @@ class GetCitiesNameToBuyApartmentFasterInteractorTest {
         val squareMeter = 0
         //When execute the use case
         val actual = Executable {
-            GetTenCitiesNameToBuyDepartmentFaster(dataSource)
-                .execute(salary, limit, squareMeter)
+            GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
+                .execute(
+                    salary = salary,
+                    limit = limit,
+                    squareMeter = squareMeter
+                )
         }
         //Then
         assertThrows(ArithmeticException::class.java, actual)
