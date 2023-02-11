@@ -1,4 +1,5 @@
 package interactor
 
 class GetCityHasCheapestInternetConnectionInteractorTest {
+
 }
