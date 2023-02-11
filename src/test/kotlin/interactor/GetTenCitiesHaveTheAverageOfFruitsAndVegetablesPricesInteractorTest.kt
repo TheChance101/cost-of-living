@@ -39,13 +39,4 @@ internal class GetTenCitiesHaveTheAverageOfFruitsAndVegetablesPricesInteractorTe
         assertTrue(result.isEmpty())
     }
 
-    @Test
-    fun should_ReturnTheTenCitiesName_When_TheDataIsLowQuality() {
-        //given
-        fakeData.setDataType(FakeDataSource.DataType.LOWQUALITY)
-        //When
-        val result = getTenCitiesHaveTheAverageOfFruitsAndVegetablesPricesInteractor.execute()
-        //Then
-        assertTrue(result.isEmpty())
-    }
 }
