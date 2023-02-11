@@ -1,5 +1,6 @@
 package model
 
+import com.appmattus.kotlinfixture.decorator.nullability.AlwaysNullStrategy
 import com.appmattus.kotlinfixture.decorator.nullability.NeverNullStrategy
 import com.appmattus.kotlinfixture.decorator.nullability.nullabilityStrategy
 import com.appmattus.kotlinfixture.kotlinFixture
@@ -7,8 +8,8 @@ import interactor.CostOfLivingDataSource
 
 class FakeDataSource() : CostOfLivingDataSource {
 
-    enum class DataType{
-        VALID,NULLABLE,LOWQUALITY
+    enum class DataType {
+        VALID, NULLABLE, LOWQUALITY
     }
 
     private var dataType: DataType = DataType.VALID
@@ -25,6 +26,7 @@ class FakeDataSource() : CostOfLivingDataSource {
     private fun getNormalData() = normalFixture<List<CityEntity>>()
 
     private val nullableFixture = kotlinFixture {
+        nullabilityStrategy(AlwaysNullStrategy)
         property(CityEntity::dataQuality) { true }
         repeatCount { 20 }
     }
@@ -39,6 +41,10 @@ class FakeDataSource() : CostOfLivingDataSource {
 
     private fun getDataWithLowQuality() = lowQualityFixture<List<CityEntity>>()
 
+    /**
+     * retrieve data from FakeDataSource depending on the type needed
+     * @return List<CityEntity>
+     */
     override fun getAllCitiesData(): List<CityEntity> {
         return when (dataType) {
             DataType.VALID -> {

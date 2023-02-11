@@ -1,11 +1,10 @@
 package interactor
 
-import model.CityEntity
 import model.FakeDataSource
-import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -42,7 +41,7 @@ internal class GetCheapestApartmentsCitiesNamesInteractorTest {
         val list = getCheapestApartmentsCitiesNamesInteractor.execute(10)
 
         //Then
-        assertTrue(list.isEmpty())
+        assertEquals(listOf(Pair("No Valid Data Found !", 0.0f)),list)
     }
 
     @Test
@@ -54,7 +53,7 @@ internal class GetCheapestApartmentsCitiesNamesInteractorTest {
         val list = getCheapestApartmentsCitiesNamesInteractor.execute(10)
 
         //Then
-        assertTrue(list.isEmpty())
+        assertEquals(listOf(Pair("No Valid Data Found !", 0.0f)),list)
     }
 
 }
