@@ -13,13 +13,14 @@ fun main() {
     println(getHighestSalaryAverageCities.execute(limit = 10))
     printSeparationLine()
 
+    val getCitiesAndYearsToBuyApartment = GetCitiesAndYearsToBuyApartmentInteractor(dataSource)
+    println(getCitiesAndYearsToBuyApartment.execute(limit = 10))
+    printSeparationLine()
+
     val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
     println(getCityHasCheapestInternetConnectionInteractor.execute())
     printSeparationLine()
 
-    val getCitiesAndYearsToBuyApartment = GetCitiesAndYearsToBuyApartmentInteractor(dataSource)
-    println(getCitiesAndYearsToBuyApartment.execute(limit = 10))
-    printSeparationLine()
 
 
 }

@@ -6,16 +6,16 @@ class GetCitiesAndYearsToBuyApartmentInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
 
-    fun execute(limit: Int): List<Pair<String?,String>> =
-        dataSource
-            .getAllCitiesData()
+    fun execute(limit: Int): List<Pair<String?,String>>? =
+        dataSource.let {
+            it.getAllCitiesData()
             .filter(::excludeNullValueAndLowQualityData)
             .sortedBy(::calculateYearsNeededToBuyApartment)
             .take(limit)
-            .map { Pair(it.cityName, "${calculateYearsNeededToBuyApartment(it)} year") }
+        }.map { Pair(it.cityName, "${calculateYearsNeededToBuyApartment(it)} year") }
 
 
-    private fun excludeNullValueAndLowQualityData(city: CityEntity): Boolean =   //the value are Salaries , Prices Per SquareMeter and city name
+    private fun excludeNullValueAndLowQualityData(city: CityEntity): Boolean =
         city.let {
             it.dataQuality &&
             it.cityName != null &&
@@ -24,10 +24,14 @@ class GetCitiesAndYearsToBuyApartmentInteractor(
         }
 
 
-    private fun calculateYearsNeededToBuyApartment(city: CityEntity): Int =
+    private fun calculateYearsNeededToBuyApartment(city: CityEntity): Float =
         city.let {
-            ( it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!! *100).toInt()  /
-                    (it.averageMonthlyNetSalaryAfterTax!! * 12).toInt()
+            ( it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!! *100 /
+             ( it.averageMonthlyNetSalaryAfterTax!! * 12)).toFormat()
         }
+
+    private fun Float.toFormat(limit : Int = 1) : Float{
+        return String.format("%.${limit}f", this).toFloat()
+    }
 
 }

@@ -1,14 +1,15 @@
 package interactor
 import FakeDataSource
+import model.CityEntity
 
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.function.Executable
-import org.mockito.Mockito
 
-class GetCityHasCheapestInternetConnectionInteractorTest {
+
+class GetCitiesAndYearsToBuyApartmentInteractorTest {
 
     private lateinit var fakeDataSource: FakeDataSource
     private lateinit var interactor: GetCitiesAndYearsToBuyApartmentInteractor
@@ -19,8 +20,9 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
         interactor = GetCitiesAndYearsToBuyApartmentInteractor(fakeDataSource)
     }
 
+
     @Test
-    fun execute_should_return_top10_cities_based_on_calculated_years_needed_to_buy_apartment() {
+    fun should_ReturnTop10Cities_When_CalculatedYearsNeededToBuyApartmentIsCorrect() {
         //When
         val actualResult = interactor.execute(limit)
 
@@ -30,7 +32,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
 
 
     @Test
-    fun execute_should_exclude_when_cities_is_null() {
+    fun should_ExcludeData_When_CitiesIsNull() {
         //When
         val actualResult = interactor.execute(limit)
 
@@ -40,7 +42,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
 
 
     @Test
-    fun execute_should_exclude_when_salary_is_null() {
+    fun should_ExcludeData_When_SalaryIsNull() {
         //When
         val actualResult = interactor.execute(limit)
 
@@ -50,7 +52,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
 
 
     @Test
-    fun execute_should_exclude_when_prices_per_squareMeter_is_null() {
+    fun should_ExcludeData_When_PricesPerSquareMeterIsNull() {
         //When
         val actualResult = interactor.execute(limit)
 
@@ -60,7 +62,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
 
 
     @Test
-    fun execute_should_exclude_when_low_quality_data() {
+    fun should_ExcludeData_When_LowQualityData() {
         //When
         val actualResult = interactor.execute(limit)
 
@@ -70,7 +72,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
 
 
     @Test
-    fun execute_should_throw_exception_when_salary_is_zero() {
+    fun should_ThrowException_When_SalaryIsZero() {
         //When
         val actualExecutable = Executable { interactor.execute(limit) }
 
@@ -79,21 +81,31 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
     }
 
 
+    @Test
+    fun should_ReturnEmptyList_When_DataIsEmpty() {
+        //When
+        val actualResult = interactor.execute(limit)
+
+        //Then
+        assertEquals( emptyList<CityEntity>(),actualResult)
+    }
+
+
     companion object{
 
         private val limit = 10
 
         private val expectedResult = listOf(
-            Pair("Hyderabad City", "10 year"),
-            Pair("Giza", "11 year"),
-            Pair("Alexandria", "12 year"),
-            Pair("Multan", "13 year"),
-            Pair("Lahore", "15 year"),
-            Pair("Dushanbe", "19 year"),
-            Pair("Tanta", "19 year"),
-            Pair("Karachi", "20 year"),
-            Pair("Rawalpindi", "35 year"),
-            Pair("Colombo", "59 year"),
+            Pair("Hyderabad City", "10.6 year"),
+            Pair("Giza", "11.1 year"),
+            Pair("Alexandria", "12.5 year"),
+            Pair("Multan", "13.4 year"),
+            Pair("Lahore", "15.6 year"),
+            Pair("Dushanbe", "19.4 year"),
+            Pair("Tanta", "19.8 year"),
+            Pair("Karachi", "20.6 year"),
+            Pair("Rawalpindi", "35.1 year"),
+            Pair("Colombo", "59.5 year"),
         )
     }
 

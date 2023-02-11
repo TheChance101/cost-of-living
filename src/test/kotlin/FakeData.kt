@@ -3,7 +3,8 @@ import model.*
 
 class FakeDataSource : CostOfLivingDataSource {
 
-    private val fakeDataSource = listOf(
+    private val fakeDataSource =
+        listOf(
         CityEntity(cityName=null, country="Venezuela",
             mealsPrices=MealsPrices(mealInexpensiveRestaurant=10.0f, mealFor2PeopleMidRangeRestaurant=50.0f, mealAtMcDonaldSOrEquivalent=10.0f),
             drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.74f, cokePepsiAThirdOfLiterBottleInRestaurants=1.12f, waterAThirdOfLiterBottleInRestaurants=0.82f, milkRegularOneLiter=1.84f, waterOneAndHalfLiterBottleAtTheMarket=1.23f),
