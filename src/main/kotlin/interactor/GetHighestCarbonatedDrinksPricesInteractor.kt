@@ -27,7 +27,7 @@ private fun sortingDescending(list: List<CityEntity>) =
 
 
 private fun pricesAvg (list: List<CityEntity>) : List<Pair<String,Float>>{
-    val finalList : MutableList<Pair<String,Float>>
+    val finalList :MutableList<Pair<String,Float>>
     var avgPrice : Float
     list.forEach {
         avgPrice = avgPriceForASingleCity(it)
