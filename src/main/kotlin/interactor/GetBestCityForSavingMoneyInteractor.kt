@@ -6,35 +6,16 @@ class GetBestCityForSavingMoneyInteractor(private val dataSource: CostOfLivingDa
 
     fun execute(isAppartmentInTheCityCentre: Boolean): CityEntity {
 
-        // initialize the city with random city , we can use any city
+        isAppartmentInCenter = isAppartmentInTheCityCentre
+
         val cities = dataSource.getAllCitiesData()
         var bestCity = cities[0]
-        var maxSavings = 0.0f
 
         for (city in cities) {
 
-            if (checkNullFields(city, isAppartmentInTheCityCentre)) {
+            if (checkNullFields(city)) {
 
-                val salary = city.averageMonthlyNetSalaryAfterTax!! * 2
-                val requireApartment =
-                    if (isAppartmentInTheCityCentre) city.realEstatesPrices.apartment3BedroomsInCityCentre!!
-                    else city.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
-
-                val requireBread = city.foodPrices.loafOfFreshWhiteBread500g!! * 30
-                val requireCheese = city.foodPrices.localCheese1kg!!
-                val requireRedMeat = city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!! * 4
-                val requireChickenFillets = city.foodPrices.chickenFillets1kg!! * 10
-                val requireRice = city.foodPrices.riceWhite1kg!! * 2
-                val otherNeeds = 250.0f
-
-                val savings = salary -
-                        requireApartment -
-                        requireBread -
-                        requireCheese -
-                        requireRedMeat -
-                        requireChickenFillets -
-                        requireRice -
-                        otherNeeds
+                val savings = calculateSavings(city)
 
                 if (savings > maxSavings) {
 
@@ -47,10 +28,24 @@ class GetBestCityForSavingMoneyInteractor(private val dataSource: CostOfLivingDa
         return bestCity
     }
 
-    fun checkNullFields(city: CityEntity, isAppartmentInTheCityCentre: Boolean): Boolean {
+    fun calculateSavings(city: CityEntity) : Float{
+
+        val requireApartment =
+            if (isAppartmentInCenter) city.realEstatesPrices.apartment3BedroomsInCityCentre!!
+            else city.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
+
+        return  (city.averageMonthlyNetSalaryAfterTax!! * 2) -
+                (city.foodPrices.loafOfFreshWhiteBread500g!! * 30) -
+                (city.foodPrices.localCheese1kg!!) -
+                (city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!! * 4) -
+                (city.foodPrices.chickenFillets1kg!! * 10) -
+                (city.foodPrices.riceWhite1kg!! * 2) - 250.0f - requireApartment
+    }
+
+    private fun checkNullFields(city: CityEntity): Boolean {
 
         var determineApartment = city.realEstatesPrices.apartment3BedroomsOutsideOfCentre != null
-        if (isAppartmentInTheCityCentre) determineApartment =
+        if (isAppartmentInCenter) determineApartment =
             city.realEstatesPrices.apartment3BedroomsInCityCentre != null
 
         return  determineApartment &&
@@ -60,5 +55,12 @@ class GetBestCityForSavingMoneyInteractor(private val dataSource: CostOfLivingDa
                 city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null &&
                 city.foodPrices.chickenFillets1kg != null &&
                 city.foodPrices.riceWhite1kg != null
+    }
+
+    companion object{
+
+        private var isAppartmentInCenter = true
+        private var city = true
+        private var maxSavings = 0.0f
     }
 }
