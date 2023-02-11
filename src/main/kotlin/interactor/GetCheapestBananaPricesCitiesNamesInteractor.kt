@@ -6,7 +6,11 @@ class GetCheapestBananaPricesCitiesNamesInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
 
+    fun getCitiesVarArgs(): Array<CityEntity> {
+        return dataSource.getAllCitiesData().toTypedArray()
+    }
+
     fun execute(vararg cityEntities: CityEntity): List<String> {
-        throw Throwable("Not Implemented yet")
+    throw Throwable("Not Implemented yet")
     }
 }
