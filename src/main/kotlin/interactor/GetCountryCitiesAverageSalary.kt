@@ -7,9 +7,8 @@ class GetCountryCitiesAverageSalaryInteractor(
 ) {
 
     fun execute(country: String): List<Pair<String, Float>> {
-        //Regex("\\s+") to replace the spaces between words with one space
         val citiesSalaries =  dataSource.getAllCitiesData()
-            .filter { it.country.lowercase() == country.lowercase().replace(Regex("\\s+"), " ").trim() && excludeNullSalariesAndLowQualityData(it) }
+            .filter { it.country.lowercase() == country.lowercase().trim().replace(Regex(" +"), " ") && excludeNullSalariesAndLowQualityData(it) }
             .map { Pair(it.cityName, it.averageMonthlyNetSalaryAfterTax!!) }
 
         if (citiesSalaries.isEmpty()) throw Exception("country was not found !")
