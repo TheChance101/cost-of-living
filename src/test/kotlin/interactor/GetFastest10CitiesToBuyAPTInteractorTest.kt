@@ -249,7 +249,6 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
 
                     //endregion
 
-
                     //region price per square meter to buy APT in centre not null
 
                     //region average monthly salary sufficing afford to buy the apartment
@@ -509,7 +508,7 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
 
     // should skip missing price per square meter outside centre
 
-    // list size should  be 10
+    // list size should be 10
 
     // list should be sorted
 
