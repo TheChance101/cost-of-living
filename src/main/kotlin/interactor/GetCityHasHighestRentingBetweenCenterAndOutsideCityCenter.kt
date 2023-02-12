@@ -24,8 +24,8 @@ class GetHighestApartmentPriceDifferenceCityInteractor(
         }
     }
     private fun RealEstatesPrices.getApartmentPriceDifference(): Float {
-        return( ((apartmentOneBedroomOutsideOfCentre?.let { apartmentOneBedroomInCityCentre?.minus(it) } )!!.toFloat() +
-                (apartment3BedroomsInCityCentre?.let { apartment3BedroomsOutsideOfCentre?.minus(it) } )!!.toFloat())/2)
+        return( ((apartmentOneBedroomOutsideOfCentre?.let { apartmentOneBedroomInCityCentre?.minus(it) } )!! +
+                (apartment3BedroomsInCityCentre?.let { apartment3BedroomsOutsideOfCentre?.minus(it) } )!!)/2)
     }
 
 
