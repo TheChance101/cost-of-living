@@ -2,6 +2,7 @@ package interactor
 
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
+import fake.FakeData
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -13,9 +14,11 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
     private lateinit var interactor: GetCheapestBananaCitiesNamesInteractor
     private val csvParser = CsvParser()
     private val dataSource = CsvDataSource(csvParser)
+    private lateinit var fakeData: FakeData
 
     @BeforeAll
     fun setup() {
+        fakeData = FakeData()
         interactor = GetCheapestBananaCitiesNamesInteractor(dataSource)
     }
 
