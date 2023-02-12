@@ -98,7 +98,7 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
     @Test
     fun should_ReturnCity_When_ApartmentAndCostFoodNotNullAndTransportationsIsNull(){
 
-        // given city apartment and cost food not null and transportations is null
+        // given city with apartment and cost food not null and transportations is null
         val csvParser = CsvParser()
         val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, CITY_WITH_TRANSPORTATIONS_PRICES_NULL_AND_APARTMENT_AND_COST_FOOD_NOT_NULL_FILE)
         citySavings = GetCityHasMoreSavingsPerMonthInteractor(dataSource)
@@ -121,7 +121,7 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
     @Test
     fun should_ReturnNull_When_FoodPriceNull(){
 
-        // given null food price is null
+        // given city with food price is null
         val csvParser = CsvParser()
         val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, NULL_CITY_FILE)
         citySavings = GetCityHasMoreSavingsPerMonthInteractor(dataSource)
@@ -161,7 +161,7 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
     @Test
     fun should_ReturnNull_When_ApartmentNull(){
 
-        // given null apartment is null
+        // given city with apartment is null
         val csvParser = CsvParser()
         val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, NULL_CITY_FILE)
         citySavings = GetCityHasMoreSavingsPerMonthInteractor(dataSource)
@@ -181,7 +181,7 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
     @Test
     fun should_ReturnNull_When_TransportationsNotNull(){
 
-        // given  null transportations not null
+        // given city transportations not null
         val csvParser = CsvParser()
         val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, NULL_CITY_FILE)
         citySavings = GetCityHasMoreSavingsPerMonthInteractor(dataSource)
@@ -201,7 +201,7 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
     @Test
     fun should_ReturnNull_When_TransportationsNotNullAndFoodPriceAndApartmentNull(){
 
-        // given null with transportations not null and food price And apartment is null
+        // given city with transportations not null and food price And apartment is null
         val csvParser = CsvParser()
         val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, NULL_CITY_FILE)
         citySavings = GetCityHasMoreSavingsPerMonthInteractor(dataSource)
