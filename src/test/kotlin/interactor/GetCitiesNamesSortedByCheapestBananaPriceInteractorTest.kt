@@ -17,6 +17,24 @@ class GetCitiesNamesSortedByCheapestBananaPriceInteractorTest {
 
         assertEquals(1, sorted.size)
     }
+
+    @Test
+    fun should_get_cities_names_sorted_by_cheapest_banana_price() {
+        val cities: List<CityEntity> = citiesEntities()
+
+        val sorted = getCitiesNamesSortedByCheapestBananaPriceInteractor.execute(*cities.toTypedArray())
+
+        val expected = listOf<String>("B", "A")
+
+        assertEquals(expected, sorted)
+    }
+
+    private fun citiesEntities(): List<CityEntity> {
+        return listOf(
+            cityEntity("A", 20.0f),
+            cityEntity("B", 10.25f)
+        )
+    }
     private fun citiesWithNullBananaPrice(): List<CityEntity> {
         return listOf(
             cityEntity("A", null),
