@@ -22,9 +22,13 @@ fun main() {
     getCheapestBananaPricesCitiesNamesInteractor.apply {
        println(execute(*getCitiesVarArgs()))
     }
+    printSeparationLine()
+
+    val getBestClothesPriceCitiesNameInteractor = GetTopFiveCitiesNamesForShoppingClothesFromFamousBrandsInteractor(dataSource)
+    println(getBestClothesPriceCitiesNameInteractor.execute(limit = 5))
+    printSeparationLine()
 
 }
 private fun printSeparationLine(){
     print("\n_______________________________\n")
 }
-
