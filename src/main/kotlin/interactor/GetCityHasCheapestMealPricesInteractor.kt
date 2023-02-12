@@ -32,6 +32,12 @@ class GetCityHasCheapestMealPricesInteractor(
     }
 
     fun getAverageMealInCity(city: CityEntity): Float {
-        TODO()
+        return if (city.mealsPrices.mealFor2PeopleMidRangeRestaurant != null && city.mealsPrices.mealFor2PeopleMidRangeRestaurant != 0.0F) {
+            city.mealsPrices.mealFor2PeopleMidRangeRestaurant / 2
+        } else if ((city.mealsPrices.mealInexpensiveRestaurant != null && city.mealsPrices.mealInexpensiveRestaurant != 0.0F)
+            && (city.mealsPrices.mealAtMcDonaldSOrEquivalent != null && city.mealsPrices.mealAtMcDonaldSOrEquivalent != 0.0F)
+        )
+            ((city.mealsPrices.mealInexpensiveRestaurant) + (city.mealsPrices.mealAtMcDonaldSOrEquivalent)) / 2
+        else 0.0F
     }
 }
