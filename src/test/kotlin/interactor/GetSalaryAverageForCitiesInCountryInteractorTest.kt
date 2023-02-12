@@ -74,7 +74,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
     }
 
     @Test
-    fun should_ReturnFalse_When_SalariesNotEqualNullOrNotAvoidLowQualityData() {
+    fun should_ReturnFalse_When_SalariesEqualNullOrNotAvoidLowQualityData() {
         // Given cityEntity
         val fakeCity = fakeData.getAllCitiesData()[3]
 
