@@ -29,6 +29,9 @@ class GetMostSuitableSavingCityInteractor(
     }
 
     fun calculateFamilyBudget(averageMonthlySalary: Float): Float {
+        if (averageMonthlySalary < 0) {
+            return 0f
+        }
         return averageMonthlySalary * 2f
     }
 

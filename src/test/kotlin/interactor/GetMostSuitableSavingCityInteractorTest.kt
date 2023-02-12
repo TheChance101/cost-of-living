@@ -89,7 +89,7 @@ class GetMostSuitableSavingCityInteractorTest {
         // when
         val result = interactor.calculateFamilyBudget(averageMonthlySalary)
         // then
-        assertEquals(-1000f, result)
+        assertEquals(0f, result)
     }
 
     @Test
