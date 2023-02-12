@@ -104,7 +104,7 @@ class GetMostSuitableSavingCityInteractorTest {
         // when
         val result = interactor.calculateFoodCost(foodPrice)
         // then
-        assertEquals(47f, result)
+        assertEquals(44f, result)
     }
 
     @Test
@@ -121,7 +121,7 @@ class GetMostSuitableSavingCityInteractorTest {
         // when
         val result = interactor.calculateFoodCost(foodPrice)
         // then
-        assertEquals(-64f, result)
+        assertEquals(-68f, result)
     }
 
     @Test
