@@ -12,11 +12,7 @@ class GetMostSuitableSavingCityInteractor(
         return ""
     }
 
-    fun excludeNullSalaries(city: CityData): Boolean {
-        return true
-    }
-
-    fun excludeNull() :Boolean {
+    fun excludeNullSalaries(city: Float?): Boolean {
         return true
     }
 

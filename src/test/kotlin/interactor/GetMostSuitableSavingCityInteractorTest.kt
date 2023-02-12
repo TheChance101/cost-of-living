@@ -32,21 +32,23 @@ class GetMostSuitableSavingCityInteractorTest {
     @Test
     fun should_ReturnTrue_When_netSalaryNotNull() {
         // given  value
-//        val city = CityData(cityName = "cairo", averageMonthlyNetSalaryAfterTax = 5000f)
+        val averageMonthlyNetSalaryAfterTax = 1000f
 //        // when
-//        val result = getMostSuitableSavingCityInteractor.excludeNullSalaries(city)
+        val result = interactor.excludeNullSalaries(averageMonthlyNetSalaryAfterTax)
 //        // then
-//        assertTrue(result)
+        assertTrue(result)
     }
 
     @Test
-    fun should_ReturnTrue_When_netSalaryNull() {
-        // given  value
-//        val city = CityData(cityName = "cairo", averageMonthlyNetSalaryAfterTax = null)
-//        // when
-//        val result = getMostSuitableSavingCityInteractor.excludeNullSalaries(city)
-//        // then
-//        assertFalse(result)
+    fun should_ReturnFalse_When_netSalaryIsNull() {
+        // given
+        val averageMonthlyNetSalaryAfterTax = null
+
+        // when
+        val result = interactor.excludeNullSalaries(averageMonthlyNetSalaryAfterTax)
+
+        // then
+        assertFalse(result)
     }
 
     @Test
