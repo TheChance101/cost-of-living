@@ -71,7 +71,7 @@ internal class GetCheapestBananaPricesCitiesNamesInteractorTest() {
         val list = getCheapestBananaPricesCitiesNamesInteractor.execute(*array)
 
         //Then
-        assertEquals(listOf("No Valid Data is Entered"), list)
+        assertEquals(listOf("No Data is Entered !"), list)
     }
 
 }
