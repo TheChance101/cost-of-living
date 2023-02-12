@@ -6,7 +6,17 @@ class GetFastest10CitiesToBuyAPTInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
     fun execute(): List<Pair<String, Double>> {
-        throw Throwable("Not Implemented yet")
+        return dataSource.getAllCitiesData()
+            .filter { excludeInvalidSalaries(it) && excludeInvalidApartmentPrice(it) && excludeLowQualityData(it) }
+            .map {
+                val priceForPer100SquareMeterToBuyApartmentOutsideOfCentre =
+                    100.0 * it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!
+                val numberOfYearsToBuyAPT =
+                    priceForPer100SquareMeterToBuyApartmentOutsideOfCentre / it.averageMonthlyNetSalaryAfterTax!!
+
+                Pair(it.cityName, numberOfYearsToBuyAPT)
+            }
+            .take(10)
     }
 
     /**
@@ -16,8 +26,7 @@ class GetFastest10CitiesToBuyAPTInteractor(
      * @author Abdurrahman Salah ad-Din
      */
     fun excludeInvalidSalaries(cityEntity: CityEntity) =
-        cityEntity.averageMonthlyNetSalaryAfterTax != null &&
-                cityEntity.averageMonthlyNetSalaryAfterTax > 0
+        cityEntity.averageMonthlyNetSalaryAfterTax != null && cityEntity.averageMonthlyNetSalaryAfterTax > 0
 
 
     /**
@@ -36,7 +45,5 @@ class GetFastest10CitiesToBuyAPTInteractor(
      * @author Abdurrahman Salah ad-Din
      */
     fun excludeInvalidApartmentPrice(cityEntity: CityEntity) =
-        cityEntity.
-        realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre != null &&
-        cityEntity.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre > 0
+        cityEntity.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre != null && cityEntity.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre > 0
 }
