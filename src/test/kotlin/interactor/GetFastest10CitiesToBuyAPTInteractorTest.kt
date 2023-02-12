@@ -11,13 +11,15 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
     lateinit var fastest10CitiesToBuyAPT: GetFastest10CitiesToBuyAPTInteractor
 
     @BeforeAll
-    fun setup(){
-        fastest10CitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(object :CostOfLivingDataSource{
+    fun setup() {
+        fastest10CitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(object : CostOfLivingDataSource {
             override fun getAllCitiesData(): List<CityEntity> {
                 return listOf(
                     // region low data quality
                     CityEntity(
-                        "City1", "Country1", MealsPrices(null, null, null),
+                        "City1",
+                        "Country1",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -37,7 +39,9 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                         false
                     ),
                     CityEntity(
-                        "City2", "Country2", MealsPrices(null, null, null),
+                        "City2",
+                        "Country2",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -57,7 +61,9 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                         false
                     ),
                     CityEntity(
-                        "City3", "Country3", MealsPrices(null, null, null),
+                        "City3",
+                        "Country3",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -77,7 +83,9 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                         false
                     ),
                     CityEntity(
-                        "City4", "Country4", MealsPrices(null, null, null),
+                        "City4",
+                        "Country4",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -97,7 +105,9 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                         false
                     ),
                     CityEntity(
-                        "City5", "Country5", MealsPrices(null, null, null),
+                        "City5",
+                        "Country5",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -122,7 +132,9 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
 
                     //region null Salaries
                     CityEntity(
-                        "City6", "Country6", MealsPrices(null, null, null),
+                        "City6",
+                        "Country6",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -142,7 +154,9 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                         true
                     ),
                     CityEntity(
-                        "City7", "Country7", MealsPrices(null, null, null),
+                        "City7",
+                        "Country7",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -162,7 +176,9 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                         true
                     ),
                     CityEntity(
-                        "City8", "Country8", MealsPrices(null, null, null),
+                        "City8",
+                        "Country8",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -187,7 +203,9 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
 
                     //region null pricePerSquareMeter
                     CityEntity(
-                        "City9", "Country9", MealsPrices(null, null, null),
+                        "City9",
+                        "Country9",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -207,7 +225,9 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                         true
                     ),
                     CityEntity(
-                        "City10", "Country10", MealsPrices(null, null, null),
+                        "City10",
+                        "Country10",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -230,10 +250,13 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                     //endregion
 
 
-                    //region price per square meter to buy APT in centre
+                    //region price per square meter to buy APT in centre not null
 
+                    //region average monthly salary sufficing afford to buy the apartment
                     CityEntity(
-                        "City11", "Country11", MealsPrices(null, null, null),
+                        "City11",
+                        "Country11",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -246,14 +269,16 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                             apartmentOneBedroomOutsideOfCentre = null,
                             apartment3BedroomsInCityCentre = null,
                             apartment3BedroomsOutsideOfCentre = null,
-                            pricePerSquareMeterToBuyApartmentInCityCentre = 19499.22f,
-                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 18156.97f
+                            pricePerSquareMeterToBuyApartmentInCityCentre = null,
+                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 3000f
                         ),
-                        5000f,
+                        6900f,
                         true
                     ),
                     CityEntity(
-                        "City12", "Country12", MealsPrices(null, null, null),
+                        "City12",
+                        "Country12",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -266,14 +291,16 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                             apartmentOneBedroomOutsideOfCentre = null,
                             apartment3BedroomsInCityCentre = null,
                             apartment3BedroomsOutsideOfCentre = null,
-                            pricePerSquareMeterToBuyApartmentInCityCentre = 19399.22f,
-                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 17106.97f
+                            pricePerSquareMeterToBuyApartmentInCityCentre = null,
+                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 3500f
                         ),
-                        5000f,
+                        7800f,
                         true
                     ),
                     CityEntity(
-                        "City13", "Country13", MealsPrices(null, null, null),
+                        "City13",
+                        "Country13",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -286,14 +313,16 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                             apartmentOneBedroomOutsideOfCentre = null,
                             apartment3BedroomsInCityCentre = null,
                             apartment3BedroomsOutsideOfCentre = null,
-                            pricePerSquareMeterToBuyApartmentInCityCentre = 19200.22f,
-                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 16156.97f
+                            pricePerSquareMeterToBuyApartmentInCityCentre = null,
+                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 4000f
                         ),
-                        5000f,
+                        8600f,
                         true
                     ),
                     CityEntity(
-                        "City14", "Country14", MealsPrices(null, null, null),
+                        "City14",
+                        "Country14",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -307,13 +336,20 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                             apartment3BedroomsInCityCentre = null,
                             apartment3BedroomsOutsideOfCentre = null,
                             pricePerSquareMeterToBuyApartmentInCityCentre = 19199.22f,
-                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 15026.97f
+                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 4500f
                         ),
-                        5000f,
+                        9500f,
                         true
                     ),
+
+                    //endregion
+
+                    //region average monthly salary barely  sufficing afford to buy the apartment
+
                     CityEntity(
-                        "City15", "Country15", MealsPrices(null, null, null),
+                        "City15",
+                        "Country15",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -327,15 +363,17 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                             apartment3BedroomsInCityCentre = null,
                             apartment3BedroomsOutsideOfCentre = null,
                             pricePerSquareMeterToBuyApartmentInCityCentre = 19159.22f,
-                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 13056.97f
+                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 4000f
                         ),
-                        5000f,
+                        4000f,
                         true
                     ),
 
 
                     CityEntity(
-                        "City16", "Country16", MealsPrices(null, null, null),
+                        "City16",
+                        "Country16",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -349,13 +387,19 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                             apartment3BedroomsInCityCentre = null,
                             apartment3BedroomsOutsideOfCentre = null,
                             pricePerSquareMeterToBuyApartmentInCityCentre = 13156.97f,
-                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 12056.97f
+                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 4500f
                         ),
-                        5000f,
+                        4500f,
                         true
                     ),
+
+                    //endregion
+
+                    //region average monthly salary not sufficing afford to buy the apartment
                     CityEntity(
-                        "City17", "Country17", MealsPrices(null, null, null),
+                        "City17",
+                        "Country17",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -369,12 +413,15 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                             apartment3BedroomsInCityCentre = null,
                             apartment3BedroomsOutsideOfCentre = null,
                             pricePerSquareMeterToBuyApartmentInCityCentre = 13150.97f,
-                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 10056.97f
+                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 3000f
                         ),
-                        5000f,
+                        2500f,
                         true
-                    ),CityEntity(
-                        "City18", "Country18", MealsPrices(null, null, null),
+                    ),
+                    CityEntity(
+                        "City18",
+                        "Country18",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -388,12 +435,15 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                             apartment3BedroomsInCityCentre = null,
                             apartment3BedroomsOutsideOfCentre = null,
                             pricePerSquareMeterToBuyApartmentInCityCentre = 9156.97f,
-                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 9002.97f
+                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 4500f
                         ),
-                        5000f,
+                        2000f,
                         true
-                    ),CityEntity(
-                        "City19", "Country19", MealsPrices(null, null, null),
+                    ),
+                    CityEntity(
+                        "City19",
+                        "Country19",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -407,13 +457,15 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                             apartment3BedroomsInCityCentre = null,
                             apartment3BedroomsOutsideOfCentre = null,
                             pricePerSquareMeterToBuyApartmentInCityCentre = 11156.97f,
-                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 8940.97f
+                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 5000f
                         ),
-                        5000f,
+                        2000f,
                         true
                     ),
                     CityEntity(
-                        "City20", "Country20", MealsPrices(null, null, null),
+                        "City20",
+                        "Country20",
+                        MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
                         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
@@ -427,11 +479,14 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
                             apartment3BedroomsInCityCentre = null,
                             apartment3BedroomsOutsideOfCentre = null,
                             pricePerSquareMeterToBuyApartmentInCityCentre = 10246.97f,
-                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 7340.97f
+                            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 4500f
                         ),
-                        5000f,
+                        1500f,
                         true
-                    ),
+                    )
+
+                    //endregion
+
 
                     //endregion
 
@@ -444,5 +499,9 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
 
     @Test
     fun execute() {
+
+
     }
+
+
 }
