@@ -9,7 +9,7 @@ import org.junit.jupiter.api.function.Executable
 import java.lang.ArithmeticException
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class GetCitiesNameToBuyApartmentFasterInteractorTest {
+internal class GetCitiesNameToBuyApartmentFasterInteractorTest {
 
     private lateinit var dataSource: CostOfLivingDataSource
     private lateinit var interactor: GetCitiesNameToBuyApartmentFasterInteractor
@@ -102,6 +102,10 @@ class GetCitiesNameToBuyApartmentFasterInteractorTest {
         }
         //Then
         assertThrows(ArithmeticException::class.java, actual)
+    }
+
+    @Test
+    fun execute() {
     }
 
 
