@@ -23,11 +23,12 @@ class GetCountryCitiesAverageSalaryInteractorTest {
     @Test
     fun should_return_cities_salaries_when_entring_country_name_with_spaces() {
         //given
-        val country = "sri   lanka"
+        val country = "sri     lanka"
+        val result = listOf(Pair("Colombo",156.15f),Pair("Colombo",156.15f))
         // when
-        val result = GetCountryCitiesAverageSalary.execute(country = country)
+        val cityAverage = GetCountryCitiesAverageSalary.execute(country = country)
         //then
-        assertEquals(result, GetCountryCitiesAverageSalary.execute(country = "Sri Lanka"))
+        assertEquals(result,cityAverage)
     }
     @Test
     fun should_throw_err_when_entring_empty_string() {
@@ -51,9 +52,10 @@ class GetCountryCitiesAverageSalaryInteractorTest {
     fun should_return_country_cities_when_entring_country_in_upper_case(){
         //given
         val country = "CUBA"
+        val result = listOf(Pair("Havana",35.75f))
         // when
-        val result = GetCountryCitiesAverageSalary.execute(country = country)
+        val cityAverage = GetCountryCitiesAverageSalary.execute(country = country)
         //then
-        assertEquals(result,GetCountryCitiesAverageSalary.execute(country = "Cuba"))
+        assertEquals(result,cityAverage)
     }
 }
