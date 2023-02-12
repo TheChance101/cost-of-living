@@ -1,14 +1,8 @@
 package interactor
-import org.junit.jupiter.api.Assertions.*
-import dataSource.CsvDataSource
-import dataSource.utils.CsvParser
 import org.junit.jupiter.api.function.Executable
 import org.junit.jupiter.api.Assertions.*
 import dataSource.FakeDataSource
 import org.junit.jupiter.api.*
-import kotlin.Float
-import kotlin.test.assertFailsWith
-import kotlin.Float as Float1
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 
@@ -68,8 +62,11 @@ class GetTop10CountriesWithHighTaxOnCarbonatedDrinksTest {
         //when getting a price in negative
         val getTop10CountriesWithHighTaxOnCarbonatedDrinks= interactor.execute(cities)
         //then
-        if(getTop10CountriesWithHighTaxOnCarbonatedDrinks.any { it.second!! < 0  })
-            AssertionError("Drink Price can't be Negative Value")
+        val executable = Executable {
+            if(getTop10CountriesWithHighTaxOnCarbonatedDrinks.any { it.second!! < 0  })
+                throw IllegalArgumentException("Drink Price can't be Negative Value")
+        }
+        assertThrows(IllegalArgumentException::class.java, executable)
     }
 }
 
