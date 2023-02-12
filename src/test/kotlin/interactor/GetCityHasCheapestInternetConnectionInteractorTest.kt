@@ -63,7 +63,7 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
         // when
         val result = getCityHasCheapestInternetConnectionInteractor.execute()
         // then
-        assertNotEquals(null , result)
+        assertNotEquals(null , result.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl)
 
     }
 
