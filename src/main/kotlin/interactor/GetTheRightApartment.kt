@@ -6,14 +6,19 @@ open class GetTheRightApartment(private val dataSource: CostOfLivingDataSource) 
 
 
 
-    fun getTopTenCitesHasCanPayApartmentFaster( dataSource:List<CityEntity>) :List<CityEntity>{
-        return listOf()
+    private fun getTopTenCitesHasCanPayApartmentFaster(dataSource:List<CityEntity>) :List<CityEntity>{
+        return dataSource.sortedBy {
+            it.averageMonthlyNetSalaryAfterTax?.div(it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!.toInt())
+        }.take(10)
 
     }
     fun getListOfDetailsOfApartment(salary:Int):List<DetailsOfApartment>{
-        return listOf()
+        val dataSource=getTopTenCitesHasCanPayApartmentFaster(dataSource.getAllCitiesData())
+
 
     }
-
+    private fun excludeNullSalariesAndLowQualityData(city: CityEntity): Boolean {
+        return city.averageMonthlyNetSalaryAfterTax != null && city.dataQuality
+    }
 
 }

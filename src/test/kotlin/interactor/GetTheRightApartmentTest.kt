@@ -1,13 +1,10 @@
 package interactor
-
 import org.junit.jupiter.api.Assertions.*
 import fakedata.FakeData
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.function.Executable
 import org.mockito.Mockito
-
-
 class GetTheRightApartmentTest {
     private lateinit var dataSource: CostOfLivingDataSource
     private lateinit var fakeData: FakeData
@@ -70,5 +67,22 @@ class GetTheRightApartmentTest {
         val actualResult = getTheRightApartment.getListOfDetailsOfApartment(1000)
         //Then
         assertEquals(expectedResult, actualResult)
+    }
+    @Test
+    fun should_ReturnTrue_when_OutPutInCorrec() {
+        //Give
+        val expectedResult = listOf(
+            Pair("Alexandria", "20"),
+            Pair("Bagdad", "13"),
+            Pair("giza", "16"),
+            Pair("Madrid", "10"),
+        )
+
+        //When
+        Mockito.`when`(dataSource.getAllCitiesData()).thenReturn(fakeData.getAllCitiesData())
+        val actualResult: Executable = Executable{ getTheRightApartment.getListOfDetailsOfApartment(1000)}
+
+        //Then
+        assertThrows(Exception::class.java,actualResult)
     }
 }
