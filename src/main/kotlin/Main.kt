@@ -12,7 +12,7 @@ fun main() {
     val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
     val data = dataSource.getAllCitiesData()
     val getTop10CountriesWithHighTaxOnCarbonatedDrinks=GetTop10CountriesWithHighTaxOnCarbonatedDrinks(dataSource)
-    println(getTop10CountriesWithHighTaxOnCarbonatedDrinks.execute(data))
+    println(getTop10CountriesWithHighTaxOnCarbonatedDrinks.execute(10,data))
 
     val inputCitiesEntity= arrayOf(
         dataSource.getAllCitiesData()[11],

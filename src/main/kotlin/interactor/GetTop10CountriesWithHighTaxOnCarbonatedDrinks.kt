@@ -4,13 +4,13 @@ import model.CityEntity
 import java.util.*
 
 class GetTop10CountriesWithHighTaxOnCarbonatedDrinks ( private val dataSource: CostOfLivingDataSource){
-    fun execute(cities:List<CityEntity>): List<Pair<String, Float?>> {
+    fun execute(limit:Int,cities:List<CityEntity>): List<Pair<String, Float?>> {
         return cities
             .asSequence()
             .filter(::excludeNullDrinkPriceAndNegativePriceAndLowQualityData)
             .distinctBy { it.country }
             .sortedByDescending { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants }
-            .take(10)
+            .take(limit)
             .map { Pair(it.country ,it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants)}
             .toList()
     }
