@@ -81,7 +81,7 @@ class GetCitiesNameToBuyApartmentFasterInteractorTest {
                 )
         val expected = emptyList<Pair<String, Float>>()
         //Then
-        assertEquals(expected, actual)
+        assertArrayEquals(expected.toTypedArray(), actual.toTypedArray())
     }
 
 
