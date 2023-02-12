@@ -75,7 +75,7 @@ class FakeData : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = 320.76f,
                 ),
                 averageMonthlyNetSalaryAfterTax = 18.0f,
-                dataQuality = false
+                dataQuality = true
             )
         )
         listData.add(
@@ -148,7 +148,7 @@ class FakeData : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = 365.76f,
                 ),
                 averageMonthlyNetSalaryAfterTax = 50.24f,
-                dataQuality = true
+                dataQuality = false
             )
         )
         listData.add(
