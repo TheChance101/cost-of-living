@@ -32,7 +32,6 @@ class GetTop10CountriesWithHighTaxOnCarbonatedDrinksTest {
     fun should_ReturnEmptyList_When_listOfCityIsEmpty() {
         //given
         val limit:Int=10
-        // When limit is zero
         val getTop10CountriesWithHighTaxOnCarbonatedDrinks = interactor.execute(limit,listOf())
         // Then
         assertTrue(getTop10CountriesWithHighTaxOnCarbonatedDrinks.isEmpty())
