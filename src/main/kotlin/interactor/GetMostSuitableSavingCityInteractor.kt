@@ -21,7 +21,10 @@ class GetMostSuitableSavingCityInteractor(
     }
 
     fun calculateCitySavings(city: CityData, familyBudget: Float): Float {
-        return 0f
+        val apartmentCost = city.realEstatesPrices.apartment3BedroomsInCityCentre ?: 0f
+        val foodCost = calculateFoodCost(city.foodPrices)
+        val otherCosts = 250f
+        return familyBudget - (apartmentCost + foodCost + otherCosts)
     }
 
     fun calculateFoodCost(foodPrice: FoodPrices): Float {

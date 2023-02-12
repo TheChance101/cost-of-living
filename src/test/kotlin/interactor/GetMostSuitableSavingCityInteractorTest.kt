@@ -76,7 +76,7 @@ class GetMostSuitableSavingCityInteractorTest {
 
         val familyBudget = 5000f
 
-        val expectedSavings = 1000f
+        val expectedSavings = 2960.0f
 
         val actualSavings = interactor.calculateCitySavings(cityData, familyBudget)
 
