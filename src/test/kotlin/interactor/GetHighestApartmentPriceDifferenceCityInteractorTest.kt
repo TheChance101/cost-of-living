@@ -23,13 +23,22 @@ class GetHighestApartmentPriceDifferenceCityInteractorTest {
     }
 
 //to test execute function we need to list of city , We take it from FakeData class
+    @Test
+    fun should_ReturnCithyHashighestDiffirenceRent_When_InputIsTrue(){
+        // given list
+        val cities = fakeData.getAllCitiesData()
+        //when
+        val result = GetHighestApartmentPrice.execute()
+        // then check the result
+        assertEquals(cities,result)
+    }
 
     @Test
-    fun isEmpty_theListIsEmpty_returnNull(){
+    fun Should_ReturnNull_When_theListIsEmpty(){
         // given an empty list
-        val cityNames = emptyList<CityEntity>()
+        val cities = emptyList<CityEntity>()
         // when check if the highest city is an empty list
-        val result = GetHighestApartmentPrice.execute(cityNames)
+        val result = GetHighestApartmentPrice.execute()
         // then check the result
         assertEquals(null,result)
     }
@@ -46,22 +55,33 @@ CityEntity(
                 )
  */
     @Test
-    fun isPriceMissing_cityMissingApartmentPrice_returnNull(){
+    fun should_ReturnNull_When_CityMissingApartmentPrice(){
         // given make an object from FakeData class
         val cities = fakeData.getAllCitiesData()
         // when check if the apartment price is missing
-        val result = GetHighestApartmentPrice.execute(cities)
+        val result = GetHighestApartmentPrice.execute()
         // then check the result
         assertEquals(null,result)
     }
     @Test
-    fun isLowQuality_cityWithLowQualityData_returnNull(){
+    fun Should_returnNull_When_CityWithLowQualityData(){
         // given make an object from FakeData class
-        val city = fakeData.getAllCitiesData()
+        val cities = fakeData.getAllCitiesData()
         // when check if the data is low quality
-        val result = GetHighestApartmentPrice.execute(city)
+        val result = GetHighestApartmentPrice.execute()
         // then check the result
         assertEquals(null,result)
+    }
+
+    @Test
+    fun should_ReturnFirstCity_When_JustOneCityInList() {
+        // given make an object from FakeData class
+        val city = fakeData.getAllCitiesData()[0]
+        // when execute fun
+        val result = GetHighestApartmentPrice.execute()
+        // then
+        assertEquals(city,result)
+
     }
 
 }
