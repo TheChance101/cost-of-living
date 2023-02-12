@@ -11,7 +11,9 @@ fun main() {
     printSeparationLine()
 
     val getCheapestApartmentsCitiesNamesInteractor = GetCheapestApartmentsCitiesNamesInteractor(dataSource)
-    println(getCheapestApartmentsCitiesNamesInteractor.execute(10))
+    getCheapestApartmentsCitiesNamesInteractor.execute(10).forEach {
+        println("Number of years needed to buy a 100m apartment in ${it.first} city is : " + "%.2f".format(it.second))
+    }
     printSeparationLine()
 
     val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
@@ -29,6 +31,7 @@ fun main() {
     printSeparationLine()
 
 }
-private fun printSeparationLine(){
+
+private fun printSeparationLine() {
     print("\n_______________________________\n")
 }
