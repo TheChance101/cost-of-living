@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class GetHighestCarbonatedDrinksPricesInteractorTest(){
+class GetHighestCarbonatedDrinksPricesInteractorTest{
 
     private lateinit var fakeData : FakeDataSource
     private lateinit var getHighestCarbonatedDrinksPricesInteractor: GetHighestCarbonatedDrinksPricesInteractor
@@ -22,9 +22,9 @@ class GetHighestCarbonatedDrinksPricesInteractorTest(){
     @Test
     fun should_return_listOfPairs_When_Data_Valid(){
         //given
-        val listOfCountries = getHighestCarbonatedDrinksPricesInteractor.execute()
-        //when
         fakeData.setDataType(FakeDataSource.DataType.VALID)
+        //when
+        val listOfCountries = getHighestCarbonatedDrinksPricesInteractor.execute()
         //then
         assertTrue(listOfCountries.size ==10)
     }
@@ -32,19 +32,20 @@ class GetHighestCarbonatedDrinksPricesInteractorTest(){
     @Test
     fun should_return_Null_When_Data_LowQuality(){
         //given
-        val listOfCountries = getHighestCarbonatedDrinksPricesInteractor.execute()
-        //when
         fakeData.setDataType(FakeDataSource.DataType.LOWQUALITY)
+        //when
+        val listOfCountries = getHighestCarbonatedDrinksPricesInteractor.execute()
         //then
         assertTrue(listOfCountries.isEmpty())
     }
 
     @Test
-    fun should_return_Null_When_Data_NotFound(){
+    fun should_return_empty_List_When_Data_NotFound(){
         //given
-        val listOfCountries = getHighestCarbonatedDrinksPricesInteractor.execute()
+        fakeData.setDataType(FakeDataSource.DataType.NULLABLE)
+
         //when
-        fakeData.setDataType(FakeDataSource.DataType.LOWQUALITY)
+        val listOfCountries = getHighestCarbonatedDrinksPricesInteractor.execute()
         //then
         assertTrue(listOfCountries.isEmpty())
     }
