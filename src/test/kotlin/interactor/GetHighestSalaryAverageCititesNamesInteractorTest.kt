@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import kotlin.test.assertEquals
+import interactor.GetHighestSalaryAverageCititesNamesInteractor
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetHighestSalaryAverageCititesNamesInteractorTest {
@@ -14,9 +15,8 @@ class GetHighestSalaryAverageCititesNamesInteractorTest {
 
     @BeforeAll
     fun setUp() {
-        getHighestSalaryAverageCititesNamesInteractor = GetHighestSalaryAverageCititesNamesInteractor(object :
-            FakeDataSource() {
-        })
+        var fake = FakeDataSource()
+        getHighestSalaryAverageCititesNamesInteractor = GetHighestSalaryAverageCititesNamesInteractor(fake)
     }
 
     @Test
@@ -26,6 +26,20 @@ class GetHighestSalaryAverageCititesNamesInteractorTest {
 
         //when
         val expected = listOf("Solue","Cairo")
+
+        //then
+        assertEquals(expected,getHighestSalaryAverageCititesNamesInteractor.execute(2))
+
+
+    }
+
+    @Test
+    fun executeTestOnLowDataQuality() {
+        //given
+        // list of ({egypt,cairo,false}-{Koura,solue,true}-{USA,LA,true})
+
+        //when
+        val expected = listOf("Solue","LA")
 
         //then
         assertEquals(expected,getHighestSalaryAverageCititesNamesInteractor.execute(2))
