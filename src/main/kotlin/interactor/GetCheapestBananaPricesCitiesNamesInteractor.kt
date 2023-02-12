@@ -10,7 +10,9 @@ class  GetCheapestBananaPricesCitiesNamesInteractor(
         return dataSource.getAllCitiesData().toTypedArray()
     }
     fun execute(vararg cityEntities: CityEntity): List<String> {
-        throw Throwable("Not Implemented yet")
+        return if (cityEntities.isEmpty())
+            listOf("No Data is Entered !")
+       else  throw Throwable("Not Implemented yet")
     }
 
 }
