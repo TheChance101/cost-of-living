@@ -1,9 +1,11 @@
 package interactor
 
 import fake.FakeData
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.function.Executable
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -53,6 +55,15 @@ internal class GetTopCitiesFruitsAndVegetablesLowestCostInteractorTest {
         val result = interactor.excludeNullSalaries(fakeCity)
         // then
         assertFalse(result)
+    }
+    @Test
+    fun `should throws exception when limit is negative`(){
+        // given
+        val limit = -1
+        // when
+        val result = Executable{interactor.execute(limit)}
+        // then
+        assertThrows(Exception::class.java , result)
     }
 
 }
