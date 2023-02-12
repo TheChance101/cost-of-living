@@ -608,7 +608,7 @@ class FakeDataSource : CostOfLivingDataSource {
                 servicesPrices = ServicesPrices(
                     basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 46.59f,
                     oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.27f,
-                    internet60MbpsOrMoreUnlimitedDataCableAdsl = 160.64f,
+                    internet60MbpsOrMoreUnlimitedDataCableAdsl = -160.64f,
                     fitnessClubMonthlyFeeForOneAdult = 54.89f,
                     tennisCourtRentOneHourOnWeekend = 28.02f,
                     cinemaInternationalReleaseOneSeat = 7.26f,
@@ -642,7 +642,7 @@ class FakeDataSource : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
                 ),
                 averageMonthlyNetSalaryAfterTax = 321.28f,
-                dataQuality = false
+                dataQuality = true
             ), CityEntity(
                 cityName = "Dehra Dun",
                 country = "India",
