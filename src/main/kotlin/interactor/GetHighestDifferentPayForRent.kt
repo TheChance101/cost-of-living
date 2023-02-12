@@ -9,5 +9,4 @@ class  GetHighestDifferentPayForRent (
     fun execute(): CityEntity{
         throw Throwable("Not Implemented yet")
     }
-
 }
