@@ -59,7 +59,7 @@ class GetCityThatHasAverageMealsPricesInteractorTest {
 
         every { cityWithCheapestMealsPrices.country } returns "Mexico"
         every { cityWithAverageMealsPrices.country } returns "Canada"
-        every { cityWithMostExpensiveMealsPrices.country } returns "USA"
+        every { cityWithMostExpensiveMealsPrices.country } returns "United States"
 
         every {
             dataSource.getAllCitiesData()
@@ -81,7 +81,7 @@ class GetCityThatHasAverageMealsPricesInteractorTest {
         every { cityWithAverageMealsPrices.country } returns "Tunisia"
         every { cityWithMostExpensiveMealsPrices.country } returns "Jordan"
 
-        every { cityWithNullMealsPrices.country } returns "USA"
+        every { cityWithNullMealsPrices.country } returns "United States"
         every { cityWithNegativeMealsPrices.country } returns "Canada"
 
         every {
@@ -104,7 +104,7 @@ class GetCityThatHasAverageMealsPricesInteractorTest {
 
     @Test
     fun should_ReturnTheValidCity_When_TheCitiesListContainsSingleValidCity() {
-        // given a list of cities from worldwide and a single valid city in (Canada,Mexico,USA) all with valid prices
+        // given a list of cities from worldwide and a single valid city in (Canada,Mexico,United States) all with valid prices
 
         every { cityWithCheapestMealsPrices.country } returns "India"
         every { cityWithAverageMealsPrices.country } returns "Palestine"
@@ -125,7 +125,7 @@ class GetCityThatHasAverageMealsPricesInteractorTest {
     @Test
     fun should_ReturnNull_When_TheCitiesListAllFromValidAreaWithNullPrices() {
         // given a list of a single city from usa with null prices
-        every { cityWithNullMealsPrices.country } returns "USA"
+        every { cityWithNullMealsPrices.country } returns "United States"
         every {
             dataSource.getAllCitiesData()
         } returns listOf(cityWithNullMealsPrices)

@@ -16,7 +16,7 @@ class GetCityThatHasAverageMealsPricesInteractor(private val dataSource: CostOfL
                  }
     }
     private fun getCitiesInUsaCanadaAndMexico(city: CityEntity): Boolean {
-    return city.country == "Canada" || city.country == "United States" || city.country == "Mexico"
+    return city.country.lowercase() in listOf("united states", "canada", "mexico")
     }
 
     private fun excludeCitiesWithNullOrNegativeMealsPrices(city: CityEntity): Boolean {
