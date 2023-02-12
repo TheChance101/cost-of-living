@@ -21,7 +21,7 @@ class GetCountryCitiesAverageSalaryInteractorTest {
     }
 
     @Test
-    fun should_return_cities_salaries_when_entring_country_name_with_spaces() {
+    fun should_ReturnCitiesSalaries_When_EntringCountryNameWithSpaces() {
         //given
         val country = "sri     lanka"
         val result = listOf(Pair("Colombo",156.15f),Pair("Colombo",156.15f))
@@ -31,7 +31,7 @@ class GetCountryCitiesAverageSalaryInteractorTest {
         assertEquals(result,cityAverage)
     }
     @Test
-    fun should_throw_err_when_entring_empty_string() {
+    fun should_throwErr_When_EntringEmptyString() {
         //given
         val country = ""
         // when
@@ -40,7 +40,7 @@ class GetCountryCitiesAverageSalaryInteractorTest {
         assertThrows(Exception::class.java,result)
     }
     @Test
-    fun should_throw_err_when_entring_country_name_not_in_english(){
+    fun should_throwErr_When_EntringCountryNameNotInEnglish(){
         //given
         val country = "كوبا"
         // when
@@ -49,7 +49,7 @@ class GetCountryCitiesAverageSalaryInteractorTest {
         assertThrows(Exception::class.java,result)
     }
     @Test
-    fun should_return_country_cities_when_entring_country_in_upper_case(){
+    fun should_ReturnCountryCities_When_EntringCountryInUpperCase(){
         //given
         val country = "CUBA"
         val result = listOf(Pair("Havana",35.75f))
