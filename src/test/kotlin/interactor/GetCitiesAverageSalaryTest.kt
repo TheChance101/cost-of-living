@@ -82,7 +82,7 @@ internal class GetCitiesAverageSalaryTest {
         val result=Executable {getCitiesAverageSalary.execute(country)}
 
         //then check the result
-        assertThrows(Exception::class.java,result)
+        assertThrows(IllegalArgumentException::class.java,result)
     }
 }
 
