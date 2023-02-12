@@ -25,7 +25,7 @@ internal class GetCheapestBananaPricesCitiesNamesInteractorTest{
         //Given
         fakeData.setDataType(FakeDataSource.DataType.VALID)
         val data = getCheapestBananaPricesCitiesNamesInteractor.getCitiesVarArgs()
-        //When
+        //When valid data is entered
         val list = getCheapestBananaPricesCitiesNamesInteractor.run {
             execute(*data)
         }
