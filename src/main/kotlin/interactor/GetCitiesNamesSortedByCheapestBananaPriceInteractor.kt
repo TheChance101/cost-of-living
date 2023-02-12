@@ -1,7 +1,6 @@
 package interactor
 
 import model.CityEntity
-import java.util.stream.Stream
 
 class GetCitiesNamesSortedByCheapestBananaPriceInteractor {
 
@@ -9,7 +8,9 @@ class GetCitiesNamesSortedByCheapestBananaPriceInteractor {
 
         return cities.asList()
             .filter(::isBananaPriceNonNull)
+            .sortedBy { it.fruitAndVegetablesPrices.banana1kg }
             .map(CityEntity::cityName)
+
     }
 
     private fun isBananaPriceNonNull(city: CityEntity): Boolean {
