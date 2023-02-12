@@ -31,7 +31,7 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         assertTrue(actualResult)
     }
     @Test
-    fun should_ReturnFalse_When_NoCitiesHasAnAverageMonthlySalary() {
+    fun should_ReturnFalse_When_CitiesHasNotAnAverageMonthlySalary() {
         //Given
         val fakeCity: CityEntity = fakeData.getAllCitiesData()[1]
         //When
@@ -39,5 +39,24 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         //Then
         assertFalse(actualResult)
     }
+    @Test
+    fun should_ReturnTrue_When_CitiesHasAnApartment3BedroomsInCityCenter() {
+        //Given
+        val fakeCity: CityEntity = fakeData.getAllCitiesData()[0]
+        //When
+        val actualResult = getSuitableCityMoreSavingPerMonth.excludeNullApartment3BedroomsInCityCenter(fakeCity)
+        //Then
+        assertTrue(actualResult)
+    }
+    @Test
+    fun should_ReturnFalse_When_CitiesHasNotAnApartment3BedroomsInCityCenter() {
+        //Given
+        val fakeCity: CityEntity = fakeData.getAllCitiesData()[1]
+        //When
+        val actualResult = getSuitableCityMoreSavingPerMonth.excludeNullSalaries(fakeCity)
+        //Then
+        assertFalse(actualResult)
+    }
+
 
 }

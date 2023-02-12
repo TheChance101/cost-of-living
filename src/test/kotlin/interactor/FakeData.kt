@@ -145,7 +145,7 @@ class FakeData : CostOfLivingDataSource {
                     apartmentOneBedroomInCityCentre = 200.0f,
                     apartmentOneBedroomOutsideOfCentre =100.0f ,
                     //100
-                    apartment3BedroomsInCityCentre = 600.0f,
+                    apartment3BedroomsInCityCentre = null,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     //500
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,

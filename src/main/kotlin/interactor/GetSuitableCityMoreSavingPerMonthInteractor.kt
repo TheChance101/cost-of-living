@@ -16,4 +16,8 @@ class GetSuitableCityMoreSavingPerMonthInteractor(private val dataSource: CostOf
         return city.averageMonthlyNetSalaryAfterTax != null
     }
 
+    fun excludeNullApartment3BedroomsInCityCenter(city: CityEntity): Boolean {
+        return city.realEstatesPrices.apartment3BedroomsInCityCentre != null
+    }
+
 }
