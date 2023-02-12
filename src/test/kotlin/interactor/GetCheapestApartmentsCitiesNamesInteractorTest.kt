@@ -1,6 +1,6 @@
 package interactor
 
-import model.FakeDataSource
+import dataSource.FakeDataSource
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeAll
