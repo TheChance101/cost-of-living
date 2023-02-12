@@ -106,12 +106,12 @@ class FakeData : CostOfLivingDataSource {
                     lettuceOneHead = 0.25f
                 ),
                 foodPrices = FoodPrices(
-                    loafOfFreshWhiteBread500g = 1.1f,
-                    riceWhite1kg = 1.1f,
+                    loafOfFreshWhiteBread500g = null,
+                    riceWhite1kg = null,
                     eggsRegular12 = 2.03f,
-                    localCheese1kg = 9.0f,
-                    chickenFillets1kg = 6.61f,
-                    beefRound1kgOrEquivalentBackLegRedMeat = 6.61f
+                    localCheese1kg = null,
+                    chickenFillets1kg = null,
+                    beefRound1kgOrEquivalentBackLegRedMeat = null
                 ),
                 servicesPrices = ServicesPrices(
                     basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = null,
