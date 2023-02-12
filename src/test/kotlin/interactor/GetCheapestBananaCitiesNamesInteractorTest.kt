@@ -20,7 +20,7 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
     @Test
     fun `should return entered single city when have correct city with not null banana price`() {
         // given correct city with not null banana price
-        val city: String = "Santiago de Cuba"
+        val city = "Santiago de Cuba"
         // when get cities list
         val cities = interactor.execute(city)
         // then if getting entered city in a list
@@ -30,7 +30,7 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
     @Test
     fun `should return empty list when have single correct city with null banana price`() {
         // given correct city with null banana price
-        val city: String = "Santa Clara"
+        val city = "Santa Clara"
         // when get cities list
         val cities = interactor.execute(city)
         // then if getting empty list
@@ -40,7 +40,7 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
     @Test
     fun `should return empty list when have single incorrect city`() {
         // given Incorrect city
-        val city: String = "BlaBlaBla"
+        val city = "BlaBlaBla"
         // when get cities list
         val cities = interactor.execute(city)
         // then if getting empty list
