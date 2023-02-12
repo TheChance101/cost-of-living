@@ -15,7 +15,7 @@ class GetCheapestApartmentsCitiesNamesInteractor(
             .getNumberOfYears()
 
         return if (data.isEmpty()) {
-            listOf(Pair("No Valid Data Found !", 0.0f))
+            listOf(Pair("Couldn't find Cities that meet your requirements :(", 0.0f))
         } else {
             data
         }
