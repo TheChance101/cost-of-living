@@ -5,8 +5,10 @@ import model.CityEntity
 class getTheAverageSalaryForEachCityInTheCountryInteractor (
     private val dataSource: CostOfLivingDataSource,
 ) {
-    fun execute(): CityEntity {
-        throw Throwable("Not Implemented yet")
+    fun execute(countryName:String): List<Any> {
+
+
+     return listOf<Any>()
     }
     private fun excludeNullSalariesAndLowQualityData(city: CityEntity): Boolean {
         return city.averageMonthlyNetSalaryAfterTax != null && city.dataQuality
