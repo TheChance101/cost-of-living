@@ -12,7 +12,7 @@ class GetCheapestBananaPricesCitiesNamesInteractor(
 
     fun execute(vararg cityEntities: CityEntity): List<String> {
        if(cityEntities.isEmpty())
-           return listOf("No Valid Data is Entered")
+           return listOf("No Data is Entered !")
       return emptyList()
     }
 }
