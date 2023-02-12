@@ -34,7 +34,7 @@ class GetMostSuitableSavingCityInteractorTest {
         // given  value
         val averageMonthlyNetSalaryAfterTax = 1000f
 //        // when
-        val result = interactor.excludeNullSalaries(averageMonthlyNetSalaryAfterTax)
+        val result = interactor.excludeNullSalaries(averageMonthlyNetSalaryAfterTax as CityEntity)
 //        // then
         assertTrue(result)
     }
@@ -45,7 +45,7 @@ class GetMostSuitableSavingCityInteractorTest {
         val averageMonthlyNetSalaryAfterTax = null
 
         // when
-        val result = interactor.excludeNullSalaries(averageMonthlyNetSalaryAfterTax)
+        val result = interactor.excludeNullSalaries(averageMonthlyNetSalaryAfterTax as CityEntity)
 
         // then
         assertFalse(result)

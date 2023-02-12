@@ -12,8 +12,8 @@ class GetMostSuitableSavingCityInteractor(
         return ""
     }
 
-    fun excludeNullSalaries(city: Float?): Boolean {
-        return true
+    fun excludeNullSalaries(city: CityEntity): Boolean {
+        return city.averageMonthlyNetSalaryAfterTax != null
     }
 
     fun calculateCitySavings(city: CityData, familyBudget: Float): Float {
