@@ -5,11 +5,12 @@ import org.junit.jupiter.api.*
 
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.function.Executable
+import kotlin.test.assertEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractorTest {
 
-    //fakeData
+
     lateinit var fakeData : MutableList<CityNameClothesPrices>
     lateinit var getTop5CitiesNameHasSuitableClothesPricesInteractor: GetTop5CitiesNameHasSuitableClothesPricesInteractor
 
@@ -179,6 +180,72 @@ internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInterac
         assertThrows(Exception::class.java , nameTop5City )
     }
 
+
+    @Test
+    fun should_ReturnListOfTopFiveCity_when_allCityHasClothes()
+    {
+        //Given city has not any onePairOfMenLeatherBusinessShoes
+        var  insertNameCityClothesPrice = CityNameClothesPrices(
+            cityName="Cairo",
+            onePairOfJeansLevis50oneOrSimilar = 44.0f ,
+            oneSummerDressInAChainStoreZaraHAndM = 56.0f ,
+            onePairOfNikeRunningShoesMidRange = 50.8f,
+            onePairOfMenLeatherBusinessShoes = 43.0f ,
+        )
+        fakeData.add(insertNameCityClothesPrice)
+
+        insertNameCityClothesPrice = CityNameClothesPrices(
+            cityName="Elminya",
+            onePairOfJeansLevis50oneOrSimilar = 40.0f ,
+            oneSummerDressInAChainStoreZaraHAndM = 55.0f ,
+            onePairOfNikeRunningShoesMidRange = 49.8f,
+            onePairOfMenLeatherBusinessShoes = 41.0f ,
+        )
+        fakeData.add(insertNameCityClothesPrice)
+
+        insertNameCityClothesPrice = CityNameClothesPrices(
+            cityName="Fayoum",
+            onePairOfJeansLevis50oneOrSimilar = 39.0f ,
+            oneSummerDressInAChainStoreZaraHAndM = 52.0f ,
+            onePairOfNikeRunningShoesMidRange = 48.8f,
+            onePairOfMenLeatherBusinessShoes = 40.0f ,
+        )
+        fakeData.add(insertNameCityClothesPrice)
+
+        insertNameCityClothesPrice = CityNameClothesPrices(
+            cityName="Giza",
+            onePairOfJeansLevis50oneOrSimilar = 38.0f ,
+            oneSummerDressInAChainStoreZaraHAndM = 51.0f ,
+            onePairOfNikeRunningShoesMidRange = 47.8f,
+            onePairOfMenLeatherBusinessShoes = 39.0f ,
+        )
+        fakeData.add(insertNameCityClothesPrice)
+
+        insertNameCityClothesPrice = CityNameClothesPrices(
+            cityName="El mansoura",
+            onePairOfJeansLevis50oneOrSimilar = 37.0f ,
+            oneSummerDressInAChainStoreZaraHAndM = 50.0f ,
+            onePairOfNikeRunningShoesMidRange = 46.8f,
+            onePairOfMenLeatherBusinessShoes = 38.0f ,
+        )
+        fakeData.add(insertNameCityClothesPrice)
+
+        insertNameCityClothesPrice = CityNameClothesPrices(
+            cityName="El menoufy",
+            onePairOfJeansLevis50oneOrSimilar = 36.0f ,
+            oneSummerDressInAChainStoreZaraHAndM = 49.0f ,
+            onePairOfNikeRunningShoesMidRange = 45.8f,
+            onePairOfMenLeatherBusinessShoes = 37.0f ,
+        )
+        fakeData.add(insertNameCityClothesPrice)
+
+
+        //when
+        val nameTop5City : List<String> = getTop5CitiesNameHasSuitableClothesPricesInteractor.execute()
+
+        //then
+        assertEquals(listOf("El menoufy" , "El mansoura" , "Giza" , "Fayoum" , "Elminya"  ) , nameTop5City )
+    }
 
 
 }
