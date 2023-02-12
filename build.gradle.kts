@@ -13,10 +13,8 @@ repositories {
 }
 
 dependencies {
-    implementation("org.junit.jupiter:junit-jupiter:5.4.2")
-    testImplementation("com.appmattus.fixture:fixture:1.2.0")
     testImplementation(kotlin("test"))
-
+    testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
 tasks.test {
