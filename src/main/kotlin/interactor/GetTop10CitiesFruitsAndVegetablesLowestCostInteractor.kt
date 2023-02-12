@@ -2,7 +2,7 @@ package interactor
 
 import model.CityEntity
 
-class Top10CitiesFruitsAndVegetablesLowestCostInteractor(
+class GetTop10CitiesFruitsAndVegetablesLowestCostInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
 
