@@ -57,6 +57,15 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         //Then
         assertFalse(actualResult)
     }
+    @Test
+    fun should_ReturnTrue_When_CitiesHasTheNeededFoodies() {
+        //Given
+        val fakeCity: CityEntity = fakeData.getAllCitiesData()[0]
+        //When
+        val actualResult = getSuitableCityMoreSavingPerMonth.excludeNullFoodies(fakeCity)
+        //Then
+        assertTrue(actualResult)
+    }
 
 
 }

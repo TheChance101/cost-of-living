@@ -20,4 +20,8 @@ class GetSuitableCityMoreSavingPerMonthInteractor(private val dataSource: CostOf
         return city.realEstatesPrices.apartment3BedroomsInCityCentre != null
     }
 
+    fun excludeNullFoodies(city: CityEntity): Boolean {
+        return false
+    }
+
 }
