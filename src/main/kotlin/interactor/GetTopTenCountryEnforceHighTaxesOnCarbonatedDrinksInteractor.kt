@@ -7,7 +7,7 @@ class GetTopTenCountryEnforceHighTaxesOnCarbonatedDrinksInteractor(private val d
         return cities
             .asSequence()
             .sortedBy { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants }
-            .filter(::isNullONegativeCokePricesOrLowQualityData)
+            .filter(::isLegalData)
             .sortedByDescending { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants }
             .distinctBy { it.country }
             .take(limit)
@@ -15,7 +15,7 @@ class GetTopTenCountryEnforceHighTaxesOnCarbonatedDrinksInteractor(private val d
             .toList()
     }
 
-    private fun isNullONegativeCokePricesOrLowQualityData(city: CityEntity): Boolean {
+    private fun isLegalData(city: CityEntity): Boolean {
         return city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants != null
                 && city.dataQuality
                 && city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants > 0
