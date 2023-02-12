@@ -60,6 +60,20 @@ internal class GetCitiesAverageSalaryTest {
     }
 
     @Test
+    fun should_ReturnCorrectCities_when_TheDataQualityIsTrue(){
+        //given a country with true data quality
+        val country = "cuba"
+
+        //when return the average cities salary
+        val result = getCitiesAverageSalary.execute(country)
+
+        //then check the result
+        val fakeList = listOf(Pair("Santa Clara", 25.0))
+        assertEquals(fakeList,result)
+
+    }
+
+    @Test
     fun should_ReturnThrowException_When_InputWrong() {
         //given a wrong name country
         val country="&&7#"
