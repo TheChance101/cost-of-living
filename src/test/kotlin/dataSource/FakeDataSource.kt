@@ -10,6 +10,7 @@ import model.CityEntity
 class FakeDataSource() : CostOfLivingDataSource {
 
     enum class DataType {
+
         VALID, NULLABLE, LOWQUALITY, MIXTURE
     }
 
@@ -34,7 +35,6 @@ class FakeDataSource() : CostOfLivingDataSource {
         property(CityEntity::dataQuality) { true }
         repeatCount { 20 }
     }
-
     /**
      * @return data that have high dataQuality and null values.
      */
@@ -62,6 +62,11 @@ class FakeDataSource() : CostOfLivingDataSource {
 
     /**
      * retrieve data from FakeDataSource depending on the needed type
+
+    private fun getDataWithLowQuality() = lowQualityFixture<List<CityEntity>>()
+
+    /**
+     * retrieve data from FakeDataSource depending on the type needed
      * @return List<CityEntity>
      */
     override fun getAllCitiesData(): List<CityEntity> {
@@ -78,6 +83,7 @@ class FakeDataSource() : CostOfLivingDataSource {
             DataType.MIXTURE -> {
                 getMixedData()
             }
+
         }
     }
 }
