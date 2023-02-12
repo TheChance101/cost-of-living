@@ -15,8 +15,8 @@ import org.junit.jupiter.api.function.Executable
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetSalaryAverageForCitiesInCountryInteractorTest {
 
-    private lateinit var interactor: GetSalaryAverageForCitiesInCountryInteractor
     private lateinit var fakeData: FakeData
+    private lateinit var interactor: GetSalaryAverageForCitiesInCountryInteractor
 
     @BeforeAll
     fun setup() {
@@ -67,10 +67,10 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
         val countryName = ""
 
         // When country name is empty
-        val salary = Executable { interactor.execute(countryName) }
+        val result = Executable { interactor.execute(countryName) }
 
         // Then return Throw Exception
-        assertThrows(Exception::class.java, salary)
+        assertThrows(Exception::class.java, result)
     }
 
     @Test
