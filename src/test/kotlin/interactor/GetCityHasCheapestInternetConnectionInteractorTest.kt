@@ -15,18 +15,18 @@ import java.util.*
 class GetCityHasCheapestInternetConnectionInteractorTest {
 
     private lateinit var getCity: GetCityHasCheapestInternetConnectionInteractor
-    private val dataSource: FackeDataSource by lazy { FackeDataSource() }
-
+    private lateinit var dataSource: FackeDataSource
 
     @BeforeEach
     fun setUp() {
+        dataSource= FackeDataSource()
         getCity = GetCityHasCheapestInternetConnectionInteractor(dataSource)
     }
 
     @Test
-    fun Should_ReturnFalse_When_inputNullPrice(){
+    fun Should_ReturnFalse_When_inputNullPrice() {
         //given a list of FackDataSource
-        var city=  dataSource.getAllCitiesWithNullPrice()[0]
+        var city = dataSource.getAllCitiesWithNullPrice()[0]
 
         //when
         val result = getCity.excludeNullPrice(city)
@@ -35,9 +35,9 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
     }
 
     @Test
-    fun Should_ReturnFalse_When_InputNullSalary(){
+    fun Should_ReturnFalse_When_InputNullSalary() {
         //given a list of FackDataSource
-        var city=  dataSource.getAllCitiesWithNullSalary()[0]
+        var city = dataSource.getAllCitiesWithNullSalary()[0]
         //when
         val result = getCity.excludeNullSalaries(city)
         //then
