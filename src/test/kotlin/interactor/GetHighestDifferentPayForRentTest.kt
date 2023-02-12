@@ -44,4 +44,12 @@ internal class GetHighestDifferentPayForRentTest {
         //then not return null
         assertNotEquals(null , result.realEstatesPrices.apartment3BedroomsInCityCentre)
     }
+    @Test
+    fun should_ReturnApartmentOneBedroomOutsideOfCentreNotEqualNull(){
+        //given
+        //when
+        val result=getHighestDifferentPayForRent.execute()
+        //then not return null
+        assertNotEquals(null , result.realEstatesPrices.apartmentOneBedroomOutsideOfCentre)
+    }
 }
