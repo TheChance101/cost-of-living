@@ -96,4 +96,14 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
         // then if the only correct city
         assertEquals(listOf("Santiago de Cuba"), cities)
     }
+
+    @Test
+    fun `should return only one of repeated correct city when given repeated correct city`() {
+        // given varargs of correct city repeated more than one time
+        val citiesList = listOf("Santiago de Cuba", "Sancti Spiritus", "Masin", "Masin", "Masin")
+        // when get sorted cities list by cheapest price
+        val cities = interactor.execute(*citiesList.toTypedArray())
+        // then if the only correct cities
+        assertEquals(listOf("Masin", "Santiago de Cuba", "Sancti Spiritus"), cities)
+    }
 }
