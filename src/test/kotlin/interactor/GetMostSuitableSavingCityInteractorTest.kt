@@ -5,6 +5,7 @@ import dataSource.utils.CsvParser
 import model.CityData
 import model.CityEntity
 import model.FoodPrices
+import model.RealEstatesPrices
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
@@ -49,11 +50,71 @@ class GetMostSuitableSavingCityInteractorTest {
     }
 
     @Test
-    fun calculateCitySavings() {
-        // given  value
+    fun should_returnCorrectSaving_when_EnterCityDataAndFamilyBudget() {
+        val cityData = CityData(
+            cityName = "Paris",
+            country = "France",
+            averageMonthlyNetSalaryAfterTax = 3000f,
+            dataQuality = true,
+            realEstatesPrices = RealEstatesPrices(
+                apartment3BedroomsInCityCentre = 1500f,
+                apartment3BedroomsOutsideOfCentre = null,
+                apartmentOneBedroomInCityCentre = null,
+                apartmentOneBedroomOutsideOfCentre = null,
+                pricePerSquareMeterToBuyApartmentInCityCentre = null,
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
+            ),
+            foodPrices = FoodPrices(
+                loafOfFreshWhiteBread500g = 2f,
+                localCheese1kg = 20f,
+                beefRound1kgOrEquivalentBackLegRedMeat = 25f,
+                chickenFillets1kg = 10f,
+                riceWhite1kg = 5f,
+                eggsRegular12 = null
+            )
+        )
 
-        // when
-        // then
+        val familyBudget = 5000f
+
+        val expectedSavings = 1000f
+
+        val actualSavings = interactor.calculateCitySavings(cityData, familyBudget)
+
+        assertEquals(expectedSavings, actualSavings)
+    }
+
+    @Test
+    fun should_returnZero_When_FamilyBudgetNotEnough() {
+        val cityData = CityData(
+            cityName = "Paris",
+            country = "France",
+            averageMonthlyNetSalaryAfterTax = 3000f,
+            dataQuality = true,
+            realEstatesPrices = RealEstatesPrices(
+                apartment3BedroomsInCityCentre = 2000f,
+                apartment3BedroomsOutsideOfCentre = null,
+                apartmentOneBedroomInCityCentre = null,
+                apartmentOneBedroomOutsideOfCentre = null,
+                pricePerSquareMeterToBuyApartmentInCityCentre = null,
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
+            ),
+            foodPrices = FoodPrices(
+                loafOfFreshWhiteBread500g = 2f,
+                localCheese1kg = 20f,
+                beefRound1kgOrEquivalentBackLegRedMeat = 25f,
+                chickenFillets1kg = 10f,
+                riceWhite1kg = 5f,
+                eggsRegular12 = null
+            )
+        )
+
+        val familyBudget = 5000f
+
+        val expectedSavings = 0f
+
+        val actualSavings = interactor.calculateCitySavings(cityData, familyBudget)
+
+        assertEquals(expectedSavings, actualSavings)
     }
 
     @Test
