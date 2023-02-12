@@ -14,3 +14,4 @@ class getTheAverageSalaryForEachCityInTheCountryInteractor (
         return city.averageMonthlyNetSalaryAfterTax != null && city.dataQuality
     }
 }
+

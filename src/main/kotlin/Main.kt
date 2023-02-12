@@ -10,14 +10,15 @@ fun main() {
     val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
 
     val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
-    println(getHighestSalaryAverageCities.execute(limit = 10))
-    printSeparationLine()
+//    println(getHighestSalaryAverageCities.execute(limit = 10))
+//    printSeparationLine()
+//
+//    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
+//    println(getCityHasCheapestInternetConnectionInteractor.execute())
+//    val getTheAverageSalaryForEachCityInTheCountry =getTheAverageSalaryForEachCityInTheCountryInteractor(dataSource)
 
-    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
-    println(getCityHasCheapestInternetConnectionInteractor.execute())
-    val getTheAverageSalaryForEachCityInTheCountry =getTheAverageSalaryForEachCityInTheCountryInteractor(dataSource)
-
-
+    println(dataSource.getAllCitiesData().take(20).filter { it.country =="Cuba" }
+        .map { listOf(it.cityName,it.averageMonthlyNetSalaryAfterTax) })
 
 }
 private fun printSeparationLine(){

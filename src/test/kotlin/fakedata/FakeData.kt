@@ -12,7 +12,7 @@ class FakeData : CostOfLivingDataSource {
         val csvParser = CsvParser()
         val dataSource = CsvDataSource(csvParser)
         fakeDataList.addAll(
-            dataSource.getAllCitiesData().take(100)
+            dataSource.getAllCitiesData().take(20)
         )
     }
 
