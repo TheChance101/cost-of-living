@@ -4,6 +4,7 @@ import io.mockk.every
 import org.junit.jupiter.api.Test
 import io.mockk.mockk
 import model.*
+import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 
@@ -16,9 +17,9 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
     fun `should return city with cheapest internet connection`() {
         // given
         val citiesData = listOf(
-            createCity("City 1", 1000f, 50f),
-            createCity("City 2", 2000f, 100f),
-            createCity("City 3", 5000f, 200f)
+            createCity("City 1", 50f, 1000f),
+            createCity("City 2", 100f, 2000f),
+            createCity("City 3", 200f, 5000f)
         )
         //when(dataSource.getAllCitiesData()).thenRetu(citiesData)
         every { dataSource.getAllCitiesData() } returns (citiesData)
@@ -45,6 +46,17 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
         assertNull(result)
     }
 
+    @Test
+    fun `should throw exception when data source throws exception`() {
+        // given
+        val exception = IllegalStateException("Error getting city data")
+        every { dataSource.getAllCitiesData() } throws (exception)
+
+        // then
+        assertThrows<IllegalStateException> {
+            interactor.execute()
+        }
+    }
     private fun createCity(cityName: String, salary: Float, internetPrice: Float?) =
         CityEntity(
             cityName, "Country", MealsPrices(null, null, null),
