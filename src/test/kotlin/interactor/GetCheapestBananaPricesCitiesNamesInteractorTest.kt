@@ -1,6 +1,7 @@
 package interactor
 
 import dataSource.FakeDataSource
+import model.CityEntity
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -62,17 +63,15 @@ internal class GetCheapestBananaPricesCitiesNamesInteractorTest() {
     }
 
     @Test
-    fun should_ReturnEmptyList_When_EnterNoData() {
-        //Given
-        fakeData.setDataType(FakeDataSource.DataType.NULLABLE)
+    fun should_ReturnNotValidList_When_EnterNoData() {
+        //Given empty array of CityEntities
+        val array= emptyArray<CityEntity>()
 
-        //When
-        val list = getCheapestBananaPricesCitiesNamesInteractor.run {
-            execute(*getCitiesVarArgs())
-        }
+        //When Entering no data or empty array of CityEntities to execute()
+        val list = getCheapestBananaPricesCitiesNamesInteractor.execute(*array)
 
         //Then
-        assertTrue(list.isEmpty())
+        assertEquals(listOf("No Valid Data is Entered"), list)
     }
 
 }

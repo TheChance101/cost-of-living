@@ -11,6 +11,8 @@ class GetCheapestBananaPricesCitiesNamesInteractor(
     }
 
     fun execute(vararg cityEntities: CityEntity): List<String> {
-    throw Throwable("Not Implemented yet")
+       if(cityEntities.isEmpty())
+           return listOf("No Valid Data is Entered")
+      return emptyList()
     }
 }
