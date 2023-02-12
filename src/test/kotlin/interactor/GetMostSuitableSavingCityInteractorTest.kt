@@ -1,8 +1,10 @@
 package interactor
 
+import model.CityEntity
 import model.FoodPrices
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+
+import org.junit.jupiter.api.Assertions.*
 
 class GetMostSuitableSavingCityInteractorTest {
 
@@ -11,7 +13,7 @@ class GetMostSuitableSavingCityInteractorTest {
     }
 
     @Test
-    fun should_ReturnCityCostOfLiving_When_EnterQuanities(foodPrices: FoodPrices)  {
+    fun should_ReturnSavingAmount_When_EnterCityAndFamilyBudget()  {
         // given food quantity and prices
 
         // when calc cost of living of the family
