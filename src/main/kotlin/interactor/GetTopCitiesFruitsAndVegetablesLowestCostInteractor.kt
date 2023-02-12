@@ -11,7 +11,19 @@ class GetTopCitiesFruitsAndVegetablesLowestCostInteractor(
     }
 
     fun excludeNullFruitsAndVegetables(city: CityEntity): Boolean {
-        TODO("Not implemented yet")
+        return city.fruitAndVegetablesPrices.banana1kg != null||
+                city.fruitAndVegetablesPrices.apples1kg != null ||
+                city.fruitAndVegetablesPrices.onion1kg != null ||
+                city.fruitAndVegetablesPrices.lettuceOneHead != null ||
+                city.fruitAndVegetablesPrices.oranges1kg != null ||
+                city.fruitAndVegetablesPrices.tomato1kg != null ||
+                city.fruitAndVegetablesPrices.potato1kg != null
     }
+
+    fun excludeNullSalaries(city: CityEntity):Boolean{
+        return false
+    }
+
+
 
 }

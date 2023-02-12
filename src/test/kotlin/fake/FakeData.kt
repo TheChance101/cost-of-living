@@ -149,7 +149,7 @@ class FakeData : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
                 ),
-                averageMonthlyNetSalaryAfterTax = 18f,
+                averageMonthlyNetSalaryAfterTax =null,
                 dataQuality = true
             ),
             CityEntity(
