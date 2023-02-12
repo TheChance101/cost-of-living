@@ -32,11 +32,18 @@ internal class TestGetHighestDifferenceBetweenCityCenterAndOutsideCityCenter {
     @Test
     fun testGetHighestDifference_returnsCorrect_3BedRoom_BetweenInCityCenter_OutCityCenter() {
         //given
-        val expectedResult  = listOf(cities[1])
-        //when
-        val result = rating.execute_DifferentPayRentingBetween3BedRoom_IntCityCenter_OutCitycenter(1)
-        //then
-        assertEquals(expectedResult,result)
+         val cities = listOf(
+            "Abuja",
+            "New York",
+            "Logos",
+        )
+        for(i in 0 until cities.size) {
+            val expectedResult = listOf(cities[i])
+            //when
+            val result = rating.execute_DifferentPayRentingBetween3BedRoom_IntCityCenter_OutCitycenter(cities.size)
+            //then
+            assertEquals(expectedResult, result)
+        }
     }
     @Test
     fun testGetHighestDifference_returnsCorrect_pricePerSquareMeterToBuy_BetweenInCityCenter_OutCityCenter() {
