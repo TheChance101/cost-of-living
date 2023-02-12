@@ -31,7 +31,7 @@ internal class GetCheapestBananaPricesCitiesNamesInteractorTest() {
         }
         //Then
         assertTrue(
-            list.size == 20 && list == data
+            list == data
                 .sortedByDescending { it.fruitAndVegetablesPrices.banana1kg }
                 .map { it.cityName }
         )
@@ -41,7 +41,6 @@ internal class GetCheapestBananaPricesCitiesNamesInteractorTest() {
     fun should_ReturnEmptyList_When_EnterNullForAllBananaPrices() {
         //Given
         fakeData.setDataType(FakeDataSource.DataType.NULLABLE)
-
         //When
         val list = getCheapestBananaPricesCitiesNamesInteractor.run {
             execute(*getCitiesVarArgs())

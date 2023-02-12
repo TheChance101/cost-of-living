@@ -17,7 +17,6 @@ class GetCheapestBananaPricesCitiesNamesInteractor(
             .filter(::excludeNullBananaPrices)
             .sortingWithBananaPrices()
             .map { it.cityName }
-
     }
 
     private fun excludeNullBananaPrices(city: CityEntity): Boolean {
