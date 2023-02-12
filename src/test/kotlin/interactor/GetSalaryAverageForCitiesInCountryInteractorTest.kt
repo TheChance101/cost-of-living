@@ -15,13 +15,13 @@ import org.junit.jupiter.api.function.Executable
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetSalaryAverageForCitiesInCountryInteractorTest {
 
-    private lateinit var getSalaryAverageForCitiesInCountryInteractor: GetSalaryAverageForCitiesInCountryInteractor
+    private lateinit var interactor: GetSalaryAverageForCitiesInCountryInteractor
     private lateinit var fakeData: FakeData
 
     @BeforeAll
     fun setup() {
         fakeData = FakeData()
-        getSalaryAverageForCitiesInCountryInteractor = GetSalaryAverageForCitiesInCountryInteractor(fakeData)
+        interactor = GetSalaryAverageForCitiesInCountryInteractor(fakeData)
 
     }
 
@@ -30,7 +30,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
         // Given country name Uppercase
         val countryName = "CUBA"
         // When averageSalary not null and high dataQuality
-        val actualPairList = getSalaryAverageForCitiesInCountryInteractor.execute(countryName)
+        val actualPairList = interactor.execute(countryName)
         // Then return a list of pair of city name and average salary
         assertEquals(listOf(Pair("Santiago de Cuba", 18.0f)), actualPairList)
     }
@@ -40,7 +40,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
         // Given country name Lowercase
         val countryName = "egypt"
         // When averageSalary not null and high dataQuality
-        val actualPairList = getSalaryAverageForCitiesInCountryInteractor.execute(countryName)
+        val actualPairList = interactor.execute(countryName)
          // Then return a list of pair of city name and average salary
         assertEquals(listOf(Pair("Tanta", 101.74f)), actualPairList)
     }
@@ -50,7 +50,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
         // Given country name Mix of Uppercase and Lowercase
         val countryName = "SyRia"
         // When averageSalary not null and high dataQuality
-        val actualPairList = getSalaryAverageForCitiesInCountryInteractor.execute(countryName)
+        val actualPairList = interactor.execute(countryName)
         // Then return a list of pair of city name and average salary
         assertEquals(listOf(Pair("Damascus", 50.24f)), actualPairList)
     }
@@ -60,7 +60,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
         // Given empty country name
         val countryName = ""
         // When country name is empty
-        val salary = Executable { getSalaryAverageForCitiesInCountryInteractor.execute(countryName) }
+        val salary = Executable { interactor.execute(countryName) }
         // Then return Throw Exception
         assertThrows(Exception::class.java, salary)
     }
@@ -138,7 +138,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
             dataQuality = false
         )
         // When averageSalary not null and low dataQuality
-        val result = getSalaryAverageForCitiesInCountryInteractor.excludeNullSalariesAndLowQualityData(city)
+        val result = interactor.excludeNullSalariesAndLowQualityData(city)
 
         // Then return false
         assertFalse(result)
@@ -218,7 +218,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
         )
 
         // When averageSalary not null and high dataQuality
-        val result = getSalaryAverageForCitiesInCountryInteractor.excludeNullSalariesAndLowQualityData(city)
+        val result = interactor.excludeNullSalariesAndLowQualityData(city)
 
         // Then return true
         assertTrue(result)
