@@ -3,7 +3,7 @@ package interactor
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import dataSource.utils.FakeDataProvider
-import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
@@ -18,7 +18,6 @@ internal class GetBestCityForSavingMoneyInteractorTest {
 
     @BeforeAll
     fun setUp() {
-
         bestCity = GetBestCityForSavingMoneyInteractor(FakeDataProvider)
     }
 
@@ -33,7 +32,7 @@ internal class GetBestCityForSavingMoneyInteractorTest {
         val result = bestCity.checkNullFields(cityWithoutNullFields)
         val result2 = bestCity.checkNullFields(cityWithoutNullFields)
         // then check the result
-        Assertions.assertTrue(result && result2)
+        assertTrue(result && result2)
     }
 
     @Test
@@ -46,7 +45,7 @@ internal class GetBestCityForSavingMoneyInteractorTest {
         val result = bestCity.checkNullFields(cityWithNullFields)
         val result2 = bestCity.checkNullFields(cityWithNullFields)
         // then check the result
-        Assertions.assertFalse(result && result2)
+        assertFalse(result && result2)
     }
 
     @Test
@@ -60,7 +59,20 @@ internal class GetBestCityForSavingMoneyInteractorTest {
         val areEqual = cityName == nameOfReturnedCity
 
         // then check the result
-        Assertions.assertTrue(areEqual)
+        assertTrue(areEqual)
+    }
+
+    @Test
+    fun should_ReturnCity_When_WePassTheFakeData(){
+
+        // Given a city name
+        val cityName = "Havana"
+
+        // when
+        val nameOfReturnedCity = bestCity.execute(true).cityName
+
+        // then check the result
+        assertEquals(cityName , nameOfReturnedCity)
     }
 
     @Test
@@ -74,6 +86,6 @@ internal class GetBestCityForSavingMoneyInteractorTest {
         val areEqual = cityName == nameOfReturnedCity
 
         // then check the result
-        Assertions.assertFalse(areEqual)
+        assertFalse(areEqual)
     }
 }
