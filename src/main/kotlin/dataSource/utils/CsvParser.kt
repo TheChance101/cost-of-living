@@ -86,7 +86,7 @@ class CsvParser {
         )
     }
 
-    private fun constructTransportationsPricesFromTokens(tokenizedList: List<String>): TransportationsPrices{
+    private fun constructTransportationsPricesFromTokens(tokenizedList: List<String>): TransportationsPrices {
         return TransportationsPrices(
             gasolineOneLiter = tokenizedList.getFloat(ColumnIndex.GASOLINE_ONE_LITER),
             taxi1hourWaitingNormalTariff = tokenizedList.getFloat(ColumnIndex.TAXI_1HOUR_WAITING_NORMAL_TARIFF),
@@ -97,14 +97,14 @@ class CsvParser {
         )
     }
 
-    private fun constructCarsPricesFromTokens(tokenizedList: List<String>): CarsPrices{
+    private fun constructCarsPricesFromTokens(tokenizedList: List<String>): CarsPrices {
         return CarsPrices(
             volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = tokenizedList.getFloat(ColumnIndex.VOLKSWAGEN_GOLF_1_4_90KW_TREND_LINE_OR_EQUIVALENT_NEW_CAR),
             toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = tokenizedList.getFloat(ColumnIndex.TOYOTA_COROLLA_SEDAN_1_6L_97KW_COMFORT_OR_EQUIVALENT_NEW_CAR),
         )
     }
 
-    private fun constructRealStatesPricesFromTokens(tokenizedList: List<String>): RealEstatesPrices{
+    private fun constructRealStatesPricesFromTokens(tokenizedList: List<String>): RealEstatesPrices {
         return RealEstatesPrices(
             apartmentOneBedroomInCityCentre = tokenizedList.getFloat(ColumnIndex.APARTMENT_ONE_BEDROOM_IN_CITY_CENTRE),
             apartmentOneBedroomOutsideOfCentre = tokenizedList.getFloat(ColumnIndex.APARTMENT_ONE_BEDROOM_OUTSIDE_OF_CENTRE),
@@ -115,7 +115,7 @@ class CsvParser {
         )
     }
 
-    private fun List<String>.getFloat(index: Int): Float?{
+    private fun List<String>.getFloat(index: Int): Float? {
         return this[index].toFloatOrNull()
     }
 }
