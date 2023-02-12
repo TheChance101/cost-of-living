@@ -62,7 +62,7 @@ class FakeDataSource() : CostOfLivingDataSource {
 
     /**
      * retrieve data from FakeDataSource depending on the needed type
-
+     */
     private fun getDataWithLowQuality() = lowQualityFixture<List<CityEntity>>()
 
     /**
