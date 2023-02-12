@@ -7,10 +7,11 @@ import com.appmattus.kotlinfixture.kotlinFixture
 import interactor.CostOfLivingDataSource
 import model.CityEntity
 
-class FakeDataSource() : CostOfLivingDataSource {
+class FakeDataSource : CostOfLivingDataSource {
 
     enum class DataType {
-        VALID, NULLABLE, LOWQUALITY
+
+        VALID, NULLABLE, LOWQUALITY, MIXTURE
     }
 
     private var dataType: DataType = DataType.VALID
@@ -24,6 +25,9 @@ class FakeDataSource() : CostOfLivingDataSource {
         repeatCount { 20 }
     }
 
+    /**
+     * @return data that have high dataQuality and no null values.
+     */
     private fun getNormalData() = normalFixture<List<CityEntity>>()
 
     private val nullableFixture = kotlinFixture {
@@ -31,7 +35,9 @@ class FakeDataSource() : CostOfLivingDataSource {
         property(CityEntity::dataQuality) { true }
         repeatCount { 20 }
     }
-
+    /**
+     * @return data that have high dataQuality and null values.
+     */
     private fun getDataWithNullValues() = nullableFixture<List<CityEntity>>()
 
     private val lowQualityFixture = kotlinFixture {
@@ -40,10 +46,22 @@ class FakeDataSource() : CostOfLivingDataSource {
         repeatCount { 20 }
     }
 
+    /**
+     * @return list of CityEntity that have low dataQuality and no null values.
+     */
     private fun getDataWithLowQuality() = lowQualityFixture<List<CityEntity>>()
 
+    private val mixedFixture = kotlinFixture {
+        repeatCount { 20 }
+    }
+
     /**
-     * retrieve data from FakeDataSource depending on the type needed
+     * @return list of CityEntity that have mixture of all values.
+     */
+    private fun getMixedData() = mixedFixture<List<CityEntity>>()
+
+    /**
+     * retrieve data from FakeDataSource depending on the needed type
      * @return List<CityEntity>
      */
     override fun getAllCitiesData(): List<CityEntity> {
@@ -57,6 +75,10 @@ class FakeDataSource() : CostOfLivingDataSource {
             DataType.LOWQUALITY -> {
                 getDataWithLowQuality()
             }
+            DataType.MIXTURE -> {
+                getMixedData()
+            }
+
         }
     }
 }
