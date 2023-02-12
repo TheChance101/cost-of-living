@@ -16,7 +16,7 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
         // given city food cost not null
         val csvParser = CsvParser()
-        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, GetCityHasMoreSavingsPerMonthInteractorTest.CITY_COST_FOOD_NOT_NULL_FILE)
+        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, CITY_COST_FOOD_NOT_NULL_FILE)
         citySavings = GetCityHasMoreSavingsPerMonthInteractor(dataSource)
         val listCityData=dataSource.getAllCitiesData()
 
@@ -37,7 +37,7 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
         // given city apartment not null
         val csvParser = CsvParser()
-        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, GetCityHasMoreSavingsPerMonthInteractorTest.CITY_APARTMENT_NOT_NULL_FILE)
+        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, CITY_APARTMENT_NOT_NULL_FILE)
         citySavings = GetCityHasMoreSavingsPerMonthInteractor(dataSource)
         val listCityData=dataSource.getAllCitiesData()
 
@@ -58,7 +58,7 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
         // given city with transportations Prices null
         val csvParser = CsvParser()
-        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, GetCityHasMoreSavingsPerMonthInteractorTest.CITY_WITH_TRANSPORTATIONS_PRICES_NULL_FILE)
+        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, CITY_WITH_TRANSPORTATIONS_PRICES_NULL_FILE)
         citySavings = GetCityHasMoreSavingsPerMonthInteractor(dataSource)
         val listCityData=dataSource.getAllCitiesData()
 
@@ -79,7 +79,7 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
       // given city with average salary not null
         val csvParser = CsvParser()
-        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, GetCityHasMoreSavingsPerMonthInteractorTest.CITY_WITH_AVERAGE_SALARY_NOY_NULL_FILE)
+        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, CITY_WITH_AVERAGE_SALARY_NOY_NULL_FILE)
         citySavings = GetCityHasMoreSavingsPerMonthInteractor(dataSource)
         val listCityName=dataSource.getAllCitiesData()
 
@@ -100,7 +100,7 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
         // given city apartment and cost food not null and transportations is null
         val csvParser = CsvParser()
-        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, GetCityHasMoreSavingsPerMonthInteractorTest.CITY_WITH_TRANSPORTATIONS_PRICES_NULL_AND_APARTMENT_AND_COST_FOOD_NOT_NULL_FILE)
+        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, CITY_WITH_TRANSPORTATIONS_PRICES_NULL_AND_APARTMENT_AND_COST_FOOD_NOT_NULL_FILE)
         citySavings = GetCityHasMoreSavingsPerMonthInteractor(dataSource)
         val listCityData=dataSource.getAllCitiesData()
 
@@ -121,7 +121,7 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
         // given null food price is null
         val csvParser = CsvParser()
-        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, GetCityHasMoreSavingsPerMonthInteractorTest.NULL_CITY_FILE)
+        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, NULL_CITY_FILE)
         citySavings = GetCityHasMoreSavingsPerMonthInteractor(dataSource)
 
 
@@ -141,7 +141,7 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
         // given null apartment is null
         val csvParser = CsvParser()
-        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, GetCityHasMoreSavingsPerMonthInteractorTest.NULL_CITY_FILE)
+        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, NULL_CITY_FILE)
         citySavings = GetCityHasMoreSavingsPerMonthInteractor(dataSource)
 
 
@@ -161,7 +161,7 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
         // given  null transportations not null
         val csvParser = CsvParser()
-        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, GetCityHasMoreSavingsPerMonthInteractorTest.NULL_CITY_FILE)
+        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, NULL_CITY_FILE)
         citySavings = GetCityHasMoreSavingsPerMonthInteractor(dataSource)
 
 
@@ -181,7 +181,7 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
         // given null with transportations not null and food price And apartment is null
         val csvParser = CsvParser()
-        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, GetCityHasMoreSavingsPerMonthInteractorTest.NULL_CITY_FILE)
+        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, NULL_CITY_FILE)
         citySavings = GetCityHasMoreSavingsPerMonthInteractor(dataSource)
 
 
