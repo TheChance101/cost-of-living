@@ -7,31 +7,37 @@ class GetTopFashionCitiesNamesInteractor(
 ) {
 
     fun execute(limit: Int): List<String> {
+        if (limit <= 0) return emptyList()
         return dataSource
             .getAllCitiesData()
             .filter(::excludeNullPricesAndLowQualityData)
-            .sortedBy { it.getAveragePrice() }
+            .sortedBy { it.getClothesAveragePrice() }
             .take(limit)
             .map { it.cityName }
     }
 
-    private fun excludeNullPricesAndLowQualityData(city: CityEntity): Boolean {
-        with(city.clothesPrices!!) {
-            return onePairOfJeansLevis50oneOrSimilar != null &&
-                    onePairOfMenLeatherBusinessShoes != null &&
-                    onePairOfNikeRunningShoesMidRange != null &&
-                    oneSummerDressInAChainStoreZaraHAndM != null &&
-                    city.dataQuality!!
-        }
+    private fun excludeNullPricesAndLowQualityData(city: CityEntity) =
+        city.hasNoNullClothesPrices() && city.dataQuality
+
+    private fun CityEntity.hasNoNullClothesPrices(): Boolean {
+        val fields = clothesPrices::class.java.declaredFields
+        return fields.map {
+            it.isAccessible = true
+            it.get(clothesPrices)
+        }.any { it != null }
     }
 
-    private fun CityEntity.getAveragePrice(): Float {
-        with(clothesPrices!!) {
-            return (onePairOfJeansLevis50oneOrSimilar!! +
-                    onePairOfMenLeatherBusinessShoes!! +
-                    onePairOfNikeRunningShoesMidRange!! +
-                    oneSummerDressInAChainStoreZaraHAndM!!) / 4
-        }
+    private fun CityEntity.getClothesAveragePrice(): Float {
+        return clothesPrices::class.java.declaredFields
+            .map {
+                it.isAccessible = true
+                it.get(clothesPrices) as Float
+            }
+            .average()
+            .toFloat()
     }
+
+
+
 
 }
