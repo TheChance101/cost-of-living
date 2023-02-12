@@ -12,10 +12,10 @@ class GetCitiesNamesWithCheapestBananaPricesInteractor(private val dataSource: C
 
     private fun excludeNullBananaPriceAndIncludedCitiesNames(city: CityEntity, vararg citiesNames: String): Boolean {
         return city.fruitAndVegetablesPrices.banana1kg != null
-                && city.cityName.lowercase() in citiesNames.map(::toFormalCase)
+                && city.cityName.lowercase() in citiesNames.map(::toChangeFormatCityName)
     }
 
-    private fun toFormalCase(string: String): String {
+    private fun toChangeFormatCityName(string: String): String {
         return string.lowercase().trim()
     }
 
