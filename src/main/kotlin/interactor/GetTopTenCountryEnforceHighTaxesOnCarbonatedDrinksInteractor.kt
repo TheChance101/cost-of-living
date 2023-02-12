@@ -3,14 +3,14 @@ package interactor
 import model.CityEntity
 
 class GetTopTenCountryEnforceHighTaxesOnCarbonatedDrinksInteractor(private val dataSource: CostOfLivingDataSource) {
-    fun execute(limitCountries: Int, cities: List<CityEntity>):List<Pair<String, Float?>> {
+    fun execute(limit: Int, cities: List<CityEntity>): List<Pair<String, Float?>> {
         return cities
             .asSequence()
             .sortedBy { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants }
             .filter(::isNullONegativeCokePricesOrLowQualityData)
             .sortedByDescending { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants }
             .distinctBy { it.country }
-            .take(limitCountries)
+            .take(limit)
             .map { (it.country to it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants) }
             .toList()
     }
