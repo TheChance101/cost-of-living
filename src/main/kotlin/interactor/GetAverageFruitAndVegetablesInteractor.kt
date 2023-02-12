@@ -3,9 +3,7 @@ package interactor
 import model.CityEntity
 import model.FruitAndVegetablesPrices
 
-class GetAverageFruitAndVegetablesInteractor(
-    private val dataSource: CostOfLivingDataSource,
-) {
+class GetAverageFruitAndVegetablesInteractor(private val dataSource: CostOfLivingDataSource) {
     fun execute(): List<String> {
         return dataSource
             .getAllCitiesData()
@@ -32,7 +30,8 @@ class GetAverageFruitAndVegetablesInteractor(
     }
 
     private fun lowestCostComparingToTheSalaries(city: CityEntity): Double {
-        return city.fruitAndVegetablesPrices.getAverageFruitVegetablesPrice() / city.averageMonthlyNetSalaryAfterTax!!
+        return city.fruitAndVegetablesPrices.getAverageFruitVegetablesPrice()
+            .div(city.averageMonthlyNetSalaryAfterTax!!)
     }
 
 }
