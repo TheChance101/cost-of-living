@@ -7,7 +7,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
 
     private val cityList = mutableListOf<CityEntity>()
 
-    private val cairoHighQuality by lazy {
+    val cairoHighQuality by lazy {
         CityEntity(
             cityName = "cairo",
             country = "egypt",
@@ -33,7 +33,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
                 lettuceOneHead = 0.25f
             ),
             foodPrices = FoodPrices(
-                loafOfFreshWhiteBread500g = .5f,
+                loafOfFreshWhiteBread500g = 2f,
                 riceWhite1kg = 1f,
                 eggsRegular12 = 2f,
                 localCheese1kg = 4f,
@@ -81,7 +81,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
         )
     }
 
-    private val londonLowQuality by lazy {
+    val londonLowQuality by lazy {
         CityEntity(
             cityName = "london",
             country = "england",
@@ -150,12 +150,12 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
                 pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
                 pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
             ),
-            averageMonthlyNetSalaryAfterTax = 6000f,
+            averageMonthlyNetSalaryAfterTax = 4000f,
             dataQuality = false
         )
     }
 
-    private val parisHighQuality by lazy {
+    val parisHighQuality by lazy {
         CityEntity(
             cityName = "paris",
             country = "france",
@@ -224,7 +224,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
                 pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
                 pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
             ),
-            averageMonthlyNetSalaryAfterTax = 6000f,
+            averageMonthlyNetSalaryAfterTax = 9000f,
             dataQuality = true
         )
     }
