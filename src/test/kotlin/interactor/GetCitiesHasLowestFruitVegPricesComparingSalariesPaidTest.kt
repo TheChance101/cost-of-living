@@ -75,4 +75,25 @@ internal class GetCitiesHasLowestFruitVegPricesComparingSalariesPaidTest {
     //then
     assertFalse(listToTest.any { it.averageMonthlyNetSalaryAfterTax==0f})
     }
+    // test all the Salaries are not negative
+    @Test
+    fun shouldExcludeNegativeSalary() {
+        //given correct list that has more than 10 objects of CityEntity in the constructor
+        // when
+        val listToTest = getCities.execute()
+        //then
+        assertFalse(listToTest.any { it.averageMonthlyNetSalaryAfterTax!! < 0f})
+    }
+    // test if it was the same output data type
+    @Test
+    fun shouldReturnTheSameOutputType() {
+        //given correct list that has more than 10 objects of CityEntity in the constructor
+        // when
+        val listToTest = getCities.execute()
+        //then
+        assertTrue(listToTest is List<CityEntity>)
+       // assertTrue(true)
+
+    }
+
 }
