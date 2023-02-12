@@ -1,0 +1,6 @@
+package interactor
+
+class TopTenCountryEnforceHighTaxesOnCarbonatedDrinksInteractor {
+
+
+}
