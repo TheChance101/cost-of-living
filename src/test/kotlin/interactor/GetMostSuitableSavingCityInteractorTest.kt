@@ -13,11 +13,18 @@ class GetMostSuitableSavingCityInteractorTest {
     }
 
     @Test
-    fun should_ReturnSavingAmount_When_EnterCityAndFamilyBudget()  {
-        // given food quantity and prices
+    fun excludeNullSalaries() {
+    }
 
-        // when calc cost of living of the family
+    @Test
+    fun calculateCitySavings() {
+    }
 
-        // then check if the value is correct
+    @Test
+    fun calculateFoodCost() {
+    }
+
+    @Test
+    fun calculateFamilyBudget() {
     }
 }
