@@ -406,7 +406,7 @@ class FackeDataSource : CostOfLivingDataSource {
     }
 
     //return the first city
-    fun getAllCitiesWithSameAverage(): List<CityEntity> {
+    fun getAllCitiesWithSamePercentage(): List<CityEntity> {
         return listOf(
             // region data With Same Average
             CityEntity(
