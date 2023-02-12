@@ -24,14 +24,17 @@ internal class GetCheapestBananaPricesCitiesNamesInteractorTest() {
     fun should_ReturnCorrectList_When_EnterValidData() {
         //Given
         fakeData.setDataType(FakeDataSource.DataType.VALID)
-
+        val data = getCheapestBananaPricesCitiesNamesInteractor.getCitiesVarArgs()
         //When
         val list = getCheapestBananaPricesCitiesNamesInteractor.run {
-            execute(*getCitiesVarArgs())
+            execute(*data)
         }
-
         //Then
-        assertTrue(list.size == 20)
+        assertTrue(
+            list.size == 20 && list == data
+                .sortedByDescending { it.fruitAndVegetablesPrices.banana1kg }
+                .map { it.cityName }
+        )
     }
 
     @Test
@@ -65,9 +68,9 @@ internal class GetCheapestBananaPricesCitiesNamesInteractorTest() {
     @Test
     fun should_ReturnNotValidList_When_EnterNoData() {
         //Given empty array of CityEntities
-        val array= emptyArray<CityEntity>()
+        val array = emptyArray<CityEntity>()
 
-        //When Entering no data or empty array of CityEntities to execute()
+        //When entering no data or empty array of CityEntities to execute()
         val list = getCheapestBananaPricesCitiesNamesInteractor.execute(*array)
 
         //Then

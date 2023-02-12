@@ -11,8 +11,26 @@ class GetCheapestBananaPricesCitiesNamesInteractor(
     }
 
     fun execute(vararg cityEntities: CityEntity): List<String> {
-       if(cityEntities.isEmpty())
-           return listOf("No Data is Entered !")
-      return emptyList()
+        return if (cityEntities.isEmpty())
+            listOf("No Data is Entered !")
+        else cityEntities
+            .filter(::excludeNullBananaPrices)
+            .sortingWithBananaPrices()
+            .map { it.cityName }
+
+    }
+
+    private fun excludeNullBananaPrices(city: CityEntity): Boolean {
+        return city.fruitAndVegetablesPrices.banana1kg != null
+    }
+
+    /**
+     * Sort the list with the banana prices between CityEntities.
+     * @return sorted List<CityEntity>
+     */
+    private fun List<CityEntity>.sortingWithBananaPrices(): List<CityEntity> {
+        return this.sortedByDescending {
+            it.fruitAndVegetablesPrices.banana1kg
+        }
     }
 }
