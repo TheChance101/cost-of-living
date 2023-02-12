@@ -1,24 +1,21 @@
 package interactor
-import FakeDataSource
-import model.CityEntity
-
+import FakeData
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.function.Executable
 import kotlin.Exception
 
 
 class GetCitiesAndYearsToBuyApartmentInteractorTest {
 
-    private lateinit var fakeDataSource: FakeDataSource
+    private lateinit var fakeDataSource: FakeData
     private lateinit var interactor: GetCitiesAndYearsToBuyApartmentInteractor
 
     @BeforeEach
     fun setUp() {
-        fakeDataSource = FakeDataSource()
+        fakeDataSource = FakeData()
         interactor = GetCitiesAndYearsToBuyApartmentInteractor(fakeDataSource)
     }
 
