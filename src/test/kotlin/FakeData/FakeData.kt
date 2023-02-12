@@ -77,7 +77,11 @@ class FakeData : CostOfLivingDataSource {
                     apartment3BedroomsOutsideOfCentre = 139.0f
                 ),
                 averageMonthlyNetSalaryAfterTax = 18.0f,
+<<<<<<< HEAD
                 dataQuality =true
+=======
+                dataQuality = false
+>>>>>>> origin/feature/fastest-year-to-buy-apartment
             )
         )
         listData.add(
@@ -150,7 +154,11 @@ class FakeData : CostOfLivingDataSource {
                     apartment3BedroomsOutsideOfCentre = 220.0f
                 ),
                 averageMonthlyNetSalaryAfterTax = 50.24f,
+<<<<<<< HEAD
                 dataQuality = false
+=======
+                dataQuality = true
+>>>>>>> origin/feature/fastest-year-to-buy-apartment
             )
         )
         listData.add(
