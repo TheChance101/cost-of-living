@@ -16,10 +16,10 @@ class GetCitiesNamesSortedByCheapestBananaPrices(
     }
 
     private fun compereCitiesNamesWithInputCities(inputCity: Array<out String>, city: String): Boolean {
-        return  inputCity.map { it.toLowerCase() }.contains(city.toLowerCase())
+        return  inputCity.map { it.toLowerCase().trim() }.contains(city.toLowerCase())
     }
 
-    private fun excludeNullBananaPricesAndLowQualityData(city: CityEntity): Boolean {
+     fun excludeNullBananaPricesAndLowQualityData(city: CityEntity): Boolean {
         return city.fruitAndVegetablesPrices.banana1kg != null
     }
 
