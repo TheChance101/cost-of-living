@@ -60,17 +60,17 @@ class GetMostSuitableSavingCityInteractorTest {
     fun should_returnCorrectValue_when_AllValuesArePositive() {
         // given
         val foodPrice = FoodPrices(
-            loafOfFreshWhiteBread500g = 1.0f,
-            localCheese1kg = 2.0f,
-            beefRound1kgOrEquivalentBackLegRedMeat = 1.0f,
-            chickenFillets1kg = 3.0f,
-            riceWhite1kg = 1.0f,
+            loafOfFreshWhiteBread500g = 1.0f, // 30
+            localCheese1kg = 2.0f, // 2
+            beefRound1kgOrEquivalentBackLegRedMeat = 1.0f, // 4
+            chickenFillets1kg = 3.0f, // 30
+            riceWhite1kg = 1.0f,      // 2
             eggsRegular12 = null
         )
         // when
         val result = interactor.calculateFoodCost(foodPrice)
         // then
-        assertEquals(64f, result)
+        assertEquals(68f, result)
     }
 
     @Test
