@@ -3,9 +3,9 @@ import model.*
 
 class FakeDataSource : CostOfLivingDataSource {
 
+    private val emptyFakeDataSource = emptyList<CityEntity>()
     private val fakeDataSource =
-        listOf(
-        CityEntity(cityName=null, country="Venezuela",
+        listOf( CityEntity(cityName=null, country="Venezuela",
             mealsPrices=MealsPrices(mealInexpensiveRestaurant=10.0f, mealFor2PeopleMidRangeRestaurant=50.0f, mealAtMcDonaldSOrEquivalent=10.0f),
             drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.74f, cokePepsiAThirdOfLiterBottleInRestaurants=1.12f, waterAThirdOfLiterBottleInRestaurants=0.82f, milkRegularOneLiter=1.84f, waterOneAndHalfLiterBottleAtTheMarket=1.23f),
             fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.17f, banana1kg=1.09f, oranges1kg=1.52f, tomato1kg=1.41f, potato1kg=1.56f, onion1kg=1.62f, lettuceOneHead=1.03f),
@@ -39,7 +39,7 @@ class FakeDataSource : CostOfLivingDataSource {
             transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.2f, monthlyPassRegularPrice=12.21f, taxiStartNormalTariff=0.31f, taxi1kmNormalTariff=0.2f, taxi1hourWaitingNormalTariff=1.22f, gasolineOneLiter=0.38f),
             carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=18314.05f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=14500.08f),
             realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=118.53f, apartmentOneBedroomOutsideOfCentre=55.96f, apartment3BedroomsInCityCentre=195.35f, apartment3BedroomsOutsideOfCentre=150.58f, pricePerSquareMeterToBuyApartmentInCityCentre=406.98f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=228.93f),
-            averageMonthlyNetSalaryAfterTax=171.51f, dataQuality=true)
+            averageMonthlyNetSalaryAfterTax=0.0f, dataQuality=true)
         ,
         CityEntity(cityName="Rawalpindi", country="Pakistan",
             mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.23f, mealFor2PeopleMidRangeRestaurant=8.94f, mealAtMcDonaldSOrEquivalent=2.68f),
@@ -226,7 +226,7 @@ class FakeDataSource : CostOfLivingDataSource {
             averageMonthlyNetSalaryAfterTax=125.87f,
             dataQuality=true),
 
-        CityEntity(cityName="Colombo", country="Sri Lanka",
+        CityEntity(cityName="Colomb", country="Sri Lanka",
             mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
             drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
             fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
@@ -244,5 +244,6 @@ class FakeDataSource : CostOfLivingDataSource {
     override fun getAllCitiesData(): List<CityEntity> {
         return fakeDataSource
     }
+
 }
 

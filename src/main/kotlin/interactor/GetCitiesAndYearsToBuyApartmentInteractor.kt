@@ -1,18 +1,19 @@
 package interactor
 
 import model.CityEntity
+import interactor.util.Extension.toFormat
 
 class GetCitiesAndYearsToBuyApartmentInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
 
-    fun execute(limit: Int): List<Pair<String?,String>>? =
-        dataSource.let {
-            it.getAllCitiesData()
+    fun execute(limit: Int): List<Pair<String?,String>> =
+        dataSource
+            .getAllCitiesData()
             .filter(::excludeNullValueAndLowQualityData)
             .sortedBy(::calculateYearsNeededToBuyApartment)
             .take(limit)
-        }.map { Pair(it.cityName, "${calculateYearsNeededToBuyApartment(it)} year") }
+            .map { Pair(it.cityName, "${calculateYearsNeededToBuyApartment(it)} year") }
 
 
     private fun excludeNullValueAndLowQualityData(city: CityEntity): Boolean =
@@ -30,8 +31,5 @@ class GetCitiesAndYearsToBuyApartmentInteractor(
              ( it.averageMonthlyNetSalaryAfterTax!! * 12)).toFormat()
         }
 
-    private fun Float.toFormat(limit : Int = 1) : Float{
-        return String.format("%.${limit}f", this).toFloat()
-    }
 
 }
