@@ -30,6 +30,7 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         //Then
         assertTrue(actualResult)
     }
+
     @Test
     fun should_ReturnFalse_When_CitiesHasNotAnAverageMonthlySalary() {
         //Given
@@ -39,6 +40,7 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         //Then
         assertFalse(actualResult)
     }
+
     @Test
     fun should_ReturnTrue_When_CitiesHasAnApartment3BedroomsInCityCenter() {
         //Given
@@ -48,6 +50,7 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         //Then
         assertTrue(actualResult)
     }
+
     @Test
     fun should_ReturnFalse_When_CitiesHasNotAnApartment3BedroomsInCityCenter() {
         //Given
@@ -57,6 +60,7 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         //Then
         assertFalse(actualResult)
     }
+
     @Test
     fun should_ReturnTrue_When_CitiesHasTheNeededFoodies() {
         //Given
@@ -66,6 +70,7 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         //Then
         assertTrue(actualResult)
     }
+
     @Test
     fun should_ReturnFalse_When_CitiesHasNotTheNeededFoodies() {
         //Given
@@ -75,5 +80,6 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         //Then
         assertFalse(actualResult)
     }
+
 
 }

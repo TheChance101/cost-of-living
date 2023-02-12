@@ -19,6 +19,7 @@ class GetSuitableCityMoreSavingPerMonthInteractor(private val dataSource: CostOf
     fun excludeNullApartment3BedroomsInCityCenter(city: CityEntity): Boolean {
         return city.realEstatesPrices.apartment3BedroomsInCityCentre != null
     }
+
     fun excludeNullFoodies(city: CityEntity): Boolean {
         return city.foodPrices.localCheese1kg != null
                 && city.foodPrices.loafOfFreshWhiteBread500g != null
@@ -27,4 +28,7 @@ class GetSuitableCityMoreSavingPerMonthInteractor(private val dataSource: CostOf
                 && city.foodPrices.riceWhite1kg != null
     }
 
+    fun isSuitableApartment(city: CityEntity): Boolean {
+        return false
+    }
 }
