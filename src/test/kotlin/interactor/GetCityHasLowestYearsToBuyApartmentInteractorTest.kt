@@ -8,6 +8,7 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.unmockkAll
 import model.CityEntity
+import org.jetbrains.annotations.Nullable
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
@@ -23,7 +24,6 @@ class GetCityHasLowestYearsToBuyApartmentInteractorTest {
         fun setUp (){
             fakeData = FakeData()
             converter = GetCityHasLowestYearsToBuyApartmentInteractor(fakeData)
-
         }
     @Test
     fun should_ReturnCorrectListOfCitiesAndNumberOfYearsToBuyApartment_when_EnterFullTimeSalary() {
@@ -34,6 +34,17 @@ class GetCityHasLowestYearsToBuyApartmentInteractorTest {
         //then
          assertEquals(listOf(Pair("",0.0f)),resultList)
     }
+    @Test
+    fun should_ReturnNullupleList_When_EnterFullTimeSalaryEqualZero (){
+        //given
+        val fullTimeSalary = 0
+        //when
+        val resultList = converter.execute(fullTimeSalary)
+        //then
+        assertNull(resultList)
+
+    }
+
 
 
 }
