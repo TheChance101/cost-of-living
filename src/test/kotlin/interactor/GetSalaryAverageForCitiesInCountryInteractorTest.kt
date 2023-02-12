@@ -28,46 +28,48 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest(
 
     @Test
     fun should_ReturnCitiesNameAndSalariesAverage_When_CountryNameIsUppercase() {
-        // Given
+        // Given country name Uppercase
         val countryName = "CUBA"
-        // When
+        // When averageSalary not null and high dataQuality
         val actualPairList = getSalaryAverageForCitiesInCountryInteractor.execute(countryName)
-        // Then
+        // Then return a list of pair of city name and average salary
         assertEquals(listOf(Pair("Santiago de Cuba", 18.0f)), actualPairList)
-
     }
 
     @Test
     fun should_ReturnCitiesNameAndSalariesAverage_When_CountryNameIsLowercase() {
-        // Given
+        // Given country name Lowercase
         val countryName = "egypt"
-        // When
+        // When averageSalary not null and high dataQuality
         val actualPairList = getSalaryAverageForCitiesInCountryInteractor.execute(countryName)
-        // Then
+         // Then return a list of pair of city name and average salary
         assertEquals(listOf(Pair("Tanta", 101.74f)), actualPairList)
     }
 
     @Test
     fun should_ReturnCitiesNameAndSalariesAverage_When_CountryNameIsMixed() {
-        // Given
+        // Given country name Mix of Uppercase and Lowercase
         val countryName = "SyRia"
-        // When
+        // When averageSalary not null and high dataQuality
         val actualPairList = getSalaryAverageForCitiesInCountryInteractor.execute(countryName)
-        // Then
+        // Then return a list of pair of city name and average salary
         assertEquals(listOf(Pair("Damascus", 50.24f)), actualPairList)
     }
 
     @Test
     fun should_ReturnException_When_CountryNameIsEmpty() {
+        // Given empty country name
         val countryName = ""
+        // When country name is empty
         val salary: Executable = Executable { getSalaryAverageForCitiesInCountryInteractor.execute(countryName) }
+        // Then return Throw Exception
         assertThrows(Exception::class.java, salary)
     }
 
     @Test
-    fun should_ReturnFalse_When_SalariesNotEqualNullAndDoNotAvoidLowQualityData() {
-        // Given
-        val cityName = CityEntity(
+    fun should_ReturnFalse_When_SalariesNotEqualNullOrNotAvoidLowQualityData() {
+        // Given cityEntity
+        val city = CityEntity(
             cityName = "Santiago de Cuba",
             country = "Cuba",
             mealsPrices = MealsPrices(
@@ -136,16 +138,16 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest(
             averageMonthlyNetSalaryAfterTax = 18.0f,
             dataQuality = false
         )
-        // When
-        val result = getSalaryAverageForCitiesInCountryInteractor.excludeNullSalariesAndLowQualityData(cityName)
+        // When averageSalary not null and low dataQuality
+        val result = getSalaryAverageForCitiesInCountryInteractor.excludeNullSalariesAndLowQualityData(city)
 
-        // Then
+        // Then return false
         assertFalse(result)
     }
 
     @Test
     fun should_ReturnTrue_When_SalariesNotEqualNullAndAvoidLowQualityData() {
-        // Given
+        // Given cityEntity
         val city = CityEntity(
             cityName = "Tanta",
             country = "Egypt",
@@ -216,10 +218,10 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest(
             dataQuality = true
         )
 
-        // When
+        // When averageSalary not null and high dataQuality
         val result = getSalaryAverageForCitiesInCountryInteractor.excludeNullSalariesAndLowQualityData(city)
 
-        // Then
+        // Then return true
         assertTrue(result)
     }
 
