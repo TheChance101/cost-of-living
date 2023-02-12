@@ -34,4 +34,45 @@ internal class GetCitiesHasLowestFruitVegPricesComparingSalariesPaidTest {
         assertEquals(correctTestedList,listToTest)
     }
 
+    // test all the cities name are not null
+    @Test
+    fun shouldExcludeNoNameCity() {
+        //given correct list that has more than 10 objects of CityEntity in the constructor
+        // when
+        val listToTest = getCities.execute()
+        //then
+       assertFalse(listToTest.any { it.cityName.equals("") })
+    }
+
+
+    // test we have just 10 cities
+    @Test
+    fun shouldInclude10Cities() {
+        //given correct list that has more than 10 objects of CityEntity in the constructor
+        // when
+        val listToTest = getCities.execute()
+        //then
+
+        assertEquals(10,listToTest.size)
+    }
+
+    // test the salary is not null
+    @Test
+    fun shouldExcludeNullSalary() {
+        //given correct list that has more than 10 objects of CityEntity in the constructor
+        // when
+        val listToTest = getCities.execute()
+        //then
+        assertFalse(listToTest.any { it.averageMonthlyNetSalaryAfterTax==null})
+    }
+
+  // test the salary is not 0
+    @Test
+    fun shouldExcludeZeroSalary() {
+    //given correct list that has more than 10 objects of CityEntity in the constructor
+    // when
+    val listToTest = getCities.execute()
+    //then
+    assertFalse(listToTest.any { it.averageMonthlyNetSalaryAfterTax==0f})
+    }
 }
