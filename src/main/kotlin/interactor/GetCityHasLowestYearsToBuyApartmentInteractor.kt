@@ -11,6 +11,6 @@ class GetCityHasLowestYearsToBuyApartmentInteractor(
 
     }
     fun excludeNullPriceOfApartmentAndLowQualityData(city: CityEntity): Boolean {
-        TODO(" Not implemented yet ")
+        return city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre != null &&  city.dataQuality
     }
 }
