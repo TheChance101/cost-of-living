@@ -31,6 +31,7 @@ class GetTopTenCountryEnforceHighTaxesOnCarbonatedDrinksInteractorTest {
         assertEquals(10, result.size)
     }
 
+
     @Test
     fun throwNullException() {
         lateinit var list : List<CityEntity>
