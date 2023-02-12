@@ -75,7 +75,7 @@ class GetCityHasCheapestMealPricesInteractorTest {
     }
 
     @Test
-    fun `should return false when the city has no average meal price and low`(){
+    fun `should return false when the city has no averageMeal price and InexpensiveMeal`(){
         // given
         val city: CityEntity = mockk()
         every { city.mealsPrices.mealFor2PeopleMidRangeRestaurant  } returns null
@@ -87,7 +87,7 @@ class GetCityHasCheapestMealPricesInteractorTest {
     }
 
     @Test
-    fun `should return false when the city has no average meal price and high`(){
+    fun `should return false when the city has no averageMeal price and Expensive`(){
 
         val city: CityEntity = mockk()
         every { city.mealsPrices.mealFor2PeopleMidRangeRestaurant  } returns null
@@ -100,7 +100,7 @@ class GetCityHasCheapestMealPricesInteractorTest {
     }
 
     @Test
-    fun `should return false when the city has average meal price  and low is zero`(){
+    fun `should return false when the city has averageMeal price and InexpensiveMeal is zero`(){
         // given
         val city: CityEntity = mockk()
         every { city.mealsPrices.mealFor2PeopleMidRangeRestaurant  } returns 0.0F
@@ -112,7 +112,7 @@ class GetCityHasCheapestMealPricesInteractorTest {
     }
 
     @Test
-    fun `should return false when the city has average meal price  and high is zero`(){
+    fun `should return false when the city has averageMeal price and ExpensiveMeal is zero`(){
         // given
         val city: CityEntity = mockk()
         every { city.mealsPrices.mealFor2PeopleMidRangeRestaurant  } returns 0.0F
@@ -124,9 +124,8 @@ class GetCityHasCheapestMealPricesInteractorTest {
         assertEquals(false, result)
     }
 
-
     @Test
-    fun `should return false when the city has no average meal price`(){
+    fun `should return true when the city has InexpensiveMeal and ExpensiveMeal`(){
         // given
         val city: CityEntity = mockk()
         every { city.mealsPrices.mealFor2PeopleMidRangeRestaurant } returns null
@@ -139,5 +138,54 @@ class GetCityHasCheapestMealPricesInteractorTest {
         assertEquals(true, result)
     }
 
+    @Test
+    fun `should return true when the city has AverageMeal`(){
+        // given
+        val city: CityEntity = mockk()
+        every { city.mealsPrices.mealFor2PeopleMidRangeRestaurant } returns 6.0F
+        every {  city.mealsPrices.mealInexpensiveRestaurant  } returns 6.0F
+        every {  city.mealsPrices.mealAtMcDonaldSOrEquivalent  } returns 2.0F
+
+        // when
+        val result = sut.isCityHasAverageMealPrice(city)
+        // then
+        assertEquals(true, result)
+    }
+
+    @Test
+    fun `should return zero when has no midMeal and no expensive meal`(){
+        val city: CityEntity = mockk()
+        every { city.mealsPrices.mealFor2PeopleMidRangeRestaurant  } returns null
+        every {  city.mealsPrices.mealInexpensiveRestaurant  } returns 5.0F
+        every {  city.mealsPrices.mealAtMcDonaldSOrEquivalent  } returns 0.0F
+        // when
+        val result = sut.getAverageMealInCity(city)
+        // then
+        assertEquals(0.0F, result)
+    }
+
+    @Test
+    fun `should return number when has inExpensive and expensive meal`(){
+        val city: CityEntity = mockk()
+        every { city.mealsPrices.mealFor2PeopleMidRangeRestaurant  } returns 0.0F
+        every {  city.mealsPrices.mealInexpensiveRestaurant  } returns 3.0F
+        every {  city.mealsPrices.mealAtMcDonaldSOrEquivalent  } returns 5.0F
+        // when
+        val result = sut.getAverageMealInCity(city)
+        // then
+        assertEquals(4.0F, result)
+    }
+
+    @Test
+    fun `should return zero when has no average meal`(){
+        val city: CityEntity = mockk()
+        every { city.mealsPrices.mealFor2PeopleMidRangeRestaurant  } returns 0.0F
+        every {  city.mealsPrices.mealInexpensiveRestaurant  } returns 0.0F
+        every {  city.mealsPrices.mealAtMcDonaldSOrEquivalent  } returns 0.0F
+        // when
+        val result = sut.getAverageMealInCity(city)
+        // then
+        assertEquals(0.0F, result)
+    }
 
 }
