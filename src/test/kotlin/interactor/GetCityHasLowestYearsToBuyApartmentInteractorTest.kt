@@ -44,6 +44,16 @@ class GetCityHasLowestYearsToBuyApartmentInteractorTest {
         assertNull(resultList)
 
     }
+    @Test
+    fun Should_Return_Wehn_EnterNegativeNumberOfFullTimeSallary(){
+        //given
+        val fullTimeSalary = -100
+        //when
+        val resultList: org.junit.jupiter.api.function.Executable = org.junit.jupiter.api.function.Executable { converter.execute(fullTimeSalary) }
+        // then eception should be thrown
+        assertThrows(Exception::class.java , resultList)
+    }
+
 
 
 
