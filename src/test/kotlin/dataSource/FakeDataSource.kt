@@ -7,7 +7,7 @@ import com.appmattus.kotlinfixture.kotlinFixture
 import interactor.CostOfLivingDataSource
 import model.CityEntity
 
-class FakeDataSource() : CostOfLivingDataSource {
+class FakeDataSource : CostOfLivingDataSource {
 
     enum class DataType {
 
@@ -62,11 +62,6 @@ class FakeDataSource() : CostOfLivingDataSource {
 
     /**
      * retrieve data from FakeDataSource depending on the needed type
-     */
-    private fun getDataWithLowQuality() = lowQualityFixture<List<CityEntity>>()
-
-    /**
-     * retrieve data from FakeDataSource depending on the type needed
      * @return List<CityEntity>
      */
     override fun getAllCitiesData(): List<CityEntity> {
