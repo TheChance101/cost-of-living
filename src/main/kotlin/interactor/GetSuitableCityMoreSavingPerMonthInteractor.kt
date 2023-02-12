@@ -12,7 +12,7 @@ class GetSuitableCityMoreSavingPerMonthInteractor(private val dataSource: CostOf
         return ""
     }
 
-    private fun excludeNullSalaries(city: CityEntity): Boolean {
+    fun excludeNullSalaries(city: CityEntity): Boolean {
         return city.averageMonthlyNetSalaryAfterTax != null
     }
 
