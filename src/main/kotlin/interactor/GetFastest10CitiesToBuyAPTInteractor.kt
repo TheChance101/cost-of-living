@@ -16,7 +16,7 @@ class GetFastest10CitiesToBuyAPTInteractor(
      * @return  if the salary is not equal to `null`.
      * @author Abdurrahman Salah ad-Din
      */
-    fun excludeNullSalaries(cityEntity: CityEntity) = false
+    fun excludeInvalidSalaries(cityEntity: CityEntity) = false
 
     /**
      * Returns `true` for high quality data and `false` for low quality data.
@@ -33,5 +33,5 @@ class GetFastest10CitiesToBuyAPTInteractor(
      * @return  if the `pricePerSquareMeterToBuyApartmentOutsideOfCentre` is not equal to `null`.
      * @author Abdurrahman Salah ad-Din
      */
-    fun excludeNullApartmentPrice(cityEntity: CityEntity) = false
+    fun excludeInvalidApartmentPrice(cityEntity: CityEntity) = false
 }
