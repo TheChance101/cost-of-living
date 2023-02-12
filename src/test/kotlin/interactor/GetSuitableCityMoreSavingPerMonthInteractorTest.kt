@@ -92,7 +92,7 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
     @Test
     fun should_ReturnFalse_When_CitiesHasNotSuitableApartment() {
         //Given
-        val fakeCity: CityEntity = fakeData.getAllCitiesData()[1]
+        val fakeCity: CityEntity = fakeData.getAllCitiesData()[2]
         //When
         val actualResult = getSuitableCityMoreSavingPerMonth.isSuitableApartment(fakeCity)
         //Then

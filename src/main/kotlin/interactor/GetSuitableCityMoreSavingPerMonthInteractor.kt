@@ -29,6 +29,10 @@ class GetSuitableCityMoreSavingPerMonthInteractor(private val dataSource: CostOf
     }
 
     fun isSuitableApartment(city: CityEntity): Boolean {
-        return false
+        return (city.averageMonthlyNetSalaryAfterTax)!! * 2 > (city.realEstatesPrices.apartment3BedroomsInCityCentre!!)
     }
+    fun getMonthlySalariesInAllCities(): List<Pair<String, Float?>> {
+        return emptyList()
+    }
+
 }
