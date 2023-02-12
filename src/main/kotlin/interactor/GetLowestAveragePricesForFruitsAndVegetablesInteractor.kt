@@ -6,34 +6,24 @@ class GetLowestAveragePricesForFruitsAndVegetablesInteractor (
     private val data: CostOfLivingDataSource
 ){
     fun execute(limit: Int): List<String> {
-
-        val mapOfCitiesNamesAndPricesRatio =
-            createMap(
-                data.
-                getAllCitiesData().
-                filter(::excludeNullSalariesAndLowQualityDataAndNullFruitsAndVegetablesPrices))
-
-        return mapOfCitiesNamesAndPricesRatio.toList().sortedBy { it.second }.map { it.first }.take(limit)
+        return  data
+            .getAllCitiesData()
+            .filter(::excludeNullSalariesAndLowQualityDataAndNullFruitsAndVegetablesPrices)
+            .sortedBy {getRatio(it)}
+            .map { it.cityName }
+            .take(limit)
     }
 
+    private fun getRatio(city: CityEntity):Float{
 
-    private fun createMap(city: List<CityEntity>): Map<String, Float>  {
-        val mapOfCitiesNamesAndPricesRatio = mutableMapOf<String, Float>()
-        for (price in city) {
-            val prices =
-                price.fruitAndVegetablesPrices.apples1kg!! +
-                        price.fruitAndVegetablesPrices.banana1kg!! +
-                        price.fruitAndVegetablesPrices.oranges1kg!! +
-                        price.fruitAndVegetablesPrices.tomato1kg!! +
-                        price.fruitAndVegetablesPrices.potato1kg!! +
-                        price.fruitAndVegetablesPrices.onion1kg!! +
-                        price.fruitAndVegetablesPrices.lettuceOneHead!!
-
-            mapOfCitiesNamesAndPricesRatio[price.cityName] = price.averageMonthlyNetSalaryAfterTax!! / prices
-        }
-
-        return mapOfCitiesNamesAndPricesRatio
-
+        return (city.fruitAndVegetablesPrices.apples1kg!! +
+                city.fruitAndVegetablesPrices.banana1kg!! +
+                city.fruitAndVegetablesPrices.oranges1kg!! +
+                city.fruitAndVegetablesPrices.tomato1kg!! +
+                city.fruitAndVegetablesPrices.potato1kg!! +
+                city.fruitAndVegetablesPrices.onion1kg!! +
+                city.fruitAndVegetablesPrices.lettuceOneHead!!
+                )/city.averageMonthlyNetSalaryAfterTax!!
     }
 
     private fun excludeNullSalariesAndLowQualityDataAndNullFruitsAndVegetablesPrices(city: CityEntity): Boolean {
@@ -47,5 +37,4 @@ class GetLowestAveragePricesForFruitsAndVegetablesInteractor (
                 city.fruitAndVegetablesPrices.onion1kg != null &&
                 city.fruitAndVegetablesPrices.lettuceOneHead != null
         }
-
 }
