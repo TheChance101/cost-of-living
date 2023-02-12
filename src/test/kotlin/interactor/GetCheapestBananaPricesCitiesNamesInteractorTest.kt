@@ -41,11 +41,11 @@ internal class GetCheapestBananaPricesCitiesNamesInteractorTest() {
     fun should_ReturnEmptyList_When_EnterNullForAllBananaPrices() {
         //Given
         fakeData.setDataType(FakeDataSource.DataType.NULLABLE)
-        //When
+        val data = getCheapestBananaPricesCitiesNamesInteractor.getCitiesVarArgs()
+        //When entering null for all banana prices
         val list = getCheapestBananaPricesCitiesNamesInteractor.run {
-            execute(*getCitiesVarArgs())
+            execute(*data)
         }
-
         //Then
         assertTrue(list.isEmpty())
     }
