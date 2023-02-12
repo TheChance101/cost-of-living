@@ -1,10 +1,11 @@
-package model
+package dataSource
 
 import com.appmattus.kotlinfixture.decorator.nullability.AlwaysNullStrategy
 import com.appmattus.kotlinfixture.decorator.nullability.NeverNullStrategy
 import com.appmattus.kotlinfixture.decorator.nullability.nullabilityStrategy
 import com.appmattus.kotlinfixture.kotlinFixture
 import interactor.CostOfLivingDataSource
+import model.CityEntity
 
 class FakeDataSource() : CostOfLivingDataSource {
 
