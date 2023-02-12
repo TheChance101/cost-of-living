@@ -27,17 +27,19 @@ internal class TestGetHighestDifferenceBetweenCityCenterAndOutsideCityCenter {
         "Havana",
         "Damascus",
         "Tanta",
-        "Multan"
+//        City("Havana").toString(),
+//        City("Damascus"),
+//        City("Tanta"),
+//        City("Multan")
     )
 
     @Test
     fun testGetHighestDifference_returnsCorrect_OneBedRoom_BetweenInCityCenter_OutCityCenter() {
         //given
-
         val expectedResult  = listOf(cities[0])
         //when
+
         val result = rating.execute_DifferentPayRentingBetweenIntCityCenter_OutCitycenter(1)
-        //then
         assertEquals(expectedResult,result)
     }
 

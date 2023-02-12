@@ -24,6 +24,14 @@ class GetHighestDifferenceBetweenCityCenterAndOutsideCityCenter(
             .take(limit)
             .map { it.cityName }
     }
+    fun execute_DifferentPayRentingBetween3BedRoom_IntCityCenter_OutCitycenter( limit: Int ): List<String> {
+        return dataSource
+            .getAllCitiesData()
+            .filter(::excludeNullDataAndLowQuality)
+            .sortedByDescending { it.realEstatesPrices.apartment3BedroomsInCityCentre!! - it.realEstatesPrices.apartment3BedroomsOutsideOfCentre!! }
+            .take(limit)
+            .map { it.cityName }
+    }
 
     private fun excludeNullDataAndLowQuality(city: CityEntity): Boolean {
         return city.realEstatesPrices != null && city.realEstatesPrices != null && city.dataQuality
