@@ -1,7 +1,7 @@
 package interactor
 
+import dataSource.FakeDataSource
 import model.CityEntity
-import model.FakeDataSource
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -33,6 +33,16 @@ internal class GetTenCitiesHaveTheAverageOfFruitsAndVegetablesPricesInteractorTe
     fun should_ReturnTheTenCitiesName_When_TheDataIsNull() {
         //given
         fakeData.setDataType(FakeDataSource.DataType.NULLABLE)
+        //When
+        val result = getTenCitiesHaveTheAverageOfFruitsAndVegetablesPricesInteractor.execute()
+        //Then
+        assertTrue(result.isEmpty())
+    }
+
+    @Test
+    fun should_ReturnTheTenCitiesName_When_TheDataIsMixture() {
+        //given
+        fakeData.setDataType(FakeDataSource.DataType.MIXTURE)
         //When
         val result = getTenCitiesHaveTheAverageOfFruitsAndVegetablesPricesInteractor.execute()
         //Then
