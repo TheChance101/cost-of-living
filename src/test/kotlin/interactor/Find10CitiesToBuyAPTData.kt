@@ -919,3 +919,28 @@ fun getVariousData()=object : CostOfLivingDataSource {
         )
     }
 }
+
+fun getCityWithCustomNeeds(apartmentPrice: Float?, salary: Float?, dataQuality: Boolean): CityEntity {
+    return CityEntity(
+        "City10",
+        "Country10",
+        MealsPrices(null, null, null),
+        DrinksPrices(null, null, null, null, null),
+        FruitAndVegetablesPrices(null, null, null, null, null, null, null),
+        FoodPrices(null, null, null, null, null, null),
+        ServicesPrices(null, null, null, null, null, null, null, null),
+        ClothesPrices(null, null, null, null),
+        TransportationsPrices(null, null, null, null, null, null),
+        CarsPrices(null, null),
+        RealEstatesPrices(
+            apartmentOneBedroomInCityCentre = null,
+            apartmentOneBedroomOutsideOfCentre = null,
+            apartment3BedroomsInCityCentre = null,
+            apartment3BedroomsOutsideOfCentre = null,
+            pricePerSquareMeterToBuyApartmentInCityCentre = null,
+            pricePerSquareMeterToBuyApartmentOutsideOfCentre = apartmentPrice
+        ),
+        salary,
+        dataQuality
+    )
+}
