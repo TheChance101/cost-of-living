@@ -22,11 +22,11 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
 
         // when find the most  city in the world have more savings per month.
-        val getCityCostFoodNotNull = citySavings.execute()
+        val getCity = citySavings.execute()
 
 
-        //done
-        assertEquals(listCityData[0],getCityCostFoodNotNull)
+        // done
+        assertEquals(listCityData[0],getCity)
 
 
     }
@@ -43,11 +43,11 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
 
         // when find the most  city in the world have more savings per month.
-        val getCityCostFoodNotNull = citySavings.execute()
+        val getCity = citySavings.execute()
 
 
-        //done
-        assertEquals(listCityData[0],getCityCostFoodNotNull)
+        // done
+        assertEquals(listCityData[0],getCity)
 
 
     }
@@ -64,11 +64,11 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
 
         // when find the most  city in the world have more savings per month.
-        val getCityCostFoodNotNull = citySavings.execute()
+        val getCity = citySavings.execute()
 
 
-        //done
-        assertEquals(listCityData[0],getCityCostFoodNotNull)
+        // done
+        assertEquals(listCityData[0],getCity)
 
 
     }
@@ -77,7 +77,7 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
     @Test
     fun should_ReturnCity_When_AverageSalaryNotNull(){
 
-      // given city with average salary not null
+        // given city with average salary not null
         val csvParser = CsvParser()
         val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, CITY_WITH_AVERAGE_SALARY_NOY_NULL_FILE)
         citySavings = GetCityHasMoreSavingsPerMonthInteractor(dataSource)
@@ -85,11 +85,11 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
 
         // when find the most  city in the world have more savings per month.
-        val getCityCostFoodNotNull = citySavings.execute()
+        val getCity = citySavings.execute()
 
 
-        //done
-        assertEquals(listCityName[0],getCityCostFoodNotNull)
+        // done
+        assertEquals(listCityName[0],getCity)
 
 
     }
@@ -106,14 +106,16 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
 
         // when find the most  city in the world have more savings per month.
-        val getCityCostFoodNotNull = citySavings.execute()
+        val getCity = citySavings.execute()
 
 
-        //done
-        assertEquals(listCityData[0],getCityCostFoodNotNull)
+        // done
+        assertEquals(listCityData[0],getCity)
 
 
     }
+
+
 
 
     @Test
@@ -126,11 +128,11 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
 
         // when find the most  city in the world have more savings per month.
-        val getCityNull = citySavings.execute()
+        val getNull = citySavings.execute()
 
 
-        //done
-        assertNull(getCityNull)
+        // done
+        assertNull(getNull)
 
 
     }
@@ -146,11 +148,11 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
 
         // when find the most  city in the world have more savings per month.
-        val getCityNull = citySavings.execute()
+        val getNull = citySavings.execute()
 
 
-        //done
-        assertNull(getCityNull)
+        // done
+        assertNull(getNull)
 
 
     }
@@ -166,11 +168,11 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
 
         // when find the most  city in the world have more savings per month.
-        val getCityNull = citySavings.execute()
+        val getNull = citySavings.execute()
 
 
-        //done
-        assertNull(getCityNull)
+        // done
+        assertNull(getNull)
 
 
     }
@@ -186,11 +188,11 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
 
         // when find the most  city in the world have more savings per month.
-        val getCityNull = citySavings.execute()
+        val getNull = citySavings.execute()
 
 
         //done
-        assertNull(getCityNull)
+        assertNull(getNull)
 
     }
 

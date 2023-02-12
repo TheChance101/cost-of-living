@@ -66,9 +66,9 @@ private fun countSavingsPerMonth(city: CityEntity): Float {
                 city.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
             )
 
-    val otherNeed = 250
+    val otherNeeds = 250
 
-    return (salaryMonth).minus(foodPricesAndApartment).minus(otherNeed)
+    return (salaryMonth).minus(foodPricesAndApartment).minus(otherNeeds)
 
 }
 
