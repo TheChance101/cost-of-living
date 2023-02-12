@@ -1,5 +1,7 @@
 package interactor
 
+import interactor.util.Constants.COUNTRY_WAS_NOT_FOUND
+import interactor.util.formatSentence
 import model.CityEntity
 
 class GetCountryCitiesAverageSalaryInteractor(
@@ -8,15 +10,18 @@ class GetCountryCitiesAverageSalaryInteractor(
 
     fun execute(country: String): List<Pair<String, Float>> {
         val citiesSalaries =  dataSource.getAllCitiesData()
-            .filter { it.country.format_sentence() == country.format_sentence() && excludeNullSalariesAndLowQualityData(it) }
+            .filter { searchCountry(it,country) && excludeNullSalariesAndLowQualityData(it) }
             .map { Pair(it.cityName, it.averageMonthlyNetSalaryAfterTax!!) }
-        if (citiesSalaries.isEmpty()) throw Exception("country was not found !")
+        if (citiesSalaries.isEmpty()) throw Exception(COUNTRY_WAS_NOT_FOUND)
 
         return citiesSalaries
     }
-    fun String.format_sentence() = this.lowercase().trim().replace(Regex(" +"), " ")
+
     private fun excludeNullSalariesAndLowQualityData(city: CityEntity): Boolean {
         return city.averageMonthlyNetSalaryAfterTax != null && city.dataQuality
+    }
+    private fun searchCountry(city: CityEntity,country: String): Boolean {
+        return city.country.formatSentence() == country.formatSentence()
     }
 
 
