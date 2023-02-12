@@ -3,13 +3,19 @@ package interactor
 import model.CityEntity
 
 class GetCityHasCheapestInternetConnectionInteractor(
-    private val dataSource: CostOfLivingDataSource,
+    private val dataSource: CostOfLivingDataSource
 ) {
 
-    fun execute(): CityEntity{
-        throw Throwable("Not Implemented yet")
+    fun execute(): CityEntity? {
+        val citiesData = dataSource.getAllCitiesData()
+        val citiesWithInternetData = citiesData.filter {
+            it.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl != null &&
+                    it.averageMonthlyNetSalaryAfterTax != null
+        }
+
+        return citiesWithInternetData.minByOrNull {
+            (it.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl!! / it.averageMonthlyNetSalaryAfterTax!!)
+        }
     }
-
-
 
 }
