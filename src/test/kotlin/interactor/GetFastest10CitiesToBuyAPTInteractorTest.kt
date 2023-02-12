@@ -503,5 +503,17 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
 
     }
 
+    // should skip low quality data
+
+    // should skip missing monthly salary average
+
+    // should skip missing price per square meter outside centre
+
+    // list size should  be 10
+
+    // list should be sorted
+
+    // should return correct data
+
 
 }
