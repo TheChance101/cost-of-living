@@ -13,6 +13,7 @@ class GetCitiesNamesSortedByCheapestBananaPriceInteractorTest {
     @Test
     fun should_ignore_entries_with_null_city_name_or_banana_price() {
         val cities: List<CityEntity> = citiesWithNullBananaPrice()
+
         val sorted = getCitiesNamesSortedByCheapestBananaPriceInteractor.execute(*cities.toTypedArray())
 
         assertEquals(1, sorted.size)
@@ -24,7 +25,7 @@ class GetCitiesNamesSortedByCheapestBananaPriceInteractorTest {
 
         val sorted = getCitiesNamesSortedByCheapestBananaPriceInteractor.execute(*cities.toTypedArray())
 
-        val expected = listOf<String>("B", "A")
+        val expected = listOf("B", "A")
 
         assertEquals(expected, sorted)
     }
