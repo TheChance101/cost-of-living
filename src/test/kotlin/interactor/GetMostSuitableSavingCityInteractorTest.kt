@@ -57,10 +57,71 @@ class GetMostSuitableSavingCityInteractorTest {
     }
 
     @Test
-    fun calculateFoodCost() {
-        // given  value
+    fun should_returnCorrectValue_when_AllValuesArePositive() {
+        // given
+        val foodPrice = FoodPrices(
+            loafOfFreshWhiteBread500g = 1.0f,
+            localCheese1kg = 2.0f,
+            beefRound1kgOrEquivalentBackLegRedMeat = 1.0f,
+            chickenFillets1kg = 3.0f,
+            riceWhite1kg = 1.0f,
+            eggsRegular12 = null
+        )
         // when
+        val result = interactor.calculateFoodCost(foodPrice)
         // then
+        assertEquals(64f, result)
+    }
+
+    @Test
+    fun should_returnZero_when_AllValuesAreNull() {
+        // given
+        val foodPrice = FoodPrices(
+            loafOfFreshWhiteBread500g = null,
+            localCheese1kg = null,
+            beefRound1kgOrEquivalentBackLegRedMeat = null,
+            chickenFillets1kg = null,
+            riceWhite1kg = null,
+            eggsRegular12 = null
+        )
+        // when
+        val result = interactor.calculateFoodCost(foodPrice)
+        // then
+        assertEquals(0f, result)
+    }
+
+    @Test
+    fun should_returnZero_when_SomeValuesAreNull() {
+        // given
+        val foodPrice = FoodPrices(
+            loafOfFreshWhiteBread500g = 1.0f,
+            localCheese1kg = null,
+            beefRound1kgOrEquivalentBackLegRedMeat = 2.0f,
+            chickenFillets1kg = null,
+            riceWhite1kg = 3.0f,
+            eggsRegular12 = null
+        )
+        // when
+        val result = interactor.calculateFoodCost(foodPrice)
+        // then
+        assertEquals(47f, result)
+    }
+
+    @Test
+    fun should_returnCorrectValue_when_AllValuesAreNegative() {
+        // given
+        val foodPrice = FoodPrices(
+            loafOfFreshWhiteBread500g = -1.0f,
+            localCheese1kg = -2.0f,
+            beefRound1kgOrEquivalentBackLegRedMeat = -1.0f,
+            chickenFillets1kg = -3.0f,
+            riceWhite1kg = -1.0f,
+            eggsRegular12 = null
+        )
+        // when
+        val result = interactor.calculateFoodCost(foodPrice)
+        // then
+        assertEquals(-64f, result)
     }
 
     @Test
