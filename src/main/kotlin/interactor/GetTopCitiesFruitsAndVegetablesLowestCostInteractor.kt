@@ -21,7 +21,7 @@ class GetTopCitiesFruitsAndVegetablesLowestCostInteractor(
     }
 
     fun excludeNullSalaries(city: CityEntity):Boolean{
-        return false
+        return city.averageMonthlyNetSalaryAfterTax != null
     }
 
 
