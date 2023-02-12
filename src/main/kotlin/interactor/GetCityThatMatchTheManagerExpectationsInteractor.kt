@@ -10,13 +10,11 @@ class GetCityThatMatchTheManagerExpectationsInteractor(
 
     fun execute(countries: List<String>): CityEntity? {
         val existCountries = countries.map(::formatCountriesNames)
-                                     .filter { selectedCountries.contains(it) }
+            .filter { selectedCountries.contains(it) }
 
         val pricesOfMeals = mutableListOf<Float>()
 
-        return if (existCountries.isEmpty())
-            null
-        else
+        return if (existCountries.isNotEmpty()) {
             dataSource
                 .getAllCitiesData()
                 .filter { it.country in existCountries }
@@ -26,18 +24,21 @@ class GetCityThatMatchTheManagerExpectationsInteractor(
                 }.let { citiesEntity ->
                     getCityThatMatchExpectations(pricesOfMeals, citiesEntity)
                 }
+        } else {
+            null
+        }
     }
 
 
     private fun formatCountriesNames(countryName: String): String {
-            return countryName.lowercase()
-                .trim()
-                .split("\\s+".toRegex())
-                .joinToString(" ") {
-                    it.replaceFirstChar { char ->
-                        if (char.isLowerCase()) char.titlecase(Locale.getDefault()) else it
-                    }
+        return countryName.lowercase()
+            .trim()
+            .split("\\s+".toRegex())
+            .joinToString(" ") {
+                it.replaceFirstChar { char ->
+                    if (char.isLowerCase()) char.titlecase(Locale.getDefault()) else it
                 }
+            }
     }
 
     private fun excludeNullPricesOfMeals(city: CityEntity): Boolean {
@@ -54,7 +55,7 @@ class GetCityThatMatchTheManagerExpectationsInteractor(
             .sortedBy { it.mealsPrices.mealFor2PeopleMidRangeRestaurant }.first()
     }
 
-     companion object {
+    companion object {
         private val selectedCountries = listOf("United States", "Canada", "Mexico")
-     }
+    }
 }
