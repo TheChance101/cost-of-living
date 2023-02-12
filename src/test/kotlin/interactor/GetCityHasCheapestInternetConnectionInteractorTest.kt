@@ -45,5 +45,15 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
         assertNotEquals(null , result.averageMonthlyNetSalaryAfterTax)
 
     }
+    @Test
+    fun should_ReternCityEntity_when_Execute() {
+        // given
+
+        // when
+        val result = getCityHasCheapestInternetConnectionInteractor.execute()
+        // then
+        assertNotEquals(null , result)
+
+    }
 
 }
