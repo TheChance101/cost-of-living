@@ -12,7 +12,7 @@ class GetHighestCarbonatedDrinksPricesInteractor(private val dataSource: CostOfL
           val listOfCities  = sortingDescending(city)
         return pricesAvg(listOfCities)
     }
-}
+
 private fun nullDrinks (cityEntity: CityEntity):Boolean =
             cityEntity.drinksPrices.cappuccinoRegularInRestaurants != null &&
             cityEntity.drinksPrices.milkRegularOneLiter !=null &&
@@ -38,3 +38,4 @@ private fun pricesAvg (list: List<CityEntity>) : List<Pair<String,Float>>{
 
 private fun avgPriceForASingleCity(cityEntity: CityEntity) = cityEntity.drinksPrices.milkRegularOneLiter!! + cityEntity.drinksPrices.cappuccinoRegularInRestaurants!! +
         cityEntity.drinksPrices.waterOneAndHalfLiterBottleAtTheMarket!! + cityEntity.drinksPrices.waterAThirdOfLiterBottleInRestaurants!!+ cityEntity.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants!!
+}

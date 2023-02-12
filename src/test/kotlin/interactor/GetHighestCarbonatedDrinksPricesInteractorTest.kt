@@ -22,31 +22,31 @@ class GetHighestCarbonatedDrinksPricesInteractorTest(){
     @Test
     fun should_return_listOfPairs_When_Data_Valid(){
         //given
-        val listofPairs = getHighestCarbonatedDrinksPricesInteractor.execute()
+        val listOfCountries = getHighestCarbonatedDrinksPricesInteractor.execute()
         //when
         fakeData.setDataType(FakeDataSource.DataType.VALID)
         //then
-        assertTrue(listofPairs.size ==10)
+        assertTrue(listOfCountries.size ==10)
     }
 
     @Test
     fun should_return_Null_When_Data_LowQuality(){
         //given
-        val listofPairs = getHighestCarbonatedDrinksPricesInteractor.execute()
+        val listOfCountries = getHighestCarbonatedDrinksPricesInteractor.execute()
         //when
         fakeData.setDataType(FakeDataSource.DataType.LOWQUALITY)
         //then
-        assertTrue(listofPairs.isEmpty())
+        assertTrue(listOfCountries.isEmpty())
     }
 
     @Test
     fun should_return_Null_When_Data_NotFound(){
         //given
-        val listofPairs = getHighestCarbonatedDrinksPricesInteractor.execute()
+        val listOfCountries = getHighestCarbonatedDrinksPricesInteractor.execute()
         //when
         fakeData.setDataType(FakeDataSource.DataType.LOWQUALITY)
         //then
-        assertTrue(listofPairs.isEmpty())
+        assertTrue(listOfCountries.isEmpty())
     }
 
 
