@@ -6,8 +6,11 @@ class GetTopCitiesFruitsAndVegetablesLowestCostInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
 
-    fun execute(cityEntity: CityEntity): List<String> {
-        TODO("Not implemented yet")
+    fun execute(limit:Int): List<String> {
+        return dataSource
+            .getAllCitiesData()
+            .take(limit)
+            .map { it.cityName }
     }
 
     fun excludeNullFruitsAndVegetables(city: CityEntity): Boolean {
