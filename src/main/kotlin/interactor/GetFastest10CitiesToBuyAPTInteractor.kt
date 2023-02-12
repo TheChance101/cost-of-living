@@ -10,13 +10,15 @@ class GetFastest10CitiesToBuyAPTInteractor(
     }
 
     /**
-     * Returns `true` if the value of `averageMonthlyNetSalaryAfterTax` is not `null`
-     * and `false` if the `averageMonthlyNetSalaryAfterTax` is `null`.
+     * Returns `true` if the value of `averageMonthlyNetSalaryAfterTax` is valid.
      * @param cityEntity represents a city.
-     * @return  if the salary is not equal to `null`.
+     * @return  if the salary is not equal to `null` and positive value.
      * @author Abdurrahman Salah ad-Din
      */
-    fun excludeInvalidSalaries(cityEntity: CityEntity) = false
+    fun excludeInvalidSalaries(cityEntity: CityEntity) =
+        cityEntity.averageMonthlyNetSalaryAfterTax != null &&
+                cityEntity.averageMonthlyNetSalaryAfterTax > 0
+
 
     /**
      * Returns `true` for high quality data and `false` for low quality data.
@@ -24,14 +26,17 @@ class GetFastest10CitiesToBuyAPTInteractor(
      * @return the value of `DataQuality`.
      * @author Abdurrahman Salah ad-Din
      */
-    fun excludeLowQualityData(cityEntity: CityEntity) = false
+    fun excludeLowQualityData(cityEntity: CityEntity) = cityEntity.dataQuality
 
     /**
-     * Returns `true` if the value of `pricePerSquareMeterToBuyApartmentOutsideOfCentre` is not `null` and
-     * `false` if the `pricePerSquareMeterToBuyApartmentOutsideOfCentre` is `null`.
+     * Returns `true` if the value of `pricePerSquareMeterToBuyApartmentOutsideOfCentre` is valid.
      * @param cityEntity represents a city.
-     * @return  if the `pricePerSquareMeterToBuyApartmentOutsideOfCentre` is not equal to `null`.
+     * @return  if the `pricePerSquareMeterToBuyApartmentOutsideOfCentre` is not equal to `null` and
+     * positive value.
      * @author Abdurrahman Salah ad-Din
      */
-    fun excludeInvalidApartmentPrice(cityEntity: CityEntity) = false
+    fun excludeInvalidApartmentPrice(cityEntity: CityEntity) =
+        cityEntity.
+        realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre != null &&
+        cityEntity.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre > 0
 }
