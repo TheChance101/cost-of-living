@@ -93,23 +93,22 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
 
 
     }
-
     @Test
-      fun should_ReturnNull_When_AverageSalaryNull(){
+    fun should_ReturnNull_When_AverageSalaryNull(){
 
         // given city with average salary  null
         val csvParser = CsvParser()
         val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, CITY_WITH_AVERAGE_SALARY_NULL_FILE)
         citySavings = GetCityHasMoreSavingsPerMonthInteractor(dataSource)
-        val listCityName=dataSource.getAllCitiesData()
+
 
 
         // when find the most  city in the world have more savings per month.
-        val getCityNull = citySavings.execute()
+        val getNull = citySavings.execute()
 
 
-        //done
-        assertNull(getCityNull)
+        // done
+        assertNull(getNull)
 
 
     }
@@ -226,6 +225,8 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
         private const val CITY_WITH_TRANSPORTATIONS_PRICES_NULL_AND_APARTMENT_AND_COST_FOOD_NOT_NULL_FILE= "csvFiles/findCityWithTransportationsPricesIsNullAndFoodPriceAndApartmentNotNull.csv"
         private const val CITY_WITH_AVERAGE_SALARY_NOY_NULL_FILE= "csvFiles/findCityWithAverageNotNull.csv"
         private const val CITY_WITH_AVERAGE_SALARY_NULL_FILE= "csvFiles/findCityWithAverageNull.csv"
+
+
 
     }
 }
