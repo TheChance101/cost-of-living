@@ -2,9 +2,7 @@ package FakeData
 
 import interactor.CostOfLivingDataSource
 import model.*
-
 class FakeData : CostOfLivingDataSource {
-
     override fun getAllCitiesData(): List<CityEntity> {
         val listData = mutableListOf<CityEntity>()
         listData.add(
@@ -73,15 +71,11 @@ class FakeData : CostOfLivingDataSource {
                     apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 600.0f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
-                    pricePerSquareMeterToBuyApartmentOutsideOfCentre = 290.1f ,
-                    apartment3BedroomsOutsideOfCentre = 139.0f
+                    apartment3BedroomsOutsideOfCentre = 180.2f,
+                    pricePerSquareMeterToBuyApartmentOutsideOfCentre = 320.76f,
                 ),
                 averageMonthlyNetSalaryAfterTax = 18.0f,
-<<<<<<< HEAD
-                dataQuality =true
-=======
                 dataQuality = false
->>>>>>> origin/feature/fastest-year-to-buy-apartment
             )
         )
         listData.add(
@@ -150,15 +144,11 @@ class FakeData : CostOfLivingDataSource {
                     apartmentOneBedroomOutsideOfCentre = 182.54f,
                     apartment3BedroomsInCityCentre = 476.27f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = 2000.0f,
-                    pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1090.1f ,
-                    apartment3BedroomsOutsideOfCentre = 220.0f
+                    apartment3BedroomsOutsideOfCentre = 170.2f,
+                    pricePerSquareMeterToBuyApartmentOutsideOfCentre = 365.76f,
                 ),
                 averageMonthlyNetSalaryAfterTax = 50.24f,
-<<<<<<< HEAD
-                dataQuality = false
-=======
                 dataQuality = true
->>>>>>> origin/feature/fastest-year-to-buy-apartment
             )
         )
         listData.add(
@@ -226,10 +216,9 @@ class FakeData : CostOfLivingDataSource {
                     apartmentOneBedroomInCityCentre = 156.01f,
                     apartmentOneBedroomOutsideOfCentre = 71.22f,
                     apartment3BedroomsInCityCentre = 196.71f,
-                    pricePerSquareMeterToBuyApartmentInCityCentre = 335.0f,
-                    pricePerSquareMeterToBuyApartmentOutsideOfCentre = 228.1f ,
-                    apartment3BedroomsOutsideOfCentre = 150.0f
-
+                    apartment3BedroomsOutsideOfCentre = 150.2f,
+                    pricePerSquareMeterToBuyApartmentOutsideOfCentre = 335.76f,
+                    pricePerSquareMeterToBuyApartmentInCityCentre = 335.76f
                 ),
                 averageMonthlyNetSalaryAfterTax = 101.74f,
                 dataQuality = true
