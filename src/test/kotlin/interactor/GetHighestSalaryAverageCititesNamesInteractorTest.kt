@@ -10,13 +10,13 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetHighestSalaryAverageCititesNamesInteractorTest {
 
-    private lateinit var fakeData: FakeData
-    private lateinit var GetHighestSalaryAverageCititesNames: GetHighestSalaryAverageCititesNamesInteractor
+    private lateinit var fakeDataSource: FakeData
+    private lateinit var getHighestSalaryAverageCititesNames : GetHighestSalaryAverageCititesNamesInteractor
 
     @BeforeEach
     fun setUp() {
-        fakeData = FakeData()
-        GetHighestSalaryAverageCititesNames = GetHighestSalaryAverageCititesNamesInteractor(fakeData)
+        fakeDataSource = FakeData()
+        getHighestSalaryAverageCititesNames = GetHighestSalaryAverageCititesNamesInteractor(fakeDataSource)
     }
 
     @Test
