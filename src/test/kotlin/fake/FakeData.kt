@@ -242,7 +242,7 @@ class FakeData : CostOfLivingDataSource {
                 ),
                 fruitAndVegetablesPrices = FruitAndVegetablesPrices(
                     apples1kg = 11.02f,
-                    banana1kg = 0.44f,
+                    banana1kg = 0.2f,
                     oranges1kg = 1.1f,
                     tomato1kg = 0.88f,
                     potato1kg = 1.1f,
@@ -314,7 +314,152 @@ class FakeData : CostOfLivingDataSource {
                     waterOneAndHalfLiterBottleAtTheMarket = 2.0f
                 ),
                 fruitAndVegetablesPrices = FruitAndVegetablesPrices(
-                    apples1kg = 11.02f,banana1kg = 0.44f,
+                    apples1kg = 11.02f,
+                    banana1kg = 0.44f,
+                    oranges1kg = 1.1f,
+                    tomato1kg = 0.88f,
+                    potato1kg = 1.1f,
+                    onion1kg = 2.2f,
+                    lettuceOneHead = 0.25f
+                ),
+                foodPrices = FoodPrices(
+                    loafOfFreshWhiteBread500g = 1.1f,
+                    riceWhite1kg = 1.1f,
+                    eggsRegular12 = 2.03f,
+                    localCheese1kg = 9.0f,
+                    chickenFillets1kg = 6.61f,
+                    beefRound1kgOrEquivalentBackLegRedMeat = 6.61f
+                ),
+                servicesPrices = ServicesPrices(
+                    basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = null,
+                    oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.1f,
+                    internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
+                    fitnessClubMonthlyFeeForOneAdult = null,
+                    tennisCourtRentOneHourOnWeekend = null,
+                    cinemaInternationalReleaseOneSeat = 1.0f,
+                    preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = null,
+                    internationalPrimarySchoolYearlyForOneChild = null
+                ),
+                clothesPrices = ClothesPrices(
+                    onePairOfJeansLevis50oneOrSimilar = 40.0f,
+                    oneSummerDressInAChainStoreZaraHAndM = 40.0f,
+                    onePairOfNikeRunningShoesMidRange = 60.0f,
+                    onePairOfMenLeatherBusinessShoes = 50.0f
+                ),
+                transportationsPrices = TransportationsPrices(
+                    oneWayTicketLocalTransport = null,
+                    monthlyPassRegularPrice = null,
+                    taxiStartNormalTariff = null,
+                    taxi1kmNormalTariff = 0.7f,
+                    taxi1hourWaitingNormalTariff = null,
+                    gasolineOneLiter = null
+                ),
+                carsPrices = CarsPrices(
+                    volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = null,
+                    toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = null
+                ),
+                realEstatesPrices = RealEstatesPrices(
+                    apartmentOneBedroomInCityCentre = null,
+                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartment3BedroomsInCityCentre = 7000.0f,
+                    apartment3BedroomsOutsideOfCentre = 100f,
+                    //6900
+                    pricePerSquareMeterToBuyApartmentInCityCentre = null,
+                    pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
+                ),
+                averageMonthlyNetSalaryAfterTax = 18f,
+                dataQuality = true
+            ),
+            CityEntity(
+                cityName = "Almaza",
+                country = "Egypt",
+                mealsPrices = MealsPrices(
+                    mealInexpensiveRestaurant = 6.5f,
+                    mealFor2PeopleMidRangeRestaurant = 15.0f,
+                    mealAtMcDonaldSOrEquivalent = 5.0f
+                ),
+                drinksPrices = DrinksPrices(
+                    cappuccinoRegularInRestaurants = 2.0f,
+                    cokePepsiAThirdOfLiterBottleInRestaurants = 2.0f,
+                    waterAThirdOfLiterBottleInRestaurants = 1.0f,
+                    milkRegularOneLiter = 3.8f,
+                    waterOneAndHalfLiterBottleAtTheMarket = 2.0f
+                ),
+                fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                    apples1kg = 11.02f,
+                    banana1kg = null,
+                    oranges1kg = 1.1f,
+                    tomato1kg = 0.88f,
+                    potato1kg = 1.1f,
+                    onion1kg = 2.2f,
+                    lettuceOneHead = 0.25f
+                ),
+                foodPrices = FoodPrices(
+                    loafOfFreshWhiteBread500g = 1.1f,
+                    riceWhite1kg = 1.1f,
+                    eggsRegular12 = 2.03f,
+                    localCheese1kg = 9.0f,
+                    chickenFillets1kg = 6.61f,
+                    beefRound1kgOrEquivalentBackLegRedMeat = 6.61f
+                ),
+                servicesPrices = ServicesPrices(
+                    basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = null,
+                    oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.1f,
+                    internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
+                    fitnessClubMonthlyFeeForOneAdult = null,
+                    tennisCourtRentOneHourOnWeekend = null,
+                    cinemaInternationalReleaseOneSeat = 1.0f,
+                    preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = null,
+                    internationalPrimarySchoolYearlyForOneChild = null
+                ),
+                clothesPrices = ClothesPrices(
+                    onePairOfJeansLevis50oneOrSimilar = 40.0f,
+                    oneSummerDressInAChainStoreZaraHAndM = 40.0f,
+                    onePairOfNikeRunningShoesMidRange = 60.0f,
+                    onePairOfMenLeatherBusinessShoes = 50.0f
+                ),
+                transportationsPrices = TransportationsPrices(
+                    oneWayTicketLocalTransport = null,
+                    monthlyPassRegularPrice = null,
+                    taxiStartNormalTariff = null,
+                    taxi1kmNormalTariff = 0.7f,
+                    taxi1hourWaitingNormalTariff = null,
+                    gasolineOneLiter = null
+                ),
+                carsPrices = CarsPrices(
+                    volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = null,
+                    toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = null
+                ),
+                realEstatesPrices = RealEstatesPrices(
+                    apartmentOneBedroomInCityCentre = null,
+                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartment3BedroomsInCityCentre = 7000.0f,
+                    apartment3BedroomsOutsideOfCentre = 100f,
+                    //6900
+                    pricePerSquareMeterToBuyApartmentInCityCentre = null,
+                    pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
+                ),
+                averageMonthlyNetSalaryAfterTax = 18f,
+                dataQuality = true
+            ),
+            CityEntity(
+                cityName = "Fayrouz",
+                country = "Lebanon",
+                mealsPrices = MealsPrices(
+                    mealInexpensiveRestaurant = 6.5f,
+                    mealFor2PeopleMidRangeRestaurant = 15.0f,
+                    mealAtMcDonaldSOrEquivalent = 5.0f
+                ),
+                drinksPrices = DrinksPrices(
+                    cappuccinoRegularInRestaurants = 2.0f,
+                    cokePepsiAThirdOfLiterBottleInRestaurants = 2.0f,
+                    waterAThirdOfLiterBottleInRestaurants = 1.0f,
+                    milkRegularOneLiter = 3.8f,
+                    waterOneAndHalfLiterBottleAtTheMarket = 2.0f
+                ),
+                fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                    apples1kg = 11.02f,
+                    banana1kg = null,
                     oranges1kg = 1.1f,
                     tomato1kg = 0.88f,
                     potato1kg = 1.1f,
