@@ -4,7 +4,6 @@ import interactor.CostOfLivingDataSource
 import interactor.GetCitiesNamesSortedCheapestBananPrices
 import interactor.GetCityHasCheapestInternetConnectionInteractor
 import interactor.GetHighestSalaryAverageCititesNamesInteractor
-import interactor.GetTop10CountriesWithHighTaxOnCarbonatedDrinks
 import interactor.GetMostSuitableCityInteractor
 
 fun main() {
@@ -39,6 +38,11 @@ fun main() {
     val cityNameResult = getMostSuitableCity.findTheMostSuitableCity(list)
 
     println(cityNameResult)
+
+    val getCitiesNameToBuyApartmentFasterInteractor =
+        GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
+    println(getCitiesNameToBuyApartmentFasterInteractor.execute(1000, 10, 100))
+    printSeparationLine()
 }
 private fun printSeparationLine(){
     print("\n_______________________________\n")
