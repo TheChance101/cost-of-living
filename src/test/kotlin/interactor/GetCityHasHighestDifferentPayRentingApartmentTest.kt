@@ -13,24 +13,11 @@ internal class TestGetHighestDifferenceBetweenCityCenterAndOutsideCityCenter {
     val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
 
     var rating = interactor.GetHighestDifferenceBetweenCityCenterAndOutsideCityCenter(dataSource)
-//    data class City(val nameCity: String, val Real:RealEstatesPrices)
-//
-//    private val cities = listOf(
-//
-//        City("Sharjah", RealEstatesPrices(200.0f, 100.0f, null, null, null, null)),
-//        City("Damascus",RealEstatesPrices(150.0f, 75.0f, null, null, null, null)),
-//        City("Tanta",RealEstatesPrices(250.0f, 125.0f, null, null, null, null)),
-//        City("Multan",RealEstatesPrices(300.0f, 150.0f, null, null, null, null))
-//    )
-    data class City(val nameCity:String)
+
     private val cities = listOf(
         "Havana",
-        "Damascus",
-        "Tanta",
-//        City("Havana").toString(),
-//        City("Damascus"),
-//        City("Tanta"),
-//        City("Multan")
+        "Abuja",
+        "Abuja",
     )
 
     @Test
@@ -40,6 +27,24 @@ internal class TestGetHighestDifferenceBetweenCityCenterAndOutsideCityCenter {
         //when
 
         val result = rating.execute_DifferentPayRentingBetweenIntCityCenter_OutCitycenter(1)
+        assertEquals(expectedResult,result)
+    }
+    @Test
+    fun testGetHighestDifference_returnsCorrect_3BedRoom_BetweenInCityCenter_OutCityCenter() {
+        //given
+        val expectedResult  = listOf(cities[1])
+        //when
+        val result = rating.execute_DifferentPayRentingBetween3BedRoom_IntCityCenter_OutCitycenter(1)
+        //then
+        assertEquals(expectedResult,result)
+    }
+    @Test
+    fun testGetHighestDifference_returnsCorrect_pricePerSquareMeterToBuy_BetweenInCityCenter_OutCityCenter() {
+        //given
+        val expectedResult  = listOf(cities[2])
+        //when
+        val result = rating.execute_DifferentPayRentingBetween_pricePerSquareMeterToBuy_IntCityCenter_OutCitycenter(1)
+        //then
         assertEquals(expectedResult,result)
     }
 
