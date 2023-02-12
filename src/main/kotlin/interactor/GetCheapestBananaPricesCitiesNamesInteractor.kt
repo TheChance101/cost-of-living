@@ -10,7 +10,7 @@ class  GetCheapestBananaPricesCitiesNamesInteractor(
         return dataSource.getAllCitiesData().toTypedArray()
     }
     fun execute(vararg cityEntities: CityEntity): List<String> {
-        return emptyList()
+        throw Throwable("Not Implemented yet")
     }
 
 }
