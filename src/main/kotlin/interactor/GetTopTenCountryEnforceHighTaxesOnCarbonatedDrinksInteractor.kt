@@ -15,7 +15,6 @@ class GetTopTenCountryEnforceHighTaxesOnCarbonatedDrinksInteractor(private val d
             .toList()
     }
 
-
     private fun isNullONegativeCokePricesOrLowQualityData(city: CityEntity): Boolean {
         return city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants != null
                 && city.dataQuality
