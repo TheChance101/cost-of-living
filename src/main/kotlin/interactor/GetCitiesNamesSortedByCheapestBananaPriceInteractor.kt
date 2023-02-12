@@ -1,12 +1,19 @@
 package interactor
 
 import model.CityEntity
+import java.util.stream.Stream
 
 class GetCitiesNamesSortedByCheapestBananaPriceInteractor {
 
     fun execute(vararg cities: CityEntity): List<String> {
-        val f: Float? = null
-        return listOf()
+
+        return cities.asList()
+            .filter(::isBananaPriceNonNull)
+            .map(CityEntity::cityName)
+    }
+
+    private fun isBananaPriceNonNull(city: CityEntity): Boolean {
+        return city.fruitAndVegetablesPrices.banana1kg != null
     }
 
 
