@@ -35,7 +35,11 @@ internal class GetLowestAveragePricesForFruitsAndVegetablesInteractorTest {
         //when getting list of cities names with lowest average prices for fruits and vegetables
         val citiesWithLowestAveragePricesForFruitsAndVegetables = interactor.execute(limit)
         //then
-        assertEquals(listOf(fakeDataSource.getAllCitiesData()[18].cityName,fakeDataSource.getAllCitiesData()[14].cityName,fakeDataSource.getAllCitiesData()[19].cityName,fakeDataSource.getAllCitiesData()[15].cityName),citiesWithLowestAveragePricesForFruitsAndVegetables)
+        assertEquals(listOf(fakeDataSource.getAllCitiesData()[18].cityName,
+                            fakeDataSource.getAllCitiesData()[14].cityName,
+                            fakeDataSource.getAllCitiesData()[19].cityName,
+                            fakeDataSource.getAllCitiesData()[15].cityName),
+                            citiesWithLowestAveragePricesForFruitsAndVegetables)
     }
 
     @Test
@@ -45,7 +49,14 @@ internal class GetLowestAveragePricesForFruitsAndVegetablesInteractorTest {
         //when getting list of cities names with lowest average prices for fruits and vegetables
         val citiesWithLowestAveragePricesForFruitsAndVegetables = interactor.execute(limit)
         //then
-        assertEquals(listOf(fakeDataSource.getAllCitiesData()[18].cityName,fakeDataSource.getAllCitiesData()[14].cityName,fakeDataSource.getAllCitiesData()[19].cityName,fakeDataSource.getAllCitiesData()[15].cityName,fakeDataSource.getAllCitiesData()[10].cityName,fakeDataSource.getAllCitiesData()[13].cityName,fakeDataSource.getAllCitiesData()[4].cityName),citiesWithLowestAveragePricesForFruitsAndVegetables)
+        assertEquals(listOf(fakeDataSource.getAllCitiesData()[18].cityName,
+                            fakeDataSource.getAllCitiesData()[14].cityName,
+                            fakeDataSource.getAllCitiesData()[19].cityName,
+                            fakeDataSource.getAllCitiesData()[15].cityName,
+                            fakeDataSource.getAllCitiesData()[10].cityName,
+                            fakeDataSource.getAllCitiesData()[13].cityName,
+                            fakeDataSource.getAllCitiesData()[4].cityName),
+                            citiesWithLowestAveragePricesForFruitsAndVegetables)
     }
 
     @Test
@@ -55,7 +66,14 @@ internal class GetLowestAveragePricesForFruitsAndVegetablesInteractorTest {
         //when getting list of cities names with lowest average prices for fruits and vegetables
         val citiesWithLowestAveragePricesForFruitsAndVegetables = interactor.execute(limit)
         //then
-        assertEquals(listOf(fakeDataSource.getAllCitiesData()[18].cityName,fakeDataSource.getAllCitiesData()[14].cityName,fakeDataSource.getAllCitiesData()[19].cityName,fakeDataSource.getAllCitiesData()[15].cityName,fakeDataSource.getAllCitiesData()[10].cityName,fakeDataSource.getAllCitiesData()[13].cityName,fakeDataSource.getAllCitiesData()[4].cityName),citiesWithLowestAveragePricesForFruitsAndVegetables)
+        assertEquals(listOf(fakeDataSource.getAllCitiesData()[18].cityName,
+                            fakeDataSource.getAllCitiesData()[14].cityName,
+                            fakeDataSource.getAllCitiesData()[19].cityName,
+                            fakeDataSource.getAllCitiesData()[15].cityName,
+                            fakeDataSource.getAllCitiesData()[10].cityName,
+                            fakeDataSource.getAllCitiesData()[13].cityName,
+                            fakeDataSource.getAllCitiesData()[4].cityName),
+                            citiesWithLowestAveragePricesForFruitsAndVegetables)
 
     }
 }
