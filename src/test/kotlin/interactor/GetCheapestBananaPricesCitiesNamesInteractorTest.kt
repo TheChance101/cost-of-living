@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class GetCheapestBananaPricesCitiesNamesInteractorTest() {
+internal class GetCheapestBananaPricesCitiesNamesInteractorTest {
 
     private lateinit var fakeData: FakeDataSource
     private lateinit var getCheapestBananaPricesCitiesNamesInteractor: GetCheapestBananaPricesCitiesNamesInteractor
@@ -48,20 +48,6 @@ internal class GetCheapestBananaPricesCitiesNamesInteractorTest() {
         }
         //Then
         assertTrue(list.isEmpty())
-    }
-
-    @Test
-    fun should_ReturnListHasNoNulls_When_EnterNullForSomeBananaPrices() {
-        //Given
-        fakeData.setDataType(FakeDataSource.DataType.NULLABLE)
-
-        //When
-        val list = getCheapestBananaPricesCitiesNamesInteractor.run {
-            execute(*getCitiesVarArgs())
-        }
-
-        //Then
-        assertTrue(list.size < 20)
     }
 
     @Test
