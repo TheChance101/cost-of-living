@@ -26,7 +26,7 @@ class FakeDataSource : CostOfLivingDataSource {
     }
 
     /**
-     * @return data that have high dataQuality and no null values.
+     * @return list of CityEntity that have high dataQuality and no null values.
      */
     private fun getNormalData() = normalFixture<List<CityEntity>>()
 
@@ -36,7 +36,7 @@ class FakeDataSource : CostOfLivingDataSource {
         repeatCount { 20 }
     }
     /**
-     * @return data that have high dataQuality and null values.
+     * @return list of CityEntity that have high dataQuality and null values.
      */
     private fun getDataWithNullValues() = nullableFixture<List<CityEntity>>()
 
@@ -61,7 +61,7 @@ class FakeDataSource : CostOfLivingDataSource {
     private fun getMixedData() = mixedFixture<List<CityEntity>>()
 
     /**
-     * retrieve data from FakeDataSource depending on the needed type
+     * retrieve list of CityEntity from FakeDataSource depending on the needed type
      * @return List<CityEntity>
      */
     override fun getAllCitiesData(): List<CityEntity> {
