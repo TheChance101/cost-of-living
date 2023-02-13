@@ -85,5 +85,23 @@ internal class CountriesNamesForTheHighestTaxesOnCokeInteractorTest {
         assertEquals(pairOfCountryAndPrices.distinctBy { it.first }, pairOfCountryAndPrices)
     }
 
+    @Test
+    fun `should fail test if  there is negative in the Prices`() {
+        //given country limit and Data
+
+        val countriesNamesForTheHighestTaxesOnCoke =
+            CountriesNamesForTheHighestTaxesOnCokeInteractor(fakeCarbonatedTaxesOnCokeCountriesData)
+        val limit = 10
+
+        //when pairOfCountryAndPrices null prices
+
+        val pairOfCountryAndPrices =
+            countriesNamesForTheHighestTaxesOnCoke.execute(limitOfDesiredCountries = limit)
+
+        //then
+
+        assertEquals(pairOfCountryAndPrices, pairOfCountryAndPrices.filter { it.second >= 0 })
+    }
+
 
 }
