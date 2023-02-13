@@ -22,20 +22,12 @@ class GetTop10CountriesEnforceHighTaxesOnCarbonatedDrinks (
                 && city.dataQuality
     }
     private fun allPriceIsNull(list: List<CityEntity>):Boolean{
-        var count: Int = 0
-        for (element in list)
-            if (element.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants ==null)
-                count++
+        return list.all { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants==null }
 
-        return count==list.size
     }
     private fun allDataIsLow(list: List<CityEntity>):Boolean{
-        var count: Int = 0
-        for (element in list)
-            if (!element.dataQuality)
-                count++
+        return list.all { !it.dataQuality }
 
-        return count==list.size
     }
 
 }
