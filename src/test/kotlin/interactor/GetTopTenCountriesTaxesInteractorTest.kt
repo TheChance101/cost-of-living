@@ -23,17 +23,12 @@ class GetTopTenCountriesTaxesInteractorTest {
 
 
     @Test
-    fun should_ReturnCorrect_When_drinksPrices() {
-
-        // given
+    fun should_ReturnCorrectList_When_TheDataIsValid() {
+        // when the result is correct list
+        val result = getTopTenCountriesTaxesInteractor.execute()
+        // then check
         val expected : List<Pair<String, Float>> =
             listOf(("Canada" to 2.16f), ("United States" to 2.12f), ("Mexico" to 0.71f), ("Iraq" to 0.34f))
-
-
-        // when
-        val result = getTopTenCountriesTaxesInteractor.execute()
-
-        // then
         assertEquals(expected, result)
     }
 
