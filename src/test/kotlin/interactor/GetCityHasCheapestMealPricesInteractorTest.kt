@@ -2,6 +2,7 @@ package interactor
 
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
+import fakeData.FakeData
 import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk
@@ -206,10 +207,10 @@ class GetCityHasCheapestMealPricesInteractorTest {
     @Test
     fun `should return zero of all cities when cities list is empty`() {
         // given fake city entity data and the expected value
-        val sut = GetCityHasCheapestMealPricesInteractor(fakeData)
+        val sut = GetCityHasCheapestMealPricesInteractor(dataSource)
         val average = 0.0F
         // when list is empty
-        val result = sut.getAverageMealInAllCities(fakeData.getAllCitiesData())
+        val result = sut.getAverageMealInAllCities(emptyList())
         // then
         assertEquals(average, result)
     }
