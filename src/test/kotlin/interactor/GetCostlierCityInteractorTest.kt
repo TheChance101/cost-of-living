@@ -1,6 +1,7 @@
 package interactor
 
-import dataSource.utils.FakeDataSource
+import dataSource.FakeDataSource
+import dataSource.TestCase
 import interactor.utils.BedroomOption
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
@@ -9,18 +10,16 @@ import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetCostlierCityInteractorTest {
-    lateinit var getCostlierCityInteractor:
-            GetCostlierCityInteractor
+    private lateinit var getCostlierCityInteractor: GetCostlierCityInteractor
 
-    lateinit var fakeDataSource: FakeDataSource
+    private lateinit var fakeData: FakeDataSource
 
 
     @BeforeAll
     fun setup() {
-        fakeDataSource = FakeDataSource()
-        getCostlierCityInteractor =
-            GetCostlierCityInteractor(fakeDataSource)
-
+        fakeData = FakeDataSource()
+        getCostlierCityInteractor = GetCostlierCityInteractor(fakeData)
+        fakeData.changeDataSource(TestCase.CostlierCity)
     }
 
     @Test
@@ -28,8 +27,7 @@ internal class GetCostlierCityInteractorTest {
         //given one bedroom
         val option = BedroomOption.ONE_BEDROOM
         //when the  city is correct
-        val highest = getCostlierCityInteractor
-            .execute(option)
+        val highest = getCostlierCityInteractor.execute(option)
         //then check names cities are equals
         assertEquals("Sancti Spiritus", highest.cityName)
     }
@@ -39,8 +37,7 @@ internal class GetCostlierCityInteractorTest {
         //given Three bedroom
         val option = BedroomOption.THREE_BEDROOM
         //when the  city is correct
-        val highest = getCostlierCityInteractor
-            .execute(option)
+        val highest = getCostlierCityInteractor.execute(option)
         //then check names cities are equals
         assertEquals("Seoul", highest.cityName)
     }

@@ -1,6 +1,7 @@
 package interactor
 
-import dataSource.utilis.FakeData
+import dataSource.FakeDataSource
+import dataSource.TestCase
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -10,12 +11,13 @@ import org.junit.jupiter.api.TestInstance
 class GetAverageFruitAndVegetablesInteractorTest {
 
     private lateinit var getAverageFruitAndVegetablesInteractor: GetAverageFruitAndVegetablesInteractor
-    private lateinit var fakeData: FakeData
+    private lateinit var fakeData: FakeDataSource
 
     @BeforeAll
     fun setup(){
-        fakeData = FakeData()
+        fakeData = FakeDataSource()
         getAverageFruitAndVegetablesInteractor = GetAverageFruitAndVegetablesInteractor(fakeData)
+        fakeData.changeDataSource(TestCase.AverageFruitAndVegetables)
     }
 
     @Test
