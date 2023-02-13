@@ -13,10 +13,9 @@ class GetHighestCarbonatedDrinksPricesInteractor(private val dataSource: CostOfL
             .take(10)
 
 
-        return if
-                       (city.isEmpty())
+        return if (city.isEmpty())
         { emptyList()
-        }// listOf(Pair("no countries Found",0.0f))
+        }
         else {pricesAvg(city)}
     }
 
@@ -40,6 +39,9 @@ class GetHighestCarbonatedDrinksPricesInteractor(private val dataSource: CostOfL
         return finalList
     }
 
-    private fun avgPriceForASingleCity(cityEntity: CityEntity) = cityEntity.drinksPrices.milkRegularOneLiter!! + cityEntity.drinksPrices.cappuccinoRegularInRestaurants!! +
-            cityEntity.drinksPrices.waterOneAndHalfLiterBottleAtTheMarket!! + cityEntity.drinksPrices.waterAThirdOfLiterBottleInRestaurants!!+ cityEntity.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants!!
+    private fun avgPriceForASingleCity(cityEntity: CityEntity) = (cityEntity.drinksPrices.milkRegularOneLiter!! +
+            cityEntity.drinksPrices.cappuccinoRegularInRestaurants!! +
+            cityEntity.drinksPrices.waterOneAndHalfLiterBottleAtTheMarket!! +
+            cityEntity.drinksPrices.waterAThirdOfLiterBottleInRestaurants!!+
+            cityEntity.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants!!)/5
 }

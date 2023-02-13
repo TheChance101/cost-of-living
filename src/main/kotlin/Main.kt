@@ -16,15 +16,19 @@ fun main() {
     }
     printSeparationLine()
 
-    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
-    println(getCityHasCheapestInternetConnectionInteractor.execute())
-    printSeparationLine()
+//    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
+//    println(getCityHasCheapestInternetConnectionInteractor.execute())
+//    printSeparationLine()
 
-    val getCheapestBananaPricesCitiesNamesInteractor=GetCheapestBananaPricesCitiesNamesInteractor(dataSource)
-    getCheapestBananaPricesCitiesNamesInteractor.apply {
-       println(execute(*getCitiesVarArgs()))
+//    val getCheapestBananaPricesCitiesNamesInteractor=GetCheapestBananaPricesCitiesNamesInteractor(dataSource)
+//    getCheapestBananaPricesCitiesNamesInteractor.apply {
+//       println(execute(*getCitiesVarArgs()))
+//    }
+    val getHighestCarbonatedDrinksPricesInteractor =GetHighestCarbonatedDrinksPricesInteractor(dataSource)
+
+    getHighestCarbonatedDrinksPricesInteractor.execute().forEach {
+        println("Country name :${it.first}  average prices : ${it.second}")
     }
-
 }
 
 private fun printSeparationLine() {
