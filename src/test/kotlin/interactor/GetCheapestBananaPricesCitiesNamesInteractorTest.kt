@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class GetCheapestBananaPricesCitiesNamesInteractorTest{
+internal class GetCheapestBananaPricesCitiesNamesInteractorTest {
 
     private lateinit var fakeData: FakeDataSource
     private lateinit var getCheapestBananaPricesCitiesNamesInteractor: GetCheapestBananaPricesCitiesNamesInteractor
@@ -32,7 +32,7 @@ internal class GetCheapestBananaPricesCitiesNamesInteractorTest{
         //Then
         assertTrue(
             list == data
-                .sortedByDescending { it.fruitAndVegetablesPrices.banana1kg }
+                .sortedBy { it.fruitAndVegetablesPrices.banana1kg }
                 .map { it.cityName }
         )
     }

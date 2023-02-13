@@ -27,7 +27,7 @@ class  GetCheapestBananaPricesCitiesNamesInteractor(
      * @return sorted List<CityEntity>
      */
     private fun List<CityEntity>.sortingWithBananaPrices(): List<CityEntity> {
-        return this.sortedByDescending {
+        return this.sortedBy {
             it.fruitAndVegetablesPrices.banana1kg
         }
     }
