@@ -32,7 +32,6 @@ class GetCityWithHighestRentalPriceDifferenceInteractor(
                 && city.realEstatesPrices.pricePerSquareMeterToBuyApartmentInCityCentre !=null
                 && city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre !=null
     }
-
     private fun excludeNullDataAndLowQuality(city: CityEntity): Boolean {
         return city.dataQuality
     }
