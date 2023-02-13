@@ -4,18 +4,6 @@ import model.*
 
 class CsvParser {
 
-    fun parseLine2(csvLine: String): CityData{
-        val tokenizedList: List<String> = csvLine.split(",")
-        return CityData(
-            cityName = tokenizedList[ColumnIndex.CITY],
-            country = tokenizedList[ColumnIndex.COUNTRY],
-            foodPrices = constructFoodPricesFromTokens(tokenizedList),
-            realEstatesPrices = constructRealStatesPricesFromTokens(tokenizedList),
-            averageMonthlyNetSalaryAfterTax = tokenizedList[ColumnIndex.AVERAGE_MONTHLY_NET_SALARY_AFTER_TAX].toFloatOrNull(),
-            dataQuality = tokenizedList[ColumnIndex.DATA_QUALITY].toIntOrNull() == 1,
-        )
-    }
-
     fun parseLine(csvLine: String): CityEntity{
         val tokenizedList: List<String> = csvLine.split(",")
         return CityEntity(

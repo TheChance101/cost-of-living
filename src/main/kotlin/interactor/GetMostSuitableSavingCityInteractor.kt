@@ -3,6 +3,7 @@ package interactor
 import model.CityData
 import model.CityEntity
 import model.FoodPrices
+import model.RealEstatesPrices
 
 class GetMostSuitableSavingCityInteractor(
     private val dataSource: CostOfLivingDataSource
@@ -16,7 +17,7 @@ class GetMostSuitableSavingCityInteractor(
         return city.averageMonthlyNetSalaryAfterTax != null
     }
 
-    fun calculateCitySavings(city: CityData, familyBudget: Float): Float {
+    fun calculateCitySavings(city: CityEntity, familyBudget: Float): Float {
         val apartmentCost = city.realEstatesPrices.apartment3BedroomsInCityCentre ?: 0f
         val foodCost = calculateFoodCost(city.foodPrices)
         val otherCosts = 250f

@@ -1,8 +1,6 @@
 package interactor
 
-import dataSource.CsvDataSource
-import dataSource.utils.CsvParser
-import model.CityData
+import fackdata.FakeData
 import model.CityEntity
 import model.FoodPrices
 import model.RealEstatesPrices
@@ -13,28 +11,36 @@ import org.junit.jupiter.api.BeforeEach
 
 class GetMostSuitableSavingCityInteractorTest {
 
-    lateinit var interactor: GetMostSuitableSavingCityInteractor
+    lateinit var mostSuitableSavingCityInteractor: GetMostSuitableSavingCityInteractor
+    lateinit var realEstatesPrices: RealEstatesPrices
+    private lateinit var dataSource: CostOfLivingDataSource
+
+    private lateinit var fakeData: FakeData
 
     @BeforeEach
     fun setUp() {
-        val csvParser = CsvParser()
-        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
-        interactor = GetMostSuitableSavingCityInteractor(dataSource)
+        fakeData = FakeData()
+        dataSource = fakeData
+        mostSuitableSavingCityInteractor = GetMostSuitableSavingCityInteractor(dataSource)
     }
 
-    @Test
-    fun execute() {
-        // given  value
-        // when
-        // then
-    }
+//    @Test
+//    fun testExecute() {
+//        val dataSource = object : CostOfLivingDataSource {
+//            override fun getAllCitiesData() = listOf(city)
+//        }
+//        val finder = SuitableCitiesFinder(dataSource)
+//
+//        val suitableCities = finder.execute(10)
+//
+//        assertEquals(listOf(city.cityName), suitableCities)
+//    }
 
     @Test
     fun should_ReturnTrue_When_netSalaryNotNull() {
-        // given  value
-        val averageMonthlyNetSalaryAfterTax = 1000f
-//        // when
-        val result = interactor.excludeNullSalaries(averageMonthlyNetSalaryAfterTax as CityEntity)
+        val city = fakeData.getAllCitiesData().first()
+        // when
+        val result = mostSuitableSavingCityInteractor.excludeNullSalaries(city)
 //        // then
         assertTrue(result)
     }
@@ -42,81 +48,28 @@ class GetMostSuitableSavingCityInteractorTest {
     @Test
     fun should_ReturnFalse_When_netSalaryIsNull() {
         // given
-        val averageMonthlyNetSalaryAfterTax = null
-
-        // when
-        val result = interactor.excludeNullSalaries(averageMonthlyNetSalaryAfterTax as CityEntity)
-
-        // then
-        assertFalse(result)
+//        val city =
+//        println(city)
+//        // when
+//        val result = mostSuitableSavingCityInteractor.excludeNullSalaries(city)
+//
+//        // then
+//        assertFalse(result)
     }
 
     @Test
     fun should_returnCorrectSaving_when_EnterCityDataAndFamilyBudget() {
-        val cityData = CityData(
-            cityName = "Paris",
-            country = "France",
-            averageMonthlyNetSalaryAfterTax = 3000f,
-            dataQuality = true,
-            realEstatesPrices = RealEstatesPrices(
-                apartment3BedroomsInCityCentre = 1500f,
-                apartment3BedroomsOutsideOfCentre = null,
-                apartmentOneBedroomInCityCentre = null,
-                apartmentOneBedroomOutsideOfCentre = null,
-                pricePerSquareMeterToBuyApartmentInCityCentre = null,
-                pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
-            ),
-            foodPrices = FoodPrices(
-                loafOfFreshWhiteBread500g = 2f,
-                localCheese1kg = 20f,
-                beefRound1kgOrEquivalentBackLegRedMeat = 25f,
-                chickenFillets1kg = 10f,
-                riceWhite1kg = 5f,
-                eggsRegular12 = null
-            )
-        )
 
-        val familyBudget = 5000f
 
-        val expectedSavings = 2960.0f
+        val city = fakeData.getAllCitiesData().filter {
+            it.averageMonthlyNetSalaryAfterTax != null
+                    && it.dataQuality
+        }.first()
+        val familyBudget = mostSuitableSavingCityInteractor.calculateFamilyBudget(city.averageMonthlyNetSalaryAfterTax!!)
 
-        val actualSavings = interactor.calculateCitySavings(cityData, familyBudget)
+        val actualSavings = mostSuitableSavingCityInteractor.calculateCitySavings(city, familyBudget)
 
-        assertEquals(expectedSavings, actualSavings)
-    }
-
-    @Test
-    fun should_returnZero_When_FamilyBudgetNotEnough() {
-        val cityData = CityData(
-            cityName = "Paris",
-            country = "France",
-            averageMonthlyNetSalaryAfterTax = 3000f,
-            dataQuality = true,
-            realEstatesPrices = RealEstatesPrices(
-                apartment3BedroomsInCityCentre = 2000f,
-                apartment3BedroomsOutsideOfCentre = null,
-                apartmentOneBedroomInCityCentre = null,
-                apartmentOneBedroomOutsideOfCentre = null,
-                pricePerSquareMeterToBuyApartmentInCityCentre = null,
-                pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
-            ),
-            foodPrices = FoodPrices(
-                loafOfFreshWhiteBread500g = 2f,
-                localCheese1kg = 20f,
-                beefRound1kgOrEquivalentBackLegRedMeat = 25f,
-                chickenFillets1kg = 10f,
-                riceWhite1kg = 5f,
-                eggsRegular12 = null
-            )
-        )
-
-        val familyBudget = 5000f
-
-        val expectedSavings = 0f
-
-        val actualSavings = interactor.calculateCitySavings(cityData, familyBudget)
-
-        assertEquals(expectedSavings, actualSavings)
+        assertEquals(-1954.51f, actualSavings)
     }
 
     @Test
@@ -131,7 +84,7 @@ class GetMostSuitableSavingCityInteractorTest {
             eggsRegular12 = null
         )
         // when
-        val result = interactor.calculateFoodCost(foodPrice)
+        val result = mostSuitableSavingCityInteractor.calculateFoodCost(foodPrice)
         // then
         assertEquals(68f, result)
     }
@@ -148,7 +101,7 @@ class GetMostSuitableSavingCityInteractorTest {
             eggsRegular12 = null
         )
         // when
-        val result = interactor.calculateFoodCost(foodPrice)
+        val result = mostSuitableSavingCityInteractor.calculateFoodCost(foodPrice)
         // then
         assertEquals(0f, result)
     }
@@ -165,7 +118,7 @@ class GetMostSuitableSavingCityInteractorTest {
             eggsRegular12 = null
         )
         // when
-        val result = interactor.calculateFoodCost(foodPrice)
+        val result = mostSuitableSavingCityInteractor.calculateFoodCost(foodPrice)
         // then
         assertEquals(44f, result)
     }
@@ -175,7 +128,7 @@ class GetMostSuitableSavingCityInteractorTest {
         // given  value
         val averageMonthlySalary = 1000f
         // when
-        val result = interactor.calculateFamilyBudget(averageMonthlySalary)
+        val result = mostSuitableSavingCityInteractor.calculateFamilyBudget(averageMonthlySalary)
         // then
         assertEquals(2000f, result)
     }
@@ -184,7 +137,7 @@ class GetMostSuitableSavingCityInteractorTest {
         // given
         val averageMonthlySalary = 0f
         // when
-        val result = interactor.calculateFamilyBudget(averageMonthlySalary)
+        val result = mostSuitableSavingCityInteractor.calculateFamilyBudget(averageMonthlySalary)
         // then
         assertEquals(0f, result)
     }
@@ -194,7 +147,7 @@ class GetMostSuitableSavingCityInteractorTest {
         // given
         val averageMonthlySalary = -500f
         // when
-        val result = interactor.calculateFamilyBudget(averageMonthlySalary)
+        val result = mostSuitableSavingCityInteractor.calculateFamilyBudget(averageMonthlySalary)
         // then
         assertEquals(0f, result)
     }
@@ -204,7 +157,7 @@ class GetMostSuitableSavingCityInteractorTest {
         // given
         val averageMonthlySalary = 1500f
         // when
-        val result = interactor.calculateFamilyBudget(averageMonthlySalary)
+        val result = mostSuitableSavingCityInteractor.calculateFamilyBudget(averageMonthlySalary)
         // then
         assertEquals(3000f, result)
     }

@@ -15,11 +15,6 @@ class CsvDataSource(private val parser: CsvParser): CostOfLivingDataSource {
         }
     }
 
-    override fun getCityData(): List<CityData> {
-        return getCsvFile().readLines().map { csvLine ->
-            parser.parseLine2(csvLine)
-        }
-    }
 
     private fun getCsvFile(): File {
         val costOfLivingCsvFile = File(FILE_NAME)
