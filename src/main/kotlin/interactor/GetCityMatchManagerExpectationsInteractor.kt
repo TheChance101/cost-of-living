@@ -9,9 +9,13 @@ class GetCityMatchManagerExpectationsInteractor(
 
     private fun getOnlyNorthAmericaCountries(city: CityEntity): Boolean = city.country in NorthAmericaCountries.list
 
+    private fun getOnlyMealPrice(city: CityEntity): Boolean = city.mealsPrices.mealFor2PeopleMidRangeRestaurant != null
+
     fun execute(): CityEntity {
         return dataSource.getAllCitiesData()
-            .filter(::getOnlyNorthAmericaCountries).first()
+            .filter(::getOnlyNorthAmericaCountries)
+            .filter(::getOnlyMealPrice).first()
     }
+
 
 }
