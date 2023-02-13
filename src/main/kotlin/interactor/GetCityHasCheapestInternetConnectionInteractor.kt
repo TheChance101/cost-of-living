@@ -10,7 +10,7 @@ class GetCityHasCheapestInternetConnectionInteractor(
         return dataSource
             .getAllCitiesData()
             .filter { it.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl != null && it.averageMonthlyNetSalaryAfterTax != null }
-            .minByOrNull { it.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl!! / it.averageMonthlyNetSalaryAfterTax!! }
+            .minByOrNull { (it.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl!! / it.averageMonthlyNetSalaryAfterTax!! )*100}
 
     }
 

@@ -17,9 +17,9 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
     fun `should return city with cheapest internet connection`() {
         // given
         val citiesData = listOf(
-            createCity("City 1", 50f, 1000f),
-            createCity("City 2", 100f, 2000f),
-            createCity("City 3", 200f, 5000f)
+            createCity("City 1", 50f, 10f),
+            createCity("City 2", 2000f, 40f),
+            createCity("City 3", 5000f, 200f)
         )
         //when(dataSource.getAllCitiesData()).thenRetu(citiesData)
         every { dataSource.getAllCitiesData() } returns (citiesData)
@@ -27,7 +27,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
         val result = interactor.execute()
 
         // then
-        assertEquals("City 1", result?.cityName)
+        assertEquals("City 2", result?.cityName)
     }
     @Test
     fun `should return null if no cities have internet price`() {
@@ -57,7 +57,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
             interactor.execute()
         }
     }
-    private fun createCity(cityName: String, salary: Float, internetPrice: Float?) =
+    private fun createCity(cityName: String, averageMonthlyNetSalaryAfterTax: Float, internetPrice: Float?) =
         CityEntity(
             cityName, "Country", MealsPrices(null, null, null),
             DrinksPrices(null, null, null, null, null),
@@ -68,7 +68,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
             TransportationsPrices(null, null, null, null, null, null),
             CarsPrices(null, null),
             RealEstatesPrices(null, null, null, null, null, null),
-            salary, true
+            averageMonthlyNetSalaryAfterTax, true
         )
 
 }
