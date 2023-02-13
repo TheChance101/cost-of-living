@@ -3,6 +3,9 @@ package interactor
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import fakeData.*
+import model.CityEntity
+import org.hamcrest.CoreMatchers
+import org.hamcrest.MatcherAssert
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
@@ -42,4 +45,27 @@ internal class CountriesNamesForTheHighestTaxesOnCokeInteractorTest {
 
         assertEquals(10, pairOfCountryAndPrices.size)
     }
+
+    @Test
+    fun `should Return False if list not equal to the top 10 countries Data `() {
+        //given country limit and Data
+
+        val countriesNamesForTheHighestTaxesOnCoke =
+            CountriesNamesForTheHighestTaxesOnCokeInteractor(dataSource)
+
+        val countriesLimit = 10
+
+        val expected: List<CityEntity> = countriesNamesForTheHighestTaxesOnCoke.execute(countriesLimit)
+
+        //when pairOfCountryAndPrices is not Equal to top 10 countries data
+
+        val pairOfCountryAndPrices =
+            countriesNamesForTheHighestTaxesOnCoke.execute(limitOfDesiredCountries = countriesLimit)
+
+        val actual: List<CityEntity> = pairOfCountryAndPrices
+        //then
+
+        MatcherAssert.assertThat(actual, CoreMatchers.`is`(expected))
+    }
+
 }
