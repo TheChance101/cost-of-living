@@ -11,19 +11,16 @@ class GetCityHasCheapestMealPricesInteractor(
     fun execute(): CityEntity {
 
         val listOfCitiesEntity = dataSource.getAllCitiesData()
-            .filter(::citiesInUSACanadaAndMexico)
+            .filter(::isCitiesInUSACanadaAndMexico)
             .filter(::isCityHasAverageMealPrice)
             .sortedByDescending { getAverageMealInCity(it) }
 
        return listOfCitiesEntity
             .filter { getAverageMealInCity(it) == getAverageMealInAllCities(listOfCitiesEntity) || getAverageMealInCity(it) == ceil(getAverageMealInAllCities(listOfCitiesEntity).toDouble()).toFloat() }
             .first()
-
-
     }
 
-
-    fun citiesInUSACanadaAndMexico(city: CityEntity): Boolean {
+    fun isCitiesInUSACanadaAndMexico(city: CityEntity): Boolean {
         return city.country == ThreeSpecificCountries.USA.nameOFCountry
                 || city.country == ThreeSpecificCountries.CANADA.nameOFCountry
                 || city.country == ThreeSpecificCountries.MEXICO.nameOFCountry

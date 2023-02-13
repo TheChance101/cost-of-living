@@ -38,7 +38,7 @@ class GetCityHasCheapestMealPricesInteractorTest {
         val city: CityEntity = mockk()
         // when return the country of the city is USA
         every { city.country } returns ThreeSpecificCountries.USA.nameOFCountry
-        val result = sut.citiesInUSACanadaAndMexico(city)
+        val result = sut.isCitiesInUSACanadaAndMexico(city)
         // then
         assertTrue(result)
     }
@@ -49,7 +49,7 @@ class GetCityHasCheapestMealPricesInteractorTest {
         val city: CityEntity = mockk()
         // when return the country of the city is Canada
         every { city.country } returns ThreeSpecificCountries.CANADA.nameOFCountry
-        val result = sut.citiesInUSACanadaAndMexico(city)
+        val result = sut.isCitiesInUSACanadaAndMexico(city)
         // then
         assertTrue(result)
     }
@@ -60,7 +60,7 @@ class GetCityHasCheapestMealPricesInteractorTest {
         val city: CityEntity = mockk()
         // when return the country of the city is Mexico
         every { city.country } returns ThreeSpecificCountries.MEXICO.nameOFCountry
-        val result = sut.citiesInUSACanadaAndMexico(city)
+        val result = sut.isCitiesInUSACanadaAndMexico(city)
         // then
         assertTrue(result)
     }
@@ -71,11 +71,10 @@ class GetCityHasCheapestMealPricesInteractorTest {
         val city: CityEntity = mockk()
         // when return the country of the city is Egypt
         every { city.country } returns ThreeSpecificCountries.EGYPT.nameOFCountry
-        val result = sut.citiesInUSACanadaAndMexico(city)
+        val result = sut.isCitiesInUSACanadaAndMexico(city)
         // then
         assertFalse(result)
     }
-
 
     @Test
     fun `should return false when the city has no averageMeal price and InexpensiveMeal`() {
@@ -215,5 +214,7 @@ class GetCityHasCheapestMealPricesInteractorTest {
         // then
         assertEquals(average, result)
     }
+
+    
 }
 
