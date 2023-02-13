@@ -19,6 +19,7 @@ dependencies {
     implementation("org.testng:testng:7.1.0")
     testImplementation(kotlin("test"))
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    testImplementation("org.mockito:mockito-core:3.3.3")
 }
 
 tasks.test {
