@@ -12,10 +12,11 @@ import org.junit.jupiter.api.TestInstance
 class GetTopCountriesHaveHighCarbonatedDrinksPricesInterctorTest {
 
     private lateinit var getTopCountriesHaveHighCarbonatedDrinksPrices: GetTopCountriesHaveHighCarbonatedDrinksPricesInterctor
+    private lateinit var fakeData: FakeData
 
     @BeforeAll
     fun setUp() {
-        val fakeData = FakeData()
+        fakeData = FakeData()
         getTopCountriesHaveHighCarbonatedDrinksPrices = GetTopCountriesHaveHighCarbonatedDrinksPricesInterctor(fakeData)
     }
 

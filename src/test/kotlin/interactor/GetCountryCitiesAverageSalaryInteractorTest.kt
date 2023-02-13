@@ -12,10 +12,12 @@ import org.junit.jupiter.api.function.Executable
 class GetCountryCitiesAverageSalaryInteractorTest {
 
     private lateinit var getCountryCitiesAverageSalary: GetCountryCitiesAverageSalaryInteractor
+    private lateinit var fakeData: FakeData
+
 
     @BeforeAll
     fun setUp() {
-        val fakeData = FakeData()
+        fakeData = FakeData()
         getCountryCitiesAverageSalary = GetCountryCitiesAverageSalaryInteractor(fakeData)
     }
 

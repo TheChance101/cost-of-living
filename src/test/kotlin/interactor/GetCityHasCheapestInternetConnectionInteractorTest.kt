@@ -15,8 +15,15 @@ import kotlin.test.assertTrue
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetCityHasCheapestInternetConnectionInteractorTest {
 
-    lateinit var getCityHasCheapestInternetConnection: GetCityHasCheapestInternetConnectionInteractor
-    lateinit var fakeData: FakeData
+    private lateinit var getCityHasCheapestInternetConnection: GetCityHasCheapestInternetConnectionInteractor
+    private lateinit var fakeData: FakeData
+
+
+    @BeforeAll
+    fun setup() {
+        fakeData = FakeData()
+        getCityHasCheapestInternetConnection = GetCityHasCheapestInternetConnectionInteractor(fakeData)
+    }
 
     companion object {
         @JvmStatic
@@ -48,12 +55,6 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
                 },
             )
         }
-    }
-
-    @BeforeAll
-    fun setup() {
-        fakeData = FakeData()
-        getCityHasCheapestInternetConnection = GetCityHasCheapestInternetConnectionInteractor(fakeData)
     }
 
     @Test
