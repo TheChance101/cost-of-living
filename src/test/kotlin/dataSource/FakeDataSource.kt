@@ -77,7 +77,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 18.0f,
                 dataQuality = false
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Sancti Spiritus",
                 country = "Cuba",
                 mealsPrices = MealsPrices(
@@ -147,7 +148,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 20.0f,
                 dataQuality = false
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Santa Clara",
                 country = "Cuba",
                 mealsPrices = MealsPrices(
@@ -217,7 +219,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 25.0f,
                 dataQuality = false
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Jaramana",
                 country = "Syria",
                 mealsPrices = MealsPrices(
@@ -287,7 +290,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 30.0f,
                 dataQuality = false
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Havana",
                 country = "Cuba",
                 mealsPrices = MealsPrices(
@@ -357,7 +361,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 35.75f,
                 dataQuality = true
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Moratuwa",
                 country = "Sri Lanka",
                 mealsPrices = MealsPrices(
@@ -427,7 +432,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 36.61f,
                 dataQuality = false
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Las Tunas",
                 country = "Cuba",
                 mealsPrices = MealsPrices(
@@ -497,7 +503,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 40.0f,
                 dataQuality = false
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Latakia",
                 country = "Syria",
                 mealsPrices = MealsPrices(
@@ -567,7 +574,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 41.25f,
                 dataQuality = false
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Homs",
                 country = "Syria",
                 mealsPrices = MealsPrices(
@@ -637,7 +645,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 46.33f,
                 dataQuality = false
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Hamah",
                 country = "Syria",
                 mealsPrices = MealsPrices(
@@ -707,7 +716,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 50.0f,
                 dataQuality = false
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Damascus",
                 country = "Syria",
                 mealsPrices = MealsPrices(
@@ -777,7 +787,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 50.24f,
                 dataQuality = true
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Uyo",
                 country = "Nigeria",
                 mealsPrices = MealsPrices(
@@ -847,7 +858,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 50.66f,
                 dataQuality = false
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Tamale",
                 country = "Ghana",
                 mealsPrices = MealsPrices(
@@ -917,7 +929,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 56.43f,
                 dataQuality = false
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Kasese",
                 country = "Uganda",
                 mealsPrices = MealsPrices(
@@ -987,7 +1000,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 66.98f,
                 dataQuality = true
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Aleppo",
                 country = "Syria",
                 mealsPrices = MealsPrices(
@@ -1057,7 +1071,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 72.8f,
                 dataQuality = true
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Banjul",
                 country = "Gambia",
                 mealsPrices = MealsPrices(
@@ -1127,7 +1142,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 75.27f,
                 dataQuality = true
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Warri",
                 country = "Nigeria",
                 mealsPrices = MealsPrices(
@@ -1197,7 +1213,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 75.42f,
                 dataQuality = true
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Dhangadhi",
                 country = "Nepal",
                 mealsPrices = MealsPrices(
@@ -1267,7 +1284,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 76.89f,
                 dataQuality = true
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Narayanganj",
                 country = "Bangladesh",
                 mealsPrices = MealsPrices(
@@ -1337,7 +1355,8 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 78.04f,
                 dataQuality = true
-            ), CityEntity(
+            ),
+            CityEntity(
                 cityName = "Sri Jayewardenepura Kotte",
                 country = "Sri Lanka",
                 mealsPrices = MealsPrices(
@@ -1407,9 +1426,78 @@ class FakeDataSource : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 81.36f,
                 dataQuality = true
-            )
-
-
+            ),
+            CityEntity(
+                cityName = "Dhangadhi",
+                country = "Nepal",
+                mealsPrices = MealsPrices(
+                    mealInexpensiveRestaurant = 1.15f,
+                    mealFor2PeopleMidRangeRestaurant = null,
+                    mealAtMcDonaldSOrEquivalent = null
+                ),
+                drinksPrices = DrinksPrices(
+                    cappuccinoRegularInRestaurants = null,
+                    cokePepsiAThirdOfLiterBottleInRestaurants = 0.38f,
+                    waterAThirdOfLiterBottleInRestaurants = 0.19f,
+                    milkRegularOneLiter = 0.54f,
+                    waterOneAndHalfLiterBottleAtTheMarket = 0.19f
+                ),
+                fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                    apples1kg = 0.77f,
+                    banana1kg = 0.77f,
+                    oranges1kg = 0.38f,
+                    tomato1kg = 0.62f,
+                    potato1kg = 0.46f,
+                    onion1kg = 0.62f,
+                    lettuceOneHead = null
+                ),
+                foodPrices = FoodPrices(
+                    loafOfFreshWhiteBread500g = 0.31f,
+                    riceWhite1kg = 0.62f,
+                    eggsRegular12 = 1.38f,
+                    localCheese1kg = 4.61f,
+                    chickenFillets1kg = 2.31f,
+                    beefRound1kgOrEquivalentBackLegRedMeat = null
+                ),
+                servicesPrices = ServicesPrices(
+                    basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = null,
+                    oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.04f,
+                    internet60MbpsOrMoreUnlimitedDataCableAdsl = 12.15f,
+                    fitnessClubMonthlyFeeForOneAdult = 7.69f,
+                    tennisCourtRentOneHourOnWeekend = null,
+                    cinemaInternationalReleaseOneSeat = 2.31f,
+                    preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 15.38f,
+                    internationalPrimarySchoolYearlyForOneChild = null
+                ),
+                clothesPrices = ClothesPrices(
+                    onePairOfJeansLevis50oneOrSimilar = 11.53f,
+                    oneSummerDressInAChainStoreZaraHAndM = 11.53f,
+                    onePairOfNikeRunningShoesMidRange = 13.84f,
+                    onePairOfMenLeatherBusinessShoes = 15.38f
+                ),
+                transportationsPrices = TransportationsPrices(
+                    oneWayTicketLocalTransport = null,
+                    monthlyPassRegularPrice = null,
+                    taxiStartNormalTariff = null,
+                    taxi1kmNormalTariff = null,
+                    taxi1hourWaitingNormalTariff = null,
+                    gasolineOneLiter = null
+                ),
+                carsPrices = CarsPrices(
+                    volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = null,
+                    toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = null
+                ),
+                realEstatesPrices = RealEstatesPrices(
+                    apartmentOneBedroomInCityCentre = 38.44f,
+                    apartmentOneBedroomOutsideOfCentre = 23.07f,
+                    apartment3BedroomsInCityCentre = null,
+                    apartment3BedroomsOutsideOfCentre = null,
+                    pricePerSquareMeterToBuyApartmentInCityCentre = null,
+                    pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
+                ),
+                averageMonthlyNetSalaryAfterTax = 76.89f,
+                dataQuality = true
+            ),
         )
     }
 
