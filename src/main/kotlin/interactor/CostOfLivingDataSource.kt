@@ -4,4 +4,5 @@ import model.CityEntity
 
 interface CostOfLivingDataSource {
     fun getAllCitiesData(): List<CityEntity>
+
 }
