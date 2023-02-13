@@ -30,7 +30,7 @@ class GetHighestCarbonatedDrinksPricesInteractorTest{
     }
 
     @Test
-    fun should_return_Null_When_Data_LowQuality(){
+    fun should_return_empty_When_Data_LowQuality(){
         //given
         fakeData.setDataType(FakeDataSource.DataType.LOWQUALITY)
         //when
@@ -46,7 +46,7 @@ class GetHighestCarbonatedDrinksPricesInteractorTest{
 
         //when
         val listOfCountries = getHighestCarbonatedDrinksPricesInteractor.execute()
-        //then
+        //then return empty list
         assertTrue(listOfCountries.isEmpty())
     }
 

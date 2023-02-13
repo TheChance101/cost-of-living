@@ -44,4 +44,5 @@ class GetHighestCarbonatedDrinksPricesInteractor(private val dataSource: CostOfL
             cityEntity.drinksPrices.waterOneAndHalfLiterBottleAtTheMarket!! +
             cityEntity.drinksPrices.waterAThirdOfLiterBottleInRestaurants!!+
             cityEntity.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants!!)/5
+
 }
