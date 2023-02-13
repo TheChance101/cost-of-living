@@ -88,7 +88,7 @@ internal class GetTopCitiesFruitsAndVegetablesLowestCostInteractorTest {
     @Test
     fun `should return false when cities fruits and vegetables is null but average salary is not null`() {
         // given
-        val fakeCity = fakeData.getAllCitiesData()[1]
+        val fakeCity = fakeData.getAllCitiesData()[9]
         // when
         val result = interactor.excludeNullFruitAndVegetablePricesOrNullSalaries(fakeCity)
         // then
