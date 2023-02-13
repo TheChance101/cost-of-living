@@ -32,10 +32,9 @@ class GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinks(private val dataSour
     }
 
     // check the entered limit value
-    fun checkTheInputOfLimit(limit:Int):Boolean{
-        return true
+    fun checkTheInputOfLimit(limit:Int):Boolean {
+        return !(limit == 0 || limit == -1)
     }
-
     //check for empty list and null
     fun filterTheListOfCountriesOfHighestCarbonatedDrinksPrices (list: List<String>):Boolean {
         return true
