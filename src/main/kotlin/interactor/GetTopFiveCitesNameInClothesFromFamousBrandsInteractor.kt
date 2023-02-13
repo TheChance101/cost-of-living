@@ -1,5 +1,6 @@
 package interactor
 
+import model.CityEntity
 import model.ClothesPrices
 
 class GetTopFiveCitesNameInClothesFromFamousBrandsInteractor (
@@ -10,7 +11,7 @@ class GetTopFiveCitesNameInClothesFromFamousBrandsInteractor (
 
             return listOf("null")
         }
-        fun excludeNullClothesPrices(): Boolean {
+        fun excludeNullClothesPrices(city: CityEntity): Boolean {
 
             return false}
 
