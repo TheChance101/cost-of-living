@@ -1,5 +1,6 @@
 package interactor
 
+import fakeDataSource.*
 import model.*
 import org.junit.jupiter.api.Test
 
@@ -12,55 +13,87 @@ import kotlin.test.assertTrue
 class GetFastest10CitiesToBuyAPTInteractorTest {
 
     private val getFastest10CitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(getVariousData())
-    @Test
-    fun `should avoid low quality`() {
-        //given
-        val fastestCitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(getLowQualityCities())
-
-        //when
-        val result = fastestCitiesToBuyAPT.execute()
-
-        //then
-        assertTrue(result.isEmpty())
-
-    }
 
     @Test
-    fun `should avoid missing price per square meter outside centre`() {
+    fun should_ReturnTrue_When_DataQualityIsLow() {
         //given
-        val fastestCitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(getMissingPricePerSquareMeterOutsideCentre())
+        val lowQualityData  = getLowQualityCities()
         //when
+        val fastestCitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(lowQualityData)
         val result = fastestCitiesToBuyAPT.execute()
         //then
         assertTrue(result.isEmpty())
-
     }
-
-    // should skip
     @Test
-    fun `should avoid missing salary`() {
+    fun should_ReturnTrue_When_PricePerSquareMeterOutsideCentreISNull() {
         //given
-        val fastestCitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(getMissingSalary())
+        val missingPPS = getMissingPricePerSquareMeterOutsideCentre()
         //when
+        val fastestCitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(missingPPS)
         val result = fastestCitiesToBuyAPT.execute()
         //then
         assertTrue(result.isEmpty())
-
+    }
+    @Test
+    fun should_ReturnTrue_When_SalaryIsNull() {
+        //given
+        val nullsSalary = getMissingSalary()
+        //when
+        val fastestCitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(nullsSalary)
+        val result = fastestCitiesToBuyAPT.execute()
+        //then
+        assertTrue(result.isEmpty())
     }
 
     @Test
-    fun `list size should be 10`() {
+    fun should_ReturnTrue_When_TheLengthIs10() {
 
-        val fastest10CitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(getAcceptable11Element())
+        //given
+        val variousData = getVariousData()
         //when
+        val fastest10CitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(variousData)
         val result = fastest10CitiesToBuyAPT.execute()
         //then
         assertEquals(10, result.size)
+    }
+
+    @Test
+    fun should_ReturnCorrectNumberOfYears_When() {
+        //given
+        val cityEntity = CityEntity(
+            "City11",
+            "Country11",
+            MealsPrices(null, null, null),
+            DrinksPrices(null, null, null, null, null),
+            FruitAndVegetablesPrices(null, null, null, null, null, null, null),
+            FoodPrices(null, null, null, null, null, null),
+            ServicesPrices(null, null, null, null, null, null, null, null),
+            ClothesPrices(null, null, null, null),
+            TransportationsPrices(null, null, null, null, null, null),
+            CarsPrices(null, null),
+            RealEstatesPrices(
+                apartmentOneBedroomInCityCentre = null,
+                apartmentOneBedroomOutsideOfCentre = null,
+                apartment3BedroomsInCityCentre = null,
+                apartment3BedroomsOutsideOfCentre = null,
+                pricePerSquareMeterToBuyApartmentInCityCentre = null,
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = 3000f
+            ),
+            6900f,
+            true
+        )
+        val expected = 43.47826f
+
+        //when
+        val numberOfYears = calculateNumberOfYearsToBuyAPT(cityEntity)
+
+        //then
+        assertEquals(expected,numberOfYears.toFloat())
 
     }
 
     @Test
-    fun `should return correct data`() {
+    fun should_ReturnCorrectListOfPairs_When_InputIsCorrect() {
         //given
         val fastest10CitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(getVariousData())
         val expectedList = listOf(
@@ -77,7 +110,6 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
         )
         //when
         val result = fastest10CitiesToBuyAPT.execute()
-
         //then
         assertEquals(expectedList, result)
     }
@@ -108,7 +140,7 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
     @Test
     fun should_returnTrue_when_salaryIsNotNull() {
         // Given a not null salary
-        val city = getCityWithCustomNeeds(12f,13f, true)
+        val city = getCityWithCustomNeeds(12f, 13f, true)
         // When checking for the not null salary
         val result = getFastest10CitiesToBuyAPT.excludeInvalidSalaries(city)
         // Then the result should be true
@@ -134,6 +166,7 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
         // then the result should be true
         assertTrue(result)
     }
+
     @Test
     fun should_return_when_salaryValueIsInvalid() {
         // Given an Invalid salary
@@ -187,5 +220,6 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
         assertFalse(result)
     }
     //endregion
+
 
 }
