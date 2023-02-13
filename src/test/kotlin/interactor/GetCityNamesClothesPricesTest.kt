@@ -1,11 +1,10 @@
 package interactor
 
+import dataSource.utils.GetCityNamesClothesPrices
 import model.CityEntity
-import model.CityNameClothesPrices
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
