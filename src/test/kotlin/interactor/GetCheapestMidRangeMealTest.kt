@@ -33,4 +33,15 @@ internal class GetCheapestMidRangeMealTest {
 
     }
 
+    @Test
+    fun should_ReturnCityWithMealsPricesNotEqualNull_when_Execute() {
+        // given
+        //costOfLiving.csv
+        // when
+        val result = getCheapestMidRangeMeal.execute()
+        // then
+        Assertions.assertNotEquals(null, result.mealsPrices)
+
+    }
+
 }
