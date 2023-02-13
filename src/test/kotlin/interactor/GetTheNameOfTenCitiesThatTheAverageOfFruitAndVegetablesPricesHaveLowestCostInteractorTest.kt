@@ -42,6 +42,17 @@ internal class GetTheNameOfTenCitiesThatTheAverageOfFruitAndVegetablesPricesHave
   }
 
 
+  @Test
+  fun should_ReturnFirstItemInList_when_Execute()
+  {
+    // given
+
+    // when
+    val result = getTheNameOfTenCitiesThatTheAverageOfFruitAndVegetablesPricesHaveLowestCostInteractor.execute()[0]
+    // then
+    assertEquals("Narayanganj", result)
+
+  }
 
 
 
