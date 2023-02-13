@@ -7,12 +7,13 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 
 class GetTheCityThatMatchManagerExpectationsTest {
 
-    private lateinit var fakeData:FakeData
-    private lateinit var GetTheCityThatMatchManagerExpectations:GetTheCityThatMatchManagerExpectations
+    private lateinit var fakeData: FakeData
+    private lateinit var GetTheCityThatMatchManagerExpectations: GetTheCityThatMatchManagerExpectations
 
     @BeforeAll
     fun setUp() {
@@ -21,24 +22,50 @@ class GetTheCityThatMatchManagerExpectationsTest {
 
 
     }
+
     @Test
-    fun Should_ReturnNotNullCityExcute(){
-        //when
-        val result= GetTheCityThatMatchManagerExpectations.excute()
+    fun should_ReturnEmptyList_When_givenAListDoesntHave_USAMexicoCanada() {
+        //given
+        val CountriesList = fakeData.getAllCitiesData()
+            .filterNot { it.country == "United States" || it.country == "Mexico" || it.country == "Canada" }
+
+        // when
+        val actualResult = GetTheCityThatMatchManagerExpectations.filterByCountryAndNoneNullable(CountriesList)
+
         //then
-        assertNotNull(result)
+        assertTrue(actualResult.isEmpty())
+    }
+    @Test
+    fun should_ReturnAList_When_given_InRangeCountries() {
+        //given
+        val CountriesList = fakeData.getAllCitiesData()
+            .filter { it.country == "United States" || it.country == "Mexico" || it.country == "Canada" }
+
+        // when
+        val actualResult = GetTheCityThatMatchManagerExpectations.filterByCountryAndNoneNullable(CountriesList)
+
+        //then
+        assertTrue(actualResult.isNotEmpty())
     }
 
-    @Test
-    fun ShouldSearchInSelectedCities(){
-        //when
-        val Country = listOf<String>("USA","Canada","Mexico")
 
-        if(GetTheCityThatMatchManagerExpectations.searchCity() != null){
-            val isExists:Boolean = GetTheCityThatMatchManagerExpectations.searchCity()!!.country in Country
-            //then
-            assertTrue(isExists)
-        }
+    @Test
+    fun should_ReturnMideValue_when_EntringDoubleNumber(){
+        // given
+        val givenValue = 5
+        // when
+        val actualResult = GetTheCityThatMatchManagerExpectations.getMedianValue(givenValue)
+        // then
+        assertEquals(2,actualResult)
+    }
+    @Test
+    fun should_ReturnZero_when_EntringZero(){
+        // given
+        val givenValue = 0
+        // when
+        val actualResult = GetTheCityThatMatchManagerExpectations.getMedianValue(givenValue)
+        // then
+        assertEquals(0,actualResult)
     }
 
 
