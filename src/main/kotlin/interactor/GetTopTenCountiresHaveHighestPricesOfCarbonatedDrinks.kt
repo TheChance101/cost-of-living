@@ -20,8 +20,12 @@ class GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinks(private val dataSour
 
     // add average prices to the country names
     fun getDrinksPrice(dataSource: CostOfLivingDataSource): List<Float?> {
-
-        return listOf()
+        val list =dataSource
+            .getAllCitiesData()
+            .filter(::excludeCarbonateDrinksPriceAndLowQualityData)
+            .sortedByDescending { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants }
+            .map { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants }
+        return list
     }
     // get high data quality only
     fun excludeCarbonateDrinksPriceAndLowQualityData(country: CityEntity): Boolean {
