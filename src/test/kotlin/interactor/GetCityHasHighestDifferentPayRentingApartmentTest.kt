@@ -54,7 +54,7 @@ internal class TestGetCityWithHighestRentalPriceDifferenceInteractor {
         //given an var of dataSource with return name of city
         val cityData = dataSource.getAllCitiesData()
 
-        val result = getCityWithHighestRentalPriceDifference.execute(dataSource.getAllCitiesData())
+        val result = getCityWithHighestRentalPriceDifference.execute(cityData)
 
         assertEquals("Cairo", result)
     }
