@@ -7,11 +7,12 @@ class GetCitiesNameHasHighestClothesPriceInteractor(
 ) {
     private val limit: Int = 5
 
-    fun execute(): List<CityEntity> {
+    fun execute(): List<String> {
         return dataSource.getAllCitiesData()
             .filter(::excludeAnyNullClothPriceAndLowQualityData)
             .sortedByDescending(::getSumOfClothesPricesOfCity)
             .take(limit)
+            .map { it.cityName }
     }
 
     private fun excludeAnyNullClothPriceAndLowQualityData(city:CityEntity): Boolean{
