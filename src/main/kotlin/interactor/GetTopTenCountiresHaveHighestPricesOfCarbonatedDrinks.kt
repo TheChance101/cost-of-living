@@ -9,7 +9,6 @@ class GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinks(private val dataSour
     // extract the names of ten countries that have high taxes on carbonated drinks
    fun getCountriesOfHighestCarbonatedDrinksPrices(limit:Int): List<Pair<String, Float?>> {
         return dataSource
-
             .getAllCitiesData()
             .filter(::excludeCarbonateDrinksPriceAndLowQualityData)
             .sortedByDescending { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants }
