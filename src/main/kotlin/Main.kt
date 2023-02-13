@@ -15,10 +15,8 @@ fun main() {
 //
 //    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
 //    println(getCityHasCheapestInternetConnectionInteractor.execute())
-//    val getTheAverageSalaryForEachCityInTheCountry =getTheAverageSalaryForEachCityInTheCountryInteractor(dataSource)
+    val getTheAverageSalaryForEachCityInTheCountry =getTheAverageSalaryForEachCityInTheCountryInteractor(dataSource)
 
-    println(dataSource.getAllCitiesData().take(20).filter { it.country =="Cuba" }
-        .map { listOf(it.cityName,it.averageMonthlyNetSalaryAfterTax) })
 
 }
 private fun printSeparationLine(){

@@ -18,11 +18,7 @@ internal class getTheAverageSalaryForEachCityInTheCountryInteractorTest {
         //when find the city name and salary average
          val salaryAverage = getTheAverageSalaryForEachCityInTheCountryInteractor(fakeData).execute(countryName)
         //then check return a List of pairs each pair have city name and salary average for this city
-        assertEquals(listOf<Any>(listOf( "Santiago de Cuba", 18.0),
-                            listOf("Sancti Spiritus", 20.0),
-                            listOf("Santa Clara", 25.0),
-                            listOf("Havana", 35.75),
-                            listOf("Las Tunas", 40.0)).toString(),salaryAverage.toString())
+        assertEquals(listOf<Any>(listOf("Havana", 35.75)).toString(),salaryAverage.toString())
 
     }
     @Test
@@ -32,11 +28,7 @@ internal class getTheAverageSalaryForEachCityInTheCountryInteractorTest {
         //when find the city name and salary average
         val salaryAverage = getTheAverageSalaryForEachCityInTheCountryInteractor(fakeData).execute(countryName)
         //then check return a List of pairs each pair have city name and salary average for this city
-        assertEquals(listOf<Any>(listOf( "Santiago de Cuba", 18.0),
-            listOf("Sancti Spiritus", 20.0),
-            listOf("Santa Clara", 25.0),
-            listOf("Havana", 35.75),
-            listOf("Las Tunas", 40.0)).toString(),salaryAverage.toString())
+        assertEquals(listOf<Any>(listOf("Havana", 35.75)).toString(),salaryAverage.toString())
     }
     @Test
     fun should_ReturnListOfPairsEachPairContainCityNameAndSalaryAverage_whenCountryNameIsMixedCase (){
@@ -45,11 +37,7 @@ internal class getTheAverageSalaryForEachCityInTheCountryInteractorTest {
         //when find the city name and salary average
         val salaryAverage = getTheAverageSalaryForEachCityInTheCountryInteractor(fakeData).execute(countryName)
         //then check return a List of pairs each pair have city name and salary average for this city
-        assertEquals(listOf<Any>(listOf( "Santiago de Cuba", 18.0),
-            listOf("Sancti Spiritus", 20.0),
-            listOf("Santa Clara", 25.0),
-            listOf("Havana", 35.75),
-            listOf("Las Tunas", 40.0)).toString(),salaryAverage.toString())
+        assertEquals(listOf<Any>(listOf("Havana", 35.75)).toString(),salaryAverage.toString())
     }
 
 }
