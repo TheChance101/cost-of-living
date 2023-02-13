@@ -1,6 +1,7 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import interactor.CostOfLivingDataSource
+import interactor.GetAvgFruitNVeggieInteractor
 import interactor.GetCityHasCheapestInternetConnectionInteractor
 import interactor.GetHighestSalaryAverageCititesNamesInteractor
 
@@ -17,6 +18,11 @@ fun main() {
     val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
     println(getCityHasCheapestInternetConnectionInteractor.execute())
     printSeparationLine()
+
+   val GetAvgFruitNVeggieInteractor = GetAvgFruitNVeggieInteractor(dataSource)
+    println(GetAvgFruitNVeggieInteractor.execute())
+    printSeparationLine()
+
 
 }
 private fun printSeparationLine(){
