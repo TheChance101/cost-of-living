@@ -17,7 +17,7 @@ fun main() {
 //    println(getCityHasCheapestInternetConnectionInteractor.execute())
     val getTheAverageSalaryForEachCityInTheCountry =getTheAverageSalaryForEachCityInTheCountryInteractor(dataSource)
 
-
+println(getTheAverageSalaryForEachCityInTheCountry.execute("Cuba"))
 }
 private fun printSeparationLine(){
     print("\n_______________________________\n")
