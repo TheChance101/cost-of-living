@@ -39,7 +39,15 @@ fun main() {
         GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
     println(getCitiesNameToBuyApartmentFasterInteractor.execute(1000, 10, 100))
     printSeparationLine()
+    val apartmentOneBedRoom=true
+    val apartment3BedRooms=true
+    val limit=1
+    val getHighestDifferentInApartmentRent =
+        GetHighestDifferentInApartmentRent(dataSource)
+    println(getHighestDifferentInApartmentRent.execute(apartmentOneBedRoom, apartment3BedRooms,limit))
+    printSeparationLine()
 }
+
 private fun printSeparationLine(){
     print("\n_______________________________\n")
 }
