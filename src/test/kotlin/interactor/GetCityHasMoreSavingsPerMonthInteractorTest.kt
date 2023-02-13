@@ -94,7 +94,6 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
             foodPricesWithNull.realEstatesPrices
         } returns RealEstatesPrices(10f,20f,null,40f,10f,50f)
 
-
         every {
             dataSource.getAllCitiesData()
         } returns listOf(foodPricesWithNull)
@@ -116,6 +115,7 @@ internal class GetCityHasMoreSavingsPerMonthInteractorTest {
         every {
             apartmentPricesWithNull.foodPrices
         }returns  FoodPrices(10f,20f,30f,15f,25f,40f)
+
         every {
             apartmentPricesWithNull.realEstatesPrices
         } returns RealEstatesPrices(10f,20f,null,null,10f,15f)
