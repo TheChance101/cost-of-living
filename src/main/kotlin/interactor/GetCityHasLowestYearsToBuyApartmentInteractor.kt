@@ -21,7 +21,7 @@ class GetCityHasLowestYearsToBuyApartmentInteractor(
     }
 
      fun getNumberOfYearsToBuyApartment(fullTimeSalary: Int, city: CityEntity): Float {
-        TODO(" Not implemented yet ")
-
-    }
+         val numberOfYears =  city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!/(fullTimeSalary*12)
+         return numberOfYears
+     }
 }
