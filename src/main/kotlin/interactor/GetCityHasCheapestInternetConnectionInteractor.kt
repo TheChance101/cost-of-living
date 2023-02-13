@@ -33,7 +33,6 @@ class GetCityHasCheapestInternetConnectionInteractor{
     }
 
 
-
     /* we have a list we need to loop on it to find
      the cheapest internet in the cities based on average salary and internet price
      we need to check about average salaries in the cities
@@ -50,7 +49,5 @@ class GetCityHasCheapestInternetConnectionInteractor{
     }
 
 }
-
-
 
 
