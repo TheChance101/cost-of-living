@@ -1,4 +1,4 @@
-package fakeData
+package fakedata
 
 import interactor.CostOfLivingDataSource
 import model.*
@@ -654,11 +654,7 @@ object CompanyDinnerFakeData {
             )
         }
     }
-    val singleCities by lazy {
-        object : CostOfLivingDataSource {
-            override fun getAllCitiesData() = listOf(cityHighQuality3)
-        }
-    }
+
     val extremeLowQualityCities by lazy {
         object : CostOfLivingDataSource {
             override fun getAllCitiesData() =
