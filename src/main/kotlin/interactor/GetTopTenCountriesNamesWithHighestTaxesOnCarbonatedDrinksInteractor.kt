@@ -35,7 +35,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(
     /**
      * Returns `true` if the value of `country` is invalid.
      * @param cityEntity represents a city.
-     * @return `true` if the value of `countryName` is not empty or `null`.
+     * @return `true` if the value of `countryName` is not empty.
      * @author Abdurrahman Salah ad-Din
      */
     fun excludeInvalidCountries(cityEntity: CityEntity) = Exception("Not implemented yet")
