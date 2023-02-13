@@ -40,6 +40,6 @@ internal class CountriesNamesForTheHighestTaxesOnCokeInteractorTest {
 
         //then
 
-        assertEquals(10, pairOfCountryAndPrices)
+        assertEquals(10, pairOfCountryAndPrices.size)
     }
 }
