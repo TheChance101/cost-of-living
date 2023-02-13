@@ -5,6 +5,9 @@ import kotlin.math.abs
 
 class CompanyDinnerInteractor(private val dataSource: CostOfLivingDataSource) {
     fun execute(boundary: Float = Float.MAX_VALUE): CityEntity? = dataSource.getAllCitiesData().getOrNull(0)
+    private fun List<CityEntity>.filteredByCountries(
+        countries: List<String> = listOf("usa", "canada", "mexico")
+    ) = filter { it.country.lowercase() in countries }
     class CityMealsDataHolder(val city: CityEntity, vararg mealsPrices: Float?) {
         private val filteredMeals = mealsPrices.filterNotNull().filterNot { it.isNaN() }
         private val cheapestMeal = filteredMeals.minOrNull() ?: Float.MAX_VALUE
