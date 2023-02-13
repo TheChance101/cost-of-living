@@ -74,7 +74,6 @@ class GetCitiesAndYearsToBuyApartmentInteractorTest {
     @Test
     @Disabled
     fun should_returnEmptyList_when_dataIsEmpty() {
-
         //When
         val actualResult = getCitiesAndYearsToBuyApartment.execute(limit)
 

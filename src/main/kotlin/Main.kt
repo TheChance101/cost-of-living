@@ -6,7 +6,7 @@ import interactor.GetHighestSalaryAverageCititesNamesInteractor
 import interactor.GetTopCountriesHaveHighCarbonatedDrinksPricesInterctor
 import interactor.GetCitiesAndYearsToBuyApartmentInteractor
 import interactor.GetTopFashionCitiesInteractor
-import interactor.GetCitiesNamesSortedByCheapestBananaPrices
+import interactor.GetCitiesNamesSortedByCheapestBananaPricesInteractor
 import interactor.*
 
 fun main() {
@@ -25,8 +25,8 @@ fun main() {
     println(getTopFashionCities.execute(limit = 5))
     printSeparationLine()
 
-    val getCitiesNamesSortedByCheapestBananaPrices = GetCitiesNamesSortedByCheapestBananaPrices(dataSource)
-    println(getCitiesNamesSortedByCheapestBananaPrices.execute("Caracas","Accra","Giza"))
+    val getCitiesNamesSortedByCheapestBananaPricesInteractor = GetCitiesNamesSortedByCheapestBananaPricesInteractor(dataSource)
+    println(getCitiesNamesSortedByCheapestBananaPricesInteractor.execute("Caracas","Accra","Giza"))
     printSeparationLine()
 
     val getCitiesAndYearsToBuyApartment = GetCitiesAndYearsToBuyApartmentInteractor(dataSource)
@@ -36,6 +36,11 @@ fun main() {
     val getCountryCitiesAverageSalary = GetCountryCitiesAverageSalaryInteractor(dataSource)
     println(getCountryCitiesAverageSalary.execute("Syria"))
     printSeparationLine()
+
+    val getLowCostFruitVegetableCitiesWithHighSalaries = GetLowCostFruitVegetableCitiesWithHighSalariesInteractor(dataSource)
+    println(getLowCostFruitVegetableCitiesWithHighSalaries.execute())
+    printSeparationLine()
+
 
     val getCityHasCheapestInternetConnection = GetCityHasCheapestInternetConnectionInteractor(dataSource)
     println(getCityHasCheapestInternetConnection.execute())

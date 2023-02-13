@@ -3,7 +3,7 @@ package interactor
 import model.CityEntity
 
 
-class GetCitiesNamesSortedByCheapestBananaPrices(
+class GetCitiesNamesSortedByCheapestBananaPricesInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
     fun execute(vararg cities: String): List<String> {
