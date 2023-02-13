@@ -27,5 +27,23 @@ class GetCItyWithMealPriceBetweenTwoTest {
         //then return correct city
         assertEquals("Damascus",cityName)
     }
+    @Test
+    fun should_ReturnCityInTheCorrectCountry_When_InputIsListOfSomeNamesThatExist() {
+        //given countries names exist in data
+        val countries: List<String> = listOf("Cuba","xxxx")
+        //when input is list of name of some existing countries
+        val cityName = GetCItyWithMealPriceBetweenTwoInteractor.execute(countries)!!.cityName
+        //then return correct city
+        assertEquals("Sancti Spiritus",cityName)
+    }
+    @Test
+    fun should_ReturnNull_When_InputIsListOfNamesThatDoesNotExist() {
+        //given countries names exist in data
+        val countries: List<String> = listOf("xxxx","xxxx")
+        //when input is list of names of not existing countries
+        val city = GetCItyWithMealPriceBetweenTwoInteractor.execute(countries)
+        //then return null
+        assertNull(city)
+    }
 
 }
