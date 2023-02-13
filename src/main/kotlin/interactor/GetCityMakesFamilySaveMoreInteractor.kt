@@ -49,7 +49,5 @@ class GetCityMakesFamilySaveMoreInteractor(
                 && city.foodPrices.loafOfFreshWhiteBread500g != null
                 && city.dataQuality
     }
-//    private fun excludeNullSalariesAndLowQualityData(city: CityEntity): Boolean {
-//        return city.averageMonthlyNetSalaryAfterTax != null && city.dataQuality
-//    }
+
 }
