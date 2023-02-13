@@ -20,7 +20,7 @@ class GetTopFiveCitiesNamesForShoppingClothesFromFamousBrandsInteractor(
                         )
                     )
             }
-            .take(limit)
+            .take( limit )
             .map { it.cityName }
     }
 
