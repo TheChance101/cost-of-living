@@ -1,101 +1,100 @@
 package interactor
+
 import FakeData
 import model.CityEntity
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.*
 
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.function.Executable
 import kotlin.Exception
 
-
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCitiesAndYearsToBuyApartmentInteractorTest {
 
-    private lateinit var fakeDataSource: FakeData
-    private lateinit var interactor: GetCitiesAndYearsToBuyApartmentInteractor
+
+    private lateinit var getCitiesAndYearsToBuyApartment: GetCitiesAndYearsToBuyApartmentInteractor
 
     @BeforeEach
     fun setUp() {
-        fakeDataSource = FakeData()
-        interactor = GetCitiesAndYearsToBuyApartmentInteractor(fakeDataSource)
+        val fakeData = FakeData()
+        getCitiesAndYearsToBuyApartment = GetCitiesAndYearsToBuyApartmentInteractor(fakeData)
     }
 
 
     @Test
-    fun should_ReturnTop10Cities_When_CalculatedYearsNeededToBuyApartmentIsCorrect() {
+    fun should_returnTop10Cities_when_calculatedYearsNeededToBuyApartmentIsCorrect() {
         //When
-        val actualResult = interactor.execute(limit)
+        val actualResult = getCitiesAndYearsToBuyApartment.execute(limit)
 
         //Then
-        assertEquals( expectedResult , actualResult)
+        assertEquals(expectedResult, actualResult)
     }
 
 
     @Test
-    fun should_ExcludeData_When_CitiesIsNull() {
+    fun should_excludeData_when_citiesIsNull() {
         //When
-        val actualResult = interactor.execute(limit)
+        val actualResult = getCitiesAndYearsToBuyApartment.execute(limit)
 
         //Then
-        assertEquals( expectedResult , actualResult)
+        assertEquals(expectedResult, actualResult)
     }
 
 
     @Test
-    fun should_ExcludeData_When_SalaryIsNull() {
+    fun should_excludeData_when_salaryIsNull() {
         //When
-        val actualResult = interactor.execute(limit)
+        val actualResult = getCitiesAndYearsToBuyApartment.execute(limit)
 
         //Then
-        assertEquals( expectedResult , actualResult)
+        assertEquals(expectedResult, actualResult)
     }
 
 
     @Test
-    fun should_ExcludeData_When_PricesPerSquareMeterIsNull() {
+    fun should_excludeData_when_pricesPerSquareMeterIsNull() {
         //When
-        val actualResult = interactor.execute(limit)
+        val actualResult = getCitiesAndYearsToBuyApartment.execute(limit)
 
         //Then
-        assertEquals( expectedResult , actualResult)
+        assertEquals(expectedResult, actualResult)
     }
 
 
     @Test
-    fun should_ExcludeData_When_LowQualityData() {
+    fun should_excludeData_when_lowQualityData() {
         //When
-        val actualResult = interactor.execute(limit)
+        val actualResult = getCitiesAndYearsToBuyApartment.execute(limit)
 
         //Then
-        assertEquals( expectedResult , actualResult)
-    }
-
-
-    @Test
-    fun should_ReturnEmptyList_When_DataIsEmpty() {
-
-        //When
-        val actualResult = interactor.execute(limit)
-
-        //Then
-        assertEquals( emptyList<CityEntity>(),actualResult)
+        assertEquals(expectedResult, actualResult)
     }
 
 
     @Test
     @Disabled
-    fun should_ThrowException_When_SalaryIsZero() {
+    fun should_returnEmptyList_when_dataIsEmpty() {
+
         //When
-        val actualExecutable  = Executable { interactor.execute(limit) }
+        val actualResult = getCitiesAndYearsToBuyApartment.execute(limit)
 
         //Then
-        assertThrows(Exception::class.java ,actualExecutable )
+        assertEquals(emptyList<CityEntity>(), actualResult)
     }
 
 
+    @Test
+    @Disabled
+    fun should_throwException_when_salaryIsZero() {
+        //When
+        val actualExecutable = Executable { getCitiesAndYearsToBuyApartment.execute(limit) }
 
-    companion object{
+        //Then
+        assertThrows(Exception::class.java, actualExecutable)
+    }
+
+
+    companion object {
 
         private const val limit = 10
 
