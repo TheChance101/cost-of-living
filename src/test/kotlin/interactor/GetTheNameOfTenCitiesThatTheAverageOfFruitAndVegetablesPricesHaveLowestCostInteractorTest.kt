@@ -3,7 +3,6 @@ package interactor
 import dataSource.FakeCsvDataSource
 import dataSource.utils.CsvParser
 import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
@@ -51,6 +50,18 @@ internal class GetTheNameOfTenCitiesThatTheAverageOfFruitAndVegetablesPricesHave
     val result = getTheNameOfTenCitiesThatTheAverageOfFruitAndVegetablesPricesHaveLowestCostInteractor.execute()[0]
     // then
     assertEquals("Narayanganj", result)
+
+  }
+
+  @Test
+  fun should_ReturnLastItemInList_when_Execute()
+  {
+    // given
+
+    // when
+    val result = getTheNameOfTenCitiesThatTheAverageOfFruitAndVegetablesPricesHaveLowestCostInteractor.execute()[9]
+    // then
+    assertEquals("Hamah", result)
 
   }
 
