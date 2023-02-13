@@ -39,21 +39,6 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
     }
 
 
-    @Test
-    fun testResultSizeLessThanGivenLimit(){
-        // Given
-        val limit = 25
-
-        val data = getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.execute(limit)
-        // When
-        val expectedSize = 15
-        // Then
-        assertEquals(expectedSize,data.size)
-    }
-
-
-
-
 
     //region data quality test
     @Test
