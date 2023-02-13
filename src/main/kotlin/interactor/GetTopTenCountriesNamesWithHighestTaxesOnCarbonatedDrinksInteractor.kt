@@ -69,7 +69,5 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(
         cityEntity.country.isNotBlank() &&
         cityEntity.cityName.length > 3 &&
         cityEntity.country[0].isUpperCase() &&
-        !cityEntity.country.contains("[0-9]".toRegex()) &&
-        !cityEntity.country.contains("[!\"#$%&'()*+,-./:;\\\\<=>?@\\[\\]^_`{|}~]".toRegex())
-
+        cityEntity.country.contains("[a-zA-Z]+$".toRegex())
 }
