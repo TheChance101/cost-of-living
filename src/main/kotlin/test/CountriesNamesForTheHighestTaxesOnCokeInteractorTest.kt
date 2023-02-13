@@ -55,14 +55,14 @@ internal class CountriesNamesForTheHighestTaxesOnCokeInteractorTest {
 
         val countriesLimit = 10
 
-        val expected: List<CityEntity> = countriesNamesForTheHighestTaxesOnCoke.execute(countriesLimit)
+        val expected: List<Pair<String, Float>> = countriesNamesForTheHighestTaxesOnCoke.execute(countriesLimit)
 
         //when pairOfCountryAndPrices is not Equal to top 10 countries data
 
         val pairOfCountryAndPrices =
             countriesNamesForTheHighestTaxesOnCoke.execute(limitOfDesiredCountries = countriesLimit)
 
-        val actual: List<CityEntity> = pairOfCountryAndPrices
+        val actual: List<Pair<String, Float>> = pairOfCountryAndPrices
         //then
 
         MatcherAssert.assertThat(actual, CoreMatchers.`is`(expected))
@@ -82,7 +82,7 @@ internal class CountriesNamesForTheHighestTaxesOnCokeInteractorTest {
 
         //then
 
-        assertEquals(pairOfCountryAndPrices.distinctBy { it }, pairOfCountryAndPrices)
+        assertEquals(pairOfCountryAndPrices.distinctBy { it.first }, pairOfCountryAndPrices)
     }
 
 
