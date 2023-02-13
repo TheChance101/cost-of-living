@@ -1,19 +1,17 @@
 package interactor
 
 import FakeData
-import model.CityEntity
 import org.junit.jupiter.api.*
-import org.junit.jupiter.api.function.Executable
 import kotlin.test.assertEquals
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+class GetCitiesNamesSortedByCheapestBananaPricesInteractorTest {
 
-class GetCitiesNamesSortedByCheapestBananaPricesTest {
-
-    private lateinit var getCitiesNamesSortedByCheapestBananaPrices: GetCitiesNamesSortedByCheapestBananaPrices
+    private lateinit var getCitiesNamesSortedByCheapestBananaPrices: GetCitiesNamesSortedByCheapestBananaPricesInteractor
 
     @BeforeAll
     fun setUp() {
         val fakeData = FakeData()
-        getCitiesNamesSortedByCheapestBananaPrices = GetCitiesNamesSortedByCheapestBananaPrices(fakeData)
+        getCitiesNamesSortedByCheapestBananaPrices = GetCitiesNamesSortedByCheapestBananaPricesInteractor(fakeData)
     }
 
     @Test

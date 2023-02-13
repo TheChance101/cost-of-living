@@ -3,17 +3,15 @@ package interactor
 import FakeData
 import junit.framework.TestCase.assertEquals
 import org.junit.jupiter.api.*
-import org.junit.jupiter.api.function.Executable
-import java.lang.Exception
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetTopFashionCitiesInteractorTest {
-    private lateinit var getTopFashionCitiesInteractor: GetTopFashionCitiesInteractor
+    private lateinit var getTopFashionCities: GetTopFashionCitiesInteractor
 
     @BeforeAll
     fun setUp() {
        val fakeData = FakeData()
-        getTopFashionCitiesInteractor = GetTopFashionCitiesInteractor(fakeData)
+        getTopFashionCities = GetTopFashionCitiesInteractor(fakeData)
     }
 
     @Test
@@ -21,7 +19,7 @@ internal class GetTopFashionCitiesInteractorTest {
         //given limit value > 0
         val limit = 5
         //when
-        val result = getTopFashionCitiesInteractor.execute(limit)
+        val result = getTopFashionCities.execute(limit)
         val expectedResult = listOf("Accra", "Multan", "Karachi", "Rawalpindi", "Hyderabad City")
         //Then
         assertEquals(expectedResult, result)
@@ -32,7 +30,7 @@ internal class GetTopFashionCitiesInteractorTest {
         //given limit value = 0
         val limit = 0
         //when
-        val result = getTopFashionCitiesInteractor.execute(limit)
+        val result = getTopFashionCities.execute(limit)
         val expectedResult = emptyList<String>()
         //Then
         assertEquals(expectedResult, result)
@@ -43,6 +41,6 @@ internal class GetTopFashionCitiesInteractorTest {
         //given  limit value < 0
         val limit = -1
         //Then exception should be thrown
-        assertThrows<IllegalArgumentException> { getTopFashionCitiesInteractor.execute(limit) }
+        assertThrows<IllegalArgumentException> { getTopFashionCities.execute(limit) }
     }
 }
