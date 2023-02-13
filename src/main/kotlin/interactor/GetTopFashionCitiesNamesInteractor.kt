@@ -10,21 +10,23 @@ class GetTopFashionCitiesNamesInteractor(
         if (limit <= 0) return emptyList()
         return dataSource
             .getAllCitiesData()
+            .asSequence()
             .filter(::excludeNullPricesAndLowQualityData)
             .sortedBy { it.getClothesAveragePrice() }
+            .distinctBy { it.cityName }
             .take(limit)
             .map { it.cityName }
+            .toList()
     }
 
-    private fun excludeNullPricesAndLowQualityData(city: CityEntity) =
-        city.hasNoNullClothesPrices() && city.dataQuality
+    private fun excludeNullPricesAndLowQualityData(city: CityEntity) = city.hasNoNullClothesPrices() && city.dataQuality
 
     private fun CityEntity.hasNoNullClothesPrices(): Boolean {
-        val fields = clothesPrices::class.java.declaredFields
-        return fields.map {
-            it.isAccessible = true
-            it.get(clothesPrices)
-        }.any { it != null }
+        return clothesPrices::class.java.declaredFields
+            .map {
+                it.isAccessible = true
+                it.get(clothesPrices)
+            }.all { it != null }
     }
 
     private fun CityEntity.getClothesAveragePrice(): Float {
@@ -32,12 +34,7 @@ class GetTopFashionCitiesNamesInteractor(
             .map {
                 it.isAccessible = true
                 it.get(clothesPrices) as Float
-            }
-            .average()
-            .toFloat()
+            }.average().toFloat()
     }
-
-
-
 
 }

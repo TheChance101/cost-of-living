@@ -1,5 +1,6 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
+
 import interactor.*
 
 fun main() {
@@ -16,22 +17,21 @@ fun main() {
         dataSource.getAllCitiesData()[12],
         dataSource.getAllCitiesData()[13])
 
-    val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
-    println(getHighestSalaryAverageCities.execute(limit = 10))
+    val lowestAveragePricesForFruitsAndVegetables = GetLowestAveragePricesForFruitsAndVegetablesInteractor(dataSource)
+    println(lowestAveragePricesForFruitsAndVegetables.execute(limit = 10))
     printSeparationLine()
-
+    
     val getCitiesNamesSortedCheapestBananPrices = GetCitiesNamesSortedCheapestBananPrices()
     println(getCitiesNamesSortedCheapestBananPrices.excute(*inputCitiesEntity))
-
-
-   val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor()
+    
+    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor()
     println(getCityHasCheapestInternetConnectionInteractor.execute(data))
 
 
 
     val getMostSuitableCity = GetMostSuitableCityInteractor()
     val list = getMostSuitableCity.getAllCities(dataSource)
-    val cityNameResult = getMostSuitableCity.findTheMostSuitableCity(list)
+    val cityNameResult = getMostSuitableCity.execute(list)
 
     println(cityNameResult)
 
@@ -39,12 +39,18 @@ fun main() {
         GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
     println(getCitiesNameToBuyApartmentFasterInteractor.execute(1000, 10, 100))
     printSeparationLine()
+
     val apartmentOneBedRoom=true
     val apartment3BedRooms=true
     val limit=1
     val getHighestDifferentInApartmentRent =
         GetHighestDifferentInApartmentRent(dataSource)
     println(getHighestDifferentInApartmentRent.execute(apartmentOneBedRoom, apartment3BedRooms,limit))
+
+    println("Top 10 cities with the highest quality of life")
+    val getTopFashionCitiesNamesInteractor = GetTopFashionCitiesNamesInteractor(dataSource)
+    println(getTopFashionCitiesNamesInteractor.execute(5))
+
     printSeparationLine()
 }
 

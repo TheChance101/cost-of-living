@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.function.Executable
+
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -23,9 +25,10 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
 
 
     @Test
-    fun should_ReturnTheOnlyCity_When_GivenOnly1CityIncluded(){
+    fun `should return the only city when given only 1 city in high quality data`(){
         // given list of cityEntity
-        val cities = fakeDataSource.getAllCitiesData()[10]
+        val cities = fakeDataSource.getAllCitiesData()[16]
+
         // when check what is the cheapest city in list with giving only 1 city in list
         val result = cityHasCheapestInternet.execute(listOf(cities))
         // then check the result
@@ -50,5 +53,27 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
         val result = cityHasCheapestInternet.execute(cities)
         // then check the result
         assertEquals(cities[17].cityName,result?.cityName)
+    }
+
+
+    @Test
+    fun should_ReturnException_When_ThePrecentageOfInternetToSalaryEqualTo100OrAbove(){
+        // given list has precentage of internet to salary equal 80 or above
+        val cities = fakeDataSource.getAllCitiesData()[15]
+        // when check what is the cheapest city in the list
+        val result = Executable{cityHasCheapestInternet.execute(listOf(cities))}
+        // then check the result
+        assertThrows(Throwable::class.java,result)
+    }
+
+
+    @Test
+    fun should_ReturnException_When_AllElementsInTheListThatEnteredIsBadQualityOrInternetPriceIsNullOrAverageSalaryIsNull(){
+        // given list has bad quality data or null internet price or null average salary
+        val cities = fakeDataSource.getAllCitiesData()[2]
+        // when check what is the cheapest city in the list
+        val result = Executable{cityHasCheapestInternet.execute(listOf(cities))}
+        // then check the result
+        assertThrows(Throwable::class.java,result)
     }
 }

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class GetTopFashionCitiesNamesInteractorTest {
+internal class GetTopFashionCitiesNamesInteractorTest {
     private lateinit var getTopFashionCitiesNamesInteractor: GetTopFashionCitiesNamesInteractor
     private lateinit var fakeDataSource: FakeDataSource
 
@@ -31,6 +31,8 @@ class GetTopFashionCitiesNamesInteractorTest {
     fun `should return ascending sorted list when limit is valid`() {
         // given limit and expected result list
         val limit = 5
+        // when get top fashion cities names
+        val result = getTopFashionCitiesNamesInteractor.execute(limit)
         val expected = listOf(
             "Dhangadhi",
             "Narayanganj",
@@ -38,8 +40,6 @@ class GetTopFashionCitiesNamesInteractorTest {
             "Kasese",
             "Sri Jayewardenepura Kotte"
         )
-        // when get top fashion cities names
-        val result = getTopFashionCitiesNamesInteractor.execute(limit)
         // then result should be equal to expected list
         assertEquals(expected, result)
     }
@@ -68,16 +68,15 @@ class GetTopFashionCitiesNamesInteractorTest {
     fun `should return available list when limit is greater than available`() {
         // given limit and expected result
         val limit = 1000
-        val expected = 9
         // when get top fashion cities names
         val result = getTopFashionCitiesNamesInteractor.execute(limit)
+        val expected = 9
         // then result should be equal to a valid available list
         assertEquals(expected, result.size)
     }
 
     @Test
     fun `should return unique top fashion cities names when limit is valid`() {
-        //TODO: Adding more fake data to test this case
         // given limit
         val limit = 9
         // when get top fashion cities names
@@ -85,4 +84,5 @@ class GetTopFashionCitiesNamesInteractorTest {
         // then result should not contain duplicates
         assertEquals(result.toSet().size, result.size)
     }
+
 }
