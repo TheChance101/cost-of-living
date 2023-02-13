@@ -10,3 +10,4 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
     fun execute() {
     }
 }
+
