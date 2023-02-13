@@ -1,6 +1,5 @@
 package interactor
 
-import com.sun.org.apache.bcel.internal.classfile.ExceptionTable
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import io.mockk.clearAllMocks
@@ -9,17 +8,15 @@ import io.mockk.mockk
 import io.mockk.unmockkAll
 import model.CityEntity
 import org.junit.jupiter.api.*
-import org.junit.jupiter.api.function.Executable
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
-import org.junit.jupiter.api.assertThrows
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCityHasCheapestMealPricesInteractorTest {
 
     private lateinit var sut: GetCityHasCheapestMealPricesInteractor
-    lateinit var fakeData: FakeData
+    private lateinit var fakeData: FakeData
     private val csvParser = CsvParser()
     private val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
 
