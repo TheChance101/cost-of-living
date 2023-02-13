@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class GetHighestSalaryAverageCititesNamesInteractorTest {
+class GetHighestSalaryAverageCitiesNamesInteractTest {
 
     private lateinit var getHighestSalaryAverageCititesNames : GetHighestSalaryAverageCititesNamesInteractor
 

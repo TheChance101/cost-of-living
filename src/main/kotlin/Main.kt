@@ -4,6 +4,7 @@ import interactor.CostOfLivingDataSource
 import interactor.GetCityHasCheapestInternetConnectionInteractor
 import interactor.GetHighestSalaryAverageCititesNamesInteractor
 import interactor.GetTopFashionCitiesInteractor
+import interactor.GetCitiesNamesSortedByCheapestBananaPrices
 import interactor.*
 
 fun main() {
@@ -16,6 +17,10 @@ fun main() {
 
     val getTopFashionCitiesInteractor = GetTopFashionCitiesInteractor(dataSource)
     println(getTopFashionCitiesInteractor.execute(5))
+    printSeparationLine()
+
+    val getCitiesNamesSortedByCheapestBananaPrices = GetCitiesNamesSortedByCheapestBananaPrices(dataSource)
+    println(getCitiesNamesSortedByCheapestBananaPrices.execute("Caracas","Accra","Giza"))
     printSeparationLine()
 
     val getCitiesAndYearsToBuyApartment = GetCitiesAndYearsToBuyApartmentInteractor(dataSource)
