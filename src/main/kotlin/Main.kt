@@ -8,10 +8,7 @@ import interactor.GetHighestSalaryAverageCititesNamesInteractor
 fun main() {
     val csvParser = CsvParser()
     val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser) // CSV : comma separated values
-
-
     val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
-
     println(getHighestSalaryAverageCities.execute(limit = 10))
     printSeparationLine()
 
@@ -23,6 +20,7 @@ fun main() {
     println(getCityThatHasAverageMealsPricesInteractor.execute())
     printSeparationLine()
 
+  
 }
 private fun printSeparationLine(){
     print("\n_______________________________\n")
