@@ -5,11 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbedd2ac-0c71-449c-8f55-4ef4893be1c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/TaxesFakeDataSource.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCityHasCheapestInternetConnectionInteractor.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/interactor/GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetHighestSalaryAverageCititesNamesInteractorTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetHighestSalaryAverageCititesNamesInteractorTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

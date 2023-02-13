@@ -12,11 +12,11 @@ import java.lang.IllegalArgumentException
 class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
 
     private lateinit var getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor: GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
-
+    private lateinit var fakeDataSource: FakeDataSource
 
     @BeforeEach
     fun setUp() {
-        val dataSource = FakeDataSource()
+        fakeDataSource = FakeDataSource()
         getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor = GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(dataSource)
     }
 
@@ -37,7 +37,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         val limit = 25
         val data = getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.execute(limit)
         // When
-        val expectedSize = 20
+        val expectedSize = 15
         // Then
         assertEquals(expectedSize,data.size)
     }
@@ -52,6 +52,25 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         val expected = 3
         // Then
         assertEquals(expected,getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.filterHighQualityData(given).size)
+    }
+
+    @Test
+    fun testSorting(){
+        //given
+        val limit = 4
+        val given = listOf(fakeDataSource.getAllCitiesData()[0]
+            ,fakeDataSource.getAllCitiesData()[1]
+            ,fakeDataSource.getAllCitiesData()[2]
+            ,fakeDataSource.getAllCitiesData()[3])
+
+        //when
+        val expected = listOf(fakeDataSource.getAllCitiesData()[2]
+            ,fakeDataSource.getAllCitiesData()[0]
+            ,fakeDataSource.getAllCitiesData()[3]
+            ,fakeDataSource.getAllCitiesData()[1])
+
+        // then
+        assertEquals(expected,getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.execute(limit))
     }
 
 
