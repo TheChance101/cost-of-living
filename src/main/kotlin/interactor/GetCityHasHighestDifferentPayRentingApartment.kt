@@ -8,20 +8,25 @@ class GetCityWithHighestRentalPriceDifferenceInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
 
+
     fun execute(cityData: List<CityEntity>): String {
         var cityWithHighestDifference = ""
         var highestDifference = 0.0
-        cityData.forEach { city ->
-            if (city.cityName == "high_quality") {
-                val difference = city.realEstatesPrices.pricePerSquareMeterToBuyApartmentInCityCentre!!- city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!
+        cityData
+            .filter { excludeNullValues(it) }
+            .filter { excludeNullDataAndLowQuality(it) }
+            .forEach { city ->
+                val difference = city.realEstatesPrices.apartmentOneBedroomInCityCentre!! - city.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!!
                 if (difference > highestDifference) {
                     highestDifference = difference.toDouble()
                     cityWithHighestDifference = city.cityName
                 }
             }
-        }
         return cityWithHighestDifference
     }
+
+
+
 
     fun excludeNullValues(city: CityEntity): Boolean {
         return city.realEstatesPrices.apartmentOneBedroomInCityCentre != null
@@ -36,7 +41,6 @@ class GetCityWithHighestRentalPriceDifferenceInteractor(
     }
 }
 
-data class CityByPriceDifference(var nameCity: String, var priceDifference: Double)
 
 
 
