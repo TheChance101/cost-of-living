@@ -4,20 +4,18 @@ import model.CityEntity
 import model.DrinksPrices
 
 
-class GetHighestCarbonatedDrinksPricesInteractor(private val dataSource: CostOfLivingDataSource)
-{
-    fun execute () : List<Pair<String,Float>> {
+class GetHighestCarbonatedDrinksPricesInteractor(private val dataSource: CostOfLivingDataSource) {
+    fun execute(): Set<Pair<String, Float>> {
 
-        val city : List<CityEntity> = dataSource.getAllCitiesData()
+        val city: List<CityEntity> = dataSource.getAllCitiesData()
             .filter { nullAndLowQualityDrinks(it) }
             .sortedByDescending { avgPriceForASingleCity(it) }
-            .take(10)
 
-
-        return if (city.isEmpty())
-        { emptyList()
+        return if (city.isEmpty()) {
+            emptySet()
+        } else {
+            finalList(city)
         }
-        else {pricesAvg(city)}
     }
 
     private fun nullAndLowQualityDrinks(cityEntity: CityEntity): Boolean =
@@ -30,17 +28,6 @@ class GetHighestCarbonatedDrinksPricesInteractor(private val dataSource: CostOfL
                 cityEntity.dataQuality
 
 
-    private fun pricesAvg(list: List<CityEntity>): List<Pair<String, Float>> {
-        val finalList = mutableListOf<Pair<String, Float>>()
-        val setofcountries = mutableSetOf<Pair<String, Float>>()
-        var avgPrice: Float
-        list.forEach {
-            avgPrice = avgPriceForASingleCity(it)
-            setofcountries.add(Pair(it.country, avgPrice))
-        }
-        return setofcountries.toList()
-    }
-
     // function to return the average prices for only one city
     private fun avgPriceForASingleCity(cityEntity: CityEntity) = (cityEntity.drinksPrices.milkRegularOneLiter!! +
             cityEntity.drinksPrices.cappuccinoRegularInRestaurants!! +
@@ -50,17 +37,24 @@ class GetHighestCarbonatedDrinksPricesInteractor(private val dataSource: CostOfL
 
     //a function to return the average prices for a whole country
     private fun avgpriceforacountry(list: List<CityEntity>): Float {
-        var listofprices = mutableListOf<Float>()
-        var finalvalue : Float = 0f
+        val listofprices = mutableListOf<Float>()
+        var finalvalue = 0f
         list.forEach {
             listofprices.add(avgPriceForASingleCity(it))
         }
-        listofprices.forEach{
+        listofprices.forEach {
             finalvalue += it
         }
-    return finalvalue/listofprices.size
+        return  finalvalue / listofprices.size
     }
 
-    //
-    private fun pricesforacoutry
+    // function to sort the list into a sorted set and return a list of 10 countries
+    fun finalList(list: List<CityEntity>) :Set<Pair<String,Float>> {
+        val finallist = mutableListOf<Pair<String, Float>>()
+        list.forEach { cityEntity ->
+            finallist .add(Pair(cityEntity.country,avgpriceforacountry(list.filter{cityEntity.country ==it.country })))
+
+        }
+        return finallist.toSet().take(10).toSet()
+    }
 }

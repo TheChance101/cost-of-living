@@ -26,7 +26,7 @@ class GetHighestCarbonatedDrinksPricesInteractorTest{
         //when
         val listOfCountries = getHighestCarbonatedDrinksPricesInteractor.execute()
         //then
-        assertTrue(listOfCountries.size ==10)
+        assertTrue(listOfCountries.toSet().size ==10)
     }
 
     @Test
