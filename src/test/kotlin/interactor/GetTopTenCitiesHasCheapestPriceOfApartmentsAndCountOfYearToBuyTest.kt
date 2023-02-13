@@ -9,6 +9,7 @@ import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest {
+
     // region init
     private lateinit var getTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest:
             GetTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuy
@@ -24,45 +25,47 @@ internal class GetTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTes
 
     // region null case cases
     @Test
-    fun should_ReturnNull_when_TheInputIsNull() {
-        // given null salary input
-        val salaryOfFullTimeJob = null
+    fun should_ReturnNull_when_TheInputSalaryIsNegative() {
+        // given salary is negative
+        val salaryOfFullTimeJob = -1
 
-        // when the output null
+        // when the output list of a pair of cities names and count of years
         val result =
             getTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest
-                .getPairOfCheapestCitiesAndCountOfYears(salaryOfFullTimeJob)
+                .execute(salaryOfFullTimeJob)
 
         // then check
-        assertNull(result)
+     assertNull(result)
     }
 
-    @Test
-    fun should_ReturnNull_when_TheInputIsStringNumerical() {
-        // given salary not numerical input
-        val salaryOfFullTimeJob = "lol"
+  @Test
+    fun should_ReturnNull_when_TheInputSalaryIsZero() {
+        // given salary is Zero
+        val salaryOfFullTimeJob = 0
 
-        // when the output is null
+        // when the output list of a pair of cities names and count of years
         val result =
             getTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest
-                .getPairOfCheapestCitiesAndCountOfYears(salaryOfFullTimeJob)
+                .execute(salaryOfFullTimeJob)
 
         // then check
-        assertNull(result)
+     assertNull(result)
     }
 
-    //endregion
+
+    // endregion
+
 
     // region passed cases
     @Test
     fun should_ReturnList_when_TheInputIsStringNumericalSalary() {
         // given String salary but Numeric input
-        val salaryOfFullTimeJob = "800"
+        val salaryOfFullTimeJob = 800
 
         // when the output list of a pair of cities names and count of years
         val result =
             getTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest
-                .getPairOfCheapestCitiesAndCountOfYears(salaryOfFullTimeJob)
+                .execute(salaryOfFullTimeJob)
 
         // then check
         assertEquals(
@@ -93,7 +96,7 @@ internal class GetTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTes
         // when the output list of a pair of cities names and count of years
         val result =
             getTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest
-                .getPairOfCheapestCitiesAndCountOfYears(salaryOfFullTimeJob)
+                .execute(salaryOfFullTimeJob)
 
         // then check
         assertEquals(
@@ -124,7 +127,7 @@ internal class GetTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTes
         // when the output list of a pair of cities names and count of years
         val result =
             getTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest
-                .getPairOfCheapestCitiesAndCountOfYears(salaryOfFullTimeJob)
+                .execute(salaryOfFullTimeJob)
 
         // then check
         assertEquals(

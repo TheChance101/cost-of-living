@@ -1,7 +1,6 @@
 package interactor
 
 import dataSource.utils.FakeDataSourceM
-import jdk.jfr.Name
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -10,8 +9,9 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetCitiesNamesWithCheapestBananaPricesInteractorTest {
     // region init
-    private lateinit var getCitiesNamesWithCheapestBananaPricesInteractor: GetCitiesNamesWithCheapestBananaPricesInteractor
-    @Name("FakeDataSource")
+    private lateinit var getCitiesNamesWithCheapestBananaPricesInteractor:
+            GetCitiesNamesWithCheapestBananaPricesInteractor
+
     private lateinit var fakeDataSource: FakeDataSourceM
 
     @BeforeAll
