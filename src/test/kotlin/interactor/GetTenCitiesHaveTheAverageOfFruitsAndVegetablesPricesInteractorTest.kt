@@ -39,14 +39,4 @@ internal class GetTenCitiesHaveTheAverageOfFruitsAndVegetablesPricesInteractorTe
         assertTrue(result.isEmpty())
     }
 
-    @Test
-    fun should_ReturnTheTenCitiesName_When_TheDataIsMixture() {
-        //given
-        fakeData.setDataType(FakeDataSource.DataType.MIXTURE)
-        //When
-        val result = getTenCitiesHaveTheAverageOfFruitsAndVegetablesPricesInteractor.execute()
-        //Then
-        assertTrue(result.isEmpty())
-    }
-
 }

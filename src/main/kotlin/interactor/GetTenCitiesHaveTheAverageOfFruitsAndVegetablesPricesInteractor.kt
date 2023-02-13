@@ -8,14 +8,11 @@ class GetTenCitiesHaveTheAverageOfFruitsAndVegetablesPricesInteractor
     fun execute(): List<String> {
         val list = dataSource.getAllCitiesData()
             .filter( ::excludeNullSalariesAndNullPrices )
-
-      val average = averageOfFruitsAndVegetables(list)
-
-        return list
-            .filter { it.averageMonthlyNetSalaryAfterTax!! > average }
-            .sortedBy { it.averageMonthlyNetSalaryAfterTax }
+            .sortingWithAveragePrice()
             .take(10)
             .map { it.cityName }
+        return if(list.isEmpty()) listOf()
+        else list
     }
 
     private fun excludeNullSalariesAndNullPrices(city: CityEntity): Boolean {
@@ -29,15 +26,20 @@ class GetTenCitiesHaveTheAverageOfFruitsAndVegetablesPricesInteractor
                 city.fruitAndVegetablesPrices.oranges1kg != null
     }
 
-    private fun averageOfFruitsAndVegetables(list: List<CityEntity>): Float {
-        var sum = 0f
-        for (city in list) {
-            with(city.fruitAndVegetablesPrices) {
-                sum += apples1kg!! + banana1kg!! + lettuceOneHead!! +
+    private fun averageOfFruitsAndVegetables(city: CityEntity): Float {
+        var sum : Float
+            city.fruitAndVegetablesPrices.apply {
+                sum = apples1kg!! + banana1kg!! + lettuceOneHead!! +
                         onion1kg!! + tomato1kg!! + potato1kg!! + oranges1kg!!
             }
-        }
+        return (sum / 7)
+    }
 
-        return sum / (7 * list.size)
+    private fun List<CityEntity>.sortingWithAveragePrice(): List<CityEntity> {
+        return this.sortedByDescending {
+            (it.averageMonthlyNetSalaryAfterTax?.div(
+                averageOfFruitsAndVegetables(it)
+            ))
+        }
     }
 }
