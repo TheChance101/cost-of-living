@@ -30,4 +30,36 @@ internal class GetCitiesNameHasHighestClothesPriceInteractorTest {
         assertTrue(result.all { it.dataQuality })
     }
 
+    @Test
+    fun should_ReturnTrue_when_allTheCityEntitesHasNotNullOnePairOfJeansLevis50oneOrSimilar(){
+        //when
+        val result = citiesName.execute()
+        //then
+        assertTrue(result.all { it.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null})
+    }
+
+    @Test
+    fun should_ReturnTrue_when_allTheCityEntitesHasNotNulloneSummerDressInAChainStoreZaraHAndM(){
+        //when
+        val result = citiesName.execute()
+        //then
+        assertTrue(result.all { it.clothesPrices.oneSummerDressInAChainStoreZaraHAndM != null})
+    }
+
+    @Test
+    fun should_ReturnTrue_when_allTheCityEntitesHasNotNullOnePairOfNikeRunningShoesMidRange(){
+        //when
+        val result = citiesName.execute()
+        //then
+        assertTrue(result.all { it.clothesPrices.onePairOfNikeRunningShoesMidRange != null})
+    }
+
+    @Test
+    fun should_ReturnTrue_when_allTheCityEntitesHasNotNullOnePairOfMenLeatherBusinessShoes(){
+        //when
+        val result = citiesName.execute()
+        //then
+        assertTrue(result.all { it.clothesPrices.onePairOfMenLeatherBusinessShoes != null})
+    }
+
 }
