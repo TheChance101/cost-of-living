@@ -821,6 +821,7 @@ class FakeData : CostOfLivingDataSource {
                 dataQuality = true
             ),
             //endregion
+
         //region city[11]
             CityEntity(
                 cityName = "Damascus",
@@ -894,6 +895,7 @@ class FakeData : CostOfLivingDataSource {
                 dataQuality = true
             )
         //endregion
+
         )
     }
 }
