@@ -1,14 +1,8 @@
 package interactor
 
+import enums.ThreeSpecificCountries
 import model.CityEntity
 import kotlin.math.ceil
-
-enum class ThreeSpecificCountries(val nameOFCountry: String) {
-    USA("United States"),
-    CANADA("Canada"),
-    MEXICO("Mexico"),
-    EGYPT("Egypt")
-}
 
 class GetCityHasCheapestMealPricesInteractor(
     private val dataSource: CostOfLivingDataSource
