@@ -26,7 +26,9 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(
      * @return `true` if the value of drink price not `null` and positive.
      * @author Abdurrahman Salah ad-Din
      */
-    fun excludeInvalidDrinksPrice(cityEntity: CityEntity) = Exception("Not implemented yet")
+    fun excludeInvalidDrinksPrice(cityEntity: CityEntity) =
+        cityEntity.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants != null &&
+        cityEntity.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants > 0
 
     /**
      * Returns `true` for high quality data and `false` for low quality data.
@@ -34,7 +36,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(
      * @return the value of `DataQuality`.
      * @author Abdurrahman Salah ad-Din
      */
-    fun excludeLowQualityData(cityEntity: CityEntity) = Exception("Not implemented yet")
+    fun excludeLowQualityData(cityEntity: CityEntity) = cityEntity.dataQuality
 
     /**
      * Returns `true` if the value of `country` is invalid.
@@ -42,5 +44,8 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(
      * @return `true` if the value of `countryName` is not empty.
      * @author Abdurrahman Salah ad-Din
      */
-    fun excludeInvalidCountries(cityEntity: CityEntity) = Exception("Not implemented yet")
+    fun excludeInvalidCountries(cityEntity: CityEntity) =
+        cityEntity.country.isNotBlank() &&
+        cityEntity.cityName.length > 3 &&
+        cityEntity.country[0].isUpperCase()
 }
