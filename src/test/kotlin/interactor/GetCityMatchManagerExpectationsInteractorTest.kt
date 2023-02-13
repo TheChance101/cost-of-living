@@ -51,7 +51,17 @@ class GetCityMatchManagerExpectationsInteractorTest {
         assertTrue(givenList.contains(result.country))
     }
 
-
-    
+    @Test
+    fun `should return meal price when mealFor2PeopleMidRangeRestaurant is not null`() {
+        // given a list of countries that are in north america
+        val givenValue = null
+        // when we check if the countries are in north america
+        val result = interactor.execute()
+//        result.forEach {
+//            println(it.mealsPrices)
+//        }
+        // then we should get true
+        assertNotEquals(givenValue, result.mealsPrices.mealFor2PeopleMidRangeRestaurant)
+    }
 
 }
