@@ -105,7 +105,7 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
     @Test
     fun should_Not_ReturnSuitableCity_When_EnteredConsumptions() {
         //Given
-        val fakeCity: CityEntity = fakeData.getAllCitiesData()[0]
+        val fakeCity: CityEntity = fakeData.getAllCitiesData()[1]
         //When
         val actualResult = getSuitableCityMoreSavingPerMonth.execute()
         //Then
