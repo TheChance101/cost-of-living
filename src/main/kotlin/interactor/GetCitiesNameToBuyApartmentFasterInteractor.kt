@@ -12,9 +12,11 @@ class GetCitiesNameToBuyApartmentFasterInteractor(
     ): List<Pair<String, Double>> {
 
         return dataSource.getAllCitiesData()
+            .asSequence()
             .filter(::excludeNullApartmentPriceAndLowQualityData)
-            .sortedBy { it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre }
             .take(limit)
+            .toList()
+            .sortedBy { it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre }
             .map {
                 Pair(
                     it.cityName,
