@@ -8,12 +8,13 @@ class GetCItyWithMealPriceBetweenTwo(
 
 
 
-    fun execute(listOfCities: List<String>): CityEntity {
+    fun execute(listOfCities: List<String>): CityEntity? {
         val allCities = dataSource.getAllCitiesData()
             .filter {listOfCities.contains(it.country)}
             .filter(::excludeNullMealPrices)
-        return allCities
+        return if (allCities.size > 2)allCities
             .sortedByDescending { it.mealsPrices.mealInexpensiveRestaurant }[allCities.size/2]
+        else  null
     }
 
     private fun excludeNullMealPrices(city: CityEntity): Boolean {
