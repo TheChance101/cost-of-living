@@ -85,6 +85,28 @@ class GetCityHasLowestYearsToBuyApartmentInteractorTest {
         // then eception should be thrown
         assertThrows(Exception::class.java , resultList)
     }
+    @Test
+    fun should_ThrowsException_When_EnterFullTimeSalaryEqualZero (){
+        //given
+        val fullTimeSalary = 0
+        val fackCity =fakeData.getAllCitiesData()[1]
+        //when
+        val result: org.junit.jupiter.api.function.Executable = org.junit.jupiter.api.function.Executable { converter.getNumberOfYearsToBuyApartment(fullTimeSalary,fackCity) }
+        // then eception should be thrown
+        assertThrows(Exception::class.java , result)
+
+    }
+    @Test
+    fun Should_ThrowsException_When_EnterNegativeNumberOfFullTimeSallary(){
+        //given
+        val fullTimeSalary = -100
+        val fackCity =fakeData.getAllCitiesData()[1]
+        //when
+        val result: org.junit.jupiter.api.function.Executable = org.junit.jupiter.api.function.Executable { converter.getNumberOfYearsToBuyApartment(fullTimeSalary ,fackCity) }
+        // then eception should be thrown
+        assertThrows(Exception::class.java , result)
+    }
+
 
 
 
