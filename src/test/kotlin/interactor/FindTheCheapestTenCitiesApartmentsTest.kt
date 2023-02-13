@@ -47,7 +47,13 @@ class FindTheCheapestTenCitiesApartmentsTest {
         val expectedPairs= mutableListOf<Pair<String,Double>>()
 
         for (i in 0 until 10){
-            val pair=Pair("$i",i*1.0)
+            val city=list[i]
+            val costOf100mAppartment=city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!.times(100)
+            val yearSalary=city.averageMonthlyNetSalaryAfterTax!!*12
+            val numberOfYears=costOf100mAppartment/yearSalary.toDouble()
+            val pair=Pair("$i",numberOfYears)
+
+
             expectedPairs.add(pair)
         }
 
