@@ -1,39 +1,103 @@
 package interactor
-
 import dataSource.FakeDataSource
-import model.CityEntity
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.function.Executable
 
 class GetHighestDifferentInApartmentRentTest {
     private lateinit var highestDifferentInApartmentRent: GetHighestDifferentInApartmentRent
-    private lateinit var fakeDataSource: FakeDataSource
+    private lateinit var dataSource: FakeDataSource
 
     @BeforeEach
     fun setup(){
-        fakeDataSource = FakeDataSource()
-        highestDifferentInApartmentRent =  GetHighestDifferentInApartmentRent(fakeDataSource)
+        dataSource = FakeDataSource()
+        highestDifferentInApartmentRent =  GetHighestDifferentInApartmentRent(dataSource)
     }
 
     @Test
-    fun should_ReturnNull_When_givenEmptyList(){
+    fun `should return null when give empty list`(){
         // given Empty list
-        val cities = emptyList<CityEntity>()
+        val apartmentOneBedroom=false
+        val apartment3Bedrooms=false
+        val limit=1
         // when check what is the highest different in list with giving emptyList
-        val result = highestDifferentInApartmentRent.execute(cities)
+        val result = highestDifferentInApartmentRent.execute(apartmentOneBedroom,apartment3Bedrooms,limit)
         // then check the result
         Assertions.assertNull(result)
     }
 
 
     @Test
-    fun should_Return_City_Has_Highest_different_in_apartment_When_GivenListOfCities(){
+    fun `should return city has highest different in apartment when given list of cities`(){
         // given list of cityEntity
-        val cities = fakeDataSource.getAllCitiesData()
+        val cities = dataSource.getAllCitiesData()
+        val apartmentOneBedroom=true
+        val apartment3Bedrooms=true
+        val limit=1
         // when check what is the cities has highest different in apartment rent
-        val result = highestDifferentInApartmentRent.execute(cities)
+        val result = highestDifferentInApartmentRent.execute(apartmentOneBedroom,apartment3Bedrooms,limit)
         // then check the result
         Assertions.assertEquals(cities[16].cityName, result)
     }
+
+    @Test
+    fun `should return highest different city with one bedroom appartment when want list of cities`(){
+        // given list of cityEntity
+        val cities = dataSource.getAllCitiesData()
+        val apartmentOneBedroom=true
+        val apartment3Bedrooms=false
+        val limit=1
+        // when check what is the cities has highest different in apartment rent
+        val result = highestDifferentInApartmentRent.execute(apartmentOneBedroom,apartment3Bedrooms,limit)
+        // then check the result
+        Assertions.assertEquals(cities[4].cityName, result)
+    }
+
+    @Test
+    fun `should return highest different city with 3 bedrooms appartment when want list of cities`(){
+        // given list of cityEntity
+        val cities = dataSource.getAllCitiesData()
+        val apartmentOneBedroom=false
+        val apartment3Bedrooms=true
+        val limit=1
+        // when check what is the cities has highest different in apartment rent
+        val result = highestDifferentInApartmentRent.execute(apartmentOneBedroom,apartment3Bedrooms,limit)
+        // then check the result
+        Assertions.assertEquals(cities[16].cityName, result)
+    }
+    @Test
+    fun `should return empty list when limit equal to zero`(){
+        // given list of cityEntity
+        val cities = dataSource.getAllCitiesData()
+        val apartmentOneBedroom=false
+        val apartment3Bedrooms=true
+        val limit=0
+        // when check what is the cities has highest different in apartment rent
+        val result =Executable {
+            highestDifferentInApartmentRent.execute(apartmentOneBedroom, apartment3Bedrooms, limit)
+        }
+        // then check the result
+        Assertions.assertThrows(Exception::class.java, result)
+    }
+
+    @Test
+    fun `should throw exception when limit is negative`(){
+        // given list of cityEntity
+        val cities = dataSource.getAllCitiesData()
+        val apartmentOneBedroom=false
+        val apartment3Bedrooms=true
+        val limit=-1
+        // when check what is the cities has highest different in apartment rent
+        val result = Executable {
+            highestDifferentInApartmentRent.execute(apartmentOneBedroom, apartment3Bedrooms, limit)
+        }
+            // then check the result
+
+        assertThrows(Exception::class.java, result)
+
+    }
+
+
 }
