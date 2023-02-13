@@ -10,6 +10,7 @@ class GetCitiesNameHasHighestClothesPriceInteractor(
     fun execute(): List<CityEntity> {
         return dataSource.getAllCitiesData()
             .filter(::excludeAnyNullClothPriceAndLowQualityData)
+            .sortedByDescending(::getSumOfClothesPricesOfCity)
     }
 
     private fun excludeAnyNullClothPriceAndLowQualityData(city:CityEntity): Boolean{

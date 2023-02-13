@@ -62,4 +62,12 @@ internal class GetCitiesNameHasHighestClothesPriceInteractorTest {
         assertTrue(result.all { it.clothesPrices.onePairOfMenLeatherBusinessShoes != null})
     }
 
+    @Test
+    fun should_ReturnListOfSizeFive_when_execute(){
+        // when
+        val result = citiesName.execute()
+        // then
+        assertEquals(5, result.size)
+    }
+
 }
