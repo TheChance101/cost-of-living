@@ -68,16 +68,4 @@ class GetTopTenCoutriesHaveHighCarbonatedDrinksPricesTest {
             AssertionError("Drink Price can't be Null")
     }
 
-
-
-    companion object {
-        private val expectedResult =
-            listOf(
-                Pair("Cuba", 2.28),
-                Pair("Venezuela", 1.12),
-                Pair("Syria", 0.82),
-                Pair("Syria", 0.82),
-                Pair("Ghana", 0.51),
-            )
     }
-}
