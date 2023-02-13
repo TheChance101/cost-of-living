@@ -13,8 +13,11 @@ repositories {
 }
 
 dependencies {
+    testImplementation ("org.mockito.kotlin:mockito-kotlin:4.1.0")
+    implementation("org.junit.jupiter:junit-jupiter:5.8.1")
     testImplementation(kotlin("test"))
     implementation(kotlin("stdlib-jdk8"))
+
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
 }
 
