@@ -1,11 +1,13 @@
 package interactor
 
+import fakeData.FakeData
 import model.CityEntity
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
+import kotlin.test.assertNotEquals
 import kotlin.test.assertTrue
 
 /**
@@ -82,16 +84,16 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         assertFalse(actualResult)
     }
     @Test
-    fun should_Not_ReturnSuitableCity_When_EnteredConsumptions() {
+    fun should_Not_ReturnSuitableCity_When_NoSavingsMorePerMonth() {
         //Given
-        val fakeCity: CityEntity = fakeData.getAllCitiesData()[1]
+        val fakeCity: CityEntity = fakeData.getAllCitiesData()[5]
         //When
         val actualResult = getSuitableCityMoreSavingPerMonth.execute()
         //Then
-        assertEquals(fakeCity, actualResult)
+        assertNotEquals(fakeCity, actualResult)
     }
     @Test
-    fun should__ReturnSuitableCity_When_EnteredConsumptions() {
+    fun should_ReturnSuitableCity_When_SavingsMorePerMonth() {
         //Given
         val fakeCity: CityEntity = fakeData.getAllCitiesData()[0]
         //When
