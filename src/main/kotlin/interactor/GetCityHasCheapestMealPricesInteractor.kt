@@ -18,7 +18,8 @@ class GetCityHasCheapestMealPricesInteractor(
     }
 
     fun getAverageMealInAllCities(cityEntityList: List<CityEntity>): Float {
-        TODO("Not Implemented yet")
+        if (cityEntityList.isEmpty()) return 0.0F
+        return (getAverageMealInCity(cityEntityList.first()) + getAverageMealInCity(cityEntityList.last())) / 2
     }
 
     fun citiesInUSACanadaAndMexico(city: CityEntity): Boolean {
