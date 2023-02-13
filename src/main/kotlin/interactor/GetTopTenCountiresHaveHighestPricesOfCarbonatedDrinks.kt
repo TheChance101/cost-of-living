@@ -14,9 +14,7 @@ class GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinks(private val dataSour
             .sortedByDescending { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants }
             .map{it.country}.toSet().zip(getDrinksPrice(dataSource))
             .take(limit)
-
-    }
-
+   }
     // add average prices to the country names
     fun getDrinksPrice(dataSource: CostOfLivingDataSource): List<Float?> {
         val list =dataSource
@@ -30,7 +28,6 @@ class GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinks(private val dataSour
     fun excludeCarbonateDrinksPriceAndLowQualityData(country: CityEntity): Boolean {
         return country.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants !=null && country.dataQuality
     }
-
     // check the entered limit value
     fun checkTheInputOfLimit(limit:Int):Boolean {
         return !(limit == 0 || limit == -1)
@@ -39,8 +36,7 @@ class GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinks(private val dataSour
     fun filterTheListOfCountriesOfHighestCarbonatedDrinksPrices (list: List<String>):Boolean {
         return ( list != listOf("") )
     }
-
-    }
+}
 
 
 
