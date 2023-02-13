@@ -143,6 +143,10 @@ class FakeData : CostOfLivingDataSource {
                     apartmentOneBedroomInCityCentre = 282.72f,
                     apartmentOneBedroomOutsideOfCentre = 182.54f,
                     apartment3BedroomsInCityCentre = 476.27f,
+                    pricePerSquareMeterToBuyApartmentInCityCentre = 2000.0f
+                ),
+                averageMonthlyNetSalaryAfterTax = 50.24f,
+                dataQuality = true
                     pricePerSquareMeterToBuyApartmentInCityCentre = 2000.0f,
                     apartment3BedroomsOutsideOfCentre = 170.2f,
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = 365.76f,
@@ -224,6 +228,78 @@ class FakeData : CostOfLivingDataSource {
                 dataQuality = true
             )
         )
+        listData.add(
+            CityEntity(
+                cityName = "Damanhur",
+                country = "Egypt",
+                mealsPrices = MealsPrices(
+                    mealInexpensiveRestaurant = 3.05f,
+                    mealFor2PeopleMidRangeRestaurant = 23.4f,
+                    mealAtMcDonaldSOrEquivalent = 4.07f
+                ),
+                drinksPrices = DrinksPrices(
+                    cappuccinoRegularInRestaurants = 1.19f,
+                    cokePepsiAThirdOfLiterBottleInRestaurants = 0.35f,
+                    waterAThirdOfLiterBottleInRestaurants = 0.2f,
+                    milkRegularOneLiter = 0.51f,
+                    waterOneAndHalfLiterBottleAtTheMarket = 0.27f
+                ),
+                fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                    apples1kg = 0.79f,
+                    banana1kg = 0.61f,
+                    oranges1kg = 0.41f,
+                    tomato1kg = 0.24f,
+                    potato1kg = 0.27f,
+                    onion1kg = 0.18f,
+                    lettuceOneHead = 0.09f
+                ),
+                foodPrices = FoodPrices(
+                    loafOfFreshWhiteBread500g = 0.54f,
+                    riceWhite1kg = 0.52f,
+                    eggsRegular12 = 0.98f,
+                    localCheese1kg = 1.42f,
+                    chickenFillets1kg = 2.92f,
+                    beefRound1kgOrEquivalentBackLegRedMeat = 7.33f
+                ),
+                servicesPrices = ServicesPrices(
+                    basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 47.48f,
+                    oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.02f,
+                    internet60MbpsOrMoreUnlimitedDataCableAdsl = 12.21f,
+                    fitnessClubMonthlyFeeForOneAdult = 16.28f,
+                    tennisCourtRentOneHourOnWeekend = null,
+                    cinemaInternationalReleaseOneSeat = 3.26f,
+                    preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 40.7f,
+                    internationalPrimarySchoolYearlyForOneChild = 915.7f
+                ),
+                clothesPrices = ClothesPrices(
+                    onePairOfJeansLevis50oneOrSimilar = 12.21f,
+                    oneSummerDressInAChainStoreZaraHAndM = 10.17f,
+                    onePairOfNikeRunningShoesMidRange = 122.09f,
+                    onePairOfMenLeatherBusinessShoes = 24.42f
+                ),
+                transportationsPrices = TransportationsPrices(
+                    oneWayTicketLocalTransport = 0.08f,
+                    monthlyPassRegularPrice = 8.14f,
+                    taxiStartNormalTariff = 0.35f,
+                    taxi1kmNormalTariff = 0.16f,
+                    taxi1hourWaitingNormalTariff = 1.63f,
+                    gasolineOneLiter = 0.36f
+                ),
+                carsPrices = CarsPrices(
+                    volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 15261.71f,
+                    toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 17296.61f
+                ),
+                realEstatesPrices = RealEstatesPrices(
+                    apartmentOneBedroomInCityCentre = null,
+                    apartmentOneBedroomOutsideOfCentre = null,
+                    apartment3BedroomsInCityCentre = null,
+                    pricePerSquareMeterToBuyApartmentInCityCentre = 1017.45f
+                ),
+                averageMonthlyNetSalaryAfterTax = 81.4f,
+                dataQuality = false
+            )
+        )
         return listData
     }
+
 }
