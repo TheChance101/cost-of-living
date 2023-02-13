@@ -57,9 +57,9 @@ class GetDinnerLocationInteractorTest {
         val interactor = GetDinnerLocationInteractor(dataSource)
 
         //when
-        val result: Executable = org.junit.jupiter.api.function.Executable { interactor.execute() }
+        val result = interactor.execute()
         //then
-        assertThrows(Exception::class.java, result)
+        assertNull(result)
     }
 
     @Test
@@ -91,9 +91,9 @@ class GetDinnerLocationInteractorTest {
 
 
         //when
-        val result: Executable = org.junit.jupiter.api.function.Executable { interactor.execute() }
+        val result=interactor.execute()
         //then
-        assertThrows(Exception::class.java, result)
+        assertNull(result)
     }
 
     @Test
@@ -133,7 +133,7 @@ class GetDinnerLocationInteractorTest {
                         true
                     ),
                     CityEntity(
-                        "Montreal ,",
+                        "Montreal",
                         "Canada",
                         MealsPrices(740f, 56.8f, 86f),
                         DrinksPrices(null, null, null, null, null),
