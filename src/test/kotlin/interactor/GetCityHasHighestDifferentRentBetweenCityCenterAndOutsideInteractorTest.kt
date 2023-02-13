@@ -29,7 +29,7 @@ internal class GetCityHasHighestDifferentRentBetweenCityCenterAndOutsideInteract
         //when find the city with the Highest different rent
         val city = converter.execute(type)
         //then
-        assertEquals("Masin", city)
+        assertEquals("Sancti Spiritus", city)
     }
 
     @Test

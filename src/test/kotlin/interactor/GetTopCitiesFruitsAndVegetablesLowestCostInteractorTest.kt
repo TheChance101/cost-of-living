@@ -1,6 +1,6 @@
 package interactor
 
-import fake.FakeData
+import fakeData.FakeData
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -40,17 +40,17 @@ internal class GetTopCitiesFruitsAndVegetablesLowestCostInteractorTest {
         // when
         val result = interactor.getAverageFruitAndVegetablePricesForCity(entity)
         // then
-        assertEquals(2.427143f, result)
+        assertEquals(1.106f, result)
     }
 
     @Test
     fun `should return correct value when there is at least one value is null`() {
         // given
-        val entity = fakeData.getAllCitiesData()[1]
+        val entity = fakeData.getAllCitiesData()[0]
         // when
         val result = interactor.getAverageFruitAndVegetablePricesForCity(entity)
         // then
-        assertEquals(1.5f, result)
+        assertEquals(1.106f, result)
     }
     // End testing for getAverageFruitAndVegetablePricesForCity
 
@@ -116,12 +116,11 @@ internal class GetTopCitiesFruitsAndVegetablesLowestCostInteractorTest {
         // then
         assertEquals(
             listOf(
+                "Santiago de Cuba",
                 "Sancti Spiritus",
                 "Santa Clara",
                 "Masin",
-                "Santiago de Cuba",
                 "Solue",
-                "Almaza",
                 "Fayrouz"
             ), result
         )

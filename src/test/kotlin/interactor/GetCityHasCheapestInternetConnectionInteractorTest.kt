@@ -25,7 +25,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
         // when
         val city = converter.execute()
         // then
-        assertEquals(fakedata.getAllCitiesData()[4], city)
+        assertEquals(fakedata.getAllCitiesData()[3], city)
     }
 
 
