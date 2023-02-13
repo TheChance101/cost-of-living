@@ -19,4 +19,11 @@ class GetCitiesNameHasHighestClothesPriceInteractor(
                 && city.clothesPrices.onePairOfNikeRunningShoesMidRange != null
                 && city.clothesPrices.oneSummerDressInAChainStoreZaraHAndM != null
     }
+
+    private fun getSumOfClothesPricesOfCity(city:CityEntity): Float{
+        return city.clothesPrices.onePairOfJeansLevis50oneOrSimilar!! +
+                city.clothesPrices.onePairOfMenLeatherBusinessShoes!! +
+                city.clothesPrices.onePairOfNikeRunningShoesMidRange!! +
+                city.clothesPrices.oneSummerDressInAChainStoreZaraHAndM!!
+    }
 }
