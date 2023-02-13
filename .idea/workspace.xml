@@ -5,7 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39cfb8c6-ebc3-48a5-a22e-1f220d919723" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetHighestSalaryAverageCititesNamesInteractorTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetHighestSalaryAverageCititesNamesInteractorTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetAverageSalariesInCountryInteractor.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetTopFiveCitesNameInClothesFromFamousBrandsInteractor.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/FakeDataSource.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/FakeDataSourceForInternet.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetAverageSalariesInCountryInteractorTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteractorTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/csv-plugin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCityHasCheapestInternetConnectionInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCityHasCheapestInternetConnectionInteractor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/interactor/GetHighestSalaryAverageCititesNamesInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetHighestSalaryAverageCititesNamesInteractor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetCityHasCheapestInternetConnectionInteractorTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetCityHasCheapestInternetConnectionInteractorTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +76,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2LTMAmkZIO9x2JdMBdLpKOIk36d" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -211,6 +236,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
