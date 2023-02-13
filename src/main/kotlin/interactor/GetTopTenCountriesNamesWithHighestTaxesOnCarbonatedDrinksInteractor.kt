@@ -18,7 +18,9 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(
             }
             dataFiltered.forEach {
                 val average = sumCityDrinkAverage(it)
-                map.put(it.cityName,average)
+                if (average != null) {
+                    map.put(it.cityName,average)
+                }
             }
             return map
         }
@@ -30,7 +32,14 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(
      * @return each cityEntity's drinks average
      * @author Hassan Wasfy
      * */
-    fun sumCityDrinkAverage(cityEntity: CityEntity):Float{
+    fun sumCityDrinkAverage(cityEntity: CityEntity):Float?{
+        if (cityEntity.drinksPrices.milkRegularOneLiter == null
+            || cityEntity.drinksPrices.cappuccinoRegularInRestaurants == null
+            || cityEntity.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants == null
+            || cityEntity.drinksPrices.waterAThirdOfLiterBottleInRestaurants == null
+            || cityEntity.drinksPrices.waterOneAndHalfLiterBottleAtTheMarket == null) {
+            return null
+        }
         val sum = cityEntity.drinksPrices.milkRegularOneLiter!! +
                 cityEntity.drinksPrices.cappuccinoRegularInRestaurants!! +
                 cityEntity.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants!! +
@@ -41,15 +50,23 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(
     }
 
     /**
-     * Returns `true` if the `cokePepsiAThirdOfLiterBottleInRestaurants` value
+     * Returns `true` if the drinks prices values
      * is valid
      * @param cityEntity represents a city.
-     * @return `true` if the value of drink price not `null` and positive.
-     * @author Abdurrahman Salah ad-Din
+     * @return `true` if the value of drinks prices not `null` and positive.
+     * @author Abdurrahman Salah ad-Din && Hassan Wasfy
      */
     fun excludeInvalidDrinksPrice(cityEntity: CityEntity) =
         cityEntity.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants != null &&
-        cityEntity.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants > 0
+        cityEntity.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants > 0 &&
+                cityEntity.drinksPrices.milkRegularOneLiter != null &&
+                cityEntity.drinksPrices.milkRegularOneLiter> 0 &&
+                cityEntity.drinksPrices.waterAThirdOfLiterBottleInRestaurants != null &&
+                cityEntity.drinksPrices.waterAThirdOfLiterBottleInRestaurants > 0 &&
+                cityEntity.drinksPrices.waterOneAndHalfLiterBottleAtTheMarket != null &&
+                cityEntity.drinksPrices.waterOneAndHalfLiterBottleAtTheMarket > 0 &&
+                cityEntity.drinksPrices.cappuccinoRegularInRestaurants != null &&
+                cityEntity.drinksPrices.cappuccinoRegularInRestaurants > 0
 
     /**
      * Returns `true` for high quality data and `false` for low quality data.

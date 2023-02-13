@@ -1214,11 +1214,11 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                     mealFor2PeopleMidRangeRestaurant = 5.0f,
                     mealAtMcDonaldSOrEquivalent = 15.0f
                 ),
-                drinksPrices = DrinksPrices(cappuccinoRegularInRestaurants = 2.5f,
-                    cokePepsiAThirdOfLiterBottleInRestaurants = 1.8f,
-                    waterAThirdOfLiterBottleInRestaurants = 0.5f,
-                    milkRegularOneLiter = 3.2f,
-                    waterOneAndHalfLiterBottleAtTheMarket = 1.5f
+                drinksPrices = DrinksPrices(cappuccinoRegularInRestaurants = null,
+                    cokePepsiAThirdOfLiterBottleInRestaurants = null,
+                    waterAThirdOfLiterBottleInRestaurants = null,
+                    milkRegularOneLiter = null,
+                    waterOneAndHalfLiterBottleAtTheMarket = null
                 ),
                 fruitAndVegetablesPrices = FruitAndVegetablesPrices(
                     apples1kg = 9.02f,
