@@ -13,6 +13,7 @@ import kotlin.test.assertTrue
 class GetFastest10CitiesToBuyAPTInteractorTest {
 
     private val getFastest10CitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(getVariousData())
+
     @Test
     fun `should avoid low quality`() {
         //given
@@ -52,7 +53,7 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
     @Test
     fun `list size should be 10`() {
 
-        val fastest10CitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(getAcceptable11Element())
+        val fastest10CitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(getVariousData())
         //when
         val result = fastest10CitiesToBuyAPT.execute()
         //then
@@ -188,5 +189,7 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
         assertFalse(result)
     }
     //endregion
+
+
 
 }

@@ -9,14 +9,16 @@ class GetFastest10CitiesToBuyAPTInteractor(
         return dataSource.getAllCitiesData()
             .filter { excludeInvalidSalaries(it) && excludeInvalidApartmentPrice(it) && excludeLowQualityData(it) }
             .map {
-                val priceForPer100SquareMeterToBuyApartmentOutsideOfCentre =
-                    100.0 * it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!
-                val numberOfYearsToBuyAPT =
-                    priceForPer100SquareMeterToBuyApartmentOutsideOfCentre / it.averageMonthlyNetSalaryAfterTax!!
-
+                val numberOfYearsToBuyAPT = calculateNumberOfYears(it)
                 Pair(it.cityName, numberOfYearsToBuyAPT)
             }
             .take(10)
+    }
+
+    private fun calculateNumberOfYears(it: CityEntity): Double {
+        val priceForPer100SquareMeterToBuyApartmentOutsideOfCentre =
+            100.0 * it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!
+        return priceForPer100SquareMeterToBuyApartmentOutsideOfCentre / it.averageMonthlyNetSalaryAfterTax!!
     }
 
     /**
