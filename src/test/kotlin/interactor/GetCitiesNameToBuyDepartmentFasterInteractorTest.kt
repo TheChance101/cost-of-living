@@ -46,7 +46,26 @@ internal class GetCitiesNameToBuyApartmentFasterInteractorTest {
     }
 
     @Test
-    fun `should throw exception when the salary less than one`() {
+    fun `should throw exception when the salary is negative`() {
+        //Given a salary, limit, squareMeter
+        val salary = -1
+        val limit = 5
+        val squareMeter = 100
+        //When execute the use case
+        val actual = Executable {
+            GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
+                .execute(
+                    salary = salary,
+                    limit = limit,
+                    squareMeter = squareMeter
+                )
+        }
+        //Then
+        assertThrows(ArithmeticException::class.java, actual)
+    }
+
+    @Test
+    fun `should throw exception when the salary equal to zero`() {
         //Given a salary, limit, squareMeter
         val salary = 0
         val limit = 5
@@ -84,9 +103,28 @@ internal class GetCitiesNameToBuyApartmentFasterInteractorTest {
         assertArrayEquals(expected.toTypedArray(), actual.toTypedArray())
     }
 
+    @Test
+    fun `should throw exception when the limit is negative`() {
+        //Given a salary, limit, squareMeter
+        val salary = 1000
+        val limit = -1
+        val squareMeter = 100
+        //When execute the use case
+        val actual =
+            Executable {
+                GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
+                    .execute(
+                        salary = salary,
+                        limit = limit,
+                        squareMeter = squareMeter
+                    )
+            }
+        //Then
+        assertThrows(Exception::class.java, actual)
+    }
 
     @Test
-    fun `should throw exception when the squareMeter less than one`() {
+    fun `should throw exception when the squareMeter equal to zero`() {
         //Given a salary, limit, squareMeter
         val salary = 1000
         val limit = 5
@@ -105,7 +143,22 @@ internal class GetCitiesNameToBuyApartmentFasterInteractorTest {
     }
 
     @Test
-    fun execute() {
+    fun `should throw exception when the squareMeter is negative`() {
+        //Given a salary, limit, squareMeter
+        val salary = 1000
+        val limit = 5
+        val squareMeter = -1
+        //When execute the use case
+        val actual = Executable {
+            GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
+                .execute(
+                    salary = salary,
+                    limit = limit,
+                    squareMeter = squareMeter
+                )
+        }
+        //Then
+        assertThrows(ArithmeticException::class.java, actual)
     }
 
 
