@@ -1,10 +1,15 @@
 package interactor
 
-class GetCityNameAndSalrayAverageInteractor() {
+import model.CityEntity
+import java.lang.reflect.Executable
+
+class GetCityNameAndSalrayAverageInteractor(private val dataSource: CostOfLivingDataSource) {
 
 
-    fun getcityandsalary(): List<Pair<String, Float>> {
+   fun execute(country:String):List<Pair<String,Float>>
+   {
 
-        return emptyList<Pair<String, Float>>()
-    }
+       return emptyList()
+   }
+
 }
