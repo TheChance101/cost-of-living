@@ -31,6 +31,15 @@ internal class GetTheNameOfTenCitiesThatTheAverageOfFruitAndVegetablesPricesHave
 
     assertNotNull(result)
   }
+  @Test
+  fun should_ReturnListOfTenCites_when_Execute() {
+    // given
+    val ListOfCites= listOf("Narayanganj", "Latakia", "Aleppo", "Sri Jayewardenepura Kotte", "Jaramana", "Banjul", "Homs", "Damascus", "Kasese", "Hamah")
+    // when
+    val result = getTheNameOfTenCitiesThatTheAverageOfFruitAndVegetablesPricesHaveLowestCostInteractor.execute()
+    // then
+    assertEquals(ListOfCites, result)
+  }
 
 
 
