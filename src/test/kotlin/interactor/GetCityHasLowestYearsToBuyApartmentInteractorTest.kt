@@ -30,7 +30,7 @@ class GetCityHasLowestYearsToBuyApartmentInteractorTest {
         //given
         val fackCity =fakeData.getAllCitiesData()[0]
         //when
-        val result =converter.excludeNullPriceOfApartmentAndLowQualityData(fackCity)
+        val result =converter.excludeNullSalariesAndLowQualityData(fackCity)
         //then
         assertTrue(result)
     }
@@ -39,9 +39,42 @@ class GetCityHasLowestYearsToBuyApartmentInteractorTest {
         //given
         val fackCity =fakeData.getAllCitiesData()[1]
         //when
-        val result =converter.excludeNullPriceOfApartmentAndLowQualityData(fackCity)
+        val result =converter.excludeNullSalariesAndLowQualityData(fackCity)
         //then
         assertFalse(result)
     }
+    @Test
+    fun should_ReturnCorrectListOfCitiesAndNumberOfYearsToBuyApartment_when_EnterPostiveFullTimeSalary() {
+        //given
+        val fullTimeSalary = 12
+        val limit =1
+        //when
+        val resultList = converter.execute(limit,fullTimeSalary)
+        //then
+        assertEquals(listOf(Pair("Santiago de Cuba",2.2275f)),resultList)
+    }
+    @Test
+    fun should_ReturnNullupleList_When_EnterFullTimeSalaryEqualZero (){
+        //given
+        val fullTimeSalary = 0
+        val limit =1
+
+        //when
+        val resultList: org.junit.jupiter.api.function.Executable = org.junit.jupiter.api.function.Executable { converter.execute(limit,fullTimeSalary) }
+        // then eception should be thrown
+        assertThrows(Exception::class.java , resultList)
+
+    }
+    @Test
+    fun Should_Return_When_EnterNegativeNumberOfFullTimeSallary(){
+        //given
+        val fullTimeSalary = -100
+        val limit = 1
+        //when
+        val resultList: org.junit.jupiter.api.function.Executable = org.junit.jupiter.api.function.Executable { converter.execute(limit,fullTimeSalary) }
+        // then eception should be thrown
+        assertThrows(Exception::class.java , resultList)
+    }
+
 
 }
