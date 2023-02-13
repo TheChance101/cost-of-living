@@ -2,6 +2,7 @@ import interactor.CostOfLivingDataSource
 import model.*
 
 class FakeData : CostOfLivingDataSource {
+    val  emptyFakeData = emptyList<CityEntity>()
 
     private val fakeData = listOf(
         CityEntity(cityName="Caracas", country="Venezuela",
@@ -236,10 +237,9 @@ class FakeData : CostOfLivingDataSource {
             averageMonthlyNetSalaryAfterTax=156.15f, dataQuality=true),
 
 
-    )
+        )
 
     override fun getAllCitiesData(): List<CityEntity> {
         return fakeData
     }
 }
-

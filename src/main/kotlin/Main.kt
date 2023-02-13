@@ -4,6 +4,7 @@ import interactor.CostOfLivingDataSource
 import interactor.GetCitiesNamesSortedByCheapestBananaPrices
 import interactor.GetCityHasCheapestInternetConnectionInteractor
 import interactor.GetHighestSalaryAverageCititesNamesInteractor
+import interactor.*
 
 fun main() {
     val csvParser = CsvParser()
@@ -17,13 +18,22 @@ fun main() {
     println(getCitiesNamesSortedByCheapestBananaPrices.execute("Caracas","Accra","Giza"))
     printSeparationLine()
 
+    val getCitiesAndYearsToBuyApartment = GetCitiesAndYearsToBuyApartmentInteractor(dataSource)
+    println(getCitiesAndYearsToBuyApartment.execute(limit = 10))
+    printSeparationLine()
+
+    val getCountryCitiesAverageSalary = GetCountryCitiesAverageSalaryInteractor(dataSource)
+    println(getCountryCitiesAverageSalary.execute("Syria"))
+    printSeparationLine()
+
     val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
     println(getCityHasCheapestInternetConnectionInteractor.execute())
-
+    printSeparationLine()
 
 
 }
-private fun printSeparationLine(){
+
+private fun printSeparationLine() {
     print("\n_______________________________\n")
 }
 

@@ -6,7 +6,7 @@ class GetHighestSalaryAverageCititesNamesInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
 
-    fun execute(limit: Int): List<String> {
+    fun execute(limit: Int): List<String?> {
         return dataSource
             .getAllCitiesData()
             .filter(::excludeNullSalariesAndLowQualityData)
