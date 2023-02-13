@@ -1,4 +1,5 @@
 package interactor
+
 import model.CityEntity
 
 class CountriesNamesForTheHighestTaxesOnCokeInteractor(
@@ -7,8 +8,10 @@ class CountriesNamesForTheHighestTaxesOnCokeInteractor(
     fun execute(limitOfDesiredCountries: Int): List<Pair<String, Float>> {
         return dataSource
             .getAllCitiesData()
+            .filter{it.dataQuality}
+            .sortedByDescending { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants }
+            .distinctBy { it.country }
             .take(limitOfDesiredCountries)
-             .map { (it.country to it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants!!) }
-
+            .map { (it.country to it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants!!) }
     }
 }

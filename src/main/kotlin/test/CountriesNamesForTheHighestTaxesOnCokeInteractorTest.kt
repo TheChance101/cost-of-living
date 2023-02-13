@@ -3,7 +3,6 @@ package interactor
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import fakeData.*
-import model.CityEntity
 import org.hamcrest.CoreMatchers
 import org.hamcrest.MatcherAssert
 import org.junit.jupiter.api.Test
