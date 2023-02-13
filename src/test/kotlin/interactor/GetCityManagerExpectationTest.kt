@@ -1,3 +1,0 @@
-package interactor
-
-internal class GetCityManagerExpectationTest

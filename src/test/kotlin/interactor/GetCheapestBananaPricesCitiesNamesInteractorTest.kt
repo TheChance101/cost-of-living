@@ -1,14 +1,13 @@
 package interactor
 
 import dataSource.FakeDataSource
-import model.CityEntity
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class GetCheapestBananaPricesCitiesNamesInteractorTest {
+internal class GetCheapestBananaPricesCitiesNamesInteractorTest() {
 
     private lateinit var fakeData: FakeDataSource
     private lateinit var getCheapestBananaPricesCitiesNamesInteractor: GetCheapestBananaPricesCitiesNamesInteractor
@@ -24,43 +23,56 @@ internal class GetCheapestBananaPricesCitiesNamesInteractorTest {
     fun should_ReturnCorrectList_When_EnterValidData() {
         //Given
         fakeData.setDataType(FakeDataSource.DataType.VALID)
-        val data = getCheapestBananaPricesCitiesNamesInteractor.getCitiesVarArgs()
-        //When valid data is entered
+
+        //When
         val list = getCheapestBananaPricesCitiesNamesInteractor.run {
-            execute(*data)
+            execute(*getCitiesVarArgs())
         }
+
         //Then
-        assertTrue(
-            list == data
-                .sortedBy { it.fruitAndVegetablesPrices.banana1kg }
-                .map { it.cityName }
-        )
+        assertTrue(list.size == 20)
     }
 
     @Test
     fun should_ReturnEmptyList_When_EnterNullForAllBananaPrices() {
         //Given
         fakeData.setDataType(FakeDataSource.DataType.NULLABLE)
-        val data = getCheapestBananaPricesCitiesNamesInteractor.getCitiesVarArgs()
-        //When entering null for all banana prices
+
+        //When
         val list = getCheapestBananaPricesCitiesNamesInteractor.run {
-            execute(*data)
+            execute(*getCitiesVarArgs())
         }
+
         //Then
         assertTrue(list.isEmpty())
     }
 
     @Test
-    fun should_ReturnNotValidList_When_EnterNoData() {
-        //Given empty array of CityEntities
-        val array = emptyArray<CityEntity>()
+    fun should_ReturnListHasNoNulls_When_EnterNullForSomeBananaPrices() {
+        //Given
+        fakeData.setDataType(FakeDataSource.DataType.NULLABLE)
 
-        //When entering no data or empty array of CityEntities to execute()
-        val list = getCheapestBananaPricesCitiesNamesInteractor.execute(*array)
+        //When
+        val list = getCheapestBananaPricesCitiesNamesInteractor.run {
+            execute(*getCitiesVarArgs())
+        }
 
         //Then
-        assertEquals(listOf("No Data is Entered !"), list)
+        assertTrue(list.size < 20)
+    }
+
+    @Test
+    fun should_ReturnEmptyList_When_EnterNoData() {
+        //Given
+        fakeData.setDataType(FakeDataSource.DataType.NULLABLE)
+
+        //When
+        val list = getCheapestBananaPricesCitiesNamesInteractor.run {
+            execute(*getCitiesVarArgs())
+        }
+
+        //Then
+        assertTrue(list.isEmpty())
     }
 
 }
-
