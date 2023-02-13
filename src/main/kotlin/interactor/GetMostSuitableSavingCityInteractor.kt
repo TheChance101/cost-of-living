@@ -9,8 +9,20 @@ class GetMostSuitableSavingCityInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
 
-    fun execute(): String {
-        return ""
+    fun execute(limit: Int): List<String> {
+        val suitableCities = dataSource
+            .getAllCitiesData()
+            .filter(::excludeNullSalaries)
+            .sortedByDescending { calculateCitySavings(it, calculateFamilyBudget(it.averageMonthlyNetSalaryAfterTax!!)) }
+            .distinct()
+            .take(limit)
+            .map { it.cityName }
+
+        if (suitableCities.isEmpty()) {
+            throw Exception("No suitable cities found")
+        }
+
+        return suitableCities
     }
 
     fun excludeNullSalaries(city: CityEntity): Boolean {

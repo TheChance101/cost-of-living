@@ -27,10 +27,10 @@ class GetMostSuitableSavingCityInteractorTest {
     @Test
     fun should_ReturnCityName_When_EnterCorrectCityName() {
         val fakeData = FakeData()
-        val expectedCity = "London"
+        val expectedCity = "Moratuwa"
         fakeData.fakeDataList.add(CityEntity(cityName = expectedCity))
-
-        val result = mostSuitableSavingCityInteractor.execute(limit = 1, dataSource = fakeData)
+        mostSuitableSavingCityInteractor = GetMostSuitableSavingCityInteractor(fakeData)
+        val result = mostSuitableSavingCityInteractor.execute(limit = 1)
 
         assertEquals(1, result.size)
         assertEquals(expectedCity, result[0])
