@@ -2,16 +2,36 @@ package interactor
 
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
+import fakeDataSource.FakeDataSourceForRentalPrice
 
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class TestGetCityWithHighestRentalPriceDifferenceInteractor{
     private lateinit var getCityWithHighestRentalPriceDifference: GetCityWithHighestRentalPriceDifferenceInteractor
     private lateinit var dataSource: FakeDataSourceForRentalPrice
+
+    @BeforeAll
+    fun setUp() {
+        dataSource = FakeDataSourceForRentalPrice()
+        getCityWithHighestRentalPriceDifference = GetCityWithHighestRentalPriceDifferenceInteractor(dataSource)
+    }
+
+    @Test
+    fun `Should return false when input null apartment price in city center`() {
+        //given an object of CityEntity with Null apartment price in city center
+        var city = dataSource.getAllCitiesData()[0]
+
+        //when
+        val result = getCityWithHighestRentalPriceDifference.excludeNullValues(city)
+        //then
+        assertFalse(result)
+    }
+
 
 
 //internal class TestGetHighestDifferenceBetweenCityCenterAndOutsideCityCenter {

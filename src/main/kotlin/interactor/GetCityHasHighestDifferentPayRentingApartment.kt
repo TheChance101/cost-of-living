@@ -9,19 +9,19 @@ class GetCityWithHighestRentalPriceDifferenceInteractor(
 ) {
 
     fun execute(): String {
-//        val listOfData = mutableListOf<CityByPriceDifference>()
-//
-//        dataSource.getAllCitiesData().filter(::excludeNullValues)
-//            .forEach {
-//                val priceDifference =
-//                    it.realEstatesPrices.pricePerSquareMeterToBuyApartmentInCityCentre!! - it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!
-//                listOfData.add(CityByPriceDifference(it.cityName, priceDifference.toDouble()))
-//            }
-//
-//
-//        listOfData.sortByDescending { it.priceDifference }
-//
-//        return listOfData[0].nameCity
+        val listOfData = mutableListOf<CityByPriceDifference>()
+
+        dataSource.getAllCitiesData().filter(::excludeNullValues)
+            .forEach {
+                val priceDifference =
+                    it.realEstatesPrices.pricePerSquareMeterToBuyApartmentInCityCentre!! - it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!
+                listOfData.add(CityByPriceDifference(it.cityName, priceDifference.toDouble()))
+            }
+
+
+        listOfData.sortByDescending { it.priceDifference }
+
+        return listOfData[0].nameCity
     }
 
     fun excludeNullValues(city: CityEntity): Boolean {
@@ -87,4 +87,3 @@ data class CityByPriceDifference(var nameCity: String, var priceDifference: Doub
 //    private fun excludeNullDataAndLowQuality(city: CityEntity): Boolean {
 //        return city.realEstatesPrices != null && city.realEstatesPrices != null && city.dataQuality
 //    }
-}
