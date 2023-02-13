@@ -7,13 +7,14 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import kotlin.test.assertEquals
 import interactor.GetHighestSalaryAverageCititesNamesInteractor
+import org.junit.jupiter.api.BeforeEach
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetHighestSalaryAverageCititesNamesInteractorTest {
 
     lateinit var getHighestSalaryAverageCititesNamesInteractor: GetHighestSalaryAverageCititesNamesInteractor
 
-    @BeforeAll
+    @BeforeEach
     fun setUp() {
         var fake = FakeDataSource()
         getHighestSalaryAverageCititesNamesInteractor = GetHighestSalaryAverageCititesNamesInteractor(fake)
