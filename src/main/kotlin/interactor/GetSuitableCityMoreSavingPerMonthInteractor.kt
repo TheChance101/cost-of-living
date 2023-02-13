@@ -8,8 +8,9 @@ import model.CityEntity
 class GetSuitableCityMoreSavingPerMonthInteractor(private val dataSource: CostOfLivingDataSource) {
 
 
-    fun execute(): String {
-        return ""
+    fun execute(): CityEntity {
+
+        return dataSource.getAllCitiesData()[0]
     }
 
     fun excludeNullSalaries(city: CityEntity): Boolean {
@@ -30,10 +31,6 @@ class GetSuitableCityMoreSavingPerMonthInteractor(private val dataSource: CostOf
 
     fun isSuitableApartment(city: CityEntity): Boolean {
         return (city.averageMonthlyNetSalaryAfterTax)!! * 2 > (city.realEstatesPrices.apartment3BedroomsInCityCentre!!)
-    }
-    fun getMonthlySalariesInAllCities(): List<Pair<String, Float?>> {
-
-        return emptyList()
     }
 
 }
