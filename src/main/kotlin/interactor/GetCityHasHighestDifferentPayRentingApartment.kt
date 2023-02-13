@@ -25,9 +25,17 @@ class GetCityWithHighestRentalPriceDifferenceInteractor(
     }
 
     fun excludeNullValues(city: CityEntity): Boolean {
-        return city.realEstatesPrices.pricePerSquareMeterToBuyApartmentInCityCentre != null && city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre != null
+        return city.realEstatesPrices.apartmentOneBedroomInCityCentre != null
+                && city.realEstatesPrices.apartmentOneBedroomOutsideOfCentre !=null
+                && city.realEstatesPrices.apartment3BedroomsInCityCentre !=null
+                && city.realEstatesPrices.apartment3BedroomsOutsideOfCentre !=null
+                && city.realEstatesPrices.pricePerSquareMeterToBuyApartmentInCityCentre !=null
+                && city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre !=null
     }
 
+    private fun excludeNullDataAndLowQuality(city: CityEntity): Boolean {
+        return city.dataQuality
+    }
 }
 
 data class CityByPriceDifference(var nameCity: String, var priceDifference: Double)
