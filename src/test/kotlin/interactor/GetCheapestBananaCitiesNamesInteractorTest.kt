@@ -1,6 +1,6 @@
 package interactor
 
-import fake.FakeData
+import fakeData.FakeData
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -54,7 +54,7 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
         // when get sorted cities list by cheapest price
         val cities = interactor.execute(*citiesList.toTypedArray())
         // then if getting correct cities
-        assertEquals(listOf("Masin", "Santiago de Cuba", "Sancti Spiritus"), cities)
+        assertEquals(listOf( "Santiago de Cuba","Masin", "Sancti Spiritus"), cities)
     }
 
     @Test
@@ -64,7 +64,7 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
         // when get sorted cities list by cheapest price
         val cities = interactor.execute(*citiesList.toTypedArray())
         // then if getting correct cities
-        assertEquals(listOf("Masin", "Santiago de Cuba", "Sancti Spiritus"), cities)
+        assertEquals(listOf( "Santiago de Cuba","Masin", "Sancti Spiritus"), cities)
     }
 
     @Test
@@ -74,7 +74,7 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
         // when get sorted cities list by cheapest price
         val cities = interactor.execute(*citiesList.toTypedArray())
         // then if getting correct cities
-        assertEquals(listOf("Masin", "Santiago de Cuba", "Sancti Spiritus"), cities)
+        assertEquals(listOf( "Santiago de Cuba","Masin", "Sancti Spiritus"), cities)
     }
 
     @Test
@@ -104,6 +104,6 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
         // when get sorted cities list by cheapest price
         val cities = interactor.execute(*citiesList.toTypedArray())
         // then if the only correct cities
-        assertEquals(listOf("Masin", "Santiago de Cuba", "Sancti Spiritus"), cities)
+        assertEquals(listOf( "Santiago de Cuba","Masin", "Sancti Spiritus"), cities)
     }
 }
