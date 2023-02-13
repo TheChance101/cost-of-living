@@ -2,7 +2,7 @@ package interactor
 
 import model.CityEntity
 
-class GetHighestSalaryAverageCititesNamesInteractor(
+class GetHighestSalaryAverageCitiesNamesInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
 
