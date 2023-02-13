@@ -21,6 +21,16 @@ class GetCountryCitiesAverageSalaryInteractorTest {
     }
 
     @Test
+    fun should_ReturnCitiesSalaries_When_EntringCountryNameFormally() {
+        //given
+        val country = "Sri Lanka"
+        val result = listOf(Pair("Colombo",156.15f),Pair("Colombo",156.15f))
+        // when
+        val cityAverage = GetCountryCitiesAverageSalary.execute(country = country)
+        //then
+        assertEquals(result,cityAverage)
+    }
+    @Test
     fun should_ReturnCitiesSalaries_When_EntringCountryNameWithSpaces() {
         //given
         val country = "sri     lanka"
@@ -31,9 +41,49 @@ class GetCountryCitiesAverageSalaryInteractorTest {
         assertEquals(result,cityAverage)
     }
     @Test
+    fun should_ReturnCountryCities_When_AddingLeadingAndTrailingSpacesToTwoWordCountry(){
+        //given
+        val country = "      sri lanka   "
+        val result = listOf(Pair("Colombo",156.15f),Pair("Colombo",156.15f))
+        // when
+        val cityAverage = GetCountryCitiesAverageSalary.execute(country = country)
+        //then
+        assertEquals(result,cityAverage)
+    }
+
+    @Test
+    fun should_ReturnCountryCities_When_AddingLeadingAndTrailingAndInBetweenSpaces(){
+        //given
+        val country = "      sri        lanka   "
+        val result = listOf(Pair("Colombo",156.15f),Pair("Colombo",156.15f))
+        // when
+        val cityAverage = GetCountryCitiesAverageSalary.execute(country = country)
+        //then
+        assertEquals(result,cityAverage)
+    }
+    @Test
+    fun should_ReturnCountryCities_When_AddingLeadingAndTrailingSpacesToOneWordCountry(){
+        //given
+        val country = "       Cuba      "
+        val result = listOf(Pair("Havana",35.75f))
+        // when
+        val cityAverage = GetCountryCitiesAverageSalary.execute(country = country)
+        //then
+        assertEquals(result,cityAverage)
+    }
+    @Test
     fun should_throwErr_When_EntringEmptyString() {
         //given
         val country = ""
+        // when
+        val result = Executable{GetCountryCitiesAverageSalary.execute(country = country)}
+        //then
+        assertThrows(Exception::class.java,result)
+    }
+    @Test
+    fun should_throwErr_When_EntringSpaces() {
+        //given
+        val country = "         "
         // when
         val result = Executable{GetCountryCitiesAverageSalary.execute(country = country)}
         //then
@@ -57,5 +107,44 @@ class GetCountryCitiesAverageSalaryInteractorTest {
         val cityAverage = GetCountryCitiesAverageSalary.execute(country = country)
         //then
         assertEquals(result,cityAverage)
+    }
+    @Test
+    fun should_ReturnCountryCities_When_EntringCountryInSmallCase(){
+        //given
+        val country = "cuba"
+        val result = listOf(Pair("Havana",35.75f))
+        // when
+        val cityAverage = GetCountryCitiesAverageSalary.execute(country = country)
+        //then
+        assertEquals(result,cityAverage)
+    }
+    @Test
+    fun should_ReturnCountryCities_When_EntringCountryInMixedCase(){
+        //given
+        val country = "cUbA"
+        val result = listOf(Pair("Havana",35.75f))
+        // when
+        val cityAverage = GetCountryCitiesAverageSalary.execute(country = country)
+        //then
+        assertEquals(result,cityAverage)
+    }
+
+    @Test
+    fun should_ThrowErr_When_EntringNoneExsistingCountry(){
+        //given
+        val country = "dnawbdhawbdhabwjhdahwdbdahw"
+        // when
+        val result = Executable{GetCountryCitiesAverageSalary.execute(country = country)}
+        //then
+        assertThrows(Exception::class.java,result)
+    }
+    @Test
+    fun should_ThrowErr_When_EntringNumberInString(){
+        //given
+        val country = "144"
+        // when
+        val result = Executable{GetCountryCitiesAverageSalary.execute(country = country)}
+        //then
+        assertThrows(Exception::class.java,result)
     }
 }
