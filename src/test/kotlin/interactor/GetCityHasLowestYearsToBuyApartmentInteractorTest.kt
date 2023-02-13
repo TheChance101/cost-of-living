@@ -75,6 +75,17 @@ class GetCityHasLowestYearsToBuyApartmentInteractorTest {
         // then eception should be thrown
         assertThrows(Exception::class.java , resultList)
     }
+    @Test
+    fun should_ThrowsException_When_LimitIsNegative(){
+        //given
+        val limit =-1
+        val fullTimeSalary = 12
+
+        val resultList: org.junit.jupiter.api.function.Executable = org.junit.jupiter.api.function.Executable { converter.execute(limit,fullTimeSalary) }
+        // then eception should be thrown
+        assertThrows(Exception::class.java , resultList)
+    }
+
 
 
 }
