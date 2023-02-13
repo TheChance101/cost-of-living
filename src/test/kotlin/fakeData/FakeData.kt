@@ -371,7 +371,7 @@ class FakeData : CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = 6000.0f,
-                    apartmentOneBedroomOutsideOfCentre = 100.0f,
+                    apartmentOneBedroomOutsideOfCentre =100.0f ,
                     //5900
                     apartment3BedroomsInCityCentre = 600.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
@@ -400,7 +400,7 @@ class FakeData : CostOfLivingDataSource {
                     waterOneAndHalfLiterBottleAtTheMarket = 2.0f
                 ),
                 fruitAndVegetablesPrices = FruitAndVegetablesPrices(
-                    apples1kg = 11.02f, banana1kg = 0.44f,
+                    apples1kg = 11.02f,banana1kg = 0.44f,
                     oranges1kg = 1.1f,
                     tomato1kg = 0.88f,
                     potato1kg = 1.1f,
@@ -445,7 +445,7 @@ class FakeData : CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre = null,
+                    apartmentOneBedroomOutsideOfCentre =null ,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     //6900
