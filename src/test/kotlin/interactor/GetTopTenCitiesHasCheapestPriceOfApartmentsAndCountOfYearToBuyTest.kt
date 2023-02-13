@@ -1,8 +1,8 @@
 package interactor
 
-import dataSourse.utils.FakeDataSource
+import dataSource.FakeDataSource
+import dataSource.TestCase
 import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
@@ -20,6 +20,7 @@ internal class GetTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTes
         fakeDataSource = FakeDataSource()
         getTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest =
             GetTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuy(fakeDataSource)
+        fakeDataSource.changeDataSource(TestCase.CheapestApartmentsInCities)
     }
     // endregion
 
