@@ -1,5 +1,8 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+/.name
+/kotlinc.xml
+/uiDesigner.xml
 /csv-editor.xml
 /kotlinc.xml
