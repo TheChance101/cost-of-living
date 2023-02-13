@@ -2,13 +2,13 @@ package interactor
 
 import model.CityEntity
 
-class GetCityHasCheapestInternetConnectionInteractor()
-{
+class GetCityHasCheapestInternetConnectionInteractor() {
 
     fun execute(cities: List<CityEntity>): CityEntity {
-        return if (cities.isNotEmpty()) cities.filter(::excludeNullSalariesAndNullInternetPriceAndQualityData)
-            .sortedBy(::calculateInternetPercent).first()
-         else throw IllegalArgumentException("Illegal input")
+        return if (cities.isNotEmpty())
+            cities.filter(::excludeNullSalariesAndNullInternetPriceAndQualityData)
+                .sortedBy(::calculateInternetPercent).first()
+        else throw IllegalArgumentException("Illegal input")
     }
 
     private fun excludeNullSalariesAndNullInternetPriceAndQualityData(city: CityEntity): Boolean {
