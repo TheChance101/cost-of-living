@@ -22,6 +22,7 @@ class CsvParser {
             dataQuality = tokenizedList[ColumnIndex.DATA_QUALITY].toIntOrNull() == 1,
         )
     }
+    }
 
     private fun constructMealsPricesFromTokens(tokenizedList: List<String>): MealsPrices{
         return MealsPrices(
@@ -118,4 +119,3 @@ class CsvParser {
     private fun List<String>.getFloat(index: Int): Float?{
         return this[index].toFloatOrNull()
     }
-}
