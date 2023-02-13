@@ -92,7 +92,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
                         RealEstatesPrices(null, null, null, null, null, null),
                         5400f,
                         true
-                    ),CityEntity(
+                    ), CityEntity(
                         "City6",
                         "Country6",
                         MealsPrices(null, null, null),
@@ -151,8 +151,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
                         RealEstatesPrices(null, null, null, null, null, null),
                         4900f,
                         true
-                    )
-                    , CityEntity(
+                    ), CityEntity(
                         "City10",
                         "Country10",
                         MealsPrices(null, null, null),
@@ -166,8 +165,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
                         RealEstatesPrices(null, null, null, null, null, null),
                         4500f,
                         true
-                    )
-                    ,CityEntity(
+                    ), CityEntity(
                         "City11",
                         "Country11",
                         MealsPrices(null, null, null),
@@ -311,7 +309,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
                         "",
                         MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
-                        FruitAndVegetablesPrices(null, null, null,null, null, null, null,),
+                        FruitAndVegetablesPrices(null, null, null, null, null, null, null,),
                         FoodPrices(null, null, null, null, null, null),
                         ServicesPrices(null, null, null, null, null, null, null, null),
                         ClothesPrices(null, null, null, null),
@@ -330,7 +328,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
     @Test
     fun should_return10CitiesWithLowestFruitAndVegetablesAverageComparedToSalaries_When_execute() {
         //given clean data
-        val cities = listOf("city3","city4","city1","city5","city6","city11","city8","city7","city9","city2")
+        val cities = listOf("City3", "City4", "City1", "City5", "City6", "City11", "City7", "City8", "City9", "City2")
         //when executing
         val result = data.execute()
         //then
@@ -340,12 +338,12 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
     @Test
     fun should_returnFalse_When_CityNameIsEmpty() {
         //given an empty city name should
-        val emptyCityName  =  CityEntity(
+        val emptyCityName = CityEntity(
             "",
             "",
             MealsPrices(null, null, null),
             DrinksPrices(null, null, null, null, null),
-            FruitAndVegetablesPrices(null, null, null,null, null, null, null,),
+            FruitAndVegetablesPrices(null, null, null, null, null, null, null,),
             FoodPrices(null, null, null, null, null, null),
             ServicesPrices(null, null, null, null, null, null, null, null),
             ClothesPrices(null, null, null, null),
@@ -356,7 +354,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
             true
         )
         //when executing
-        val result = data.excludeEmptyCityNameAndLowQualityData(emptyCityName)
+        val result = data.excludeEmptyCityNameAndLowQualityDataAndNullSalaries(emptyCityName)
         //then
         assertFalse(result)
 
@@ -365,20 +363,80 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
     @Test
     fun should_returnTheAverageOfFruitsAndVegetables_When_CountingAverage() {
         //given clean data
-         val fruitAndVegetables = FruitAndVegetablesPrices(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f)
+        val fruitAndVegetables = FruitAndVegetablesPrices(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f)
         //when counting the average
         val result = data.average(fruitAndVegetables)
         //then
         assertEquals(4.0f, result)
     }
+
     @Test
-    fun should_returnTheResultOfComparingFruitAndVegetablesWithSalaries_When_ComparingFruitAndVegetablesWithSalaries(){
+    fun should_returnTheResultOfComparingFruitAndVegetablesWithSalaries_When_ComparingFruitAndVegetablesWithSalaries() {
         //given the average and the salaries
         val average = 4.0f
         val salaries = 5000.0f
         //when comparing fruit and vegetables with salaries
-        val result = data.comparingFruitAndVegetablesWithSalaries(salaries,average)
+        val result = data.comparingFruitAndVegetablesWithSalaries(salaries, average)
         //then
-        assertEquals(1250,result)
+        assertEquals(1250f, result)
+    }
+
+    @Test
+    fun should_returnFalse_When_FruitAndVegetablesISNull() {
+        //given null fruit and vegetables
+        val nullFruitAndVegetables = FruitAndVegetablesPrices(null, 1.0f, null, null, null, null, null,)
+        //when FruitAndVegetablesISNull
+        val result = data.excludeNullFruitsAndVegetables(nullFruitAndVegetables)
+        //then
+        assertFalse(result)
+
+    }
+
+    @Test
+    fun should_returnFalse_When_SalariesISNull() {
+        //given null salaries
+        val nullSalaries = CityEntity(
+            "city",
+            "city",
+            MealsPrices(null, null, null),
+            DrinksPrices(null, null, null, null, null),
+            FruitAndVegetablesPrices(null, null, null, null, null, null, null,),
+            FoodPrices(null, null, null, null, null, null),
+            ServicesPrices(null, null, null, null, null, null, null, null),
+            ClothesPrices(null, null, null, null),
+            TransportationsPrices(null, null, null, null, null, null),
+            CarsPrices(null, null),
+            RealEstatesPrices(null, null, null, null, null, null),
+            null,
+            true
+        )
+        //when SalariesISNull
+        val result = data.excludeEmptyCityNameAndLowQualityDataAndNullSalaries(nullSalaries)
+        //then
+        assertFalse(result)
+    }
+
+    @Test
+    fun should_returnFalse_When_LowQualityData() {
+        //given low quality data
+        val lowQualityData = CityEntity(
+            "city",
+            "city",
+            MealsPrices(null, null, null),
+            DrinksPrices(null, null, null, null, null),
+            FruitAndVegetablesPrices(null, null, null, null, null, null, null,),
+            FoodPrices(null, null, null, null, null, null),
+            ServicesPrices(null, null, null, null, null, null, null, null),
+            ClothesPrices(null, null, null, null),
+            TransportationsPrices(null, null, null, null, null, null),
+            CarsPrices(null, null),
+            RealEstatesPrices(null, null, null, null, null, null),
+            8800f,
+            false
+        )
+        //when executing
+        val result = data.excludeEmptyCityNameAndLowQualityDataAndNullSalaries(lowQualityData)
+        //then
+        assertFalse(result)
     }
 }
