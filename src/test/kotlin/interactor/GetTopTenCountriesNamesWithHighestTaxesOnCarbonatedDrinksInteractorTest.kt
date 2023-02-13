@@ -182,6 +182,18 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         assertFalse(result)
     }
 
+    @Test
+    fun should_returnFalse_when_countryNameContainSymbols() {
+        // given
+        val city = taxesFakeDataSource.createFakeCity("Symbols!@#",
+            17.5f,
+            true)
+        // when
+        val result = getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
+            .excludeInvalidCountries(city)
+        // then
+        assertFalse(result)
+    }
 
     //endregion
 
