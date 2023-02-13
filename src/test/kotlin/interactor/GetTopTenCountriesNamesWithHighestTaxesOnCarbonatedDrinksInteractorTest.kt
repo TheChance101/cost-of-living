@@ -3,10 +3,10 @@ package interactor
 import fakeDataSource.FakeDataSource
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.TestInstance
-import java.lang.IllegalArgumentException
+import org.junit.jupiter.api.function.Executable
+import kotlin.IllegalArgumentException
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
@@ -25,9 +25,10 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         // Given
         val limit = -5
         // When
-        val expected = IllegalArgumentException("Please Enter Positive Limit!")
+        //throws exception
         // Then
-        assertEquals(expected,getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.execute(limit))
+        val executable = Executable {getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.execute(limit)}
+        assertThrows(IllegalArgumentException::class.java,executable)
     }
 
 
@@ -58,10 +59,6 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
     fun testSorting(){
         //given
         val limit = 4
-        val given = listOf(fakeDataSource.getAllCitiesData()[0]
-            ,fakeDataSource.getAllCitiesData()[1]
-            ,fakeDataSource.getAllCitiesData()[2]
-            ,fakeDataSource.getAllCitiesData()[3])
 
         //when
         val expected = listOf(fakeDataSource.getAllCitiesData()[2]
