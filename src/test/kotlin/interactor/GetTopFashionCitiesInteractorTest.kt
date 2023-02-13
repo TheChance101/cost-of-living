@@ -2,21 +2,17 @@ package interactor
 
 import FakeData
 import junit.framework.TestCase.assertEquals
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
-import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.*
 import org.junit.jupiter.api.function.Executable
 import java.lang.Exception
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetTopFashionCitiesInteractorTest {
-    private lateinit var fakeData: FakeData
     private lateinit var getTopFashionCitiesInteractor: GetTopFashionCitiesInteractor
 
-    @BeforeEach
+    @BeforeAll
     fun setUp() {
-        fakeData = FakeData()
+       val fakeData = FakeData()
         getTopFashionCitiesInteractor = GetTopFashionCitiesInteractor(fakeData)
     }
 
@@ -28,8 +24,9 @@ internal class GetTopFashionCitiesInteractorTest {
         val result = getTopFashionCitiesInteractor.execute(limit)
         val expectedResult = listOf("Accra", "Multan", "Karachi", "Rawalpindi", "Hyderabad City")
         //Then
-        assertEquals(expectedResult,result)
+        assertEquals(expectedResult, result)
     }
+
     @Test
     fun should_ReturnEmptyList_When_HaveLimitValueZero() {
         //given limit value = 0
@@ -38,13 +35,14 @@ internal class GetTopFashionCitiesInteractorTest {
         val result = getTopFashionCitiesInteractor.execute(limit)
         val expectedResult = emptyList<String>()
         //Then
-        assertEquals(expectedResult,result)
+        assertEquals(expectedResult, result)
     }
+
     @Test
     fun should_ThrowException_When_HaveNegativeLimitValue() {
         //given  limit value < 0
         val limit = -1
         //Then exception should be thrown
-         assertThrows<IllegalArgumentException> { getTopFashionCitiesInteractor.execute(limit) }
+        assertThrows<IllegalArgumentException> { getTopFashionCitiesInteractor.execute(limit) }
     }
 }
