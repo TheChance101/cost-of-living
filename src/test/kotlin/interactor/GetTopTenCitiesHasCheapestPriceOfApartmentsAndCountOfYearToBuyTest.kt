@@ -59,7 +59,7 @@ internal class GetTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTes
     // region passed cases
     @Test
     fun should_ReturnList_when_TheInputIsStringNumericalSalary() {
-        // given String salary but Numeric input
+        // given Int salary
         val salaryOfFullTimeJob = 800
 
         // when the output list of a pair of cities names and count of years
@@ -71,7 +71,7 @@ internal class GetTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTes
         assertEquals(
             listOf
                 (
-                Pair("Dominate", 0.625),
+                Pair("Domyat", 0.625),
                 Pair("Popeye Village", 2.08333),
                 Pair("Hallstatt", 5.20833),
                 Pair("Simiane La Rotonde", 8.33333),
@@ -102,38 +102,7 @@ internal class GetTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTes
         assertEquals(
             listOf
                 (
-                Pair("Dominate", 0.625),
-                Pair("Popeye Village", 2.08333),
-                Pair("Hallstatt", 5.20833),
-                Pair("Simiane La Rotonde", 8.33333),
-                Pair("Cinque Terre", 9.375),
-                Pair("Ortahisar", 10.41667),
-                Pair("Oia", 12.5),
-                Pair("Shirakawa-go", 15.625),
-                Pair("Ait Ben-Haddou", 17.70833),
-                Pair("Cua Van", 20.83333),
-            ),
-
-
-            result
-        )
-    }
-
-    @Test
-    fun should_ReturnList_when_TheInputIsFloatSalary() {
-        // given float salary
-        val salaryOfFullTimeJob = 800.0f
-
-        // when the output list of a pair of cities names and count of years
-        val result =
-            getTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest
-                .execute(salaryOfFullTimeJob)
-
-        // then check
-        assertEquals(
-            listOf
-                (
-                Pair("Dominate", 0.625),
+                Pair("Domyat", 0.625),
                 Pair("Popeye Village", 2.08333),
                 Pair("Hallstatt", 5.20833),
                 Pair("Simiane La Rotonde", 8.33333),

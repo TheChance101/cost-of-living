@@ -79,7 +79,7 @@ class FakeDataSource : CostOfLivingDataSource {
             ),
 
             CityEntity(
-                cityName = "Dominate",
+                cityName = "Domyat",
                 country = "Cuba",
                 mealsPrices = MealsPrices(
                     mealInexpensiveRestaurant = 10.0f,
