@@ -4,7 +4,6 @@ import fakedata.FakeData
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.function.Executable
-import org.mockito.Mockito
 class GetTheRightApartmentTest {
     private lateinit var dataSource: CostOfLivingDataSource
     private lateinit var fakeData: FakeData
@@ -14,8 +13,7 @@ class GetTheRightApartmentTest {
     @BeforeEach
     fun setUp() {
         fakeData = FakeData()
-        dataSource = Mockito.mock(CostOfLivingDataSource::class.java)
-        getTheRightApartment = GetTheRightApartment(dataSource)
+        getTheRightApartment = GetTheRightApartment(fakeData)
     }
 
 
@@ -36,7 +34,6 @@ class GetTheRightApartmentTest {
         )
 
         //When
-        Mockito.`when`(dataSource.getAllCitiesData()).thenReturn(fakeData.getAllCitiesData())
         val  actualResult = getTheRightApartment.getListOfDetailsOfApartment(1000)
         //Then
         assertNotEquals(expectedResult, actualResult)
@@ -47,33 +44,35 @@ class GetTheRightApartmentTest {
     fun should_ReturnTrue_when_OutPutCorrect() {
         //Give
         val expectedResult = listOf(
+            Pair("Thimphu", 1.0251666f),
+            Pair("Faisalabad", 1.3918333f),
+            Pair("Yaounde", 1.6439167f),
+            Pair("Multan", 1.6900834f),
+            Pair("Hyderabad City",1.719f),
+            Pair("Giza", 1.90775f),
+            Pair("Tanta", 2.01225f),
+            Pair("Alexandria", 2.0461667f),
+            Pair("Vadodara", 2.047f),
+            Pair("Bhopal", 2.0931666f),
+        )
+
+        //When
+        val actualResult = getTheRightApartment.getListOfDetailsOfApartment(1000)
+        //Then
+        assertEquals(expectedResult, actualResult)
+    }
+    @Test
+    fun should_ReturnTrue_when_OutPutInCorrec() {
+        //Give
+        val expectedResult = listOf(
             Pair("Alexandria", "20"),
             Pair("Bagdad", "13"),
             Pair("giza", "16"),
             Pair("Madrid", "10"),
         )
-
         //When
-        Mockito.`when`(dataSource.getAllCitiesData()).thenReturn(fakeData.getAllCitiesData())
-        val actualResult = getTheRightApartment.getListOfDetailsOfApartment(1000)
+        val actualResult: Executable = Executable{ getTheRightApartment.getListOfDetailsOfApartment(0)}
         //Then
-        assertEquals(expectedResult, actualResult)
+        assertThrows(Exception::class.java,actualResult)
     }
-//    @Test
-//    fun should_ReturnTrue_when_OutPutInCorrec() {
-//        //Give
-//        val expectedResult = listOf(
-//            Pair("Alexandria", "20"),
-//            Pair("Bagdad", "13"),
-//            Pair("giza", "16"),
-//            Pair("Madrid", "10"),
-//        )
-//
-//        //When
-//        Mockito.`when`(dataSource.getAllCitiesData()).thenReturn(fakeData.getAllCitiesData())
-//        val actualResult: Executable = Executable{ getTheRightApartment.getListOfDetailsOfApartment(1000)}
-//
-//        //Then
-//        assertThrows(Exception::class.java,actualResult)
-//    }
 }

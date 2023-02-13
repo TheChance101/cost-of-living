@@ -1,6 +1,6 @@
 package interactor
 
-import fackdata.FakeData
+import fakedata.FakeData
 import model.CityEntity
 import model.FoodPrices
 import model.RealEstatesPrices
