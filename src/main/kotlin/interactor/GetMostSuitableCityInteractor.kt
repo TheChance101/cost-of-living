@@ -4,7 +4,7 @@ import model.CityEntity
 
 class GetMostSuitableCityInteractor {
 
-    fun findTheMostSuitableCity(list: List<CityEntity>) =
+    fun execute(list: List<CityEntity>) =
         list.filter(::excludeNullPropertiesInCityEntity).maxByOrNull {
             (it.averageMonthlyNetSalaryAfterTax!! * 2).minus(
                 (it.foodPrices.chickenFillets1kg!! * 10)

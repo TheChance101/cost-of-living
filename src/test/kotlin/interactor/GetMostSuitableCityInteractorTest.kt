@@ -26,7 +26,7 @@ internal class GetMostSuitableCityInteractorTest {
         //given
         val cityList = fakeDataSource.getAllCitiesData()
         //when
-        val cityNameResult = getMostSuitableCityInteractor.findTheMostSuitableCity(cityList)
+        val cityNameResult = getMostSuitableCityInteractor.execute(cityList)
         //then
         assertEquals("Banjul", cityNameResult)
     }
@@ -36,7 +36,7 @@ internal class GetMostSuitableCityInteractorTest {
         //given
         val cityList = emptyList<CityEntity>()
         //when
-        val cityNameResult = Executable { getMostSuitableCityInteractor.findTheMostSuitableCity(cityList) }
+        val cityNameResult = Executable { getMostSuitableCityInteractor.execute(cityList) }
         //then
         assertThrows(Exception::class.java, cityNameResult)
     }
@@ -46,7 +46,7 @@ internal class GetMostSuitableCityInteractorTest {
         //given
         val cityList = listOf(fakeDataSource.getAllCitiesData().last())
         //when
-        val cityNameResult = getMostSuitableCityInteractor.findTheMostSuitableCity(cityList)
+        val cityNameResult = getMostSuitableCityInteractor.execute(cityList)
         //then
         assertEquals("Sri Jayewardenepura Kotte", cityNameResult)
     }
@@ -56,7 +56,7 @@ internal class GetMostSuitableCityInteractorTest {
         //given
         val cityList: List<CityEntity>? = null
         //when
-        val cityNameResult = Executable { getMostSuitableCityInteractor.findTheMostSuitableCity(cityList!!) }
+        val cityNameResult = Executable { getMostSuitableCityInteractor.execute(cityList!!) }
         //then
         assertThrows(Exception::class.java, cityNameResult)
     }
@@ -65,7 +65,7 @@ internal class GetMostSuitableCityInteractorTest {
     fun should_ReturnException_when_AllCitiesHasNullData() {
         //given
         val cityList = fakeDataSource.getAllCitiesData().take(3)
-        val cityNameResult = Executable { getMostSuitableCityInteractor.findTheMostSuitableCity(cityList) }
+        val cityNameResult = Executable { getMostSuitableCityInteractor.execute(cityList) }
         //then
         assertThrows(Exception::class.java, cityNameResult)
 
