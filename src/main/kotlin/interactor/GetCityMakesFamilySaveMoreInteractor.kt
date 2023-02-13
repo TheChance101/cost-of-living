@@ -50,4 +50,6 @@ class GetCityMakesFamilySaveMoreInteractor(
                 && city.dataQuality
     }
 
+    fun excludeInvalidSalary() = Exception("Not Implemented yet!")
+
 }
