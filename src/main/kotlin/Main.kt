@@ -20,11 +20,10 @@ fun main() {
     val lowestAveragePricesForFruitsAndVegetables = GetLowestAveragePricesForFruitsAndVegetablesInteractor(dataSource)
     println(lowestAveragePricesForFruitsAndVegetables.execute(limit = 10))
     printSeparationLine()
-
+    
     val getCitiesNamesSortedCheapestBananPrices = GetCitiesNamesSortedCheapestBananPrices()
     println(getCitiesNamesSortedCheapestBananPrices.excute(*inputCitiesEntity))
-
-
+    
     val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor()
     println(getCityHasCheapestInternetConnectionInteractor.execute(data))
 
