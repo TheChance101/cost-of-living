@@ -10,14 +10,14 @@ class GetCityHasMoreSavingsPerMonthInteractor(
 
     fun execute(): CityEntity? {
 
+
         return dataSource.getAllCitiesData()
             .asSequence()
             .filter(::excludeNullFoodPrices)
             .filter(::excludeNullApartment)
-            .filter(::excludeTransportationsPrices)
             .filter(::excludeNullAverageMonthly)
+            .filter(::excludeTransportationsPrices)
             .maxByOrNull(::countSavingsPerMonth)
-
     }
 
 
@@ -58,7 +58,7 @@ private fun excludeNullAverageMonthly(city: CityEntity): Boolean {
 private fun countSavingsPerMonth(city: CityEntity): Float {
     val salaryMonth = city.averageMonthlyNetSalaryAfterTax!! * 2
 
-    val foodPricesAndApartment = (15 * city.foodPrices.loafOfFreshWhiteBread500g!!.div(2))
+    val foodPricesAndApartment = (15 * ((city.foodPrices.loafOfFreshWhiteBread500g!! * 2)))
     +(city.foodPrices.localCheese1kg!!) + (4 * city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!!)
     +(city.foodPrices.chickenFillets1kg!! * 10) + (city.foodPrices.riceWhite1kg!! * 2) +
             minOf(
