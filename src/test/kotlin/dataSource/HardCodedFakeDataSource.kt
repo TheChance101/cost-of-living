@@ -16,8 +16,8 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
 
     val cairoHighQuality by lazy {
         CityEntity(
-            cityName = "cairo",
-            country = "egypt",
+            cityName = "Cairo",
+            country = "Egypt",
             mealsPrices = MealsPrices(
                 mealInexpensiveRestaurant = 10f,
                 mealFor2PeopleMidRangeRestaurant = 5f,
