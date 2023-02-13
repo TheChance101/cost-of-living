@@ -13,6 +13,6 @@ class GetCitiesNameHasHighestClothesPriceInteractor(
     }
 
     private fun excludeAnyNullClothPriceAndLowQualityData(city:CityEntity): Boolean{
-        return true
+        return city.dataQuality
     }
 }
