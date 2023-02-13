@@ -27,7 +27,7 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         //Given
         val fakeCity: CityEntity = fakeData.getAllCitiesData()[0]
         //When
-        val actualResult = getSuitableCityMoreSavingPerMonth.excludeNullSalaries(fakeCity)
+        val actualResult = getSuitableCityMoreSavingPerMonth.excludeNullSalariesApartment3BedroomsAndFoodies(fakeCity)
         //Then
         assertTrue(actualResult)
     }
@@ -37,7 +37,7 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         //Given
         val fakeCity: CityEntity = fakeData.getAllCitiesData()[1]
         //When
-        val actualResult = getSuitableCityMoreSavingPerMonth.excludeNullSalaries(fakeCity)
+        val actualResult = getSuitableCityMoreSavingPerMonth.excludeNullSalariesApartment3BedroomsAndFoodies(fakeCity)
         //Then
         assertFalse(actualResult)
     }
@@ -47,7 +47,7 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         //Given
         val fakeCity: CityEntity = fakeData.getAllCitiesData()[0]
         //When
-        val actualResult = getSuitableCityMoreSavingPerMonth.excludeNullApartment3BedroomsInCityCenter(fakeCity)
+        val actualResult = getSuitableCityMoreSavingPerMonth.excludeNullSalariesApartment3BedroomsAndFoodies(fakeCity)
         //Then
         assertTrue(actualResult)
     }
@@ -57,7 +57,7 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         //Given
         val fakeCity: CityEntity = fakeData.getAllCitiesData()[1]
         //When
-        val actualResult = getSuitableCityMoreSavingPerMonth.excludeNullSalaries(fakeCity)
+        val actualResult = getSuitableCityMoreSavingPerMonth.excludeNullSalariesApartment3BedroomsAndFoodies(fakeCity)
         //Then
         assertFalse(actualResult)
     }
@@ -67,7 +67,7 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         //Given
         val fakeCity: CityEntity = fakeData.getAllCitiesData()[0]
         //When
-        val actualResult = getSuitableCityMoreSavingPerMonth.excludeNullFoodies(fakeCity)
+        val actualResult = getSuitableCityMoreSavingPerMonth.excludeNullSalariesApartment3BedroomsAndFoodies(fakeCity)
         //Then
         assertTrue(actualResult)
     }
@@ -77,7 +77,7 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         //Given
         val fakeCity: CityEntity = fakeData.getAllCitiesData()[1]
         //When
-        val actualResult = getSuitableCityMoreSavingPerMonth.excludeNullFoodies(fakeCity)
+        val actualResult = getSuitableCityMoreSavingPerMonth.excludeNullSalariesApartment3BedroomsAndFoodies(fakeCity)
         //Then
         assertFalse(actualResult)
     }

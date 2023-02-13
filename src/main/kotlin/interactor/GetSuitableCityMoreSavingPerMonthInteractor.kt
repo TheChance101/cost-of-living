@@ -17,9 +17,7 @@ class GetSuitableCityMoreSavingPerMonthInteractor(private val dataSource: CostOf
     fun execute(): CityEntity {
 
         return dataSource.getAllCitiesData()
-            .filter(::excludeNullSalaries)
-            .filter(::excludeNullApartment3BedroomsInCityCenter)
-            .filter(::excludeNullFoodies)
+            .filter(::excludeNullSalariesApartment3BedroomsAndFoodies)
             .maxByOrNull {
                 (it.averageMonthlyNetSalaryAfterTax!! * averageSalary) -
                         ((it.foodPrices.riceWhite1kg!! * riceConsumption) +
@@ -29,18 +27,14 @@ class GetSuitableCityMoreSavingPerMonthInteractor(private val dataSource: CostOf
                                 (it.foodPrices.loafOfFreshWhiteBread500g!! * breadConsumption) +
                                 (otherNeedConsumption) +
                                 (it.realEstatesPrices.apartment3BedroomsInCityCentre!!)
-                                ) }!!
-    }
-    fun excludeNullSalaries(city: CityEntity): Boolean {
-        return city.averageMonthlyNetSalaryAfterTax != null
+                                )
+            }!!
     }
 
-    fun excludeNullApartment3BedroomsInCityCenter(city: CityEntity): Boolean {
-        return city.realEstatesPrices.apartment3BedroomsInCityCentre != null
-    }
-
-    fun excludeNullFoodies(city: CityEntity): Boolean {
-        return city.foodPrices.localCheese1kg != null
+    fun excludeNullSalariesApartment3BedroomsAndFoodies(city: CityEntity): Boolean {
+        return city.averageMonthlyNetSalaryAfterTax != null &&
+                city.realEstatesPrices.apartment3BedroomsInCityCentre != null &&
+                city.foodPrices.localCheese1kg != null
                 && city.foodPrices.loafOfFreshWhiteBread500g != null
                 && city.foodPrices.chickenFillets1kg != null
                 && city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null
