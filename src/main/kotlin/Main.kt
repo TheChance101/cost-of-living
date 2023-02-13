@@ -31,7 +31,7 @@ fun main() {
 
     val getMostSuitableCity = GetMostSuitableCityInteractor()
     val list = getMostSuitableCity.getAllCities(dataSource)
-    val cityNameResult = getMostSuitableCity.findTheMostSuitableCity(list)
+    val cityNameResult = getMostSuitableCity.execute(list)
 
     println(cityNameResult)
 
