@@ -22,4 +22,12 @@ internal class GetCitiesNameHasHighestClothesPriceInteractorTest {
         citiesName = GetCitiesNameHasHighestClothesPriceInteractor(dataSource)
     }
 
+    @Test
+    fun should_ReturnTrue_when_allTheCityEntitesHasHighQualityData(){
+        //when
+        val result = citiesName.execute()
+        //then
+        assertTrue(result.all { it.dataQuality })
+    }
+
 }
