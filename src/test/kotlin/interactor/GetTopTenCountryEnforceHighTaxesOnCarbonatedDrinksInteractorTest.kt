@@ -1,7 +1,6 @@
 package interactor
 
-import dataSource.CsvDataSource
-import dataSource.utils.CsvParser
+import fakeData.FakeData
 import model.CityEntity
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.BeforeAll
@@ -14,29 +13,26 @@ import kotlin.test.assertEquals
 class GetTopTenCountryEnforceHighTaxesOnCarbonatedDrinksInteractorTest {
 
     private lateinit var testingData: GetTopTenCountryEnforceHighTaxesOnCarbonatedDrinksInteractor
-    private val csvParser = CsvParser()
-    private val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
-
+    private val fakeData = FakeData()
 
     @BeforeAll
     fun setUpData() {
-        testingData = GetTopTenCountryEnforceHighTaxesOnCarbonatedDrinksInteractor(dataSource)
+        testingData = GetTopTenCountryEnforceHighTaxesOnCarbonatedDrinksInteractor(fakeData)
     }
 
     @Test
     fun returnSizeOfList() {
         val limit = 10
-        val cities = dataSource.getAllCitiesData()
+        val cities = fakeData.getAllCitiesData()
         val result = testingData.execute(limit, cities)
-        assertEquals(10, result.size)
+        assertEquals(8, result.size)
     }
-
 
     @Test
     fun throwNullException() {
-        lateinit var list : List<CityEntity>
-        val noData = org.junit.jupiter.api.function.Executable { testingData.execute(10, list) }
-        assertThrows(Exception::class.java , noData)
+        var list: List<CityEntity> = listOf()
+        val noData = org.junit.jupiter.api.function.Executable { testingData.execute(-1, list) }
+        assertThrows(Exception::class.java, noData)
     }
 
 

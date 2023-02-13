@@ -10,20 +10,18 @@ import kotlin.test.assertEquals
 class GetCityHasCheapestInternetConnectionInteractorTest {
 
     private lateinit var fakedata: FakeData
-    private lateinit var converter: GetCityHasCheapestInternetConnectionInteractor
+    private lateinit var getCityHasCheapestInternetConnection: GetCityHasCheapestInternetConnectionInteractor
 
     @BeforeAll
     fun setUp() {
         fakedata = FakeData()
-        converter = GetCityHasCheapestInternetConnectionInteractor(fakedata)
-
+        getCityHasCheapestInternetConnection = GetCityHasCheapestInternetConnectionInteractor(fakedata)
     }
-
     @Test
-    fun `should return cheapest city When  enter list of cities`() {
+    fun `should return cheapest city When enter list of cities`() {
         // given
         // when
-        val city = converter.execute()
+        val city = getCityHasCheapestInternetConnection.execute()
         // then
         assertEquals(fakedata.getAllCitiesData()[10], city)
     }
