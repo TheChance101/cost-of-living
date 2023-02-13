@@ -7,12 +7,13 @@ class GetCityHasCheapestInternetConnectionInteractor(
 ) {
 //Reham and Zeinab
     fun execute(): CityEntity{
-//        return if (cities.isEmpty()) throw IllegalArgumentException("Illegal input")
-//        else cities.filter(::excludeIsNullAverageMonthlyNetSalaryAfterTaxAndinternet60MbpsOrMoreUnlimitedDataCableAdsl).
-//     minByOrNull { it.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl!!/it.averageMonthlyNetSalaryAfterTax!!}!!
-//
 
-    return dataSource.getAllCitiesData()[0]
+       return dataSource.getAllCitiesData().
+       filter(::excludeIsNullAverageMonthlyNetSalaryAfterTaxAndinternet60MbpsOrMoreUnlimitedDataCableAdsl).
+     minByOrNull { it.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl!!/it.averageMonthlyNetSalaryAfterTax!!}!!
+
+
+
 
     }
     private fun excludeIsNullAverageMonthlyNetSalaryAfterTaxAndinternet60MbpsOrMoreUnlimitedDataCableAdsl (city : CityEntity ) : Boolean{
