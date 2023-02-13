@@ -45,5 +45,24 @@ class GetCItyWithMealPriceBetweenTwoTest {
         //then return null
         assertNull(city)
     }
+    @Test
+    fun should_ReturnNull_When_InputEmptyList() {
+        //given countries names exist in data
+        val countries: List<String> = listOf()
+        //when input is empty list
+        val city = GetCItyWithMealPriceBetweenTwoInteractor.execute(countries)
+        //then return null
+        assertNull(city)
+    }
+    @Test
+    fun should_ReturnNull_When_InputListOfCountriesContainLessThanThreeCitiesWithValidData() {
+        //given countries names exist in data
+        val countries: List<String> = listOf("Nigeria")//have 2 cities
+        //when list of countries have less than 3 cities with valid data
+        val city = GetCItyWithMealPriceBetweenTwoInteractor.execute(countries)
+        println(fakeData.getAllCitiesData())
+        //then return null
+        assertNull(city)
+    }
 
 }
