@@ -41,8 +41,4 @@ class GetSuitableCityMoreSavingPerMonthInteractor(private val dataSource: CostOf
                 && city.foodPrices.riceWhite1kg != null
     }
 
-    fun isSuitableApartment(city: CityEntity): Boolean {
-        return (city.averageMonthlyNetSalaryAfterTax)!! * 2 > (city.realEstatesPrices.apartment3BedroomsInCityCentre!!)
-    }
-
 }

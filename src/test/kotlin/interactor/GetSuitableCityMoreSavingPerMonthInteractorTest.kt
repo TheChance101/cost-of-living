@@ -81,27 +81,6 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         //Then
         assertFalse(actualResult)
     }
-
-    @Test
-    fun should_ReturnTrue_When_CitiesHasSuitableApartment() {
-        //Given
-        val fakeCity: CityEntity = fakeData.getAllCitiesData()[0]
-        //When
-        val actualResult = getSuitableCityMoreSavingPerMonth.isSuitableApartment(fakeCity)
-        //Then
-        assertTrue(actualResult)
-    }
-
-    @Test
-    fun should_ReturnFalse_When_CitiesHasNotSuitableApartment() {
-        //Given
-        val fakeCity: CityEntity = fakeData.getAllCitiesData()[2]
-        //When
-        val actualResult = getSuitableCityMoreSavingPerMonth.isSuitableApartment(fakeCity)
-        //Then
-        assertFalse(actualResult)
-    }
-
     @Test
     fun should_Not_ReturnSuitableCity_When_EnteredConsumptions() {
         //Given
