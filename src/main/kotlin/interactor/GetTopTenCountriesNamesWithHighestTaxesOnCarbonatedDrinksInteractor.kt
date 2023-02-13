@@ -68,5 +68,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(
     fun excludeInvalidCountries(cityEntity: CityEntity) =
         cityEntity.country.isNotBlank() &&
         cityEntity.cityName.length > 3 &&
-        cityEntity.country[0].isUpperCase()
+        cityEntity.country[0].isUpperCase() &&
+        !cityEntity.country.contains("[0-9]".toRegex())
+
 }
