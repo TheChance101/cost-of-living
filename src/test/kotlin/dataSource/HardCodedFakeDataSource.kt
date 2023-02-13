@@ -272,7 +272,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
             servicesPrices = ServicesPrices(
                 basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
                 oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
-                internet60MbpsOrMoreUnlimitedDataCableAdsl = 20f,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
                 fitnessClubMonthlyFeeForOneAdult = 100f,
                 tennisCourtRentOneHourOnWeekend = 100f,
                 cinemaInternationalReleaseOneSeat = 10f,
@@ -305,7 +305,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
                 pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
                 pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
             ),
-            averageMonthlyNetSalaryAfterTax = 14000f,
+            averageMonthlyNetSalaryAfterTax = null,
             dataQuality = true
         )
     }
@@ -346,7 +346,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
             servicesPrices = ServicesPrices(
                 basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
                 oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
-                internet60MbpsOrMoreUnlimitedDataCableAdsl = 20f,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
                 fitnessClubMonthlyFeeForOneAdult = 100f,
                 tennisCourtRentOneHourOnWeekend = 100f,
                 cinemaInternationalReleaseOneSeat = 10f,
@@ -379,7 +379,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
                 pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
                 pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
             ),
-            averageMonthlyNetSalaryAfterTax = 3000f,
+            averageMonthlyNetSalaryAfterTax = null,
             dataQuality = false
         )
     }
@@ -420,7 +420,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
             servicesPrices = ServicesPrices(
                 basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
                 oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
-                internet60MbpsOrMoreUnlimitedDataCableAdsl = 20f,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
                 fitnessClubMonthlyFeeForOneAdult = 100f,
                 tennisCourtRentOneHourOnWeekend = 100f,
                 cinemaInternationalReleaseOneSeat = 10f,
@@ -465,9 +465,6 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
         cityList.add(cairoHighQuality)
         cityList.add(londonLowQuality)
         cityList.add(parisHighQuality)
-        cityList.add(baghdadHighQualityNull)
-        cityList.add(rabatLowQualityNull)
-        cityList.add(berlinHighQualityNull)
         nullableCityList.add(baghdadHighQualityNull)
         nullableCityList.add(rabatLowQualityNull)
         nullableCityList.add(berlinHighQualityNull)
