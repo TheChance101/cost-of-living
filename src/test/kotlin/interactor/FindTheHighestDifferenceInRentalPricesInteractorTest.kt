@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class FindTheHighestDifferenceInRentalPricesInteractorTest {
@@ -40,4 +41,44 @@ class FindTheHighestDifferenceInRentalPricesInteractorTest {
         // Then
         assertEquals(highestDifferenceCity, result)
     }
+
+    @Test
+    fun ` should return null  when given empty data`() {
+        // given
+        val dataSource = FakeData().EmptyDataSource()
+        interactor = FindTheHighestDifferenceInRentalPricesInteractor(dataSource)
+
+        // When
+        val result = interactor.execute()
+
+        // Then
+        assertNull(result)
+    }
+
+    @Test
+    fun ` should Throw Exception when given null data  `() {
+        //given
+        val dataSource = FakeData().NullData()
+        interactor = FindTheHighestDifferenceInRentalPricesInteractor(dataSource)
+
+        // When
+        val executableResult = Executable { interactor.execute() }
+
+        // Then
+        assertThrows(Exception::class.java, executableResult)
+    }
+
+    @Test
+    fun ` should Throw Exception when low quality data`() {
+        //given
+        val dataSource = FakeData().LowQualityData()
+        interactor = FindTheHighestDifferenceInRentalPricesInteractor(dataSource)
+
+        // When
+        val executableResult = Executable { interactor.execute() }
+
+        // Then
+        assertThrows(Exception::class.java, executableResult)
+    }
 }
+
