@@ -1,6 +1,6 @@
 package interactor
 
-import FakeData.FakeData
+import fakeData.FakeData
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -25,7 +25,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
         // when
         val city = converter.execute()
         // then
-        assertEquals(fakedata.getAllCitiesData()[3], city)
+        assertEquals(fakedata.getAllCitiesData()[10], city)
     }
 
 

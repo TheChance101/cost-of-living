@@ -32,9 +32,10 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
 
         // When averageSalary not null and high dataQuality
         val actualPairList = interactor.execute(countryName)
-
         // Then return a list of pair of city name and average salary
-        assertEquals(listOf(Pair("Santiago de Cuba", 18.0f)), actualPairList)
+        val expected =
+            listOf(Pair("Santiago de Cuba", 1580.0f), Pair("Sancti Spiritus", 20.0f), Pair("Santa Clara", 25.0f))
+        assertEquals(expected, actualPairList)
     }
 
     @Test
@@ -62,7 +63,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
     }
 
     @Test
-    fun should_ReturnException_When_CountryNameIsEmpty() {
+    fun should_ReturnException_When_CountryNameIsEmptyOrWrong() {
         // Given empty country name
         val countryName = ""
 
@@ -76,7 +77,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
     @Test
     fun should_ReturnFalse_When_SalariesEqualNullOrNotAvoidLowQualityData() {
         // Given cityEntity
-        val fakeCity = fakeData.getAllCitiesData()[3]
+        val fakeCity = fakeData.getAllCitiesData()[1]
 
         // When averageSalary not null and low dataQuality
         val result = interactor.excludeNullSalariesAndLowQualityData(fakeCity)

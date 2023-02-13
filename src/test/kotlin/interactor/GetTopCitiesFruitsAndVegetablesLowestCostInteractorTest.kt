@@ -1,6 +1,6 @@
 package interactor
 
-import FakeData.FakeData
+import fakeData.FakeData
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -117,6 +117,8 @@ internal class GetTopCitiesFruitsAndVegetablesLowestCostInteractorTest {
         assertEquals(
             listOf(
                 "Santiago de Cuba",
+                "Tanta",
+                "Damascus",
                 "Sancti Spiritus",
                 "Santa Clara",
                 "Masin",
