@@ -22,6 +22,12 @@ fun main() {
     getCheapestBananaPricesCitiesNamesInteractor.apply {
        println(execute(*getCitiesVarArgs()))
     }
+    printSeparationLine()
+
+    val getMostSuitableCityForMoreSavingsPerMonthInteractor = GetMostSuitableCityForMoreSavingsPerMonthInteractor(dataSource)
+    getMostSuitableCityForMoreSavingsPerMonthInteractor.apply {
+        println(execute())
+    }
 
 }
 private fun printSeparationLine(){
