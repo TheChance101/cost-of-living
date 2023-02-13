@@ -3,7 +3,11 @@ package interactor
 import model.CityEntity
 
 class FindTheHighestDifferenceInRentalPricesInteractor(private val dataSource: CostOfLivingDataSource) {
-    fun execute(): CityEntity {
+    fun execute(): CityEntity? {
+
+        val citiesData = dataSource.getAllCitiesData()
+        if (citiesData.isEmpty())
+            return null
         val highestDifference = dataSource.getAllCitiesData()
             .filter(::isDataQuality)
             .maxBy {
