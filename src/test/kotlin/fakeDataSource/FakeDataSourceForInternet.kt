@@ -1,10 +1,10 @@
-package fakeData
+package fakeDataSource
 
 import interactor.CostOfLivingDataSource
 import model.*
 import javax.sql.DataSource
 
-class FackeDataSource : CostOfLivingDataSource {
+class FakeDataSourceForInternet : CostOfLivingDataSource {
     override fun getAllCitiesData(): List<CityEntity> {
         return listOf(
             // region data Correct

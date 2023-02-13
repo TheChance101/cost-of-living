@@ -1,25 +1,22 @@
 package interactor
 
-import dataSource.CsvDataSource
-import fakeData.FackeDataSource
+import fakeDataSource.FakeDataSourceForInternet
 import model.CityEntity
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.TestInstance
-import java.util.*
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCityHasCheapestInternetConnectionInteractorTest {
 
     private lateinit var getCity: GetCityHasCheapestInternetConnectionInteractor
-    private lateinit var dataSource: FackeDataSource
+    private lateinit var dataSource: FakeDataSourceForInternet
 
     @BeforeAll
     fun setUp() {
-        dataSource = FackeDataSource()
+        dataSource = FakeDataSourceForInternet()
         getCity = GetCityHasCheapestInternetConnectionInteractor(dataSource)
     }
 
