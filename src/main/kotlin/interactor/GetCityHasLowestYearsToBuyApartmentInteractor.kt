@@ -7,7 +7,7 @@ class GetCityHasLowestYearsToBuyApartmentInteractor(
 ) {
     fun execute(limit: Int, fullTimeSalary: Int): List<Pair<String, Float>> {
         if(fullTimeSalary<=0 || limit<0) {
-            throw Exception("Not valid full time salary")
+            throw Exception("Not valid limit or full time salary ")
         }else {
             return dataSource
                 .getAllCitiesData()
