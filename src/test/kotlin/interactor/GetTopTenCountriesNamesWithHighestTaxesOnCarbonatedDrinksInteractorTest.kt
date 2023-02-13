@@ -17,7 +17,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
     @BeforeEach
     fun setUp() {
         fakeDataSource = FakeDataSource()
-        getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor = GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(dataSource)
+        getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor = GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(fakeDataSource)
     }
 
     @Test
