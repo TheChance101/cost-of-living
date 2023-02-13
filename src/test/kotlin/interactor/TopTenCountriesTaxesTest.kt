@@ -2,6 +2,7 @@ package interactor
 
 import dataSource.utils.FakeDataSource
 import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
 
@@ -16,6 +17,17 @@ class TopTenCountriesTaxesTest {
         fakeDataSource = FakeDataSource()
         TopTenCountriesTaxes =
             TopTenCountriesTaxes(fakeDataSource)
+
+    }
+
+
+    @Test fun should_ReturnCorrect_When_Option_drinksPrices () {
+    // given
+
+    // when
+
+    // then
+
     }
 
 
