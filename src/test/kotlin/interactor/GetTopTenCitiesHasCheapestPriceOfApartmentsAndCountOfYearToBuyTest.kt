@@ -11,15 +11,15 @@ import org.junit.jupiter.api.TestInstance
 internal class GetTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest {
 
     // region init
-    private lateinit var getTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest:
-            GetTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuy
+    private lateinit var getTopTenCitiesHasCheapestPriceOfApartmentsAndYearInteractorTest:
+            GetTopTenCitiesHasCheapestPriceOfApartmentsAndYearInteractor
     private lateinit var fakeDataSource: FakeDataSource
 
     @BeforeAll
     fun setup() {
         fakeDataSource = FakeDataSource()
-        getTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest =
-            GetTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuy(fakeDataSource)
+        getTopTenCitiesHasCheapestPriceOfApartmentsAndYearInteractorTest =
+            GetTopTenCitiesHasCheapestPriceOfApartmentsAndYearInteractor(fakeDataSource)
         fakeDataSource.changeDataSource(TestCase.CheapestApartmentsInCities)
     }
     // endregion
@@ -32,7 +32,7 @@ internal class GetTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTes
 
         // when the output list of a pair of cities names and count of years
         val result =
-            getTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest
+            getTopTenCitiesHasCheapestPriceOfApartmentsAndYearInteractorTest
                 .execute(salaryOfFullTimeJob)
 
         // then check
@@ -46,7 +46,7 @@ internal class GetTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTes
 
         // when the output list of a pair of cities names and count of years
         val result =
-            getTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest
+            getTopTenCitiesHasCheapestPriceOfApartmentsAndYearInteractorTest
                 .execute(salaryOfFullTimeJob)
 
         // then check
@@ -65,7 +65,7 @@ internal class GetTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTes
 
         // when the output list of a pair of cities names and count of years
         val result =
-            getTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest
+            getTopTenCitiesHasCheapestPriceOfApartmentsAndYearInteractorTest
                 .execute(salaryOfFullTimeJob)
 
         // then check
@@ -96,7 +96,7 @@ internal class GetTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTes
 
         // when the output list of a pair of cities names and count of years
         val result =
-            getTopTenCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest
+            getTopTenCitiesHasCheapestPriceOfApartmentsAndYearInteractorTest
                 .execute(salaryOfFullTimeJob)
 
         // then check
