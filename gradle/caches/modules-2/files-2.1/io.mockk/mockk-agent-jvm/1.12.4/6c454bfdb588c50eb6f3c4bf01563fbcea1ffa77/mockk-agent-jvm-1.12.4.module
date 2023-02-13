@@ -1,0 +1,150 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "io.mockk",
+    "module": "mockk-agent-jvm",
+    "version": "1.12.4",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.3.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "io.mockk",
+          "module": "mockk-agent-api",
+          "version": {
+            "requires": "1.12.4"
+          }
+        },
+        {
+          "group": "io.mockk",
+          "module": "mockk-agent-common",
+          "version": {
+            "requires": "1.12.4"
+          }
+        },
+        {
+          "group": "org.objenesis",
+          "module": "objenesis",
+          "version": {
+            "requires": "3.2"
+          }
+        },
+        {
+          "group": "net.bytebuddy",
+          "module": "byte-buddy",
+          "version": {
+            "requires": "1.12.6"
+          }
+        },
+        {
+          "group": "net.bytebuddy",
+          "module": "byte-buddy-agent",
+          "version": {
+            "requires": "1.12.6"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "mockk-agent-jvm-1.12.4.jar",
+          "url": "mockk-agent-jvm-1.12.4.jar",
+          "size": 90059,
+          "sha512": "f311b11548952cdd028728de19acc8bc24681e3a5c07998389fe75c4e5a365f5c272716a7a0ce838f3b9de21d546d7389013092126216bfecb10fe4d70aa55b4",
+          "sha256": "840c11f2e0a14d35e229c2b6018273f4623c7f619ebf9701164bb9c2db99c098",
+          "sha1": "af69b662f0ab94430e8709472dbaffcadd8969a5",
+          "md5": "31b289d05c829ecb7cde48fc686f636f"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.6.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-reflect",
+          "version": {
+            "requires": "1.6.0"
+          }
+        },
+        {
+          "group": "io.mockk",
+          "module": "mockk-agent-api",
+          "version": {
+            "requires": "1.12.4"
+          }
+        },
+        {
+          "group": "io.mockk",
+          "module": "mockk-agent-common",
+          "version": {
+            "requires": "1.12.4"
+          }
+        },
+        {
+          "group": "org.objenesis",
+          "module": "objenesis",
+          "version": {
+            "requires": "3.2"
+          }
+        },
+        {
+          "group": "net.bytebuddy",
+          "module": "byte-buddy",
+          "version": {
+            "requires": "1.12.6"
+          }
+        },
+        {
+          "group": "net.bytebuddy",
+          "module": "byte-buddy-agent",
+          "version": {
+            "requires": "1.12.6"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "mockk-agent-jvm-1.12.4.jar",
+          "url": "mockk-agent-jvm-1.12.4.jar",
+          "size": 90059,
+          "sha512": "f311b11548952cdd028728de19acc8bc24681e3a5c07998389fe75c4e5a365f5c272716a7a0ce838f3b9de21d546d7389013092126216bfecb10fe4d70aa55b4",
+          "sha256": "840c11f2e0a14d35e229c2b6018273f4623c7f619ebf9701164bb9c2db99c098",
+          "sha1": "af69b662f0ab94430e8709472dbaffcadd8969a5",
+          "md5": "31b289d05c829ecb7cde48fc686f636f"
+        }
+      ]
+    }
+  ]
+}

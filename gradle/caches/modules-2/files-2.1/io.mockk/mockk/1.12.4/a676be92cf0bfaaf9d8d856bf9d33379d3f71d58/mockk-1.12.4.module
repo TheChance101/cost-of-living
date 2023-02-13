@@ -1,0 +1,115 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "io.mockk",
+    "module": "mockk",
+    "version": "1.12.4",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.3.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "io.mockk",
+          "module": "mockk-common",
+          "version": {
+            "requires": "1.12.4"
+          }
+        },
+        {
+          "group": "io.mockk",
+          "module": "mockk-dsl-jvm",
+          "version": {
+            "requires": "1.12.4"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "mockk-1.12.4.jar",
+          "url": "mockk-1.12.4.jar",
+          "size": 536156,
+          "sha512": "c05c58f17f5272dc851ebc3d4fec01effef7e29b8ee6fe878dbfade1303557303c4ab3da52d6ac18ce34e53806563e551e740cd7881aa574530f818b7bbc334d",
+          "sha256": "2c34a3690b958a3cf38b82d0f4910dc9992fb078dce6f56d71498293557bf805",
+          "sha1": "7b4902c5351415fead2cc7b26386eb8a47ec5f21",
+          "md5": "7c2a41f2e59cedf222b086d96f0ed2e8"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.6.0"
+          }
+        },
+        {
+          "group": "io.mockk",
+          "module": "mockk-agent-jvm",
+          "version": {
+            "requires": "1.12.4"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-reflect",
+          "version": {
+            "requires": "1.6.0"
+          }
+        },
+        {
+          "group": "io.mockk",
+          "module": "mockk-common",
+          "version": {
+            "requires": "1.12.4"
+          }
+        },
+        {
+          "group": "io.mockk",
+          "module": "mockk-dsl-jvm",
+          "version": {
+            "requires": "1.12.4"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "mockk-1.12.4.jar",
+          "url": "mockk-1.12.4.jar",
+          "size": 536156,
+          "sha512": "c05c58f17f5272dc851ebc3d4fec01effef7e29b8ee6fe878dbfade1303557303c4ab3da52d6ac18ce34e53806563e551e740cd7881aa574530f818b7bbc334d",
+          "sha256": "2c34a3690b958a3cf38b82d0f4910dc9992fb078dce6f56d71498293557bf805",
+          "sha1": "7b4902c5351415fead2cc7b26386eb8a47ec5f21",
+          "md5": "7c2a41f2e59cedf222b086d96f0ed2e8"
+        }
+      ]
+    }
+  ]
+}
