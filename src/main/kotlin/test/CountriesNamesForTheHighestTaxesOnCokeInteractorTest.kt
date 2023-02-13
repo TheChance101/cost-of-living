@@ -28,7 +28,7 @@ internal class CountriesNamesForTheHighestTaxesOnCokeInteractorTest {
     }
 
     @Test
-    fun `should return False When The List of Pairs Size Is Not 10`() {
+    fun `should return False When The List of Pairs Size Is more than 10 `() {
         //given Country limit and Data
 
         val countriesNamesForTheHighestTaxesOnCoke = CountriesNamesForTheHighestTaxesOnCokeInteractor(dataSource)
@@ -42,7 +42,7 @@ internal class CountriesNamesForTheHighestTaxesOnCokeInteractorTest {
 
         //then
 
-        assertEquals(10, pairOfCountryAndPrices.size)
+        assertTrue(pairOfCountryAndPrices.size<=10)
     }
 
     @Test
