@@ -1,6 +1,7 @@
 package interactor
 
 import model.CityEntity
+import kotlin.math.ceil
 
 enum class ThreeSpecificCountries(val nameOFCountry: String) {
     USA("United States"),
@@ -14,13 +15,19 @@ class GetCityHasCheapestMealPricesInteractor(
 ) {
 
     fun execute(): CityEntity {
-        throw Throwable("Not Implemented yet")
+
+        val listOfCitiesEntity = dataSource.getAllCitiesData()
+            .filter(::citiesInUSACanadaAndMexico)
+            .filter(::isCityHasAverageMealPrice)
+            .sortedByDescending { getAverageMealInCity(it) }
+
+       return listOfCitiesEntity
+            .filter { getAverageMealInCity(it) == getAverageMealInAllCities(listOfCitiesEntity) || getAverageMealInCity(it) == ceil(getAverageMealInAllCities(listOfCitiesEntity).toDouble()).toFloat() }
+            .first()
+
+
     }
 
-    fun getAverageMealInAllCities(cityEntityList: List<CityEntity>): Float {
-        if (cityEntityList.isEmpty()) return 0.0F
-        return (getAverageMealInCity(cityEntityList.first()) + getAverageMealInCity(cityEntityList.last())) / 2
-    }
 
     fun citiesInUSACanadaAndMexico(city: CityEntity): Boolean {
         return city.country == ThreeSpecificCountries.USA.nameOFCountry
@@ -43,4 +50,10 @@ class GetCityHasCheapestMealPricesInteractor(
             ((city.mealsPrices.mealInexpensiveRestaurant) + (city.mealsPrices.mealAtMcDonaldSOrEquivalent)) / 2
         else 0.0F
     }
+
+    fun getAverageMealInAllCities(cityEntityList: List<CityEntity>): Float {
+        if (cityEntityList.isEmpty()) return 0.0F
+        return (getAverageMealInCity(cityEntityList.first()) + getAverageMealInCity(cityEntityList.last())) / 2
+    }
+
 }

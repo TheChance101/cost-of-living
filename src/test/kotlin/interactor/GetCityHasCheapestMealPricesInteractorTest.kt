@@ -1,5 +1,6 @@
 package interactor
 
+import com.sun.org.apache.bcel.internal.classfile.ExceptionTable
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import io.mockk.clearAllMocks
@@ -7,12 +8,12 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.unmockkAll
 import model.CityEntity
-import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.*
+import org.junit.jupiter.api.function.Executable
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
+import org.junit.jupiter.api.assertThrows
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCityHasCheapestMealPricesInteractorTest {
