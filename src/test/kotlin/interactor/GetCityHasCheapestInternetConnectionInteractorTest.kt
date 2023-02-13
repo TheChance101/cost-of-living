@@ -3,7 +3,6 @@ package interactor
 import fakeDataSource.FakeDataSourceForInternet
 import model.CityEntity
 import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
@@ -55,10 +54,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
         //then
         assertEquals("Egypt", result)
     }
-<<<<<<< HEAD
-}
 
-=======
 
     @Test
     fun `Should return The Country With Cheapest Internet Price when same price and different salary`() {
@@ -103,4 +99,3 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
     }
 
 }
->>>>>>> d7a2b0e8c8da360966d407b24848dd104b8d9f5d
