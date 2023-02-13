@@ -12,9 +12,11 @@ class GetCitiesNameToBuyApartmentFasterInteractor(
     ): List<Pair<String, Double>> {
 
         return dataSource.getAllCitiesData()
+            .asSequence()
             .filter(::excludeNullApartmentPriceAndLowQualityData)
-            .sortedBy { it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre }
             .take(limit)
+            .toList()
+            .sortedBy { it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre }
             .map {
                 Pair(
                     it.cityName,
@@ -49,8 +51,8 @@ class GetCitiesNameToBuyApartmentFasterInteractor(
     ): Double {
         if (salary < 1) throw ArithmeticException("Salary can't be less than one")
         if (squareMeter < 1) throw ArithmeticException("Square meter can't be less than one")
-        val pricePerMonth = (pricePerSquareMeter * squareMeter).toDouble() / salary
-        return pricePerMonth / 12
+        val monthsNeeded = (pricePerSquareMeter * squareMeter).toDouble() / salary
+        return monthsNeeded / 12
     }
 
 }
