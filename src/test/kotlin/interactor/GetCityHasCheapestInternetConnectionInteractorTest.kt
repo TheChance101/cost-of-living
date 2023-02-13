@@ -9,6 +9,7 @@ import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
 
 
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetCityHasCheapestInternetConnectionInteractorTest {
 
@@ -24,9 +25,10 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
 
 
     @Test
-    fun should_ReturnTheOnlyCity_When_GivenOnly1CityInHighQualityData(){
+    fun `should return the only city when given only 1 city in high quality data`(){
         // given list of cityEntity
         val cities = fakeDataSource.getAllCitiesData()[16]
+
         // when check what is the cheapest city in list with giving only 1 city in list
         val result = cityHasCheapestInternet.execute(listOf(cities))
         // then check the result
@@ -52,6 +54,7 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
         // then check the result
         assertEquals(cities[17].cityName,result?.cityName)
     }
+
 
     @Test
     fun should_ReturnException_When_ThePrecentageOfInternetToSalaryEqualTo100OrAbove(){
