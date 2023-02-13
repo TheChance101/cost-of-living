@@ -14,7 +14,7 @@ class GetCitiesAndYearsToBuyApartmentInteractorTest {
 
     private lateinit var getCitiesAndYearsToBuyApartment: GetCitiesAndYearsToBuyApartmentInteractor
 
-    @BeforeEach
+    @BeforeAll
     fun setUp() {
         val fakeData = FakeData()
         getCitiesAndYearsToBuyApartment = GetCitiesAndYearsToBuyApartmentInteractor(fakeData)

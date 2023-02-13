@@ -4,19 +4,19 @@ import FakeData
 import model.CityEntity
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.TestInstance
-import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class GetTopTenCoutriesHaveHighCarbonatedDrinksPricesTest {
-    private lateinit var interactor: GetTopTenCoutriesHaveHighCarbonatedDrinksPrices
-    private lateinit var fakeData: FakeData
+class GetTopCountriesHaveHighCarbonatedDrinksPricesInterctorTest {
 
-    @BeforeEach
+    private lateinit var getTopCountriesHaveHighCarbonatedDrinksPrices: GetTopCountriesHaveHighCarbonatedDrinksPricesInterctor
+
+    @BeforeAll
     fun setUp() {
-        fakeData = FakeData()
-        interactor = GetTopTenCoutriesHaveHighCarbonatedDrinksPrices(fakeData)
+        val fakeData = FakeData()
+        getTopCountriesHaveHighCarbonatedDrinksPrices = GetTopCountriesHaveHighCarbonatedDrinksPricesInterctor(fakeData)
     }
 
 
@@ -25,7 +25,7 @@ class GetTopTenCoutriesHaveHighCarbonatedDrinksPricesTest {
         //given Country with drink price and limit
         val limit = 3
         //when getting a list of pair  contains the country name and drink price
-        val result = interactor.execute(limit)
+        val result = getTopCountriesHaveHighCarbonatedDrinksPrices.execute(limit)
         // then
         assertEquals(3, result.size)
         assertEquals("Cuba", result[0].first)
@@ -41,7 +41,7 @@ class GetTopTenCoutriesHaveHighCarbonatedDrinksPricesTest {
         //given
         val limit = 0
         //when
-        val result = interactor.execute(limit)
+        val result = getTopCountriesHaveHighCarbonatedDrinksPrices.execute(limit)
         // Then
         assertTrue(result.isEmpty())
     }
@@ -51,9 +51,9 @@ class GetTopTenCoutriesHaveHighCarbonatedDrinksPricesTest {
         //given
         val limit = -6
         //when
-        val result = interactor.execute(limit)
+        val result = getTopCountriesHaveHighCarbonatedDrinksPrices.execute(limit)
         // Then
-        assertEquals(emptyList<CityEntity>(),result)
+        assertEquals(emptyList<CityEntity>(), result)
     }
 
 
@@ -62,10 +62,11 @@ class GetTopTenCoutriesHaveHighCarbonatedDrinksPricesTest {
         //given Country with drink price and limit
         val limit = 10
         //when getting a Data contains null price value
-        val getTop10CountriesWithHighTaxOnCarbonatedDrinks = interactor.execute(limit)
+        val getTop10CountriesWithHighTaxOnCarbonatedDrinks =
+            getTopCountriesHaveHighCarbonatedDrinksPrices.execute(limit)
         //then
         if (getTop10CountriesWithHighTaxOnCarbonatedDrinks.any { it.second == null })
             AssertionError("Drink Price can't be Null")
     }
 
-    }
+}
