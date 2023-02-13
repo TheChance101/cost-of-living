@@ -555,7 +555,7 @@ object CompanyDinnerFakeData {
     }
      val outsideAmerica by lazy {
         CityEntity(
-            cityName = "low quality city in usa", country = "Usa", mealsPrices = MealsPrices(
+            cityName = "low quality city in egypt", country = "Egypt", mealsPrices = MealsPrices(
                 mealInexpensiveRestaurant = null,
                 mealFor2PeopleMidRangeRestaurant = 9f,
                 mealAtMcDonaldSOrEquivalent = null

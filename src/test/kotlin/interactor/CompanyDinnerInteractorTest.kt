@@ -18,7 +18,7 @@ class CompanyDinnerInteractorTest {
 
     @Test
     fun ` should return country in north america when given any cities `(){
-        val topCity= CompanyDinnerInteractor(fakeData.highQualityCities).execute()?.country
+        val topCity= CompanyDinnerInteractor(fakeData.outsideAndInsideAmericaCities).execute()?.country
         assertTrue(topCity==null || topCity.lowercase() in listOf("usa","canada","mexico"))
     }
 
