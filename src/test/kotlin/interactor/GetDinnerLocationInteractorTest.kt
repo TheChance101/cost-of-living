@@ -4,6 +4,7 @@ import model.*
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.function.Executable
 
 
@@ -18,12 +19,15 @@ class GetDinnerLocationInteractorTest {
             }
         }
         val interactor = GetDinnerLocationInteractor(dataSource)
+        val exepct = null
 
-        //when
-        val result: Executable = org.junit.jupiter.api.function.Executable { interactor.execute() }
-        //then
-        assertThrows(Exception::class.java, result)
+        assertDoesNotThrow("This block should not throw an exception") {
+            interactor.execute()
+        }
+
+
     }
+
 
     @Test
     fun `execute returns null when cities have missing meal prices`() {
@@ -243,7 +247,7 @@ class GetDinnerLocationInteractorTest {
         val result = interactor.execute()
 
         // Then
-        assertEquals(expected, result.cityName)
+        assertEquals(expected, result!!.cityName)
     }
 
 
