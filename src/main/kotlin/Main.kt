@@ -1,8 +1,6 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import interactor.CostOfLivingDataSource
-import interactor.GetCityHasCheapestInternetConnectionInteractor
-import interactor.GetDinnerLocationInteractor
 import interactor.GetHighestSalaryAverageCititesNamesInteractor
 
 fun main() {
