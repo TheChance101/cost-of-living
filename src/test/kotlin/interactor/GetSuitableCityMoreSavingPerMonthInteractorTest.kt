@@ -1,6 +1,6 @@
 package interactor
 
-import fakeData.FakeData
+import FakeData.FakeData
 import model.CityEntity
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
