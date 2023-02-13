@@ -3,20 +3,49 @@ import dataSource.utils.CsvParser
 import interactor.CostOfLivingDataSource
 import interactor.GetCityHasCheapestInternetConnectionInteractor
 import interactor.GetHighestSalaryAverageCititesNamesInteractor
+import interactor.GetTopCountriesHaveHighCarbonatedDrinksPricesInterctor
+import interactor.GetCitiesAndYearsToBuyApartmentInteractor
+import interactor.GetTopFashionCitiesInteractor
+import interactor.GetCitiesNamesSortedByCheapestBananaPrices
+import interactor.*
 
 fun main() {
     val csvParser = CsvParser()
     val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
 
+    val getTopCountriesWithHighTaxOnCarbonatedDrinks= GetTopCountriesHaveHighCarbonatedDrinksPricesInterctor(dataSource)
+    println(getTopCountriesWithHighTaxOnCarbonatedDrinks.execute(limit = 10))
+    printSeparationLine()
+
     val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
     println(getHighestSalaryAverageCities.execute(limit = 10))
     printSeparationLine()
 
-    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
-    println(getCityHasCheapestInternetConnectionInteractor.execute())
+    val getTopFashionCities = GetTopFashionCitiesInteractor(dataSource)
+    println(getTopFashionCities.execute(limit = 5))
+    printSeparationLine()
+
+    val getCitiesNamesSortedByCheapestBananaPrices = GetCitiesNamesSortedByCheapestBananaPrices(dataSource)
+    println(getCitiesNamesSortedByCheapestBananaPrices.execute("Caracas","Accra","Giza"))
+    printSeparationLine()
+
+    val getCitiesAndYearsToBuyApartment = GetCitiesAndYearsToBuyApartmentInteractor(dataSource)
+    println(getCitiesAndYearsToBuyApartment.execute(limit = 10))
+    printSeparationLine()
+
+    val getCountryCitiesAverageSalary = GetCountryCitiesAverageSalaryInteractor(dataSource)
+    println(getCountryCitiesAverageSalary.execute("Syria"))
+    printSeparationLine()
+
+    val getCityHasCheapestInternetConnection = GetCityHasCheapestInternetConnectionInteractor(dataSource)
+    println(getCityHasCheapestInternetConnection.execute())
+    printSeparationLine()
+
+
 
 }
-private fun printSeparationLine(){
+
+private fun printSeparationLine() {
     print("\n_______________________________\n")
 }
 
