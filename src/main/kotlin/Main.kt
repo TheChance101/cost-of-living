@@ -12,8 +12,8 @@ fun main() {
     println(getHighestSalaryAverageCities.execute(limit = 10))
     printSeparationLine()
 
-    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
-    println(getCityHasCheapestInternetConnectionInteractor.execute())
+    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor()
+    println(getCityHasCheapestInternetConnectionInteractor.execute(dataSource.getAllCitiesData()))
 
 }
 private fun printSeparationLine(){
