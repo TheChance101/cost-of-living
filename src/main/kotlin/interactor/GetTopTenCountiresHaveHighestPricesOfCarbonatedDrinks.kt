@@ -37,8 +37,7 @@ class GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinks(private val dataSour
     }
     //check for empty list and null
     fun filterTheListOfCountriesOfHighestCarbonatedDrinksPrices (list: List<String>):Boolean {
-        return true
-
+        return ( list != listOf("") )
     }
 
     }
