@@ -4,6 +4,7 @@ import dataSource.FakeCsvDataSource
 import dataSource.utils.CsvParser
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
@@ -41,6 +42,17 @@ internal class GetCheapestMidRangeMealTest {
         val result = getCheapestMidRangeMeal.execute()
         // then
         Assertions.assertNotEquals(null, result.mealsPrices)
+
+    }
+
+    @Test
+    fun should_ReturnCityWithSpecifiedThreeCountries_when_Execute() {
+        // given
+        //costOfLiving.csv
+        // when
+        val result = getCheapestMidRangeMeal.execute()
+        // then
+        Assertions.assertNotEquals("Ghana", result.country)
 
     }
 
