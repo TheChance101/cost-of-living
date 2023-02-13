@@ -2,7 +2,6 @@ import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import interactor.CostOfLivingDataSource
 import interactor.GetHighestSalaryAverageCititesNamesInteractor
-import interactor.GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
 
 fun main() {
     val csvParser = CsvParser()
