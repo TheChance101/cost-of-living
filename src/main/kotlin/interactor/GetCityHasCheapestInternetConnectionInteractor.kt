@@ -2,24 +2,26 @@ package interactor
 
 import model.CityEntity
 
-class GetCityHasCheapestInternetConnectionInteractor(
-    private val dataSource: CostOfLivingDataSource,
-) {
+class GetCityHasCheapestInternetConnectionInteractor() {
 
-    private val highestPercentageOfInternetCheapness = 5.0f // 5%
+    private var highestPercentageOfInternetCheapness = 5f // 5%
+        set(value) {
+            if (value > 0f) field = value
+        }
 
-    fun execute(): CityEntity? {
-        return null
+    fun execute(listOfCity: List<CityEntity>?): CityEntity? {
+       return null
     }
+
 
     // exclude null and negative and zero
     fun excludeNullAndIncorrectInternetPriceAndSalary(city: CityEntity): Boolean {
-        return false
+       return false
+
     }
 
-    fun calculatingThePercentageOfTheInternetPriceFromTheSalary(internetPrice: Float?, salary: Float?): Float? {
-        return null
+    fun calculatingThePercentageOfTheInternetPriceFromTheSalary(city: CityEntity): Float? {
+       return null
     }
-
 
 }
