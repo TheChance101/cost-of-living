@@ -23,7 +23,7 @@ internal class TestGetCityWithHighestRentalPriceDifferenceInteractor {
     @Test
     fun `Should return false when input null apartment price in city center`() {
         //given an object of CityEntity with Null apartment price in city center
-        var city = dataSource.getAllCitiesData()[0]
+        val city = dataSource.getAllCitiesData()[0]
 
         //when
         val result = getCityWithHighestRentalPriceDifference.excludeNullValues(city)
@@ -34,7 +34,7 @@ internal class TestGetCityWithHighestRentalPriceDifferenceInteractor {
     @Test
     fun `Should return false when input null apartment price outside city center`() {
         //given an object of CityEntity with Null apartment price outside city center
-        var city = dataSource.getAllCitiesData()[0]
+        val city = dataSource.getAllCitiesData()[0]
 
         //when
         val result = getCityWithHighestRentalPriceDifference.excludeNullValues(city)
@@ -56,7 +56,7 @@ internal class TestGetCityWithHighestRentalPriceDifferenceInteractor {
 
         val result = getCityWithHighestRentalPriceDifference.execute(dataSource.getAllCitiesData())
 
-        assertEquals("", result)
+        assertEquals("Cairo", result)
     }
 }
 
