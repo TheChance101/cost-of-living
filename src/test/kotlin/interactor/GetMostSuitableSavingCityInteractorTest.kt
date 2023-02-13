@@ -24,17 +24,17 @@ class GetMostSuitableSavingCityInteractorTest {
         mostSuitableSavingCityInteractor = GetMostSuitableSavingCityInteractor(dataSource)
     }
 
-//    @Test
-//    fun testExecute() {
-//        val dataSource = object : CostOfLivingDataSource {
-//            override fun getAllCitiesData() = listOf(city)
-//        }
-//        val finder = SuitableCitiesFinder(dataSource)
-//
-//        val suitableCities = finder.execute(10)
-//
-//        assertEquals(listOf(city.cityName), suitableCities)
-//    }
+    @Test
+    fun should_ReturnCityName_When_EnterCorrectCityName() {
+        val fakeData = FakeData()
+        val expectedCity = "London"
+        fakeData.fakeDataList.add(CityEntity(cityName = expectedCity))
+
+        val result = mostSuitableSavingCityInteractor.execute(limit = 1, dataSource = fakeData)
+
+        assertEquals(1, result.size)
+        assertEquals(expectedCity, result[0])
+    }
 
     @Test
     fun should_ReturnTrue_When_netSalaryNotNull() {
