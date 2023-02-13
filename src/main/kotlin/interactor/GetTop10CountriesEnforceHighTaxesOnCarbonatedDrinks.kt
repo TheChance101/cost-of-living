@@ -6,7 +6,7 @@ class GetTop10CountriesEnforceHighTaxesOnCarbonatedDrinks (
     private val dataSource: CostOfLivingDataSource,
 ){
 
-    fun excute():List<String>?{
+    fun execute():List<String>?{
         val list = dataSource.getAllCitiesData()
 
         if (list.isEmpty()||allPriceIsNull(list)||allDataIsLow(list)) return null

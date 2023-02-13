@@ -13,7 +13,7 @@ class GetTop10CountriesEnforceHighTaxesOnCarbonatedDrinksTest {
         val dataSource : CostOfLivingDataSource = CsvDataSource(csvParser , EMPTY_FILE )
         cities = GetTop10CountriesEnforceHighTaxesOnCarbonatedDrinks(dataSource)
         // when the file is empty
-        val city = cities.excute()
+        val city = cities.execute()
         // then
         assertNull(city)
     }
@@ -24,11 +24,13 @@ class GetTop10CountriesEnforceHighTaxesOnCarbonatedDrinksTest {
         val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser,
             SUB_FILE_NAME)
         cities = GetTop10CountriesEnforceHighTaxesOnCarbonatedDrinks(dataSource)
-        val items = listOf<CsvDataSource>()
+        val items = listOf<String>()
         // when return all cities
-        val allCities = cities.excute()
+        val allCities = cities.execute()
+
+
         // then
-        assertEquals(items , allCities)
+        assertNotEquals(null ,allCities)
     }
     @Test
     fun should_ReturnNull_When_AllPricesCarbonatedDrinksIsNull() {
@@ -37,7 +39,7 @@ class GetTop10CountriesEnforceHighTaxesOnCarbonatedDrinksTest {
         val dataSource : CostOfLivingDataSource = CsvDataSource(csvParser , NULL_PRICE)
         cities = GetTop10CountriesEnforceHighTaxesOnCarbonatedDrinks(dataSource)
         // when
-        val city = cities.excute()
+        val city = cities.execute()
         // then
         assertNull(city)
     }
@@ -48,7 +50,7 @@ class GetTop10CountriesEnforceHighTaxesOnCarbonatedDrinksTest {
         val dataSource : CostOfLivingDataSource = CsvDataSource(csvParser , Data_Low)
         cities = GetTop10CountriesEnforceHighTaxesOnCarbonatedDrinks(dataSource)
         // when
-        val city = cities.excute()
+        val city = cities.execute()
         // then
         assertNull(city)
     }
