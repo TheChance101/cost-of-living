@@ -20,12 +20,9 @@ class GetCityMatchManagerExpectationsInteractor(
             "Mexico"
         )
 
-    private fun filterOnlyNorthAmericaCities(cities: List<CityEntity>): List<CityEntity> =
-        cities.filter { it.country in northAmericaCountries }
-
-
-    fun execute(cities: List<CityEntity>): String {
-        return "${filterOnlyNorthAmericaCities(cities).size}"
+    fun execute(): String {
+        return dataSource.getAllCitiesData()
+            .filter { it.country in northAmericaCountries }.first().cityName
     }
 
 }

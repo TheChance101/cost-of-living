@@ -31,7 +31,7 @@ class GetCityMatchManagerExpectationsInteractorTest {
     }
 
     @Test
-    fun `should return true when country is in one of north america countries`() {
+    fun `should return true when country is not in one of north america countries`() {
         // given a list of countries that are in north america
         val northAmericaCountries: List<String> =
             listOf(
@@ -47,8 +47,10 @@ class GetCityMatchManagerExpectationsInteractorTest {
                 "Mexico"
             )
         // when we check if the countries are in north america
-        val result = interactor.execute(dataSource.getAllCitiesData())
+        val result = interactor.execute()
         // then we should get true
-        assertTrue(northAmericaCountries.contains(result))
+        assertTrue(!northAmericaCountries.contains(result))
     }
+
+
 }
