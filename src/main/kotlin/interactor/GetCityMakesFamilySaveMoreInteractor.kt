@@ -6,20 +6,11 @@ class GetCityMakesFamilySaveMoreInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
 
-    fun execute():String{
+    fun execute(): String {
 
-        if(dataSource.getAllCitiesData().isNotEmpty()) {
+        if (dataSource.getAllCitiesData().isNotEmpty()) {
 
-            val cities = dataSource.getAllCitiesData().filter {
-                it.realEstatesPrices.apartment3BedroomsOutsideOfCentre != null
-                        && it.averageMonthlyNetSalaryAfterTax != null
-                        && it.foodPrices.chickenFillets1kg != null
-                        && it.foodPrices.localCheese1kg != null
-                        && it.foodPrices.riceWhite1kg != null
-                        && it.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null
-                        && it.foodPrices.loafOfFreshWhiteBread500g != null
-                        && it.dataQuality
-            }
+            val cities = dataSource.getAllCitiesData().filter(::excludeNullFoodPrice)
             var citiesAftercheck: List<CityEntity> = listOf()
 
             cities.forEach {
@@ -37,7 +28,7 @@ class GetCityMakesFamilySaveMoreInteractor(
 
             }
 
-            val city =citiesAftercheck.sortedByDescending { it.averageMonthlyNetSalaryAfterTax }
+            val city = citiesAftercheck.sortedByDescending { it.averageMonthlyNetSalaryAfterTax }
                 .map { it.cityName }[0]
             return city
         }
@@ -47,6 +38,17 @@ class GetCityMakesFamilySaveMoreInteractor(
 
     }
 
+
+    fun excludeNullFoodPrice(city: CityEntity): Boolean {
+        return city.realEstatesPrices.apartment3BedroomsOutsideOfCentre != null
+                && city.averageMonthlyNetSalaryAfterTax != null
+                && city.foodPrices.chickenFillets1kg != null
+                && city.foodPrices.localCheese1kg != null
+                && city.foodPrices.riceWhite1kg != null
+                && city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null
+                && city.foodPrices.loafOfFreshWhiteBread500g != null
+                && city.dataQuality
+    }
 //    private fun excludeNullSalariesAndLowQualityData(city: CityEntity): Boolean {
 //        return city.averageMonthlyNetSalaryAfterTax != null && city.dataQuality
 //    }
