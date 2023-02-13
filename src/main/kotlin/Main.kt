@@ -24,6 +24,5 @@ fun main() {
 }
 private fun printSeparationLine(){
     print("\n_______________________________\n")
-
 }
 
