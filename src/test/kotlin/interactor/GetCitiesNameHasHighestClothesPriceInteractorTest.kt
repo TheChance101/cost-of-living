@@ -70,4 +70,13 @@ internal class GetCitiesNameHasHighestClothesPriceInteractorTest {
         assertEquals(5, result.size)
     }
 
+    @Test
+    fun should_ReturnTrue_when_executeWithAcceptiableData(){
+        // given
+        val expected = listOf("Havana", "Damascus")
+        // when
+        val result = citiesName.execute()
+        // then
+        assertArrayEquals(expected, result)
+    }
 }
