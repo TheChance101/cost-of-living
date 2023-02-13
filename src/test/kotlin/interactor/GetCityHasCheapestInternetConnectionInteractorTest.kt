@@ -25,7 +25,7 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
 
 
     @Test
-    fun should_ReturnTheOnlyCity_When_GivenOnly1CityInHighQualityData(){
+    fun `should return the only city when given only 1 city in high quality data`(){
         // given list of cityEntity
         val cities = fakeDataSource.getAllCitiesData()[16]
 
