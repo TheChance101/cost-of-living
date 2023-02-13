@@ -68,4 +68,22 @@ internal class CountriesNamesForTheHighestTaxesOnCokeInteractorTest {
         MatcherAssert.assertThat(actual, CoreMatchers.`is`(expected))
     }
 
+    @Test
+    fun `should return false when Two countries Have The Same Name`() {
+
+        //given country limit and Data
+
+        val countriesNamesForTheHighestTaxesOnCoke =
+            CountriesNamesForTheHighestTaxesOnCokeInteractor(dataSource)
+
+        //when pairOfCountryAndPrices have duplicates
+
+        val pairOfCountryAndPrices = countriesNamesForTheHighestTaxesOnCoke.execute(10)
+
+        //then
+
+        assertEquals(pairOfCountryAndPrices.distinctBy { it }, pairOfCountryAndPrices)
+    }
+
+
 }
