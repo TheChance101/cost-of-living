@@ -3,6 +3,7 @@ package interactor
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import fakeDataSource.FakeDataSourceForRentalPrice
+import model.CityEntity
 
 import org.junit.jupiter.api.Test
 
@@ -41,6 +42,37 @@ internal class TestGetCityWithHighestRentalPriceDifferenceInteractor{
         val result = getCityWithHighestRentalPriceDifference.excludeNullValues(city)
         //then
         assertFalse(result)
+    }
+    @Test
+    fun `Should return an empty string if no city with high-quality data is found`() {
+        val cityData = emptyList<CityEntity>()
+        val result = getCityWithHighestRentalPriceDifference.execute(cityData)
+        assertEquals("", result)
+    }
+
+    @Test
+
+    fun `Should return the city with the highest rental price difference`() {
+        val cityData = dataSource.getAllCitiesData()
+        val result = getCityWithHighestRentalPriceDifference.execute(cityData)
+        assertEquals("New York", result)
+
+//       // given an object of GetCityWithHighestRentalPriceDifferenceInteractor with return list of CityEntity
+//        val getData = GetCityWithHighestRentalPriceDifferenceInteractor(object : CostOfLivingDataSource {
+//            override fun getAllCitiesData(): List<CityEntity> {
+//                return dataSource.getAllCitiesData()
+//            }
+//        })
+//        //when run execute function
+//        val result = getData.execute()
+//        //then
+//        assertEquals("New York", result)
+    }
+
+
+
+
+//
     }
 
 
@@ -115,7 +147,7 @@ internal class TestGetCityWithHighestRentalPriceDifferenceInteractor{
 ////           }
 //       }
 //    }
-}
+
 
 
 
