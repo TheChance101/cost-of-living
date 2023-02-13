@@ -16,7 +16,7 @@ class GetHighestSalaryAverageCititesNamesInteractor(
     }
 
     private fun excludeNullSalariesAndLowQualityData(city: CityEntity): Boolean {
-        return city.averageMonthlyNetSalaryAfterTax != null && city.dataQuality
+        return city.averageMonthlyNetSalaryAfterTax != null && city.dataQuality!!
     }
 
 }
