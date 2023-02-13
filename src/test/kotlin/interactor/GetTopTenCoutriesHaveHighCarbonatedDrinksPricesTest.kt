@@ -1,5 +1,7 @@
 package interactor
+
 import FakeData
+import model.CityEntity
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
@@ -7,80 +9,75 @@ import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-
 class GetTopTenCoutriesHaveHighCarbonatedDrinksPricesTest {
     private lateinit var interactor: GetTopTenCoutriesHaveHighCarbonatedDrinksPrices
-    private lateinit var fakeData:FakeData
+    private lateinit var fakeData: FakeData
 
     @BeforeEach
     fun setUp() {
-        fakeData=FakeData()
+        fakeData = FakeData()
         interactor = GetTopTenCoutriesHaveHighCarbonatedDrinksPrices(fakeData)
     }
+
+
     @Test
-    fun should_ReturnListTopTenCountriesHaveHighDrinkPrice_When_DrinkPriceHigh() {
+    fun should_ReturnCorrect_When_LimitIsMoreThanZero() {
         //given Country with drink price and limit
-        val cities = fakeData.getAllCitiesData()
-        val limit: Int = 10;
+        val limit = 3
         //when getting a list of pair  contains the country name and drink price
-        val getTop10CountriesWithHighTaxOnCarbonatedDrinks = interactor.execute(limit, cities)
+        val result = interactor.execute(limit)
         // then
-        assertArrayEquals(
-            listOf(
-                Pair("Cuba", 2.28f),
-                Pair("Syria", 0.82f),
-                Pair("Gambia", 0.73f),
-                Pair("Nigeria", 0.55f),
-                Pair("Nepal", 0.38f),
-                Pair("Uganda", 0.27f),
-                Pair("Sri Lanka", 0.27f),
-                Pair("Bangladesh", 0.25f)
-            ).toTypedArray(),
-            getTop10CountriesWithHighTaxOnCarbonatedDrinks.toTypedArray()
-        )
+        assertEquals(3, result.size)
+        assertEquals("Cuba", result[0].first)
+        assertEquals(2.28f, result[0].second)
+        assertEquals("Venezuela", result[1].first)
+        assertEquals(1.12f, result[1].second)
+        assertEquals("Syria", result[2].first)
+        assertEquals(0.82f, result[2].second)
     }
+
     @Test
-    fun should_ReturnEmptyList_When_listOfCityIsEmpty() {
+    fun should_ReturnEmptyList_When_LimitIsZero() {
         //given
-        val limit:Int=10
-        val getTopTenCountriesWithHighTaxOnCarbonatedDrinks = interactor.execute(limit,listOf())
+        val limit = 0
+        //when
+        val result = interactor.execute(limit)
         // Then
-        assertTrue(getTopTenCountriesWithHighTaxOnCarbonatedDrinks.isEmpty())
+        assertTrue(result.isEmpty())
     }
+
     @Test
-    fun should_ReturnNotEquals_When_TheListLessThanTen() {
-        //given Country with drink price and limit
-        val cities = fakeData.getAllCitiesData()
-        val limit:Int=10
-        //when getting a Data contains null price value
-        val getTop10CountriesWithHighTaxOnCarbonatedDrinks= interactor.execute(limit,cities)
-        //then
-        kotlin.test.assertNotEquals(10 , getTop10CountriesWithHighTaxOnCarbonatedDrinks.size)
+    fun should_ReturnEmptyList_When_LimitIsNegative() {
+        //given
+        val limit = -6
+        //when
+        val result = interactor.execute(limit)
+        // Then
+        assertEquals(emptyList<CityEntity>(),result)
     }
+
+
     @Test
     fun should_ThrowErrorMessage_When_ThePriceIsNull() {
         //given Country with drink price and limit
-        val cities = fakeData.getAllCitiesData()
-        val limit:Int=10
+        val limit = 10
         //when getting a Data contains null price value
-        val getTop10CountriesWithHighTaxOnCarbonatedDrinks= interactor.execute(limit,cities)
+        val getTop10CountriesWithHighTaxOnCarbonatedDrinks = interactor.execute(limit)
         //then
-        if(getTop10CountriesWithHighTaxOnCarbonatedDrinks.any { it.second == null })
+        if (getTop10CountriesWithHighTaxOnCarbonatedDrinks.any { it.second == null })
             AssertionError("Drink Price can't be Null")
     }
-    @Test
-    fun should_ThrowErrorMessage_When_PriceIsUnderZero() {
-        //given Country with drink price and limit
-        val cities = fakeData.getAllCitiesData()
-        val limit:Int=10;
 
-        //when getting a price in negative
-        val getTop10CountriesWithHighTaxOnCarbonatedDrinks= interactor.execute(limit,cities)
-        //then
-        val executable = Executable {
-            if(getTop10CountriesWithHighTaxOnCarbonatedDrinks.any { it.second!! < 0  })
-                throw IllegalArgumentException("Drink Price can't be Negative Value")
-        }
-        assertThrows(IllegalArgumentException::class.java, executable)
+
+
+    companion object {
+        private val expectedResult =
+            listOf(
+                Pair("Cuba", 2.28),
+                Pair("Venezuela", 1.12),
+                Pair("Syria", 0.82),
+                Pair("Syria", 0.82),
+                Pair("Ghana", 0.51),
+            )
     }
 }

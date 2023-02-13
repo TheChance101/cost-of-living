@@ -4,21 +4,19 @@ import model.CityEntity
 import java.util.*
 
 class GetTopTenCoutriesHaveHighCarbonatedDrinksPrices(private val dataSource: CostOfLivingDataSource){
-        fun execute(limit: Int, cities: List<CityEntity>): List<Pair<String, Float?>> {
-            return cities
-                .asSequence()
-                .filter(::exceptionNullDrinkPriceAndUnderZeroPriceAndLowQualityData)
-                .distinctBy { it.country }
+        fun execute(limit: Int): List<Pair<String, Float?>> {
+            return dataSource.getAllCitiesData()
+                .filter(::exceptionNullDrinkPriceAndQualityData)
                 .sortedByDescending { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants }
-                .take(limit)
+                .take(if(limit > 0 ) limit else 0 )
                 .map { Pair(it.country, it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants) }
-                .toList()
+
         }
 
-        private fun exceptionNullDrinkPriceAndUnderZeroPriceAndLowQualityData(city: CityEntity): Boolean {
+        private fun exceptionNullDrinkPriceAndQualityData(city: CityEntity): Boolean {
             return  city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants != null
-                    && city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants  > 0
-                    && city.country!= null
                     && city.dataQuality
+
+
         }
     }
