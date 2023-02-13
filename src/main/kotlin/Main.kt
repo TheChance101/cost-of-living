@@ -3,7 +3,7 @@ import dataSource.utils.CsvParser
 import interactor.CostOfLivingDataSource
 import interactor.GetCityThatMatchTheManagerExpectationsInteractor
 import interactor.GetHighestSalaryAverageCititesNamesInteractor
-import interactor.TopTenCountriesTaxes
+import interactor.GetTopTenCountriesTaxesInteractor
 
 fun main() {
     val csvParser = CsvParser()
@@ -20,9 +20,9 @@ fun main() {
 
     println()
     print("\n_______________________________\n")
-    val topTenCountriesTaxes = TopTenCountriesTaxes(dataSource)
-    var topTenCountries= topTenCountriesTaxes.getTopTenCountriesWithHighestTaxesOnCarbonatedDrinks()
-    println(topTenCountries)
+    val topTenCountriesTaxes = GetTopTenCountriesTaxesInteractor(dataSource)
+  //  var topTenCountries= topTenCountriesTaxes.execute()
+  //  println(topTenCountries)
 
 }
 

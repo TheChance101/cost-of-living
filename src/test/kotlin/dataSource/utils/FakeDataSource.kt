@@ -1,6 +1,7 @@
 package dataSource.utils
 
 import interactor.CostOfLivingDataSource
+import interactor.GetTopTenCountriesTaxesInteractor
 import model.*
 
 class FakeDataSource : CostOfLivingDataSource {
@@ -75,7 +76,7 @@ class FakeDataSource : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = 7965.29f
                 ),
                 averageMonthlyNetSalaryAfterTax = 1000.0f,
-                dataQuality = false
+                dataQuality = true
             ), CityEntity(
                 cityName = "Roseburg",
                 country = "United States",
@@ -145,7 +146,7 @@ class FakeDataSource : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1614.59f
                 ),
                 averageMonthlyNetSalaryAfterTax = 1200.0f,
-                dataQuality = false
+                dataQuality = true
             ),
             CityEntity(
                 cityName = "Moose Jaw",
@@ -216,7 +217,7 @@ class FakeDataSource : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
                 ),
                 averageMonthlyNetSalaryAfterTax = 1185.84f,
-                dataQuality = false
+                dataQuality = true
             ), CityEntity(
                 cityName = "Chetumal",
                 country = "Mexico",
@@ -286,7 +287,7 @@ class FakeDataSource : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = 309.41f
                 ),
                 averageMonthlyNetSalaryAfterTax = 257.84f,
-                dataQuality = false
+                dataQuality = true
             ),
             CityEntity(
                 cityName = "Kuysinjaq",
@@ -357,7 +358,7 @@ class FakeDataSource : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = 137.03f
                 ),
                 averageMonthlyNetSalaryAfterTax = 411.1f,
-                dataQuality = false
+                dataQuality = true
             )
         )
     }
@@ -436,7 +437,7 @@ class FakeDataSourceM : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
                 ),
                 averageMonthlyNetSalaryAfterTax = 18f,
-                dataQuality = false
+                dataQuality = true
             ),
             CityEntity(
                 cityName = "Sancti Spiritus",
@@ -507,7 +508,7 @@ class FakeDataSourceM : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
                 ),
                 averageMonthlyNetSalaryAfterTax = 20.0f,
-                dataQuality = false
+                dataQuality = true
             ),
             CityEntity(
                 cityName = "Santa Clara",
@@ -578,7 +579,7 @@ class FakeDataSourceM : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
                 ),
                 averageMonthlyNetSalaryAfterTax = 25.0f,
-                dataQuality = false
+                dataQuality = true
             )
         )
     }
