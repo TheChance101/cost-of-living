@@ -8,27 +8,33 @@ class GetTopFashionCitiesNamesInteractor(
 
     fun execute(limit: Int): List<String> {
         if (limit <= 0) return emptyList()
-        return dataSource.getAllCitiesData().filter(::excludeNullPricesAndLowQualityData)
-            .sortedBy { it.getClothesAveragePrice() }.take(limit).map { it.cityName }
+        return dataSource
+            .getAllCitiesData()
+            .asSequence()
+            .filter(::excludeNullPricesAndLowQualityData)
+            .sortedBy { it.getClothesAveragePrice() }
+            .distinctBy { it.cityName }
+            .take(limit)
+            .map { it.cityName }
+            .toList()
     }
 
     private fun excludeNullPricesAndLowQualityData(city: CityEntity) = city.hasNoNullClothesPrices() && city.dataQuality
 
     private fun CityEntity.hasNoNullClothesPrices(): Boolean {
-        val fields = clothesPrices::class.java.declaredFields
-        return fields.map {
-            it.isAccessible = true
-            it.get(clothesPrices)
-        }.any { it != null }
+        return clothesPrices::class.java.declaredFields
+            .map {
+                it.isAccessible = true
+                it.get(clothesPrices)
+            }.all { it != null }
     }
 
     private fun CityEntity.getClothesAveragePrice(): Float {
-        return clothesPrices::class.java.declaredFields.mapNotNull {
-            it.isAccessible = true
-            val value = it.get(clothesPrices)
-            if (value is Float) value else null
-        }.average().toFloat()
+        return clothesPrices::class.java.declaredFields
+            .map {
+                it.isAccessible = true
+                it.get(clothesPrices) as Float
+            }.average().toFloat()
     }
-
 
 }
