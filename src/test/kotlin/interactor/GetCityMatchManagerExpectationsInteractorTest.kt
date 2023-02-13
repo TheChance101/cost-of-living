@@ -38,7 +38,7 @@ class GetCityMatchManagerExpectationsInteractorTest {
         // when we check if the countries are in north america
         val result = interactor.execute()
         // then we should get true
-        assertFalse(!givenList.contains(result))
+        assertFalse(!givenList.contains(result.country))
     }
 
     @Test
@@ -48,8 +48,10 @@ class GetCityMatchManagerExpectationsInteractorTest {
         // when we check if the countries are in north america
         val result = interactor.execute()
         // then we should get true
-        assertTrue(givenList.contains(result))
+        assertTrue(givenList.contains(result.country))
     }
 
+
+    
 
 }

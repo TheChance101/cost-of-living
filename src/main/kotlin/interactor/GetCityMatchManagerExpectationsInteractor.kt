@@ -9,9 +9,9 @@ class GetCityMatchManagerExpectationsInteractor(
 
     private fun getOnlyNorthAmericaCountries(city: CityEntity): Boolean = city.country in NorthAmericaCountries.list
 
-    fun execute(): String {
+    fun execute(): CityEntity {
         return dataSource.getAllCitiesData()
-            .filter(::getOnlyNorthAmericaCountries).first().country
+            .filter(::getOnlyNorthAmericaCountries).first()
     }
 
 }
