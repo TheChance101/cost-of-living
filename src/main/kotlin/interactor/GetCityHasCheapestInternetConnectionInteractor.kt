@@ -6,16 +6,19 @@ class GetCityHasCheapestInternetConnectionInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
 
-    fun execute(): CityEntity? {
-        val citiesData = dataSource.getAllCitiesData()
-        val citiesWithInternetData = citiesData.filter {
-            it.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl != null &&
-                    it.averageMonthlyNetSalaryAfterTax != null
-        }
+    fun execute(cities: List<CityEntity>): CityEntity{
+        return dataSource.getAllCitiesData()[0]
 
-        return citiesWithInternetData.minByOrNull {
-            (it.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl!! / it.averageMonthlyNetSalaryAfterTax!!)
-        }
     }
+//        val citiesData = dataSource.getAllCitiesData()
+//        val citiesWithInternetData = citiesData.filter {
+//            it.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl != null &&
+//                    it.averageMonthlyNetSalaryAfterTax != null
+//        }
+//
+//        return citiesWithInternetData.minByOrNull {
+//            (it.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl!! / it.averageMonthlyNetSalaryAfterTax!!)
+//        }
+//    }
 
 }

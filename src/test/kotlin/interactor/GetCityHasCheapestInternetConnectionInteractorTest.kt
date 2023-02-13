@@ -1,45 +1,64 @@
 package interactor
 
+import fakeData.FakeData
 import io.mockk.every
 import org.junit.jupiter.api.Test
 import io.mockk.mockk
 import model.*
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.TestInstance
 import kotlin.test.assertEquals
+import org.junit.jupiter.api.Assertions.assertThrows
+import org.junit.jupiter.api.function.Executable
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCityHasCheapestInternetConnectionInteractorTest {
 
-    private val dataSource = mockk<CostOfLivingDataSource>()
-    private val interactor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
+    lateinit var fakedata: FakeData
+    lateinit var converter : GetCityHasCheapestInternetConnectionInteractor
 
-    @Test
-    fun `should return city with cheapest internet connection`() {
-        // given
-        val citiesData = listOf(
-            createCity("City 1", 1000f, 50f),
-            createCity("City 2", 2000f, 100f),
-            createCity("City 3", 5000f, 200f)
-        )
-        //when(dataSource.getAllCitiesData()).thenRetu(citiesData)
-        // every { dataSource.getAllCitiesData() } returns (citiesData)
-        // when
-        val result = interactor.execute()
 
-        // then
-        assertEquals("City 1", result?.cityName)
+    @BeforeAll
+    fun setUp(){
+        fakedata= FakeData()
+        converter=GetCityHasCheapestInternetConnectionInteractor(fakedata)
+
     }
 
 
-    private fun createCity(cityName: String, salary: Float, internetPrice: Float?) =
-        CityEntity(
-            cityName, "Country", MealsPrices(null, null, null),
-            DrinksPrices(null, null, null, null, null),
-            FruitAndVegetablesPrices(null, null, null, null, null, null, null),
-            FoodPrices(null, null, null, null, null, null),
-            ServicesPrices(null, null, internetPrice, null, null, null, null, null),
-            ClothesPrices(null, null, null, null), TransportationsPrices(null, null, null, null, null, null),
-            CarsPrices(null, null),
-            RealEstatesPrices(null, null, null, null, null, null),
-            salary, true
-        )
+    @Test
+    fun `should return cheapest city When  enter list of cities`() {
+        // given
+     val cities=fakedata.getAllCitiesData()
+        // when
+        val city = converter.execute(cities)
+
+        // then
+        assertEquals(cities[4], city)
+    }
+
+
+    @Test
+    fun `should return the same city When enter one city`() {
+        // given
+        val cities=fakedata.getAllCitiesData()[2]
+        // when
+        val city = converter.execute(listOf(cities))
+
+        // then
+        assertEquals(cities, city)
+    }
+    @Test
+    fun `should return throw exception When list is empty`() {
+        // given
+        val cities= emptyList<CityEntity>()
+        // when
+        val city = Executable {converter.execute(cities)}
+
+        // then
+        assertThrows(IllegalArgumentException::class.java,city)
+    }
+
+
 
 }
