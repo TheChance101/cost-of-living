@@ -50,6 +50,7 @@ class GetCityMakesFamilySaveMoreInteractor(
                 && city.dataQuality
     }
 
-    fun excludeInvalidSalary() = Exception("Not Implemented yet!")
-
+    fun excludeInvalidSalary(city: CityEntity):Boolean{
+        return city.averageMonthlyNetSalaryAfterTax != null
+    }
 }
