@@ -17,7 +17,9 @@ class GetCityHasCheapestMealPricesInteractor(
         throw Throwable("Not Implemented yet")
     }
 
-
+    fun getAverageMealInAllCities(cityEntityList: List<CityEntity>): Float {
+        TODO("Not Implemented yet")
+    }
 
     fun citiesInUSACanadaAndMexico(city: CityEntity): Boolean {
         return city.country == ThreeSpecificCountries.USA.nameOFCountry
