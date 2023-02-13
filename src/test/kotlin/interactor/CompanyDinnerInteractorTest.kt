@@ -22,7 +22,7 @@ class CompanyDinnerInteractorTest {
     }
     @Test
     fun `should return city with most approx value when valid data`() {
-        assertEquals(fakeData.cityExtremeLowQuality1,CompanyDinnerInteractor(fakeData.allCities).execute())
+        assertEquals(fakeData.cityLowQuality2,CompanyDinnerInteractor(fakeData.allCities).execute())
 
     }
 
