@@ -3,14 +3,14 @@ import dataSource.utils.CsvParser
 import interactor.CostOfLivingDataSource
 import interactor.GetCityHasCheapestInternetConnectionInteractor
 
-import interactor.GetTopTenCountiresHaveHighestPricesOfCarbonatedDrinks
+import interactor.GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinks
 
 fun main() {
     val csvParser = CsvParser()
     val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
-    val getTopTenCountiresHaveHighestPricesOfCarbonatedDrinks =
-        GetTopTenCountiresHaveHighestPricesOfCarbonatedDrinks(dataSource)
-    println(getTopTenCountiresHaveHighestPricesOfCarbonatedDrinks.getCountriesOfHighestCarbonatedDrinksPrices(
+    val getTopTenCountriesHaveHighestPricesOfCarbonatedDrinks =
+        GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinks(dataSource)
+    println(getTopTenCountriesHaveHighestPricesOfCarbonatedDrinks.getCountriesOfHighestCarbonatedDrinksPrices(
         limit = 10))
     printSeparationLine()
 

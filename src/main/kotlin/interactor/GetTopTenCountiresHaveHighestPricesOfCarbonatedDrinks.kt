@@ -3,7 +3,7 @@ import model.CityEntity
 
 
 
-class GetTopTenCountiresHaveHighestPricesOfCarbonatedDrinks(private val dataSource: CostOfLivingDataSource) {
+class GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinks(private val dataSource: CostOfLivingDataSource) {
 
 
     // extract the names of ten countries that have high taxes on carbonated drinks
@@ -11,24 +11,14 @@ class GetTopTenCountiresHaveHighestPricesOfCarbonatedDrinks(private val dataSour
 
 
 
-        return dataSource
-
-            .getAllCitiesData()
-            .filter(::excludeCarbonateDrinksPriceAndLowQualityData)
-            .sortedByDescending { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants }
-            .map{it.country}.toSet().zip(getDrinksPrice(dataSource))
-            .take(limit)
+        return listOf()
 
     }
 
     // add average prices to the country names
     fun getDrinksPrice(dataSource: CostOfLivingDataSource): List<Float?> {
-        val list =dataSource
-            .getAllCitiesData()
-            .filter(::excludeCarbonateDrinksPriceAndLowQualityData)
-            .sortedByDescending { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants }
-            .map { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants }
-        return list
+
+        return listOf()
     }
     // get high data quality only
     fun excludeCarbonateDrinksPriceAndLowQualityData(country: CityEntity): Boolean {
@@ -37,12 +27,12 @@ class GetTopTenCountiresHaveHighestPricesOfCarbonatedDrinks(private val dataSour
 
     // check the entered limit value
     fun checkTheInputOfLimit(limit:Int):Boolean{
-        return !(limit == 0 || limit == -1)
+        return true
     }
 
     //check for empty list and null
     fun filterTheListOfCountriesOfHighestCarbonatedDrinksPrices (list: List<String>):Boolean {
-        return !(list == listOf("") )
+        return true
 
     }
 

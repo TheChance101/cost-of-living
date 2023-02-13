@@ -12,14 +12,15 @@ class GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinksTest {
     private lateinit var dataSource: CostOfLivingDataSource
     private lateinit var fakeData: FakeData
     private lateinit var getTopTenCountriesHaveHighestPricesOfCoke:
-            GetTopTenCountiresHaveHighestPricesOfCarbonatedDrinks
+            GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinks
 
 
     @BeforeEach
     fun setUp() {
         fakeData = FakeData()
         dataSource=fakeData
-        getTopTenCountriesHaveHighestPricesOfCoke = GetTopTenCountiresHaveHighestPricesOfCarbonatedDrinks(dataSource)
+        getTopTenCountriesHaveHighestPricesOfCoke =
+            GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinks(dataSource)
     }
 
     @Test
@@ -40,23 +41,23 @@ class GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinksTest {
         //given the country name is repeated
         val input = listOf(Pair("Cuba",2.28),Pair("Cuba",2.0),Pair("Syria",0.82))
 
-        //when filter frequent nouns
+        //when filter frequent names
         val actualResult = getTopTenCountriesHaveHighestPricesOfCoke
              .getCountriesOfHighestCarbonatedDrinksPrices(3)
 
-        //then the result
+        //then the result without frequent names
         assertEquals(listOf(Pair("Cuba",2.28F),Pair("Syria",0.82F)), actualResult)
     }
     @Test
     fun should_ReturnFalse_When_theInputOfListIsEmpty() {
-        //given the country name is repeated
+        //given the input is empty
         val input = listOf("")
 
-        //when filter frequent nouns
+        //when filter the empty data
         val actualResult = getTopTenCountriesHaveHighestPricesOfCoke.
         filterTheListOfCountriesOfHighestCarbonatedDrinksPrices(input)
 
-        //then the result
+        //then the result is false
         assertEquals(false, actualResult)
     }
 
@@ -73,7 +74,7 @@ class GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinksTest {
 
     }
     @Test
-    fun should_ReturnFlase_When_InputOfLimitIsZero(){
+    fun should_ReturnFalse_When_InputOfLimitIsZero(){
         //given limit zero
         val limit = 0
 
@@ -85,7 +86,7 @@ class GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinksTest {
 
     }
     @Test
-    fun should_ReturnFlase_When_InputOfLimitIsMinusValue(){
+    fun should_ReturnFalse_When_InputOfLimitIsMinusValue(){
         //given limit minus value
         val limit = -1
 
@@ -97,10 +98,19 @@ class GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinksTest {
 
     }
     @Test
-    fun bbb (){
-    val input =fakeData.getAllCitiesData()
-    val actualResult=getTopTenCountriesHaveHighestPricesOfCoke.excludeCarbonateDrinksPriceAndLowQualityData()
-}
+    fun should_ReturnFalse_When_InputIncorrect () {
+        //given the in correct data
+        val input = fakeData.getAllCitiesData().first()
+
+        //when filter the low quality data
+        val actualResult = getTopTenCountriesHaveHighestPricesOfCoke
+            .excludeCarbonateDrinksPriceAndLowQualityData(input)
+
+        //then the result is false
+        assertEquals(false,actualResult)
+    }
+
+ }
 
 
 
