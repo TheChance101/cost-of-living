@@ -26,13 +26,19 @@ fun big (datame : RealEstatesPrices):List<Float>{
 
 }
 
+import interactor.GetMostSuitableSavingCityInteractor
+import interactor.getTheAverageSalaryForEachCityInTheCountryInteractor
+
+
 fun main() {
     val csvParser = CsvParser()
     val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
 
-    val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
-    println(getHighestSalaryAverageCities.execute(limit = 10))
+
+    val getMostSuitableSavingCityInteractor = GetMostSuitableSavingCityInteractor(dataSource)
+    println(getMostSuitableSavingCityInteractor.execute(limit = 1))
     printSeparationLine()
+    val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
 
     val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
     println(getCityHasCheapestInternetConnectionInteractor.execute())
@@ -47,12 +53,19 @@ val dataany : List<CityEntity>  = dataSource.getAllCitiesData()
 
         }
 
-
-
-
     }
+    val getTheAverageSalaryForEachCityInTheCountry =getTheAverageSalaryForEachCityInTheCountryInteractor(dataSource)
+
+    val getTheRightApartment = GetTheRightApartment(dataSource)
+    println(getTheRightApartment.getListOfDetailsOfApartment(1000))
+
+
+println(getTheAverageSalaryForEachCityInTheCountry.execute("Cuba"))
+
 }
 private fun printSeparationLine(){
     print("\n_______________________________\n")
 }
+
+
 
