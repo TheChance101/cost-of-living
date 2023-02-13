@@ -11,13 +11,34 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(
         return if (limit < 0 ) throw IllegalArgumentException("Please Enter Positive Number!")
         else {
             var map = mutableMapOf<String,Float>()
-
-
+            val dataFiltered = citiesData.apply {
+                filter(::excludeLowQualityData)
+                filter(::excludeInvalidCountries)
+                filter(::excludeInvalidDrinksPrice)
+            }
+            dataFiltered.forEach {
+                val average = sumCityDrinkAverage(it)
+                map.put(it.cityName,average)
+            }
             return map
         }
     }
 
-    fun
+    /**
+     * Asserts input is valid and high quality
+     * @param cityEntity represents selected object
+     * @return each cityEntity's drinks average
+     * @author Hassan Wasfy
+     * */
+    fun sumCityDrinkAverage(cityEntity: CityEntity):Float{
+        val sum = cityEntity.drinksPrices.milkRegularOneLiter!! +
+                cityEntity.drinksPrices.cappuccinoRegularInRestaurants!! +
+                cityEntity.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants!! +
+                cityEntity.drinksPrices.waterAThirdOfLiterBottleInRestaurants!! +
+                cityEntity.drinksPrices.waterOneAndHalfLiterBottleAtTheMarket!!
+        val drinksCount = 5.0f
+        return sum / drinksCount
+    }
 
     /**
      * Returns `true` if the `cokePepsiAThirdOfLiterBottleInRestaurants` value

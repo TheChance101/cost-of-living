@@ -58,7 +58,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         //when
         val expected = 3
         // Then
-        assertEquals(expected,getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.filterHighQualityData(given).size)
+        assertEquals(expected,getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.ex(given).size)
     }
 
     @Test

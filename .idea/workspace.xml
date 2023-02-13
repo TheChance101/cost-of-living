@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dbedd2ac-0c71-449c-8f55-4ef4893be1c3" name="Changes" comment="">
+    <list default="true" id="3c8f8539-e11f-4b80-9006-946fc9c1273a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_13_2023_12_08_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_13_2023_12_08_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2023_11_49_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2023_11_49_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/interactor/GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,8 +93,8 @@
       <recent name="interactor" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest.testFilterHighDataQuality">
-    <configuration name="GetCityHasCheapestInternetConnectionInteractorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest.testUserInput_PositiveInput">
+    <configuration name="GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -102,7 +107,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;interactor.GetCityHasCheapestInternetConnectionInteractorTest&quot;" />
+            <option value="&quot;interactor.GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -112,7 +117,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="GetCityHasCheapestInternetConnectionInteractorTest.Should_ReturnTheFirstCountryWithCheapestInternetPrice_When_SameAverage" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest.testUserInput_PositiveInput" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -125,30 +130,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;interactor.GetCityHasCheapestInternetConnectionInteractorTest.Should_ReturnTheFirstCountryWithCheapestInternetPrice_When_SameAverage&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="GetFastest10CitiesToBuyAPTInteractorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;interactor.GetFastest10CitiesToBuyAPTInteractorTest&quot;" />
+            <option value="&quot;interactor.GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest.testUserInput_PositiveInput&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -190,13 +172,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainKt" />
+      <module name="Cost-of-living-app.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest.testUserInput_PositiveInput" />
+        <item itemvalue="Kotlin.MainKt" />
+        <item itemvalue="Gradle.GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest" />
         <item itemvalue="JUnit.GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest.testFilterHighDataQuality" />
         <item itemvalue="JUnit.GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest.testUserInput_PositiveInput" />
-        <item itemvalue="Gradle.GetCityHasCheapestInternetConnectionInteractorTest.Should_ReturnTheFirstCountryWithCheapestInternetPrice_When_SameAverage" />
-        <item itemvalue="Gradle.GetCityHasCheapestInternetConnectionInteractorTest" />
-        <item itemvalue="Gradle.GetFastest10CitiesToBuyAPTInteractorTest" />
       </list>
     </recent_temporary>
   </component>
