@@ -12,7 +12,7 @@ fun main() {
     val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
 //    println(getHighestSalaryAverageCities.execute(limit = 10))
 //    printSeparationLine()
-//
+
 //    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
 //    println(getCityHasCheapestInternetConnectionInteractor.execute())
     val getTheAverageSalaryForEachCityInTheCountry =getTheAverageSalaryForEachCityInTheCountryInteractor(dataSource)
