@@ -2,20 +2,18 @@ package interactor
 
 import model.CityEntity
 
-class GetCityHasCheapestInternetConnectionInteractor() {
+class GetCityHasCheapestInternetConnectionInteractor(
+private val dataSource: CostOfLivingDataSource)
+{
 
-    fun execute(cities: List<CityEntity>): CityEntity {
-        return if (cities.isNotEmpty())
-            cities.filter(::excludeNullSalariesAndNullInternetPriceAndQualityData)
-                .sortedBy(::calculateInternetPercent).first()
-        else throw IllegalArgumentException("Illegal input")
+    fun execute(): CityEntity {
+        return dataSource.getAllCitiesData().filter(::excludeNullSalariesAndNullInternetPriceAndQualityData)
+            .sortedBy(::calculateInternetPercent).first()
     }
 
     private fun excludeNullSalariesAndNullInternetPriceAndQualityData(city: CityEntity): Boolean {
         return city.dataQuality && city.averageMonthlyNetSalaryAfterTax != null
                 && city.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl != null
-                && city.averageMonthlyNetSalaryAfterTax >= 0
-                && city.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl >= 0
     }
 
     private fun calculateInternetPercent(city: CityEntity): Float {
