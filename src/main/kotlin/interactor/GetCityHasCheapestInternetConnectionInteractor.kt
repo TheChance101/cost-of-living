@@ -24,7 +24,7 @@ class GetCityHasCheapestInternetConnectionInteractor(
     }
 
 
-    private fun List<CityEntity>.sortingWithBestInterentPrice(): List<CityEntity> {
+    private fun List<CityEntity>.sortingWithBestInternetPrice(): List<CityEntity> {
         return this.sortedByDescending {
             (it.averageMonthlyNetSalaryAfterTax?.div(
                 it.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl!!
