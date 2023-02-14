@@ -6,9 +6,6 @@ import kotlin.math.roundToInt
 class GetTopTenCitiesHasCheapestPriceOfApartmentsAndYearInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
-
-
-
     fun execute(salaryOfFullTimeJob: Number): List<Pair<String, Number?>>? {
         val salary = formatSalary(salaryOfFullTimeJob)
         return if (salary != null) {
@@ -19,11 +16,8 @@ class GetTopTenCitiesHasCheapestPriceOfApartmentsAndYearInteractor(
 
     }
 
-
-
     private fun formatSalary(salary: Number) =
         if (salary.toDouble() > 0.0) salary.toDouble() else null
-
 
 
     private fun toPair(city: CityEntity, salary: Double): Pair<String, Number> {
@@ -41,14 +35,12 @@ class GetTopTenCitiesHasCheapestPriceOfApartmentsAndYearInteractor(
     }
 
 
-
     private fun getCheapestPerSquareMeterCitiesNames(): List<CityEntity> {
         return dataSource.getAllCitiesData()
             .filter(::excludeNullPricePerSquareMeterAndLowDataQuality)
             .sortedBy { it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre }
             .take(10)
     }
-
 
 
     private fun excludeNullPricePerSquareMeterAndLowDataQuality(city: CityEntity): Boolean {

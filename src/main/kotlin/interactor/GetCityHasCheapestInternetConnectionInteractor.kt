@@ -3,12 +3,14 @@ package interactor
 import model.CityEntity
 
 class GetCityHasCheapestInternetConnectionInteractor(
-private val dataSource: CostOfLivingDataSource)
-{
+    private val dataSource: CostOfLivingDataSource
+) {
 
     fun execute(): CityEntity {
-        return dataSource.getAllCitiesData().filter(::excludeNullSalariesAndNullInternetPriceAndQualityData)
-            .sortedBy(::calculateInternetPercent).first()
+        return dataSource.getAllCitiesData()
+            .filter(::excludeNullSalariesAndNullInternetPriceAndQualityData)
+            .sortedBy(::calculateInternetPercent)
+            .first()
     }
 
     private fun excludeNullSalariesAndNullInternetPriceAndQualityData(city: CityEntity): Boolean {
