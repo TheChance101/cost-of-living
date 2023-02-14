@@ -38,7 +38,8 @@ class GetCityMatchManagerExpectationsInteractor(
             .filter(::getOnlyNorthAmericaCountries)
             .sortedBy { it.mealsPrices.mealFor2PeopleMidRangeRestaurant }
         val cityWithMidRangePrice = getCityWithMidRangePrice(sortedList)?.mealsPrices?.mealFor2PeopleMidRangeRestaurant
-
+        return sortedList
+            .getClosestMealPriceCity(cityWithMidRangePrice ?: 0.0f)!!
     }
 
 
