@@ -19,7 +19,6 @@ class GetCitiesNamesAndAverageSalariesInCountryTest {
     fun setup(){
         getResult=GetCitiesNamesAndAverageSalariesInCountry(dataSource)
     }
-
     @Test
     fun should_ReturnNamesOfCitiesAndAverageSalary_when_EnterCountryName() {
         //given name of the country
@@ -27,8 +26,7 @@ class GetCitiesNamesAndAverageSalariesInCountryTest {
         //when get the cities name and average salary in country
         val ListOfCitiesAndSalaries=getResult.execute(country)
         //then check the result
-        val list=listOf(Pair("Tanta",101.74),Pair("Alexandria",163.76), Pair("Giza", 171.51),Pair("Cairo", 200.4))
-        assertEquals(list,ListOfCitiesAndSalaries)
+        assertEquals(listOf(Pair("Tanta",101.74.toFloat()),Pair("Alexandria",163.76.toFloat()), Pair("Giza", 171.51.toFloat()),Pair("Cairo", 200.4.toFloat())),ListOfCitiesAndSalaries)
     }
 
     @Test
@@ -38,8 +36,7 @@ class GetCitiesNamesAndAverageSalariesInCountryTest {
         //when get the cities name and average salary in country
         val ListOfCitiesAndSalaries=getResult.execute(country)
         //then check the result
-        val list=listOf(Pair("Tanta",101.74),Pair("Alexandria",163.76), Pair("Giza", 171.51),Pair("Cairo", 200.4))
-        assertEquals(list,ListOfCitiesAndSalaries)
+        assertEquals(listOf(Pair("Tanta",101.74.toFloat()),Pair("Alexandria",163.76.toFloat()), Pair("Giza", 171.51.toFloat()),Pair("Cairo", 200.4.toFloat())),ListOfCitiesAndSalaries)
     }
 
     @Test
@@ -49,10 +46,8 @@ class GetCitiesNamesAndAverageSalariesInCountryTest {
         //when get the cities name and average salary in country
         val ListOfCitiesAndSalaries=getResult.execute(country)
         //then check the result
-        val list=listOf(Pair("Tanta",101.74),Pair("Alexandria",163.76), Pair("Giza", 171.51),Pair("Cairo", 200.4))
-        assertEquals(list,ListOfCitiesAndSalaries)
+        assertEquals(listOf(Pair("Tanta",101.74.toFloat()),Pair("Alexandria",163.76.toFloat()), Pair("Giza", 171.51.toFloat()),Pair("Cairo", 200.4.toFloat())),ListOfCitiesAndSalaries)
     }
-
 
     @Test
     fun should_ReturnNamesOfCitiesAndAverageSalary_when_EnterCountryNameInMixtureOfUppercaseAndLowercase() {
@@ -61,8 +56,7 @@ class GetCitiesNamesAndAverageSalariesInCountryTest {
         //when get the cities name and average salary in country
         val ListOfCitiesAndSalaries=getResult.execute(country)
         //then check the result
-        val list=listOf(Pair("Tanta",101.74),Pair("Alexandria",163.76), Pair("Giza", 171.51),Pair("Cairo", 200.4))
-        assertEquals(list,ListOfCitiesAndSalaries)
+        assertEquals(listOf(Pair("Tanta",101.74.toFloat()),Pair("Alexandria",163.76.toFloat()), Pair("Giza", 171.51.toFloat()),Pair("Cairo", 200.4.toFloat())),ListOfCitiesAndSalaries)
     }
 
 
@@ -75,4 +69,5 @@ class GetCitiesNamesAndAverageSalariesInCountryTest {
         assertThrows<Exception> {getResult.execute(country)}
 
     }
+
 }
