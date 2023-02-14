@@ -1,6 +1,7 @@
 package interactor
 
-import dataSource.utils.FakeDataSource
+import data.FakeDataSource
+import data.TestCase
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -10,14 +11,15 @@ import kotlin.test.assertEquals
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetTopTenCountriesTaxesInteractorTest {
 
-    lateinit var getTopTenCountriesTaxesInteractor : GetTopTenCountriesTaxesInteractor
-    lateinit var fakeDataSource : FakeDataSource
+    private lateinit var getTopTenCountriesTaxesInteractor : GetTopTenCountriesTaxesInteractor
+    private lateinit var fakeData : FakeDataSource
 
     @BeforeAll
     fun setUp() {
-        fakeDataSource = FakeDataSource()
+        fakeData = FakeDataSource()
         getTopTenCountriesTaxesInteractor =
-            GetTopTenCountriesTaxesInteractor(fakeDataSource)
+            GetTopTenCountriesTaxesInteractor(fakeData)
+        fakeData.changeDataSource(TestCase.CountriesTaxes)
 
     }
 
