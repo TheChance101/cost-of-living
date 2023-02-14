@@ -531,13 +531,13 @@ val cityEntity8 = CityEntity(
         waterOneAndHalfLiterBottleAtTheMarket = 0.37900132f
     ),
     fruitAndVegetablesPrices = FruitAndVegetablesPrices(
-        apples1kg = 0.15339968f,
-        banana1kg = 0.082787275f,
-        oranges1kg = 0.8980027f,
-        tomato1kg = 0.52903533f,
-        potato1kg = 0.111264884f,
-        onion1kg = 0.86749166f,
-        lettuceOneHead = 0.85031855f
+        apples1kg = null,
+        banana1kg = null,
+        oranges1kg = null,
+        tomato1kg = null,
+        potato1kg = null,
+        onion1kg = null,
+        lettuceOneHead = null
     ),
     foodPrices = FoodPrices(
         loafOfFreshWhiteBread500g = 0.29785246f,
@@ -823,7 +823,7 @@ val cityEntity12 = CityEntity(
         waterOneAndHalfLiterBottleAtTheMarket = 0.37900132f
     ),
     fruitAndVegetablesPrices = FruitAndVegetablesPrices(
-        apples1kg = 0.15933968f,
+        apples1kg = null,
         banana1kg = 0.08987275f,
         oranges1kg = 0.8980027f,
         tomato1kg = 0.52903533f,
