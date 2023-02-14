@@ -22,7 +22,6 @@ internal class GetTopCitiesFruitsAndVegetablesLowestCostInteractorTest {
         interactor = GetTopCitiesFruitsAndVegetablesLowestCostInteractor(fakeData)
     }
 
-    // Start testing for getAverageFruitAndVegetablePricesForCity
     @Test
     fun `should return null when sum of all fruit and vegetables prices less than and not equal zero`() {
         // given
@@ -52,9 +51,7 @@ internal class GetTopCitiesFruitsAndVegetablesLowestCostInteractorTest {
         // then
         assertEquals(1.106f, result)
     }
-    // End testing for getAverageFruitAndVegetablePricesForCity
 
-    // Start testing for excludeNullFruitAndVegetablePricesOrNullSalaries
     @Test
     fun `should return true when cities fruits and vegetables and average salaries is not null`() {
         // given
@@ -94,9 +91,7 @@ internal class GetTopCitiesFruitsAndVegetablesLowestCostInteractorTest {
         // then
         assertFalse(result)
     }
-    // End testing for excludeNullFruitAndVegetablePricesOrNullSalaries
 
-    // Start testing for execute function
     @Test
     fun `should throws exception when limit is negative`() {
         // given
@@ -137,6 +132,4 @@ internal class GetTopCitiesFruitsAndVegetablesLowestCostInteractorTest {
         // then
         assertEquals(listOf(), result)
     }
-    // End testing for execute function
-
 }
