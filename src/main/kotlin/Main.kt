@@ -5,6 +5,7 @@ import interactor.GetAverageFruitAndVegetablesInteractor
 import interactor.GetCityHasCheapestInternetConnectionInteractor
 import interactor.GetCityThatMatchTheManagerExpectationsInteractor
 import interactor.GetHighestSalaryAverageCititesNamesInteractor
+import interactor.GetTopTenCountriesTaxesInteractor
 
 fun main() {
     val csvParser = CsvParser()
@@ -27,6 +28,12 @@ fun main() {
     println(getAverageFruitAndVegetablesInteractor.execute())
     printSeparationLine()
 
+
+    println()
+    print("\n_______________________________\n")
+    val topTenCountriesTaxes = GetTopTenCountriesTaxesInteractor(dataSource)
+  //  var topTenCountries= topTenCountriesTaxes.execute()
+  //  println(topTenCountries)
 
 }
 
