@@ -32,6 +32,16 @@ class GetTopCitiesForBuyingApartmentTest {
         assertEquals(result.toSet().size, result.size)
     }
 
-  
+    @Test
+    fun `findTop10CitiesFor100MeterApartment returns an empty list when data source is empty`() {
+        // Given
+        val fakeData = GetTopCitiesForBuyingApartment(FakeEmptyCostOfLivingDataSource())
+
+        // When
+        val result = fakeData.findTop10CitiesFor100MeterApartment()
+
+        // Then
+        assertTrue(result.isEmpty())
+    }
 
 }
