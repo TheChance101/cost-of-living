@@ -3,7 +3,6 @@ package interactor
 import dataSource.FakeCsvDataSource
 import dataSource.utils.CsvParser
 import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
@@ -23,9 +22,7 @@ class GetCountriesEnforceHighTaxesOnDrinksTest {
     }
 
     @Test
-    fun should_returnTop_10_countriesName_whenTheInputsCorrect() {
-        // given
-        val input = dataSource.getAllCitiesData()
+    fun should_returnTop_10_countriesName_whenDataIsCorrect() {
         // when
         val result = getCountriesEnforceHighTaxesOnDrinks.execute()
         // result

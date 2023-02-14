@@ -27,7 +27,7 @@ internal class GetCitiesNameHasHighestClothesPriceInteractorTest {
         //when
         val result = citiesName.execute()
         //then
-        //assertTrue(result.all { it.dataQuality })
+        assertTrue(result.all { it.dataQuality })
     }
 
     @Test
@@ -35,7 +35,7 @@ internal class GetCitiesNameHasHighestClothesPriceInteractorTest {
         //when
         val result = citiesName.execute()
         //then
-        //assertTrue(result.all { it.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null})
+        assertTrue(result.all { it.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null})
     }
 
     @Test
@@ -43,7 +43,7 @@ internal class GetCitiesNameHasHighestClothesPriceInteractorTest {
         //when
         val result = citiesName.execute()
         //then
-        //assertTrue(result.all { it.clothesPrices.oneSummerDressInAChainStoreZaraHAndM != null})
+        assertTrue(result.all { it.clothesPrices.oneSummerDressInAChainStoreZaraHAndM != null})
     }
 
     @Test
@@ -51,7 +51,7 @@ internal class GetCitiesNameHasHighestClothesPriceInteractorTest {
         //when
         val result = citiesName.execute()
         //then
-        //assertTrue(result.all { it.clothesPrices.onePairOfNikeRunningShoesMidRange != null})
+        assertTrue(result.all { it.clothesPrices.onePairOfNikeRunningShoesMidRange != null})
     }
 
     @Test
@@ -59,7 +59,7 @@ internal class GetCitiesNameHasHighestClothesPriceInteractorTest {
         //when
         val result = citiesName.execute()
         //then
-        //assertTrue(result.all { it.clothesPrices.onePairOfMenLeatherBusinessShoes != null})
+        assertTrue(result.all { it.clothesPrices.onePairOfMenLeatherBusinessShoes != null})
     }
 
     @Test
@@ -77,6 +77,6 @@ internal class GetCitiesNameHasHighestClothesPriceInteractorTest {
         // when
         val result = citiesName.execute()
         // then
-        //assertArrayEquals(expected, result)
+        assertArrayEquals(expected, result)
     }
 }
