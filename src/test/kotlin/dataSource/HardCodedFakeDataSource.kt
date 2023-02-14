@@ -6,7 +6,7 @@ import model.*
 class HardCodedFakeDataSource : CostOfLivingDataSource {
 
     enum class DataType {
-        VALID, EMPTY, NULLABLE
+        VALID, EMPTY, NULLABLE, MIXED
     }
 
     private var dataType: DataType = DataType.VALID
@@ -458,25 +458,35 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
         )
     }
 
-    private val cityList = mutableListOf<CityEntity>()
+    private val validCityList = mutableListOf<CityEntity>()
     private val nullableCityList = mutableListOf<CityEntity>()
+    private val mixedCityList = mutableListOf<CityEntity>()
 
     override fun getAllCitiesData(): List<CityEntity> {
-        cityList.add(cairoHighQuality)
-        cityList.add(londonLowQuality)
-        cityList.add(parisHighQuality)
+        validCityList.add(cairoHighQuality)
+        validCityList.add(londonLowQuality)
+        validCityList.add(parisHighQuality)
         nullableCityList.add(baghdadHighQualityNull)
         nullableCityList.add(rabatLowQualityNull)
         nullableCityList.add(berlinHighQualityNull)
+        mixedCityList.add(cairoHighQuality)
+        mixedCityList.add(londonLowQuality)
+        mixedCityList.add(parisHighQuality)
+        mixedCityList.add(baghdadHighQualityNull)
+        mixedCityList.add(rabatLowQualityNull)
+        mixedCityList.add(berlinHighQualityNull)
         return when (dataType) {
             DataType.VALID -> {
-                cityList
+                validCityList
             }
             DataType.EMPTY -> {
                 emptyList<CityEntity>()
             }
             DataType.NULLABLE -> {
                 nullableCityList
+            }
+            DataType.MIXED -> {
+                mixedCityList
             }
         }
     }
