@@ -1,5 +1,6 @@
 package interactor
 import FakeData
+import interactor.util.TypeOfApartments
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
@@ -23,7 +24,7 @@ class GetHighestApartmentPriceDifferenceCityInteractorTest {
     @Test
     fun should_ReturnHighestRentDifference_When_OneBedRoomSelect() {
         //given the type of the apartment
-        val type = typeOfApartments.ONE_BEDROOM
+        val type = TypeOfApartments.ONE_BEDROOM
 
         //when find the city with the Highest different rent
         val city = getHighestApartmentPrice.execute(type)
@@ -34,7 +35,7 @@ class GetHighestApartmentPriceDifferenceCityInteractorTest {
     @Test
     fun should_ReturnHighestRentDifference_When_ThreeBedRoomSelect() {
         //given the type of the apartment
-        val type = typeOfApartments.THREE_BEDROOMS
+        val type = TypeOfApartments.THREE_BEDROOMS
 
         //when find the city with the Highest different rent
         val result = getHighestApartmentPrice.execute(type)
