@@ -8,12 +8,7 @@ class GetTopFiveCitiesForFashionInteractor (
 ){
 
     fun execute(limit: Int): List<String> {
-        return dataSource
-            .getAllCitiesData()
-            .filter(::excludeNullSalariesAndLowQualityData)
-            .sortedWith(compareBy({it.clothesPrices.onePairOfJeansLevis50oneOrSimilar},{it.clothesPrices.oneSummerDressInAChainStoreZaraHAndM},{it.clothesPrices.onePairOfNikeRunningShoesMidRange},{it.clothesPrices.onePairOfMenLeatherBusinessShoes}))
-            .take(limit)
-            .map { it.cityName }
+        return listOf("")
 
     }
 
