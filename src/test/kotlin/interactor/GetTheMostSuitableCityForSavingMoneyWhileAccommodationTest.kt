@@ -9,6 +9,8 @@ import org.junit.jupiter.api.BeforeEach
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.function.Executable
+import java.lang.Exception
 
 
 val correctCityEntity by lazy {
@@ -191,6 +193,26 @@ class GetTheMostSuitableCityForSavingMoneyWhileAccommodationTest {
         val mostSavingCity = city.execute()
         //then compare with expected value
         assertEquals(correctMixedCityEntity, mostSavingCity)
+    }
+
+    @Test
+    fun should_ThrowException_When_DataIsNull() {
+        //given Null Data
+        val city = GetTheMostSuitableCityForSavingMoneyWhileAccommodation(nullData)
+        //when check data
+        val mostSavingCity = Executable { city.execute() }
+        //then compare with expected value
+        assertThrows(Exception::class.java, mostSavingCity)
+    }
+
+    @Test
+    fun should_ThrowException_When_ListIsEmpty() {
+        //given empty list
+        val city = GetTheMostSuitableCityForSavingMoneyWhileAccommodation(emptyList)
+        //when check the emptyList
+        val mostSavingCity = Executable { city.execute() }
+        //then compare with expected value
+        assertThrows(Exception::class.java, mostSavingCity)
     }
 
 
