@@ -2,11 +2,7 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import interactor.CostOfLivingDataSource
-import interactor.GetCItyWithMealPriceBetweenTwo
-import interactor.GetCityHasCheapestInternetConnectionInteractor
-import interactor.GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinks
-import interactor.GetHighestSalaryAverageCititesNamesInteractor
-import interactor.GetTheRightApartment
+
 
 fun main() {
     val csvParser = CsvParser()
@@ -16,6 +12,7 @@ fun main() {
     println(getTopTenCountriesHaveHighestPricesOfCarbonatedDrinks.getCountriesOfHighestCarbonatedDrinksPrices(
         limit = 10))
     println(dataSource.getAllCitiesData().take(5))
+
 
     val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
     println(getHighestSalaryAverageCities.execute(limit = 10))
