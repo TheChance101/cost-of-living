@@ -11,11 +11,20 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(
         return if (limit < 0 ) throw IllegalArgumentException("Please Enter Positive Number!")
         else {
             var map = mutableMapOf<String,Float>()
-            val dataFiltered = citiesData.apply {
+            /*val dataFiltered = citiesData.apply {
                 filter(::excludeLowQualityData)
                 filter(::excludeInvalidCountries)
                 filter(::excludeInvalidDrinksPrice)
-            }
+                take(limit)
+            }*/
+
+            val dataFiltered = citiesData
+                .filter(::excludeLowQualityData)
+                .filter(::excludeInvalidCountries)
+                .filter(::excludeInvalidDrinksPrice)
+                .sortedByDescending(::sumCityDrinkAverage)
+                .take(limit)
+
             dataFiltered.forEach {
                 val average = sumCityDrinkAverage(it)
                 if (average != null) {
