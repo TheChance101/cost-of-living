@@ -7,9 +7,8 @@ class GetCityHasCheapestInternetConnectionInteractor(
 ) {
 
     fun execute(): CityEntity{
-        throw Throwable("Not Implemented yet")
+        val cities=dataSource
+            .getAllCitiesData()
+        return cities.minBy { it.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl!! / it.averageMonthlyNetSalaryAfterTax!! }
     }
-
-
-
 }
