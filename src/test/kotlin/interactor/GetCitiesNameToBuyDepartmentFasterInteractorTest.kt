@@ -39,8 +39,8 @@ internal class GetCitiesNameToBuyApartmentFasterInteractorTest {
             Pair("Havana", 2.235250162760417),
             Pair("Kasese", 3.3489166666666663),
             Pair("Aleppo", 3.9583333333333335),
-            Pair("Warri", 8.44275),
-            Pair("Damascus", 15.645000000000001)
+            Pair("Damascus", 15.645000000000001),
+            Pair("Banjul", 20.161251302083333)
         )
         assertEquals(expected, actual)
     }
