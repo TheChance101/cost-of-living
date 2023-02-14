@@ -17,9 +17,10 @@ class GetCityHasCheapestMealPricesInteractor(
             .sortedByDescending { getAverageMealInCity(it) }
 
         return if (listOfCitiesEntity.isEmpty()) throw Throwable("List of cities is empty")
-        else listOfCitiesEntity
-            .filter { getAverageMealInCity(it) == getAverageMealInAllCities(listOfCitiesEntity) || getAverageMealInCity(it).toInt() == ceil( getAverageMealInAllCities(listOfCitiesEntity)).toInt() || getAverageMealInCity(it).toInt() == floor( getAverageMealInAllCities(listOfCitiesEntity)).toInt() }
-            .first()
+        else listOfCitiesEntity.first {
+            getAverageMealInCity(it) == getAverageMealInAllCities(listOfCitiesEntity) || getAverageMealInCity(it).toInt() == ceil(getAverageMealInAllCities(listOfCitiesEntity)).toInt() || getAverageMealInCity(it).toInt() == floor(
+                getAverageMealInAllCities(listOfCitiesEntity)).toInt()
+        }
     }
 
     fun isCitiesInUSACanadaAndMexico(city: CityEntity): Boolean {

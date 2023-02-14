@@ -1,7 +1,7 @@
-
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import dataSource.utils.GetCityNamesClothesPrices
+import enums.TheTypeOfApartments
 import interactor.*
 import interactor.CostOfLivingDataSource
 import interactor.GetCityHasLowestYearsToBuyApartmentInteractor
@@ -12,33 +12,74 @@ fun main() {
     val csvParser = CsvParser()
     val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
 
-    val getCityHasLowestYearsToBuyApartmentInteractor = GetCityHasLowestYearsToBuyApartmentInteractor(dataSource)
-    println(getCityHasLowestYearsToBuyApartmentInteractor.execute(10,55))
+    // region HighestSalaryAverageCities
+    val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
+    println(getHighestSalaryAverageCities.execute(limit = 10))
     printSeparationLine()
-    println(getCityHasLowestYearsToBuyApartmentInteractor.execute(7,100))
+    //endregion
+    //region 1-CityHasCheapestInternetConnection
+    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
+    println(getCityHasCheapestInternetConnectionInteractor.execute())
     printSeparationLine()
-    println(getCityHasLowestYearsToBuyApartmentInteractor.execute(0,55))
-   // val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
-    //println(getHighestSalaryAverageCities.execute(limit = 10))
+    //endregion
+    //region 2-TopCitiesFruitsAndVegetablesLowestCost
+    val getTopCitiesFruitsAndVegetablesLowestCost = GetTopCitiesFruitsAndVegetablesLowestCostInteractor(dataSource)
+    println(getTopCitiesFruitsAndVegetablesLowestCost.execute(10))
     printSeparationLine()
-
-    val gitCityNamesClothesPrices=  GetCityNamesClothesPrices(dataSource .getAllCitiesData() )
-    val getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor =   GetTop5CitiesNameHasSuitableClothesPricesInteractor ( gitCityNamesClothesPrices.execute() )
-    println ( getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor.execute() )
+    //endregion
+    //region 3-SalaryAverageForCitiesInCountry
+    val getSalaryAverageForCitiesInCountry = GetSalaryAverageForCitiesInCountryInteractor(dataSource)
+    println(getSalaryAverageForCitiesInCountry.execute("Egypt"))
+    println(getSalaryAverageForCitiesInCountry.execute("Turkey"))
+    println(getSalaryAverageForCitiesInCountry.execute("syria"))
     printSeparationLine()
-
-   // val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
-    //println(getCityHasCheapestInternetConnectionInteractor.execute())
+    //endregion
+    //region 4-CityHasHighestDifferentRentBetweenCityCenterAndOutside
+    val getCityHasHighestDifferentRentBetweenCityCenterAndOutside =
+        GetCityHasHighestDifferentRentBetweenCityCenterAndOutsideInteractor(dataSource)
+    println(getCityHasHighestDifferentRentBetweenCityCenterAndOutside.execute(TheTypeOfApartments.ONE_BED_ROOM))
     printSeparationLine()
-
-    val getSalaryAverageForCitiesInCountryInteractor = GetSalaryAverageForCitiesInCountryInteractor(dataSource)
-    println(getSalaryAverageForCitiesInCountryInteractor.execute("Egypt"))
-    println(getSalaryAverageForCitiesInCountryInteractor.execute("Turkey"))
-    println(getSalaryAverageForCitiesInCountryInteractor.execute("syria"))
-    val getCityHasCheapestMealPricesInteractor = GetCityHasCheapestMealPricesInteractor(dataSource)
-    println(getCityHasCheapestMealPricesInteractor.execute())
+    //endregion
+    //region 5-Top5CitiesNameHasSuitableClothesPrices
+    val gitCityNamesClothesPrices = GetCityNamesClothesPrices(dataSource.getAllCitiesData())
+    val getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor =
+        GetTop5CitiesNameHasSuitableClothesPricesInteractor(gitCityNamesClothesPrices.execute())
+    println(getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor.execute())
+    printSeparationLine()
+    //endregion
+    // region 6-CityHasLowestYearsToBuyApartment
+    val getCityHasLowestYearsToBuyApartment = GetCityHasLowestYearsToBuyApartmentInteractor(dataSource)
+    println(getCityHasLowestYearsToBuyApartment.execute(10, 55))
+    printSeparationLine()
+    println(getCityHasLowestYearsToBuyApartment.execute(7, 100))
+    printSeparationLine()
+    println(getCityHasLowestYearsToBuyApartment.execute(0, 55))
+    printSeparationLine()
+    //endregion
+    //region 7-CheapestBananaCitiesNames
+    val getCheapestBananaCitiesNames = GetCheapestBananaCitiesNamesInteractor(dataSource)
+    println(getCheapestBananaCitiesNames.execute())
+    printSeparationLine()
+    //endregion
+    //region 8-CityHasCheapestMealPrices
+    val getCityHasCheapestMealPrices = GetCityHasCheapestMealPricesInteractor(dataSource)
+    println(getCityHasCheapestMealPrices.execute())
+    printSeparationLine()
+    //endregion
+    //region 9-TopTenCountryEnforceHighTaxesOnCarbonatedDrinks
+    val getTopTenCountryEnforceHighTaxesOnCarbonatedDrinks =
+        GetTopTenCountryEnforceHighTaxesOnCarbonatedDrinksInteractor(dataSource)
+    println(getTopTenCountryEnforceHighTaxesOnCarbonatedDrinks.execute(10, listOf()))
+    printSeparationLine()
+    //endregion
+    //region 10-SuitableCityMoreSavingPerMonth
+    val getSuitableCityMoreSavingPerMonth = GetSuitableCityMoreSavingPerMonthInteractor(dataSource)
+    println(getSuitableCityMoreSavingPerMonth.execute())
+    printSeparationLine()
+    //endregion
 }
-private fun printSeparationLine(){
+
+private fun printSeparationLine() {
     print("\n_______________________________\n")
 }
 

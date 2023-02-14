@@ -48,7 +48,6 @@ class GetCityHasLowestYearsToBuyApartmentInteractorTest {
         //given
         val fullTimeSalary = 0
         val limit =1
-
         //when
         val resultList: org.junit.jupiter.api.function.Executable = org.junit.jupiter.api.function.Executable { converter.execute(limit,fullTimeSalary) }
         // then eception should be thrown
