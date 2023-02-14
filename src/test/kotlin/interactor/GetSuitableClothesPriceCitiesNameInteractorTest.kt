@@ -43,4 +43,15 @@ class GetSuitableClothesPriceCitiesNameInteractorTest {
         //then check the result
         assertEquals(listOf("El-minya","aswan","Giza","tanta","alexandria"),topFiveCities)
     }
+    @Test
+    fun should_ExcludeCity_When_AllClothesPriceHaveNullValue()
+    {
+        //given list contain city with null value for all clothes price
+        val listOfCities =GetSuitableClothesPriceCitiesNameInteractor(fakeDataWithNull)
+        //when find top cities and exclude city have no brand for clothes
+        val topCities = listOfCities.execute(5)
+        //then check the result
+        assertEquals(listOf("aswan","Giza","tanta","cairo"),topCities)
+
+    }
 }
