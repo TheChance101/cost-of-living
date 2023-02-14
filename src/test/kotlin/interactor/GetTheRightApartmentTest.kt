@@ -1,5 +1,5 @@
-package interactor
 
+package interactor
 import org.junit.jupiter.api.Assertions.*
 import fakedata.FakeData
 import org.junit.jupiter.api.BeforeEach
@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.function.Executable
 
 class GetTheRightApartmentTest {
-    private lateinit var dataSource: CostOfLivingDataSource
     private lateinit var fakeData: FakeData
     private lateinit var getTheRightApartment: GetTheRightApartment
 
@@ -20,7 +19,7 @@ class GetTheRightApartmentTest {
 
 
     @Test
-    fun should_ReturnTrue_when_OutPutInCorrect() {
+    fun should_ReturnNotEqualIsTrue_when_OutPutInCorrect() {
         //Give
         val expectedResult = listOf(
             Pair("Alexandria", 1.0f),
@@ -43,7 +42,7 @@ class GetTheRightApartmentTest {
 
 
     @Test
-    fun should_ReturnTrue_when_OutPutCorrect() {
+    fun should_ReturnEqualIsTrue_when_OutPutCorrect() {
         //Give
         val expectedResult = listOf(
             Pair("Havana", 2.2352502f),
@@ -56,7 +55,7 @@ class GetTheRightApartmentTest {
     }
 
     @Test
-    fun should_ReturnTrue_when_OutPutInCorrec() {
+    fun should_Throw_when_salaryEqualZero() {
         //Give
         val expectedResult = listOf(
             Pair("Alexandria", "20"),
@@ -65,8 +64,9 @@ class GetTheRightApartmentTest {
             Pair("Madrid", "10"),
         )
         //When
-        val actualResult: Executable = Executable { getTheRightApartment.getListOfDetailsOfApartment(0) }
+        val actualResult = Executable { getTheRightApartment.getListOfDetailsOfApartment(0) }
         //Then
         assertThrows(Exception::class.java, actualResult)
     }
 }
+

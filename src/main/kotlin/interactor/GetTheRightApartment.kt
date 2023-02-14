@@ -18,6 +18,8 @@ open class GetTheRightApartment(private val dataSource: CostOfLivingDataSource) 
 
     // function return name of city and number of years to pay apartment
     fun getListOfDetailsOfApartment(salary: Int): List<Pair<String, Float>> {
+        if (salary == 0)
+            return throw Exception()
         return getTopTenCitesHasCanPayApartmentFaster()
             .map { Pair(it.cityName, numberOfYearsToBuyApartment(salary, it)) }
     }
@@ -27,11 +29,10 @@ open class GetTheRightApartment(private val dataSource: CostOfLivingDataSource) 
         return city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre != null && city.dataQuality
     }
 
-    // function return true
+    // function return number of years to buy apartment
     private fun numberOfYearsToBuyApartment(salary: Int, city: CityEntity): Float {
 
         return (100 * city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!) / (salary * 12)
 
     }
 }
-
