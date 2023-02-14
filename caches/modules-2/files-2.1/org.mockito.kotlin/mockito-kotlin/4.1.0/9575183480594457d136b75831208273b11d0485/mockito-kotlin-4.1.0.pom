@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.mockito.kotlin</groupId>
+  <artifactId>mockito-kotlin</artifactId>
+  <version>4.1.0</version>
+  <dependencies>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>4.5.1</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+  <name>Mockito-Kotlin</name>
+  <description>Using Mockito with Kotlin.</description>
+  <url>https://github.com/mockito/mockito-kotlin</url>
+  <scm>
+    <url>scm:git@github.com:mockito/mockito-kotlin.git</url>
+  </scm>
+  <licenses>
+    <license>
+      <name>MIT</name>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>nhaarman</id>
+      <name>Niek Haarman</name>
+    </developer>
+  </developers>
+</project>
