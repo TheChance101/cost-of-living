@@ -36,7 +36,7 @@ internal class GetTopCitiesFasterToBuyApartmentAndTheNumberOfYearToBuyItTest {
             assertEquals(listOf(Pair("Santiago de Cuba",2)),listOfPairforcities)
         }
         @Test
-        fun should_returnNull_correctListOfPairs_whenTheSalaryIsNegative() {
+        fun should_returnNull_correctListOfCities_whenTheSalaryIsNegative() {
             //given
             val salary=-1
             //when
@@ -46,7 +46,7 @@ internal class GetTopCitiesFasterToBuyApartmentAndTheNumberOfYearToBuyItTest {
         }
 
         @Test
-        fun should_returnNull_emptyListOfPairs_whenTheSalaryIsPossitive() {
+        fun should_returnNull_emptyListOfCities_whenTheSalaryIsPositive() {
             //given
             val salary=300
             //when
@@ -56,7 +56,7 @@ internal class GetTopCitiesFasterToBuyApartmentAndTheNumberOfYearToBuyItTest {
         }
 
         @Test
-        fun should_returnNull_correctListOfPairs_whenTheSalaryIsZero() {
+        fun should_returnNull_correctListOfCities_whenTheSalaryIsZero() {
             //given
             val salary=0
             //when
