@@ -25,7 +25,6 @@ class GetSuitableClothesPriceCitiesNameInteractor(
         if(cityEntity.clothesPrices.onePairOfNikeRunningShoesMidRange !=null) totalPrice+=cityEntity.clothesPrices.onePairOfNikeRunningShoesMidRange
         if (cityEntity.clothesPrices.onePairOfMenLeatherBusinessShoes !=null) totalPrice+=cityEntity.clothesPrices.onePairOfMenLeatherBusinessShoes
         if(cityEntity.clothesPrices.onePairOfJeansLevis50oneOrSimilar !=null) totalPrice+=cityEntity.clothesPrices.onePairOfJeansLevis50oneOrSimilar
-
         return totalPrice / getNumberOfBrand(cityEntity)
     }
     private fun getNumberOfBrand(cityEntity: CityEntity):Int{
@@ -35,6 +34,7 @@ class GetSuitableClothesPriceCitiesNameInteractor(
         if(cityEntity.clothesPrices.onePairOfMenLeatherBusinessShoes != null) totalBrand++
         if(cityEntity.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null) totalBrand++
         return totalBrand
+
     }
     /**
      * this function excludes city have no famous brands

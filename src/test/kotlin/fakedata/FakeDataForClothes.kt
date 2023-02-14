@@ -677,7 +677,10 @@ class FakeBrandDataWithNull : CostOfLivingDataSource {
     override fun getAllCitiesData() =
         listOf(cityCase1, cityCase2, cityCase3, cityCase4, cityCase5, cityCase6 )
 }
-val emptyCity = object :CostOfLivingDataSource {
-    override fun getAllCitiesData()= listOf<CityEntity>()
-
+class FakeEmptyCity : CostOfLivingDataSource {
+        override fun getAllCitiesData()= listOf<CityEntity>()
 }
+
+
+
+

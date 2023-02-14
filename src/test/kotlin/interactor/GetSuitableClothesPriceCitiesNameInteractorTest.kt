@@ -2,7 +2,9 @@ package interactor
 
 import fakedata.FakeBrandDataWithNull
 import fakedata.FakeDataWithNull
+import fakedata.FakeEmptyCity
 import fakedata.FakeFullData
+import model.CityEntity
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
@@ -16,6 +18,8 @@ class GetSuitableClothesPriceCitiesNameInteractorTest {
     private lateinit var fakeFullData : FakeFullData
     private lateinit var fakeDataWithNull: FakeDataWithNull
     private lateinit var fakeBrandDataWithNull: FakeBrandDataWithNull
+    private lateinit var fakeEmptyCity: FakeEmptyCity
+
 
     @BeforeAll
     fun setup()
@@ -23,6 +27,8 @@ class GetSuitableClothesPriceCitiesNameInteractorTest {
         fakeFullData= FakeFullData()
         fakeDataWithNull= FakeDataWithNull()
         fakeBrandDataWithNull = FakeBrandDataWithNull()
+        fakeEmptyCity = FakeEmptyCity()
+
 
     }
     @Test
@@ -54,4 +60,16 @@ class GetSuitableClothesPriceCitiesNameInteractorTest {
         assertEquals(listOf("aswan","Giza","tanta","cairo"),topCities)
 
     }
+    @Test
+    fun should_RetrunEmptyList_When_EnterEmptyList()
+    {
+        //given Empty list
+        val listOfCities =GetSuitableClothesPriceCitiesNameInteractor(fakeEmptyCity)
+        //when find top cities and exclude city have no brand for clothes
+        val topCities = listOfCities.execute(5)
+        //then check the result
+        assertEquals(listOf<CityEntity>(),topCities)
+
+    }
+
 }
