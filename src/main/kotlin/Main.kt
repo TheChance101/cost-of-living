@@ -41,11 +41,13 @@ fun main() {
     println(getLowCostFruitVegetableCitiesWithHighSalaries.execute())
     printSeparationLine()
 
+    val getTheCityThatMatchManagerExpectations = GetTheCityThatMatchManagerExpectationsInteractor(dataSource)
+    println(getTheCityThatMatchManagerExpectations.execute())
+    printSeparationLine()
 
     val getCityHasCheapestInternetConnection = GetCityHasCheapestInternetConnectionInteractor(dataSource)
     println(getCityHasCheapestInternetConnection.execute())
     printSeparationLine()
-
 
 
 }
