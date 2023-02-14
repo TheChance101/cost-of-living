@@ -20,7 +20,7 @@ class GetTheRightApartmentTest {
 
     @Test
     fun should_ReturnNotEqualIsTrue_when_OutPutInCorrect() {
-        //Give
+        //Given list of cities and years
         val expectedResult = listOf(
             Pair("Alexandria", 1.0f),
             Pair("Bagdad", 1.2f),
@@ -34,38 +34,38 @@ class GetTheRightApartmentTest {
             Pair("Bagdad", 2.3f),
         )
 
-        //When
+        //When salary =1000
         val actualResult = getTheRightApartment.getListOfDetailsOfApartment(1000)
-        //Then
+        //Then return true when input not equal out put
         assertNotEquals(expectedResult, actualResult)
     }
 
 
     @Test
     fun should_ReturnEqualIsTrue_when_OutPutCorrect() {
-        //Give
+        //Given list of cities and years
         val expectedResult = listOf(
             Pair("Havana", 2.2352502f),
             Pair("Damascus", 15.645f),
         )
-        //When
+        //When salary =1000
         val actualResult = getTheRightApartment.getListOfDetailsOfApartment(1000)
-        //Then
+        //Then return true when input equal out put
         assertEquals(expectedResult, actualResult)
     }
 
     @Test
     fun should_Throw_when_salaryEqualZero() {
-        //Give
+        //Given list of cities and years
         val expectedResult = listOf(
             Pair("Alexandria", "20"),
             Pair("Bagdad", "13"),
             Pair("giza", "16"),
             Pair("Madrid", "10"),
         )
-        //When
+        //When salary =0
         val actualResult = Executable { getTheRightApartment.getListOfDetailsOfApartment(0) }
-        //Then
+        //Then throw when salary = 0
         assertThrows(Exception::class.java, actualResult)
     }
 }
