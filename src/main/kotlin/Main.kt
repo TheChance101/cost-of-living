@@ -35,6 +35,10 @@ fun main() {
     println(getBestClothesPriceCitiesNameInteractor.execute(limit = 5))
     printSeparationLine()
 
+    val getCityNameAndSalaryAverageInteractor = GetCityNameAndSalrayAverageInteractor(dataSource)
+    println(getCityNameAndSalaryAverageInteractor.execute("Egypt"))
+    printSeparationLine()
+
     val getMostSuitableCityForMoreSavingsPerMonthInteractor = GetMostSuitableCityForMoreSavingsPerMonthInteractor(dataSource)
     getMostSuitableCityForMoreSavingsPerMonthInteractor.apply {
         println(execute())
