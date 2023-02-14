@@ -14,4 +14,4 @@ data class CityEntity(
     val realEstatesPrices: RealEstatesPrices,
     val averageMonthlyNetSalaryAfterTax: Float?,
     val dataQuality: Boolean,
-)
+) 
