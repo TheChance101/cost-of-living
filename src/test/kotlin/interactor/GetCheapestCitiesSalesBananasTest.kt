@@ -75,9 +75,8 @@ class GetCheapestCitiesSalesBananasTest {
         //when
         val getCheapestCitiesSalesBananas = GetCheapestCitiesSalesBananas()
         val result = getCheapestCitiesSalesBananas.execute(*args)
-        val citiesNameOfTheResult = result.map { it.cityName }
         //then
-        assertEquals(expected, citiesNameOfTheResult)
+        assertEquals(expected, result)
     }
     @Test
     fun should_ReturnFalse_When_PassingNullBananas(){
@@ -186,9 +185,8 @@ class GetCheapestCitiesSalesBananasTest {
         //when
         val getCheapestCitiesSalesBananas = GetCheapestCitiesSalesBananas()
         val result = getCheapestCitiesSalesBananas.execute(*args)
-        val citiesNameOfTheResult = result.map { it.cityName }
         //then
-        assertEquals(expected, citiesNameOfTheResult)
+        assertEquals(expected, result)
     }
 
 }

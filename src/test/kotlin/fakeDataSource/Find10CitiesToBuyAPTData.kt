@@ -244,28 +244,7 @@ val missingSalary = listOf(
 
 val variousData = listOf(
     //region average monthly salary sufficing afford to buy the apartment
-    CityEntity(
-        "City11",
-        "Country11",
-        MealsPrices(null, null, null),
-        DrinksPrices(null, null, null, null, null),
-        FruitAndVegetablesPrices(null, null, null, null, null, null, null),
-        FoodPrices(null, null, null, null, null, null),
-        ServicesPrices(null, null, null, null, null, null, null, null),
-        ClothesPrices(null, null, null, null),
-        TransportationsPrices(null, null, null, null, null, null),
-        CarsPrices(null, null),
-        RealEstatesPrices(
-            apartmentOneBedroomInCityCentre = null,
-            apartmentOneBedroomOutsideOfCentre = null,
-            apartment3BedroomsInCityCentre = null,
-            apartment3BedroomsOutsideOfCentre = null,
-            pricePerSquareMeterToBuyApartmentInCityCentre = null,
-            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 3000f
-        ),
-        6900f,
-        true
-    ),
+
     CityEntity(
         "City12",
         "Country12",
@@ -308,6 +287,28 @@ val variousData = listOf(
             pricePerSquareMeterToBuyApartmentOutsideOfCentre = 4000f
         ),
         8600f,
+        true
+    ),
+    CityEntity(
+        "City11",
+        "Country11",
+        MealsPrices(null, null, null),
+        DrinksPrices(null, null, null, null, null),
+        FruitAndVegetablesPrices(null, null, null, null, null, null, null),
+        FoodPrices(null, null, null, null, null, null),
+        ServicesPrices(null, null, null, null, null, null, null, null),
+        ClothesPrices(null, null, null, null),
+        TransportationsPrices(null, null, null, null, null, null),
+        CarsPrices(null, null),
+        RealEstatesPrices(
+            apartmentOneBedroomInCityCentre = null,
+            apartmentOneBedroomOutsideOfCentre = null,
+            apartment3BedroomsInCityCentre = null,
+            apartment3BedroomsOutsideOfCentre = null,
+            pricePerSquareMeterToBuyApartmentInCityCentre = null,
+            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 3000f
+        ),
+        6900f,
         true
     ),
     CityEntity(
@@ -410,28 +411,6 @@ val variousData = listOf(
         true
     ),
     CityEntity(
-        "City18",
-        "Country18",
-        MealsPrices(null, null, null),
-        DrinksPrices(null, null, null, null, null),
-        FruitAndVegetablesPrices(null, null, null, null, null, null, null),
-        FoodPrices(null, null, null, null, null, null),
-        ServicesPrices(null, null, null, null, null, null, null, null),
-        ClothesPrices(null, null, null, null),
-        TransportationsPrices(null, null, null, null, null, null),
-        CarsPrices(null, null),
-        RealEstatesPrices(
-            apartmentOneBedroomInCityCentre = null,
-            apartmentOneBedroomOutsideOfCentre = null,
-            apartment3BedroomsInCityCentre = null,
-            apartment3BedroomsOutsideOfCentre = null,
-            pricePerSquareMeterToBuyApartmentInCityCentre = 9156.97f,
-            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 4500f
-        ),
-        2000f,
-        true
-    ),
-    CityEntity(
         "City19",
         "Country19",
         MealsPrices(null, null, null),
@@ -474,7 +453,29 @@ val variousData = listOf(
         ),
         1500f,
         true
-    )
+    ),
+    CityEntity(
+        "City18",
+        "Country18",
+        MealsPrices(null, null, null),
+        DrinksPrices(null, null, null, null, null),
+        FruitAndVegetablesPrices(null, null, null, null, null, null, null),
+        FoodPrices(null, null, null, null, null, null),
+        ServicesPrices(null, null, null, null, null, null, null, null),
+        ClothesPrices(null, null, null, null),
+        TransportationsPrices(null, null, null, null, null, null),
+        CarsPrices(null, null),
+        RealEstatesPrices(
+            apartmentOneBedroomInCityCentre = null,
+            apartmentOneBedroomOutsideOfCentre = null,
+            apartment3BedroomsInCityCentre = null,
+            apartment3BedroomsOutsideOfCentre = null,
+            pricePerSquareMeterToBuyApartmentInCityCentre = 9156.97f,
+            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 4500f
+        ),
+        2000f,
+        true
+    ),
 
     //endregion
 

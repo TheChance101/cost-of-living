@@ -12,6 +12,7 @@ class GetFastest10CitiesToBuyAPTInteractor(
                 val numberOfYearsToBuyAPT = calculateNumberOfYearsToBuyAPT(it)
                 Pair(it.cityName, numberOfYearsToBuyAPT)
             }
+            .sortedBy { it.second }
             .take(10)
     }
 
