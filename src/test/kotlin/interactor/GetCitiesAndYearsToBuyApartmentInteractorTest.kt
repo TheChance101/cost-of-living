@@ -13,10 +13,11 @@ class GetCitiesAndYearsToBuyApartmentInteractorTest {
 
 
     private lateinit var getCitiesAndYearsToBuyApartment: GetCitiesAndYearsToBuyApartmentInteractor
+    private lateinit var fakeData: FakeData
 
-    @BeforeEach
+    @BeforeAll
     fun setUp() {
-        val fakeData = FakeData()
+        fakeData = FakeData()
         getCitiesAndYearsToBuyApartment = GetCitiesAndYearsToBuyApartmentInteractor(fakeData)
     }
 
@@ -74,7 +75,6 @@ class GetCitiesAndYearsToBuyApartmentInteractorTest {
     @Test
     @Disabled
     fun should_returnEmptyList_when_dataIsEmpty() {
-
         //When
         val actualResult = getCitiesAndYearsToBuyApartment.execute(limit)
 
