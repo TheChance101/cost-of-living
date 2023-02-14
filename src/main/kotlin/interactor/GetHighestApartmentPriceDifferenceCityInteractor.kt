@@ -1,22 +1,23 @@
 package interactor
 
+import interactor.util.TypeOfApartments
 import model.CityEntity
-import model.RealEstatesPrices
-import kotlin.math.abs
+import java.lang.Math.abs
 
 class GetHighestApartmentPriceDifferenceCityInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
-    fun execute(type: typeOfApartments): CityEntity? {
+    fun execute(type: TypeOfApartments): CityEntity? {
         return dataSource.getAllCitiesData()
             .filter(::excludeNullRentAndLowQualityData)
             .maxByOrNull { city ->
                 when (type) {
-                    typeOfApartments.ONE_BEDROOM -> abs(
+                    TypeOfApartments.ONE_BEDROOM -> abs(
                         city.realEstatesPrices.apartmentOneBedroomInCityCentre!!
                                 - city.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!!
                     )
-                    typeOfApartments.THREE_BEDROOMS -> abs(
+
+                    TypeOfApartments.THREE_BEDROOMS -> abs(
                         city.realEstatesPrices.apartment3BedroomsInCityCentre!!
                                 - city.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
                     )
@@ -33,10 +34,4 @@ class GetHighestApartmentPriceDifferenceCityInteractor(
     }
 
 }
-
-enum class typeOfApartments {
-    ONE_BEDROOM, THREE_BEDROOMS
-
-}
-
 
