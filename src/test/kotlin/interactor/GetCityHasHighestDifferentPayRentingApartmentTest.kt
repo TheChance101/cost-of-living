@@ -51,7 +51,7 @@ internal class TestGetCityWithHighestRentalPriceDifferenceInteractor {
 
     @Test
     fun `Should return the city with the highest rental price difference`() {
-        //given an var of dataSource with return name of city
+        //given a var of dataSource with return name of city
         val cityData = dataSource.getAllCitiesData()
 
         val result = getCityWithHighestRentalPriceDifference.execute(cityData)

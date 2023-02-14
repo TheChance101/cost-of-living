@@ -78,17 +78,19 @@ class GetCheapestCitiesSalesBananasTest {
         //then
         assertEquals(expected, result)
     }
+
     @Test
-    fun should_ReturnFalse_When_PassingNullBananas(){
+    fun should_ReturnFalse_When_PassingNullBananas() {
         //given
-        val fruitAndVegetablesPrice= FruitAndVegetablesPrices(null, null, null, null, null, null, null)
+        val fruitAndVegetablesPrice = FruitAndVegetablesPrices(null, null, null, null, null, null, null)
         //when
         val result = excludeNullBananas(fruitAndVegetablesPrice)
         //then
         assertFalse(result)
     }
+
     @Test
-    fun should_ReturnCitiesWithoutCitiesThatHaveNullBanana_When_PassingCitiesWithNullAndWithout(){
+    fun should_ReturnCitiesWithoutCitiesThatHaveNullBanana_When_PassingCitiesWithNullAndWithout() {
         val args = arrayOf(
             CityEntity(
                 "City1",

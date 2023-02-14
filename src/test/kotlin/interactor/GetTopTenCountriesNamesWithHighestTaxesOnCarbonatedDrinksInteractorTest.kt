@@ -2,7 +2,6 @@ package interactor
 
 import fakeDataSource.FakeDataSource
 import fakeDataSource.TaxesFakeDataSource
-import model.DrinksPrices
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -34,10 +33,10 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         // When
         //throws exception
         // Then
-        val executable = Executable {getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.execute(limit)}
-        assertThrows(IllegalArgumentException::class.java,executable)
+        val executable =
+            Executable { getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.execute(limit) }
+        assertThrows(IllegalArgumentException::class.java, executable)
     }
-
 
 
     //region data quality test
@@ -136,9 +135,11 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
     @Test
     fun should_returnFalse_when_countryNameContainDigit() {
         // given
-        val city = taxesFakeDataSource.createFakeCity("a123456",
+        val city = taxesFakeDataSource.createFakeCity(
+            "a123456",
             17.5f,
-            true)
+            true
+        )
         // when
         val result = getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
             .excludeInvalidCountries(city)
@@ -149,9 +150,11 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
     @Test
     fun should_returnFalse_when_countryNameContainSymbols() {
         // given
-        val city = taxesFakeDataSource.createFakeCity("Symbols!@#",
+        val city = taxesFakeDataSource.createFakeCity(
+            "Symbols!@#",
             17.5f,
-            true)
+            true
+        )
         // when
         val result = getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
             .excludeInvalidCountries(city)

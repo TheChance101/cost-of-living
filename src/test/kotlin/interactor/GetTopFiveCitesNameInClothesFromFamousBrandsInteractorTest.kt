@@ -4,12 +4,11 @@ import model.*
 import org.junit.jupiter.api.*
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
-import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest {
-    lateinit var topFiveCitesNameInClothesFromFamousBrandsInteractor: GetTopFiveCitesNameInClothesFromFamousBrandsInteractor
+    private lateinit var topFiveCitesNameInClothesFromFamousBrandsInteractor: GetTopFiveCitesNameInClothesFromFamousBrandsInteractor
 
     @BeforeAll
     fun setup() {
@@ -353,7 +352,6 @@ class GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest {
                     )
                 }
             })
-        val limit = 5
 //when
         val result = topFiveCitesNameInClothesFromFamousBrandsInteractor.execute()
 //then
@@ -549,7 +547,7 @@ class GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest {
 
 
         //given
-        val clothesPrices= ClothesPrices(
+        val clothesPrices = ClothesPrices(
             onePairOfJeansLevis50oneOrSimilar = 170f,
             oneSummerDressInAChainStoreZaraHAndM = 350f,
             onePairOfNikeRunningShoesMidRange = 180f,
@@ -566,7 +564,7 @@ class GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest {
     }
 
     @Test
-    fun returnFalseWhenCitiesVaveMissingClothesPrices(){
+    fun returnFalseWhenCitiesVaveMissingClothesPrices() {
         //given
 
         val topFiveCitesNameInClothesFromFamousBrandsInteractor =
@@ -737,7 +735,7 @@ class GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest {
                 }
             })
 
-        val clothesPrices= CityEntity(
+        val clothesPrices = CityEntity(
             "city11",
             "country01",
             MealsPrices(null, null, null),
@@ -758,13 +756,13 @@ class GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest {
             true
         )
 //when
-        val result=topFiveCitesNameInClothesFromFamousBrandsInteractor.excludeNullClothesPrices(clothesPrices)
+        val result = topFiveCitesNameInClothesFromFamousBrandsInteractor.excludeNullClothesPrices(clothesPrices)
 //then
         assertFalse { result }
     }
 
     @Test
-    fun returnNullWhenCitiesVaveMissingClothesPrices(){
+    fun returnNullWhenCitiesVaveMissingClothesPrices() {
         //given
 
         val topFiveCitesNameInClothesFromFamousBrandsInteractor =
@@ -935,7 +933,7 @@ class GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest {
                 }
             })
 
-        val clothesPrices= CityEntity(
+        val clothesPrices = CityEntity(
             "city11",
             "country01",
             MealsPrices(null, null, null),
@@ -956,9 +954,9 @@ class GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest {
             true
         )
 //when
-        val result=topFiveCitesNameInClothesFromFamousBrandsInteractor.excludeNullClothesPrices(clothesPrices)
+        val result = topFiveCitesNameInClothesFromFamousBrandsInteractor.excludeNullClothesPrices(clothesPrices)
 //then
-        assertTrue { result}
+        assertTrue { result }
     }
 }
 

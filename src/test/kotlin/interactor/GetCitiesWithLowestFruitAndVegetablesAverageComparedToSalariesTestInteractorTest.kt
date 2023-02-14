@@ -309,7 +309,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
                         "",
                         MealsPrices(null, null, null),
                         DrinksPrices(null, null, null, null, null),
-                        FruitAndVegetablesPrices(null, null, null, null, null, null, null,),
+                        FruitAndVegetablesPrices(null, null, null, null, null, null, null),
                         FoodPrices(null, null, null, null, null, null),
                         ServicesPrices(null, null, null, null, null, null, null, null),
                         ClothesPrices(null, null, null, null),
@@ -343,7 +343,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
             "",
             MealsPrices(null, null, null),
             DrinksPrices(null, null, null, null, null),
-            FruitAndVegetablesPrices(null, null, null, null, null, null, null,),
+            FruitAndVegetablesPrices(null, null, null, null, null, null, null),
             FoodPrices(null, null, null, null, null, null),
             ServicesPrices(null, null, null, null, null, null, null, null),
             ClothesPrices(null, null, null, null),
@@ -384,7 +384,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
     @Test
     fun should_returnFalse_When_FruitAndVegetablesISNull() {
         //given null fruit and vegetables
-        val nullFruitAndVegetables = FruitAndVegetablesPrices(null, 1.0f, null, null, null, null, null,)
+        val nullFruitAndVegetables = FruitAndVegetablesPrices(null, 1.0f, null, null, null, null, null)
         //when FruitAndVegetablesISNull
         val result = data.excludeNullFruitsAndVegetables(nullFruitAndVegetables)
         //then
@@ -400,7 +400,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
             "city",
             MealsPrices(null, null, null),
             DrinksPrices(null, null, null, null, null),
-            FruitAndVegetablesPrices(null, null, null, null, null, null, null,),
+            FruitAndVegetablesPrices(null, null, null, null, null, null, null),
             FoodPrices(null, null, null, null, null, null),
             ServicesPrices(null, null, null, null, null, null, null, null),
             ClothesPrices(null, null, null, null),
@@ -424,7 +424,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
             "city",
             MealsPrices(null, null, null),
             DrinksPrices(null, null, null, null, null),
-            FruitAndVegetablesPrices(null, null, null, null, null, null, null,),
+            FruitAndVegetablesPrices(null, null, null, null, null, null, null),
             FoodPrices(null, null, null, null, null, null),
             ServicesPrices(null, null, null, null, null, null, null, null),
             ClothesPrices(null, null, null, null),

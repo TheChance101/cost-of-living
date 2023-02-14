@@ -357,7 +357,7 @@ class GetCityMakesFamilySaveMoreInteractionTest {
     }
 
     @Test
-    fun Should_ReturnFalse_When_FoodNull(){
+    fun should_ReturnFalse_When_FoodNull(){
         val nullCityTemp =  CityEntity(
             cityName = "Cairo",
             country = "Egypt",

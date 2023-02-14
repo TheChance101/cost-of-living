@@ -10,7 +10,7 @@ import org.junit.jupiter.api.assertDoesNotThrow
 class GetDinnerLocationInteractorTest {
 
     @Test
-    fun Should_returnsNull_When_ThereAreNoCities() {
+    fun should_returnsNull_When_ThereAreNoCities() {
         // Given
 
         val dataSource = object : CostOfLivingDataSource {
@@ -19,7 +19,6 @@ class GetDinnerLocationInteractorTest {
             }
         }
         val interactor = GetDinnerLocationInteractor(dataSource)
-        val exepct = null
 
         assertDoesNotThrow("This block should not throw an exception") {
             interactor.execute()
@@ -30,7 +29,7 @@ class GetDinnerLocationInteractorTest {
 
 
     @Test
-    fun Should_ReutrnsNull_When_CitiesHaveMissingMealPrices() {
+    fun should_ReutrnsNull_When_CitiesHaveMissingMealPrices() {
         // Given
 
         val dataSource = object : CostOfLivingDataSource {
@@ -64,7 +63,7 @@ class GetDinnerLocationInteractorTest {
     }
 
     @Test
-    fun Should_ReturnsNull_When_CitiesAreFromCountriesOtherTHenUsa_Canda_Mexico() {
+    fun should_ReturnsNull_When_CitiesAreFromCountriesOtherTHenUsa_Canda_Mexico() {
         // Given
 
         val dataSource = object : CostOfLivingDataSource {
@@ -99,7 +98,7 @@ class GetDinnerLocationInteractorTest {
     }
 
     @Test
-    fun Should_ReturnsClosestCityName() {
+    fun should_ReturnsClosestCityName() {
         // Given
 
         val dataSource = object : CostOfLivingDataSource {
@@ -254,7 +253,7 @@ class GetDinnerLocationInteractorTest {
     }
 
     @Test
-    fun Should_GetAvgReturnsThecorrectaverage() {
+    fun should_GetAvgReturnsThecorrectaverage() {
         // Given
 
         val mealsPrices1 = MealsPrices(245f, 43.0f, 81.6f)
@@ -270,7 +269,7 @@ class GetDinnerLocationInteractorTest {
         assertEquals(145f, avg)
     }
     @Test
-    fun Should_ReturnsClosestCity_And_Avg(){
+    fun should_ReturnsClosestCity_And_Avg(){
         //Given
          val citylist = listOf(
              CityEntity(
@@ -409,7 +408,7 @@ class GetDinnerLocationInteractorTest {
                  true
              ),
          )
-         var avg = 310f
+         val avg = 310f
          //when
         val closescity = getClosesCity(citylist,avg)
         //then

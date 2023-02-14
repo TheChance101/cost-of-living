@@ -22,7 +22,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
     @Test
     fun `Should return false when input null price`() {
         //given an object of CityEntity with Null price
-        var city = dataSource.getAllCitiesWithNullPrice()[0]
+        val city = dataSource.getAllCitiesWithNullPrice()[0]
 
         //when
         val result = getCity.excludeNullPrice(city)
@@ -33,7 +33,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
     @Test
     fun `Should return false when input null salary`() {
         //given an object of CityEntity with Null Salary
-        var city = dataSource.getAllCitiesWithNullSalary()[0]
+        val city = dataSource.getAllCitiesWithNullSalary()[0]
         //when
         val result = getCity.excludeNullSalaries(city)
         //then

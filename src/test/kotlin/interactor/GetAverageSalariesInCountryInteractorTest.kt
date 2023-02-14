@@ -13,15 +13,16 @@ import org.junit.jupiter.api.function.Executable
 
 class GetAverageSalariesInCountryInteractorTest {
 
-    lateinit var getAverageSalariesInCountryInteractor: GetAverageSalariesInCountryInteractor
+    private lateinit var getAverageSalariesInCountryInteractor: GetAverageSalariesInCountryInteractor
 
     @BeforeAll
     fun setUp() {
-        var fake = FakeDataSource()
+        val fake = FakeDataSource()
         getAverageSalariesInCountryInteractor = GetAverageSalariesInCountryInteractor(fake)
     }
+
     @Test
-    fun should_ReturnTrue_When_DataQualityInCityEntityIsHigh(){
+    fun should_ReturnTrue_When_DataQualityInCityEntityIsHigh() {
         //given
         val city = CityEntity(
             "City7", "Country7", MealsPrices(null, null, null),
@@ -44,7 +45,7 @@ class GetAverageSalariesInCountryInteractorTest {
     }
 
     @Test
-    fun should_ReturnFalse_When_DataQualityInCityEntityIsLow(){
+    fun should_ReturnFalse_When_DataQualityInCityEntityIsLow() {
         //given
         val city = CityEntity(
             "City3", "Country3", MealsPrices(null, null, null),
@@ -67,7 +68,7 @@ class GetAverageSalariesInCountryInteractorTest {
     }
 
     @Test
-    fun shouldReturnNull_When_AverageSalaryIsNull(){
+    fun shouldReturnNull_When_AverageSalaryIsNull() {
         //given
         val city = CityEntity(
             "City6", "Country6", MealsPrices(null, null, null),
@@ -80,14 +81,16 @@ class GetAverageSalariesInCountryInteractorTest {
             CarsPrices(null, null),
             RealEstatesPrices(null, null, null, null, null, null),
             null,
-            true)
+            true
+        )
         //when
         val valueOfSalary = getAverageSalariesInCountryInteractor.excludeNullSalaries(city)
         //then
         assertFalse(valueOfSalary)
     }
+
     @Test
-    fun shouldReturnValueOfAverageSalary_When_AverageSalaryIsNotNull(){
+    fun shouldReturnValueOfAverageSalary_When_AverageSalaryIsNotNull() {
         //given
         val city = CityEntity(
             "City6", "Country6", MealsPrices(null, null, null),
@@ -100,32 +103,36 @@ class GetAverageSalariesInCountryInteractorTest {
             CarsPrices(null, null),
             RealEstatesPrices(null, null, null, null, null, null),
             5000f,
-            true)
+            true
+        )
         //when
         val valueOfSalary = getAverageSalariesInCountryInteractor.excludeNullSalaries(city)
         //then
         assertTrue(valueOfSalary)
     }
+
     @Test
     fun should_ReturnCorrectListOfCities_When_TheCountryNameIsCorrectAndInLowerCase() {
         //given
         val country = "egypt"
-        val cities = listOf(Pair("Cairo",3000f),Pair("Alexandria",4000f),Pair("Mansoura",2000f),Pair("Suis",2500f))
+        val cities =
+            listOf(Pair("Cairo", 3000f), Pair("Alexandria", 4000f), Pair("Mansoura", 2000f), Pair("Suis", 2500f))
         //when
         val listOfCitiesAndAverageSalary = getAverageSalariesInCountryInteractor.execute(country)
         //then
-        assertEquals(cities,listOfCitiesAndAverageSalary)
+        assertEquals(cities, listOfCitiesAndAverageSalary)
     }
 
     @Test
     fun should_ReturnCorrectListOfCities_When_TheCountryNameIsCorrectAndInUpperCase() {
         //given
         val country = "EGYPT"
-        val cities = listOf(Pair("Cairo",3000f),Pair("Alexandria",4000f),Pair("Mansoura",2000f),Pair("Suis",2500f))
+        val cities =
+            listOf(Pair("Cairo", 3000f), Pair("Alexandria", 4000f), Pair("Mansoura", 2000f), Pair("Suis", 2500f))
         //when
         val listOfCitiesAndAverageSalary = getAverageSalariesInCountryInteractor.execute(country)
         //then
-        assertEquals(cities,listOfCitiesAndAverageSalary)
+        assertEquals(cities, listOfCitiesAndAverageSalary)
 
     }
 
@@ -133,25 +140,26 @@ class GetAverageSalariesInCountryInteractorTest {
     fun should_ReturnCorrectListOfCities_When_TheCountryNameIsCorrectAndMixedLetters() {
         //given
         val country = "Egypt"
-        val cities = listOf(Pair("Cairo",3000f),Pair("Alexandria",4000f),Pair("Mansoura",2000f),Pair("Suis",2500f))
+        val cities =
+            listOf(Pair("Cairo", 3000f), Pair("Alexandria", 4000f), Pair("Mansoura", 2000f), Pair("Suis", 2500f))
 
         //when
         val listOfCitiesAndAverageSalary = getAverageSalariesInCountryInteractor.execute(country)
         //then
-        assertEquals(cities,listOfCitiesAndAverageSalary)
+        assertEquals(cities, listOfCitiesAndAverageSalary)
 
     }
 
     @Test
-    fun should_ThrowException_When_TheNameOfTheCountryIsWrong(){
+    fun should_ThrowException_When_TheNameOfTheCountryIsWrong() {
         //given
         val country = "egept"
         //when
-        val listOfCitiesExecutable: Executable = org.junit.jupiter.api.function.Executable { getAverageSalariesInCountryInteractor.execute(country) }
+        val listOfCitiesExecutable: Executable =
+            org.junit.jupiter.api.function.Executable { getAverageSalariesInCountryInteractor.execute(country) }
         //then
-        assertThrows(Exception::class.java,listOfCitiesExecutable)
+        assertThrows(Exception::class.java, listOfCitiesExecutable)
     }
-
 
 
 }
