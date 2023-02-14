@@ -1,0 +1,67 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "io.mockk",
+    "module": "mockk-dsl",
+    "version": "1.12.4",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.3.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "mockk-dsl-1.12.4.jar",
+          "url": "mockk-dsl-1.12.4.jar",
+          "size": 39725,
+          "sha512": "ff01f46859a4e0badb368811ff2be14d0750d968966b1af10185bb24e1f1a9c126f8f0b242a899a4593621ff13ffc4cf79f082b86ba65fa63c5e76bcf36f3986",
+          "sha256": "7fc96f9ed5118c915a3890ba2e4090c9b283ae7bdc37ab83885415bdf77650e4",
+          "sha1": "f9fcf3d0fdf8cdce953a29fa578eac5acd047eaa",
+          "md5": "34e70de2fb062bd2ee061ef356c76f6d"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.6.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "mockk-dsl-1.12.4.jar",
+          "url": "mockk-dsl-1.12.4.jar",
+          "size": 39725,
+          "sha512": "ff01f46859a4e0badb368811ff2be14d0750d968966b1af10185bb24e1f1a9c126f8f0b242a899a4593621ff13ffc4cf79f082b86ba65fa63c5e76bcf36f3986",
+          "sha256": "7fc96f9ed5118c915a3890ba2e4090c9b283ae7bdc37ab83885415bdf77650e4",
+          "sha1": "f9fcf3d0fdf8cdce953a29fa578eac5acd047eaa",
+          "md5": "34e70de2fb062bd2ee061ef356c76f6d"
+        }
+      ]
+    }
+  ]
+}
