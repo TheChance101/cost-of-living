@@ -1,11 +1,12 @@
 package interactor
 
-import model.FakeDataSource
-import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
+import dataSource.FakeDataSource
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetTopFiveCitiesNamesForShoppingClothesFromFamousBrandsInteractorTest {
 
     private lateinit var fakeData: FakeDataSource
