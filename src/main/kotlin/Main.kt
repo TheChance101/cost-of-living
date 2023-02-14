@@ -41,10 +41,9 @@ fun main() {
     }
      printSeparationLine()
 
-    val getCityManagerExpectation = GetCityManagerExpectation(dataSource)
-    println(getCityManagerExpectation.execute())
+    val getCityManagerExpectationInteractor = GetCityManagerExpectationInteractor(dataSource)
+    println(getCityManagerExpectationInteractor.execute())
     printSeparationLine()
-
 
     val getCityHasHighestRentingBetweenApartmentsInteractor =
         GetCityHasHighestRentingBetweenApartmentsInteractor(dataSource)

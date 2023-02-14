@@ -2,7 +2,7 @@ package interactor
 
 import model.CityEntity
 
-class GetCityManagerExpectation(
+class GetCityManagerExpectationInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
     fun execute(): String? {

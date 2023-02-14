@@ -8,15 +8,15 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class GetCityManagerExpectationTest {
-    private lateinit var getCityManagerExpectation: GetCityManagerExpectation
+internal class GetCityManagerExpectationInteractorTest {
+    private lateinit var getCityManagerExpectationInteractor: GetCityManagerExpectationInteractor
     private lateinit var dataSource: HardCodedFakeDataSource
 
     @BeforeAll
     fun init() {
         dataSource = HardCodedFakeDataSource()
-        getCityManagerExpectation =
-            GetCityManagerExpectation(dataSource)
+        getCityManagerExpectationInteractor =
+            GetCityManagerExpectationInteractor(dataSource)
 
     }
 
@@ -26,7 +26,7 @@ internal class GetCityManagerExpectationTest {
         dataSource = HardCodedFakeDataSource()
 
         //When list not equal null
-        val cityName = getCityManagerExpectation.execute()
+        val cityName = getCityManagerExpectationInteractor.execute()
 
         //Then
         assertNotNull(cityName)
@@ -38,7 +38,7 @@ internal class GetCityManagerExpectationTest {
         dataSource = HardCodedFakeDataSource()
 
         //When list Enter Valid Data
-        val cityName = getCityManagerExpectation.execute()
+        val cityName = getCityManagerExpectationInteractor.execute()
 
         //Then
         assertEquals("Mexico", cityName)
