@@ -11,6 +11,11 @@ class GetCityNameAndSalrayAverageInteractor(private val dataSource: CostOfLiving
         val list = dataSource
             .getAllCitiesData()
             .filter { (it.country == country.convert()) && (it.dataQuality) }.getSalary()
+        if(list.isEmpty())
+        {
+            throw Throwable("Enter Falid Country")
+
+        }
         return list
     }
     private fun List<CityEntity>.getSalary(): List<Pair<String, Float>> {
