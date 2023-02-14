@@ -3,7 +3,7 @@ package fakedata
 import interactor.CostOfLivingDataSource
 import model.*
 
-class FakeData : CostOfLivingDataSource {
+class FindHighestDifferenceInRentalPricesFakeData : CostOfLivingDataSource {
 
     private fun highQualityData() =
         listOf(

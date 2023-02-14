@@ -1,6 +1,6 @@
 package interactor
 
-import fakedata.FakeData
+import fakedata.FindHighestDifferenceInRentalPricesFakeData
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -14,14 +14,14 @@ class FindTheHighestDifferenceInRentalPricesInteractorTest {
 
     @BeforeAll
     fun setUp() {
-        interactor = FindTheHighestDifferenceInRentalPricesInteractor(FakeData())
+        interactor = FindTheHighestDifferenceInRentalPricesInteractor(FindHighestDifferenceInRentalPricesFakeData())
     }
 
     @Test
     fun ` should return city with highest difference price when high quality data `() {
         // given
-        interactor = FindTheHighestDifferenceInRentalPricesInteractor(FakeData())
-        val highestDifferenceCity = FakeData().getAllCitiesData()[1]
+        interactor = FindTheHighestDifferenceInRentalPricesInteractor(FindHighestDifferenceInRentalPricesFakeData())
+        val highestDifferenceCity = FindHighestDifferenceInRentalPricesFakeData().getAllCitiesData()[1]
         //when
         val result = interactor.execute()
         //then
@@ -31,9 +31,9 @@ class FindTheHighestDifferenceInRentalPricesInteractorTest {
     @Test
     fun ` should return city with highest difference price when given mixed data `() {
         //given
-        val dataSource = FakeData().MixedData()
+        val dataSource = FindHighestDifferenceInRentalPricesFakeData().MixedData()
         interactor = FindTheHighestDifferenceInRentalPricesInteractor(dataSource)
-        val highestDifferenceCity = FakeData().MixedData().getAllCitiesData()[0]
+        val highestDifferenceCity = FindHighestDifferenceInRentalPricesFakeData().MixedData().getAllCitiesData()[0]
 
         // When
         val result = interactor.execute()
@@ -45,7 +45,7 @@ class FindTheHighestDifferenceInRentalPricesInteractorTest {
     @Test
     fun ` should return null  when given empty data`() {
         // given
-        val dataSource = FakeData().EmptyDataSource()
+        val dataSource = FindHighestDifferenceInRentalPricesFakeData().EmptyDataSource()
         interactor = FindTheHighestDifferenceInRentalPricesInteractor(dataSource)
 
         // When
@@ -58,7 +58,7 @@ class FindTheHighestDifferenceInRentalPricesInteractorTest {
     @Test
     fun ` should Throw Exception when given null data  `() {
         //given
-        val dataSource = FakeData().NullData()
+        val dataSource = FindHighestDifferenceInRentalPricesFakeData().NullData()
         interactor = FindTheHighestDifferenceInRentalPricesInteractor(dataSource)
 
         // When
@@ -71,7 +71,7 @@ class FindTheHighestDifferenceInRentalPricesInteractorTest {
     @Test
     fun ` should Throw Exception when low quality data`() {
         //given
-        val dataSource = FakeData().LowQualityData()
+        val dataSource = FindHighestDifferenceInRentalPricesFakeData().LowQualityData()
         interactor = FindTheHighestDifferenceInRentalPricesInteractor(dataSource)
 
         // When
