@@ -1,9 +1,6 @@
 package interactor
 
-import model.CityData
-import model.CityEntity
 import model.FoodPrices
-import model.RealEstatesPrices
 
 class GetMostSuitableSavingCityInteractor(
     private val dataSource: CostOfLivingDataSource
@@ -12,11 +9,13 @@ class GetMostSuitableSavingCityInteractor(
     fun execute(limit: Int): List<String> {
         val suitableCities = dataSource
             .getAllCitiesData()
-            .filter(::excludeNullSalaries)
-            .sortedByDescending { calculateCitySavings(it, calculateFamilyBudget(it.averageMonthlyNetSalaryAfterTax!!)) }
+            .asSequence()
+            .filter { excludeNullSalariesAndNullRealEstatePrice(it.averageMonthlyNetSalaryAfterTax,it.realEstatesPrices.apartment3BedroomsInCityCentre) }
+            .sortedByDescending { calculateCitySavings(it.realEstatesPrices.apartment3BedroomsInCityCentre!!, it.foodPrices, calculateFamilyBudget(it.averageMonthlyNetSalaryAfterTax!!)) }
             .distinct()
             .take(limit)
             .map { it.cityName }
+            .toList()
 
         if (suitableCities.isEmpty()) {
             throw Exception("No suitable cities found")
@@ -25,15 +24,14 @@ class GetMostSuitableSavingCityInteractor(
         return suitableCities
     }
 
-    fun excludeNullSalaries(city: CityEntity): Boolean {
-        return city.averageMonthlyNetSalaryAfterTax != null
+    fun excludeNullSalariesAndNullRealEstatePrice(averageMonthlySalary: Float?, realEstatesPrices: Float?): Boolean {
+        return averageMonthlySalary != null && realEstatesPrices!= null
     }
 
-    fun calculateCitySavings(city: CityEntity, familyBudget: Float): Float {
-        val apartmentCost = city.realEstatesPrices.apartment3BedroomsInCityCentre ?: 0f
-        val foodCost = calculateFoodCost(city.foodPrices)
+    fun calculateCitySavings(realEstatesPrices: Float, foodPrices: FoodPrices, familyBudget: Float): Float {
+        val foodCost = calculateFoodCost(foodPrices)
         val otherCosts = 250f
-        return familyBudget - (apartmentCost + foodCost + otherCosts)
+        return familyBudget - (realEstatesPrices + foodCost + otherCosts)
     }
 
     fun calculateFoodCost(foodPrice: FoodPrices): Float {

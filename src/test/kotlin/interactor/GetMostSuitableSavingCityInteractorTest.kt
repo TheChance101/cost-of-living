@@ -31,6 +31,7 @@ class GetMostSuitableSavingCityInteractorTest {
         assertEquals(expectedCity, res)
     }
 
+
     @Test
     fun should_ReturnTrue_When_netSalaryNotNull() {
         // given
@@ -59,7 +60,7 @@ class GetMostSuitableSavingCityInteractorTest {
         val averageNetSalary = null
         val realEstatesPrices = null
         // when
-        val result = mostSuitableSavingCityInteractor.excludeNullSalariesAndLowQualityData(averageNetSalary, realEstatesPrices)
+        val result = mostSuitableSavingCityInteractor.excludeNullSalariesAndNullRealEstatePrice(averageNetSalary, realEstatesPrices)
 //        // then
         assertFalse(result)
     }
