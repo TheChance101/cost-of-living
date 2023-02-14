@@ -56,7 +56,6 @@ class GetBestCityForSavingMoneyInteractor(private val dataSource: CostOfLivingDa
     companion object{
 
         private var isAppartmentInCenter = true
-      //  private var city = true
         private var maxSavings = 0.0f
     }
 }
