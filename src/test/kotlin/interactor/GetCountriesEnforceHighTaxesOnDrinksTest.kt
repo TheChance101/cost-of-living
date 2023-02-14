@@ -11,9 +11,9 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCountriesEnforceHighTaxesOnDrinksTest {
 
-    lateinit var csvParser : CsvParser
-    lateinit var dataSource: CostOfLivingDataSource
-    lateinit var getCountriesEnforceHighTaxesOnDrinks: GetCountriesEnforceHighTaxesOnDrinks
+    private lateinit var csvParser : CsvParser
+    private lateinit var dataSource: CostOfLivingDataSource
+    private lateinit var getCountriesEnforceHighTaxesOnDrinks: GetCountriesEnforceHighTaxesOnDrinks
 
     @BeforeAll
     fun setup(){
@@ -22,5 +22,13 @@ class GetCountriesEnforceHighTaxesOnDrinksTest {
         getCountriesEnforceHighTaxesOnDrinks = GetCountriesEnforceHighTaxesOnDrinks(dataSource)
     }
 
-
+    @Test
+    fun should_returnTop_10_countriesName_whenTheInputsCorrect() {
+        // given
+        val input = dataSource.getAllCitiesData()
+        // when
+        val result = getCountriesEnforceHighTaxesOnDrinks.execute()
+        // result
+        assertNotEquals(null, result)
+    }
 }
