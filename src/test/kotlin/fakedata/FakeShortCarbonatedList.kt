@@ -1,9 +1,9 @@
-package fakeData
+package fakedata
 
 import interactor.CostOfLivingDataSource
 import model.*
 
-val carbontatedPricesCase1 by lazy {
+val carbonatedPricesCase1 by lazy {
     CityEntity(
         cityName = "alexandria",
         country = "egypt",
@@ -76,7 +76,7 @@ val carbontatedPricesCase1 by lazy {
         dataQuality = true
     )
 }
-val carbontatedPricesCase2 by lazy {
+val carbonatedPricesCase2 by lazy {
     CityEntity(
         cityName = "hong kong",
         country = "china",
@@ -149,7 +149,7 @@ val carbontatedPricesCase2 by lazy {
         dataQuality = true
     )
 }
-val carbontatedPricesCase3 by lazy {
+val carbonatedPricesCase3 by lazy {
     CityEntity(
         cityName = "los angles",
         country = "usa",
@@ -222,7 +222,7 @@ val carbontatedPricesCase3 by lazy {
         dataQuality = true
     )
 }
-val carbontatedPricesCase4 by lazy {
+val carbonatedPricesCase4 by lazy {
     CityEntity(
         cityName = "tokyo",
         country = "japan",
@@ -295,7 +295,7 @@ val carbontatedPricesCase4 by lazy {
         dataQuality = true
     )
 }
-val carbontatedPricesCase5 by lazy {
+val carbonatedPricesCase5 by lazy {
     CityEntity(
         cityName = "paris",
         country = "France",
@@ -368,7 +368,7 @@ val carbontatedPricesCase5 by lazy {
         dataQuality = true
     )
 }
-val carbontatedPricesCase6 by lazy {
+val carbonatedPricesCase6 by lazy {
     CityEntity(
         cityName = "bayern",
         country = "germany",
@@ -441,9 +441,9 @@ val carbontatedPricesCase6 by lazy {
         dataQuality = true
     )
 }
-val carbontatedPricesCase7 by lazy {
+val carbonatedPricesCase7 by lazy {
     CityEntity(
-        cityName = "soeul",
+        cityName = "soul",
         country = "korea",
         mealsPrices = MealsPrices(
             mealInexpensiveRestaurant = 10f,
@@ -514,7 +514,7 @@ val carbontatedPricesCase7 by lazy {
         dataQuality = true
     )
 }
-val carbontatedPricesCase8 by lazy {
+val carbonatedPricesCase8 by lazy {
     CityEntity(
         cityName = "islambad",
         country = "pakistan",
@@ -587,7 +587,7 @@ val carbontatedPricesCase8 by lazy {
         dataQuality = true
     )
 }
-val carbontatedPricesCase9 by lazy {
+val carbonatedPricesCase9 by lazy {
     CityEntity(
         cityName = "abu dhabi",
         country = "uae",
@@ -660,7 +660,7 @@ val carbontatedPricesCase9 by lazy {
         dataQuality = true
     )
 }
-val carbontatedPricesCase10 by lazy {
+val carbonatedPricesCase10 by lazy {
     CityEntity(
         cityName = "ankara",
         country = "turkey",
@@ -734,27 +734,27 @@ val carbontatedPricesCase10 by lazy {
     )
 }
 
-class fakeCarbonatedTaxesOnCokeCountriesData : CostOfLivingDataSource {
+class FakeCarbonatedTaxesOnCokeCountriesData : CostOfLivingDataSource {
     override fun getAllCitiesData() =
         listOf(
-            carbontatedPricesCase1,
-            carbontatedPricesCase2,
-            carbontatedPricesCase3, carbontatedPricesCase4, carbontatedPricesCase5, carbontatedPricesCase6,
-            carbontatedPricesCase7, carbontatedPricesCase8, carbontatedPricesCase9, carbontatedPricesCase10
+            carbonatedPricesCase1,
+            carbonatedPricesCase2,
+            carbonatedPricesCase3, carbonatedPricesCase4, carbonatedPricesCase5, carbonatedPricesCase6,
+            carbonatedPricesCase7, carbonatedPricesCase8, carbonatedPricesCase9, carbonatedPricesCase10
         )
 }
 
-class fakeShortCarbonatedList : CostOfLivingDataSource {
+class FakeShortCarbonatedList : CostOfLivingDataSource {
     override fun getAllCitiesData() =
-        listOf(carbontatedPricesCase1, carbontatedPricesCase2, carbontatedPricesCase3, carbontatedPricesCase4)
+        listOf(carbonatedPricesCase1, carbonatedPricesCase2, carbonatedPricesCase3, carbonatedPricesCase4)
 }
 
-class fakeDublicatedlist : CostOfLivingDataSource {
+class FakeDuplicatedList : CostOfLivingDataSource {
     override fun getAllCitiesData() =
         listOf(
-            carbontatedPricesCase1,
-            carbontatedPricesCase2,
-            carbontatedPricesCase2, carbontatedPricesCase4, carbontatedPricesCase5, carbontatedPricesCase6,
-            carbontatedPricesCase6, carbontatedPricesCase8, carbontatedPricesCase9, carbontatedPricesCase10
+            carbonatedPricesCase1,
+            carbonatedPricesCase2,
+            carbonatedPricesCase2, carbonatedPricesCase4, carbonatedPricesCase5, carbonatedPricesCase6,
+            carbonatedPricesCase6, carbonatedPricesCase8, carbonatedPricesCase9, carbonatedPricesCase10
         )
 }

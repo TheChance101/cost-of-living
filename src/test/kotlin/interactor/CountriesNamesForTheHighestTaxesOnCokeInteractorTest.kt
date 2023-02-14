@@ -2,7 +2,7 @@ package interactor
 
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
-import fakeData.*
+import fakedata.*
 import org.hamcrest.CoreMatchers
 import org.hamcrest.MatcherAssert
 import org.junit.jupiter.api.Test
@@ -13,17 +13,17 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class CountriesNamesForTheHighestTaxesOnCokeInteractorTest {
     private lateinit var getTheHighestTaxesOnCokeCountriesNames: CountriesNamesForTheHighestTaxesOnCokeInteractor
-    private lateinit var fakeCarbonatedTaxesOnCokeCountriesData: fakeCarbonatedTaxesOnCokeCountriesData
-    private lateinit var fakeDublicatedlist: fakeDublicatedlist
-    private lateinit var fakeShortCarbonatedList: fakeShortCarbonatedList
+    private lateinit var fakeCarbonatedTaxesOnCokeCountriesData: FakeCarbonatedTaxesOnCokeCountriesData
+    private lateinit var fakeDuplicatedList: FakeDuplicatedList
+    private lateinit var fakeShortCarbonatedList: FakeShortCarbonatedList
     private var csvParser = CsvParser()
     private var dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
 
     @BeforeAll
     fun setup() {
-        fakeCarbonatedTaxesOnCokeCountriesData = fakeCarbonatedTaxesOnCokeCountriesData()
-        fakeDublicatedlist = fakeDublicatedlist()
-        fakeShortCarbonatedList = fakeShortCarbonatedList()
+        fakeCarbonatedTaxesOnCokeCountriesData = FakeCarbonatedTaxesOnCokeCountriesData()
+        fakeDuplicatedList = FakeDuplicatedList()
+        fakeShortCarbonatedList = FakeShortCarbonatedList()
         getTheHighestTaxesOnCokeCountriesNames = CountriesNamesForTheHighestTaxesOnCokeInteractor(dataSource)
     }
 
@@ -42,7 +42,7 @@ internal class CountriesNamesForTheHighestTaxesOnCokeInteractorTest {
 
         //then
 
-        assertTrue(pairOfCountryAndPrices.size<=10)
+        assertTrue(pairOfCountryAndPrices.size <= 10)
     }
 
     @Test

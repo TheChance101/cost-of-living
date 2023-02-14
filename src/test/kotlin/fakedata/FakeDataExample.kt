@@ -678,7 +678,7 @@ class FakeLowQualityData : CostOfLivingDataSource {
         listOf(cityLowQualityCase1, cityLowQualityCase2, cityLowQualityCase3)
 }
 
-class FakeDuplicatedData() : CostOfLivingDataSource {
+class FakeDuplicatedData : CostOfLivingDataSource {
     override fun getAllCitiesData() =
         listOf(cityHighQualityCase1, cityHighQualityCase1, cityHighQualityCase2, cityHighQualityCase3)
 }
