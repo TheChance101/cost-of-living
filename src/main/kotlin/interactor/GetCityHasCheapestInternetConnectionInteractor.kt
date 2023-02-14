@@ -6,9 +6,6 @@ import model.CityEntity
 
 class GetCityHasCheapestInternetConnectionInteractor{
 
-
-
-
     fun execute(cities:List<CityEntity>): CityEntity? {
         return if (cities.isNotEmpty()) {
             val filter = cities.filter { excludeNullSalariesAndLowQualityDataAndNullInternetPrice(it) }
