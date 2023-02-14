@@ -36,4 +36,3 @@ open class GetTheRightApartment(private val dataSource: CostOfLivingDataSource) 
 
     }
 }
-

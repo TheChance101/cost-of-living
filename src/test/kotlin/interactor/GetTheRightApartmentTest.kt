@@ -1,5 +1,5 @@
-package interactor
 
+package interactor
 import org.junit.jupiter.api.Assertions.*
 import fakedata.FakeData
 import org.junit.jupiter.api.BeforeEach
@@ -69,3 +69,4 @@ class GetTheRightApartmentTest {
         assertThrows(Exception::class.java, actualResult)
     }
 }
+
