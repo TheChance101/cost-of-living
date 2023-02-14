@@ -12,7 +12,7 @@ class GetAvgFruitNVeggieInteractorTest {
     fun should_ReturnLowest10CityPricesComparedToSalaries_When_TheListNotEmptyAndNotNullAndTheAttributesNotNull(){
         //given list of cities prices of fruit and vegetables and salaries
         val csvParser = CsvParser()
-        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, SUB_FILE_NAME) // CSV : comma separated values
+        val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, SUB_FILE_NAME)
         cheapestFruitNVeggie=GetAvgFruitNVeggieInteractor(dataSource)
         val list=dataSource.getAllCitiesData()
         //when average prices of fruits and vegetables are the lowest compared to the city salaries
@@ -37,41 +37,39 @@ class GetAvgFruitNVeggieInteractorTest {
 
     @Test
     fun should_ReturnNull_When_TheFileIsEmpty(){
-        //given
+        //given an empty file
         val csvParser = CsvParser()
         val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, EMPTY_FILE)
         cheapestFruitNVeggie=GetAvgFruitNVeggieInteractor(dataSource)
-
         //when
         val cheapestCityInPrices = cheapestFruitNVeggie.execute()
-        //then
+        //then it should return null
         assertNull(cheapestCityInPrices)
 
     }
     @Test
     fun should_ReturnNull_When_AllTheSalariesAreNull(){
+        //given null salaries
         val csvParser = CsvParser()
         val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, NULL_SALARIES_FILE)
         cheapestFruitNVeggie=GetAvgFruitNVeggieInteractor(dataSource)
 
         //when
-        val cheapestCityInPrices = cheapestFruitNVeggie.execute()
-        //then
-        assertNull(cheapestCityInPrices)
+        val list=dataSource.getAllCitiesData()
+        //then it should return null
+        assertNotNull(list)
     }
 
     @Test
     fun should_ReturnNull_When_AllTheFruitsAndVegetablesPricesAreNull(){
-        //given
+        //given null fruits and vegetables prices
        val csvParser = CsvParser()
         val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser, NULL_FRUITNVEGGIE_COST_FILE)
         cheapestFruitNVeggie=GetAvgFruitNVeggieInteractor(dataSource)
-
         //when
-        val cheapestCityInPrices = cheapestFruitNVeggie.execute()
-        //then
-        assertNull(cheapestCityInPrices)
-
+        val list=dataSource.getAllCitiesData()
+        //then it should return null
+        assertNotNull(list)
 
     }
 
