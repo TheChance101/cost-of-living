@@ -12,7 +12,7 @@ fun main() {
 //    printSeparationLine()
 
     val getMostSuitableSavingCityInteractor = GetMostSuitableSavingCityInteractor(dataSource)
-    println(getMostSuitableSavingCityInteractor.execute(limit = 1))
+    println(getMostSuitableSavingCityInteractor.execute())
     printSeparationLine()
 
 //    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)

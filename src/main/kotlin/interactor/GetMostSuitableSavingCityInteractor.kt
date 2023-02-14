@@ -24,6 +24,19 @@ class GetMostSuitableSavingCityInteractor(
         return suitableCities
     }
 
+    fun execute(): String {
+        val suitableCities = dataSource
+            .getAllCitiesData()
+            .filter { excludeNullSalariesAndNullRealEstatePrice(it.averageMonthlyNetSalaryAfterTax,it.realEstatesPrices.apartment3BedroomsInCityCentre) }
+            .sortedByDescending { calculateCitySavings(it.realEstatesPrices.apartment3BedroomsInCityCentre!!, it.foodPrices, calculateFamilyBudget(it.averageMonthlyNetSalaryAfterTax!!)) }
+            .distinct()
+
+        if (suitableCities.isEmpty()) {
+            throw Exception("No suitable cities found")
+        }
+
+        return suitableCities.first().cityName
+    }
     fun excludeNullSalariesAndNullRealEstatePrice(averageMonthlySalary: Float?, realEstatesPrices: Float?): Boolean {
         return averageMonthlySalary != null && realEstatesPrices!= null
     }
