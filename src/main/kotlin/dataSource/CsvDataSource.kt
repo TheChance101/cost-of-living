@@ -2,6 +2,7 @@ package dataSource
 
 import dataSource.utils.CsvParser
 import interactor.CostOfLivingDataSource
+import model.CityData
 import model.CityEntity
 import java.io.File
 import java.io.IOException
@@ -13,6 +14,7 @@ class CsvDataSource(private val parser: CsvParser): CostOfLivingDataSource {
             parser.parseLine(csvLine)
         }
     }
+
 
     private fun getCsvFile(): File {
         val costOfLivingCsvFile = File(FILE_NAME)
