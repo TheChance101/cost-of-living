@@ -17,6 +17,8 @@ class GetCityMatchManagerExpectationsInteractor(
     private fun getLowestPrice(sortedCities: List<CityEntity>) =
         sortedCities.firstOrNull()?.mealsPrices?.mealFor2PeopleMidRangeRestaurant
 
+    
+
     fun execute(): CityEntity {
 
     }
