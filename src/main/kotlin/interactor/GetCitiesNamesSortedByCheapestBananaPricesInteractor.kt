@@ -4,8 +4,9 @@ import model.CityEntity
 
 
 class GetCitiesNamesSortedByCheapestBananaPricesInteractor(
-    private val dataSource: CostOfLivingDataSource
+    private val dataSource: CostOfLivingDataSource ,
 ) {
+
     fun execute(vararg cities: String): List<String> {
         return dataSource
             .getAllCitiesData()
@@ -14,6 +15,7 @@ class GetCitiesNamesSortedByCheapestBananaPricesInteractor(
             .sortedBy { it.fruitAndVegetablesPrices.banana1kg }
             .map { it.cityName }
     }
+
 
     private fun compereCitiesNamesWithInputCities(inputCity: Array<out String>, city: String): Boolean {
         return inputCity.map { it.toLowerCase().trim() }.contains(city.toLowerCase())
