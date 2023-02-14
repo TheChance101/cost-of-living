@@ -661,3 +661,19 @@ val cityMixedDataCase3 by lazy {
     )
 }
 
+
+class CorrectData : CostOfLivingDataSource {
+    override fun getAllCitiesData() =
+        listOf(correctCityCase1, correctCityCase2, correctCityCase3)
+}
+
+
+class MixedData : CostOfLivingDataSource {
+    override fun getAllCitiesData(): List<CityEntity> =
+        listOf(cityMixedDataCase1, cityMixedDataCase2, cityMixedDataCase3)
+}
+
+class NullableData : CostOfLivingDataSource {
+    override fun getAllCitiesData(): List<CityEntity> =
+        listOf(cityNullableCase1, cityNullableCase2, cityNullableCase3)
+}
