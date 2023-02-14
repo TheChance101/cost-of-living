@@ -6,7 +6,7 @@ import model.*
 class HardCodedFakeDataSource : CostOfLivingDataSource {
 
     enum class DataType {
-        VALID, EMPTY, NULLABLE
+        VALID, EMPTY, NULLABLE, MIXED
     }
 
     private var dataType: DataType = DataType.VALID
@@ -458,25 +458,260 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
         )
     }
 
-    private val cityList = mutableListOf<CityEntity>()
+   
+    val canadaHighQuality by lazy {
+        CityEntity(
+            cityName = "Ottawa",
+            country = "Canada",
+            mealsPrices = MealsPrices(
+                mealInexpensiveRestaurant = 40f,
+                mealFor2PeopleMidRangeRestaurant = 35f,
+                mealAtMcDonaldSOrEquivalent = 10f
+            ),
+            drinksPrices = DrinksPrices(
+                cappuccinoRegularInRestaurants = 7f,
+                cokePepsiAThirdOfLiterBottleInRestaurants = 2f,
+                waterAThirdOfLiterBottleInRestaurants = 1f,
+                milkRegularOneLiter = 2f,
+                waterOneAndHalfLiterBottleAtTheMarket = 2.5f
+            ),
+            fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                apples1kg = 2f,
+                banana1kg = 1f,
+                oranges1kg = 1f,
+                tomato1kg = 3f,
+                potato1kg = 1f,
+                onion1kg = 1f,
+                lettuceOneHead = 0.25f
+            ),
+            foodPrices = FoodPrices(
+                loafOfFreshWhiteBread500g = 9f,
+                riceWhite1kg = 4f,
+                eggsRegular12 = 3f,
+                localCheese1kg = 1f,
+                chickenFillets1kg = 12f,
+                beefRound1kgOrEquivalentBackLegRedMeat = 20f
+            ),
+            servicesPrices = ServicesPrices(
+                basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
+                oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
+                fitnessClubMonthlyFeeForOneAdult = 100f,
+                tennisCourtRentOneHourOnWeekend = 100f,
+                cinemaInternationalReleaseOneSeat = 10f,
+                preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 100f,
+                internationalPrimarySchoolYearlyForOneChild = 1000f
+            ),
+            clothesPrices = ClothesPrices(
+                onePairOfJeansLevis50oneOrSimilar = 60f,
+                oneSummerDressInAChainStoreZaraHAndM = 90f,
+                onePairOfNikeRunningShoesMidRange = 80f,
+                onePairOfMenLeatherBusinessShoes = 300f
+            ),
+            transportationsPrices = TransportationsPrices(
+                oneWayTicketLocalTransport = 5f,
+                monthlyPassRegularPrice = 60f,
+                taxiStartNormalTariff = 20f,
+                taxi1kmNormalTariff = 30f,
+                taxi1hourWaitingNormalTariff = 60f,
+                gasolineOneLiter = 2f
+            ),
+            carsPrices = CarsPrices(
+                volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 300000f,
+                toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 250000f
+            ),
+            realEstatesPrices = RealEstatesPrices(
+                apartmentOneBedroomInCityCentre = 500000f,
+                apartmentOneBedroomOutsideOfCentre = 300000f,
+                apartment3BedroomsInCityCentre = 800000f,
+                apartment3BedroomsOutsideOfCentre = 500000f,
+                pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
+            ),
+            averageMonthlyNetSalaryAfterTax = 6000f,
+            dataQuality = true
+        )
+    }
+
+    val unitedStateHighQuality by lazy {
+        CityEntity(
+            cityName = "Washington",
+            country = "United States",
+            mealsPrices = MealsPrices(
+                mealInexpensiveRestaurant = 100f,
+                mealFor2PeopleMidRangeRestaurant = 60f,
+                mealAtMcDonaldSOrEquivalent = 30f
+            ),
+            drinksPrices = DrinksPrices(
+                cappuccinoRegularInRestaurants = 7f,
+                cokePepsiAThirdOfLiterBottleInRestaurants = 2f,
+                waterAThirdOfLiterBottleInRestaurants = 1f,
+                milkRegularOneLiter = 2f,
+                waterOneAndHalfLiterBottleAtTheMarket = 2.5f
+            ),
+            fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                apples1kg = 2f,
+                banana1kg = 1f,
+                oranges1kg = 1f,
+                tomato1kg = 3f,
+                potato1kg = 1f,
+                onion1kg = 1f,
+                lettuceOneHead = 0.25f
+            ),
+            foodPrices = FoodPrices(
+                loafOfFreshWhiteBread500g = 9f,
+                riceWhite1kg = 4f,
+                eggsRegular12 = 3f,
+                localCheese1kg = 1f,
+                chickenFillets1kg = 12f,
+                beefRound1kgOrEquivalentBackLegRedMeat = 20f
+            ),
+            servicesPrices = ServicesPrices(
+                basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
+                oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
+                fitnessClubMonthlyFeeForOneAdult = 100f,
+                tennisCourtRentOneHourOnWeekend = 100f,
+                cinemaInternationalReleaseOneSeat = 10f,
+                preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 100f,
+                internationalPrimarySchoolYearlyForOneChild = 1000f
+            ),
+            clothesPrices = ClothesPrices(
+                onePairOfJeansLevis50oneOrSimilar = 60f,
+                oneSummerDressInAChainStoreZaraHAndM = 90f,
+                onePairOfNikeRunningShoesMidRange = 80f,
+                onePairOfMenLeatherBusinessShoes = 300f
+            ),
+            transportationsPrices = TransportationsPrices(
+                oneWayTicketLocalTransport = 5f,
+                monthlyPassRegularPrice = 60f,
+                taxiStartNormalTariff = 20f,
+                taxi1kmNormalTariff = 30f,
+                taxi1hourWaitingNormalTariff = 60f,
+                gasolineOneLiter = 2f
+            ),
+            carsPrices = CarsPrices(
+                volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 300000f,
+                toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 250000f
+            ),
+            realEstatesPrices = RealEstatesPrices(
+                apartmentOneBedroomInCityCentre = 500000f,
+                apartmentOneBedroomOutsideOfCentre = 300000f,
+                apartment3BedroomsInCityCentre = 800000f,
+                apartment3BedroomsOutsideOfCentre = 500000f,
+                pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
+            ),
+            averageMonthlyNetSalaryAfterTax = 6000f,
+            dataQuality = true
+        )
+    }
+
+    val mexicoHighQuality by lazy {
+        CityEntity(
+            cityName = "Mexico",
+            country = "Mexico",
+            mealsPrices = MealsPrices(
+                mealInexpensiveRestaurant = 70f,
+                mealFor2PeopleMidRangeRestaurant = 35f,
+                mealAtMcDonaldSOrEquivalent = 25f
+            ),
+            drinksPrices = DrinksPrices(
+                cappuccinoRegularInRestaurants = 7f,
+                cokePepsiAThirdOfLiterBottleInRestaurants = 2f,
+                waterAThirdOfLiterBottleInRestaurants = 1f,
+                milkRegularOneLiter = 2f,
+                waterOneAndHalfLiterBottleAtTheMarket = 2.5f
+            ),
+            fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                apples1kg = 2f,
+                banana1kg = 1f,
+                oranges1kg = 1f,
+                tomato1kg = 3f,
+                potato1kg = 1f,
+                onion1kg = 1f,
+                lettuceOneHead = 0.25f
+            ),
+            foodPrices = FoodPrices(
+                loafOfFreshWhiteBread500g = 9f,
+                riceWhite1kg = 4f,
+                eggsRegular12 = 3f,
+                localCheese1kg = 1f,
+                chickenFillets1kg = 12f,
+                beefRound1kgOrEquivalentBackLegRedMeat = 20f
+            ),
+            servicesPrices = ServicesPrices(
+                basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
+                oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
+                fitnessClubMonthlyFeeForOneAdult = 100f,
+                tennisCourtRentOneHourOnWeekend = 100f,
+                cinemaInternationalReleaseOneSeat = 10f,
+                preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 100f,
+                internationalPrimarySchoolYearlyForOneChild = 1000f
+            ),
+            clothesPrices = ClothesPrices(
+                onePairOfJeansLevis50oneOrSimilar = 60f,
+                oneSummerDressInAChainStoreZaraHAndM = 90f,
+                onePairOfNikeRunningShoesMidRange = 80f,
+                onePairOfMenLeatherBusinessShoes = 300f
+            ),
+            transportationsPrices = TransportationsPrices(
+                oneWayTicketLocalTransport = 5f,
+                monthlyPassRegularPrice = 60f,
+                taxiStartNormalTariff = 20f,
+                taxi1kmNormalTariff = 30f,
+                taxi1hourWaitingNormalTariff = 60f,
+                gasolineOneLiter = 2f
+            ),
+            carsPrices = CarsPrices(
+                volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 300000f,
+                toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 250000f
+            ),
+            realEstatesPrices = RealEstatesPrices(
+                apartmentOneBedroomInCityCentre = 500000f,
+                apartmentOneBedroomOutsideOfCentre = 300000f,
+                apartment3BedroomsInCityCentre = 800000f,
+                apartment3BedroomsOutsideOfCentre = 500000f,
+                pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
+            ),
+            averageMonthlyNetSalaryAfterTax = 6000f,
+            dataQuality = true
+        )
+    }
+    private val validCityList = mutableListOf<CityEntity>()
     private val nullableCityList = mutableListOf<CityEntity>()
+    private val mixedCityList = mutableListOf<CityEntity>()
 
     override fun getAllCitiesData(): List<CityEntity> {
-        cityList.add(cairoHighQuality)
-        cityList.add(londonLowQuality)
-        cityList.add(parisHighQuality)
+        validCityList.add(cairoHighQuality)
+        validCityList.add(londonLowQuality)
+        validCityList.add(parisHighQuality)
+        validCityList.add(unitedStateHighQuality)
+        validCityList.add(mexicoHighQuality)
+        validCityList.add(canadaHighQuality)
         nullableCityList.add(baghdadHighQualityNull)
         nullableCityList.add(rabatLowQualityNull)
         nullableCityList.add(berlinHighQualityNull)
+        mixedCityList.add(cairoHighQuality)
+        mixedCityList.add(londonLowQuality)
+        mixedCityList.add(parisHighQuality)
+        mixedCityList.add(baghdadHighQualityNull)
+        mixedCityList.add(rabatLowQualityNull)
+        mixedCityList.add(berlinHighQualityNull)
         return when (dataType) {
             DataType.VALID -> {
-                cityList
+                validCityList
             }
             DataType.EMPTY -> {
                 emptyList<CityEntity>()
             }
             DataType.NULLABLE -> {
                 nullableCityList
+            }
+            DataType.MIXED -> {
+                mixedCityList
             }
         }
     }
