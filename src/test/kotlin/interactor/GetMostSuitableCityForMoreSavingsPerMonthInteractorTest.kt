@@ -23,6 +23,20 @@ internal class GetMostSuitableCityForMoreSavingsPerMonthInteractorTest {
     @Test
     fun should_ReturnCityEntity_When_EnterValidCityList() {
         // given
+        dataSource.setDatatype(HardCodedFakeDataSource.DataType.VALID)
+        val expectedCity = dataSource.parisHighQuality
+        // when
+        val cityEntity = getMostSuitableCity.run {
+            execute()
+        }
+        // then
+        assertEquals(expectedCity,cityEntity)
+    }
+
+    @Test
+    fun should_ReturnCityEntity_When_EnterMixedCityList() {
+        // given
+        dataSource.setDatatype(HardCodedFakeDataSource.DataType.MIXED)
         val expectedCity = dataSource.parisHighQuality
         // when
         val cityEntity = getMostSuitableCity.run {
