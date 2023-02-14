@@ -15,7 +15,8 @@ class GetCityHasCheapestMealPricesInteractor(
             .filter(::isCityHasAverageMealPrice)
             .sortedByDescending { getAverageMealInCity(it) }
 
-       return listOfCitiesEntity
+        return if (listOfCitiesEntity.isEmpty()) throw Throwable("List of cities is empty")
+        else listOfCitiesEntity
             .filter { getAverageMealInCity(it) == getAverageMealInAllCities(listOfCitiesEntity) || getAverageMealInCity(it) == ceil(getAverageMealInAllCities(listOfCitiesEntity).toDouble()).toFloat() }
             .first()
     }
@@ -46,5 +47,4 @@ class GetCityHasCheapestMealPricesInteractor(
         if (cityEntityList.isEmpty()) return 0.0F
         return (getAverageMealInCity(cityEntityList.first()) + getAverageMealInCity(cityEntityList.last())) / 2
     }
-
 }
