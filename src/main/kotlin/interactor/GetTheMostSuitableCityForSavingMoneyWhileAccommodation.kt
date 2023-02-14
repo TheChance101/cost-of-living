@@ -1,0 +1,4 @@
+package interactor
+
+class GetTheMostSuitableCityForSavingMoneyWhileAccommodation {
+}
