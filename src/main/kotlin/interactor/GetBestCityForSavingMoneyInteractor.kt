@@ -12,13 +12,9 @@ class GetBestCityForSavingMoneyInteractor(private val dataSource: CostOfLivingDa
         var bestCity = cities[0]
 
         for (city in cities) {
-
             if (checkNullFields(city)) {
-
                 val savings = calculateSavings(city)
-
                 if (savings > maxSavings) {
-
                     maxSavings = savings
                     bestCity = city
                 }
@@ -45,8 +41,8 @@ class GetBestCityForSavingMoneyInteractor(private val dataSource: CostOfLivingDa
     fun checkNullFields(city: CityEntity): Boolean {
 
         var determineApartment = city.realEstatesPrices.apartment3BedroomsOutsideOfCentre != null
-        if (isAppartmentInCenter) determineApartment =
-            city.realEstatesPrices.apartment3BedroomsInCityCentre != null
+        if (isAppartmentInCenter)
+            determineApartment = city.realEstatesPrices.apartment3BedroomsInCityCentre != null
 
         return  determineApartment &&
                 city.averageMonthlyNetSalaryAfterTax != null &&
@@ -60,7 +56,7 @@ class GetBestCityForSavingMoneyInteractor(private val dataSource: CostOfLivingDa
     companion object{
 
         private var isAppartmentInCenter = true
-        private var city = true
+      //  private var city = true
         private var maxSavings = 0.0f
     }
 }
