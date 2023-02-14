@@ -1,7 +1,7 @@
 package interactor
 
-import dataSource.FakeDataSource
-import dataSource.TestCase
+import data.FakeDataSource
+import data.TestCase
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test

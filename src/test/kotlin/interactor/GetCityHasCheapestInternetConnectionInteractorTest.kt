@@ -1,7 +1,7 @@
 package interactor
 
-import dataSource.FakeDataSource
-import dataSource.TestCase
+import data.FakeDataSource
+import data.TestCase
 import model.CityEntity
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.*
