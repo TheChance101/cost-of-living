@@ -29,7 +29,7 @@ internal class GetCityHasHighestDifferentRentBetweenCityCenterAndOutsideInteract
         //when find the city with the Highest different rent
         val city = highestDifferentRent.execute(type)
         //then
-        assertEquals(fakedata.getAllCitiesData()[1], city)
+        assertEquals(fakedata.getAllCitiesData()[2], city)
     }
 
     @Test
@@ -40,7 +40,7 @@ internal class GetCityHasHighestDifferentRentBetweenCityCenterAndOutsideInteract
         //when find the city with the Highest different rent
         val city = highestDifferentRent.execute(type)
         //then
-        assertEquals(fakedata.getAllCitiesData()[4], city)
+        assertEquals(fakedata.getAllCitiesData()[5], city)
     }
 
 
