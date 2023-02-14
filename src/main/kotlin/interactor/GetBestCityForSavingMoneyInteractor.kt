@@ -2,7 +2,7 @@ package interactor
 
 import model.CityEntity
 
-class GetBestCityForSavingMoneyInteractor(private val dataSource: CostOfLivingDataSource) {
+class GetBestCityForSavingMoneyInteractor(private val dataSource: CostOfLivingDataSource){
 
     fun execute(isAppartmentInTheCityCentre: Boolean): CityEntity {
 
