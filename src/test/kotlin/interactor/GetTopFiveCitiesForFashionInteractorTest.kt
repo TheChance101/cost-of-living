@@ -5,23 +5,27 @@ import model.CityEntity
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeEach
 
 class GetTopFiveCitiesForFashionInteractorTest {
     private lateinit var dataSource: CostOfLivingDataSource
+    private lateinit var getTopFiveCitiesForFashionInteractor: GetTopFiveCitiesForFashionInteractor
 
     private lateinit var fakeData: FakeData
+
+    @BeforeEach
+    fun setUp() {
+        fakeData = FakeData()
+        dataSource = fakeData
+        getTopFiveCitiesForFashionInteractor = GetTopFiveCitiesForFashionInteractor(dataSource)
+    }
+
+
 
     @Test
     fun should_returnListOfFiveCities_whenListOfCitiesNotEmpty() {
 
-        // given cities not empty
-        var cities: List<CityEntity> = dataSource.getAllCitiesData().filter { it.averageMonthlyNetSalaryAfterTax != null && it.dataQuality }
-
-        // when find top five cities for fashion
-        var topFiveCites = GetTopFiveCitiesForFashionInteractorTest().dataSource.getAllCitiesData()
-            .sortedWith(compareBy({it.clothesPrices.onePairOfJeansLevis50oneOrSimilar},{it.clothesPrices.oneSummerDressInAChainStoreZaraHAndM},{it.clothesPrices.onePairOfNikeRunningShoesMidRange},{it.clothesPrices.onePairOfMenLeatherBusinessShoes}))
-            .take(5)
-            .map { it.cityName }
+       var topFiveCites = getTopFiveCitiesForFashionInteractor.execute(5)
 
         // then check result
         assertEquals(listOf("Accra", "Abuja", "Abu Dhabi", "Aberdeen", "Abidjan"), topFiveCites)
