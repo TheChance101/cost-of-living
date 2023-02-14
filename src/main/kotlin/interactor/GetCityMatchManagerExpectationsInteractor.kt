@@ -2,7 +2,6 @@ package interactor
 
 import dataSource.utils.NorthAmericaCountries
 import model.CityEntity
-import model.MealsPrices
 
 class GetCityMatchManagerExpectationsInteractor(
     private val dataSource: CostOfLivingDataSource,
@@ -30,7 +29,7 @@ class GetCityMatchManagerExpectationsInteractor(
         }
 
     private fun List<CityEntity>.getClosestMealPriceCity(midRangePrice: Float): CityEntity? =
-        minByOrNull { kotlin.math.abs(it.mealsPrices.mealFor2PeopleMidRangeRestaurant ?: 0.0f - midRangePrice) }
+        minByOrNull { kotlin.math.abs(it.mealsPrices.mealFor2PeopleMidRangeRestaurant ?: (0.0f - midRangePrice)) }
 
 
     fun execute(): CityEntity {

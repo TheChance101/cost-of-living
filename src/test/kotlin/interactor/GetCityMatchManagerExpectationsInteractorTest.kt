@@ -1,7 +1,6 @@
 package interactor
 
-import dataSource.CsvDataSource
-import dataSource.utils.CsvParser
+import dataSource.FakeDataSource
 import dataSource.utils.NorthAmericaCountries
 import org.junit.jupiter.api.Test
 
@@ -10,25 +9,14 @@ import org.junit.jupiter.api.BeforeEach
 
 class GetCityMatchManagerExpectationsInteractorTest {
 
-    /// TODO: uncomment this when completing the test
-//    private lateinit var dataSource: FakeDataSource
     private lateinit var interactor: GetCityMatchManagerExpectationsInteractor
-
-    /// TODO: remove this code when completing the test
-    private lateinit var dataSource: CsvDataSource
-    private lateinit var csvParser: CsvParser
+    private lateinit var dataSource: FakeDataSource
 
 
     @BeforeEach
     fun setup() {
-        /// TODO: remove this code when completing the test
-        csvParser = CsvParser()
-        dataSource = CsvDataSource(csvParser)
-
         interactor = GetCityMatchManagerExpectationsInteractor(dataSource)
-
-        /// TODO: uncomment this when completing the test
-//        dataSource = FakeDataSource()
+        dataSource = FakeDataSource()
     }
 
     @Test
