@@ -12,13 +12,12 @@ open class GetTheRightApartment(private val dataSource: CostOfLivingDataSource) 
         }.take(10)
 
     }
-    fun getListOfDetailsOfApartment(salary:Int):List<DetailsOfApartment>{
-        val dataSource=getTopTenCitesHasCanPayApartmentFaster(dataSource.getAllCitiesData())
-
-
-    }
+//    fun getListOfDetailsOfApartment(salary:Int):List<DetailsOfApartment> {
+//        val dataSource = getTopTenCitesHasCanPayApartmentFaster(dataSource.getAllCitiesData())
+//    return dataSource
+//
+//    }
     private fun excludeNullSalariesAndLowQualityData(city: CityEntity): Boolean {
         return city.averageMonthlyNetSalaryAfterTax != null && city.dataQuality
-    }
+    }}
 
-}
