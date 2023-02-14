@@ -7,34 +7,33 @@ import kotlin.system.exitProcess
 val csvParser = CsvParser()
 val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
 val data = dataSource.getAllCitiesData()
-val inputCitiesEntity= arrayOf(
+val inputCitiesEntity = arrayOf(
     dataSource.getAllCitiesData()[11],
     dataSource.getAllCitiesData()[4],
     dataSource.getAllCitiesData()[10],
     dataSource.getAllCitiesData()[12],
-    dataSource.getAllCitiesData()[13])
+    dataSource.getAllCitiesData()[13]
+)
+
 fun main() {
 
     val isNeedContinue = true
     welcomeUserMessageWithUserNameOrNot(getUserName())
-    while(isNeedContinue){
-    if(getUserChooseStartOrNot()){
-        try {
-            getResultDependOnTheOption()
+    while (isNeedContinue) {
+        if (getUserChooseStartOrNot()) {
+            try {
+                getResultDependOnTheOption()
+            } catch (error: Exception) {
+                println("please enter the correct value")
+            }
+        } else {
+            exitFromApplication()
+            continue
         }
-        catch (error:Exception){
-            println("please enter the correct value")
-        }
-    }
-
-    else {
-        exitFromApplication()
-        continue
-    }
     }
 }
 
-fun getResultDependOnTheOption(){
+fun getResultDependOnTheOption() {
     when (getChooseOptionNumber()) {
         1 -> {
             horizontalRule()
@@ -104,25 +103,26 @@ fun getResultDependOnTheOption(){
         }
     }
 }
+
 fun welcomeUserMessageWithUserNameOrNot(nameOfUser: String?) =
-    println(nameOfUser?.let{ "Hi $nameOfUser Welcome In our Application "}
-        ?:  "Hi There Welcome In our Application")
+    println(nameOfUser?.let { "Hi $nameOfUser Welcome In our Application " }
+        ?: "Hi There Welcome In our Application")
 
 fun getUserName(): String {
     print("please enter your name : ")
     return readln()
 }
-fun getUserChooseStartOrNot(): Boolean{
+
+fun getUserChooseStartOrNot(): Boolean {
     horizontalRule()
     println("Do you want to continue for the trip in our application y/n")
-    val userChoose : String = readln()
+    val userChoose: String = readln()
     return if (checkUserStatus(userChoose)) {
         horizontalRule()
         printUserOptionList()
         horizontalRule()
         true
-    }
-    else {
+    } else {
         horizontalRule()
         println("you don't choose the correct option ")
         horizontalRule()
@@ -130,9 +130,10 @@ fun getUserChooseStartOrNot(): Boolean{
         false
     }
 }
-fun checkUserStatus(userChoose: String) : Boolean = userChoose.trimMargin() == "y"
 
-fun printUserOptionList(){
+fun checkUserStatus(userChoose: String): Boolean = userChoose.trimMargin() == "y"
+
+fun printUserOptionList() {
     println(
         """
             enter your choose what do you need discover
@@ -148,7 +149,7 @@ fun printUserOptionList(){
     )
 }
 
-fun getChooseOptionNumber(): Int{
+fun getChooseOptionNumber(): Int {
     horizontalRule()
     println("please enter the number of your option between [1-8]-> (Just receive Number)")
     return readln().toInt()
@@ -156,61 +157,65 @@ fun getChooseOptionNumber(): Int{
 
 /*******************************************************
 Side of Get Data element -> Instance Zone
-*********************************************************/
-fun getTop10CountriesWithHighTaxOnCarbonatedDrinks(limit: Int){
-    val getTop10CountriesWithHighTaxOnCarbonatedDrinks= GetTop10CountriesWithHighTaxOnCarbonatedDrinks(dataSource)
-    println(getTop10CountriesWithHighTaxOnCarbonatedDrinks.execute(10,data))
+ *********************************************************/
+fun getTop10CountriesWithHighTaxOnCarbonatedDrinks(limit: Int) {
+    val getTop10CountriesWithHighTaxOnCarbonatedDrinks = GetTop10CountriesWithHighTaxOnCarbonatedDrinks(dataSource)
+    println(getTop10CountriesWithHighTaxOnCarbonatedDrinks.execute(10, data))
 }
 
-fun getCitiesNamesSortedCheapestBananaPrices(){
+fun getCitiesNamesSortedCheapestBananaPrices() {
     val getCitiesNamesSortedCheapestBananaPrices = GetCitiesNamesSortedCheapestBananaPrices()
     println(getCitiesNamesSortedCheapestBananaPrices.excute(*inputCitiesEntity))
 }
 
-fun getCityHasCheapestInternetConnection(){
+fun getCityHasCheapestInternetConnection() {
     val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor()
     println(getCityHasCheapestInternetConnectionInteractor.execute(data))
 }
 
-fun getMostSuitableCity(){
+fun getMostSuitableCity() {
     val getMostSuitableCity = GetMostSuitableCityInteractor()
     val list = getMostSuitableCity.getAllCities(dataSource)
-    val cityNameResult = getMostSuitableCity.findTheMostSuitableCity(list)
+    val cityNameResult = getMostSuitableCity.execute(list)
     println(cityNameResult)
 }
 
-fun getCitiesNameToBuyApartmentFaster(salary: Int , limit : Int, squareMeter: Int){
+fun getCitiesNameToBuyApartmentFaster(salary: Int, limit: Int, squareMeter: Int) {
     val getCitiesNameToBuyApartmentFasterInteractor =
         GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
     println(getCitiesNameToBuyApartmentFasterInteractor.execute(salary, limit, squareMeter))
 //    println(getCitiesNameToBuyApartmentFasterInteractor.execute(1000, 10, 100))
 }
 
-fun getTopFashionCitiesNames(limit: Int){
+fun getTopFashionCitiesNames(limit: Int) {
     val topFashionCitiesNames = GetTopFashionCitiesNamesInteractor(dataSource)
     topFashionCitiesNames.execute(limit)
 }
 
-fun getHighestSalaryAverageCities(limit: Int, dataSource: CostOfLivingDataSource){
+fun getHighestSalaryAverageCities(limit: Int, dataSource: CostOfLivingDataSource) {
     val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
     println(getHighestSalaryAverageCities.execute(limit))
 }
-fun getSalaryAverageAndCitiesNamesInCountry(countryName: String,dataSource: CostOfLivingDataSource){
+
+fun getSalaryAverageAndCitiesNamesInCountry(countryName: String, dataSource: CostOfLivingDataSource) {
     val salaryAverageAndCitiesNamesInCountry = GetSalaryAverageAndCitiesNamesInCountryInteractor(dataSource)
     println(salaryAverageAndCitiesNamesInCountry.execute(countryName))
 }
 
-fun horizontalRule(){
+
+fun horizontalRule() {
     println("________________________________________________________")
 }
 
-fun exitFromApplication(){
+fun exitFromApplication() {
     print("Do you need Exit from program (y/n)")
-    val userChooseExitOrStay : String = readln()
-     if(userChooseExitOrStay.lowercase().trimMargin() == "y") {
-        println("""Let's see you again
+    val userChooseExitOrStay: String = readln()
+    if (userChooseExitOrStay.lowercase().trimMargin() == "y") {
+        println(
+            """Let's see you again
                 "Exiting ...
-                """)
-         exitProcess(0)
-     }
+                """
+        )
+        exitProcess(0)
+    }
 }
