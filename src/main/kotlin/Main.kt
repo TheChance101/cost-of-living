@@ -31,6 +31,10 @@ fun main() {
     }
     printSeparationLine()
 
+    val getBestClothesPriceCitiesNameInteractor = GetTopFiveCitiesNamesForShoppingClothesFromFamousBrandsInteractor(dataSource)
+    println(getBestClothesPriceCitiesNameInteractor.execute(limit = 5))
+    printSeparationLine()
+
     val getMostSuitableCityForMoreSavingsPerMonthInteractor = GetMostSuitableCityForMoreSavingsPerMonthInteractor(dataSource)
     getMostSuitableCityForMoreSavingsPerMonthInteractor.apply {
         println(execute())
@@ -48,4 +52,3 @@ fun main() {
 private fun printSeparationLine() {
     print("\n_______________________________\n")
 }
-
