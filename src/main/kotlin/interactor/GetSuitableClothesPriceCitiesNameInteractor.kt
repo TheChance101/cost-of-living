@@ -8,6 +8,7 @@ class GetSuitableClothesPriceCitiesNameInteractor(
     fun execute(limit: Int): List<String> {
         return  dataSource
             .getAllCitiesData()
+            .filter (::excludeCityWitNoBrand)
             .sortedBy(::getAveragePriceForClothes)
             .take(limit)
             .map { it.cityName }
@@ -34,6 +35,17 @@ class GetSuitableClothesPriceCitiesNameInteractor(
         if(cityEntity.clothesPrices.onePairOfMenLeatherBusinessShoes != null) totalBrand++
         if(cityEntity.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null) totalBrand++
         return totalBrand
+    }
+    /**
+     * this function excludes city have no famous brands
+     * @return a boolean represent if city have famous brands or not
+     */
+
+    fun excludeCityWitNoBrand(city: CityEntity): Boolean {
+        return !(city.clothesPrices.oneSummerDressInAChainStoreZaraHAndM == null &&
+                city.clothesPrices.onePairOfJeansLevis50oneOrSimilar == null &&
+                city.clothesPrices.onePairOfMenLeatherBusinessShoes == null &&
+                city.clothesPrices.onePairOfNikeRunningShoesMidRange == null)
     }
 
 }
