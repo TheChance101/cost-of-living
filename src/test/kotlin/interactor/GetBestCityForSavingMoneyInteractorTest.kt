@@ -1,8 +1,8 @@
 package interactor
 
-import dataSource.CsvDataSource
-import dataSource.utils.CsvParser
-import dataSource.utils.FakeDataProvider
+import data.FakeDataSource
+import data.TestCase
+import model.CityEntity
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.BeforeAll
@@ -13,7 +13,6 @@ internal class GetBestCityForSavingMoneyInteractorTest {
 
     // region init
     private lateinit var bestCityForSavingMoney: GetBestCityForSavingMoneyInteractor
-
     private lateinit var fakeData: FakeDataSource
 
     @BeforeAll
@@ -21,52 +20,42 @@ internal class GetBestCityForSavingMoneyInteractorTest {
         fakeData = FakeDataSource()
         bestCityForSavingMoney =
             GetBestCityForSavingMoneyInteractor(fakeData)
-//        fakeData.changeDataSource(TestCase.BananaCheapest)
+        fakeData.changeDataSource(TestCase.BestCityForSavingMoney)
 
     }
     // endregion
 
-//    @Test
-//    fun should_ReturnTrue_When_TheCityHasNotNullRequireValues(){
-//
-//        // given a city haven't null fields
-//        val cityWithoutNullFields = dataSource.getAllCitiesData()[0]
-//
-//        // when check if the output is true
-//        val result = bestCity.checkNullFields(cityWithoutNullFields)
-//        // then check the result
-//        Assertions.assertTrue(result)
-//    }
-//
-//    @Test
-//    fun should_ReturnFalse_When_TheCityHasNullRequireValues(){
-//
-//        // given a city have null fields
-//        val cityWithNullFields = dataSource.getAllCitiesData()[1]
-//
-//        // when check if the output is false
-//        val result = bestCity.checkNullFields(cityWithNullFields)
-//
-//        // then check the result
-//        Assertions.assertFalse(result)
-//    }
-
     @Test
-    fun should_ReturnTrue_When_WePassTheFakeData(){
+    fun should_ReturnTrue_When_TheCityHasNotNullRequireValues() {
 
-        // Given a city name and the name of returned city
-        val cityName = "Moncks Corner"
-        val nameOfReturnedCity = bestCityForSavingMoney.execute(true).cityName
+        // given
+        val data = fakeData.getAllCitiesData()[0]
+        val checkNullFieldsFunction =
+            bestCityForSavingMoney::class.java.getDeclaredMethod("checkNullFields", CityEntity::class.java)
+        checkNullFieldsFunction.isAccessible = true
 
-        // when check if the two names are the same
-        val areEqual = cityName == nameOfReturnedCity
+        // when check if the output is true
+        val result = checkNullFieldsFunction.invoke(bestCityForSavingMoney, data) as Boolean
 
         // then check the result
-        Assertions.assertTrue(areEqual)
+        Assertions.assertTrue(result)
     }
 
     @Test
-    fun should_ReturnFalse_When_WePassTheFakeData(){
+    fun should_ReturnCity_When_ValidData() {
+
+        // Given a city name and the name of returned city
+        val cityName = "Moncks Corner"
+
+        // when
+        val nameOfReturnedCity = bestCityForSavingMoney.execute(true).cityName
+
+        // then check the result
+        Assertions.assertEquals(cityName, nameOfReturnedCity)
+    }
+
+    @Test
+    fun should_ReturnFalse_When_WePassTheFakeData() {
 
         // Given a city name and the name of returned city
         val cityName = "Cairo"
