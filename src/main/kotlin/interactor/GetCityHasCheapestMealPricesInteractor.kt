@@ -3,6 +3,7 @@ package interactor
 import enums.ThreeSpecificCountries
 import model.CityEntity
 import kotlin.math.ceil
+import kotlin.math.floor
 
 class GetCityHasCheapestMealPricesInteractor(
     private val dataSource: CostOfLivingDataSource
@@ -17,7 +18,7 @@ class GetCityHasCheapestMealPricesInteractor(
 
         return if (listOfCitiesEntity.isEmpty()) throw Throwable("List of cities is empty")
         else listOfCitiesEntity
-            .filter { getAverageMealInCity(it) == getAverageMealInAllCities(listOfCitiesEntity) || getAverageMealInCity(it) == ceil(getAverageMealInAllCities(listOfCitiesEntity).toDouble()).toFloat() }
+            .filter { getAverageMealInCity(it) == getAverageMealInAllCities(listOfCitiesEntity) || getAverageMealInCity(it).toInt() == ceil( getAverageMealInAllCities(listOfCitiesEntity)).toInt() || getAverageMealInCity(it).toInt() == floor( getAverageMealInAllCities(listOfCitiesEntity)).toInt() }
             .first()
     }
 
