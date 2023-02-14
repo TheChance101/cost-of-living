@@ -33,7 +33,7 @@ internal class GetTopCitiesFasterToBuyApartmentAndTheNumberOfYearToBuyItTest {
         //when
         val listOfPairforcities = GetTopCitiesFasterAndTheNumberOfYear.execute()
         //then
-        assertEquals(listOf(Pair("Havana", 62.52448),Pair("Damascus", 311.40524)), listOfPairforcities)
+        assertEquals(listOf(Pair("Havana", 62.52448f),Pair("Damascus", 311.40524f)), listOfPairforcities)
     }
 
 
