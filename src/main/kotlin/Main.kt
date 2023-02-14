@@ -22,7 +22,7 @@ fun main() {
     printSeparationLine()
 
     val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
-    println(getCityHasCheapestInternetConnectionInteractor.execute())
+    println(getCityHasCheapestInternetConnectionInteractor.execute( 1 ))
     printSeparationLine()
 
     val getCheapestBananaPricesCitiesNamesInteractor=GetCheapestBananaPricesCitiesNamesInteractor(dataSource)
@@ -40,6 +40,8 @@ fun main() {
     val getCityManagerExpectation = GetCityManagerExpectation(dataSource)
     println(getCityManagerExpectation.execute())
     printSeparationLine()
+
+
 
 }
 
