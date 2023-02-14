@@ -1,5 +1,7 @@
 package interactor
 
+import fakedata.FakeBrandDataWithNull
+import fakedata.FakeDataWithNull
 import fakedata.FakeFullData
 import org.junit.jupiter.api.Test
 
@@ -12,11 +14,15 @@ import org.junit.jupiter.api.TestInstance
 
 class GetSuitableClothesPriceCitiesNameInteractorTest {
     private lateinit var fakeFullData : FakeFullData
+    private lateinit var fakeDataWithNull: FakeDataWithNull
+    private lateinit var fakeBrandDataWithNull: FakeBrandDataWithNull
 
     @BeforeAll
     fun setup()
     {
         fakeFullData= FakeFullData()
+        fakeDataWithNull= FakeDataWithNull()
+        fakeBrandDataWithNull = FakeBrandDataWithNull()
 
     }
     @Test
@@ -27,5 +33,14 @@ class GetSuitableClothesPriceCitiesNameInteractorTest {
         val topFiveCities =listOfCities.execute(5)
         //then check the result
         assertEquals(listOf("aswan","Giza","tanta","alexandria","cairo"),topFiveCities)
+    }
+    @Test
+    fun should_ReturnTop5CitiesName_When_EnterListOfCitiesWithOneOrMoreBrand() {
+        //given list of more than five cities with at least one brand or more for a city
+        val listOfCities =GetSuitableClothesPriceCitiesNameInteractor(fakeBrandDataWithNull)
+        //when find top 5cities for suitable price
+        val topFiveCities =listOfCities.execute(5)
+        //then check the result
+        assertEquals(listOf("El-minya","aswan","Giza","tanta","alexandria"),topFiveCities)
     }
 }
