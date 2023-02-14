@@ -40,11 +40,20 @@ fun main() {
     println(getCitiesNameToBuyApartmentFasterInteractor.execute(1000, 10, 100))
     printSeparationLine()
 
+    val apartmentOneBedRoom=true
+    val apartment3BedRooms=true
+    val limit=1
+    val getHighestDifferentInApartmentRent =
+        GetHighestDifferentInApartmentRent(dataSource)
+    println(getHighestDifferentInApartmentRent.execute(apartmentOneBedRoom, apartment3BedRooms,limit))
+
     println("Top 10 cities with the highest quality of life")
     val getTopFashionCitiesNamesInteractor = GetTopFashionCitiesNamesInteractor(dataSource)
     println(getTopFashionCitiesNamesInteractor.execute(5))
+
     printSeparationLine()
 }
+
 private fun printSeparationLine(){
     print("\n_______________________________\n")
 }
