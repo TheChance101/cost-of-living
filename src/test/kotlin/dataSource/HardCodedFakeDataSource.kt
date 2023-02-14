@@ -527,7 +527,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
                 pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
                 pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
             ),
-            averageMonthlyNetSalaryAfterTax = null,
+            averageMonthlyNetSalaryAfterTax = 6000f,
             dataQuality = true
         )
     }
@@ -601,7 +601,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
                 pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
                 pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
             ),
-            averageMonthlyNetSalaryAfterTax = null,
+            averageMonthlyNetSalaryAfterTax = 6000f,
             dataQuality = true
         )
     }
@@ -675,7 +675,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
                 pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
                 pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
             ),
-            averageMonthlyNetSalaryAfterTax = null,
+            averageMonthlyNetSalaryAfterTax = 6000f,
             dataQuality = true
         )
     }
