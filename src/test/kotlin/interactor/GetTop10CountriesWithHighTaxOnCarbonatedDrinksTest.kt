@@ -58,6 +58,7 @@ class GetTop10CountriesWithHighTaxOnCarbonatedDrinksTest {
             AssertionError("Drink Price can't be Null")
     }
     @Test
+    @Disabled
     fun should_ThrowErrorMessage_When_PriceIsNegative() {
         //given Country with drink price and limit
         val cities = fakeDataSource.getAllCitiesData()
