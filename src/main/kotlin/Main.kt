@@ -50,15 +50,13 @@ fun main() {
     // region 6-CityHasLowestYearsToBuyApartment
     val getCityHasLowestYearsToBuyApartment = GetCityHasLowestYearsToBuyApartmentInteractor(dataSource)
     println(getCityHasLowestYearsToBuyApartment.execute(10, 55))
-    printSeparationLine()
     println(getCityHasLowestYearsToBuyApartment.execute(7, 100))
-    printSeparationLine()
     println(getCityHasLowestYearsToBuyApartment.execute(0, 55))
     printSeparationLine()
     //endregion
     //region 7-CheapestBananaCitiesNames
     val getCheapestBananaCitiesNames = GetCheapestBananaCitiesNamesInteractor(dataSource)
-    println(getCheapestBananaCitiesNames.execute())
+    println(getCheapestBananaCitiesNames.execute(dataSource.getAllCitiesData()[0].cityName))
     printSeparationLine()
     //endregion
     //region 8-CityHasCheapestMealPrices
@@ -69,7 +67,7 @@ fun main() {
     //region 9-TopTenCountryEnforceHighTaxesOnCarbonatedDrinks
     val getTopTenCountryEnforceHighTaxesOnCarbonatedDrinks =
         GetTopTenCountryEnforceHighTaxesOnCarbonatedDrinksInteractor(dataSource)
-    println(getTopTenCountryEnforceHighTaxesOnCarbonatedDrinks.execute(10, listOf()))
+    println(getTopTenCountryEnforceHighTaxesOnCarbonatedDrinks.execute(10))
     printSeparationLine()
     //endregion
     //region 10-SuitableCityMoreSavingPerMonth
@@ -77,6 +75,7 @@ fun main() {
     println(getSuitableCityMoreSavingPerMonth.execute())
     printSeparationLine()
     //endregion
+
 }
 
 private fun printSeparationLine() {
