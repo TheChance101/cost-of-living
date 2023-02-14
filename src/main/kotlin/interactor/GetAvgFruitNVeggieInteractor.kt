@@ -8,7 +8,7 @@ class GetAvgFruitNVeggieInteractor(
     fun execute(): List<CityEntity>? {
         val list = dataSource.getAllCitiesData()
         if (list.isEmpty()) return null
-        return dataSource.getAllCitiesData()
+        return list
 
             .filter(::excludeNullSalaries)
             .filter(::excludeNullFruitsVegPrices)
