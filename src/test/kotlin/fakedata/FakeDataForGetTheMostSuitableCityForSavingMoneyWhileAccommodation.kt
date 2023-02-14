@@ -677,3 +677,8 @@ class NullableData : CostOfLivingDataSource {
     override fun getAllCitiesData(): List<CityEntity> =
         listOf(cityNullableCase1, cityNullableCase2, cityNullableCase3)
 }
+
+
+class EmptyList : CostOfLivingDataSource {
+    override fun getAllCitiesData(): List<CityEntity> = listOf()
+}
