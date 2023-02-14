@@ -10,7 +10,7 @@ import org.junit.jupiter.api.function.Executable
 import java.lang.Exception
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class GetTopFashionCitiesInteractorTest {
+class GetTopFashionCitiesInteractorTest {
     private lateinit var fakeData: FakeData
     private lateinit var getTopFashionCitiesInteractor: GetTopFashionCitiesInteractor
 

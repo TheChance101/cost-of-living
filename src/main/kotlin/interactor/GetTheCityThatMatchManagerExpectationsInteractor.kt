@@ -1,19 +1,20 @@
 package interactor
 
 import model.CityEntity
-import dataSource.CsvDataSource
-import java.lang.Math.floor
+import interactor.util.Constants.CANADA
+import interactor.util.Constants.MEXICO
+import interactor.util.Constants.UNITED_STATES
 
-class GetTheCityThatMatchManagerExpectations(private val dataSource: CostOfLivingDataSource) {
+class GetTheCityThatMatchManagerExpectationsInteractor(private val dataSource: CostOfLivingDataSource) {
     fun execute(): CityEntity {
         val northAmericaCountries = filterByCountryAndNoneNullable(dataSource.getAllCitiesData())
             .sortedBy { it.mealsPrices.mealFor2PeopleMidRangeRestaurant }
-        return northAmericaCountries.get(getMedianValue(northAmericaCountries.size))
+        return northAmericaCountries[getMedianValue(northAmericaCountries.size)]
     }
 
     fun filterByCountryAndNoneNullable(countries: List<CityEntity>): List<CityEntity> =
         countries.filter {
-            (it.country == "United States" || it.country == "Mexico" || it.country == "Canada")
+            (it.country == UNITED_STATES || it.country == MEXICO || it.country == CANADA)
                     && it.mealsPrices.mealFor2PeopleMidRangeRestaurant != null
         }
 

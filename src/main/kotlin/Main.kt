@@ -31,6 +31,10 @@ fun main() {
     println(getCountryCitiesAverageSalary.execute("Syria"))
     printSeparationLine()
 
+    val getTheCityThatMatchManagerExpectations = GetTheCityThatMatchManagerExpectationsInteractor(dataSource)
+    println(getTheCityThatMatchManagerExpectations.execute())
+    printSeparationLine()
+
     val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
     println(getCityHasCheapestInternetConnectionInteractor.execute())
     printSeparationLine()
