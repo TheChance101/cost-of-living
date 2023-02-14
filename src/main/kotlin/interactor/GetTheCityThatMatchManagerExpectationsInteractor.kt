@@ -5,7 +5,9 @@ import interactor.util.Constants.CANADA
 import interactor.util.Constants.MEXICO
 import interactor.util.Constants.UNITED_STATES
 
-class GetTheCityThatMatchManagerExpectationsInteractor(private val dataSource: CostOfLivingDataSource) {
+class GetTheCityThatMatchManagerExpectationsInteractor(
+    private val dataSource: CostOfLivingDataSource
+) {
     fun execute(): CityEntity {
         val northAmericaCountries = filterByCountryAndNoneNullable(dataSource.getAllCitiesData())
             .sortedBy {
