@@ -3,10 +3,6 @@ package interactor
 import model.CityEntity
 
 
-fun getCitiesNameSortedByBananaPrice(vararg cities: CityEntity): List<String> {
-
-    return cities.filter { it.fruitAndVegetablesPrices.banana1kg != null && !it.fruitAndVegetablesPrices.banana1kg.isNaN() }
-        .map { it.cityName }
-
-
-}
+fun getCitiesNameSortedByBananaPrice(vararg cities: CityEntity) =
+    cities.filter { it.fruitAndVegetablesPrices.banana1kg != null && !it.fruitAndVegetablesPrices.banana1kg.isNaN() }
+        .sortedBy { it.fruitAndVegetablesPrices.banana1kg }.map { it.cityName }
