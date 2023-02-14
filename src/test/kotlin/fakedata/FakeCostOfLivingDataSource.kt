@@ -7,7 +7,6 @@ class FakeCostOfLivingDataSource :CostOfLivingDataSource {
     // data source implementation
     /*
      Fake Cost of Living data source with two cities data
-    ​
      City A data:
       cityName: null.toString()
       country: "egypt"
