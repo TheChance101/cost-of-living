@@ -1,6 +1,5 @@
 package interactor
 import FakeData
-import model.CityEntity
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
@@ -13,12 +12,12 @@ class GetHighestApartmentPriceDifferenceCityInteractorTest {
 
     // create an object from FakeData class
     private lateinit var fakeData: FakeData
-    private lateinit var GetHighestApartmentPrice: GetCityHasHighestDifferenceRentBetweenCityCenterAndOutside
+    private lateinit var getHighestApartmentPrice: GetHighestApartmentPriceDifferenceCityInteractor
 
     @BeforeEach
     fun setUp() {
         fakeData = FakeData()
-        GetHighestApartmentPrice = GetCityHasHighestDifferenceRentBetweenCityCenterAndOutside(fakeData)
+        getHighestApartmentPrice = GetHighestApartmentPriceDifferenceCityInteractor(fakeData)
     }
 
     @Test
@@ -27,7 +26,7 @@ class GetHighestApartmentPriceDifferenceCityInteractorTest {
         val type = typeOfApartments.ONE_BEDROOM
 
         //when find the city with the Highest different rent
-        val city = GetHighestApartmentPrice.execute(type)
+        val city = getHighestApartmentPrice.execute(type)
         //then
         assertEquals(fakeData.getAllCitiesData()[1], city)
     }
@@ -38,28 +37,28 @@ class GetHighestApartmentPriceDifferenceCityInteractorTest {
         val type = typeOfApartments.THREE_BEDROOMS
 
         //when find the city with the Highest different rent
-        val result = GetHighestApartmentPrice.execute(type)
+        val result = getHighestApartmentPrice.execute(type)
         //then
         assertEquals(fakeData.getAllCitiesData()[1], result)
     }
 
     @Test
-    fun Should_ReturnNull_When_theTypeIsMissing() {
+    fun should_ReturnNull_When_theTypeIsMissing() {
         // given an invalid type
         val type = null
         // when check if the type is missing
-        val result = type?.let { GetHighestApartmentPrice.execute(it) }
+        val result = type?.let { getHighestApartmentPrice.execute(it) }
         // then check the result
         assertNull(result)
     }
 
     @Test
-    fun Should_ReturnDefaultCity_When_TheCitiesMissing() {
+    fun should_ReturnDefaultCity_When_TheCitiesMissing() {
         // given a missing cities
         val type = null
         val defaultCity = "default"
         // when check if the highest city with invalid type
-        val result = type?.let { GetHighestApartmentPrice.execute(it) } ?: defaultCity
+        val result = type?.let { getHighestApartmentPrice.execute(it) } ?: defaultCity
         // then check if the result is the default city
         assertEquals(defaultCity, result)
     }

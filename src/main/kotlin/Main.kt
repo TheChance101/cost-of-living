@@ -10,7 +10,7 @@ fun main() {
     println(getHighestSalaryAverageCities.execute(limit = 10))
     printSeparationLine()
 
-    val getHighestApartmentPriceDifferenceCity = GetCityHasHighestDifferenceRentBetweenCityCenterAndOutside(dataSource)
+    val getHighestApartmentPriceDifferenceCity = GetHighestApartmentPriceDifferenceCityInteractor(dataSource)
     println(getHighestApartmentPriceDifferenceCity.execute(typeOfApartments.ONE_BEDROOM))
     printSeparationLine()
 
