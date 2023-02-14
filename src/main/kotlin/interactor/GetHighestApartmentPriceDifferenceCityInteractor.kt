@@ -1,6 +1,7 @@
 package interactor
 
 import model.CityEntity
+import model.RealEstatesPrices
 import kotlin.math.abs
 
 class GetHighestApartmentPriceDifferenceCityInteractor(
