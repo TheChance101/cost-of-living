@@ -17,8 +17,8 @@ class GetHighestDifferentInApartmentRentTest {
     }
 
     @Test
-    fun `should return null when give empty list`(){
-        // given Empty list
+    fun `should return null when give null apartment bedrooms`(){
+        // given null apartment bedrooms
         val apartmentOneBedroom=false
         val apartment3Bedrooms=false
         val limit=1

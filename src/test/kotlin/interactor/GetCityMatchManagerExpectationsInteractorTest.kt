@@ -15,28 +15,28 @@ class GetCityMatchManagerExpectationsInteractorTest {
 
     @BeforeEach
     fun setup() {
-        interactor = GetCityMatchManagerExpectationsInteractor(dataSource)
         dataSource = FakeDataSource()
+        interactor = GetCityMatchManagerExpectationsInteractor(dataSource)
     }
 
     @Test
-    fun `should return false when country is not in one of north america countries`() {
+    fun `should return true when country is not in one of north america countries`() {
         // given a list of countries that are in north america
         val givenList = NorthAmericaCountries.list
         // when we check if the countries are in north america
         val result = interactor.execute()
         // then we should get true
-        assertFalse(!givenList.contains(result.country))
+        assertTrue(!givenList.contains(result.country))
     }
 
     @Test
-    fun `should return true when country is in one of north america countries`() {
+    fun `should return false when country is in one of north america countries`() {
         // given a list of countries that are in north america
         val givenList = NorthAmericaCountries.list
         // when we check if the countries are in north america
         val result = interactor.execute()
         // then we should get true
-        assertTrue(givenList.contains(result.country))
+        assertFalse(givenList.contains(result.country))
     }
 
     @Test

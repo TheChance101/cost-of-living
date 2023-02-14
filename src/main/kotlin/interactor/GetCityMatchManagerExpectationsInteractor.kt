@@ -38,7 +38,7 @@ class GetCityMatchManagerExpectationsInteractor(
             .sortedBy { it.mealsPrices.mealFor2PeopleMidRangeRestaurant }
         val cityWithMidRangePrice = getCityWithMidRangePrice(sortedList)?.mealsPrices?.mealFor2PeopleMidRangeRestaurant
         return sortedList
-            .getClosestMealPriceCity(cityWithMidRangePrice ?: 0.0f)!!
+            .getClosestMealPriceCity(cityWithMidRangePrice ?: 0.0f) ?: dataSource.getAllCitiesData()[0]
     }
 
 

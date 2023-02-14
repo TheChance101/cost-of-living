@@ -8,7 +8,7 @@ class GetHighestDifferentInApartmentRent (  private val dataSource: CostOfLiving
     fun execute(apartmentOneBedroom: Boolean, apartment3Bedrooms: Boolean, limit: Int): String? {
         return if (dataSource.getAllCitiesData().isNotEmpty())
             dataSource.getAllCitiesData()
-                .filter(::excludeNullSalariesAndLowQualityData)
+                .filter(::excludeNullApartmentBedroom)
                 .sortedByDescending { it.findHighestDifferentInCitiesRent(apartmentOneBedroom, apartment3Bedrooms) }
                 .takeIf { apartment3Bedrooms || apartmentOneBedroom }
                 ?.take(limit)
@@ -16,7 +16,7 @@ class GetHighestDifferentInApartmentRent (  private val dataSource: CostOfLiving
         else null
     }
 
-    private fun excludeNullSalariesAndLowQualityData(city: CityEntity): Boolean {
+    private fun excludeNullApartmentBedroom(city: CityEntity): Boolean {
         return city.realEstatesPrices.apartment3BedroomsInCityCentre != null
                 && city.realEstatesPrices.apartment3BedroomsOutsideOfCentre != null
                 && city.realEstatesPrices.apartmentOneBedroomInCityCentre != null
