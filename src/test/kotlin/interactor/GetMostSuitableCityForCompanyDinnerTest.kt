@@ -8,7 +8,7 @@ import org.junit.jupiter.api.TestInstance
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class CompanyDinnerInteractorTest {
+class GetMostSuitableCityForCompanyDinnerTest {
     private lateinit var fakeData: CompanyDinnerFakeData
 
     @BeforeAll
@@ -20,7 +20,7 @@ class CompanyDinnerInteractorTest {
     fun `should return country in north america when given any cities `() {
         //given interactor with cities out of north america
         val outOfAmericaInteractor =
-            CompanyDinnerInteractor(fakeData.outsideAndInsideAmericaCities)
+            GetMostSuitableCityForCompanyDinner(fakeData.outsideAndInsideAmericaCities)
         //when execute function is called
         val executeOnOutOfAmerica = outOfAmericaInteractor.execute()?.country
         //then the returned value is null or city inside north america
@@ -37,8 +37,8 @@ class CompanyDinnerInteractorTest {
     @Test
     fun `should return null when invalid data`() {
         //given interactor with empty cities or cities with no meals data
-        val emptyCitiesInteractor = CompanyDinnerInteractor(fakeData.emptyCities)
-        val extremeCitiesInteractor = CompanyDinnerInteractor(fakeData.extremeLowQualityCities)
+        val emptyCitiesInteractor = GetMostSuitableCityForCompanyDinner(fakeData.emptyCities)
+        val extremeCitiesInteractor = GetMostSuitableCityForCompanyDinner(fakeData.extremeLowQualityCities)
         //when execute function is called
         val executeOnEmptyCities = emptyCitiesInteractor.execute()
         val executeOnExtremeCities = extremeCitiesInteractor.execute()
@@ -50,9 +50,9 @@ class CompanyDinnerInteractorTest {
     @Test
     fun `should return city with most approx value when valid data`() {
         //given interactor with valid cities
-        val allCitiesData = CompanyDinnerInteractor(fakeData.allCities)
-        val highQualityCities = CompanyDinnerInteractor(fakeData.highQualityCities)
-        val lowQualityCitiesInteractor = CompanyDinnerInteractor(fakeData.lowQualityCities)
+        val allCitiesData = GetMostSuitableCityForCompanyDinner(fakeData.allCities)
+        val highQualityCities = GetMostSuitableCityForCompanyDinner(fakeData.highQualityCities)
+        val lowQualityCitiesInteractor = GetMostSuitableCityForCompanyDinner(fakeData.lowQualityCities)
         //when execute function is called
         val executeOnAllCities = allCitiesData.execute()
         val executeOnHighQualityCities = highQualityCities.execute()
@@ -67,7 +67,7 @@ class CompanyDinnerInteractorTest {
     @Test
     fun `should return city with exact price when available`() {
         //given interactor with valid cities
-        val allCitiesData = CompanyDinnerInteractor(fakeData.allCities)
+        val allCitiesData = GetMostSuitableCityForCompanyDinner(fakeData.allCities)
         //when execute function is called with boundary = 0 on data contains the exact price
         val executeOnAllCities = allCitiesData.execute(0f)
         //then it returns city with a price equal to  (min(prices)+max(prices))/2
@@ -78,7 +78,7 @@ class CompanyDinnerInteractorTest {
     @Test
     fun `should return null when there is no exact price`() {
         //given interactor with valid cities
-        val highQualityCities = CompanyDinnerInteractor(fakeData.highQualityCities)
+        val highQualityCities = GetMostSuitableCityForCompanyDinner(fakeData.highQualityCities)
         //when execute function is called with boundary = 0 on data doesn't contain the exact price
         val executeOnHighQualityCities = highQualityCities.execute(0f)
         //then it returns null

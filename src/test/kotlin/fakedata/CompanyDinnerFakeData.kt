@@ -187,7 +187,7 @@ object CompanyDinnerFakeData {
             ), averageMonthlyNetSalaryAfterTax = 6000f, dataQuality = true
         )
     }
-    private val cityLowQuality1 by lazy {
+    val cityLowQuality1 by lazy {
         CityEntity(
             cityName = "low quality city in usa", country = "Usa", mealsPrices = MealsPrices(
                 mealInexpensiveRestaurant = null,
@@ -309,7 +309,7 @@ object CompanyDinnerFakeData {
             ), averageMonthlyNetSalaryAfterTax = 6000f, dataQuality = false
         )
     }
-     val cityLowQuality3 by lazy {
+    val cityLowQuality3 by lazy {
         CityEntity(
             cityName = "low quality city in mexico", country = "mexico", mealsPrices = MealsPrices(
                 mealInexpensiveRestaurant = 10f,
@@ -370,7 +370,7 @@ object CompanyDinnerFakeData {
             ), averageMonthlyNetSalaryAfterTax = 6000f, dataQuality = false
         )
     }
-     val cityExtremeLowQuality1 by lazy {
+    val cityExtremeLowQuality1 by lazy {
         CityEntity(
             cityName = "extreme low quality city in usa", country = "usa", mealsPrices = MealsPrices(
                 mealInexpensiveRestaurant = null,
@@ -431,7 +431,7 @@ object CompanyDinnerFakeData {
             ), averageMonthlyNetSalaryAfterTax = 6000f, dataQuality = false
         )
     }
-     val cityExtremeLowQuality2 by lazy {
+    val cityExtremeLowQuality2 by lazy {
         CityEntity(
             cityName = "extreme low quality city in canada", country = "canada", mealsPrices = MealsPrices(
                 mealInexpensiveRestaurant = null,
@@ -492,7 +492,7 @@ object CompanyDinnerFakeData {
             ), averageMonthlyNetSalaryAfterTax = 6000f, dataQuality = false
         )
     }
-     val cityExtremeLowQuality3 by lazy {
+    val cityExtremeLowQuality3 by lazy {
         CityEntity(
             cityName = "low quality city in mexico", country = "mexico", mealsPrices = MealsPrices(
                 mealInexpensiveRestaurant = null,
@@ -553,7 +553,7 @@ object CompanyDinnerFakeData {
             ), averageMonthlyNetSalaryAfterTax = 6000f, dataQuality = false
         )
     }
-     val outsideAmerica by lazy {
+    val outsideAmerica by lazy {
         CityEntity(
             cityName = "low quality city in egypt", country = "Egypt", mealsPrices = MealsPrices(
                 mealInexpensiveRestaurant = null,
@@ -615,8 +615,8 @@ object CompanyDinnerFakeData {
         )
     }
 
-    val emptyCities = object :CostOfLivingDataSource{
-        override fun getAllCitiesData()=listOf<CityEntity>()
+    val emptyCities = object : CostOfLivingDataSource {
+        override fun getAllCitiesData() = listOf<CityEntity>()
     }
     val allCities by lazy {
         object : CostOfLivingDataSource {
@@ -654,7 +654,6 @@ object CompanyDinnerFakeData {
             )
         }
     }
-
     val extremeLowQualityCities by lazy {
         object : CostOfLivingDataSource {
             override fun getAllCitiesData() =

@@ -3,7 +3,7 @@ package interactor
 import model.CityEntity
 import kotlin.math.abs
 
-class CompanyDinnerInteractor(private val dataSource: CostOfLivingDataSource) {
+class GetMostSuitableCityForCompanyDinner(private val dataSource: CostOfLivingDataSource) {
     fun execute(boundary: Float = Float.MAX_VALUE): CityEntity? {
 
         val cityDataHolders = dataSource.getAllCitiesData().filteredByCountries().map {
