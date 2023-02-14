@@ -12,10 +12,12 @@ import org.junit.jupiter.api.TestInstance
 class GetHighestSalaryAverageCitiesNamesInteractTest {
 
     private lateinit var getHighestSalaryAverageCititesNames: GetHighestSalaryAverageCititesNamesInteractor
+    private lateinit var fakeData: FakeData
+
 
     @BeforeAll
     fun setUp() {
-        val fakeData = FakeData()
+        fakeData = FakeData()
         getHighestSalaryAverageCititesNames = GetHighestSalaryAverageCititesNamesInteractor(fakeData)
     }
 
