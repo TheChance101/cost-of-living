@@ -27,7 +27,7 @@ class FakeData : CostOfLivingDataSource {
                 ),
                 fruitAndVegetablesPrices = FruitAndVegetablesPrices(
                     apples1kg = null,
-                    banana1kg =null,
+                    banana1kg = null,
                     oranges1kg = 1.1f,
                     tomato1kg = 0.88f,
                     potato1kg = 1.1f,
@@ -371,7 +371,7 @@ class FakeData : CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = 6000.0f,
-                    apartmentOneBedroomOutsideOfCentre =100.0f ,
+                    apartmentOneBedroomOutsideOfCentre = 100.0f,
                     //5900
                     apartment3BedroomsInCityCentre = 600.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
@@ -400,7 +400,7 @@ class FakeData : CostOfLivingDataSource {
                     waterOneAndHalfLiterBottleAtTheMarket = 2.0f
                 ),
                 fruitAndVegetablesPrices = FruitAndVegetablesPrices(
-                    apples1kg = 11.02f,banana1kg = 0.44f,
+                    apples1kg = 11.02f, banana1kg = 0.44f,
                     oranges1kg = 1.1f,
                     tomato1kg = 0.88f,
                     potato1kg = 1.1f,
@@ -445,7 +445,7 @@ class FakeData : CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     //6900
@@ -519,7 +519,7 @@ class FakeData : CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -592,7 +592,7 @@ class FakeData : CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = 200.0f,
-                    apartmentOneBedroomOutsideOfCentre =100.0f ,
+                    apartmentOneBedroomOutsideOfCentre = 100.0f,
                     apartment3BedroomsInCityCentre = 600.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -665,7 +665,7 @@ class FakeData : CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = 200.0f,
-                    apartmentOneBedroomOutsideOfCentre =100.0f ,
+                    apartmentOneBedroomOutsideOfCentre = 100.0f,
                     apartment3BedroomsInCityCentre = 600.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -738,7 +738,7 @@ class FakeData : CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = 200.0f,
-                    apartmentOneBedroomOutsideOfCentre =100.0f ,
+                    apartmentOneBedroomOutsideOfCentre = 100.0f,
                     apartment3BedroomsInCityCentre = 600.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -811,7 +811,7 @@ class FakeData : CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -822,7 +822,7 @@ class FakeData : CostOfLivingDataSource {
             ),
             //endregion
 
-        //region city[11]
+            //region city[11]
             CityEntity(
                 cityName = "Damascus",
                 country = "Syria",
@@ -885,7 +885,7 @@ class FakeData : CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -894,8 +894,24 @@ class FakeData : CostOfLivingDataSource {
                 averageMonthlyNetSalaryAfterTax = 50.24f,
                 dataQuality = true
             )
-        //endregion
+            //endregion
 
         )
+    }
+
+    companion object {
+        fun createCity(cityName: String, averageMonthlyNetSalaryAfterTax: Float, internetPrice: Float?) =
+            CityEntity(
+                cityName, "Country", MealsPrices(null, null, null),
+                DrinksPrices(null, null, null, null, null),
+                FruitAndVegetablesPrices(null, null, null, null, null, null, null),
+                FoodPrices(null, null, null, null, null, null),
+                ServicesPrices(null, null, internetPrice, null, null, null, null, null),
+                ClothesPrices(null, null, null, null),
+                TransportationsPrices(null, null, null, null, null, null),
+                CarsPrices(null, null),
+                RealEstatesPrices(null, null, null, null, null, null),
+                averageMonthlyNetSalaryAfterTax, true
+            )
     }
 }

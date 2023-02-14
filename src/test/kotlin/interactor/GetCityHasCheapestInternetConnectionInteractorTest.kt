@@ -1,5 +1,6 @@
 package interactor
 
+import fakeData.FakeData.Companion.createCity
 import io.mockk.every
 import io.mockk.mockk
 import model.*
@@ -58,19 +59,4 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
             interactor.execute()
         }
     }
-
-    private fun createCity(cityName: String, averageMonthlyNetSalaryAfterTax: Float, internetPrice: Float?) =
-        CityEntity(
-            cityName, "Country", MealsPrices(null, null, null),
-            DrinksPrices(null, null, null, null, null),
-            FruitAndVegetablesPrices(null, null, null, null, null, null, null),
-            FoodPrices(null, null, null, null, null, null),
-            ServicesPrices(null, null, internetPrice, null, null, null, null, null),
-            ClothesPrices(null, null, null, null),
-            TransportationsPrices(null, null, null, null, null, null),
-            CarsPrices(null, null),
-            RealEstatesPrices(null, null, null, null, null, null),
-            averageMonthlyNetSalaryAfterTax, true
-        )
-
 }
