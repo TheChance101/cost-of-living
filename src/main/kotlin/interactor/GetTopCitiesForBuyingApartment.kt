@@ -1,4 +1,7 @@
 package interactor
 
-class GetTopCitiesForBuyingApartment {
+class GetTopCitiesForBuyingApartment(private val citiesData: CostOfLivingDataSource) {
+
+    fun findTop10CitiesFor100MeterApartment(){
+    }
 }
