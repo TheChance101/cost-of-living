@@ -13,13 +13,13 @@ class FakeCostOfLivingDataSource :CostOfLivingDataSource {
       country: "egypt"
       averageMonthlyNetSalaryAfterTax: 5000F
       pricePerSquareMeterToBuyApartmentOutsideOfCentre: 100f
-    ​
+
      City B data:
       cityName: "City B"
       country: "egypt"
       averageMonthlyNetSalaryAfterTax: [value not specified]
       pricePerSquareMeterToBuyApartmentOutsideOfCentre: [value not specified]
-    ​
+
      City C data:
       cityName: "City C"
       country: "egypt"
@@ -30,9 +30,9 @@ class FakeCostOfLivingDataSource :CostOfLivingDataSource {
       country: "egypt"
       averageMonthlyNetSalaryAfterTax: 8000F
       pricePerSquareMeterToBuyApartmentOutsideOfCentre: [value not specified]
-    ​
-    ​
-    ​
+
+
+
     */
     override fun getAllCitiesData(): List<CityEntity> {
         return listOf(
