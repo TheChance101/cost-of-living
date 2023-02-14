@@ -1,8 +1,8 @@
 import interactor.CostOfLivingDataSource
 import kotlin.math.abs
-class Find_City {
+class GetHighestDifferanceBetweenCityCenterAndOutside (val dataSource: CostOfLivingDataSource){
     // Method to find the city with the highest difference in apartment rent prices in the city center and outside of it
-    fun findCityWithHighestApartmentRentDifference(dataSource: CostOfLivingDataSource): String {
+    fun execute(): String {
         // Get all the data of all cities
         val allCitiesData = dataSource.getAllCitiesData()
 
