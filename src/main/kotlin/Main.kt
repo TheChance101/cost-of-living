@@ -46,6 +46,9 @@ fun main() {
     printSeparationLine()
 
 
+    val getCityHasHighestRentingBetweenApartmentsInteractor =
+        GetCityHasHighestRentingBetweenApartmentsInteractor(dataSource)
+    println(getCityHasHighestRentingBetweenApartmentsInteractor.execute().cityName)
 
 }
 

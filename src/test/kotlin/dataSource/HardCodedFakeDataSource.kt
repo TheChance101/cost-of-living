@@ -298,12 +298,12 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
                 toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 250000f
             ),
             realEstatesPrices = RealEstatesPrices(
-                apartmentOneBedroomInCityCentre = 500000f,
-                apartmentOneBedroomOutsideOfCentre = 300000f,
-                apartment3BedroomsInCityCentre = 800000f,
-                apartment3BedroomsOutsideOfCentre = 500000f,
-                pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
-                pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
+                apartmentOneBedroomInCityCentre = null,
+                apartmentOneBedroomOutsideOfCentre = null,
+                apartment3BedroomsInCityCentre = null,
+                apartment3BedroomsOutsideOfCentre = null,
+                pricePerSquareMeterToBuyApartmentInCityCentre = null,
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
             ),
             averageMonthlyNetSalaryAfterTax = null,
             dataQuality = true
@@ -372,12 +372,12 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
                 toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 250000f
             ),
             realEstatesPrices = RealEstatesPrices(
-                apartmentOneBedroomInCityCentre = 500000f,
-                apartmentOneBedroomOutsideOfCentre = 300000f,
-                apartment3BedroomsInCityCentre = 800000f,
-                apartment3BedroomsOutsideOfCentre = 500000f,
-                pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
-                pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
+                apartmentOneBedroomInCityCentre = null,
+                apartmentOneBedroomOutsideOfCentre = null,
+                apartment3BedroomsInCityCentre = null,
+                apartment3BedroomsOutsideOfCentre = null,
+                pricePerSquareMeterToBuyApartmentInCityCentre = null,
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
             ),
             averageMonthlyNetSalaryAfterTax = null,
             dataQuality = false
@@ -446,12 +446,12 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
                 toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 250000f
             ),
             realEstatesPrices = RealEstatesPrices(
-                apartmentOneBedroomInCityCentre = 500000f,
-                apartmentOneBedroomOutsideOfCentre = 300000f,
-                apartment3BedroomsInCityCentre = 800000f,
-                apartment3BedroomsOutsideOfCentre = 500000f,
-                pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
-                pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
+                apartmentOneBedroomInCityCentre = null,
+                apartmentOneBedroomOutsideOfCentre = null,
+                apartment3BedroomsInCityCentre = null,
+                apartment3BedroomsOutsideOfCentre = null,
+                pricePerSquareMeterToBuyApartmentInCityCentre = null,
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
             ),
             averageMonthlyNetSalaryAfterTax = null,
             dataQuality = true
