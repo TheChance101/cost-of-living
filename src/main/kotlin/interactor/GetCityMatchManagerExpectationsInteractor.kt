@@ -27,28 +27,6 @@ class GetCityMatchManagerExpectationsInteractor(
             .first()
     }
 
-    fun forTesting(): List<CityEntity> {
-        return dataSource.getAllCitiesData()
-            .filter(::getOnlyNorthAmericaCountries).filter(::getOnlyMealPrice)
-    }
 
 }
 
-/* for testing
-    @Test
-    fun `should `() {
-        // given a list of countries that are in north america
-        val givenValue = null
-        // when we check if the countries are in north america
-        val result = interactor.forTesting()
-
-        result.forEach { city ->
-            println("${city.country} ${city.mealsPrices.mealInexpensiveRestaurant?.let { it * 11 }} ${city.mealsPrices.mealFor2PeopleMidRangeRestaurant?.let { (it * 5) + 1 }} ${city.mealsPrices.mealAtMcDonaldSOrEquivalent?.let { it * 11 }}")
-        }
-
-        // then we should get true
-//        assertNotEquals(givenValue, result.mealsPrices.mealFor2PeopleMidRangeRestaurant)
-    }
-
-
-*/

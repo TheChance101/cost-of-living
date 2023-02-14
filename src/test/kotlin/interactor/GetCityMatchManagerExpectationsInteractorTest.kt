@@ -53,9 +53,9 @@ class GetCityMatchManagerExpectationsInteractorTest {
 
     @Test
     fun `should return meal price when mealFor2PeopleMidRangeRestaurant is not null`() {
-        // given a list of countries that are in north america
+        // given a null value
         val givenValue = null
-        // when we check if the countries are in north america
+        // when we check if mealFor2PeopleMidRangeRestaurant is not null
         val result = interactor.execute()
         // then we should get true
         assertNotEquals(givenValue, result.mealsPrices.mealFor2PeopleMidRangeRestaurant)
@@ -64,9 +64,9 @@ class GetCityMatchManagerExpectationsInteractorTest {
 
     @Test
     fun `should return meal price when mealInexpensiveRestaurant is not null`() {
-        // given a list of countries that are in north america
+        // given a null value
         val givenValue = null
-        // when we check if the countries are in north america
+        // when we check if mealInexpensiveRestaurant is not null
         val result = interactor.execute()
         // then we should get true
         assertNotEquals(givenValue, result.mealsPrices.mealInexpensiveRestaurant)
@@ -74,14 +74,13 @@ class GetCityMatchManagerExpectationsInteractorTest {
 
     @Test
     fun `should return meal price when mealAtMcDonaldSOrEquivalent is not null`() {
-        // given a list of countries that are in north america
+        // given a null value
         val givenValue = null
-        // when we check if the countries are in north america
+        // when we check if mealAtMcDonaldSOrEquivalent is not null
         val result = interactor.execute()
         // then we should get true
         assertNotEquals(givenValue, result.mealsPrices.mealAtMcDonaldSOrEquivalent)
     }
-
 
 
 }
