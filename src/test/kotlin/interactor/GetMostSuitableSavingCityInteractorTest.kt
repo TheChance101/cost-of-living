@@ -1,9 +1,7 @@
 package interactor
 
-import fackdata.FakeData
-import model.CityEntity
+import fakedata.FakeData
 import model.FoodPrices
-import model.RealEstatesPrices
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
@@ -11,8 +9,7 @@ import org.junit.jupiter.api.BeforeEach
 
 class GetMostSuitableSavingCityInteractorTest {
 
-    lateinit var mostSuitableSavingCityInteractor: GetMostSuitableSavingCityInteractor
-    lateinit var realEstatesPrices: RealEstatesPrices
+    private lateinit var mostSuitableSavingCityInteractor: GetMostSuitableSavingCityInteractor
     private lateinit var dataSource: CostOfLivingDataSource
 
     private lateinit var fakeData: FakeData
@@ -26,50 +23,66 @@ class GetMostSuitableSavingCityInteractorTest {
 
     @Test
     fun should_ReturnCityName_When_EnterCorrectCityName() {
-        val fakeData = FakeData()
-        val expectedCity = "Moratuwa"
-        fakeData.fakeDataList.add(CityEntity(cityName = expectedCity))
-        mostSuitableSavingCityInteractor = GetMostSuitableSavingCityInteractor(fakeData)
-        val result = mostSuitableSavingCityInteractor.execute(limit = 1)
 
-        assertEquals(1, result.size)
-        assertEquals(expectedCity, result[0])
+        val expectedCity = listOf("Banjul", "Hamah","Narayanganj","Sri Jayewardenepura Kotte","Kasese", "Aleppo")
+
+        val res = mostSuitableSavingCityInteractor.execute(limit = 6)
+
+        assertEquals(expectedCity, res)
     }
 
     @Test
     fun should_ReturnTrue_When_netSalaryNotNull() {
-        val city = fakeData.getAllCitiesData().first()
+        // given
+        val averageNetSalary = 500f
+        val realEstatesPrices = 300f
         // when
-        val result = mostSuitableSavingCityInteractor.excludeNullSalaries(city)
+        val result = mostSuitableSavingCityInteractor.excludeNullSalariesAndNullRealEstatePrice(averageNetSalary, realEstatesPrices)
 //        // then
         assertTrue(result)
     }
 
     @Test
-    fun should_ReturnFalse_When_netSalaryIsNull() {
+    fun should_ReturnFalse_When_netSalaryNull() {
         // given
-//        val city =
-//        println(city)
-//        // when
-//        val result = mostSuitableSavingCityInteractor.excludeNullSalaries(city)
-//
+        val averageNetSalary = null
+        val realEstatesPrices = 300f
+        // when
+        val result = mostSuitableSavingCityInteractor.excludeNullSalariesAndNullRealEstatePrice(averageNetSalary, realEstatesPrices)
 //        // then
-//        assertFalse(result)
+        assertFalse(result)
+    }
+
+    @Test
+    fun should_ReturnFalse_When_netSalaryNullAndRealEstatePriceNull() {
+        // given
+        val averageNetSalary = null
+        val realEstatesPrices = null
+        // when
+        val result = mostSuitableSavingCityInteractor.excludeNullSalariesAndLowQualityData(averageNetSalary, realEstatesPrices)
+//        // then
+        assertFalse(result)
     }
 
     @Test
     fun should_returnCorrectSaving_when_EnterCityDataAndFamilyBudget() {
 
+        // given
+        val foodPrice = FoodPrices(
+            loafOfFreshWhiteBread500g = 1.0f, // 30
+            localCheese1kg = 2.0f, // 2
+            beefRound1kgOrEquivalentBackLegRedMeat = 1.0f, // 4
+            chickenFillets1kg = 3.0f, // 30
+            riceWhite1kg = 1.0f,      // 2
+            eggsRegular12 = null
+        )
 
-        val city = fakeData.getAllCitiesData().filter {
-            it.averageMonthlyNetSalaryAfterTax != null
-                    && it.dataQuality
-        }.first()
-        val familyBudget = mostSuitableSavingCityInteractor.calculateFamilyBudget(city.averageMonthlyNetSalaryAfterTax!!)
-
-        val actualSavings = mostSuitableSavingCityInteractor.calculateCitySavings(city, familyBudget)
-
-        assertEquals(-1954.51f, actualSavings)
+        val realEstatesPrices = 100f
+        val familyBudget = 2000f
+        // when
+        val actualSavings = mostSuitableSavingCityInteractor.calculateCitySavings(realEstatesPrices, foodPrice, familyBudget)
+        // then
+        assertEquals(1582.0f, actualSavings)
     }
 
     @Test
