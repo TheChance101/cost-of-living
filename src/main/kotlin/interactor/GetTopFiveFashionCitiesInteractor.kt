@@ -7,6 +7,11 @@ class GetTopFiveFashionCitiesInteractor(
 ) {
 
     fun execute(): List<String> {
-       return emptyList()
+        val allCitiesData = dataSource.getAllCitiesData()
+        return allCitiesData
+            .filter { it.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null }
+            .sortedBy { it.clothesPrices.onePairOfJeansLevis50oneOrSimilar!! }
+            .take(5)
+            .map { it.cityName }
     }
 }
