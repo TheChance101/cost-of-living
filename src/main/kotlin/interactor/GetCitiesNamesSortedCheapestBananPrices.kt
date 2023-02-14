@@ -2,7 +2,7 @@ package interactor
 
 import model.CityEntity
 
-class GetCitiesNamesSortedCheapestBananPrices {
+class GetCitiesNamesSortedCheapestBananaPrices {
 
     fun excute(vararg cities:CityEntity):List<String>{
         return cities
