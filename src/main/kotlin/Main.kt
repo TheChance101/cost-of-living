@@ -19,9 +19,9 @@ fun main() {
     val countries = listOf("UnItEd STaTeS", "CaNAdA", "MexIco","irAq")
     val getCityThatMatchTheManagerExpectationsInteractor = GetCityThatMatchTheManagerExpectationsInteractor(dataSource)
     print(getCityThatMatchTheManagerExpectationsInteractor.execute(countries))
-//    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
-//    println(getCityHasCheapestInternetConnectionInteractor.execute())
-//    printSeparationLine()
+    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor()
+    println(getCityHasCheapestInternetConnectionInteractor.execute(listOf()))
+    printSeparationLine()
 
 
     val getAverageFruitAndVegetablesInteractor = GetAverageFruitAndVegetablesInteractor(dataSource)
