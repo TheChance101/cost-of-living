@@ -1846,6 +1846,6 @@ class FakeData : CostOfLivingDataSource {
         )
 
     override fun getAllCitiesData(): List<CityEntity> {
-        return fakeDataSource
+        return fakeData
     }
 }
