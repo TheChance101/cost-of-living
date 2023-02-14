@@ -31,6 +31,10 @@ fun main() {
         println(execute())
     }
 
+    val getCityManagerExpectation = GetCityManagerExpectation(dataSource)
+    println(getCityManagerExpectation.execute())
+    printSeparationLine()
+
 }
 
 private fun printSeparationLine() {

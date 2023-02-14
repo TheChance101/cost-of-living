@@ -1,44 +1,46 @@
 package interactor
 
-import dataSource.FakeDataSource
+import dataSource.HardCodedFakeDataSource
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
-import kotlin.test.assertNull
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetCityManagerExpectationTest {
-    private lateinit var fakeData: FakeDataSource
     private lateinit var getCityManagerExpectation: GetCityManagerExpectation
+    private lateinit var dataSource: HardCodedFakeDataSource
 
     @BeforeAll
     fun init() {
-        fakeData = FakeDataSource()
+        dataSource = HardCodedFakeDataSource()
         getCityManagerExpectation =
-            GetCityManagerExpectation(fakeData)
+            GetCityManagerExpectation(dataSource)
+
     }
+
     @Test
-    fun should_ReturnCorrectCity_When_EnterValidData() {
-        //Given fake data source
-        fakeData.setDataType(FakeDataSource.DataType.VALID)
+    fun should_ReturnNotNull_When_EnterValidData() {
+        //Given Valid data
+        dataSource = HardCodedFakeDataSource()
 
         //When list not equal null
-        val list = getCityManagerExpectation.execute()
+        val cityName = getCityManagerExpectation.execute()
 
         //Then
-        assertNotNull(list)
+        assertNotNull(cityName)
     }
 
     @Test
-    fun should_ReturnNoValidList_When_EnterNull() {
-        //Given fake data source
-        fakeData.setDataType(FakeDataSource.DataType.NULLABLE)
+    fun should_ReturnCorrectCity_When_EnterValidData() {
+        //Given Valid data
+        dataSource = HardCodedFakeDataSource()
 
-        //When list equal null
-        val list = getCityManagerExpectation.execute()
+        //When list Enter Valid Data
+        val cityName = getCityManagerExpectation.execute()
 
         //Then
-        assertNull(list)
+        assertEquals("Mexico", cityName)
     }
 }
