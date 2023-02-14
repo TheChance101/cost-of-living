@@ -21,16 +21,17 @@ class GetCitiesAverageFAVLowesCost (
         averageMonthlyNetSalaryAfterTax: Float
     ) : Float {
         var count = 0.0f
+        var total = 0.0f
         fruitAndVegetablesPrices.apply {
-            if(apples1kg != null){count++}
-            if(banana1kg != null){count++}
-            if(oranges1kg != null){count++}
-            if(tomato1kg != null){count++}
-            if(potato1kg != null){count++}
-            if(onion1kg != null){count++}
-            if(lettuceOneHead != null){count++}
+            if(apples1kg != null){count++ ; total += apples1kg}
+            if(banana1kg != null){count++ ; total += banana1kg}
+            if(oranges1kg != null){count++ ; total += oranges1kg}
+            if(tomato1kg != null){count++ ; total += tomato1kg}
+            if(potato1kg != null){count++ ; total += potato1kg}
+            if(onion1kg != null){count++ ; total += onion1kg}
+            if(lettuceOneHead != null){count++ ; total += lettuceOneHead}
 
-            return averageMonthlyNetSalaryAfterTax - (((apples1kg?:0.0f) + (banana1kg?:0.0f) + (oranges1kg?:0.0f) + (tomato1kg?:0.0f) + (potato1kg?:0.0f) + (onion1kg?:0.0f) + (lettuceOneHead?:0.0f)) / count)
+            return averageMonthlyNetSalaryAfterTax - (total / count)
         }
     }
 
