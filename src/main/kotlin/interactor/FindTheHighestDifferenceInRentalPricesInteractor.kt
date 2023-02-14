@@ -8,7 +8,7 @@ class FindTheHighestDifferenceInRentalPricesInteractor(private val dataSource: C
         val citiesData = dataSource.getAllCitiesData()
         if (citiesData.isEmpty())
             return null
-        val highestDifference = dataSource.getAllCitiesData()
+        val highestDifference = citiesData
             .filter(::isDataQuality)
             .maxBy {
                 val oneBedroomDifference =
