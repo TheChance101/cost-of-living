@@ -1,9 +1,14 @@
 package interactor
+import dataSource.utils.ColumnIndex
+class ReorderCitiesByCheapestBananaPrices(private val dataSource: CostOfLivingDataSource) {
 
-class ReorderCitiesByCheapestBananaPrices {
-
-    fun execute(vararg citiesToLiveIn: String): List<String>{
-        return null
+    fun reorderTheGivenList(vararg citiesToLiveIn: String): List<String>{
+        return dataSource
+            .getAllCitiesData()
+            .sortedBy { ColumnIndex.BANANA_1KG }
+            .map { it.cityName }
+            .intersect(citiesToLiveIn.toList())
+            .toList()
     }
 
 }
