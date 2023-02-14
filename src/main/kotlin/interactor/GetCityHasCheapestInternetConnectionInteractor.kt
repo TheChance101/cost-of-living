@@ -9,7 +9,7 @@ class GetCityHasCheapestInternetConnectionInteractor(
         val list = dataSource
             .getAllCitiesData()
             .filter(::excludeNullAverageSalaryAndServicesPrices)
-            .sortingWithBestInterentPrice()
+            .sortingWithBestInternetPrice()
             .take(limit)
             .map { it.cityName }
         return if (list.isEmpty())
