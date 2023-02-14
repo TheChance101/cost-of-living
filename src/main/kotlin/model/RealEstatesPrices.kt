@@ -1,6 +1,7 @@
 package model
 
 data class RealEstatesPrices(
+
     val apartmentOneBedroomInCityCentre: Float?,
     val apartmentOneBedroomOutsideOfCentre: Float?,
     val apartment3BedroomsInCityCentre: Float?,
