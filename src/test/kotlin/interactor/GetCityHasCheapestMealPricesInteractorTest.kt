@@ -4,20 +4,20 @@ import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import enums.ThreeSpecificCountries
 import fakeData.FakeData
+import fakeData.FakeDataTwo
 import io.mockk.*
 import model.CityEntity
 import org.junit.jupiter.api.*
-import org.junit.jupiter.api.function.Executable
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
-import org.junit.jupiter.api.Assertions.assertThrows
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCityHasCheapestMealPricesInteractorTest {
 
     private lateinit var sut: GetCityHasCheapestMealPricesInteractor
     private lateinit var fakeData: FakeData
+    private lateinit var fakeData2: FakeDataTwo
     private val csvParser = CsvParser()
     private val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
 
@@ -28,6 +28,7 @@ class GetCityHasCheapestMealPricesInteractorTest {
         unmockkAll()
         // Initialized fakeData object
         fakeData = FakeData()
+        fakeData2 = FakeDataTwo()
         // sut: system under test
         sut = GetCityHasCheapestMealPricesInteractor(dataSource)
     }
@@ -228,5 +229,15 @@ class GetCityHasCheapestMealPricesInteractorTest {
         val result = sut.getAverageMealInAllCities(emptyList())
         // then
         assertEquals(average, result)
+    }
+
+    @Test
+    fun `should return city entity when there is city in USA, Canada or Mexico`() {
+        // given fake city entity data
+        val fakeCityEntity = fakeData2.getAllCitiesData()[0]
+        // when
+        val result = sut.execute()
+        // then
+        assertEquals(fakeCityEntity, result)
     }
 }
