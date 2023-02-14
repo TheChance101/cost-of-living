@@ -25,7 +25,7 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest(){
         //Given
         hardCodedFakeDataSource.setDatatype(HardCodedFakeDataSource.DataType.VALID)
         //When
-        val city = getCityHasCheapestInternetConnectionInteractor.execute()
+        val city = getCityHasCheapestInternetConnectionInteractor.execute(1)
         //Then
         assertEquals("paris",city.cityName)
 
@@ -36,7 +36,7 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest(){
         //Given
         hardCodedFakeDataSource.setDatatype(HardCodedFakeDataSource.DataType.NULLABLE)
         //When
-        val city = getCityHasCheapestInternetConnectionInteractor.execute()
+        val city = getCityHasCheapestInternetConnectionInteractor.execute(1)
         //Then
         assertEquals("",city.cityName)
     }
