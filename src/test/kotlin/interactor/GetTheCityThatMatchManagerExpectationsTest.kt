@@ -68,5 +68,28 @@ class GetTheCityThatMatchManagerExpectationsTest {
         assertEquals(0,actualResult)
     }
 
+    @Test
+    fun should_ReturnMidValueCountry() {
+        /*
+           in fake data we have three city entities two in america and one in canada
+           mealFor2PeopleMidRangeRestaurant in america is 60 and 65
+           in canada it's 29.65
+         */
+        // when
+        val actualResult = GetTheCityThatMatchManagerExpectations.execute().mealsPrices.mealFor2PeopleMidRangeRestaurant
+
+        //then
+        assertEquals(60.0f,actualResult)
+    }
+    @Test
+    fun should_ExecludeNullValues_When_GivingAListContaininginRegionCountryMidMeal_IsNull(){
+        //given
+        val CountriesList = fakeData.getAllCitiesData()
+            .filterNot { it.country == "United States" || it.country == "Mexico" || it.country == "Canada" } // 4
+        // when
+        val actualResult = GetTheCityThatMatchManagerExpectations.filterByCountryAndNoneNullable(CountriesList).size
+        //then
+        assertNotEquals(CountriesList.size,actualResult)
+    }
 
 }

@@ -1463,6 +1463,148 @@ class FakeData : CostOfLivingDataSource {
             ),
             averageMonthlyNetSalaryAfterTax = null,
             dataQuality = false
+        ),
+        CityEntity(
+            cityName = "Chateauguay",
+            country = "Canada",
+            mealsPrices = MealsPrices(
+                mealInexpensiveRestaurant = 8.89f,
+                mealFor2PeopleMidRangeRestaurant = 29.65f,
+                mealAtMcDonaldSOrEquivalent = 5.56f
+            ),
+            drinksPrices = DrinksPrices(
+                cappuccinoRegularInRestaurants = 2.59f,
+                cokePepsiAThirdOfLiterBottleInRestaurants = null,
+                waterAThirdOfLiterBottleInRestaurants = null,
+                milkRegularOneLiter = 1.46f,
+                waterOneAndHalfLiterBottleAtTheMarket = 1.62f
+            ),
+            fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                apples1kg = 2.44f,
+                banana1kg = 1.26f,
+                oranges1kg = 4.44f,
+                tomato1kg = 4.82f,
+                potato1kg = 1.67f,
+                onion1kg = 3.7f,
+                lettuceOneHead = 1.9f
+            ),
+            foodPrices = FoodPrices(
+                loafOfFreshWhiteBread500g = 2.55f,
+                riceWhite1kg = 2.59f,
+                eggsRegular12 = 2.22f,
+                localCheese1kg = 8.15f,
+                chickenFillets1kg = 15.31f,
+                beefRound1kgOrEquivalentBackLegRedMeat = null
+            ),
+            servicesPrices = ServicesPrices(
+                basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = null,
+                oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = null,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
+                fitnessClubMonthlyFeeForOneAdult = null,
+                tennisCourtRentOneHourOnWeekend = null,
+                cinemaInternationalReleaseOneSeat = null,
+                preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = null,
+                internationalPrimarySchoolYearlyForOneChild = null
+            ),
+            clothesPrices = ClothesPrices(
+                onePairOfJeansLevis50oneOrSimilar = null,
+                oneSummerDressInAChainStoreZaraHAndM = null,
+                onePairOfNikeRunningShoesMidRange = null,
+                onePairOfMenLeatherBusinessShoes = null
+            ),
+            transportationsPrices = TransportationsPrices(
+                oneWayTicketLocalTransport = null,
+                monthlyPassRegularPrice = null,
+                taxiStartNormalTariff = null,
+                taxi1kmNormalTariff = null,
+                taxi1hourWaitingNormalTariff = null,
+                gasolineOneLiter = 1.33f
+            ),
+            carsPrices = CarsPrices(
+                volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = null,
+                toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = null
+            ),
+            realEstatesPrices = RealEstatesPrices(
+                apartmentOneBedroomInCityCentre = null,
+                apartmentOneBedroomOutsideOfCentre = null,
+                apartment3BedroomsInCityCentre = null,
+                apartment3BedroomsOutsideOfCentre = null,
+                pricePerSquareMeterToBuyApartmentInCityCentre = null,
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
+            ),
+            averageMonthlyNetSalaryAfterTax = null,
+            dataQuality = false
+        ),
+        CityEntity(
+            cityName = "Tapachula",
+            country = "Mexico",
+            mealsPrices = MealsPrices(
+                mealInexpensiveRestaurant = 3.61f,
+                mealFor2PeopleMidRangeRestaurant = null,
+                mealAtMcDonaldSOrEquivalent = 7.86f
+            ),
+            drinksPrices = DrinksPrices(
+                cappuccinoRegularInRestaurants = 1.03f,
+                cokePepsiAThirdOfLiterBottleInRestaurants = 1.29f,
+                waterAThirdOfLiterBottleInRestaurants = 0.62f,
+                milkRegularOneLiter = 1.26f,
+                waterOneAndHalfLiterBottleAtTheMarket = 0.77f
+            ),
+            fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                apples1kg = 1.8f,
+                banana1kg = 1.29f,
+                oranges1kg = 1.55f,
+                tomato1kg = 1.29f,
+                potato1kg = 1.55f,
+                onion1kg = 1.29f,
+                lettuceOneHead = 1.03f
+            ),
+            foodPrices = FoodPrices(
+                loafOfFreshWhiteBread500g = 1.38f,
+                riceWhite1kg = 0.93f,
+                eggsRegular12 = 1.86f,
+                localCheese1kg = 6.19f,
+                chickenFillets1kg = 6.19f,
+                beefRound1kgOrEquivalentBackLegRedMeat = 14.44f
+            ),
+            servicesPrices = ServicesPrices(
+                basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 73.49f,
+                oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.1f,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = 30.94f,
+                fitnessClubMonthlyFeeForOneAdult = 23.21f,
+                tennisCourtRentOneHourOnWeekend = 10.31f,
+                cinemaInternationalReleaseOneSeat = 3.09f,
+                preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 162.44f,
+                internationalPrimarySchoolYearlyForOneChild = 2062.76f
+            ),
+            clothesPrices = ClothesPrices(
+                onePairOfJeansLevis50oneOrSimilar = 24.75f,
+                oneSummerDressInAChainStoreZaraHAndM = 25.78f,
+                onePairOfNikeRunningShoesMidRange = 48.99f,
+                onePairOfMenLeatherBusinessShoes = 46.41f
+            ),
+            transportationsPrices = TransportationsPrices(
+                oneWayTicketLocalTransport = 0.41f,
+                monthlyPassRegularPrice = 5.16f,
+                taxiStartNormalTariff = 1.93f,
+                taxi1kmNormalTariff = 1.6f,
+                taxi1hourWaitingNormalTariff = 4.13f,
+                gasolineOneLiter = 1.18f
+            ),
+            carsPrices = CarsPrices(
+                volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 10313.8f,
+                toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 18049.15f
+            ),
+            realEstatesPrices = RealEstatesPrices(
+                apartmentOneBedroomInCityCentre = null,
+                apartmentOneBedroomOutsideOfCentre = 77.35f,
+                apartment3BedroomsInCityCentre = 154.71f,
+                apartment3BedroomsOutsideOfCentre = 103.14f,
+                pricePerSquareMeterToBuyApartmentInCityCentre = null,
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
+            ),
+            averageMonthlyNetSalaryAfterTax = 360.98f,
+            dataQuality = false
         )
 
 
