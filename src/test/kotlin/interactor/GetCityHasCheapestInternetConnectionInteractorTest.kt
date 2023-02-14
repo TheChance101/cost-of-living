@@ -1,9 +1,9 @@
 package interactor
 
 import io.mockk.every
-import org.junit.jupiter.api.Test
 import io.mockk.mockk
 import model.*
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -29,6 +29,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
         // then
         assertEquals("City 2", result?.cityName)
     }
+
     @Test
     fun `should return null if no cities have internet price`() {
         // given
@@ -57,6 +58,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
             interactor.execute()
         }
     }
+
     private fun createCity(cityName: String, averageMonthlyNetSalaryAfterTax: Float, internetPrice: Float?) =
         CityEntity(
             cityName, "Country", MealsPrices(null, null, null),

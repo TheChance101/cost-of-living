@@ -5,9 +5,14 @@ import dataSource.utils.CsvParser
 import enums.ThreeSpecificCountries
 import fakeData.FakeData
 import fakeData.FakeDataTwo
-import io.mockk.*
+import io.mockk.clearAllMocks
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.unmockkAll
 import model.CityEntity
-import org.junit.jupiter.api.*
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue

@@ -6,26 +6,26 @@ import model.CityEntity
  * Created by Aziza Helmy on 2/11/2023.
  */
 class GetSuitableCityMoreSavingPerMonthInteractor(private val dataSource: CostOfLivingDataSource) {
-    private val riceConsumption = 2
-    private val cheeseConsumption = 1
-    private val breadConsumption = 15 * 2
-    private val chickenConsumption = 10
-    private val meetConsumption = 4
-    private val otherNeedConsumption = 250
-    private val averageSalary = 2
+    private val riceConsumptionByKg = 2
+    private val cheeseConsumptionByKg = 1
+    private val breadConsumptionByKg = 15 * 2
+    private val chickenConsumptionByKg = 10
+    private val meetConsumptionByKg = 4
+    private val otherNeedConsumptionByKg = 250
+    private val averageSalaryByKg = 2
 
     fun execute(): CityEntity {
 
         return dataSource.getAllCitiesData()
             .filter(::excludeNullSalariesApartment3BedroomsAndFoodies)
             .maxByOrNull {
-                (it.averageMonthlyNetSalaryAfterTax!! * averageSalary) -
-                        ((it.foodPrices.riceWhite1kg!! * riceConsumption) +
-                                (it.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!! * meetConsumption) +
-                                (it.foodPrices.chickenFillets1kg!! * chickenConsumption) +
-                                (it.foodPrices.localCheese1kg!! * cheeseConsumption) +
-                                (it.foodPrices.loafOfFreshWhiteBread500g!! * breadConsumption) +
-                                (otherNeedConsumption) +
+                (it.averageMonthlyNetSalaryAfterTax!! * averageSalaryByKg) -
+                        ((it.foodPrices.riceWhite1kg!! * riceConsumptionByKg) +
+                                (it.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!! * meetConsumptionByKg) +
+                                (it.foodPrices.chickenFillets1kg!! * chickenConsumptionByKg) +
+                                (it.foodPrices.localCheese1kg!! * cheeseConsumptionByKg) +
+                                (it.foodPrices.loafOfFreshWhiteBread500g!! * breadConsumptionByKg) +
+                                (otherNeedConsumptionByKg) +
                                 (it.realEstatesPrices.apartment3BedroomsInCityCentre!!)
                                 )
             }!!

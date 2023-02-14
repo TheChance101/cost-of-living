@@ -83,6 +83,7 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         //Then
         assertFalse(actualResult)
     }
+
     @Test
     fun should_Not_ReturnSuitableCity_When_NoSavingsMorePerMonth() {
         //Given
@@ -92,6 +93,7 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
         //Then
         assertNotEquals(fakeCity, actualResult)
     }
+
     @Test
     fun should_ReturnSuitableCity_When_SavingsMorePerMonth() {
         //Given
