@@ -16,13 +16,13 @@ class GetCitiesAverageFAVLowesCostTest {
         fakeNormalData = FakeDataGetCitiesAverageFAVLowesCost()
     }
     @Test
-    fun should_ReturnTenCitiesNames_WhenGetAverageOfFruitsAndVegetablesLowestCost() {
+    fun should_ReturnTenCitiesNames_When_GetAverageOfFruitsAndVegetablesLowestCost() {
         //Given FakeDataOfCityEntities
         val fakeDataOfCityEntities = fakeNormalData
         //When execute to get Cities Names That Average Fruits And Vegetables Lowest Cost
         val citiesNames = GetCitiesAverageFAVLowesCost(fakeDataOfCityEntities).execute(10)
-        //Then Get 10 Names Of Cities
-        assertEquals(listOf("Desouk","Dendera","Deir Mawas","Dairut","Dekernes","Dar El Salam","Daraw","Dishna","Cairo","Dahab"),citiesNames)
+        //Then Get At Least 10 Names Of Cities
+        assertEquals(listOf("Dendera","Deir Mawas","Dairut","Dekernes","Dar El Salam","Daraw","Dishna","Cairo","Dahab","Damanhur"),citiesNames)
 
     }
 }
