@@ -7,7 +7,6 @@ import model.*
 object FakeDataProvider : CostOfLivingDataSource {
 
 
-
     private var fakeData = listOf(
 
         CityEntity(
