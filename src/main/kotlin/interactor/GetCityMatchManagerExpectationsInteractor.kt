@@ -21,6 +21,15 @@ class GetCityMatchManagerExpectationsInteractor(
         (lowestPrice ?: 0.0f) + ((highestPrice ?: 0.0f) - (lowestPrice ?: 0.0f)) / 2
 
 
+    private fun getCityWithMidRangePrice(cities: List<CityEntity>): CityEntity? =
+        cities.find {
+            it.mealsPrices.mealFor2PeopleMidRangeRestaurant == getMidRangePrice(
+                getLowestPrice(cities),
+                getHighestPrice(cities)
+            )
+        }
+
+
     fun execute(): CityEntity {
 
     }
