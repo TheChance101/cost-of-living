@@ -16,9 +16,9 @@ fun main() {
     }
     printSeparationLine()
 
-    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
+   /* val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
     println(getCityHasCheapestInternetConnectionInteractor.execute())
-    printSeparationLine()
+    printSeparationLine()*/
 
     val getCheapestBananaPricesCitiesNamesInteractor=GetCheapestBananaPricesCitiesNamesInteractor(dataSource)
     getCheapestBananaPricesCitiesNamesInteractor.apply {
@@ -30,6 +30,9 @@ fun main() {
     getMostSuitableCityForMoreSavingsPerMonthInteractor.apply {
         println(execute())
     }
+    printSeparationLine()
+   /* val getCityNameAndSalrayAverageInteractor=GetCityNameAndSalrayAverageInteractor(dataSource)
+    println(getCityNameAndSalrayAverageInteractor.execute(""))*/
 
 }
 

@@ -13,8 +13,7 @@ class GetCityNameAndSalrayAverageInteractor(private val dataSource: CostOfLiving
             .filter { (it.country == country.convert()) && (it.dataQuality) }.getSalary()
         if(list.isEmpty())
         {
-            throw Throwable("Enter Falid Country")
-
+            throw Exception("Enter Valid Country")
         }
         return list
     }
