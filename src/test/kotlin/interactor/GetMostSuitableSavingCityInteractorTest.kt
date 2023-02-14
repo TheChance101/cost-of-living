@@ -1,6 +1,6 @@
 package interactor
-
 import fakedata.FakeData
+import model.CityEntity
 import model.FoodPrices
 import org.junit.jupiter.api.Test
 
