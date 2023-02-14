@@ -8,6 +8,7 @@ import model.*
 import org.junit.jupiter.api.BeforeEach
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 
 
 val correctCityEntity by lazy {
@@ -163,6 +164,7 @@ class GetTheMostSuitableCityForSavingMoneyWhileAccommodationTest {
     private lateinit var nullData: NullableData
     private lateinit var emptyList: EmptyList
     private lateinit var mixedData: MixedData
+
     @BeforeEach
     fun setUp() {
         correctData = CorrectData()
@@ -170,4 +172,26 @@ class GetTheMostSuitableCityForSavingMoneyWhileAccommodationTest {
         emptyList = EmptyList()
         mixedData = MixedData()
     }
+
+    @Test
+    fun should_ReturnCityWithTheMostSavingMoneyForAccommodation_When_DataIsCorrect() {
+        //given Correct Data
+        val city = GetTheMostSuitableCityForSavingMoneyWhileAccommodation(correctData)
+        //when find the most saving city
+        val mostSavingCity = city.execute()
+        //then compare with expected value
+        assertEquals(correctCityEntity, mostSavingCity)
+    }
+
+    @Test
+    fun should_ReturnCityWithTheMostSavingMoneyForAccommodation_When_DataIsMixed() {
+        //given Mixed Data
+        val city = GetTheMostSuitableCityForSavingMoneyWhileAccommodation(mixedData)
+        //when find the most saving city
+        val mostSavingCity = city.execute()
+        //then compare with expected value
+        assertEquals(correctMixedCityEntity, mostSavingCity)
+    }
+
+
 }
