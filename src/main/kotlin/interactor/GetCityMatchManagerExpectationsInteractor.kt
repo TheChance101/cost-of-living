@@ -11,12 +11,14 @@ class GetCityMatchManagerExpectationsInteractor(
     private fun getOnlyNorthAmericaCountries(city: CityEntity): Boolean =
         city.country in NorthAmericaCountries.list
 
+    private fun getHighestPrice(sortedCities: List<CityEntity>) =
+        sortedCities.lastOrNull()?.mealsPrices?.mealFor2PeopleMidRangeRestaurant
 
     private fun getLowestPrice(sortedCities: List<CityEntity>) =
         sortedCities.firstOrNull()?.mealsPrices?.mealFor2PeopleMidRangeRestaurant
 
     fun execute(): CityEntity {
-      
+
     }
 
 
