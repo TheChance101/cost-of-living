@@ -35,6 +35,11 @@ fun main() {
     getMostSuitableCityForMoreSavingsPerMonthInteractor.apply {
         println(execute())
     }
+     printSeparationLine()
+
+    val getCityManagerExpectation = GetCityManagerExpectation(dataSource)
+    println(getCityManagerExpectation.execute())
+    printSeparationLine()
 
 }
 
