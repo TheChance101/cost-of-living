@@ -458,7 +458,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
         )
     }
 
-    private val validCityList = mutableListOf<CityEntity>()
+   
     val canadaHighQuality by lazy {
         CityEntity(
             cityName = "Ottawa",
