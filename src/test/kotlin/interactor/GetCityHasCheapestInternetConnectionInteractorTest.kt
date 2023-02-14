@@ -27,7 +27,7 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest(){
         //When
         val city = getCityHasCheapestInternetConnectionInteractor.execute(1)
         //Then
-        assertEquals("paris",city.cityName)
+        assertEquals("paris",city)
 
     }
 
@@ -38,7 +38,7 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest(){
         //When
         val city = getCityHasCheapestInternetConnectionInteractor.execute(1)
         //Then
-        assertEquals("",city.cityName)
+        assertEquals("",city)
     }
 
 }
