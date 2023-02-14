@@ -29,6 +29,9 @@ class GetCityMatchManagerExpectationsInteractor(
             )
         }
 
+    private fun List<CityEntity>.getClosestMealPriceCity(midRangePrice: Float): CityEntity? =
+        minByOrNull { kotlin.math.abs(it.mealsPrices.mealFor2PeopleMidRangeRestaurant ?: 0.0f - midRangePrice) }
+
 
     fun execute(): CityEntity {
 
