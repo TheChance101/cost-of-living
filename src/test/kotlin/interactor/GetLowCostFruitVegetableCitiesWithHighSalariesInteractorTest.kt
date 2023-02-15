@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.function.Executable
 import kotlin.test.assertEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -17,7 +18,6 @@ internal class GetLowCostFruitVegetableCitiesWithHighSalariesInteractorTest {
         getLowCostFruitVegetableCitiesWithHighSalaries =
             GetLowCostFruitVegetableCitiesWithHighSalariesInteractor(FakeData())
     }
-
 
     @Test
     fun should_returnCorrectResult_when_correctListIsGiven() {
@@ -31,50 +31,57 @@ internal class GetLowCostFruitVegetableCitiesWithHighSalariesInteractorTest {
         assertEquals(expectedResult, result)
     }
 
-//    @Test
-//    fun should_returnFalse_when_theNameOfCityIsNull() {
-//        // when
-//        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute()
-//
-//        //then
-//        assertFalse(result.any { it.cityName == "" })
-//    }
-//
-//    @Test
-//    fun should_returnTen_when_theSizeOfTheListIsTen() {
-//        // when
-//        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute()
-//
-//        //then
-//        assertEquals(10, result.size)
-//    }
-//
-//    @Test
-//    fun should_returnFalse_when_salaryIsNull() {
-//        // when
-//        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute()
-//
-//        //then
-//        assertFalse(result.any { it.averageMonthlyNetSalaryAfterTax == null })
-//    }
-//
-//    @Test
-//    fun should_returnFalse_when_salaryIsZero() {
-//        // when
-//        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute()
-//
-//        //then
-//        assertFalse(result.any { it.averageMonthlyNetSalaryAfterTax == 0f })
-//    }
-//
-//    @Test
-//    fun should_returnFalse_when_salaryIsNegative() {
-//        // when
-//        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute()
-//
-//        //then
-//        assertFalse(result.any { it.averageMonthlyNetSalaryAfterTax!! < 0f })
-//    }
+    @Test
+    fun should_returnTen_when_theSizeOfTheListIsTen() {
+        //given the limit of cities is 10
+        val limit = 10
+        // when
+        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit)
+
+        //then
+        assertEquals(10, result.size)
+    }
+
+    @Test
+    fun should_returnExceptionw_when_inputLimitIsMoreThanListSize() {
+        //given the limit of cities is 20
+        val limit = 20
+        // when
+        val exception : Executable =Executable{
+            getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit)
+        }
+
+        //then
+        assertThrows(Exception::class.java,exception)
+    }
+
+    @Test
+    fun should_returnExceptionw_when_inputIsZero() {
+        //given the limit of cities is 0
+        val limit = 0
+        // when
+        val exception : Executable =Executable{
+            getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit)
+        }
+
+        //then
+        assertThrows(Exception::class.java,exception)
+    }
+
+    @Test
+    fun should_returnExceptionw_when_inputIsNegative() {
+        //given the limit of cities is -1
+        val limit = -1
+        // when
+        val exception : Executable =Executable{
+            getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit)
+        }
+
+        //then
+        assertThrows(Exception::class.java,exception)
+    }
+
+
 
 
 
