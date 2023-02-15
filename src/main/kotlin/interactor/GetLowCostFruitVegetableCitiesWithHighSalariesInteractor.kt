@@ -10,6 +10,9 @@ class GetLowCostFruitVegetableCitiesWithHighSalariesInteractor(
 ) {
 
     fun execute(limit: Int): List<String> {
+        if (limit>dataSource.getAllCitiesData().count()){
+           return listOf("")
+        }
         return dataSource.getAllCitiesData()
             .filter(::excludeNullSalariesAndNullFruitVegPrices)
             .sortedBy { getFruitVegTotalPrice(it.fruitAndVegetablesPrices).div(it.averageMonthlyNetSalaryAfterTax!!) }

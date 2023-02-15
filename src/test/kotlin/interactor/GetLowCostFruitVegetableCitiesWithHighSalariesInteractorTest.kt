@@ -6,23 +6,23 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
+import kotlin.test.assertEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetLowCostFruitVegetableCitiesWithHighSalariesInteractorTest {
     private lateinit var getLowCostFruitVegetableCitiesWithHighSalaries: GetLowCostFruitVegetableCitiesWithHighSalariesInteractor
-    private lateinit var expectedResult: List<String>
 
     @BeforeAll
     fun setup() {
         getLowCostFruitVegetableCitiesWithHighSalaries =
             GetLowCostFruitVegetableCitiesWithHighSalariesInteractor(FakeData())
-        expectedResult = listOf("Giza","Rawalpindi","Alexandria","Hyderabad City","Karachi","Lahore","Multan","Tanta","Accra","Dushanbe")
     }
 
 
     @Test
     fun should_returnCorrectResult_when_correctListIsGiven() {
         //given the limit of cities is 10
+        val expectedResult = listOf("Giza","Rawalpindi","Alexandria","Hyderabad City","Karachi","Lahore","Multan","Tanta","Accra","Dushanbe")
         val limit = 10
         // when find 10 cities that has lowest fruitVeg prices comparing to salaries paid there
         val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit)
