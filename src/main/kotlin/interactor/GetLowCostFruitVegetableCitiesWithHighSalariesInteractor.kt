@@ -10,7 +10,7 @@ class GetLowCostFruitVegetableCitiesWithHighSalariesInteractor(
 ) {
 
     fun execute(limit: Int): List<String> {
-        if ( limit <=0 && limit>dataSource.getAllCitiesData().count()){
+        if ( limit <=0 || limit>dataSource.getAllCitiesData().count()){
            return listOf("")
         } // check it again
         return dataSource.getAllCitiesData()
