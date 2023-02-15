@@ -17,7 +17,7 @@ class GetLowCostFruitVegetableCitiesWithHighSalariesInteractor(
             .filter(::excludeNullSalariesAndNullFruitVegPrices)
             .sortedBy { calculateFruitVegTotalPrice(it.fruitAndVegetablesPrices).div(it.averageMonthlyNetSalaryAfterTax!!) }
             .takeUnless { limit<=0 || limit > it.count() }!!
-            .take(10)
+            .take(limit)
             .map { it.cityName }
     }
     private fun excludeNullSalariesAndNullFruitVegPrices(city: CityEntity): Boolean {
