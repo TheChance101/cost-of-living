@@ -10,13 +10,14 @@ class GetLowCostFruitVegetableCitiesWithHighSalariesInteractor(
 ) {
 
     fun execute(limit: Int): List<String> {
-        if ( limit <=0 || limit>dataSource.getAllCitiesData().count()){
-           return listOf("")
-        } // check it again
+//        if ( limit <=0 || limit>dataSource.getAllCitiesData().count()){
+//           return listOf("")
+//        } // check it again
         return dataSource.getAllCitiesData()
             .filter(::excludeNullSalariesAndNullFruitVegPrices)
             .sortedBy { calculateFruitVegTotalPrice(it.fruitAndVegetablesPrices).div(it.averageMonthlyNetSalaryAfterTax!!) }
-            .take(limit)
+            .takeUnless { limit<=0 || limit > it.count() }!!
+            .take(10)
             .map { it.cityName }
     }
     private fun excludeNullSalariesAndNullFruitVegPrices(city: CityEntity): Boolean {
