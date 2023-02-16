@@ -1,20 +1,56 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
-import interactor.CostOfLivingDataSource
-import interactor.GetCityHasCheapestInternetConnectionInteractor
-import interactor.GetHighestSalaryAverageCititesNamesInteractor
+import interactor.*
 
 fun main() {
     val csvParser = CsvParser()
     val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
 
-
-    val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
-    println(getHighestSalaryAverageCities.execute(limit = 10))
-    printSeparationLine()
+    val limit = 10
 
     val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
-    //println(getCityHasCheapestInternetConnectionInteractor.execute())
+    println(getCityHasCheapestInternetConnectionInteractor.execute())
+    printSeparationLine()
+
+    val getCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor =
+        GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor(dataSource)
+    println(getCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor.execute())
+    printSeparationLine()
+
+    val getHighestSalaryAverageCities = GetAverageSalariesInCountryInteractor(dataSource)
+    println(getHighestSalaryAverageCities.execute("Egypt"))
+    printSeparationLine()
+
+    val getCityWithHighestRentalPriceDifferenceInteractor =
+        GetCityWithHighestRentalPriceDifferenceInteractor(dataSource)
+    println(getCityWithHighestRentalPriceDifferenceInteractor.execute(dataSource.getAllCitiesData()))
+    printSeparationLine()
+
+    val getTopFiveCitesNameInClothesFromFamousBrandsInteractor =
+        GetTopFiveCitesNameInClothesFromFamousBrandsInteractor(dataSource)
+    println(getTopFiveCitesNameInClothesFromFamousBrandsInteractor.execute())
+    printSeparationLine()
+
+    val getFastest10CitiesToBuyAPTInteractor = GetFastest10CitiesToBuyAPTInteractor(dataSource)
+    println(getFastest10CitiesToBuyAPTInteractor.execute())
+    printSeparationLine()
+
+    val  getCheapestCitiesSalesBananas = GetCheapestCitiesSalesBananas()
+    println(getCheapestCitiesSalesBananas.execute(*dataSource.getAllCitiesData().toTypedArray()))
+    printSeparationLine()
+
+    val getDinnerLocationInteractor = GetDinnerLocationInteractor(dataSource)
+    println(getDinnerLocationInteractor.execute())
+    printSeparationLine()
+
+    val getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor =
+        GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(dataSource)
+    println(getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.execute(limit))
+    printSeparationLine()
+
+    val getCityMakesFamilySaveMoreInteractor= GetCityMakesFamilySaveMoreInteractor(dataSource)
+    println(getCityMakesFamilySaveMoreInteractor.execute())
+    printSeparationLine()
 
 }
 private fun printSeparationLine(){

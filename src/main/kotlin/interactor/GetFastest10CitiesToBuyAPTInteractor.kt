@@ -14,7 +14,9 @@ class GetFastest10CitiesToBuyAPTInteractor(
                 Pair(it.cityName, numberOfYearsToBuyAPT)
             }
             .take(limit)
-    }
+            .sortedBy { it.second }
+            .take(10)
+            }
 
 
     fun excludeInvalidSalaries(cityEntity: CityEntity) =
