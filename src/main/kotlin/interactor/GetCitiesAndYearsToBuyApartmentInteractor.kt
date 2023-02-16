@@ -4,39 +4,42 @@ import interactor.util.Constants.TWELVE_MONTH
 import model.CityEntity
 import interactor.util.toDiv
 import interactor.util.toYear
+import java.lang.ArithmeticException
 
 
 class GetCitiesAndYearsToBuyApartmentInteractor(
     private val dataSource: CostOfLivingDataSource ,
 ) {
 
-    fun execute(limit: Int): List<Pair<String, String?>> {
+    fun execute(limit: Int) : Map<String, String> {
         return dataSource
-            .getAllCitiesData()
-            .filter(::excludeNullValueAndLowQualityData)
-            .sortedBy(::calculateYearsNeededToBuyApartment)
-            .take(limit)
-            .map { Pair(it.cityName, calculateYearsNeededToBuyApartment(it)?.toYear()) }
+                .getAllCitiesData()
+                .filter(::excludeNullValueAndSalaryIsZeroAndLowQualityData)
+                .sortedBy(::calculateYearsNeededToBuyApartment)
+                .take(limit)
+                .associate { it.cityName to calculateYearsNeededToBuyApartment(it) }
     }
 
 
-    private fun excludeNullValueAndLowQualityData(city: CityEntity): Boolean {
+    private fun excludeNullValueAndSalaryIsZeroAndLowQualityData(city: CityEntity): Boolean {
         return city.let {
             it.dataQuality &&
-                    it.cityName.trim() !=""&&
+                    it.cityName.trim() != "" &&
                     it.averageMonthlyNetSalaryAfterTax != null &&
-                    it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre != null
+                    it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre != null &&
+                    it.averageMonthlyNetSalaryAfterTax != 0f
         }
     }
 
-    private fun calculateYearsNeededToBuyApartment(city: CityEntity): Float? {
-        return city.let {
-            it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre?.let {
-                it.times(ONE_HUNDRED_SQUARE_METER)
-            }?.toDiv( it.averageMonthlyNetSalaryAfterTax?.let {
-                it.times(TWELVE_MONTH)
-            })
+     fun calculateYearsNeededToBuyApartment(city: CityEntity): String {
+        return with(city){ city
+            (city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!! * ONE_HUNDRED_SQUARE_METER)
+                .takeIf { it > 0f }
+                ?.toDiv( city.averageMonthlyNetSalaryAfterTax!! * TWELVE_MONTH )
+                ?.toYear()
+                ?: throw ArithmeticException("the salary can't be zero or less")
         }
+
     }
 }
 

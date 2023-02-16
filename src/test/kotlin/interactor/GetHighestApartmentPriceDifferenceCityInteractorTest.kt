@@ -1,5 +1,5 @@
 package interactor
-import FakeData
+import fakeDataSource.FakeData
 import interactor.util.TypeOfApartments
 import org.junit.jupiter.api.Test
 
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetHighestApartmentPriceDifferenceCityInteractorTest {
 
-    // create an object from FakeData class
+    // create an object from fakeDataSource.FakeData class
     private lateinit var fakeData: FakeData
     private lateinit var getHighestApartmentPrice: GetHighestApartmentPriceDifferenceCityInteractor
 

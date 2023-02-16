@@ -9,6 +9,7 @@ import interactor.GetCitiesAndYearsToBuyApartmentInteractor
 import interactor.GetTopFashionCitiesInteractor
 import interactor.GetCitiesNamesSortedByCheapestBananaPricesInteractor
 import interactor.*
+import interactor.util.Constants.GET_CITIES_AND_YEARS_TO_BUY_APARTMENT
 import interactor.util.TypeOfApartments
 
 fun main() {
@@ -35,6 +36,7 @@ fun main() {
     println(getCitiesNamesSortedByCheapestBananaPricesInteractor.execute("Caracas","Accra","Giza"))
     printSeparationLine()
 
+    printSeparationLine(message = GET_CITIES_AND_YEARS_TO_BUY_APARTMENT)
     val getCitiesAndYearsToBuyApartment = GetCitiesAndYearsToBuyApartmentInteractor(dataSource)
     println(getCitiesAndYearsToBuyApartment.execute(limit = 10))
     printSeparationLine()
@@ -58,7 +60,7 @@ fun main() {
 
 }
 
-private fun printSeparationLine() {
-    print("\n_______________________________\n")
+private fun printSeparationLine(message : String = "_") {
+    print("\n_____________${message}_________________\n")
 }
 
