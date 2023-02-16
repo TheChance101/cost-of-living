@@ -9,12 +9,12 @@ class GetLowestAveragePricesForFruitsAndVegetablesInteractor (
         return  data
             .getAllCitiesData()
             .filter(::excludeNullSalariesAndLowQualityDataAndNullFruitsAndVegetablesPrices)
-            .sortedBy {getRatio(it)}
+            .sortedBy {getPricesToSalaryAverage(it)}
             .map { it.cityName }
             .take(limit)
     }
 
-    private fun getRatio(city: CityEntity):Float{
+    private fun getPricesToSalaryAverage(city: CityEntity):Float{
 
         return (city.fruitAndVegetablesPrices.apples1kg!! +
                 city.fruitAndVegetablesPrices.banana1kg!! +
