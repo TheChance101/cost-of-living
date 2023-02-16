@@ -1,0 +1,87 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "io.mockk",
+    "module": "mockk-agent-common",
+    "version": "1.12.4",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.3.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "io.mockk",
+          "module": "mockk-agent-api",
+          "version": {
+            "requires": "1.12.4"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "mockk-agent-common-1.12.4.jar",
+          "url": "mockk-agent-common-1.12.4.jar",
+          "size": 38626,
+          "sha512": "30c072b7a8ed525e8239d1180940c98dc227c36b4e5b3eca11d35a87440bcc79a6e5f415eb11ebdd91980de5469b5f01542c6376c32abcee3275c9cce91ad258",
+          "sha256": "427d071ec7a85f105c152a51a89738d8ee52954130e5c09500837dfbe3549329",
+          "sha1": "347ead69b1f8d851a1fd58433e577c7d53828d27",
+          "md5": "368e56fefdc8101367e73796b5944c55"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.6.0"
+          }
+        },
+        {
+          "group": "io.mockk",
+          "module": "mockk-agent-api",
+          "version": {
+            "requires": "1.12.4"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "mockk-agent-common-1.12.4.jar",
+          "url": "mockk-agent-common-1.12.4.jar",
+          "size": 38626,
+          "sha512": "30c072b7a8ed525e8239d1180940c98dc227c36b4e5b3eca11d35a87440bcc79a6e5f415eb11ebdd91980de5469b5f01542c6376c32abcee3275c9cce91ad258",
+          "sha256": "427d071ec7a85f105c152a51a89738d8ee52954130e5c09500837dfbe3549329",
+          "sha1": "347ead69b1f8d851a1fd58433e577c7d53828d27",
+          "md5": "368e56fefdc8101367e73796b5944c55"
+        }
+      ]
+    }
+  ]
+}
