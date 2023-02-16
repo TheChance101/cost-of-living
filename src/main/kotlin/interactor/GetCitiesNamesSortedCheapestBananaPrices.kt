@@ -4,7 +4,7 @@ import model.CityEntity
 
 class GetCitiesNamesSortedCheapestBananaPrices {
 
-    fun excute(vararg cities:CityEntity):List<String>{
+    fun execute(vararg cities:CityEntity):List<String>{
         return cities
             .filter(::excludeNullCityAndLowQualityData)
             .sortedBy { it.fruitAndVegetablesPrices.banana1kg }
