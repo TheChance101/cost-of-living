@@ -1,7 +1,7 @@
 package interactor
+import dataSource.FakeDataSource
 import org.junit.jupiter.api.function.Executable
 import org.junit.jupiter.api.Assertions.*
-import dataSource.FakeDataSource
 import org.junit.jupiter.api.*
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

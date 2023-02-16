@@ -10,7 +10,7 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCitiesNamesSortedCheapestBananaPricesTest {
     private lateinit var citiesSortedCheapestBananaPrices:GetCitiesNamesSortedCheapestBananaPrices
-    private lateinit var fakeDataSource:FakeDataSource
+    private lateinit var fakeDataSource: FakeDataSource
 
     @BeforeEach
     fun setup(){
