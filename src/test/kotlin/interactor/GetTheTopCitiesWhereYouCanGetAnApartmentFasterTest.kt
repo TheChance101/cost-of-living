@@ -6,15 +6,15 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.function.Executable
 
-class GetTheRightApartmentTest {
+class GetTheTopCitiesWhereYouCanGetAnApartmentFasterTest {
     private lateinit var fakeData: FakeData
-    private lateinit var getTheRightApartment: GetTheRightApartment
+    private lateinit var getTheRightApartment: GetTheTopCitiesWhereYouCanGetAnApartmentFaster
 
 
     @BeforeEach
     fun setUp() {
         fakeData = FakeData()
-        getTheRightApartment = GetTheRightApartment(fakeData)
+        getTheRightApartment = GetTheTopCitiesWhereYouCanGetAnApartmentFaster(fakeData)
     }
 
 
@@ -57,12 +57,7 @@ class GetTheRightApartmentTest {
     @Test
     fun should_Throw_when_salaryEqualZero() {
         //Give
-        val expectedResult = listOf(
-            Pair("Alexandria", "20"),
-            Pair("Bagdad", "13"),
-            Pair("giza", "16"),
-            Pair("Madrid", "10"),
-        )
+
         //When
         val actualResult = Executable { getTheRightApartment.getListOfDetailsOfApartment(0) }
         //Then
