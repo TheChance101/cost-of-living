@@ -11,9 +11,9 @@ class GetHighestDifferanceBetween_CityCenterAndOutsideTest {
         // Create an instance of the CsvDataSource class that uses the CsvParser instance
         val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
         // Create an instance of the Find_City class
-        val findCity = GetHighestDifferanceBetweenCityCenterAndOutside(dataSource)
+        val findCity = GetHighestDifferanceBetweenCityCenterAndOutside()
         // Call the findCityWithHighestRentPriceDifference() method to find the city with the highest rent difference
-        val cityWithHighestDifference = findCity.execute()
+        val cityWithHighestDifference = findCity.execute(dataSource)
         // Print the result
         println("City with highest apartment rent difference: $cityWithHighestDifference")
     }
