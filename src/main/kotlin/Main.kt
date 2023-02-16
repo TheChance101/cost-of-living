@@ -165,7 +165,7 @@ fun getTop10CountriesWithHighTaxOnCarbonatedDrinks(limit: Int) {
 
 fun getCitiesNamesSortedCheapestBananaPrices() {
     val getCitiesNamesSortedCheapestBananaPrices = GetCitiesNamesSortedCheapestBananaPrices()
-    println(getCitiesNamesSortedCheapestBananaPrices.excute(*inputCitiesEntity))
+    println(getCitiesNamesSortedCheapestBananaPrices.execute(*inputCitiesEntity))
 }
 
 fun getCityHasCheapestInternetConnection() {
