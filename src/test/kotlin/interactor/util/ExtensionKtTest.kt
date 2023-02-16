@@ -3,6 +3,7 @@ package interactor.util
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.function.Executable
 
 class ExtensionKtTest {
     
@@ -74,7 +75,7 @@ class ExtensionKtTest {
     @Test
     fun should_ReturnYear_When_EntringOne() {
         // given
-        val value:Float = 1f
+        val value = 1f
         //when
         val expectedResult = "$value year"
         val actualResult = value.toYear()
@@ -82,9 +83,19 @@ class ExtensionKtTest {
         assertEquals(expectedResult,actualResult)
     }
     @Test
+    fun should_ReturnYears_When_EntringZero() {
+        // given
+        val value = 0f
+        //when
+        val expectedResult = "$value years"
+        val actualResult = value.toYear()
+        //then
+        assertEquals(expectedResult,actualResult)
+    }
+    @Test
     fun should_ReturnYears_When_EntringTwo() {
         // given
-        val value:Float = 2f
+        val value = 2f
         //when
         val expectedResult = "$value years"
         val actualResult = value.toYear()
@@ -94,11 +105,20 @@ class ExtensionKtTest {
     @Test
     fun should_ReturnYears_When_EntringGreaterThanTwo() {
         // given
-        val value:Float = 10f
+        val value = 10f
         //when
         val expectedResult = "$value years"
         val actualResult = value.toYear()
         //then
         assertEquals(expectedResult,actualResult)
+    }
+    @Test
+    fun should_throwErr_When_EntringValueLessThanZero() {
+        // given
+        val value = -10f
+        //when
+        val actualResult = Executable{value.toYear()}
+        //then
+        assertThrows(Exception::class.java,actualResult)
     }
 }
