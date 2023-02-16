@@ -121,4 +121,27 @@ class ExtensionKtTest {
         //then
         assertThrows(Exception::class.java,actualResult)
     }
+
+    @Test
+    fun should_ReturnPiApproximation_TwoDigitsAfterDecimalPoint_When_EntringTwo() {
+        //when
+        val actualResult = Math.PI.toFloat().toFormat(2)
+        //then
+        assertEquals(3.14f,actualResult)
+    }
+    @Test
+    fun should_ReturnPiApproximation_ZeroDigitsAfterDecimalPoint_When_EntringZero() {
+        //when
+        val actualResult = Math.PI.toFloat().toFormat(0)
+        //then
+        assertEquals(3f,actualResult)
+    }
+    @Test
+    fun should_ReturnPiApproximation_FirstDigitAfterDecimalPoint_When_EntringNothing() {
+        //when
+        val actualResult = Math.PI.toFloat().toFormat()
+        //then
+        assertEquals(3.1f,actualResult)
+    }
+
 }
