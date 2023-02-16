@@ -2,6 +2,8 @@ package interactor
 
 import model.CityEntity
 import model.ClothesPrices
+import kotlin.math.max
+import kotlin.math.min
 
 class GetTopFiveFashionCitiesInteractor(
     private val dataSource: CostOfLivingDataSource,
@@ -16,15 +18,30 @@ class GetTopFiveFashionCitiesInteractor(
          price of four items of clothing.
  */
 
-    fun execute(): List<String> {
+    fun execute(limit: Int): List<String> {
         val allCitiesData = dataSource.getAllCitiesData()
         return allCitiesData
-            .filter { isValidData(it) } //before: it.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null | after fixed: I used isValidData function
-            .sortedByDescending { getClothesPrice(it.clothesPrices) } //before: it.clothesPrices.onePairOfJeansLevis50oneOrSimilar!! | after fixed: I used getClothesPrice function
-            .take(5)
+            .ifEmpty { throw Exception("the cities list is empty") }
+            .filter (::isValidData ) //before: it.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null | after fixed: I used isValidData function
+            .sortedByDescending (::getClothesPrice)//before: it.clothesPrices.onePairOfJeansLevis50oneOrSimilar!! | after fixed: I used getClothesPrice function
+            .take(min(max(limit,0), allCitiesData.size))
             .map { it.cityName }
 
     }
+
+//fun execute(limit: Int): List<String>? {
+//    val allCitiesData:List<CityEntity>? = dataSource.getAllCitiesData()
+//    if (allCitiesData != null) {
+//        return allCitiesData
+//            .filter (::isValidData ) //before: it.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null | after fixed: I used isValidData function
+//            .sortedByDescending (::getClothesPrice)//before: it.clothesPrices.onePairOfJeansLevis50oneOrSimilar!! | after fixed: I used getClothesPrice function
+//            .take(limit)
+//            .map { it.cityName }
+//    }else{
+//        return null
+//    }
+//
+//}
 
     private fun isValidData(city: CityEntity): Boolean {
         return city.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null &&
@@ -33,10 +50,10 @@ class GetTopFiveFashionCitiesInteractor(
                 city.clothesPrices.oneSummerDressInAChainStoreZaraHAndM != null
     }
 
-    private fun getClothesPrice(price: ClothesPrices):Float{
-        return price.onePairOfJeansLevis50oneOrSimilar!! +
-               price.onePairOfMenLeatherBusinessShoes!! +
-               price.oneSummerDressInAChainStoreZaraHAndM!! +
-               price.onePairOfNikeRunningShoesMidRange!!
+    private fun getClothesPrice(city: CityEntity):Float{
+        return city.clothesPrices.onePairOfJeansLevis50oneOrSimilar!! +
+               city.clothesPrices.onePairOfMenLeatherBusinessShoes!! +
+               city.clothesPrices.oneSummerDressInAChainStoreZaraHAndM!! +
+               city.clothesPrices.onePairOfNikeRunningShoesMidRange!!
     }
 }

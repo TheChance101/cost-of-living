@@ -42,7 +42,7 @@ fun main() {
     //5
     println("************************** 5 *********************")
     val gitTopFiveFashionCitiesInteractor=GetTopFiveFashionCitiesInteractor(dataSource)
-    println(gitTopFiveFashionCitiesInteractor.execute())
+    println(gitTopFiveFashionCitiesInteractor.execute(5))
     printSeparationLine()
 
 
