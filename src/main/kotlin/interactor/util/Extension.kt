@@ -10,8 +10,9 @@ fun String.formatSentence(): String {
 }
 
 fun Float.toYear(): String {
-    return if (this >= 2f || this == 0f) "$this years" else if (this == 1f) "$this year"
-    else {
-        throw IllegalArgumentException("Invalid input: $this. Input must be greater than or equal zero.")
+    return when {
+        this == 1f -> "$this year"
+        this > 1 || this == 0f -> "$this years"
+        else -> throw IllegalArgumentException("Invalid input: $this. Input must be greater than or equal zero.")
     }
 }
