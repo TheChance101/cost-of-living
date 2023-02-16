@@ -70,4 +70,35 @@ class ExtensionKtTest {
         //then
         assertEquals("",actualResult)
     }
+
+    @Test
+    fun should_ReturnYear_When_EntringOne() {
+        // given
+        val value:Float = 1f
+        //when
+        val expectedResult = "$value year"
+        val actualResult = value.toYear()
+        //then
+        assertEquals(expectedResult,actualResult)
+    }
+    @Test
+    fun should_ReturnYears_When_EntringTwo() {
+        // given
+        val value:Float = 2f
+        //when
+        val expectedResult = "$value years"
+        val actualResult = value.toYear()
+        //then
+        assertEquals(expectedResult,actualResult)
+    }
+    @Test
+    fun should_ReturnYears_When_EntringGreaterThanTwo() {
+        // given
+        val value:Float = 10f
+        //when
+        val expectedResult = "$value years"
+        val actualResult = value.toYear()
+        //then
+        assertEquals(expectedResult,actualResult)
+    }
 }
