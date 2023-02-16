@@ -5,6 +5,8 @@ import model.*
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.function.Executable
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
@@ -20,9 +22,9 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
         val lowQualityData  = getLowQualityCities()
         //when
         val fastestCitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(lowQualityData)
-        val result = fastestCitiesToBuyAPT.execute()
+        val result = fastestCitiesToBuyAPT.execute(10).isEmpty()
         //then
-        assertTrue(result.isEmpty())
+        assertTrue(result)
     }
     @Test
     fun should_ReturnTrue_When_PricePerSquareMeterOutsideCentreISNull() {
@@ -30,9 +32,9 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
         val missingPPS = getMissingPricePerSquareMeterOutsideCentre()
         //when
         val fastestCitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(missingPPS)
-        val result = fastestCitiesToBuyAPT.execute()
+        val result = fastestCitiesToBuyAPT.execute(10).isEmpty()
         //then
-        assertTrue(result.isEmpty())
+        assertTrue(result)
     }
     @Test
     fun should_ReturnTrue_When_SalaryIsNull() {
@@ -40,9 +42,9 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
         val nullsSalary = getMissingSalary()
         //when
         val fastestCitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(nullsSalary)
-        val result = fastestCitiesToBuyAPT.execute()
+        val result = fastestCitiesToBuyAPT.execute(10).isEmpty()
         //then
-        assertTrue(result.isEmpty())
+        assertTrue(result)
     }
 
     @Test
@@ -52,13 +54,13 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
         val variousData = getVariousData()
         //when
         val fastest10CitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(variousData)
-        val result = fastest10CitiesToBuyAPT.execute()
+        val result = fastest10CitiesToBuyAPT.execute(10)
         //then
         assertEquals(10, result.size)
     }
 
     @Test
-    fun should_ReturnCorrectNumberOfYears_When() {
+    fun should_ReturnCorrectNumberOfYears_WhenEnterAValidCityData() {
         //given
         val cityEntity = CityEntity(
             "City11",
@@ -82,13 +84,14 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
             6900f,
             true
         )
-        val expected = 43.47826f
+        val expected = 3.6231884057971016
 
         //when
-        val numberOfYears = calculateNumberOfYearsToBuyAPT(cityEntity)
+        val numberOfYears = getFastest10CitiesToBuyAPT.
+            calculateNumberOfYearsToBuyAPT(cityEntity)
 
         //then
-        assertEquals(expected,numberOfYears.toFloat())
+        assertEquals(expected,numberOfYears)
 
     }
 
@@ -97,21 +100,33 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
         //given
         val fastest10CitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(getVariousData())
         val expectedList = listOf(
-            Pair("City11", 43.47826086956522),
-            Pair("City12", 44.87179487179487),
-            Pair("City13", 46.51162790697674),
-            Pair("City14", 47.36842105263158),
-            Pair("City15", 100.0),
-            Pair("City16", 100.0),
-            Pair("City17", 120.0),
-            Pair("City18", 225.0),
-            Pair("City19", 250.0),
-            Pair("City20", 300.0)
+            Pair("City11", 3.6231884057971016),
+            Pair("City12", 3.7393162393162394),
+            Pair("City13", 3.875968992248062),
+            Pair("City14", 3.9473684210526314),
+            Pair("City15", 8.333333333333334),
+            Pair("City16", 8.333333333333334),
+            Pair("City17", 10.0),
+            Pair("City18", 18.75),
+            Pair("City19", 20.833333333333332),
+            Pair("City20", 25.0)
         )
         //when
-        val result = fastest10CitiesToBuyAPT.execute()
+        val result = fastest10CitiesToBuyAPT.execute(10)
         //then
         assertEquals(expectedList, result)
+    }
+
+    @Test
+    fun should_throwException_when_theLimitIsZeroOrNegativeValue() {
+        // given
+        val given = IllegalArgumentException::class.java
+
+        // when
+        val result = Executable {getFastest10CitiesToBuyAPT.execute(0)}
+
+        // then
+        assertThrows(given, result)
     }
 
     //region data quality test
