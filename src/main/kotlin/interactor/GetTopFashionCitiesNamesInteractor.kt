@@ -1,7 +1,8 @@
 package interactor
 
 import model.CityEntity
-import model.ClothesPrices
+import model.averagePrice
+import model.hasNoNull
 
 
 class GetTopFashionCitiesNamesInteractor(
@@ -22,21 +23,5 @@ class GetTopFashionCitiesNamesInteractor(
 
     private fun excludeNullPricesAndLowQualityData(city: CityEntity) =
         city.clothesPrices.hasNoNull() && city.dataQuality
-
-    private fun ClothesPrices.hasNoNull(): Boolean {
-        return this::class.java.declaredFields
-            .map {
-                it.isAccessible = true
-                it.get(this)
-            }.all { it != null }
-    }
-
-    private fun ClothesPrices.averagePrice(): Float {
-        return this::class.java.declaredFields
-            .map {
-                it.isAccessible = true
-                it.get(this) as Float
-            }.average().toFloat()
-    }
 
 }
