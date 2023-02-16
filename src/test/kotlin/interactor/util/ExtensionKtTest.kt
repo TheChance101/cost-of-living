@@ -103,6 +103,16 @@ class ExtensionKtTest {
         assertEquals(expectedResult,actualResult)
     }
     @Test
+    fun should_ReturnYears_When_EntringDecimal() {
+        // given
+        val value = 1.5f
+        //when
+        val expectedResult = "$value years"
+        val actualResult = value.toYear()
+        //then
+        assertEquals(expectedResult,actualResult)
+    }
+    @Test
     fun should_ReturnYears_When_EntringGreaterThanTwo() {
         // given
         val value = 10f
