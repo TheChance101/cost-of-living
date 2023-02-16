@@ -10,9 +10,6 @@ class GetLowCostFruitVegetableCitiesWithHighSalariesInteractor(
 ) {
 
     fun execute(limit: Int): List<String> {
-//        if ( limit <=0 || limit>dataSource.getAllCitiesData().count()){
-//           return listOf("")
-//        } // check it again
         return dataSource.getAllCitiesData()
             .filter(::excludeNullSalariesAndNullFruitVegPrices)
             .sortedBy { calculateFruitVegTotalPrice(it.fruitAndVegetablesPrices).div(it.averageMonthlyNetSalaryAfterTax!!) }
@@ -22,22 +19,17 @@ class GetLowCostFruitVegetableCitiesWithHighSalariesInteractor(
     }
     private fun excludeNullSalariesAndNullFruitVegPrices(city: CityEntity): Boolean {
         return city.averageMonthlyNetSalaryAfterTax != null &&
-                city.fruitAndVegetablesPrices.apples1kg!= null &&
-                city.fruitAndVegetablesPrices.banana1kg!= null &&
-                city.fruitAndVegetablesPrices.lettuceOneHead!= null &&
-                city.fruitAndVegetablesPrices.onion1kg!= null &&
-                city.fruitAndVegetablesPrices.oranges1kg!= null &&
-                city.fruitAndVegetablesPrices.potato1kg!= null &&
-                city.fruitAndVegetablesPrices.tomato1kg!= null
+                with(city.fruitAndVegetablesPrices){
+                    this.apples1kg!= null && this.banana1kg!= null && this.lettuceOneHead!= null &&
+                    this.onion1kg!= null && this.oranges1kg!= null && this.potato1kg!= null &&
+                    this.tomato1kg!= null
+                }
+
     }
 
-    private fun calculateFruitVegTotalPrice(fruitAndVegetablesPrices: FruitAndVegetablesPrices): Float {
-        return fruitAndVegetablesPrices.apples1kg!!+
-                fruitAndVegetablesPrices.banana1kg!!+ //use with
-                fruitAndVegetablesPrices.lettuceOneHead!!+
-                fruitAndVegetablesPrices.onion1kg!!+
-                fruitAndVegetablesPrices.oranges1kg!!+
-                fruitAndVegetablesPrices.potato1kg!!+
-                fruitAndVegetablesPrices.tomato1kg!!
-    }
+    private fun calculateFruitVegTotalPrice(fruitAndVegetablesPrices: FruitAndVegetablesPrices): Float =
+        with(fruitAndVegetablesPrices){
+                return this.apples1kg!! + this.banana1kg!!+ this.lettuceOneHead!!+ this.onion1kg!!+ this.oranges1kg!!+
+                   this.potato1kg!!+ this.tomato1kg!!
+        }
 }
