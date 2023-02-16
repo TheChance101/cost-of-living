@@ -9,14 +9,15 @@ class GetLowestAveragePricesForFruitsAndVegetablesInteractor (
         return  data
             .getAllCitiesData()
             .filter(::excludeNullSalariesAndLowQualityDataAndNullFruitsAndVegetablesPrices)
-            .sortedBy {getPricesToSalaryAverage(it)}
-            .map { it.cityName }
+            .sortedBy(::getPricesToSalaryAverage)
             .take(limit)
+            .map { it.cityName }
+
     }
 
     private fun getPricesToSalaryAverage(city: CityEntity) =
         city.fruitAndVegetablesPrices.let {
-            (it.apples1kg!! +
+                   (it.apples1kg!! +
                     it.tomato1kg!! +
                     it.oranges1kg!! +
                     it.banana1kg!! +
@@ -27,8 +28,8 @@ class GetLowestAveragePricesForFruitsAndVegetablesInteractor (
         }
 
 
-    private fun excludeNullSalariesAndLowQualityDataAndNullFruitsAndVegetablesPrices(city: CityEntity): Boolean {
-        return city.averageMonthlyNetSalaryAfterTax != null &&
+    private fun excludeNullSalariesAndLowQualityDataAndNullFruitsAndVegetablesPrices(city: CityEntity) =
+                city.averageMonthlyNetSalaryAfterTax != null &&
                 city.dataQuality &&
                 city.fruitAndVegetablesPrices.apples1kg != null &&
                 city.fruitAndVegetablesPrices.banana1kg != null &&
@@ -37,5 +38,5 @@ class GetLowestAveragePricesForFruitsAndVegetablesInteractor (
                 city.fruitAndVegetablesPrices.potato1kg != null &&
                 city.fruitAndVegetablesPrices.onion1kg != null &&
                 city.fruitAndVegetablesPrices.lettuceOneHead != null
-        }
+
 }
