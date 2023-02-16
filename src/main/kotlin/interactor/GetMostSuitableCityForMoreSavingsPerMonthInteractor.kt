@@ -1,5 +1,12 @@
 package interactor
 
+import interactor.GetMostSuitableCityForMoreSavingsPerMonthInteractor.NeedsAmounts.BEEF_AMOUNT
+import interactor.GetMostSuitableCityForMoreSavingsPerMonthInteractor.NeedsAmounts.BREAD_AMOUNT
+import interactor.GetMostSuitableCityForMoreSavingsPerMonthInteractor.NeedsAmounts.CHEESE_AMOUNT
+import interactor.GetMostSuitableCityForMoreSavingsPerMonthInteractor.NeedsAmounts.CHICKEN_AMOUNT
+import interactor.GetMostSuitableCityForMoreSavingsPerMonthInteractor.NeedsAmounts.OTHER_NEEDS_LIMIT
+import interactor.GetMostSuitableCityForMoreSavingsPerMonthInteractor.NeedsAmounts.RICE_AMOUNT
+import interactor.GetMostSuitableCityForMoreSavingsPerMonthInteractor.NeedsAmounts.SALARY_DIFFERENCE
 import model.CityEntity
 
 class GetMostSuitableCityForMoreSavingsPerMonthInteractor(
@@ -10,40 +17,39 @@ class GetMostSuitableCityForMoreSavingsPerMonthInteractor(
         return dataSource
             .getAllCitiesData()
             .filter(::excludeNullSalariesAndNotHasAllPrimaryNeeds)
-            .getListOfCityPairs()
-            .sortedByDescending { it.second }[0].first
+            .sortedByDescending { getCitySavings(it) }[0]
     }
 
-
-    private fun List<CityEntity>.getListOfCityPairs(): List<Pair<CityEntity,Float>> {
-        val listOfCityPairs = mutableListOf<Pair<CityEntity,Float>>()
-        forEach { city ->
-            val salary = 2f * city.averageMonthlyNetSalaryAfterTax!!
-            val savings = salary - (foodCosts(city) + 250f)
-            val cityAndSavingsPair = Pair(city,savings)
-            listOfCityPairs.add(cityAndSavingsPair)
-        }
-        return listOfCityPairs
-    }
-
-    private fun foodCosts(city: CityEntity): Float {
+    private fun getCitySavings(city: CityEntity): Float {
         val foodPrices = city.foodPrices
-        val foodCosts = foodPrices.loafOfFreshWhiteBread500g!! * 30f
-        + foodPrices.localCheese1kg!! * 1f
-        + foodPrices.chickenFillets1kg!! * 10f
-        + foodPrices.riceWhite1kg!! * 2f + foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!! * 4f
-        return foodCosts
+        val foodCosts = run { foodPrices.loafOfFreshWhiteBread500g!! * BREAD_AMOUNT
+            +foodPrices.localCheese1kg!! * CHEESE_AMOUNT
+            +foodPrices.chickenFillets1kg!! * CHICKEN_AMOUNT
+            +foodPrices.riceWhite1kg!! * RICE_AMOUNT + foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!! * BEEF_AMOUNT
+        }
+        val salary = SALARY_DIFFERENCE * city.averageMonthlyNetSalaryAfterTax!!
+        return salary - (foodCosts + OTHER_NEEDS_LIMIT)
     }
 
     private fun excludeNullSalariesAndNotHasAllPrimaryNeeds(city: CityEntity): Boolean {
-        return city.averageMonthlyNetSalaryAfterTax != null
-                && city.foodPrices.loafOfFreshWhiteBread500g != null
-                && city.foodPrices.localCheese1kg != null
-                && city.foodPrices.chickenFillets1kg != null
-                && city.foodPrices.riceWhite1kg != null
-                && city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null
+        return city.let { it.averageMonthlyNetSalaryAfterTax != null
+                && it.foodPrices.loafOfFreshWhiteBread500g != null
+                && it.foodPrices.localCheese1kg != null
+                && it.foodPrices.chickenFillets1kg != null
+                && it.foodPrices.riceWhite1kg != null
+                && it.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null
+                && it.realEstatesPrices.apartment3BedroomsInCityCentre != null
+                && it.realEstatesPrices.apartment3BedroomsOutsideOfCentre != null
+        }
     }
 
-
-
+    object NeedsAmounts {
+        const val CHICKEN_AMOUNT = 10f
+        const val BREAD_AMOUNT = 30F
+        const val RICE_AMOUNT = 2f
+        const val CHEESE_AMOUNT = 1f
+        const val BEEF_AMOUNT = 4f
+        const val OTHER_NEEDS_LIMIT = 250f
+        const val SALARY_DIFFERENCE = 2f
+    }
 }
