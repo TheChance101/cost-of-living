@@ -22,14 +22,14 @@ internal class GetTopFashionCitiesNamesInteractorTest {
         // given limit
         val limit = 5
         // when get top 5 cities names
-        val result = getTopFashionCitiesNamesInteractor.execute(limit)
+        val result = getTopFashionCitiesNamesInteractor.execute(limit).size
         // then result should only contain the required number of cities
-        assertEquals(limit, result.size)
+        assertEquals(limit, result)
     }
 
     @Test
     fun `should return ascending sorted list when limit is valid`() {
-        // given limit and expected result list
+        // given limit
         val limit = 5
         // when get top fashion cities names
         val result = getTopFashionCitiesNamesInteractor.execute(limit)
@@ -49,9 +49,9 @@ internal class GetTopFashionCitiesNamesInteractorTest {
         // given limit
         val limit = 0
         // when get top fashion cities names
-        val result = getTopFashionCitiesNamesInteractor.execute(limit)
+        val isEmpty = getTopFashionCitiesNamesInteractor.execute(limit).isEmpty()
         // then result should be empty list
-        assertTrue(result.isEmpty())
+        assertTrue(isEmpty)
     }
 
     @Test
@@ -59,20 +59,20 @@ internal class GetTopFashionCitiesNamesInteractorTest {
         // given limit in negative
         val limit = -1
         // when get top fashion cities names
-        val result = getTopFashionCitiesNamesInteractor.execute(limit)
+        val isEmpty = getTopFashionCitiesNamesInteractor.execute(limit).isEmpty()
         // then result should be empty list
-        assertTrue(result.isEmpty())
+        assertTrue(isEmpty)
     }
 
     @Test
     fun `should return available list when limit is greater than available`() {
-        // given limit and expected result
+        // given limit
         val limit = 1000
         // when get top fashion cities names
-        val result = getTopFashionCitiesNamesInteractor.execute(limit)
+        val result = getTopFashionCitiesNamesInteractor.execute(limit).size
         val expected = 9
         // then result should be equal to a valid available list
-        assertEquals(expected, result.size)
+        assertEquals(expected, result)
     }
 
     @Test
@@ -80,9 +80,10 @@ internal class GetTopFashionCitiesNamesInteractorTest {
         // given limit
         val limit = 9
         // when get top fashion cities names
-        val result = getTopFashionCitiesNamesInteractor.execute(limit)
+        val result = getTopFashionCitiesNamesInteractor.execute(limit).size
+        val expected = getTopFashionCitiesNamesInteractor.execute(limit).toSet().size
         // then result should not contain duplicates
-        assertEquals(result.toSet().size, result.size)
+        assertEquals(expected, result)
     }
 
 }
