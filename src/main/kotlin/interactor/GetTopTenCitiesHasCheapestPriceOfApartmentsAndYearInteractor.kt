@@ -1,6 +1,7 @@
 package interactor
 
 import model.CityEntity
+import javax.management.Query.div
 import kotlin.math.roundToInt
 
 class GetTopTenCitiesHasCheapestPriceOfApartmentsAndYearInteractor(
@@ -22,31 +23,36 @@ class GetTopTenCitiesHasCheapestPriceOfApartmentsAndYearInteractor(
 
     private fun toPair(city: CityEntity, salary: Double): Pair<String, Number> {
         return Pair(
-            city.cityName, (
-                    (city
-                        .realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!
-                        .times(100))
-                        .div(salary))
-                .div(12)
-                .times(100000)
-                .roundToInt()
-                .div(100000.0)
+            city.cityName,calculateCountOfYearsToBuyApartment(city,salary)
         )
     }
 
 
     private fun getCheapestPerSquareMeterCitiesNames(): List<CityEntity> {
         return dataSource.getAllCitiesData()
-            .filter(::excludeNullPricePerSquareMeterAndLowDataQuality)
+            .filter(::excludeNullDataQuality)
+            .filter(::excludeNullPricePerSquareMeter)
             .sortedBy { it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre }
             .take(10)
     }
 
 
-    private fun excludeNullPricePerSquareMeterAndLowDataQuality(city: CityEntity): Boolean {
-        return city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre != null
-                && city.dataQuality
+    private fun excludeNullDataQuality(city: CityEntity): Boolean {
+        return city.dataQuality
     }
+     private fun excludeNullPricePerSquareMeter(city: CityEntity): Boolean {
+        return city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre != null
 
+    }
+    private fun calculateCountOfYearsToBuyApartment(city: CityEntity, salary: Double): Double {
+      return (city
+                  .realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!
+                  .times(100))
+                  .div(salary)
+          .div(12)
+          .times(100000)
+          .roundToInt()
+          .div(100000.0)
+    }
 
 }
