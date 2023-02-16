@@ -14,7 +14,7 @@ import org.junit.jupiter.api.function.Executable
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetSalaryAverageForCitiesInCountryInteractorTest {
 
-    private lateinit var fakeData: FakeData
+    private lateinit var fakeData: CostOfLivingDataSource
     private lateinit var interactor: GetSalaryAverageForCitiesInCountryInteractor
 
     @BeforeAll
@@ -25,7 +25,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
     }
 
     @Test
-    fun should_ReturnCitiesNameAndSalariesAverage_When_CountryNameIsUppercase() {
+    fun `should return cities name and salaries average when country name is uppercase`() {
         // Given country name Uppercase
         val countryName = "CUBA"
 
@@ -33,12 +33,16 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
         val actualPairList = interactor.execute(countryName)
         // Then return a list of pair of city name and average salary
         val expected =
-            listOf(Pair("Santiago de Cuba", 1580.0f), Pair("Sancti Spiritus", 20.0f), Pair("Santa Clara", 25.0f))
+            listOf(
+                Pair("Santiago de Cuba", 1580.0f),
+                Pair("Sancti Spiritus", 20.0f),
+                Pair("Santa Clara", 25.0f)
+            )
         assertEquals(expected, actualPairList)
     }
 
     @Test
-    fun should_ReturnCitiesNameAndSalariesAverage_When_CountryNameIsLowercase() {
+    fun `should return cities name and salaries average when country name is lowercase`() {
         // Given country name Lowercase
         val countryName = "egypt"
 
@@ -50,7 +54,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
     }
 
     @Test
-    fun should_ReturnCitiesNameAndSalariesAverage_When_CountryNameIsMixed() {
+    fun `should return cities name and salaries average when country name is mixed`() {
         // Given country name Mix of Uppercase and Lowercase
         val countryName = "SyRia"
 
@@ -62,7 +66,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
     }
 
     @Test
-    fun should_ReturnException_When_CountryNameIsEmptyOrWrong() {
+    fun `should return exception when country name is empty or wrong`() {
         // Given empty country name
         val countryName = ""
 
@@ -74,7 +78,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
     }
 
     @Test
-    fun should_ReturnFalse_When_SalariesEqualNullOrNotAvoidLowQualityData() {
+    fun `should return false when salaries equal null or not avoid low quality data`() {
         // Given cityEntity
         val fakeCity = fakeData.getAllCitiesData()[1]
 
@@ -86,7 +90,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
     }
 
     @Test
-    fun should_ReturnTrue_When_SalariesNotEqualNullAndAvoidLowQualityData() {
+    fun `should return true when salaries not equal null and avoid low quality data`() {
         // Given cityEntity
         val fakeCity = fakeData.getAllCitiesData()[2]
 
