@@ -379,6 +379,8 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
         )
     }
 
+
+    // real state, data Quality, average salary, internet60MbpsOrMoreUnlimitedDataCableAdsl = null
     val berlinHighQualityNull by lazy {
         CityEntity(
             cityName = "Berlin",
@@ -405,12 +407,12 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
                 lettuceOneHead = 0.25f
             ),
             foodPrices = FoodPrices(
-                loafOfFreshWhiteBread500g = 9f,
-                riceWhite1kg = 4f,
-                eggsRegular12 = 3f,
-                localCheese1kg = 1f,
-                chickenFillets1kg = 12f,
-                beefRound1kgOrEquivalentBackLegRedMeat = 20f
+                loafOfFreshWhiteBread500g = null,
+                riceWhite1kg = null,
+                eggsRegular12 = null,
+                localCheese1kg = null,
+                chickenFillets1kg = null,
+                beefRound1kgOrEquivalentBackLegRedMeat = null
             ),
             servicesPrices = ServicesPrices(
                 basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
@@ -453,7 +455,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
         )
     }
 
-
+    // internet60MbpsOrMoreUnlimitedDataCableAdsl, quality = null
     val romeHighQuality by lazy {
         CityEntity(
             cityName = "Rome",
