@@ -66,7 +66,7 @@ internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
 
     @Test
     fun `should throw exception when the country name is empty string`() {
-        //given wrong country name
+        //given empty string
         val country = ""
         //when getting a list of pair contains the city name and average salary of country with wrong name
         val actual = Executable { interactor.execute(country) }
