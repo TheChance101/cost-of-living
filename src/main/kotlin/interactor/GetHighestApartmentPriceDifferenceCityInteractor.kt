@@ -1,37 +1,34 @@
 package interactor
 
-import interactor.util.TypeOfApartments
 import model.CityEntity
-import java.lang.Math.abs
+import kotlin.math.abs
+
 
 class GetHighestApartmentPriceDifferenceCityInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
-    fun execute(type: TypeOfApartments): CityEntity? {
+
+    fun execute(): String {
         return dataSource.getAllCitiesData()
-            .filter(::excludeNullRentAndLowQualityData)
-            .maxByOrNull { city ->
-                when (type) {
-                    TypeOfApartments.ONE_BEDROOM -> abs(
-                        city.realEstatesPrices.apartmentOneBedroomInCityCentre!!
-                                - city.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!!
-                    )
-
-                    TypeOfApartments.THREE_BEDROOMS -> abs(
-                        city.realEstatesPrices.apartment3BedroomsInCityCentre!!
-                                - city.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
-                    )
-                }
-            }
+            .filter { city -> city.hasValidData() }
+            .maxByOrNull { city -> city.getApartmentPriceDifference() }?.cityName.toString()
     }
 
-    private fun excludeNullRentAndLowQualityData(city: CityEntity): Boolean {
-        return city.dataQuality
-                && city.realEstatesPrices.apartmentOneBedroomInCityCentre != null
-                && city.realEstatesPrices.apartmentOneBedroomOutsideOfCentre != null
-                && city.realEstatesPrices.apartment3BedroomsInCityCentre != null
-                && city.realEstatesPrices.apartment3BedroomsOutsideOfCentre != null
+    private fun CityEntity.hasValidData(): Boolean {
+        return with(realEstatesPrices) {
+                    apartmentOneBedroomInCityCentre != null &&
+                    apartmentOneBedroomOutsideOfCentre != null &&
+                    apartment3BedroomsInCityCentre != null &&
+                    apartment3BedroomsOutsideOfCentre != null &&
+                    dataQuality
+        }
     }
 
+    private fun CityEntity.getApartmentPriceDifference(): Float {
+        val oneBedroomPriceDiff =
+            realEstatesPrices.apartmentOneBedroomInCityCentre!! - realEstatesPrices.apartmentOneBedroomOutsideOfCentre!!
+        val threeBedroomPriceDiff =
+            realEstatesPrices.apartment3BedroomsInCityCentre!! - realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
+        return (abs(oneBedroomPriceDiff) + abs(threeBedroomPriceDiff)) / 2f
+    }
 }
-
