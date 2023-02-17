@@ -7,13 +7,13 @@ class GetAverageFruitAndVegetablesInteractor(private val dataSource: CostOfLivin
     fun execute(limit: Int): List<String> {
         return dataSource
             .getAllCitiesData()
-            .filter(::excludeNullFruitAndVegetablePriceAndNullSalaries)
-            .sortedBy(::calculateFruitVeggiePriceToSalaryRatio)
+            .filter(::excludeNullFruitVegPriceAndNullSalaries)
+            .sortedBy(::calculateTheRatioBetweenFruitVegPriceAndSalary)
             .take(limit)
             .map(CityEntity::cityName)
     }
 
-    fun excludeNullFruitAndVegetablePriceAndNullSalaries(city: CityEntity) =
+    fun excludeNullFruitVegPriceAndNullSalaries(city: CityEntity) =
         checkNullableFruitAndVegetablePrices(city) && city.averageMonthlyNetSalaryAfterTax != null
 
     private fun checkNullableFruitAndVegetablePrices(city: CityEntity) =
@@ -22,7 +22,7 @@ class GetAverageFruitAndVegetablesInteractor(private val dataSource: CostOfLivin
                     && potato1kg != null && onion1kg != null && lettuceOneHead != null
         }
 
-    private fun calculateFruitVeggiePriceToSalaryRatio(city: CityEntity) =
+    private fun calculateTheRatioBetweenFruitVegPriceAndSalary(city: CityEntity) =
         city.fruitAndVegetablesPrices.getAverageFruitsAndVegetablesPrice() / city.averageMonthlyNetSalaryAfterTax!!
 
 }

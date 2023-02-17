@@ -94,7 +94,7 @@ class GetAverageFruitAndVegetablesInteractorTest {
         val city = FruitsAndVegetablesFakeData().getAllCitiesData()[10]
 
         // when check
-        val result = getAverageFruitAndVegetablesInteractor.excludeNullFruitAndVegetablePriceAndNullSalaries(city)
+        val result = getAverageFruitAndVegetablesInteractor.excludeNullFruitVegPriceAndNullSalaries(city)
 
         // then asserted the return and the expected
         assertFalse(result)
@@ -106,7 +106,7 @@ class GetAverageFruitAndVegetablesInteractorTest {
         val city = FruitsAndVegetablesFakeData().getAllCitiesData()[11]
 
         // when check
-        val result = getAverageFruitAndVegetablesInteractor.excludeNullFruitAndVegetablePriceAndNullSalaries(city)
+        val result = getAverageFruitAndVegetablesInteractor.excludeNullFruitVegPriceAndNullSalaries(city)
 
         // then asserted the return and the expected
         assertFalse(result)
