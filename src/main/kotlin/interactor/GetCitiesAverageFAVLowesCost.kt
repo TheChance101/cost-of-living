@@ -10,7 +10,7 @@ class GetCitiesAverageFAVLowesCost (
     fun execute(limit: Int): List<String> {
         return dataSource
             .getAllCitiesData()
-            .filter(::excludeNullSalariesAndFAVPrices)
+            .filter(::isNotNullSalaryAndAnyOfFruitsAndVegetablesPricesAreNotNull)
             .sortedByDescending {getAverageFAVPricesCompareToSalaries(it.fruitAndVegetablesPrices,it.averageMonthlyNetSalaryAfterTax!!)}
             .take(limit)
             .map { it.cityName }
@@ -23,21 +23,21 @@ class GetCitiesAverageFAVLowesCost (
         var count = 0.0f
         var total = 0.0f
         fruitAndVegetablesPrices.apply {
-            if(apples1kg != null){count++ ; total += apples1kg}
-            if(banana1kg != null){count++ ; total += banana1kg}
-            if(oranges1kg != null){count++ ; total += oranges1kg}
-            if(tomato1kg != null){count++ ; total += tomato1kg}
-            if(potato1kg != null){count++ ; total += potato1kg}
-            if(onion1kg != null){count++ ; total += onion1kg}
-            if(lettuceOneHead != null){count++ ; total += lettuceOneHead}
+            apples1kg?.let {count++ ; total += apples1kg }
+            banana1kg?.let {count++ ; total += banana1kg}
+            oranges1kg?.let{count++ ; total += oranges1kg}
+            tomato1kg?.let{count++ ; total += tomato1kg}
+            potato1kg?.let{count++ ; total += potato1kg}
+            onion1kg?.let{count++ ; total += onion1kg}
+            lettuceOneHead?.let{count++ ; total += lettuceOneHead}
 
             return averageMonthlyNetSalaryAfterTax - (total / count)
         }
     }
 
-    private fun excludeNullSalariesAndFAVPrices(city: CityEntity): Boolean {
+    private fun isNotNullSalaryAndAnyOfFruitsAndVegetablesPricesAreNotNull(city: CityEntity): Boolean {
         city.fruitAndVegetablesPrices.apply {
-            return city.averageMonthlyNetSalaryAfterTax != null && apples1kg != null && banana1kg != null && oranges1kg != null && tomato1kg != null && potato1kg != null && onion1kg != null && lettuceOneHead != null
+            return city.averageMonthlyNetSalaryAfterTax != null && (apples1kg != null || banana1kg != null || oranges1kg != null || tomato1kg != null || potato1kg != null || onion1kg != null || lettuceOneHead != null)
         }
 
     }
