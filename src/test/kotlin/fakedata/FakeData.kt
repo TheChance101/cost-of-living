@@ -490,7 +490,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
             servicesPrices = ServicesPrices(
                 basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
                 oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
-                internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = 20f,
                 fitnessClubMonthlyFeeForOneAdult = 100f,
                 tennisCourtRentOneHourOnWeekend = 100f,
                 cinemaInternationalReleaseOneSeat = 10f,
@@ -523,7 +523,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
                 pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
                 pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
             ),
-            averageMonthlyNetSalaryAfterTax = 6000f,
+            averageMonthlyNetSalaryAfterTax = 2000f,
             dataQuality = true
         )
     }
@@ -564,7 +564,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
             servicesPrices = ServicesPrices(
                 basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
                 oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
-                internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = 40f,
                 fitnessClubMonthlyFeeForOneAdult = 100f,
                 tennisCourtRentOneHourOnWeekend = 100f,
                 cinemaInternationalReleaseOneSeat = 10f,
@@ -638,7 +638,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
             servicesPrices = ServicesPrices(
                 basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
                 oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
-                internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = 50f,
                 fitnessClubMonthlyFeeForOneAdult = 100f,
                 tennisCourtRentOneHourOnWeekend = 100f,
                 cinemaInternationalReleaseOneSeat = 10f,

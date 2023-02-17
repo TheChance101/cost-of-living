@@ -150,4 +150,16 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
         assertFalse(excludeNullSalariesAndInternetPrices)
     }
 
+    @Test
+    fun should_returnCorrectCheapestInternetConnection_when_ListOfCityEntityIsCorrect() {
+        val cheapestInternetConnectionCity = getCityHasCheapestInternetConnectionTest.execute()?.cityName
+        assertEquals("Lyon", cheapestInternetConnectionCity)
+    }
+
+    @Test
+    fun should_returnFalse_when_WrongAnswer() {
+        val cheapestInternetConnectionCity = getCityHasCheapestInternetConnectionTest.execute()?.cityName
+        assertFalse(cheapestInternetConnectionCity=="Paris")
+    }
+
 }

@@ -6,7 +6,7 @@ class GetCityHasCheapestInternetConnectionInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
 
-    fun execute(): CityEntity {
+    fun execute(): CityEntity? {
         throw Throwable("Not Implemented yet")
     }
 
