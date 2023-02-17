@@ -14,7 +14,7 @@ class GetCityHasCheapestInternetConnectionInteractor(
         city.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl!! /
                 city.averageMonthlyNetSalaryAfterTax!!
 
-    fun excludeNullSalariesAndNullInternetPricesAndLowQualityData(city: CityEntity) =
+    fun excludeNullSalariesAndNullInternetPrices(city: CityEntity) =
         false
 
 
