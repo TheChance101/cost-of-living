@@ -52,9 +52,9 @@ internal class TestGetCityWithHighestRentalPriceDifferenceInteractor {
     @Test
     fun Should_Return_TheCityWith_TheHighest_Rental_PriceDifference() {
         //given a var of dataSource with return name of city
-        val cityData = dataSource.getAllCitiesData()
+        val city = dataSource.getAllCitiesData()
 
-        val result = getCityWithHighestRentalPriceDifference.execute(cityData)
+        val result = getCityWithHighestRentalPriceDifference.execute(city)
 
         assertEquals("Cairo", result)
     }
@@ -76,6 +76,17 @@ internal class TestGetCityWithHighestRentalPriceDifferenceInteractor {
         val result = getCityWithHighestRentalPriceDifference.execute(cityData)
 
         assertEquals("Cairo", result)
+    }
+
+    @Test
+    fun Should_Return_TheCityWith_TheHighestRental_PriceDifference_ForBuying1BedroomApartments() {
+        //given
+        val cityData=dataSource.getAllCitiesData()
+        val expectedCity = "Cairo"
+        //when
+        val result = getCityWithHighestRentalPriceDifference.execute(cityData)
+        //then
+        assertEquals(expectedCity, result)
     }
 
 }

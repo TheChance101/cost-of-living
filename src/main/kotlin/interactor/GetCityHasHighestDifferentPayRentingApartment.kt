@@ -12,7 +12,7 @@ class GetCityWithHighestRentalPriceDifferenceInteractor(
     fun execute(cityData: List<CityEntity>): String {
         var cityWithHighestDifference = ""
         var highestDifference = 0.0
-                dataSource.getAllCitiesData()
+                cityData
             .filter { excludeNullValues(it) }
             .filter { excludeNullDataAndLowQuality(it) }
             .forEach { city ->
@@ -28,9 +28,6 @@ class GetCityWithHighestRentalPriceDifferenceInteractor(
             }
         return cityWithHighestDifference
     }
-
-
-
 
     fun excludeNullValues(city: CityEntity): Boolean {
         return city.realEstatesPrices.apartmentOneBedroomInCityCentre != null
