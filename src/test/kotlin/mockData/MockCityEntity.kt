@@ -1,0 +1,4 @@
+package mockData
+
+object MockCityEntity {
+}
