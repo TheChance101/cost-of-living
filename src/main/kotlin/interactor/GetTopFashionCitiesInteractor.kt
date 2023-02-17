@@ -9,7 +9,7 @@ class GetTopFashionCitiesInteractor(
     fun execute(limit: Int): List<String> {
         return dataSource.getAllCitiesData()
             .filter(::excludeNullPricesAndLowQualityData)
-           // .sortedBy(::calculateClothesPrices)
+            .sortedBy(::getClothesAveragePrice)
             .take(limit)
             .map { it.cityName }
     }
