@@ -23,6 +23,7 @@ class GetLowCostFruitVegetableCitiesWithHighSalariesInteractor(
                     onion1kg!= null && oranges1kg!= null && potato1kg!= null &&
                     tomato1kg!= null
                 }
+
     }
     private fun calculateFruitVegTotalPrice(fruitAndVegetablesPrices: FruitAndVegetablesPrices): Float =
         with(fruitAndVegetablesPrices){
