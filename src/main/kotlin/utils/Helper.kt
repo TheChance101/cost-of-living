@@ -28,7 +28,7 @@ class Helper(private val dataSource: CostOfLivingDataSource) {
                 }
 
                 "2" -> {
-                    println(GetAverageFruitAndVegetablesInteractor(dataSource).execute())
+                    println(GetAverageFruitAndVegetablesInteractor(dataSource).execute(12))
                     printSeparationLine()
                 }
 
