@@ -12,7 +12,7 @@ class GetCityHasAverageMealPricesInteractor(
 
         val listOfCitiesEntity = dataSource.getAllCitiesData()
             .filter { isCitiesInUSACanadaAndMexico(it) && excludeNullMealPrices(it) }
-            .sortedByDescending { getAverageMealInCity(it) }
+            .sortedByDescending { it.mealsPrices.getAverageMealInCity(it) }
 
         return if (listOfCitiesEntity.isNotEmpty()) getAverageMealInAllCities(listOfCitiesEntity)
         else throw Throwable("List of cities is empty")
@@ -30,25 +30,16 @@ class GetCityHasAverageMealPricesInteractor(
                 && (city.mealsPrices.mealAtMcDonaldSOrEquivalent != null))
     }
 
-    fun getAverageMealInCity(city: CityEntity): Float? {
-        return if (city.mealsPrices.mealFor2PeopleMidRangeRestaurant != null) {
-            city.mealsPrices.mealFor2PeopleMidRangeRestaurant / 2
-        } else if ((city.mealsPrices.mealInexpensiveRestaurant != null)
-            && (city.mealsPrices.mealAtMcDonaldSOrEquivalent != null)
-        )
-            ((city.mealsPrices.mealInexpensiveRestaurant) + (city.mealsPrices.mealAtMcDonaldSOrEquivalent)) / 2
-        else null
-    }
-
     fun getAverageMealInAllCities(cityEntityList: List<CityEntity>): CityEntity? {
         if (cityEntityList.isEmpty()) return null
         val averageMealPricesInAllCities =
-            (getAverageMealInCity(cityEntityList.first())!! + getAverageMealInCity(cityEntityList.last())!!) / 2
+            (cityEntityList.first().mealsPrices.getAverageMealInCity(cityEntityList.first())!! +
+        cityEntityList.last().mealsPrices.getAverageMealInCity(cityEntityList.last())!!).div(2)
 
         return cityEntityList.first {
-            (getAverageMealInCity(it) == averageMealPricesInAllCities)
-                    || (getAverageMealInCity(it) == floor(averageMealPricesInAllCities))
-                    || (getAverageMealInCity(it) == ceil(averageMealPricesInAllCities))
+            (it.mealsPrices.getAverageMealInCity(it) == averageMealPricesInAllCities)
+                    || (it.mealsPrices.getAverageMealInCity(it) == floor(averageMealPricesInAllCities))
+                    || (it.mealsPrices.getAverageMealInCity(it) == ceil(averageMealPricesInAllCities))
         }
     }
 }
