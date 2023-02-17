@@ -6,18 +6,13 @@ class GetSuitableClothesPriceCitiesNameInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
     fun execute(limit: Int): List<String> {
-        return  dataSource
+        return dataSource
             .getAllCitiesData()
             .filter (::excludeCityWitNoBrand)
             .sortedBy(::getAveragePriceForClothes)
             .take(limit)
             .map { it.cityName }
     }
-    /**
-     * this function get average price for clothes in this city
-     * @return a float represent average price for famous clothes in city
-     */
-
     private fun getAveragePriceForClothes(cityEntity: CityEntity):Float
     {
         var totalPrice:Float =0.0F
@@ -36,11 +31,6 @@ class GetSuitableClothesPriceCitiesNameInteractor(
         return totalBrand
 
     }
-    /**
-     * this function excludes city have no famous brands
-     * @return a boolean represent if city have famous brands or not
-     */
-
     fun excludeCityWitNoBrand(city: CityEntity): Boolean {
         return !(city.clothesPrices.oneSummerDressInAChainStoreZaraHAndM == null &&
                 city.clothesPrices.onePairOfJeansLevis50oneOrSimilar == null &&
