@@ -1,9 +1,10 @@
-package dataSource.utils
+package data
 
 import interactor.CostOfLivingDataSource
 import model.*
 
-class FakeDataSource : CostOfLivingDataSource {
+
+class CountriesTaxesFakeData : CostOfLivingDataSource {
     override fun getAllCitiesData(): List<CityEntity> {
         return listOf(
             CityEntity(
@@ -75,7 +76,7 @@ class FakeDataSource : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = 7965.29f
                 ),
                 averageMonthlyNetSalaryAfterTax = 1000.0f,
-                dataQuality = false
+                dataQuality = true
             ), CityEntity(
                 cityName = "Roseburg",
                 country = "United States",
@@ -145,7 +146,7 @@ class FakeDataSource : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1614.59f
                 ),
                 averageMonthlyNetSalaryAfterTax = 1200.0f,
-                dataQuality = false
+                dataQuality = true
             ),
             CityEntity(
                 cityName = "Moose Jaw",
@@ -216,7 +217,7 @@ class FakeDataSource : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
                 ),
                 averageMonthlyNetSalaryAfterTax = 1185.84f,
-                dataQuality = false
+                dataQuality = true
             ), CityEntity(
                 cityName = "Chetumal",
                 country = "Mexico",
@@ -286,7 +287,7 @@ class FakeDataSource : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = 309.41f
                 ),
                 averageMonthlyNetSalaryAfterTax = 257.84f,
-                dataQuality = false
+                dataQuality = true
             ),
             CityEntity(
                 cityName = "Kuysinjaq",
@@ -357,8 +358,17 @@ class FakeDataSource : CostOfLivingDataSource {
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = 137.03f
                 ),
                 averageMonthlyNetSalaryAfterTax = 411.1f,
-                dataQuality = false
+                dataQuality = true
             )
         )
+
     }
 }
+
+
+
+
+
+
+
+
