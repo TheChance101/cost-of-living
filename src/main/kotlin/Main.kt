@@ -25,9 +25,10 @@ fun main() {
     println(getCityHasCheapestInternetConnectionInteractor.execute( 1 ))
     printSeparationLine()
 
+
     val getCheapestBananaPricesCitiesNamesInteractor=GetCheapestBananaPricesCitiesNamesInteractor(dataSource)
     getCheapestBananaPricesCitiesNamesInteractor.apply {
-       println(execute(*getCitiesVarArgs()))
+        println(execute(*getCitiesVarArgs().toTypedArray()))
     }
     printSeparationLine()
 
