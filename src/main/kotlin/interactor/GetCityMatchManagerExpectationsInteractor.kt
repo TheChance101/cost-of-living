@@ -10,8 +10,7 @@ class GetCityMatchManagerExpectationsInteractor(
     fun execute(): CityEntity? {
         return dataSource.getAllCitiesData()
             .filter { it.country in onlyRequiredCountries }
-            .takeIf { it.isNotEmpty() }
-            ?.minByOrNull(::getMidRangePrices)
+            .minByOrNull(::getMidRangePrices)
     }
 
     private fun getMidRangePrices(city: CityEntity): Float = city.mealsPrices.run {
@@ -19,9 +18,10 @@ class GetCityMatchManagerExpectationsInteractor(
             mealInexpensiveRestaurant,
             mealFor2PeopleMidRangeRestaurant,
             mealAtMcDonaldSOrEquivalent
-        ).filterNotNull().let {
-            getMidMealsPrice(city)
-        }
+        ).filterNotNull()
+            .let {
+                getMidMealsPrice(city)
+            }
     }
 
     private fun getMidMealsPrice(city: CityEntity) =
@@ -31,11 +31,14 @@ class GetCityMatchManagerExpectationsInteractor(
         )
 
 
-    private fun getHighestPrice(city: CityEntity) = sequenceOf(
-        city.mealsPrices.mealInexpensiveRestaurant,
-        city.mealsPrices.mealFor2PeopleMidRangeRestaurant,
-        city.mealsPrices.mealAtMcDonaldSOrEquivalent
-    ).filterNotNull().maxOrNull() ?: Float.MIN_VALUE
+    private fun getHighestPrice(city: CityEntity): Float {
+        println(city.mealsPrices)
+        return (sequenceOf(
+            city.mealsPrices.mealInexpensiveRestaurant,
+            city.mealsPrices.mealFor2PeopleMidRangeRestaurant,
+            city.mealsPrices.mealAtMcDonaldSOrEquivalent
+        ).filterNotNull().maxOrNull() ?: Float.MIN_VALUE)
+    }
 
     private fun getLowestPrice(city: CityEntity) =
         sequenceOf(
