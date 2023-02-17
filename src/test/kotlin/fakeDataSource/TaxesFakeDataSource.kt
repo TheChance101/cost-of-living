@@ -9,7 +9,6 @@ class TaxesFakeDataSource {
         override fun getAllCitiesData(): List<CityEntity> {
             return getTwentyFakeData
         }
-
     }
 
     fun getInvalidLengthCity() = invalidLengthCity
