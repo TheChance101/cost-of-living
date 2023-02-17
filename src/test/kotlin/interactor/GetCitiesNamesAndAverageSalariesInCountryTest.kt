@@ -26,7 +26,8 @@ class GetCitiesNamesAndAverageSalariesInCountryTest {
         //when get the cities name and average salary in country
         val ListOfCitiesAndSalaries=getResult.execute(country)
         //then check the result
-        assertEquals(listOf(Pair("Tanta",101.74.toFloat()),Pair("Alexandria",163.76.toFloat()), Pair("Giza", 171.51.toFloat()),Pair("Cairo", 200.4.toFloat())),ListOfCitiesAndSalaries)
+        assertEquals(listOf(Pair("Tanta",101.74f),Pair("Alexandria",163.76f), Pair("Giza", 171.51f),Pair("Cairo", 200.4f))
+            ,ListOfCitiesAndSalaries)
     }
 
     @Test
@@ -36,7 +37,8 @@ class GetCitiesNamesAndAverageSalariesInCountryTest {
         //when get the cities name and average salary in country
         val ListOfCitiesAndSalaries=getResult.execute(country)
         //then check the result
-        assertEquals(listOf(Pair("Tanta",101.74.toFloat()),Pair("Alexandria",163.76.toFloat()), Pair("Giza", 171.51.toFloat()),Pair("Cairo", 200.4.toFloat())),ListOfCitiesAndSalaries)
+        assertEquals(listOf(Pair("Tanta",101.74f),Pair("Alexandria",163.76f), Pair("Giza", 171.51f),Pair("Cairo", 200.4f))
+            ,ListOfCitiesAndSalaries)
     }
 
     @Test
@@ -46,7 +48,8 @@ class GetCitiesNamesAndAverageSalariesInCountryTest {
         //when get the cities name and average salary in country
         val ListOfCitiesAndSalaries=getResult.execute(country)
         //then check the result
-        assertEquals(listOf(Pair("Tanta",101.74.toFloat()),Pair("Alexandria",163.76.toFloat()), Pair("Giza", 171.51.toFloat()),Pair("Cairo", 200.4.toFloat())),ListOfCitiesAndSalaries)
+        assertEquals(listOf(Pair("Tanta",101.74f),Pair("Alexandria",163.76f), Pair("Giza", 171.51f),Pair("Cairo", 200.4f))
+            ,ListOfCitiesAndSalaries)
     }
 
     @Test
@@ -56,7 +59,8 @@ class GetCitiesNamesAndAverageSalariesInCountryTest {
         //when get the cities name and average salary in country
         val ListOfCitiesAndSalaries=getResult.execute(country)
         //then check the result
-        assertEquals(listOf(Pair("Tanta",101.74.toFloat()),Pair("Alexandria",163.76.toFloat()), Pair("Giza", 171.51.toFloat()),Pair("Cairo", 200.4.toFloat())),ListOfCitiesAndSalaries)
+        assertEquals(listOf(Pair("Tanta",101.74f),Pair("Alexandria",163.76f), Pair("Giza", 171.51f),Pair("Cairo", 200.4f))
+            ,ListOfCitiesAndSalaries)
     }
 
 
@@ -67,7 +71,14 @@ class GetCitiesNamesAndAverageSalariesInCountryTest {
         //when get the cities name and average salary in country
         // then check the result
         assertThrows<Exception> {getResult.execute(country)}
-
+    }
+    @Test
+    fun should_ThrowException_when_EnterEmptyName() {
+        //given name of the country
+        val country=""
+        //when get the cities name and average salary in country
+        // then check the result
+        assertThrows<Exception> {getResult.execute(country)}
     }
 
 }
