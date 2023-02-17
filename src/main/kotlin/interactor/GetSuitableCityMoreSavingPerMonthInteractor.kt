@@ -6,28 +6,32 @@ import model.CityEntity
  * Created by Aziza Helmy on 2/11/2023.
  */
 class GetSuitableCityMoreSavingPerMonthInteractor(private val dataSource: CostOfLivingDataSource) {
-    private val riceConsumptionByKg = 2
-    private val cheeseConsumptionByKg = 1
-    private val breadConsumptionByKg = 15 * 2
-    private val chickenConsumptionByKg = 10
-    private val meetConsumptionByKg = 4
-    private val otherNeedConsumptionByKg = 250
-    private val averageSalaryByKg = 2
+    companion object {
+        private const val RICE_CONSUMPTION_BY_KG = 2
+        private const val BREAD_CONSUMPTION_BY_KG = 15 * 2
+        private const val CHEESE_CONSUMPTION_BY_KG = 1
+        private const val CHICKEN_CONSUMPTION_BY_KG = 10
+        private const val MEET_CONSUMPTION_BY_KG = 4
+        private const val OTHER_NEEDS_CONSUMPTION = 250
+        private const val AVERAGE_SALARY = 2
+    }
 
     fun execute(): CityEntity {
 
         return dataSource.getAllCitiesData()
             .filter(::excludeNullSalariesApartment3BedroomsAndFoodies)
-            .maxByOrNull {
-                (it.averageMonthlyNetSalaryAfterTax!! * averageSalaryByKg) -
-                        ((it.foodPrices.riceWhite1kg!! * riceConsumptionByKg) +
-                                (it.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!! * meetConsumptionByKg) +
-                                (it.foodPrices.chickenFillets1kg!! * chickenConsumptionByKg) +
-                                (it.foodPrices.localCheese1kg!! * cheeseConsumptionByKg) +
-                                (it.foodPrices.loafOfFreshWhiteBread500g!! * breadConsumptionByKg) +
-                                (otherNeedConsumptionByKg) +
-                                (it.realEstatesPrices.apartment3BedroomsInCityCentre!!)
-                                )
+            .maxByOrNull { city ->
+                city.let { city ->
+                    val totalExpenses = city.foodPrices.run {
+                        (riceWhite1kg!! * RICE_CONSUMPTION_BY_KG) +
+                                (beefRound1kgOrEquivalentBackLegRedMeat!! * MEET_CONSUMPTION_BY_KG) +
+                                (chickenFillets1kg!! * CHICKEN_CONSUMPTION_BY_KG) +
+                                (localCheese1kg!! * CHEESE_CONSUMPTION_BY_KG) +
+                                (loafOfFreshWhiteBread500g!! * BREAD_CONSUMPTION_BY_KG) +
+                                OTHER_NEEDS_CONSUMPTION
+                    } + city.realEstatesPrices.apartment3BedroomsInCityCentre!!
+                    (city.averageMonthlyNetSalaryAfterTax!! * AVERAGE_SALARY) - totalExpenses
+                }
             }!!
     }
 
