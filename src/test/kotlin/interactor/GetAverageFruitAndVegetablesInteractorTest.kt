@@ -1,11 +1,16 @@
 package interactor
 
 import data.FruitsAndVegetablesFakeData
-import data.TestCase
+import data.InvalidFakeData
+import model.CityEntity
+import model.FruitAndVegetablesPrices
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.function.Executable
+import java.lang.IllegalArgumentException
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetAverageFruitAndVegetablesInteractorTest {
@@ -13,7 +18,7 @@ class GetAverageFruitAndVegetablesInteractorTest {
     private lateinit var getAverageFruitAndVegetablesInteractor: GetAverageFruitAndVegetablesInteractor
     private val fakeData = FruitsAndVegetablesFakeData()
 
-    @BeforeAll
+    @BeforeEach
     fun setup() {
         getAverageFruitAndVegetablesInteractor = GetAverageFruitAndVegetablesInteractor(fakeData)
     }
@@ -31,24 +36,39 @@ class GetAverageFruitAndVegetablesInteractorTest {
             "Christiansburg",
             "Brookdale",
             "Woodlawn",
-            "Vryheid",
-            "Clayton",
             "Brevard",
-            "Mortsel",
+            "Clayton",
             "Kernersville",
-            "Airway Heights",
-            "Ridgecrest"
+            "Keller",
+            "Malden",
+            "Pearl",
+            "Moncks Corner"
         )
         assertEquals(expected, result)
     }
 
     @Test
-    fun should_ReturnEmptyList_When_TheFruitsAndVegetablesAreNull() {
-        // given null data to fruits and vegetables
-//        fakeData.changeDataSource(TestCase.InvalidData)
+    fun `should return empty list when given the data source is Invalid`() {
+        // given a limit of cities and invalid data source
+        val limit = 10
 
-        // when check and return cities name
-        val result = getAverageFruitAndVegetablesInteractor.execute(111)
+        getAverageFruitAndVegetablesInteractor = GetAverageFruitAndVegetablesInteractor(InvalidFakeData())
+
+        // when check and throw exception
+        val result = getAverageFruitAndVegetablesInteractor.execute(limit)
+
+        val expected = emptyList<String>()
+        // then asserted the return and the expected
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `should return an empty list when given a limit zero`() {
+        // given a limit zero
+        val limit = 0
+
+        // when check and return empty list
+        val result = getAverageFruitAndVegetablesInteractor.execute(limit)
 
         // then asserted the return and the expected
         val expected = emptyList<String>()
@@ -57,30 +77,39 @@ class GetAverageFruitAndVegetablesInteractorTest {
     }
 
     @Test
-    fun should_ReturnEmptyList_When_TheAverageMonthlyNetSalaryAfterTaxIsNullOrNaN() {
-        // given null data to average monthly net salary after tax
-//        fakeData.changeDataSource(TestCase.AverageMonthlyNetSalary)
+    fun `should throw an exception when given a negative limit number`() {
+        // given a limit negative number
+        val limit = -1
 
-        // when check and return cities name
-        val result = getAverageFruitAndVegetablesInteractor.execute(11)
+        // when check and throw exception
+        val result = Executable { getAverageFruitAndVegetablesInteractor.execute(limit) }
 
         // then asserted the return and the expected
-        val expected = emptyList<String>()
-
-        assertEquals(expected, result)
+        assertThrows(IllegalArgumentException::class.java, result)
     }
 
     @Test
-    fun should_ReturnEmptyList_When_DataSourceIsEmpty() {
-        // given empty data source
-//        fakeData.changeDataSource(TestCase.Empty)
+    fun `should Return false when the fruits and vegetables is Null but salary is valid`() {
+        // given a null for fruits and vegetables but valid for salaries
+        val city = FruitsAndVegetablesFakeData().getAllCitiesData()[10]
 
-        // when check and return cities name
-        val result = getAverageFruitAndVegetablesInteractor.execute(11)
+        // when check
+        val result = getAverageFruitAndVegetablesInteractor.excludeNullFruitAndVegetablePriceAndNullSalaries(city)
 
         // then asserted the return and the expected
-        val expected = emptyList<String>()
-
-        assertEquals(expected, result)
+        assertFalse(result)
     }
+
+    @Test
+    fun `should Return false when the fruits and vegetables is valid but salary is null`() {
+        // given valid data for fruits and vegetables but null for salaries
+        val city = FruitsAndVegetablesFakeData().getAllCitiesData()[11]
+
+        // when check
+        val result = getAverageFruitAndVegetablesInteractor.excludeNullFruitAndVegetablePriceAndNullSalaries(city)
+
+        // then asserted the return and the expected
+        assertFalse(result)
+    }
+
 }

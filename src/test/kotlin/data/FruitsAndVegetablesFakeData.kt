@@ -232,7 +232,7 @@ class FruitsAndVegetablesFakeData : CostOfLivingDataSource {
 
             // region City 4
             CityEntity(
-                cityName = "Pearl City",
+                cityName = "Pearl",
                 country = "United States",
                 mealsPrices = MealsPrices(
                     mealInexpensiveRestaurant = null,
@@ -769,13 +769,13 @@ class FruitsAndVegetablesFakeData : CostOfLivingDataSource {
                     waterOneAndHalfLiterBottleAtTheMarket = 1.7f
                 ),
                 fruitAndVegetablesPrices = FruitAndVegetablesPrices(
-                    apples1kg = 4.86f,
-                    banana1kg = 1.64f,
-                    oranges1kg = 4.32f,
-                    tomato1kg = 4.36f,
-                    potato1kg = 2.17f,
-                    onion1kg = 2.4f,
-                    lettuceOneHead = 1.67f
+                    apples1kg = null,
+                    banana1kg = null,
+                    oranges1kg = null,
+                    tomato1kg = null,
+                    potato1kg = null,
+                    onion1kg = null,
+                    lettuceOneHead = null
                 ),
                 foodPrices = FoodPrices(
                     loafOfFreshWhiteBread500g = 2.76f,
@@ -823,9 +823,156 @@ class FruitsAndVegetablesFakeData : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 13f,
                 dataQuality = false
-            )
+            ),
             // endregion
 
+            // region City 12
+            CityEntity(
+                cityName = "Airway Heights",
+                country = "United States",
+                mealsPrices = MealsPrices(
+                    mealInexpensiveRestaurant = 15.0f,
+                    mealFor2PeopleMidRangeRestaurant = 77.5f,
+                    mealAtMcDonaldSOrEquivalent = 10.0f
+                ),
+                drinksPrices = DrinksPrices(
+                    cappuccinoRegularInRestaurants = 5.17f,
+                    cokePepsiAThirdOfLiterBottleInRestaurants = 2.86f,
+                    waterAThirdOfLiterBottleInRestaurants = 2.0f,
+                    milkRegularOneLiter = 0.79f,
+                    waterOneAndHalfLiterBottleAtTheMarket = 1.7f
+                ),
+                fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                    apples1kg = 12.0f,
+                    banana1kg = 24f,
+                    oranges1kg = 34f,
+                    tomato1kg = 23f,
+                    potato1kg = 53f,
+                    onion1kg = 42f,
+                    lettuceOneHead = 53f
+                ),
+                foodPrices = FoodPrices(
+                    loafOfFreshWhiteBread500g = 2.76f,
+                    riceWhite1kg = 3.93f,
+                    eggsRegular12 = 2.0f,
+                    localCheese1kg = 12.61f,
+                    chickenFillets1kg = 10.93f,
+                    beefRound1kgOrEquivalentBackLegRedMeat = 13.21f
+                ),
+                servicesPrices = ServicesPrices(
+                    basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 225.31f,
+                    oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.06f,
+                    internet60MbpsOrMoreUnlimitedDataCableAdsl = 68.4f,
+                    fitnessClubMonthlyFeeForOneAdult = 65.0f,
+                    tennisCourtRentOneHourOnWeekend = null,
+                    cinemaInternationalReleaseOneSeat = 13.0f,
+                    preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 300.0f,
+                    internationalPrimarySchoolYearlyForOneChild = 19750.0f
+                ),
+                clothesPrices = ClothesPrices(
+                    onePairOfJeansLevis50oneOrSimilar = 47.71f,
+                    oneSummerDressInAChainStoreZaraHAndM = 36.67f,
+                    onePairOfNikeRunningShoesMidRange = 86.86f,
+                    onePairOfMenLeatherBusinessShoes = 94.57f
+                ),
+                transportationsPrices = TransportationsPrices(
+                    oneWayTicketLocalTransport = 3.0f,
+                    monthlyPassRegularPrice = 60.0f,
+                    taxiStartNormalTariff = 5.0f,
+                    taxi1kmNormalTariff = 1.15f,
+                    taxi1hourWaitingNormalTariff = 35.0f,
+                    gasolineOneLiter = 1.27f
+                ),
+                carsPrices = CarsPrices(
+                    volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 18597.5f,
+                    toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 17300.0f
+                ),
+                realEstatesPrices = RealEstatesPrices(
+                    apartmentOneBedroomInCityCentre = 1300.0f,
+                    apartmentOneBedroomOutsideOfCentre = 1300.0f,
+                    apartment3BedroomsInCityCentre = 1800.0f,
+                    apartment3BedroomsOutsideOfCentre = 1800.0f,
+                    pricePerSquareMeterToBuyApartmentInCityCentre = 6070.85f,
+                    pricePerSquareMeterToBuyApartmentOutsideOfCentre = 4886.82f
+                ),
+                averageMonthlyNetSalaryAfterTax = null,
+                dataQuality = false
+            ),
+            // endregion
+
+            // region City 13
+            CityEntity(
+                cityName = "Airway Heights",
+                country = "United States",
+                mealsPrices = MealsPrices(
+                    mealInexpensiveRestaurant = 15.0f,
+                    mealFor2PeopleMidRangeRestaurant = 77.5f,
+                    mealAtMcDonaldSOrEquivalent = 10.0f
+                ),
+                drinksPrices = DrinksPrices(
+                    cappuccinoRegularInRestaurants = 5.17f,
+                    cokePepsiAThirdOfLiterBottleInRestaurants = 2.86f,
+                    waterAThirdOfLiterBottleInRestaurants = 2.0f,
+                    milkRegularOneLiter = 0.79f,
+                    waterOneAndHalfLiterBottleAtTheMarket = 1.7f
+                ),
+                fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                    apples1kg = 0f,
+                    banana1kg = 0f,
+                    oranges1kg = 0f,
+                    tomato1kg = 0f,
+                    potato1kg = 0f,
+                    onion1kg = 0f,
+                    lettuceOneHead = 0f
+                ),
+                foodPrices = FoodPrices(
+                    loafOfFreshWhiteBread500g = 2.76f,
+                    riceWhite1kg = 3.93f,
+                    eggsRegular12 = 2.0f,
+                    localCheese1kg = 12.61f,
+                    chickenFillets1kg = 10.93f,
+                    beefRound1kgOrEquivalentBackLegRedMeat = 13.21f
+                ),
+                servicesPrices = ServicesPrices(
+                    basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 225.31f,
+                    oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.06f,
+                    internet60MbpsOrMoreUnlimitedDataCableAdsl = 68.4f,
+                    fitnessClubMonthlyFeeForOneAdult = 65.0f,
+                    tennisCourtRentOneHourOnWeekend = null,
+                    cinemaInternationalReleaseOneSeat = 13.0f,
+                    preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 300.0f,
+                    internationalPrimarySchoolYearlyForOneChild = 19750.0f
+                ),
+                clothesPrices = ClothesPrices(
+                    onePairOfJeansLevis50oneOrSimilar = 47.71f,
+                    oneSummerDressInAChainStoreZaraHAndM = 36.67f,
+                    onePairOfNikeRunningShoesMidRange = 86.86f,
+                    onePairOfMenLeatherBusinessShoes = 94.57f
+                ),
+                transportationsPrices = TransportationsPrices(
+                    oneWayTicketLocalTransport = 3.0f,
+                    monthlyPassRegularPrice = 60.0f,
+                    taxiStartNormalTariff = 5.0f,
+                    taxi1kmNormalTariff = 1.15f,
+                    taxi1hourWaitingNormalTariff = 35.0f,
+                    gasolineOneLiter = 1.27f
+                ),
+                carsPrices = CarsPrices(
+                    volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 18597.5f,
+                    toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 17300.0f
+                ),
+                realEstatesPrices = RealEstatesPrices(
+                    apartmentOneBedroomInCityCentre = 1300.0f,
+                    apartmentOneBedroomOutsideOfCentre = 1300.0f,
+                    apartment3BedroomsInCityCentre = 1800.0f,
+                    apartment3BedroomsOutsideOfCentre = 1800.0f,
+                    pricePerSquareMeterToBuyApartmentInCityCentre = 6070.85f,
+                    pricePerSquareMeterToBuyApartmentOutsideOfCentre = 4886.82f
+                ),
+                averageMonthlyNetSalaryAfterTax = 0f,
+                dataQuality = false
+            )
+            // endregion
         )
     }
 }
