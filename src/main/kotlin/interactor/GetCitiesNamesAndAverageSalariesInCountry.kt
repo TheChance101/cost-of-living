@@ -8,10 +8,11 @@ class GetCitiesNamesAndAverageSalariesInCountry (
 
     fun execute(country: String): List<Pair<String, Float>> {
 
-        val list=dataSource
-            .getAllCitiesData()
+        val list=dataSource.run {
+            getAllCitiesData()
             .filter{it.country.lowercase()==country.lowercase()&&excludeNullSalariesAndLowQualityData(it)}
-            .map{it.cityName to it.averageMonthlyNetSalaryAfterTax!!}
+            .map{it.cityName to it.averageMonthlyNetSalaryAfterTax!!} }
+
 
         if (list.isEmpty()) throw Exception("wrong name")
 
