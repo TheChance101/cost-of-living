@@ -1,5 +1,7 @@
 package interactor
 
+import utils.isNotNull
+
 
 class GetSalaryAverageAndCitiesNamesInCountryInteractor(
     private val dataSource: CostOfLivingDataSource
@@ -9,12 +11,12 @@ class GetSalaryAverageAndCitiesNamesInCountryInteractor(
         return dataSource
             .getAllCitiesData()
             .filter{
-                    it.averageMonthlyNetSalaryAfterTax != null &&
+                    it.averageMonthlyNetSalaryAfterTax.isNotNull() &&
                     it.dataQuality &&
                     it.country.lowercase() == countryName.lowercase()
             }
             .map{Pair(it.cityName,it.averageMonthlyNetSalaryAfterTax!!)}
-            .takeIf { it.isNotEmpty() } ?: throw Exception("Invalid country name")
+            .takeIf { it.isNotEmpty() } ?: throw InvalidCountryNameException("Invalid country name")
 
     }
 
