@@ -43,42 +43,33 @@ internal class GetLowCostFruitVegetableCitiesWithHighSalariesInteractorTest {
     }
 
     @Test
-    fun should_returnExceptionw_when_inputLimitIsMoreThanListSize() {
+    fun should_return_emptyList_when_inputLimitIsMoreThanListSize() {
         //given the limit of cities is 20
         val limit = 20
         // when
-        val exception : Executable =Executable{
-            getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit)
-        }
-
+        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit)
         //then
-        assertThrows(Exception::class.java,exception)
+        assertTrue(result.isEmpty())
     }
 
     @Test
-    fun should_returnExceptionw_when_inputIsZero() {
+    fun should_return_emptyList_when_inputIsZero() {
         //given the limit of cities is 0
         val limit = 0
         // when
-        val exception : Executable =Executable{
-            getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit)
-        }
-
+        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit)
         //then
-        assertThrows(Exception::class.java,exception)
+        assertTrue(result.isEmpty())
     }
 
     @Test
-    fun should_returnExceptionw_when_inputIsNegative() {
+    fun should_return_emptyList_when_inputIsNegative() {
         //given the limit of cities is -1
         val limit = -1
         // when
-        val exception : Executable =Executable{
-            getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit)
-        }
-
+        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit)
         //then
-        assertThrows(Exception::class.java,exception)
+        assertTrue(result.isEmpty())
     }
 
 
