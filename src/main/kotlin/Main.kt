@@ -22,7 +22,7 @@ fun main() {
     printSeparationLine()
 
     val getCityHasHighestApartmentRent= GetHighestApartmentPriceDifferenceCityInteractor(dataSource)
-    println("hamsa " + getCityHasHighestApartmentRent.execute())
+    println( getCityHasHighestApartmentRent.execute())
     printSeparationLine()
 
 
