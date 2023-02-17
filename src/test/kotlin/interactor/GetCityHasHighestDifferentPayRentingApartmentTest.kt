@@ -10,9 +10,9 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class TestGetCityWithHighestRentalPriceDifferenceInteractor {
+class TestGetCityWithHighestRentalPriceDifferenceInteractor {
     private lateinit var getCityWithHighestRentalPriceDifference: GetCityWithHighestRentalPriceDifferenceInteractor
-    private lateinit var dataSource: CostOfLivingDataSource
+    private lateinit var dataSource: FakeDataSourceForRentalPrice
 
     @BeforeAll
     fun setUp() {
@@ -21,10 +21,9 @@ internal class TestGetCityWithHighestRentalPriceDifferenceInteractor {
     }
 
     @Test
-    fun Should_ReturnFalse_WhenInput_Null_ApartmentPrice_InCityCenter() {
+    fun should_ReturnFalse_WhenInput_Null_ApartmentPrice_InCityCenter() {
         //given an object of CityEntity with Null apartment price in city center
         val city = dataSource.getAllCitiesData()[0]
-
         //when
         val result = getCityWithHighestRentalPriceDifference.excludeNullValues(city)
         //then
@@ -35,7 +34,6 @@ internal class TestGetCityWithHighestRentalPriceDifferenceInteractor {
     fun Should_Return_FalseWhenInput_NullApartmentPrice_OutsideCityCenter() {
         //given an object of CityEntity with Null apartment price outside city center
         val city = dataSource.getAllCitiesData()[0]
-
         //when
         val result = getCityWithHighestRentalPriceDifference.excludeNullValues(city)
         //then

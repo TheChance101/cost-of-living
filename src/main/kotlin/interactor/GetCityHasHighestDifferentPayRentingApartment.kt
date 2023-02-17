@@ -12,15 +12,22 @@ class GetCityWithHighestRentalPriceDifferenceInteractor(
     fun execute(): String {
         var cityWithHighestDifference = ""
         var highestDifference = 0.0
-                dataSource.getAllCitiesData()
-            .filter { excludeNullValues(it) }
-            .filter { excludeNullDataAndLowQuality(it) }
+        dataSource.getAllCitiesData()
+            .filter { excludeNullValues(it)
+                    && excludeNullDataAndLowQuality(it)}
             .forEach { city ->
-                val oneBedroomDifference = city.realEstatesPrices.apartmentOneBedroomInCityCentre!! - city.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!!
-                val threeBedroomDifference = city.realEstatesPrices.apartment3BedroomsInCityCentre!! - city.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
-                val differencePricePerSquare = city.realEstatesPrices.pricePerSquareMeterToBuyApartmentInCityCentre!! - city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!
-                val averageDifference = (differencePricePerSquare +oneBedroomDifference + threeBedroomDifference) / 2
-
+                val oneBedroomDifference =
+                            city.realEstatesPrices.apartmentOneBedroomInCityCentre!! -
+                            city.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!!
+                val threeBedroomDifference =
+                            city.realEstatesPrices.apartment3BedroomsInCityCentre!! -
+                            city.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
+                val differencePricePerSquare =
+                            city.realEstatesPrices.pricePerSquareMeterToBuyApartmentInCityCentre!! -
+                            city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!
+                val averageDifference = (differencePricePerSquare +
+                        oneBedroomDifference +
+                        threeBedroomDifference) / 2
                 if (averageDifference > highestDifference) {
                     highestDifference = averageDifference.toDouble()
                     cityWithHighestDifference = city.cityName
