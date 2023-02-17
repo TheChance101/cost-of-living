@@ -12,16 +12,16 @@ import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class GetFastest10CitiesToBuyAPTInteractorTest {
+class GetFastestCitiesToBuyApartmentInteractorTest {
 
-    private val getFastest10CitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(getVariousData())
+    private val getFastest10CitiesToBuyAPT = GetFastestCitiesToBuyApartmentInteractor(getVariousData())
 
     @Test
     fun should_ReturnTrue_When_DataQualityIsLow() {
         //given
         val lowQualityData  = getLowQualityCities()
         //when
-        val fastestCitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(lowQualityData)
+        val fastestCitiesToBuyAPT = GetFastestCitiesToBuyApartmentInteractor(lowQualityData)
         val result = fastestCitiesToBuyAPT.execute(10).isEmpty()
         //then
         assertTrue(result)
@@ -31,7 +31,7 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
         //given
         val missingPPS = getMissingPricePerSquareMeterOutsideCentre()
         //when
-        val fastestCitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(missingPPS)
+        val fastestCitiesToBuyAPT = GetFastestCitiesToBuyApartmentInteractor(missingPPS)
         val result = fastestCitiesToBuyAPT.execute(10).isEmpty()
         //then
         assertTrue(result)
@@ -41,7 +41,7 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
         //given
         val nullsSalary = getMissingSalary()
         //when
-        val fastestCitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(nullsSalary)
+        val fastestCitiesToBuyAPT = GetFastestCitiesToBuyApartmentInteractor(nullsSalary)
         val result = fastestCitiesToBuyAPT.execute(10).isEmpty()
         //then
         assertTrue(result)
@@ -53,7 +53,7 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
         //given
         val variousData = getVariousData()
         //when
-        val fastest10CitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(variousData)
+        val fastest10CitiesToBuyAPT = GetFastestCitiesToBuyApartmentInteractor(variousData)
         val result = fastest10CitiesToBuyAPT.execute(10)
         //then
         assertEquals(10, result.size)
@@ -98,7 +98,7 @@ class GetFastest10CitiesToBuyAPTInteractorTest {
     @Test
     fun should_ReturnCorrectListOfPairs_When_InputIsCorrect() {
         //given
-        val fastest10CitiesToBuyAPT = GetFastest10CitiesToBuyAPTInteractor(getVariousData())
+        val fastest10CitiesToBuyAPT = GetFastestCitiesToBuyApartmentInteractor(getVariousData())
         val expectedList = listOf(
             Pair("City11", 3.6231884057971016),
             Pair("City12", 3.7393162393162394),

@@ -3,6 +3,7 @@ package fakeDataSource
 import interactor.CostOfLivingDataSource
 import model.*
 
+
 val lowQualityCities = listOf(
     // region low data quality
     CityEntity(

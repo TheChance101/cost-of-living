@@ -2,21 +2,17 @@ package interactor
 
 import model.CityEntity
 
-class GetFastest10CitiesToBuyAPTInteractor(
+class GetFastestCitiesToBuyApartmentInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
     fun execute(limit: Int): List<Pair<String, Double>> {
         if (limit < 1) throw IllegalArgumentException("Invalid Argument!")
         return dataSource.getAllCitiesData()
             .filter { excludeInvalidSalaries(it) && excludeInvalidApartmentPrice(it) && excludeLowQualityData(it) }
-            .map {
-                val numberOfYearsToBuyAPT = calculateNumberOfYearsToBuyAPT(it)
-                Pair(it.cityName, numberOfYearsToBuyAPT)
-            }
-            .take(limit)
+            .map { Pair(it.cityName, calculateNumberOfYearsToBuyAPT(it)) }
             .sortedBy { it.second }
-            .take(10)
-            }
+            .take(limit)
+    }
 
 
     fun excludeInvalidSalaries(cityEntity: CityEntity) =
