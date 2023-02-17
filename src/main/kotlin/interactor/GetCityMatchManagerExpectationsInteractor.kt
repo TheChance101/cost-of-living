@@ -1,56 +1,47 @@
 package interactor
 
 import model.CityEntity
+import kotlin.math.abs
 
 class GetCityMatchManagerExpectationsInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
 
-    fun execute(): CityEntity {
-        return dataSource.getAllCitiesData()
-            .filter { it.country in onlyRequiredCountries }.let(::getLowestPrice)!!
+    fun execute(): CityEntity? {
 
     }
-    //            .sortedBy { it.mealsPrices.mealFor2PeopleMidRangeRestaurant }
-//        val cityWithMidRangePrice = getCityWithMidRangePrice(sortedList)?.mealsPrices?.mealFor2PeopleMidRangeRestaurant
-//        return sortedList
-//            .getClosestMealPriceCity(cityWithMidRangePrice ?: 0.0f) ?: dataSource.getAllCitiesData()[0]
 
-
-    private fun getHighestPrice(cities: List<CityEntity>) =
-        cities.maxByOrNull {
-            listOfNotNull(
-                it.mealsPrices.mealInexpensiveRestaurant,
-                it.mealsPrices.mealFor2PeopleMidRangeRestaurant?.div(2) ?: 0f,
-                it.mealsPrices.mealAtMcDonaldSOrEquivalent
-            )
-                .maxOrNull() ?: 0f
+    private fun getMidRangePrices(city: CityEntity): Float = city.mealsPrices.run {
+        sequenceOf(
+            mealInexpensiveRestaurant,
+            mealFor2PeopleMidRangeRestaurant,
+            mealAtMcDonaldSOrEquivalent
+        ).filterNotNull().let {
+            getMidMealsPrice(city)
         }
+    }
 
-    private fun getLowestPrice(cities: List<CityEntity>) =
-        cities.minByOrNull {
-            listOfNotNull(
-                it.mealsPrices.mealInexpensiveRestaurant,
-                it.mealsPrices.mealFor2PeopleMidRangeRestaurant?.div(2) ?: 0f,
-                it.mealsPrices.mealAtMcDonaldSOrEquivalent
-            )
-                .minOrNull() ?: 0f
-        }
+    private fun getMidMealsPrice(city: CityEntity) =
+        abs(
+            (getHighestPrice(city) + getLowestPrice(city)) / 2 - (city.mealsPrices.mealFor2PeopleMidRangeRestaurant
+                ?: 0f)
+        )
 
 
-    private fun List<CityEntity>.getClosestMealPriceCity(midRangePrice: Float): CityEntity? =
-        minByOrNull { kotlin.math.abs(it.mealsPrices.mealFor2PeopleMidRangeRestaurant ?: (0.0f - midRangePrice)) }
+    private fun getHighestPrice(city: CityEntity) = sequenceOf(
+        city.mealsPrices.mealInexpensiveRestaurant,
+        city.mealsPrices.mealFor2PeopleMidRangeRestaurant,
+        city.mealsPrices.mealAtMcDonaldSOrEquivalent
+    ).filterNotNull().maxOrNull() ?: Float.MIN_VALUE
 
-//    private fun getCityWithMidRangePrice(cities: List<CityEntity>): CityEntity? =
-//        cities.find {
-//            it.mealsPrices.mealFor2PeopleMidRangeRestaurant == getMidRangePrice(
-//                getLowestPrice(cities),
-//                getHighestPrice(cities)
-//            )
-//        }
-
-    private fun getMidRangePrice(lowestPrice: Float?, highestPrice: Float?) =
-        (lowestPrice ?: 0.0f) + ((highestPrice ?: 0.0f) - (lowestPrice ?: 0.0f)) / 2
+    private fun getLowestPrice(city: CityEntity) =
+        sequenceOf(
+            city.mealsPrices.mealInexpensiveRestaurant,
+            city.mealsPrices.mealFor2PeopleMidRangeRestaurant?.div(2) ?: Float.MIN_VALUE,
+            city.mealsPrices.mealAtMcDonaldSOrEquivalent
+        )
+            .filterNotNull()
+            .minOrNull() ?: Float.MIN_VALUE
 
 
     companion object {
