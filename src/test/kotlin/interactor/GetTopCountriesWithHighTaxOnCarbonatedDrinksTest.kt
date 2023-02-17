@@ -6,7 +6,7 @@ import org.junit.jupiter.api.*
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 
-class GetTop10CountriesWithHighTaxOnCarbonatedDrinksTest {
+class GetTopCountriesWithHighTaxOnCarbonatedDrinksTest {
 
     private lateinit var interactor: GetTopCountriesWithHighTaxOnCarbonatedDrinks
     private lateinit var fakeDataSource: FakeDataSource
@@ -19,43 +19,49 @@ class GetTop10CountriesWithHighTaxOnCarbonatedDrinksTest {
 
     @Test
     fun should_ReturnListTopTenCountryWithHighDrinkPrice_When_DrinkPriceHigh() {
-        //given Country with drink price and limit
+        //given
         val cities = fakeDataSource.getAllCitiesData()
         val limit:Int=10;
-        //when getting a list of pair  contains the country name and drink price
-        val getTop10CountriesWithHighTaxOnCarbonatedDrinks = interactor.execute(limit,cities)
+        //when
+        val getTopCountriesWithHighTaxOnCarbonatedDrinks = interactor.execute(limit,cities)
        // then
-        assertArrayEquals(listOf(Pair("Cuba", 2.28f), Pair("Syria", 0.82f), Pair("Gambia", 0.73f),Pair ("Nigeria", 0.55f), Pair("Nepal", 0.38f),Pair ("Uganda", 0.27f), Pair("Sri Lanka", 0.27f), Pair("Bangladesh", 0.25f)).toTypedArray(), getTop10CountriesWithHighTaxOnCarbonatedDrinks.toTypedArray())
+        assertArrayEquals(listOf(Pair("Cuba", 2.28f), Pair("Syria", 0.82f),
+            Pair("Gambia", 0.73f),Pair ("Nigeria", 0.55f), Pair("Nepal", 0.38f),
+            Pair ("Uganda", 0.27f), Pair("Sri Lanka", 0.27f),
+            Pair("Bangladesh", 0.25f)).toTypedArray(),
+            getTopCountriesWithHighTaxOnCarbonatedDrinks.toTypedArray())
 
     }
     @Test
     fun should_ReturnEmptyList_When_listOfCityIsEmpty() {
         //given
         val limit:Int=10
-        val getTop10CountriesWithHighTaxOnCarbonatedDrinks = interactor.execute(limit,listOf())
+        // when
+        val getTopCountriesWithHighTaxOnCarbonatedDrinks = interactor.execute(limit,listOf())
         // Then
-        assertTrue(getTop10CountriesWithHighTaxOnCarbonatedDrinks.isEmpty())
+        assertTrue(getTopCountriesWithHighTaxOnCarbonatedDrinks.isEmpty())
     }
     @Test
-    fun should_ReturnNotEquals_When_TheListLessThanTen() {
-        //given Country with drink price and limit
+    fun should_ReturnNotEquals_When_TheListLessThanLimit() {
+        //given
         val cities = fakeDataSource.getAllCitiesData()
         val limit:Int=10
-        //when getting a Data contains null price value
-        val getTop10CountriesWithHighTaxOnCarbonatedDrinks= interactor.execute(limit,cities)
+        //when
+        val getTopCountriesWithHighTaxOnCarbonatedDrinks= interactor.execute(limit,cities)
         //then
-        kotlin.test.assertNotEquals(10 , getTop10CountriesWithHighTaxOnCarbonatedDrinks.size)
+        kotlin.test.assertNotEquals(limit , getTopCountriesWithHighTaxOnCarbonatedDrinks.size)
     }
     @Test
     fun should_ThrowErrorMessage_When_ThePriceIsNull() {
-        //given Country with drink price and limit
+        //given
         val cities = fakeDataSource.getAllCitiesData()
         val limit:Int=10
-        //when getting a Data contains null price value
-        val getTop10CountriesWithHighTaxOnCarbonatedDrinks= interactor.execute(limit,cities)
+        //when
+        val getTopCountriesWithHighTaxOnCarbonatedDrinks= interactor.execute(limit,cities)
         //then
-        if(getTop10CountriesWithHighTaxOnCarbonatedDrinks.any { it.second == null })
-            AssertionError("Drink Price can't be Null")
+        getTopCountriesWithHighTaxOnCarbonatedDrinks.forEach { (_, price) ->
+            assertNotNull(price, "Drink Price can't be Null")
+        }
     }
     @Test
     @Disabled
