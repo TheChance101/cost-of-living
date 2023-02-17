@@ -74,4 +74,27 @@ internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
         val expected = Exception::class.java
         assertThrows(expected, actual)
     }
+
+    @Test
+    fun `should throw exception when the country name is correct but excluded`(){
+        //given excluded country name
+        val country = "Ghana"
+        //when getting a list of pair contains the city name and average salary of country with wrong name
+        val actual = Executable { interactor.execute(country) }
+        //then
+        val expected = Exception::class.java
+        assertThrows(expected, actual)
+
+    }
+
+    @Test
+    fun `should throw exception when the country name is correct but not in the data`(){
+        //given country name that is not in the data
+        val country = "Egypt"
+        //when getting a list of pair contains the city name and average salary of country with wrong name
+        val actual = Executable { interactor.execute(country) }
+        //then
+        val expected = Exception::class.java
+        assertThrows(expected, actual)
+    }
 }
