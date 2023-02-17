@@ -169,8 +169,8 @@ fun getCitiesNamesSortedCheapestBananaPrices() {
 }
 
 fun getCityHasCheapestInternetConnection() {
-    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor()
-    println(getCityHasCheapestInternetConnectionInteractor.execute(data))
+    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
+    println(getCityHasCheapestInternetConnectionInteractor.execute())
 }
 
 fun getMostSuitableCity() {
