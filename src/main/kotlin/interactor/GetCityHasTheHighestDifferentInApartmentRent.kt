@@ -2,7 +2,7 @@ package interactor
 import model.CityEntity
 import utils.isNotNull
 
-class GetHighestDifferentInApartmentRent (
+class GetCityHasTheHighestDifferentInApartmentRent (
     private val dataSource: CostOfLivingDataSource,
 )
 {

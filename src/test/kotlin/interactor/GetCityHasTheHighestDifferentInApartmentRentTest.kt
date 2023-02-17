@@ -8,14 +8,14 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.function.Executable
 
 class GetCityHasTheHighestDifferentInApartmentRentTest {
-    private lateinit var highestDifferentInApartmentRent: GetHighestDifferentInApartmentRent
+    private lateinit var cityHasTheHighestDifferentInApartmentRent: GetCityHasTheHighestDifferentInApartmentRent
     private lateinit var dataSource: FakeDataSource
     private lateinit var cities : List<CityEntity>
 
     @BeforeEach
     fun setup(){
         dataSource = FakeDataSource()
-        highestDifferentInApartmentRent =  GetHighestDifferentInApartmentRent(dataSource)
+        cityHasTheHighestDifferentInApartmentRent =  GetCityHasTheHighestDifferentInApartmentRent(dataSource)
         cities=dataSource.getAllCitiesData()
 
     }
@@ -25,7 +25,7 @@ class GetCityHasTheHighestDifferentInApartmentRentTest {
         // given limit
         val limit=1
         // when the city has highest different in apartment rent
-        val result = highestDifferentInApartmentRent.execute(limit)
+        val result = cityHasTheHighestDifferentInApartmentRent.execute(limit)
         val expected=cities[16]
         // then
         Assertions.assertEquals(expected, result)
@@ -36,7 +36,7 @@ class GetCityHasTheHighestDifferentInApartmentRentTest {
         // given limit
         val limit=0
         // when limit equal to zero
-        val actual =Executable {highestDifferentInApartmentRent.execute(limit)}
+        val actual =Executable {cityHasTheHighestDifferentInApartmentRent.execute(limit)}
         val expected=InvalidLimitException::class.java
         // then
         assertThrows(expected, actual)
@@ -47,7 +47,7 @@ class GetCityHasTheHighestDifferentInApartmentRentTest {
         // given limit
         val limit=-1
         // when the limit is negative
-        val actual =Executable {highestDifferentInApartmentRent.execute(limit)}
+        val actual =Executable {cityHasTheHighestDifferentInApartmentRent.execute(limit)}
         val expected=InvalidLimitException::class.java
         // then
         assertThrows(expected, actual)
@@ -58,7 +58,7 @@ class GetCityHasTheHighestDifferentInApartmentRentTest {
         // given limit
         val limit=2
         // when the limit is greater than one
-        val actual =Executable {highestDifferentInApartmentRent.execute(limit)}
+        val actual =Executable {cityHasTheHighestDifferentInApartmentRent.execute(limit)}
         val expected=InvalidLimitException::class.java
         // then
         assertThrows(expected, actual)

@@ -1,7 +1,6 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import interactor.*
-import java.lang.System.exit
 import kotlin.system.exitProcess
 
 val csvParser = CsvParser()
@@ -96,6 +95,11 @@ fun getResultDependOnTheOption() {
                 println("this city is not Exist")
             }
         }
+        9 -> {
+            horizontalRule()
+            print("enter the limit : ")
+            getCityHasHighestDifferentInApartmentRent(readln().toInt(), dataSource)
+        }
 
         else -> {
             println("You choose worse case")
@@ -145,13 +149,14 @@ fun printUserOptionList() {
             6 - Top Fashion Cities Names 
             7 - Highest Salary Average Cities Name
             8 - Salary Average And Cities Names in Country
+            9 - city has the highest different in apartment rent
         """.trimIndent()
     )
 }
 
 fun getChooseOptionNumber(): Int {
     horizontalRule()
-    println("please enter the number of your option between [1-8]-> (Just receive Number)")
+    println("please enter the number of your option between [1-9]-> (Just receive Number)")
     return readln().toInt()
 }
 
@@ -202,6 +207,10 @@ fun getSalaryAverageAndCitiesNamesInCountry(countryName: String, dataSource: Cos
     println(salaryAverageAndCitiesNamesInCountry.execute(countryName))
 }
 
+fun getCityHasHighestDifferentInApartmentRent(limit: Int,dataSource: CostOfLivingDataSource) {
+    val getCityHasHighestDifferentInApartmentRent = GetCityHasTheHighestDifferentInApartmentRent(dataSource)
+    println(getCityHasHighestDifferentInApartmentRent.execute(limit))
+}
 
 fun horizontalRule() {
     println("________________________________________________________")
@@ -219,3 +228,4 @@ fun exitFromApplication() {
         exitProcess(0)
     }
 }
+
