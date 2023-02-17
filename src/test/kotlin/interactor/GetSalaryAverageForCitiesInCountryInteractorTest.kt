@@ -19,14 +19,14 @@ import org.junit.jupiter.api.function.Executable
 internal class GetSalaryAverageForCitiesInCountryInteractorTest {
 
     private lateinit var interactor: GetSalaryAverageForCitiesInCountryInteractor
-    private val dataSource = mockk<CostOfLivingDataSource>()
+    private val mockData = mockk<CostOfLivingDataSource>()
 
 
     @BeforeAll
     fun setup() {
         unmockkAll()
         clearAllMocks()
-        interactor = GetSalaryAverageForCitiesInCountryInteractor(dataSource)
+        interactor = GetSalaryAverageForCitiesInCountryInteractor(mockData)
     }
 
 
@@ -42,7 +42,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
             )
         )
         // When averageSalary not null and high dataQuality
-        every { dataSource.getAllCitiesData() } returns (mockCity)
+        every { mockData.getAllCitiesData() } returns (mockCity)
         // Then return a list of pair of city name and average salary
         val actualResult = interactor.execute(mockCity[0].country)
         assertEquals(listOf(Pair("New York", 1500.0f)), actualResult)
@@ -60,7 +60,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
             )
         )
 
-        every { dataSource.getAllCitiesData() } returns (mockCity)
+        every { mockData.getAllCitiesData() } returns (mockCity)
         // When averageSalary not null and high dataQuality
         val actualPairList = interactor.execute(mockCity[0].country)
 
@@ -80,7 +80,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
                 true
             )
         )
-        every { dataSource.getAllCitiesData() } returns (mockCity)
+        every { mockData.getAllCitiesData() } returns (mockCity)
 
         // When averageSalary not null and high dataQuality
         val actualPairList = interactor.execute(mockCity[0].country)
@@ -103,7 +103,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
         )
 
         val exception = IllegalStateException(" Country name is empty or wrong :( Try again! ")
-        every { dataSource.getAllCitiesData() } throws (exception)
+        every { mockData.getAllCitiesData() } throws (exception)
 
         // When country name is empty
         val result = Executable { interactor.execute(mockCity[0].country) }
@@ -123,7 +123,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
                 true
             )
         )
-        every { dataSource.getAllCitiesData() } returns (mockCity)
+        every { mockData.getAllCitiesData() } returns (mockCity)
 
         // When averageSalary not null and high dataQuality
         val actualResult = interactor.excludeNullSalariesAndLowQualityData(mockCity[0])
@@ -143,7 +143,7 @@ internal class GetSalaryAverageForCitiesInCountryInteractorTest {
                 true
             )
         )
-        every { dataSource.getAllCitiesData() } returns (mockCity)
+        every { mockData.getAllCitiesData() } returns (mockCity)
 
         // When averageSalary not null and high dataQuality
         val actualResult = interactor.excludeNullSalariesAndLowQualityData(mockCity[0])
