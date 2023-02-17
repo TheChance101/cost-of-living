@@ -5,7 +5,7 @@ import enums.TheTypeOfApartments
 import interactor.*
 import interactor.CostOfLivingDataSource
 import interactor.GetCityHasLowestYearsToBuyApartmentInteractor
-import interactor.GetCityHasCheapestMealPricesInteractor
+import interactor.GetCityHasAverageMealPricesInteractor
 import interactor.GetSalaryAverageForCitiesInCountryInteractor
 
 fun main() {
@@ -60,7 +60,7 @@ fun main() {
     printSeparationLine()
     //endregion
     //region 8-CityHasCheapestMealPrices
-    val getCityHasCheapestMealPrices = GetCityHasCheapestMealPricesInteractor(dataSource)
+    val getCityHasCheapestMealPrices = GetCityHasAverageMealPricesInteractor(dataSource)
     println(getCityHasCheapestMealPrices.execute())
     printSeparationLine()
     //endregion
