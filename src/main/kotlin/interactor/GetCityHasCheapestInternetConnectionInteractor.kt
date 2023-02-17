@@ -11,7 +11,8 @@ class GetCityHasCheapestInternetConnectionInteractor(
     }
 
     fun calculateThePercentageBetweenSalaryAndInternetPrice(city: CityEntity) =
-        0f
+        city.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl!! /
+                city.averageMonthlyNetSalaryAfterTax!!
 
     fun excludeNullSalariesAndNullInternetPricesAndLowQualityData(city: CityEntity) =
         false
