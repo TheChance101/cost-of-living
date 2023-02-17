@@ -9,25 +9,27 @@ class GetLowestAveragePricesForFruitsAndVegetablesInteractor (
         return  data
             .getAllCitiesData()
             .filter(::excludeNullSalariesAndLowQualityDataAndNullFruitsAndVegetablesPrices)
-            .sortedBy {getRatio(it)}
-            .map { it.cityName }
+            .sortedBy(::getPricesToSalaryAverage)
             .take(limit)
+            .map { it.cityName }
+
     }
 
-    private fun getRatio(city: CityEntity):Float{
+    private fun getPricesToSalaryAverage(city: CityEntity) =
+        city.fruitAndVegetablesPrices.let {
+                   (it.apples1kg!! +
+                    it.tomato1kg!! +
+                    it.oranges1kg!! +
+                    it.banana1kg!! +
+                    it.potato1kg!! +
+                    it.onion1kg!! +
+                    it.lettuceOneHead!!) /
+                    city.averageMonthlyNetSalaryAfterTax!!
+        }
 
-        return (city.fruitAndVegetablesPrices.apples1kg!! +
-                city.fruitAndVegetablesPrices.banana1kg!! +
-                city.fruitAndVegetablesPrices.oranges1kg!! +
-                city.fruitAndVegetablesPrices.tomato1kg!! +
-                city.fruitAndVegetablesPrices.potato1kg!! +
-                city.fruitAndVegetablesPrices.onion1kg!! +
-                city.fruitAndVegetablesPrices.lettuceOneHead!!
-                )/city.averageMonthlyNetSalaryAfterTax!!
-    }
 
-    private fun excludeNullSalariesAndLowQualityDataAndNullFruitsAndVegetablesPrices(city: CityEntity): Boolean {
-        return city.averageMonthlyNetSalaryAfterTax != null &&
+    private fun excludeNullSalariesAndLowQualityDataAndNullFruitsAndVegetablesPrices(city: CityEntity) =
+                city.averageMonthlyNetSalaryAfterTax != null &&
                 city.dataQuality &&
                 city.fruitAndVegetablesPrices.apples1kg != null &&
                 city.fruitAndVegetablesPrices.banana1kg != null &&
@@ -36,5 +38,5 @@ class GetLowestAveragePricesForFruitsAndVegetablesInteractor (
                 city.fruitAndVegetablesPrices.potato1kg != null &&
                 city.fruitAndVegetablesPrices.onion1kg != null &&
                 city.fruitAndVegetablesPrices.lettuceOneHead != null
-        }
+
 }
