@@ -31,7 +31,7 @@ fun main() {
     println(getTopFiveCitesNameInClothesFromFamousBrandsInteractor.execute())
     printSeparationLine()
 
-    val getFastest10CitiesToBuyAPTInteractor = GetFastest10CitiesToBuyAPTInteractor(dataSource)
+    val getFastest10CitiesToBuyAPTInteractor = GetFastestCitiesToBuyApartmentInteractor(dataSource)
     println(getFastest10CitiesToBuyAPTInteractor.execute(limit))
     printSeparationLine()
 
