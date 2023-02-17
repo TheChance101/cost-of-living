@@ -9,6 +9,7 @@ class GetCheapestBananaCitiesNamesInteractor(private val dataSource: CostOfLivin
             .getAllCitiesData()
             .filter { it.fruitAndVegetablesPrices.banana1kg != null && it in cities }
             .sortedBy { it.fruitAndVegetablesPrices.banana1kg }
+            .distinct()
             .map { it.cityName }
     }
 
