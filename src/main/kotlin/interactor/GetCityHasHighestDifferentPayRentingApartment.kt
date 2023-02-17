@@ -1,5 +1,7 @@
 package interactor
 
+import dataSource.CsvDataSource
+import dataSource.utils.CsvParser
 import model.CityEntity
 import model.RealEstatesPrices
 
@@ -7,12 +9,10 @@ import model.RealEstatesPrices
 class GetCityWithHighestRentalPriceDifferenceInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
-
-
-    fun execute(cityData: List<CityEntity>): String {
+    fun execute(): String {
         var cityWithHighestDifference = ""
         var highestDifference = 0.0
-                cityData
+                dataSource.getAllCitiesData()
             .filter { excludeNullValues(it) }
             .filter { excludeNullDataAndLowQuality(it) }
             .forEach { city ->

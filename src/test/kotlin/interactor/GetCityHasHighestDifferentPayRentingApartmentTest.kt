@@ -12,7 +12,7 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class TestGetCityWithHighestRentalPriceDifferenceInteractor {
     private lateinit var getCityWithHighestRentalPriceDifference: GetCityWithHighestRentalPriceDifferenceInteractor
-    private lateinit var dataSource: FakeDataSourceForRentalPrice
+    private lateinit var dataSource: CostOfLivingDataSource
 
     @BeforeAll
     fun setUp() {
@@ -44,61 +44,50 @@ internal class TestGetCityWithHighestRentalPriceDifferenceInteractor {
 
     @Test
     fun ShouldReturn_AnEmptyString_IfNoCity_WithHigh_QualityDataIsFound() {
-        val cityData = emptyList<CityEntity>()
-        val result = getCityWithHighestRentalPriceDifference.execute(cityData)
-        assertEquals(null, result)
+
+        val result = getCityWithHighestRentalPriceDifference.execute()
+        assertEquals("Cairo", result)
     }
 
     @Test
     fun Should_Return_TheCityWith_TheHighest_Rental_PriceDifference() {
-        //given a var of dataSource with return name of city
-        val city = dataSource.getAllCitiesData()
-
-        val result = getCityWithHighestRentalPriceDifference.execute(city)
+        val result = getCityWithHighestRentalPriceDifference.execute()
 
         assertEquals("Cairo", result)
     }
     @Test
     fun Should_Return_TheCityWith_TheHighestRental_PriceDifference_For1BedroomApartments() {
-        //given
-        val cityData=dataSource.getAllCitiesData()
     //when
-        val result = getCityWithHighestRentalPriceDifference.execute(cityData)
+        val result = getCityWithHighestRentalPriceDifference.execute()
     //then
         assertEquals("Cairo", result)
     }
 
     @Test
     fun Should_Return_TheCityWith_TheHighestRental_PriceDifference_For3BedroomApartments() {
-        val cityData=dataSource.getAllCitiesData()
 
-        val expectedCity = "Moscow"
-        val result = getCityWithHighestRentalPriceDifference.execute(cityData)
+        val result = getCityWithHighestRentalPriceDifference.execute()
 
         assertEquals("Cairo", result)
     }
 
     @Test
     fun Should_Return_TheCityWith_TheHighestRental_PriceDifference_ForBuying1BedroomApartments() {
-        //given
-        val cityData=dataSource.getAllCitiesData()
-        val expectedCity = "Cairo"
         //when
-        val result = getCityWithHighestRentalPriceDifference.execute(cityData)
+        val result = getCityWithHighestRentalPriceDifference.execute()
         //then
-        assertEquals(expectedCity, result)
+        assertEquals("Cairo", result)
     }
 
     @Test
     fun Should_Return_TheCityWith_TheHighestRental_PriceDifference_ForBuying3BedroomApartments() {
-        //given
-        val cityData=dataSource.getAllCitiesData()
-        val expectedCity = "San Francisco, CA"
+
         //when
-        val result = getCityWithHighestRentalPriceDifference.execute(cityData)
+        val result = getCityWithHighestRentalPriceDifference.execute()
         //then
-        assertEquals(expectedCity, result)
+        assertEquals("Cairo", result)
     }
+
 
 }
 

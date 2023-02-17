@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98a9a448-ff8f-4aa7-a8a9-6abeb012692b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCityHasHighestDifferentPayRentingApartment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCityHasHighestDifferentPayRentingApartment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetCityHasHighestDifferentPayRentingApartmentTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetCityHasHighestDifferentPayRentingApartmentTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,6 +96,61 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="TestGetCityWithHighestRentalPriceDifferenceInteractor.Should return the city with the highest rental price difference regardless of capitalization" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;interactor.TestGetCityWithHighestRentalPriceDifferenceInteractor.Should return the city with the highest rental price difference regardless of capitalization&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="TestGetCityWithHighestRentalPriceDifferenceInteractor.ShouldReturn_AnEmptyString_IfNoCity_WithHigh_QualityDataIsFound" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;interactor.TestGetCityWithHighestRentalPriceDifferenceInteractor.ShouldReturn_AnEmptyString_IfNoCity_WithHigh_QualityDataIsFound&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="GetCityHasHighestDifferentPayRentingApartmentKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <module name="Cost-of-living-app.main" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="interactor.GetCityHasHighestDifferentPayRentingApartmentKt" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <module name="Cost-of-living-app.main" />
       <option name="VM_PARAMETERS" />
@@ -111,6 +167,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.TestGetCityWithHighestRentalPriceDifferenceInteractor" />
+        <item itemvalue="Gradle.TestGetCityWithHighestRentalPriceDifferenceInteractor.Should return the city with the highest rental price difference regardless of capitalization" />
+        <item itemvalue="Gradle.TestGetCityWithHighestRentalPriceDifferenceInteractor.ShouldReturn_AnEmptyString_IfNoCity_WithHigh_QualityDataIsFound" />
+        <item itemvalue="Application.GetCityHasHighestDifferentPayRentingApartmentKt" />
         <item itemvalue="Application.MainKt" />
       </list>
     </recent_temporary>
@@ -128,7 +187,7 @@
       <workItem from="1676657272588" duration="98000" />
       <workItem from="1676657428603" duration="85000" />
       <workItem from="1676657587645" duration="222000" />
-      <workItem from="1676657910244" duration="4622000" />
+      <workItem from="1676657910244" duration="5133000" />
     </task>
     <servers />
   </component>
