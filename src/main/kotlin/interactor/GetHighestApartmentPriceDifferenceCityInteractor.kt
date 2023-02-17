@@ -11,7 +11,7 @@ class GetHighestApartmentPriceDifferenceCityInteractor(
     fun execute(): String {
         return dataSource.getAllCitiesData()
             .filter (::excludeNullPricesAndLowQualityData)
-            .maxByOrNull {getApartmentPriceDifference(it)}?.cityName.toString()
+            .maxByOrNull {calculateApartmentPrice(it)}?.cityName.toString()
     }
 
     private fun excludeNullPricesAndLowQualityData(city: CityEntity): Boolean {
@@ -24,10 +24,12 @@ class GetHighestApartmentPriceDifferenceCityInteractor(
         }
     }
 
-    private fun getApartmentPriceDifference(city: CityEntity): Float {
-        return with(city.realEstatesPrices){
-           abs ( ((apartmentOneBedroomOutsideOfCentre?.let { apartmentOneBedroomInCityCentre?.minus(it) } )!!.toFloat() +
-                    (apartment3BedroomsInCityCentre?.let { apartment3BedroomsOutsideOfCentre?.minus(it) } )!!.toFloat()/2))
+    private fun calculateApartmentPrice(city: CityEntity): Float {
+        return city.let {
+            (abs(it.realEstatesPrices.apartmentOneBedroomInCityCentre!! - it.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!!)
+                    + abs(it.realEstatesPrices.apartment3BedroomsInCityCentre!! - it.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!)).div(
+                2
+            )
         }
     }
 }
