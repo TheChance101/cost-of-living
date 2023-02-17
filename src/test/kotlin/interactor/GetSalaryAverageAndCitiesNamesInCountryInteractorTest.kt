@@ -26,8 +26,8 @@ internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
         val country = "syria"
         //when getting a list of pairs contain the city name and average salary of country
         val actual= interactor.execute(country)
-        //then
         val expected = listOf(Pair("Damascus",50.24f),Pair("Aleppo", 72.8f))
+        //then
         assertEquals(expected,actual)
     }
 
@@ -37,8 +37,8 @@ internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
         val country = "SYRIA"
         //when getting a list of pairs contain the city name and average salary of country
         val actual = interactor.execute(country)
-        //then
         val expected = listOf(Pair("Damascus", 50.24f), Pair("Aleppo", 72.8f))
+        //then
         assertEquals(expected, actual)
     }
 
@@ -48,8 +48,8 @@ internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
         val country = "cUbA"
         //when getting a list of pairs contain the city name and average salary of country
         val actual = interactor.execute(country)
-        //then
         val expected = listOf(Pair("Havana",35.75f))
+        //then
         assertEquals(expected,actual)
     }
 
@@ -59,8 +59,8 @@ internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
         val country = "lol"
         //when getting a list of pair contains the city name and average salary of country with wrong name
         val actual = Executable{ interactor.execute(country) }
-        //then
         val expected = Exception::class.java
+        //then
         assertThrows(expected,actual)
     }
 
@@ -70,8 +70,8 @@ internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
         val country = ""
         //when getting a list of pair contains the city name and average salary of country with wrong name
         val actual = Executable { interactor.execute(country) }
-        //then
         val expected = Exception::class.java
+        //then
         assertThrows(expected, actual)
     }
 
@@ -81,8 +81,8 @@ internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
         val country = "Ghana"
         //when getting a list of pair contains the city name and average salary of country with wrong name
         val actual = Executable { interactor.execute(country) }
-        //then
         val expected = Exception::class.java
+        //then
         assertThrows(expected, actual)
 
     }
@@ -93,8 +93,8 @@ internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
         val country = "Egypt"
         //when getting a list of pair contains the city name and average salary of country with wrong name
         val actual = Executable { interactor.execute(country) }
-        //then
         val expected = Exception::class.java
+        //then
         assertThrows(expected, actual)
     }
 }
