@@ -7,14 +7,16 @@ import interactor.CostOfLivingDataSource
 import interactor.GetCityHasLowestYearsToBuyApartmentInteractor
 import interactor.GetCityHasCheapestMealPricesInteractor
 import interactor.GetSalaryAverageForCitiesInCountryInteractor
+import model.CityEntity
 
 fun main() {
     val csvParser = CsvParser()
     val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
 
+
     // region HighestSalaryAverageCities
     val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
-    println(getHighestSalaryAverageCities.execute(limit = 10))
+    println(getHighestSalaryAverageCities.execute(limit = 5))
     printSeparationLine()
     //endregion
     //region 1-CityHasCheapestInternetConnection
@@ -75,7 +77,6 @@ fun main() {
     println(getSuitableCityMoreSavingPerMonth.execute())
     printSeparationLine()
     //endregion
-
 }
 
 private fun printSeparationLine() {
