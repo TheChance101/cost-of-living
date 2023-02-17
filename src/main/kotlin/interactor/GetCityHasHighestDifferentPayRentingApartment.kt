@@ -9,7 +9,7 @@ class GetCityWithHighestRentalPriceDifferenceInteractor(
 ) {
 
 
-    fun execute(): String {
+    fun execute(cityData: List<CityEntity>): String {
         var cityWithHighestDifference = ""
         var highestDifference = 0.0
                 dataSource.getAllCitiesData()

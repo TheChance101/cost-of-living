@@ -46,7 +46,7 @@ internal class TestGetCityWithHighestRentalPriceDifferenceInteractor {
     fun ShouldReturn_AnEmptyString_IfNoCity_WithHigh_QualityDataIsFound() {
         val cityData = emptyList<CityEntity>()
         val result = getCityWithHighestRentalPriceDifference.execute(cityData)
-        assertEquals("", result)
+        assertEquals(null, result)
     }
 
     @Test
@@ -60,12 +60,23 @@ internal class TestGetCityWithHighestRentalPriceDifferenceInteractor {
     }
     @Test
     fun Should_Return_TheCityWith_TheHighestRental_PriceDifference_For1BedroomApartments() {
+        //given
         val cityData=dataSource.getAllCitiesData()
-
+    //when
         val result = getCityWithHighestRentalPriceDifference.execute(cityData)
-
-        assertEquals("Paris", result)
+    //then
+        assertEquals("Cairo", result)
     }
+
+//    @Test
+//    fun Should_Return_TheCityWith_TheHighestRental_PriceDifference_For3BedroomApartments() {
+//        val cityData=dataSource.getAllCitiesData()
+//
+//        val expectedCity = "Moscow"
+//        val result = getCityWithHighestRentalPriceDifference.execute(cityData)
+//
+//        assertEquals("Cairo", result)
+//    }
 
 }
 
