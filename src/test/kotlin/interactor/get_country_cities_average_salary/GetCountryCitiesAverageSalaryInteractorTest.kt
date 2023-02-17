@@ -1,6 +1,6 @@
-package interactor
+package interactor.get_country_cities_average_salary
 
-import FakeData
+import interactor.GetCountryCitiesAverageSalaryInteractor
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
@@ -12,12 +12,12 @@ import org.junit.jupiter.api.function.Executable
 class GetCountryCitiesAverageSalaryInteractorTest {
 
     private lateinit var getCountryCitiesAverageSalary: GetCountryCitiesAverageSalaryInteractor
-    private lateinit var fakeData: FakeData
+    private lateinit var fakeData: GetCountryCitiesAverageSalaryFakeData
 
 
     @BeforeAll
     fun setUp() {
-        fakeData = FakeData()
+        fakeData = GetCountryCitiesAverageSalaryFakeData()
         getCountryCitiesAverageSalary = GetCountryCitiesAverageSalaryInteractor(fakeData)
     }
 
@@ -25,19 +25,20 @@ class GetCountryCitiesAverageSalaryInteractorTest {
     fun should_ReturnCitiesSalaries_When_EntringCountryNameFormally() {
         //given
         val country = "Sri Lanka"
-        val result = listOf(Pair("Colombo",156.15f),Pair("Colombo",156.15f))
+        val result = listOf(Pair("Asheville", 3400f), Pair("Augusta", 900f))
         // when
         val cityAverage = getCountryCitiesAverageSalary.execute(country = country)
         //then
         assertEquals(result,cityAverage)
     }
+    //[(Asheville, 3400.0), (Augusta, 900.0)]
     @Test
     fun should_ReturnCitiesSalaries_When_EnteringCountryNameWithSpaces() {
         //given
         val country = "sri     lanka"
         // when
         val result = getCountryCitiesAverageSalary.execute(country = country)
-        val expectedResult = listOf(Pair("Colombo", 156.15f), Pair("Colombo", 156.15f))
+        val expectedResult = listOf(Pair("Asheville", 3400f), Pair("Augusta", 900f))
         //then
         assertEquals(expectedResult, result)
     }
@@ -46,7 +47,7 @@ class GetCountryCitiesAverageSalaryInteractorTest {
     fun should_ReturnCountryCities_When_AddingLeadingAndTrailingSpacesToTwoWordCountry(){
         //given
         val country = "      sri lanka   "
-        val result = listOf(Pair("Colombo",156.15f),Pair("Colombo",156.15f))
+        val result = listOf(Pair("Asheville", 3400f), Pair("Augusta", 900f))
         // when
         val cityAverage = getCountryCitiesAverageSalary.execute(country = country)
         //then
@@ -57,7 +58,7 @@ class GetCountryCitiesAverageSalaryInteractorTest {
     fun should_ReturnCountryCities_When_AddingLeadingAndTrailingAndInBetweenSpaces(){
         //given
         val country = "      sri        lanka   "
-        val result = listOf(Pair("Colombo",156.15f),Pair("Colombo",156.15f))
+        val result = listOf(Pair("Asheville", 3400f), Pair("Augusta", 900f))
         // when
         val cityAverage = getCountryCitiesAverageSalary.execute(country = country)
         //then
