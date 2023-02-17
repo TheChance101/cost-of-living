@@ -23,7 +23,7 @@ class GetTopFashionCitiesInteractorTest {
         //when
         val result = getTopFashionCities.execute(limit)
         //Then
-        assertEquals(listOf("Accra", "Multan", "Karachi", "Rawalpindi", "Hyderabad City"), result)
+        assertEquals(listOf("Asheville", "Baltimore", "Syracuse", "El Paso", "Tulsa"), result)
     }
     @Test
     fun should_ReturnCorrectListSize_When_HaveAvailableLimitValue() {
