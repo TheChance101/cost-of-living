@@ -8,7 +8,10 @@ class GetCityMatchManagerExpectationsInteractor(
 ) {
 
     fun execute(): CityEntity? {
-
+        return dataSource.getAllCitiesData()
+            .filter { it.country in onlyRequiredCountries }
+            .takeIf { it.isNotEmpty() }
+            ?.minByOrNull(::getMidRangePrices)
     }
 
     private fun getMidRangePrices(city: CityEntity): Float = city.mealsPrices.run {
