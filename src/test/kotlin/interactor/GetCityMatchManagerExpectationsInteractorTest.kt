@@ -1,7 +1,6 @@
 package interactor
 
 import dataSource.FakeDataSource
-import dataSource.utils.NorthAmericaCountries
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
@@ -22,7 +21,7 @@ class GetCityMatchManagerExpectationsInteractorTest {
     @Test
     fun `should return true when country is not in one of north america countries`() {
         // given a list of countries that are in north america
-        val givenList = NorthAmericaCountries.list
+        val givenList = GetCityMatchManagerExpectationsInteractor.northAmericaCountries
         // when we check if the countries are in north america
         val result = interactor.execute()
         // then we should get true
@@ -32,7 +31,7 @@ class GetCityMatchManagerExpectationsInteractorTest {
     @Test
     fun `should return false when country is in one of north america countries`() {
         // given a list of countries that are in north america
-        val givenList = NorthAmericaCountries.list
+        val givenList = GetCityMatchManagerExpectationsInteractor.northAmericaCountries
         // when we check if the countries are in north america
         val result = interactor.execute()
         // then we should get true

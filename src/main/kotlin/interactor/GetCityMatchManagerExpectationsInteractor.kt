@@ -1,6 +1,5 @@
 package interactor
 
-import dataSource.utils.NorthAmericaCountries
 import model.CityEntity
 
 class GetCityMatchManagerExpectationsInteractor(
@@ -8,7 +7,7 @@ class GetCityMatchManagerExpectationsInteractor(
 ) {
 
     private fun getOnlyNorthAmericaCountries(city: CityEntity): Boolean =
-        city.country in NorthAmericaCountries.list
+        city.country in northAmericaCountries
 
     private fun getHighestPrice(sortedCities: List<CityEntity>) =
         sortedCities.lastOrNull()?.mealsPrices?.mealFor2PeopleMidRangeRestaurant
@@ -41,6 +40,13 @@ class GetCityMatchManagerExpectationsInteractor(
             .getClosestMealPriceCity(cityWithMidRangePrice ?: 0.0f) ?: dataSource.getAllCitiesData()[0]
     }
 
+    companion object {
+        val northAmericaCountries: List<String> = listOf(
+            "United States",
+            "Canada",
+            "Mexico"
+        )
+    }
 
 }
 
