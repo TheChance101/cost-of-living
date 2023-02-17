@@ -8,13 +8,13 @@ import org.junit.jupiter.api.*
 
 class GetTop10CountriesWithHighTaxOnCarbonatedDrinksTest {
 
-    private lateinit var interactor: GetTop10CountriesWithHighTaxOnCarbonatedDrinks
+    private lateinit var interactor: GetTopCountriesWithHighTaxOnCarbonatedDrinks
     private lateinit var fakeDataSource: FakeDataSource
 
     @BeforeEach
     fun setUp() {
         fakeDataSource = FakeDataSource()
-        interactor = GetTop10CountriesWithHighTaxOnCarbonatedDrinks(fakeDataSource)
+        interactor = GetTopCountriesWithHighTaxOnCarbonatedDrinks(fakeDataSource)
     }
 
     @Test
