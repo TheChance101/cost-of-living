@@ -53,4 +53,13 @@ class GetTopFashionCitiesInteractorTest {
         //Then exception should be thrown
         assertThrows<IllegalArgumentException> { getTopFashionCities.execute(limit) }
     }
+    @Test
+    fun should_ReturnAvailableList_When_HaveLimitGreaterThanAvailableCities() {
+        //given limit value greater than Available
+        val limit = 30
+        //when
+        val result = getTopFashionCities.execute(limit)
+        //then
+        assertEquals(18, result.size)
+    }
 }
