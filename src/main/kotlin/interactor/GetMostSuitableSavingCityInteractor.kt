@@ -1,67 +1,51 @@
 package interactor
 
+import model.CityEntity
 import model.FoodPrices
+
+object Const{
+    const val LOAF_OF_FRESH_WHITE_AMOUNT=  2 * 15f // 2 to convert it to kilos because the data from csv is 500g
+    const val LOCAL_CHEESE_AMOUNT = 1f
+    const val READ_MEAT_AMOUNT = 4f
+    const val CHICKEN_FILLETS_AMOUNT = 10f
+    const val RICE_WHITE_AMOUNT = 2f
+}
 
 class GetMostSuitableSavingCityInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
 
-    fun execute(limit: Int): List<String> {
-        val suitableCities = dataSource
+    fun execute(): CityEntity {
+        return dataSource
             .getAllCitiesData()
-            .asSequence()
-            .filter { excludeNullSalariesAndNullRealEstatePrice(it.averageMonthlyNetSalaryAfterTax,it.realEstatesPrices.apartment3BedroomsInCityCentre) }
-            .sortedByDescending { calculateCitySavings(it.realEstatesPrices.apartment3BedroomsInCityCentre!!, it.foodPrices, calculateFamilyBudget(it.averageMonthlyNetSalaryAfterTax!!)) }
-            .distinct()
-            .take(limit)
-            .map { it.cityName }
-            .toList()
-
-        if (suitableCities.isEmpty()) {
-            throw Exception("No suitable cities found")
-        }
-
-        return suitableCities
+            .filter ( ::excludeNullAverageSalaryRealStatePricesFoodPrices )
+            .maxByOrNull ( ::calculateCitySavings )!!
     }
 
-    fun execute(): String {
-        val suitableCities = dataSource
-            .getAllCitiesData()
-            .filter { excludeNullSalariesAndNullRealEstatePrice(it.averageMonthlyNetSalaryAfterTax,it.realEstatesPrices.apartment3BedroomsInCityCentre) }
-            .sortedByDescending { calculateCitySavings(it.realEstatesPrices.apartment3BedroomsInCityCentre!!, it.foodPrices, calculateFamilyBudget(it.averageMonthlyNetSalaryAfterTax!!)) }
-            .distinct()
-
-        if (suitableCities.isEmpty()) {
-            throw Exception("No suitable cities found")
-        }
-
-        return suitableCities.first().cityName
-    }
-    fun excludeNullSalariesAndNullRealEstatePrice(averageMonthlySalary: Float?, realEstatesPrices: Float?): Boolean {
-        return averageMonthlySalary != null && realEstatesPrices!= null
+    fun excludeNullAverageSalaryRealStatePricesFoodPrices(city: CityEntity): Boolean {
+        return city.averageMonthlyNetSalaryAfterTax != null &&
+                city.realEstatesPrices.apartment3BedroomsInCityCentre != null &&
+                city.foodPrices.chickenFillets1kg != null &&
+                city.foodPrices.localCheese1kg != null &&
+                city.foodPrices.loafOfFreshWhiteBread500g != null &&
+                city.foodPrices.riceWhite1kg != null &&
+                city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null
     }
 
-    fun calculateCitySavings(realEstatesPrices: Float, foodPrices: FoodPrices, familyBudget: Float): Float {
-        val foodCost = calculateFoodCost(foodPrices)
+    private fun calculateCitySavings(city: CityEntity): Float {
+        val foodCost = calculateFoodCost(city.foodPrices)
+        val realEstatesPrices = city.realEstatesPrices.apartment3BedroomsInCityCentre!!
+        val familyBudget = city.averageMonthlyNetSalaryAfterTax!! * 2f
         val otherCosts = 250f
         return familyBudget - (realEstatesPrices + foodCost + otherCosts)
     }
 
-    fun calculateFoodCost(foodPrice: FoodPrices): Float {
-        val breadCost = 2 * 15f * (foodPrice.loafOfFreshWhiteBread500g ?: 0f)
-        val cheeseCost = 1f * (foodPrice.localCheese1kg ?: 0f)
-        val beefCost = 4f * (foodPrice.beefRound1kgOrEquivalentBackLegRedMeat ?: 0f)
-        val chickenCost = 10f * (foodPrice.chickenFillets1kg ?: 0f)
-        val riceCost = 2f * (foodPrice.riceWhite1kg ?: 0f)
+    private fun calculateFoodCost(foodPrice: FoodPrices): Float {
+        val breadCost = Const.LOAF_OF_FRESH_WHITE_AMOUNT * (foodPrice.loafOfFreshWhiteBread500g!!)
+        val cheeseCost = Const.LOCAL_CHEESE_AMOUNT * (foodPrice.localCheese1kg!!)
+        val beefCost = Const.READ_MEAT_AMOUNT * (foodPrice.beefRound1kgOrEquivalentBackLegRedMeat!!)
+        val chickenCost = Const.CHICKEN_FILLETS_AMOUNT * (foodPrice.chickenFillets1kg!!)
+        val riceCost = Const.RICE_WHITE_AMOUNT * (foodPrice.riceWhite1kg!!)
         return breadCost + cheeseCost + beefCost + chickenCost + riceCost
     }
-
-    fun calculateFamilyBudget(averageMonthlySalary: Float): Float {
-        if (averageMonthlySalary < 0) {
-            return 0f
-        }
-        return averageMonthlySalary * 2f
-    }
-
-
 }
