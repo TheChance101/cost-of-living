@@ -18,23 +18,25 @@ class GetSuitableClothesPriceCitiesNameInteractor(
     private fun getAveragePriceForClothes(cityEntity: CityEntity):Float
     {
         var totalPrice:Float =0.0f
-        cityEntity.clothesPrices.oneSummerDressInAChainStoreZaraHAndM?.let { totalPrice+=cityEntity.clothesPrices.oneSummerDressInAChainStoreZaraHAndM }
-        cityEntity.clothesPrices.onePairOfNikeRunningShoesMidRange?.let { totalPrice+=cityEntity.clothesPrices.onePairOfNikeRunningShoesMidRange}
-        cityEntity.clothesPrices.onePairOfMenLeatherBusinessShoes?.let { totalPrice+=cityEntity.clothesPrices.onePairOfMenLeatherBusinessShoes }
-        cityEntity.clothesPrices.onePairOfJeansLevis50oneOrSimilar?.let { totalPrice+=cityEntity.clothesPrices.onePairOfJeansLevis50oneOrSimilar }
+       cityEntity.clothesPrices.run{
+           onePairOfMenLeatherBusinessShoes?.let { totalPrice+=onePairOfMenLeatherBusinessShoes }
+           oneSummerDressInAChainStoreZaraHAndM?.let { totalPrice+=oneSummerDressInAChainStoreZaraHAndM }
+           onePairOfNikeRunningShoesMidRange?.let { totalPrice+=onePairOfNikeRunningShoesMidRange }
+           onePairOfJeansLevis50oneOrSimilar?.let { totalPrice+=onePairOfJeansLevis50oneOrSimilar }
+        }
         return totalPrice / getNumberOfBrand(cityEntity)
     }
-    private fun getNumberOfBrand(cityEntity: CityEntity):Int{
-        var totalBrand =0
-        cityEntity.clothesPrices.oneSummerDressInAChainStoreZaraHAndM?.let { totalBrand++ }
-        cityEntity.clothesPrices.onePairOfNikeRunningShoesMidRange?.let { totalBrand++ }
-        cityEntity.clothesPrices.onePairOfMenLeatherBusinessShoes?.let {totalBrand++}
-        cityEntity.clothesPrices.onePairOfJeansLevis50oneOrSimilar?.let {totalBrand++ }
-        return totalBrand
-
+    private fun getNumberOfBrand(cityEntity: CityEntity):Int {
+        var totalBrand = 0
+        cityEntity.clothesPrices.run {
+            onePairOfMenLeatherBusinessShoes?.let { totalBrand++ }
+            oneSummerDressInAChainStoreZaraHAndM?.let { totalBrand++ }
+            onePairOfNikeRunningShoesMidRange?.let { totalBrand++ }
+            onePairOfJeansLevis50oneOrSimilar?.let { totalBrand++ }
+            return totalBrand
+        }
     }
-    fun excludeCityWitNoBrand(city: CityEntity): Boolean {
+    private fun excludeCityWitNoBrand(city: CityEntity): Boolean {
         return getNumberOfBrand(city) > 0
     }
-
 }
