@@ -31,7 +31,6 @@ class GetCountryCitiesAverageSalaryInteractorTest {
         //then
         assertEquals(result,cityAverage)
     }
-    //[(Asheville, 3400.0), (Augusta, 900.0)]
     @Test
     fun should_ReturnCitiesSalaries_When_EnteringCountryNameWithSpaces() {
         //given
@@ -64,6 +63,7 @@ class GetCountryCitiesAverageSalaryInteractorTest {
         //then
         assertEquals(result,cityAverage)
     }
+
     @Test
     fun should_ReturnCountryCities_When_AddingLeadingAndTrailingSpacesToOneWordCountry(){
         //given
@@ -74,7 +74,16 @@ class GetCountryCitiesAverageSalaryInteractorTest {
         //then
         assertEquals(result,cityAverage)
     }
-
+    @Test
+    fun should_OnlyReturnCitiesWithHightQualityData_when_AddingMixedQualityCountry(){
+        // given
+        val country = "Cuba"
+        val unexpected = listOf(Pair("Havana",35.75f),Pair("Santa Clara",25f))
+        //when
+        val cityAverage = getCountryCitiesAverageSalary.execute(country = country)
+        //then
+        assertNotEquals(unexpected,cityAverage)
+    }
     @Test
     fun should_throwException_when_enteringEmptyString() {
         //given
