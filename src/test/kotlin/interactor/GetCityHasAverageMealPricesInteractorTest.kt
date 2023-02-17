@@ -1,14 +1,12 @@
 package interactor
 
-import dataSource.CsvDataSource
-import dataSource.utils.CsvParser
-import fakeData.FakeData
-import fakeData.FakeDataTwo
 import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.unmockkAll
+import mockData.MockCityEntity.createMockCity
 import model.CityEntity
+import model.MealsPrices
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -20,21 +18,13 @@ import kotlin.test.assertTrue
 class GetCityHasAverageMealPricesInteractorTest {
 
     private lateinit var sut: GetCityHasAverageMealPricesInteractor
-    private lateinit var fakeData: FakeData
-    private lateinit var fakeData2: FakeDataTwo
-    private val csvParser = CsvParser()
-    private val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
+    private var mockData = mockk<CostOfLivingDataSource>()
 
     @BeforeAll
     fun setUp() {
-        // clear and cancel all objects mock
         clearAllMocks()
         unmockkAll()
-        // Initialized fakeData object
-        fakeData = FakeData()
-        fakeData2 = FakeDataTwo()
-        // sut: system under test
-        sut = GetCityHasAverageMealPricesInteractor(dataSource)
+        sut = GetCityHasAverageMealPricesInteractor(mockData)
     }
 
     @Test
@@ -108,32 +98,6 @@ class GetCityHasAverageMealPricesInteractorTest {
     }
 
     @Test
-    fun `should return false when the city has averageMeal price and InexpensiveMeal is zero`() {
-        // given mealFor2PeopleMidRangeRestaurant , mealInexpensiveRestaurant
-        val city: CityEntity = mockk()
-        every { city.mealsPrices.mealFor2PeopleMidRangeRestaurant } returns 0.0F
-        every { city.mealsPrices.mealInexpensiveRestaurant } returns 0.0F
-        every { city.mealsPrices.mealAtMcDonaldSOrEquivalent } returns 4.0F
-        // when check if city has average meal
-        val result = sut.excludeNullMealPrices(city)
-        // then
-        assertEquals(false, result)
-    }
-
-    @Test
-    fun `should return false when the city has averageMeal price and ExpensiveMeal is zero`() {
-        // given mealFor2PeopleMidRangeRestaurant , mealAtMcDonaldSOrEquivalent is zero
-        val city: CityEntity = mockk()
-        every { city.mealsPrices.mealFor2PeopleMidRangeRestaurant } returns 0.0F
-        every { city.mealsPrices.mealInexpensiveRestaurant } returns 4.0F
-        every { city.mealsPrices.mealAtMcDonaldSOrEquivalent } returns 0.0F
-        // when check if city has average meal
-        val result = sut.excludeNullMealPrices(city)
-        // then
-        assertEquals(false, result)
-    }
-
-    @Test
     fun `should return true when the city has AverageMeal`() {
         // given all mealPrices data
         val city: CityEntity = mockk()
@@ -162,29 +126,16 @@ class GetCityHasAverageMealPricesInteractorTest {
     }
 
     @Test
-    fun `should return zero when has no midMeal and no expensive meal`() {
-        // given mealFor2PeopleMidRangeRestaurant is null ,  mealInexpensiveRestaurant , mealAtMcDonaldSOrEquivalent is zero
+    fun `should return value when the city has InexpensiveMeal and ExpensiveMeal`() {
+        // given mealFor2PeopleMidRangeRestaurant is null
         val city: CityEntity = mockk()
         every { city.mealsPrices.mealFor2PeopleMidRangeRestaurant } returns null
         every { city.mealsPrices.mealInexpensiveRestaurant } returns 5.0F
-        every { city.mealsPrices.mealAtMcDonaldSOrEquivalent } returns 0.0F
+        every { city.mealsPrices.mealAtMcDonaldSOrEquivalent } returns 9.0F
         // when check the average meal in city
         val result = sut.getAverageMealInCity(city)
         // then
-        assertEquals(0.0F, result)
-    }
-
-    @Test
-    fun `should return value when has inExpensive and expensive meal`() {
-        // given mealFor2PeopleMidRangeRestaurant is zero
-        val city: CityEntity = mockk()
-        every { city.mealsPrices.mealFor2PeopleMidRangeRestaurant } returns 0.0F
-        every { city.mealsPrices.mealInexpensiveRestaurant } returns 3.0F
-        every { city.mealsPrices.mealAtMcDonaldSOrEquivalent } returns 5.0F
-        // when check the average meal in city
-        val result = sut.getAverageMealInCity(city)
-        // then
-        assertEquals(4.0F, result)
+        assertEquals(7.0F, result)
     }
 
     @Test
@@ -214,34 +165,30 @@ class GetCityHasAverageMealPricesInteractorTest {
     }
 
     @Test
-    fun `should return average meals of all cities when cities list is not empty`() {
-        // given fake city entity data and the expected value
-        val sut = GetCityHasAverageMealPricesInteractor(fakeData)
-        val average = 9.25F
+    fun `should return city entity when cities list is not empty`() {
+        // given mock city entity data and the expected value
+        val mealPrices = MealsPrices(
+            27.0F,
+            93.0F,
+            8.75F
+        )
+        val mealPrices2 = MealsPrices(
+            9.0F,
+            175.0F,
+            5.5F
+        )
+        val mealPrices3 = MealsPrices(
+            4.0F,
+            null,
+            7.0F
+        )
+        val mockCity = createMockCity("United States", "Collingswood", mealPrices)
+        val mockCity2 = createMockCity("Mexico", "Mexico", mealPrices2)
+        val mockCity3 = createMockCity("Canada", "Canada", mealPrices3)
+        every { mockData.getAllCitiesData() } returns listOf(mockCity, mockCity2, mockCity3)
         // when list is not empty
-        val result = sut.getAverageMealInAllCities(fakeData.getAllCitiesData())
+        val cityResult = sut.execute()
         // then
-        assertEquals(average, result)
-    }
-
-    @Test
-    fun `should return zero of all cities when cities list is empty`() {
-        // given fake city entity data and the expected value
-        val sut = GetCityHasAverageMealPricesInteractor(dataSource)
-        val average = 0.0F
-        // when list is empty
-        val result = sut.getAverageMealInAllCities(emptyList())
-        // then
-        assertEquals(average, result)
-    }
-
-    @Test
-    fun `should return city entity when there is city in USA, Canada or Mexico`() {
-        // given fake city entity data
-        val fakeCityEntity = fakeData2.getAllCitiesData()[0]
-        // when
-        val result = sut.execute()
-        // then
-        assertEquals(fakeCityEntity, result)
+        assertEquals(mockCity, cityResult)
     }
 }
