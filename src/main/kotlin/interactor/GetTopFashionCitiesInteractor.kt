@@ -26,6 +26,8 @@ class GetTopFashionCitiesInteractor(
             clothesPrices.getAllPricesNotNull().isNotEmpty() && dataQuality
         }
     }
+
+    private fun getClothesAveragePrice(city: CityEntity) = city.clothesPrices.getAllPricesNotNull().average().toFloat()
 }
 
 
