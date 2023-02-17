@@ -25,6 +25,7 @@ fun main() {
     println(getTopFashionCities.execute(limit = 5))
     printSeparationLine()
 
+
     val getCitiesNamesSortedByCheapestBananaPricesInteractor = GetCitiesNamesSortedByCheapestBananaPricesInteractor(dataSource)
     println(getCitiesNamesSortedByCheapestBananaPricesInteractor.execute("Caracas","Accra","Giza"))
     printSeparationLine()

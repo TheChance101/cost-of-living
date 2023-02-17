@@ -79,6 +79,21 @@ class GetCitiesNamesSortedByCheapestBananaPricesInteractorTest {
         val expectedResult = listOf("Giza", "Accra", "Caracas")
         //Then
         assertEquals(expectedResult, result)
+    }@Test
+    fun should_returnEmptyList_when_EnterBlank() {
+        //when
+        val result = getCitiesNamesSortedByCheapestBananaPrices.execute("        ")
+        val expectedResult = emptyList<String>()
+        //Then
+        assertEquals(expectedResult, result)
+    }
+    @Test
+    fun should_returnTrue_when_EnterWoringCityName() {
+        //when
+        val result = getCitiesNamesSortedByCheapestBananaPrices.execute("example")
+        val expectedResult = emptyList<String>()
+        //Then
+        assertEquals(expectedResult, result)
     }
 
 }
