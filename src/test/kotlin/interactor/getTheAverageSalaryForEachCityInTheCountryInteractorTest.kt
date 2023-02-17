@@ -1,6 +1,6 @@
 package interactor
 
-import fakedata.FakeData
+import fakedata.FakeDataSource
 import org.junit.jupiter.api.Assertions.*
 
 
@@ -12,11 +12,11 @@ import kotlin.test.assertEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class getTheAverageSalaryForEachCityInTheCountryInteractorTest {
-    lateinit var fakeData: FakeData
+    lateinit var fakeData: FakeDataSource
 
     @BeforeAll
     fun setup() {
-        fakeData = FakeData()
+        fakeData = FakeDataSource()
     }
 
     @Test

@@ -1,6 +1,6 @@
 package interactor
 
-import fakedata.FakeData
+import fakedata.FakeDataSource
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.BeforeAll
@@ -11,11 +11,11 @@ class GetCItyWithMealPriceBetweenTwoTest {
 
     lateinit var GetCItyWithMealPriceBetweenTwoInteractor: GetCItyWithMealPriceBetweenTwo
 
-    private lateinit var fakeData: FakeData
+    private lateinit var fakeData: FakeDataSource
 
     @BeforeAll
     fun setup() {
-        fakeData = FakeData()
+        fakeData = FakeDataSource()
         GetCItyWithMealPriceBetweenTwoInteractor = GetCItyWithMealPriceBetweenTwo(fakeData)
     }
     @Test

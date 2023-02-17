@@ -1,19 +1,19 @@
 
 package interactor
 import org.junit.jupiter.api.Assertions.*
-import fakedata.FakeData
+import fakedata.FakeDataSource
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.function.Executable
 
 class GetTheTopCitiesWhereYouCanGetAnApartmentFasterTest {
-    private lateinit var fakeData: FakeData
+    private lateinit var fakeData: FakeDataSource
     private lateinit var getTheRightApartment: GetTheTopCitiesWhereYouCanGetAnApartmentFaster
 
 
     @BeforeEach
     fun setUp() {
-        fakeData = FakeData()
+        fakeData = FakeDataSource()
         getTheRightApartment = GetTheTopCitiesWhereYouCanGetAnApartmentFaster(fakeData)
     }
 

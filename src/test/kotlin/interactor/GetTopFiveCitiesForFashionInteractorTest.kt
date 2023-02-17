@@ -1,6 +1,6 @@
 package interactor
 
-import fakedata.FakeData
+import fakedata.FakeDataSource
 import model.CityEntity
 import org.junit.jupiter.api.Test
 
@@ -11,11 +11,11 @@ class GetTopFiveCitiesForFashionInteractorTest {
     private lateinit var dataSource: CostOfLivingDataSource
     private lateinit var getTopFiveCitiesForFashionInteractor: GetTopFiveCitiesForFashionInteractor
 
-    private lateinit var fakeData: FakeData
+    private lateinit var fakeData: FakeDataSource
 
     @BeforeEach
     fun setUp() {
-        fakeData = FakeData()
+        fakeData = FakeDataSource()
         dataSource = fakeData
         getTopFiveCitiesForFashionInteractor = GetTopFiveCitiesForFashionInteractor(dataSource)
     }
