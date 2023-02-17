@@ -11,7 +11,6 @@ import org.junit.jupiter.api.*
 
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.function.Executable
-import kotlin.test.assertEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetTop5CitiesNameHasSuitableClothesPricesInteractorTest {
@@ -33,10 +32,10 @@ internal class GetTop5CitiesNameHasSuitableClothesPricesInteractorTest {
         val citiesData = listOf<CityEntity>()
         //when
         every { fakeData.getAllCitiesData() } returns (citiesData)
-        val nameTop5City: Executable = Executable { getTop5CitiesNameHasSuitableClothesPricesInteractor.execute(5) }
+        val namesCityHasSuitableClothesPrices: Executable = Executable { getTop5CitiesNameHasSuitableClothesPricesInteractor.execute(5) }
 
         //then
-        assertThrows(Exception::class.java, nameTop5City)
+        assertThrows(Exception::class.java, namesCityHasSuitableClothesPrices)
     }
 
 
