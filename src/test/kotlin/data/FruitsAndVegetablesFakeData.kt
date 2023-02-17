@@ -4,9 +4,11 @@ import interactor.CostOfLivingDataSource
 import model.*
 
 
-class AverageFruitAndVegetablesFakeData : CostOfLivingDataSource {
+class FruitsAndVegetablesFakeData : CostOfLivingDataSource {
     override fun getAllCitiesData(): List<CityEntity> {
         return listOf(
+
+            // region City 1
             CityEntity(
                 cityName = "Moncks Corner",
                 country = "United States",
@@ -78,8 +80,9 @@ class AverageFruitAndVegetablesFakeData : CostOfLivingDataSource {
                 averageMonthlyNetSalaryAfterTax = Float.NaN,
                 dataQuality = false
             ),
+            // endregion
 
-
+            // region City 2
             CityEntity(
                 cityName = "Keller",
                 country = "United States",
@@ -151,8 +154,9 @@ class AverageFruitAndVegetablesFakeData : CostOfLivingDataSource {
                 averageMonthlyNetSalaryAfterTax = 13.5f,
                 dataQuality = false
             ),
+            // endregion
 
-
+            // region City 3
             CityEntity(
                 cityName = "Malden",
                 country = "United States",
@@ -224,8 +228,9 @@ class AverageFruitAndVegetablesFakeData : CostOfLivingDataSource {
                 averageMonthlyNetSalaryAfterTax = 14.9f,
                 dataQuality = false
             ),
+            // endregion
 
-
+            // region City 4
             CityEntity(
                 cityName = "Pearl City",
                 country = "United States",
@@ -298,7 +303,9 @@ class AverageFruitAndVegetablesFakeData : CostOfLivingDataSource {
                 dataQuality = false
             ),
 
+            // endregion
 
+            // region City 5
             CityEntity(
                 cityName = "Clayton",
                 country = "United States",
@@ -317,9 +324,9 @@ class AverageFruitAndVegetablesFakeData : CostOfLivingDataSource {
                 fruitAndVegetablesPrices = FruitAndVegetablesPrices(
                     apples1kg = 2.65f,
                     banana1kg = 1.34f,
-                    oranges1kg = null,
+                    oranges1kg = 1.2f,
                     tomato1kg = 2.43f,
-                    potato1kg = null,
+                    potato1kg = 43f,
                     onion1kg = 1.94f,
                     lettuceOneHead = 1.5f
                 ),
@@ -371,7 +378,9 @@ class AverageFruitAndVegetablesFakeData : CostOfLivingDataSource {
                 dataQuality = false
             ),
 
+            // endregion
 
+            // region City 6
             CityEntity(
                 cityName = "Brevard",
                 country = "United States",
@@ -443,8 +452,9 @@ class AverageFruitAndVegetablesFakeData : CostOfLivingDataSource {
                 averageMonthlyNetSalaryAfterTax = 600f,
                 dataQuality = false
             ),
+            // endregion
 
-
+            // region City 7
             CityEntity(
                 cityName = "Woodlawn",
                 country = "United States",
@@ -516,8 +526,9 @@ class AverageFruitAndVegetablesFakeData : CostOfLivingDataSource {
                 averageMonthlyNetSalaryAfterTax = 1000f,
                 dataQuality = false
             ),
+            // endregion
 
-
+            // region City 8
             CityEntity(
                 cityName = "Brookdale",
                 country = "United States",
@@ -590,7 +601,9 @@ class AverageFruitAndVegetablesFakeData : CostOfLivingDataSource {
                 dataQuality = false
             ),
 
+            // endregion
 
+            // region City 9
             CityEntity(
                 cityName = "Christiansburg",
                 country = "United States",
@@ -663,7 +676,9 @@ class AverageFruitAndVegetablesFakeData : CostOfLivingDataSource {
                 dataQuality = false
             ),
 
+            // endregion
 
+            // region City 10
             CityEntity(
                 cityName = "Kernersville",
                 country = "United States",
@@ -735,8 +750,9 @@ class AverageFruitAndVegetablesFakeData : CostOfLivingDataSource {
                 averageMonthlyNetSalaryAfterTax = 23f,
                 dataQuality = false
             ),
+            // endregion
 
-
+            // region City 11
             CityEntity(
                 cityName = "Airway Heights",
                 country = "United States",
@@ -807,229 +823,10 @@ class AverageFruitAndVegetablesFakeData : CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 13f,
                 dataQuality = false
-            ),
-
-
-            CityEntity(
-                cityName = "Vryheid",
-                country = "South Africa",
-                mealsPrices = MealsPrices(
-                    mealInexpensiveRestaurant = null,
-                    mealFor2PeopleMidRangeRestaurant = null,
-                    mealAtMcDonaldSOrEquivalent = null
-                ),
-                drinksPrices = DrinksPrices(
-                    cappuccinoRegularInRestaurants = null,
-                    cokePepsiAThirdOfLiterBottleInRestaurants = null,
-                    waterAThirdOfLiterBottleInRestaurants = null,
-                    milkRegularOneLiter = 1.94f,
-                    waterOneAndHalfLiterBottleAtTheMarket = 1.03f
-                ),
-                fruitAndVegetablesPrices = FruitAndVegetablesPrices(
-                    apples1kg = 1.14f,
-                    banana1kg = 1.71f,
-                    oranges1kg = 0.97f,
-                    tomato1kg = 1.31f,
-                    potato1kg = 0.91f,
-                    onion1kg = 1.08f,
-                    lettuceOneHead = 1.08f
-                ),
-                foodPrices = FoodPrices(
-                    loafOfFreshWhiteBread500g = 0.93f,
-                    riceWhite1kg = 3.71f,
-                    eggsRegular12 = 2.51f,
-                    localCheese1kg = 8.05f,
-                    chickenFillets1kg = 3.82f,
-                    beefRound1kgOrEquivalentBackLegRedMeat = 5.7f
-                ),
-                servicesPrices = ServicesPrices(
-                    basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 114.05f,
-                    oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = null,
-                    internet60MbpsOrMoreUnlimitedDataCableAdsl = 68.43f,
-                    fitnessClubMonthlyFeeForOneAdult = null,
-                    tennisCourtRentOneHourOnWeekend = null,
-                    cinemaInternationalReleaseOneSeat = null,
-                    preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 256.62f,
-                    internationalPrimarySchoolYearlyForOneChild = 1140.54f
-                ),
-                clothesPrices = ClothesPrices(
-                    onePairOfJeansLevis50oneOrSimilar = 56.97f,
-                    oneSummerDressInAChainStoreZaraHAndM = 42.71f,
-                    onePairOfNikeRunningShoesMidRange = 102.65f,
-                    onePairOfMenLeatherBusinessShoes = 116.28f
-                ),
-                transportationsPrices = TransportationsPrices(
-                    oneWayTicketLocalTransport = null,
-                    monthlyPassRegularPrice = null,
-                    taxiStartNormalTariff = 0.6f,
-                    taxi1kmNormalTariff = null,
-                    taxi1hourWaitingNormalTariff = 3.99f,
-                    gasolineOneLiter = 1.49f
-                ),
-                carsPrices = CarsPrices(
-                    volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 17672.6f,
-                    toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 23586.27f
-                ),
-                realEstatesPrices = RealEstatesPrices(
-                    apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre = null,
-                    apartment3BedroomsInCityCentre = null,
-                    apartment3BedroomsOutsideOfCentre = null,
-                    pricePerSquareMeterToBuyApartmentInCityCentre = null,
-                    pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
-                ),
-                averageMonthlyNetSalaryAfterTax = 324f,
-                dataQuality = false
-            ),
-
-
-            CityEntity(
-                cityName = "Mortsel",
-                country = "Belgium",
-                mealsPrices = MealsPrices(
-                    mealInexpensiveRestaurant = 23.18f,
-                    mealFor2PeopleMidRangeRestaurant = 73.76f,
-                    mealAtMcDonaldSOrEquivalent = 11.85f
-                ),
-                drinksPrices = DrinksPrices(
-                    cappuccinoRegularInRestaurants = 2.74f,
-                    cokePepsiAThirdOfLiterBottleInRestaurants = 2.11f,
-                    waterAThirdOfLiterBottleInRestaurants = 2.46f,
-                    milkRegularOneLiter = 0.83f,
-                    waterOneAndHalfLiterBottleAtTheMarket = 0.46f
-                ),
-                fruitAndVegetablesPrices = FruitAndVegetablesPrices(
-                    apples1kg = 2.02f,
-                    banana1kg = 1.55f,
-                    oranges1kg = 1.48f,
-                    tomato1kg = 2.51f,
-                    potato1kg = 0.95f,
-                    onion1kg = 1.58f,
-                    lettuceOneHead = 0.95f
-                ),
-                foodPrices = FoodPrices(
-                    loafOfFreshWhiteBread500g = 1.88f,
-                    riceWhite1kg = 1.48f,
-                    eggsRegular12 = 2.25f,
-                    localCheese1kg = 10.71f,
-                    chickenFillets1kg = 7.38f,
-                    beefRound1kgOrEquivalentBackLegRedMeat = 14.01f
-                ),
-                servicesPrices = ServicesPrices(
-                    basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 180.01f,
-                    oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.26f,
-                    internet60MbpsOrMoreUnlimitedDataCableAdsl = 68.49f,
-                    fitnessClubMonthlyFeeForOneAdult = 31.6f,
-                    tennisCourtRentOneHourOnWeekend = 15.81f,
-                    cinemaInternationalReleaseOneSeat = 13.01f,
-                    preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 1580.62f,
-                    internationalPrimarySchoolYearlyForOneChild = 13171.82f
-                ),
-                clothesPrices = ClothesPrices(
-                    onePairOfJeansLevis50oneOrSimilar = 79.03f,
-                    oneSummerDressInAChainStoreZaraHAndM = 36.88f,
-                    onePairOfNikeRunningShoesMidRange = 94.84f,
-                    onePairOfMenLeatherBusinessShoes = 105.37f
-                ),
-                transportationsPrices = TransportationsPrices(
-                    oneWayTicketLocalTransport = 2.63f,
-                    monthlyPassRegularPrice = 51.63f,
-                    taxiStartNormalTariff = 5.27f,
-                    taxi1kmNormalTariff = 2.37f,
-                    taxi1hourWaitingNormalTariff = 31.61f,
-                    gasolineOneLiter = 2.08f
-                ),
-                carsPrices = CarsPrices(
-                    volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 15279.31f,
-                    toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 15279.31f
-                ),
-                realEstatesPrices = RealEstatesPrices(
-                    apartmentOneBedroomInCityCentre = 790.31f,
-                    apartmentOneBedroomOutsideOfCentre = 737.62f,
-                    apartment3BedroomsInCityCentre = 1475.24f,
-                    apartment3BedroomsOutsideOfCentre = 1159.12f,
-                    pricePerSquareMeterToBuyApartmentInCityCentre = 2528.99f,
-                    pricePerSquareMeterToBuyApartmentOutsideOfCentre = 2212.86f
-                ),
-                averageMonthlyNetSalaryAfterTax = 31f,
-                dataQuality = false
-            ),
-
-
-            CityEntity(
-                cityName = "Ridgecrest",
-                country = "United States",
-                mealsPrices = MealsPrices(
-                    mealInexpensiveRestaurant = 20.0f,
-                    mealFor2PeopleMidRangeRestaurant = 40.0f,
-                    mealAtMcDonaldSOrEquivalent = 8.0f
-                ),
-                drinksPrices = DrinksPrices(
-                    cappuccinoRegularInRestaurants = 4.67f,
-                    cokePepsiAThirdOfLiterBottleInRestaurants = 2.67f,
-                    waterAThirdOfLiterBottleInRestaurants = 1.47f,
-                    milkRegularOneLiter = 1.11f,
-                    waterOneAndHalfLiterBottleAtTheMarket = 1.5f
-                ),
-                fruitAndVegetablesPrices = FruitAndVegetablesPrices(
-                    apples1kg = 5.0f,
-                    banana1kg = 1.8f,
-                    oranges1kg = 4.29f,
-                    tomato1kg = 5.68f,
-                    potato1kg = 2.64f,
-                    onion1kg = 2.16f,
-                    lettuceOneHead = 1.81f
-                ),
-                foodPrices = FoodPrices(
-                    loafOfFreshWhiteBread500g = 3.37f,
-                    riceWhite1kg = 4.41f,
-                    eggsRegular12 = 3.22f,
-                    localCheese1kg = 6.61f,
-                    chickenFillets1kg = 10.28f,
-                    beefRound1kgOrEquivalentBackLegRedMeat = 15.98f
-                ),
-                servicesPrices = ServicesPrices(
-                    basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 157.63f,
-                    oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.26f,
-                    internet60MbpsOrMoreUnlimitedDataCableAdsl = 68.6f,
-                    fitnessClubMonthlyFeeForOneAdult = 30.0f,
-                    tennisCourtRentOneHourOnWeekend = null,
-                    cinemaInternationalReleaseOneSeat = 18.0f,
-                    preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 1466.67f,
-                    internationalPrimarySchoolYearlyForOneChild = 27500.0f
-                ),
-                clothesPrices = ClothesPrices(
-                    onePairOfJeansLevis50oneOrSimilar = 51.85f,
-                    oneSummerDressInAChainStoreZaraHAndM = 33.33f,
-                    onePairOfNikeRunningShoesMidRange = 87.5f,
-                    onePairOfMenLeatherBusinessShoes = 134.29f
-                ),
-                transportationsPrices = TransportationsPrices(
-                    oneWayTicketLocalTransport = null,
-                    monthlyPassRegularPrice = null,
-                    taxiStartNormalTariff = 3.5f,
-                    taxi1kmNormalTariff = 1.71f,
-                    taxi1hourWaitingNormalTariff = 65.0f,
-                    gasolineOneLiter = 1.68f
-                ),
-                carsPrices = CarsPrices(
-                    volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 23292.0f,
-                    toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 22741.5f
-                ),
-                realEstatesPrices = RealEstatesPrices(
-                    apartmentOneBedroomInCityCentre = 1000.0f,
-                    apartmentOneBedroomOutsideOfCentre = null,
-                    apartment3BedroomsInCityCentre = null,
-                    apartment3BedroomsOutsideOfCentre = null,
-                    pricePerSquareMeterToBuyApartmentInCityCentre = null,
-                    pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
-                ),
-                averageMonthlyNetSalaryAfterTax = 14f,
-                dataQuality = false
             )
+            // endregion
 
         )
-
     }
 }
 

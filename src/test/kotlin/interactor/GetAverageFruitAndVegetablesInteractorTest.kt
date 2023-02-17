@@ -1,6 +1,6 @@
 package interactor
 
-import data.FakeDataSource
+import data.FruitsAndVegetablesFakeData
 import data.TestCase
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
@@ -11,21 +11,20 @@ import org.junit.jupiter.api.TestInstance
 class GetAverageFruitAndVegetablesInteractorTest {
 
     private lateinit var getAverageFruitAndVegetablesInteractor: GetAverageFruitAndVegetablesInteractor
-    private lateinit var fakeData : FakeDataSource
+    private val fakeData = FruitsAndVegetablesFakeData()
 
     @BeforeAll
-    fun setup(){
-        fakeData = FakeDataSource()
+    fun setup() {
         getAverageFruitAndVegetablesInteractor = GetAverageFruitAndVegetablesInteractor(fakeData)
     }
 
     @Test
-    fun should_ReturnListOf10CitiesNames_When_TheDataSourceIsValid() {
-        // given valid data
-        fakeData.changeDataSource(TestCase.AverageFruitAndVegetables)
+    fun `should return correct cities names when the data source is valid`() {
+        // given a limit of cities
+        val limit = 10
 
         // when check and return cities name
-        val result = getAverageFruitAndVegetablesInteractor.execute()
+        val result = getAverageFruitAndVegetablesInteractor.execute(limit)
 
         // then asserted the return and the expected
         val expected = listOf(
@@ -40,48 +39,48 @@ class GetAverageFruitAndVegetablesInteractorTest {
             "Airway Heights",
             "Ridgecrest"
         )
-        assertEquals(expected,result)
+        assertEquals(expected, result)
     }
 
     @Test
     fun should_ReturnEmptyList_When_TheFruitsAndVegetablesAreNull() {
         // given null data to fruits and vegetables
-        fakeData.changeDataSource(TestCase.InvalidData)
+//        fakeData.changeDataSource(TestCase.InvalidData)
 
         // when check and return cities name
-        val result = getAverageFruitAndVegetablesInteractor.execute()
+        val result = getAverageFruitAndVegetablesInteractor.execute(111)
 
         // then asserted the return and the expected
         val expected = emptyList<String>()
 
-        assertEquals(expected,result)
+        assertEquals(expected, result)
     }
 
     @Test
     fun should_ReturnEmptyList_When_TheAverageMonthlyNetSalaryAfterTaxIsNullOrNaN() {
         // given null data to average monthly net salary after tax
-        fakeData.changeDataSource(TestCase.AverageMonthlyNetSalary)
+//        fakeData.changeDataSource(TestCase.AverageMonthlyNetSalary)
 
         // when check and return cities name
-        val result = getAverageFruitAndVegetablesInteractor.execute()
+        val result = getAverageFruitAndVegetablesInteractor.execute(11)
 
         // then asserted the return and the expected
         val expected = emptyList<String>()
 
-        assertEquals(expected,result)
+        assertEquals(expected, result)
     }
 
     @Test
     fun should_ReturnEmptyList_When_DataSourceIsEmpty() {
         // given empty data source
-        fakeData.changeDataSource(TestCase.Empty)
+//        fakeData.changeDataSource(TestCase.Empty)
 
         // when check and return cities name
-        val result = getAverageFruitAndVegetablesInteractor.execute()
+        val result = getAverageFruitAndVegetablesInteractor.execute(11)
 
         // then asserted the return and the expected
         val expected = emptyList<String>()
 
-        assertEquals(expected,result)
+        assertEquals(expected, result)
     }
 }
