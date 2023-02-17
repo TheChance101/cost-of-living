@@ -30,12 +30,12 @@ internal class GetBestCityForSavingMoneyInteractorTest {
 
         // given
         val data = fakeData.getAllCitiesData()[0]
-        val checkNullFieldsFunction =
-            bestCityForSavingMoney::class.java.getDeclaredMethod("checkNullFields", CityEntity::class.java)
-        checkNullFieldsFunction.isAccessible = true
+        val excludeNullRequireValues =
+            bestCityForSavingMoney::class.java.getDeclaredMethod("excludeNullRequireValues", CityEntity::class.java)
+        excludeNullRequireValues.isAccessible = true
 
         // when check if the output is true
-        val result = checkNullFieldsFunction.invoke(bestCityForSavingMoney, data) as Boolean
+        val result = excludeNullRequireValues.invoke(bestCityForSavingMoney, data) as Boolean
 
         // then check the result
         Assertions.assertTrue(result)
@@ -48,7 +48,7 @@ internal class GetBestCityForSavingMoneyInteractorTest {
         val cityName = "Moncks Corner"
 
         // when
-        val nameOfReturnedCity = bestCityForSavingMoney.execute(true).cityName
+        val nameOfReturnedCity = bestCityForSavingMoney().cityName
 
         // then check the result
         Assertions.assertEquals(cityName, nameOfReturnedCity)
@@ -59,7 +59,7 @@ internal class GetBestCityForSavingMoneyInteractorTest {
 
         // Given a city name and the name of returned city
         val cityName = "Cairo"
-        val nameOfReturnedCity = bestCityForSavingMoney.execute(true).cityName
+        val nameOfReturnedCity = bestCityForSavingMoney().cityName
 
         // when check if the two names are the same
         val areEqual = cityName == nameOfReturnedCity

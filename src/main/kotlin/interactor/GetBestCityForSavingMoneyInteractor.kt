@@ -4,36 +4,28 @@ import model.CityEntity
 
 class GetBestCityForSavingMoneyInteractor(private val dataSource: CostOfLivingDataSource) {
 
-    fun execute(isAppartmentInTheCityCentre: Boolean): CityEntity {
-        isAppartmentInCenter = isAppartmentInTheCityCentre
+    operator fun invoke(): CityEntity{
+
         return dataSource.getAllCitiesData()
-            .filter(::checkNullFields)
+            .filter(::excludeNullRequireValues)
             .sortedByDescending(::calculateSavings)
             .first()
-
     }
 
     private fun calculateSavings(city: CityEntity): Float {
 
-        val requireApartment =
-            if (isAppartmentInCenter) city.realEstatesPrices.apartment3BedroomsInCityCentre!!
-            else city.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
-
-        return (city.averageMonthlyNetSalaryAfterTax!! * 2) -
-                (city.foodPrices.loafOfFreshWhiteBread500g!! * 30) -
-                (city.foodPrices.localCheese1kg!!) -
-                (city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!! * 4) -
-                (city.foodPrices.chickenFillets1kg!! * 10) -
-                (city.foodPrices.riceWhite1kg!! * 2) - 250.0f - requireApartment
+        return  city.averageMonthlyNetSalaryAfterTax!! * DOUBLE_AVERAGE_SALARY -
+                city.realEstatesPrices.apartment3BedroomsInCityCentre!! -
+                with(city.foodPrices){
+                    (loafOfFreshWhiteBread500g!! * REQUIRE_BREAD) -
+                            (chickenFillets1kg!! * REQUIRE_CHICKEN) -
+                            (riceWhite1kg!! * REQUIRE_RICE) -
+                            (beefRound1kgOrEquivalentBackLegRedMeat!! * REQUIRE_MEAT) -
+                            city.foodPrices.localCheese1kg!! } - OTHER_NEEDS
     }
+    private fun excludeNullRequireValues(city: CityEntity): Boolean {
 
-    private fun checkNullFields(city: CityEntity): Boolean {
-
-        var determineApartment = city.realEstatesPrices.apartment3BedroomsOutsideOfCentre != null
-        if (isAppartmentInCenter)
-            determineApartment = city.realEstatesPrices.apartment3BedroomsInCityCentre != null
-
-        return determineApartment &&
+        return  city.realEstatesPrices.apartment3BedroomsInCityCentre != null &&
                 city.averageMonthlyNetSalaryAfterTax != null &&
                 city.foodPrices.loafOfFreshWhiteBread500g != null &&
                 city.foodPrices.localCheese1kg != null &&
@@ -41,8 +33,13 @@ class GetBestCityForSavingMoneyInteractor(private val dataSource: CostOfLivingDa
                 city.foodPrices.chickenFillets1kg != null &&
                 city.foodPrices.riceWhite1kg != null
     }
+    private companion object{
 
-    companion object {
-        private var isAppartmentInCenter = true
+        const val REQUIRE_BREAD = 30
+        const val REQUIRE_MEAT = 4
+        const val REQUIRE_RICE = 2
+        const val REQUIRE_CHICKEN = 10
+        const val OTHER_NEEDS = 250.0F
+        const val DOUBLE_AVERAGE_SALARY = 2
     }
 }
