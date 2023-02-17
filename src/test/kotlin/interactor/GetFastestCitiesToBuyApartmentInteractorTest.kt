@@ -107,7 +107,7 @@ class GetFastestCitiesToBuyApartmentInteractorTest {
         // Given a high quality data
         val city = fastestCitiesToBuyApartmentFakeData.createCustomCity(12.5f, 15.4f, true)
         // When checking a high quality data
-        val result = excludeLowQualityData(city)
+        val result = excludeLowQualityCityData(city)
         // Then the result should be true
         assertTrue(result)
     }
@@ -117,7 +117,7 @@ class GetFastestCitiesToBuyApartmentInteractorTest {
         // Given a low quality data
         val city = fastestCitiesToBuyApartmentFakeData.createCustomCity(12.5f, 15.4f, false)
         // When checking low quality data
-        val result = excludeLowQualityData(city)
+        val result = excludeLowQualityCityData(city)
         // Then the result should be false
         assertFalse(result)
     }
