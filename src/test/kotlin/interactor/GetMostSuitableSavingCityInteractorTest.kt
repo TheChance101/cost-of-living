@@ -1,18 +1,23 @@
 package interactor
 import fakedata.FakeDataSource
+import model.CityEntity
+import model.FoodPrices
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 
 class GetMostSuitableSavingCityInteractorTest {
 
+    private lateinit var mostSuitableSavingCityInteractor: GetMostSuitableSavingCityInteractor
+    private lateinit var dataSource: CostOfLivingDataSource
+
     private lateinit var fakeData: FakeDataSource
-    private lateinit var getMostSuitableSavingCity: GetMostSuitableSavingCityInteractor
 
     @BeforeEach
     fun setUp() {
         fakeData = FakeDataSource()
-        getMostSuitableSavingCity = GetMostSuitableSavingCityInteractor(fakeData)
+        dataSource = fakeData
+        mostSuitableSavingCityInteractor = GetMostSuitableSavingCityInteractor(dataSource)
     }
 
     @Test

@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     implementation("org.testng:testng:7.1.0")
-    implementation(project(mapOf("path" to ":")))
+//    implementation(project(mapOf("path" to ":")))
     testImplementation(kotlin("test"))
     testImplementation ("org.mockito.kotlin:mockito-kotlin:4.1.0")
     implementation("org.junit.jupiter:junit-jupiter:5.8.1")

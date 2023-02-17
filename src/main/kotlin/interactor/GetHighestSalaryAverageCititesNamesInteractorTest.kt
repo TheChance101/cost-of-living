@@ -1,15 +1,11 @@
 package interactor
 
-import fakedata.FakeData
 import model.CityEntity
 import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
 
 class GetTopFiveCitiesForFashionInteractorTest {
     private lateinit var dataSource: CostOfLivingDataSource
-
-    private lateinit var fakeData: FakeData
 
     @Test
     fun should_returnListOfFiveCities_whenListOfCitiesNotEmpty() {

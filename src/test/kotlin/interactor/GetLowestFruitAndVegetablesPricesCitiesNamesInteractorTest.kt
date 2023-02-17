@@ -1,6 +1,6 @@
 package interactor
 
-import fakedata.FakeData
+import fakedata.FakeDataSource
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.BeforeAll
@@ -11,12 +11,12 @@ import kotlin.test.assertEquals
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetLowestFruitAndVegetablesPricesCitiesNamesInteractorTest {
     private lateinit var dataSource: CostOfLivingDataSource
-    private lateinit var fakedata: FakeData
+    private lateinit var fakedata: FakeDataSource
     private lateinit var getLowestFruitAndVegetablesPrices: GetLowestFruitAndVegetablesPricesCitiesNamesInteractor
 
     @BeforeEach
     fun setUp() {
-        fakedata = FakeData()
+        fakedata = FakeDataSource()
         dataSource = fakedata
         getLowestFruitAndVegetablesPrices = GetLowestFruitAndVegetablesPricesCitiesNamesInteractor(dataSource)
     }

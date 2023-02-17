@@ -1,6 +1,6 @@
 package interactor
 
-import fakedata.FakeData
+import fakedata.FakeDataSource
 import model.CityEntity
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
@@ -10,14 +10,14 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinksTest {
     private lateinit var dataSource: CostOfLivingDataSource
-    private lateinit var fakeData: FakeData
+    private lateinit var fakeData: FakeDataSource
     private lateinit var getTopTenCountriesHaveHighestPricesOfCoke:
             GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinks
 
 
     @BeforeEach
     fun setUp() {
-        fakeData = FakeData()
+        fakeData = FakeDataSource()
         dataSource=fakeData
         getTopTenCountriesHaveHighestPricesOfCoke =
             GetTopTenCountriesHaveHighestPricesOfCarbonatedDrinks(dataSource)
