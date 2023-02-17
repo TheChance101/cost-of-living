@@ -398,7 +398,8 @@ object MockCityEntity {
     fun createMockCity(
         cityName: String,
         pricePerSquareMeterToBuyApartmentOutsideOfCentre: Float?,
-        dataQuality: Boolean
+        dataQuality: Boolean,
+        averageMonthlyNetSalaryAfterTax :Float?
     ): CityEntity {
         return CityEntity(
             cityName,
@@ -467,8 +468,7 @@ object MockCityEntity {
                 null,
                 null,
                 pricePerSquareMeterToBuyApartmentOutsideOfCentre,
-            ),
-            null,
+            ), averageMonthlyNetSalaryAfterTax ,
             dataQuality,
         )
 
