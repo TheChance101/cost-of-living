@@ -1,10 +1,10 @@
-package mockData
+package mockdata
 
 import model.*
 
 object MockCityEntity {
 
-    // Start region for GetCityHasCheapestInternetConnectionInteractor (Problem 1)
+    //region for GetCityHasCheapestInternetConnectionInteractor (Problem 1)
     fun createMockCity(cityName: String, averageMonthlyNetSalaryAfterTax: Float, internetPrice: Float?): CityEntity {
         return CityEntity(
             cityName,
@@ -79,9 +79,9 @@ object MockCityEntity {
         )
 
     }
-    // End region for GetCityHasCheapestInternetConnectionInteractor (Problem 1)
+    // endregion for GetCityHasCheapestInternetConnectionInteractor (Problem 1)
 
-    // Start region for GetTopCitiesFruitsAndVegetablesLowestCostInteractor (Problem 2)
+    //region for GetTopCitiesFruitsAndVegetablesLowestCostInteractor (Problem 2)
     fun createMockCity(
         cityName: String,
         fruitAndVegetablesPrices: FruitAndVegetablesPrices,
@@ -152,7 +152,7 @@ object MockCityEntity {
         )
 
     }
-    // End region for GetTopCitiesFruitsAndVegetablesLowestCostInteractor (Problem 2)
+    // endregion for GetTopCitiesFruitsAndVegetablesLowestCostInteractor (Problem 2)
 
     // Start region for GetSalaryAverageForCitiesInCountryInteractor (Problem 3)
     fun createMockCity(
@@ -707,8 +707,8 @@ object MockCityEntity {
         apartment3BedroomsInCityCentre: Float?
     ): CityEntity {
         return CityEntity(
-            "Berlin",
-            "Germany",
+            "Cairo",
+            "Egypt",
             MealsPrices(
                 null,
                 null,
