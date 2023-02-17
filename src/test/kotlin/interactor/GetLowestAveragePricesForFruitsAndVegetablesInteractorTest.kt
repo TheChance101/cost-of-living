@@ -23,57 +23,63 @@ internal class GetLowestAveragePricesForFruitsAndVegetablesInteractorTest {
         //given limit equal to zero
         val limit = 0
         //when getting list of cities names with lowest average prices for fruits and vegetables
-        val citiesWithLowestAveragePricesForFruitsAndVegetables = interactor.execute(limit)
+        val actual = interactor.execute(limit)
         //then
-        assertEquals(emptyList<String>(),citiesWithLowestAveragePricesForFruitsAndVegetables)
+        val expected = emptyList<String>()
+        assertEquals(expected,actual)
     }
 
     @Test
-    fun `should return list of cities names with lowest average prices for fruits and vegetables its size is equal to limit when number of correct cites is more than limit`() {
+    fun `should return list of cities names its size is equal to limit when correct cites is more than limit`() {
         //given limit less than number of correct cities
         val limit = 4
         //when getting list of cities names with lowest average prices for fruits and vegetables
-        val citiesWithLowestAveragePricesForFruitsAndVegetables = interactor.execute(limit)
+        val actual = interactor.execute(limit)
         //then
-        assertEquals(listOf(fakeDataSource.getAllCitiesData()[18].cityName,
-                            fakeDataSource.getAllCitiesData()[14].cityName,
-                            fakeDataSource.getAllCitiesData()[19].cityName,
-                            fakeDataSource.getAllCitiesData()[15].cityName),
-                            citiesWithLowestAveragePricesForFruitsAndVegetables)
+        val expected = listOf(
+            fakeDataSource.getAllCitiesData()[18].cityName,
+            fakeDataSource.getAllCitiesData()[14].cityName,
+            fakeDataSource.getAllCitiesData()[19].cityName,
+            fakeDataSource.getAllCitiesData()[15].cityName
+        )
+        assertEquals(expected, actual)
     }
 
     @Test
-    fun `should return list of cities names with lowest average prices for fruits and vegetables its size is equal to limit when number of correct cites is equal to limit`() {
+    fun `should return list of cities names its size is equal to limit when  correct cites is equal to limit`() {
         //given limit equal to number of correct cities
         val limit = 7
         //when getting list of cities names with lowest average prices for fruits and vegetables
-        val citiesWithLowestAveragePricesForFruitsAndVegetables = interactor.execute(limit)
+        val actual = interactor.execute(limit)
         //then
-        assertEquals(listOf(fakeDataSource.getAllCitiesData()[18].cityName,
-                            fakeDataSource.getAllCitiesData()[14].cityName,
-                            fakeDataSource.getAllCitiesData()[19].cityName,
-                            fakeDataSource.getAllCitiesData()[15].cityName,
-                            fakeDataSource.getAllCitiesData()[10].cityName,
-                            fakeDataSource.getAllCitiesData()[13].cityName,
-                            fakeDataSource.getAllCitiesData()[4].cityName),
-                            citiesWithLowestAveragePricesForFruitsAndVegetables)
+        val expected = listOf(
+            fakeDataSource.getAllCitiesData()[18].cityName,
+            fakeDataSource.getAllCitiesData()[14].cityName,
+            fakeDataSource.getAllCitiesData()[19].cityName,
+            fakeDataSource.getAllCitiesData()[15].cityName,
+            fakeDataSource.getAllCitiesData()[10].cityName,
+            fakeDataSource.getAllCitiesData()[13].cityName,
+            fakeDataSource.getAllCitiesData()[4].cityName
+        )
+        assertEquals(expected,actual)
     }
 
     @Test
-    fun `should return list of cities names with lowest average prices for fruits and vegetables its size is equal to number of correct cites when the limit is more than number of correct cites`(){
+    fun `should return list of cities names its size equals correct cites when the limit is more than correct cites`(){
         //given limit more than number of correct cities
         val limit = 10
         //when getting list of cities names with lowest average prices for fruits and vegetables
-        val citiesWithLowestAveragePricesForFruitsAndVegetables = interactor.execute(limit)
+        val actual = interactor.execute(limit)
         //then
-        assertEquals(listOf(fakeDataSource.getAllCitiesData()[18].cityName,
-                            fakeDataSource.getAllCitiesData()[14].cityName,
-                            fakeDataSource.getAllCitiesData()[19].cityName,
-                            fakeDataSource.getAllCitiesData()[15].cityName,
-                            fakeDataSource.getAllCitiesData()[10].cityName,
-                            fakeDataSource.getAllCitiesData()[13].cityName,
-                            fakeDataSource.getAllCitiesData()[4].cityName),
-                            citiesWithLowestAveragePricesForFruitsAndVegetables)
-
+        val expected = listOf(
+            fakeDataSource.getAllCitiesData()[18].cityName,
+            fakeDataSource.getAllCitiesData()[14].cityName,
+            fakeDataSource.getAllCitiesData()[19].cityName,
+            fakeDataSource.getAllCitiesData()[15].cityName,
+            fakeDataSource.getAllCitiesData()[10].cityName,
+            fakeDataSource.getAllCitiesData()[13].cityName,
+            fakeDataSource.getAllCitiesData()[4].cityName
+        )
+        assertEquals(expected,actual)
     }
 }
