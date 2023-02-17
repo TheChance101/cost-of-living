@@ -19,8 +19,7 @@ class FindTheHighestDifferenceInRentalPricesInteractor(private val dataSource: C
                     it.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!! +
                             it.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
 
-                val averageDifference = (inCityCenter - outsideCity)
-                abs(averageDifference)
+              abs(inCityCenter - outsideCity)
             }
         return highestDifference
     }
