@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.function.Executable
 
-class GetHighestDifferentInApartmentRentTest {
+class GetCityHasTheHighestDifferentInApartmentRentTest {
     private lateinit var highestDifferentInApartmentRent: GetHighestDifferentInApartmentRent
     private lateinit var dataSource: FakeDataSource
 
