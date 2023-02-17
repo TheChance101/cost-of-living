@@ -17,14 +17,22 @@ class GetTopFashionCitiesInteractorTest {
     }
 
     @Test
-    fun should_ReturnCorrectList_When_HaveLimitValueMoreThanZero() {
+    fun should_ReturnCorrectList_When_HaveAvailableLimitValue() {
         //given limit value > 0
         val limit = 5
         //when
         val result = getTopFashionCities.execute(limit)
-        val expectedResult = listOf("Accra", "Multan", "Karachi", "Rawalpindi", "Hyderabad City")
         //Then
-        assertEquals(expectedResult, result)
+        assertEquals(listOf("Accra", "Multan", "Karachi", "Rawalpindi", "Hyderabad City"), result)
+    }
+    @Test
+    fun should_ReturnCorrectListSize_When_HaveAvailableLimitValue() {
+        //given limit value > 0
+        val limit = 5
+        //when
+        val result = getTopFashionCities.execute(limit)
+        //Then
+        assertEquals(limit, result.size)
     }
 
     @Test
