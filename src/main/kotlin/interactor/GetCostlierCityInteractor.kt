@@ -1,48 +1,32 @@
 package interactor
 
-import interactor.utils.BedroomOption
 import model.CityEntity
-import kotlin.math.abs
+
 
 class GetCostlierCityInteractor(
-    private val dataSource: CostOfLivingDataSource
-) {
 
-    fun execute(option: BedroomOption): CityEntity {
-        return when (option) {
-            BedroomOption.ONE_BEDROOM -> getOneBedroom()
-            BedroomOption.THREE_BEDROOM -> getThreeBedroom()
+    private val dataSource: CostOfLivingDataSource,
+) {
+    fun execute(): CityEntity {
+        return dataSource.getAllCitiesData()
+            .filter(::excludeNullValuesAndLowQualityData)
+            .maxByOrNull(::calculateTheRatioBetweenThePriceOfApartmentsInsideAndOutsideTheCity)
+            ?: throw Exception("Invalid Data")
+    }
+
+    private fun excludeNullValuesAndLowQualityData(city: CityEntity): Boolean {
+        return city.dataQuality && with(city.realEstatesPrices) {
+            apartmentOneBedroomInCityCentre != null &&
+                    apartmentOneBedroomOutsideOfCentre != null &&
+                    apartment3BedroomsInCityCentre != null &&
+                    apartment3BedroomsOutsideOfCentre != null
         }
     }
 
-
-    private fun getOneBedroom(): CityEntity {
-        return dataSource.getAllCitiesData()
-            .filter {
-                it.dataQuality
-                        && it.realEstatesPrices.apartmentOneBedroomInCityCentre != null
-                        && it.realEstatesPrices.apartmentOneBedroomOutsideOfCentre != null
-            }
-            .maxByOrNull {
-                it.realEstatesPrices.apartmentOneBedroomInCityCentre!! -
-                        it.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!!
-            }!!
-
-
+    private fun calculateTheRatioBetweenThePriceOfApartmentsInsideAndOutsideTheCity(city: CityEntity): Float {
+        return with(city.realEstatesPrices) {
+            (apartmentOneBedroomInCityCentre!! + apartment3BedroomsInCityCentre!!) /
+                    (apartment3BedroomsOutsideOfCentre!! + apartmentOneBedroomOutsideOfCentre!!)
+        }
     }
-
-    private fun getThreeBedroom(): CityEntity {
-        return dataSource.getAllCitiesData()
-            .filter {
-                it.dataQuality
-                        && it.realEstatesPrices.apartment3BedroomsInCityCentre != null
-                        && it.realEstatesPrices.apartment3BedroomsOutsideOfCentre != null
-            }
-            .maxByOrNull {
-                it.realEstatesPrices.apartment3BedroomsInCityCentre!! -
-                        it.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
-            }!!
-    }
-
-
 }
