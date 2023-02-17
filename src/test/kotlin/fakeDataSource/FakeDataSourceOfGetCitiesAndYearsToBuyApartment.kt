@@ -6,7 +6,7 @@ import model.*
 class FakeDataSourceOfGetCitiesAndYearsToBuyApartment :CostOfLivingDataSource {
 
 
-    private val fakeDataSource = listOf<CityEntity>(
+    private val fakeDataSource = listOf(
         CityEntity(cityName="Asheville", country="Sri Lanka",
             mealsPrices= MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
             drinksPrices= DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
