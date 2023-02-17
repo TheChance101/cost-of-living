@@ -8,7 +8,7 @@ class GetTopFashionCitiesInteractor(
 ) {
     fun execute(limit: Int): List<String> {
         return dataSource.getAllCitiesData()
-          //  .filter(::excludeNullPrices)
+            .filter(::excludeNullPricesAndLowQualityData)
            // .sortedBy(::calculateClothesPrices)
             .take(limit)
             .map { it.cityName }
@@ -19,6 +19,12 @@ class GetTopFashionCitiesInteractor(
             onePairOfNikeRunningShoesMidRange,
             oneSummerDressInAChainStoreZaraHAndM,
             onePairOfMenLeatherBusinessShoes)
+    }
+
+    private fun excludeNullPricesAndLowQualityData(city: CityEntity): Boolean {
+        return city.run {
+            clothesPrices.getAllPricesNotNull().isNotEmpty() && dataQuality
+        }
     }
 }
 
