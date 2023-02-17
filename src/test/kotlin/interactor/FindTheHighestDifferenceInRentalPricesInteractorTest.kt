@@ -18,7 +18,7 @@ class FindTheHighestDifferenceInRentalPricesInteractorTest {
         val actualCity = interactor.execute()
         //then
         assertEquals(expectedCity, actualCity)
-    }
+    } 
 
     @Test
     fun `should return city with highest difference price when given mixed data`() {
