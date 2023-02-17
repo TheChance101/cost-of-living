@@ -1,8 +1,9 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import interactor.*
-import java.lang.System.exit
-import kotlin.system.exitProcess
+
+const val TEAM_VELVET_MESSAGE_WELCOME: String = "The Red Velvet team welcomes you in our application"
+
 
 val csvParser = CsvParser()
 val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
@@ -26,9 +27,6 @@ fun main() {
             } catch (error: Exception) {
                 println("please enter the correct value")
             }
-        } else {
-            exitFromApplication()
-            continue
         }
     }
 }
@@ -38,7 +36,7 @@ fun getResultDependOnTheOption() {
         1 -> {
             horizontalRule()
             print("enter the limit number of countries you want ")
-            getTop10CountriesWithHighTaxOnCarbonatedDrinks((readln().toInt()))
+            getTopCountriesWithHighTaxOnCarbonatedDrinks((readln().toInt()))
             horizontalRule()
         }
 
@@ -47,7 +45,6 @@ fun getResultDependOnTheOption() {
             getCitiesNamesSortedCheapestBananaPrices()
             horizontalRule()
         }
-
         3 -> {
             horizontalRule()
             getCityHasCheapestInternetConnection()
@@ -104,9 +101,12 @@ fun getResultDependOnTheOption() {
     }
 }
 
+
 fun welcomeUserMessageWithUserNameOrNot(nameOfUser: String?) =
-    println(nameOfUser?.let { "Hi $nameOfUser Welcome In our Application " }
-        ?: "Hi There Welcome In our Application")
+    if (nameOfUser != null && nameOfUser.trim() != "")
+        println("Hi $nameOfUser $TEAM_VELVET_MESSAGE_WELCOME")
+    else println("Hi There $TEAM_VELVET_MESSAGE_WELCOME")
+
 
 fun getUserName(): String {
     print("please enter your name : ")
@@ -126,7 +126,6 @@ fun getUserChooseStartOrNot(): Boolean {
         horizontalRule()
         println("you don't choose the correct option ")
         horizontalRule()
-        exitFromApplication()
         false
     }
 }
@@ -155,67 +154,66 @@ fun getChooseOptionNumber(): Int {
     return readln().toInt()
 }
 
+fun horizontalRule() {
+    println("_________________________________________________________________________")
+}
+
 /*******************************************************
 Side of Get Data element -> Instance Zone
  *********************************************************/
-fun getTop10CountriesWithHighTaxOnCarbonatedDrinks(limit: Int) {
-    val getTop10CountriesWithHighTaxOnCarbonatedDrinks = GetTop10CountriesWithHighTaxOnCarbonatedDrinks(dataSource)
-    println(getTop10CountriesWithHighTaxOnCarbonatedDrinks.execute(10, data))
-}
+fun getTopCountriesWithHighTaxOnCarbonatedDrinks(limit: Int) {
+    val getTopCountriesWithHighTaxOnCarbonatedDrinks = GetTop10CountriesWithHighTaxOnCarbonatedDrinks(dataSource)
+    val interactWithData = getTopCountriesWithHighTaxOnCarbonatedDrinks.execute(limit, data)
+    interactWithData.forEachIndexed{index,element ->
+        println("""
+               ${index+1}-Country Name => ${element.first}
+            """.trimIndent())
 
+    }}
 fun getCitiesNamesSortedCheapestBananaPrices() {
-    val getCitiesNamesSortedCheapestBananaPrices = GetCitiesNamesSortedCheapestBananaPrices()
-    println(getCitiesNamesSortedCheapestBananaPrices.execute(*inputCitiesEntity))
-}
-
-fun getCityHasCheapestInternetConnection() {
-    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor()
-    println(getCityHasCheapestInternetConnectionInteractor.execute(data))
-}
-
-fun getMostSuitableCity() {
-    val getMostSuitableCity = GetMostSuitableCityInteractor()
-    val list = getMostSuitableCity.getAllCities(dataSource)
-    val cityNameResult = getMostSuitableCity.execute(list)
-    println(cityNameResult)
-}
-
-fun getCitiesNameToBuyApartmentFaster(salary: Int, limit: Int, squareMeter: Int) {
-    val getCitiesNameToBuyApartmentFasterInteractor =
-        GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
-    println(getCitiesNameToBuyApartmentFasterInteractor.execute(salary, limit, squareMeter))
-//    println(getCitiesNameToBuyApartmentFasterInteractor.execute(1000, 10, 100))
-}
-
-fun getTopFashionCitiesNames(limit: Int) {
-    val topFashionCitiesNames = GetTopFashionCitiesNamesInteractor(dataSource)
-    topFashionCitiesNames.execute(limit)
-}
-
-fun getHighestSalaryAverageCities(limit: Int, dataSource: CostOfLivingDataSource) {
-    val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
-    println(getHighestSalaryAverageCities.execute(limit))
-}
-
-fun getSalaryAverageAndCitiesNamesInCountry(countryName: String, dataSource: CostOfLivingDataSource) {
-    val salaryAverageAndCitiesNamesInCountry = GetSalaryAverageAndCitiesNamesInCountryInteractor(dataSource)
-    println(salaryAverageAndCitiesNamesInCountry.execute(countryName))
-}
-
-
-fun horizontalRule() {
-    println("________________________________________________________")
-}
-
-fun exitFromApplication() {
-    print("Do you need Exit from program (y/n)")
-    val userChooseExitOrStay: String = readln()
-    if (userChooseExitOrStay.lowercase().trimMargin() == "y") {
-        println(
-            """Let's see you again
-                "Exiting ...
-                """
-        )
-        exitProcess(0)
+        val getCitiesNamesSortedCheapestBananaPrices = GetCitiesNamesSortedCheapestBananaPrices()
+        println(getCitiesNamesSortedCheapestBananaPrices.execute(*inputCitiesEntity))
     }
-}
+
+    fun getCityHasCheapestInternetConnection() {
+        val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor()
+        val interactWithData = getCityHasCheapestInternetConnectionInteractor.execute(data)
+        println("""
+City Cheapest Internet Connection with country name and 
+city name => ${interactWithData?.cityName}
+Country => ${interactWithData?.country}
+Internet 60 Mbps => ${interactWithData?.servicesPrices?.internet60MbpsOrMoreUnlimitedDataCableAdsl}$
+""".trimIndent())
+    }
+    fun getMostSuitableCity() {
+        val getMostSuitableCity = GetMostSuitableCityInteractor()
+        val list = getMostSuitableCity.getAllCities(dataSource)
+        val cityNameResult = getMostSuitableCity.execute(list)
+        println(cityNameResult)
+    }
+
+    fun getCitiesNameToBuyApartmentFaster(salary: Int, limit: Int, squareMeter: Int) {
+        val getCitiesNameToBuyApartmentFasterInteractor =
+            GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
+        println(getCitiesNameToBuyApartmentFasterInteractor.execute(salary, limit, squareMeter))
+//    println(getCitiesNameToBuyApartmentFasterInteractor.execute(1000, 10, 100))
+    }
+
+    fun getTopFashionCitiesNames(limit: Int) {
+        val topFashionCitiesNames = GetTopFashionCitiesNamesInteractor(dataSource)
+        topFashionCitiesNames.execute(limit)
+    }
+
+    fun getHighestSalaryAverageCities(limit: Int, dataSource: CostOfLivingDataSource) {
+        val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
+        println(getHighestSalaryAverageCities.execute(limit))
+    }
+
+    fun getSalaryAverageAndCitiesNamesInCountry(countryName: String, dataSource: CostOfLivingDataSource) {
+        val salaryAverageAndCitiesNamesInCountry = GetSalaryAverageAndCitiesNamesInCountryInteractor(dataSource)
+        println(salaryAverageAndCitiesNamesInCountry.execute(countryName))
+    }
+
+
+
+
