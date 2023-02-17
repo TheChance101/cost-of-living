@@ -1,13 +1,10 @@
 package interactor
 
-import fakeData.FakeData
 import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.unmockkAll
 import mockData.MockCityEntity.createMockCity
-import model.CityEntity
-import model.ClothesPrices
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -77,7 +74,7 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
         // when get sorted cities list by cheapest price
         val cities = interactor.execute(*mockCity.toTypedArray())
         // then check if getting correct cities
-        assertEquals(listOf("City 5","City 1", "City 3"), cities)
+        assertEquals(listOf("City 5", "City 1", "City 3"), cities)
     }
 
     @Test
@@ -94,6 +91,7 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
         // then check if getting the only correct cities
         assertEquals(listOf("City 1"), cities)
     }
+
     @Test
     fun `should return empty list of repeated city when given list of repeated city with null banana price`() {
         // given varargs of repeated cities with null banana price
@@ -120,9 +118,9 @@ internal class GetCheapestBananaCitiesNamesInteractorTest {
             createMockCity("City 3", 4.9f),
         )
         every { mockData.getAllCitiesData() } returns mockCity
-        // when get sorted cities list by cheapest price
+        // when get sorted cities list by cheapest banana price
         val cities = interactor.execute(*mockCity.toTypedArray())
         // then check if getting empty list
-        assertEquals(listOf("City 2" , "City 3"), cities)
+        assertEquals(listOf("City 2", "City 3"), cities)
     }
 }
