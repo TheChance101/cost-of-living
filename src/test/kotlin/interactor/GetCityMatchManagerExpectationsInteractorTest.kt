@@ -18,25 +18,27 @@ class GetCityMatchManagerExpectationsInteractorTest {
         interactor = GetCityMatchManagerExpectationsInteractor(dataSource)
     }
 
+
     @Test
-    fun `should return true when country is not in one of north america countries`() {
-        // given a list of countries that are in north america
+    fun `should return false when country is in one of north america countries`() {
+        // given a list of required countries
         val givenList = GetCityMatchManagerExpectationsInteractor.onlyRequiredCountries
-        // when we check if the countries are in north america
+        // when we check if it is one of the required countries
+        val result = interactor.execute()
+        // then we should get false
+        assertFalse(givenList.contains(result.country))
+    }
+
+    @Test
+    fun `should return true when country is not in one of required countries`() {
+        // given a list of required countries
+        val givenList = GetCityMatchManagerExpectationsInteractor.onlyRequiredCountries
+        // when we check if it is not one of the required countries
         val result = interactor.execute()
         // then we should get true
         assertTrue(!givenList.contains(result.country))
     }
 
-    @Test
-    fun `should return false when country is in one of north america countries`() {
-        // given a list of countries that are in north america
-        val givenList = GetCityMatchManagerExpectationsInteractor.onlyRequiredCountries
-        // when we check if the countries are in north america
-        val result = interactor.execute()
-        // then we should get true
-        assertFalse(givenList.contains(result.country))
-    }
 
     @Test
     fun `should return meal price when mealFor2PeopleMidRangeRestaurant is not null`() {
