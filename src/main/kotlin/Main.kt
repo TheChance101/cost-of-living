@@ -2,7 +2,6 @@ import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import interactor.*
 
-
 fun main() {
     val csvParser = CsvParser()
     val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
@@ -15,7 +14,7 @@ fun main() {
 
     val getCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor =
         GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor(dataSource)
-    println(getCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor.execute(1))
+    println(getCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor.execute(limit))
     printSeparationLine()
 
     val getHighestSalaryAverageCities = GetAverageSalariesInCountryInteractor(dataSource)
@@ -24,7 +23,7 @@ fun main() {
 
     val getCityWithHighestRentalPriceDifferenceInteractor =
         GetCityWithHighestRentalPriceDifferenceInteractor(dataSource)
-    println(getCityWithHighestRentalPriceDifferenceInteractor.execute())
+    println(getCityWithHighestRentalPriceDifferenceInteractor.execute(dataSource.getAllCitiesData()))
     printSeparationLine()
 
     val getTopFiveCitesNameInClothesFromFamousBrandsInteractor =
@@ -32,8 +31,8 @@ fun main() {
     println(getTopFiveCitesNameInClothesFromFamousBrandsInteractor.execute())
     printSeparationLine()
 
-    val getFastest10CitiesToBuyAPTInteractor = GetFastest10CitiesToBuyAPTInteractor(dataSource)
-    println(getFastest10CitiesToBuyAPTInteractor.execute(1))
+    val getFastest10CitiesToBuyAPTInteractor = GetFastestCitiesToBuyApartmentInteractor(dataSource)
+    println(getFastest10CitiesToBuyAPTInteractor.execute(limit))
     printSeparationLine()
 
     val  getCheapestCitiesSalesBananas = GetCheapestCitiesSalesBananas()
@@ -45,7 +44,7 @@ fun main() {
     printSeparationLine()
 
     val getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor =
-        GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(dataSource)
+        GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(dataSource)
     println(getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.execute(limit))
     printSeparationLine()
 

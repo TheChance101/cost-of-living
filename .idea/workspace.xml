@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="98a9a448-ff8f-4aa7-a8a9-6abeb012692b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCityHasHighestDifferentPayRentingApartment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCityHasHighestDifferentPayRentingApartment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetCityHasHighestDifferentPayRentingApartmentTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetCityHasHighestDifferentPayRentingApartmentTest.kt" afterDir="false" />
+=======
+    <list default="true" id="3ef918a9-12ad-40fd-a1bc-e421df9a11b1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/interactor/GetFastestCitiesToBuyApartmentInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetFastestCitiesToBuyApartmentInteractor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetFastestCitiesToBuyApartmentInteractorTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetFastestCitiesToBuyApartmentInteractorTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest.kt" afterDir="false" />
+>>>>>>> origin/development
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +28,12 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+<<<<<<< HEAD
         <task path="$PROJECT_DIR$">
           <activation />
         </task>
+=======
+>>>>>>> origin/development
         <projects_view>
           <tree_state>
             <expand />
@@ -36,16 +46,28 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+<<<<<<< HEAD
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2LsK085ntOlWz4fB5vnPnJ0JBcn" />
+=======
+        <entry key="$PROJECT_DIR$" value="fix/most_suitable_city_for_saving" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2LpvZlPmhBGzA8tglVnr8YegZVs" />
+>>>>>>> origin/development
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -76,17 +98,38 @@
       </method>
     </configuration>
     <configuration name="TestGetCityWithHighestRentalPriceDifferenceInteractor" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+=======
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/LearningCorner/Programmes/Za Chance/cost-of-living&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Gradle.GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest">
+    <configuration name="GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+>>>>>>> origin/development
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
+<<<<<<< HEAD
         <option name="scriptParameters" value="--tests &quot;interactor.TestGetCityWithHighestRentalPriceDifferenceInteractor&quot;" />
+=======
+        <option name="scriptParameters" value="" />
+>>>>>>> origin/development
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
             <option value=":test" />
+<<<<<<< HEAD
+=======
+            <option value="--tests" />
+            <option value="&quot;interactor.GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest&quot;" />
+>>>>>>> origin/development
           </list>
         </option>
         <option name="vmOptions" />
@@ -96,18 +139,31 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+<<<<<<< HEAD
     <configuration name="TestGetCityWithHighestRentalPriceDifferenceInteractor.Should return the city with the highest rental price difference regardless of capitalization" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+=======
+    <configuration name="GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+>>>>>>> origin/development
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
+<<<<<<< HEAD
         <option name="scriptParameters" value="--tests &quot;interactor.TestGetCityWithHighestRentalPriceDifferenceInteractor.Should return the city with the highest rental price difference regardless of capitalization&quot;" />
+=======
+        <option name="scriptParameters" value="" />
+>>>>>>> origin/development
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
             <option value=":test" />
+<<<<<<< HEAD
+=======
+            <option value="--tests" />
+            <option value="&quot;interactor.GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest&quot;" />
+>>>>>>> origin/development
           </list>
         </option>
         <option name="vmOptions" />
@@ -117,18 +173,31 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+<<<<<<< HEAD
     <configuration name="TestGetCityWithHighestRentalPriceDifferenceInteractor.ShouldReturn_AnEmptyString_IfNoCity_WithHigh_QualityDataIsFound" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+=======
+    <configuration name="GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest.testUserInput_PositiveInput" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+>>>>>>> origin/development
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
+<<<<<<< HEAD
         <option name="scriptParameters" value="--tests &quot;interactor.TestGetCityWithHighestRentalPriceDifferenceInteractor.ShouldReturn_AnEmptyString_IfNoCity_WithHigh_QualityDataIsFound&quot;" />
+=======
+        <option name="scriptParameters" value="" />
+>>>>>>> origin/development
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
             <option value=":test" />
+<<<<<<< HEAD
+=======
+            <option value="--tests" />
+            <option value="&quot;interactor.GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest.testUserInput_PositiveInput&quot;" />
+>>>>>>> origin/development
           </list>
         </option>
         <option name="vmOptions" />
@@ -138,6 +207,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+<<<<<<< HEAD
     <configuration name="GetCityHasHighestDifferentPayRentingApartmentKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <module name="Cost-of-living-app.main" />
       <option name="VM_PARAMETERS" />
@@ -147,10 +217,15 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="MAIN_CLASS_NAME" value="interactor.GetCityHasHighestDifferentPayRentingApartmentKt" />
       <option name="WORKING_DIRECTORY" />
+=======
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Cost-of-living-app" />
+>>>>>>> origin/development
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <module name="Cost-of-living-app.main" />
       <option name="VM_PARAMETERS" />
@@ -160,23 +235,35 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="MAIN_CLASS_NAME" value="MainKt" />
       <option name="WORKING_DIRECTORY" />
+=======
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Cost-of-living-app" />
+      <option name="filePath" />
+>>>>>>> origin/development
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+<<<<<<< HEAD
         <item itemvalue="Gradle.TestGetCityWithHighestRentalPriceDifferenceInteractor" />
         <item itemvalue="Gradle.TestGetCityWithHighestRentalPriceDifferenceInteractor.Should return the city with the highest rental price difference regardless of capitalization" />
         <item itemvalue="Gradle.TestGetCityWithHighestRentalPriceDifferenceInteractor.ShouldReturn_AnEmptyString_IfNoCity_WithHigh_QualityDataIsFound" />
         <item itemvalue="Application.GetCityHasHighestDifferentPayRentingApartmentKt" />
         <item itemvalue="Application.MainKt" />
+=======
+        <item itemvalue="Gradle.GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest" />
+        <item itemvalue="Gradle.GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest" />
+        <item itemvalue="Gradle.GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest.testUserInput_PositiveInput" />
+>>>>>>> origin/development
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="98a9a448-ff8f-4aa7-a8a9-6abeb012692b" name="Default Changelist" comment="" />
       <created>1676654125627</created>
       <option name="number" value="Default" />
@@ -194,6 +281,16 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+=======
+      <changelist id="3ef918a9-12ad-40fd-a1bc-e421df9a11b1" name="Changes" comment="" />
+      <created>1676580895534</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1676580895534</updated>
+    </task>
+    <servers />
+  </component>
+>>>>>>> origin/development
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -204,6 +301,9 @@
         </entry>
       </map>
     </option>
+<<<<<<< HEAD
     <option name="oldMeFiltersMigrated" value="true" />
+=======
+>>>>>>> origin/development
   </component>
 </project>
