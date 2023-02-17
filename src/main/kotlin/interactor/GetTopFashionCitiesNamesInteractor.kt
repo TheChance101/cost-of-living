@@ -1,8 +1,9 @@
 package interactor
 
 import model.CityEntity
-import model.averagePrice
-import model.hasNoNull
+import utils.Constants.INVALID_LIMIT_EXCEPTION_MSG
+import utils.areNotNull
+import utils.average
 
 
 class GetTopFashionCitiesNamesInteractor(
@@ -14,14 +15,15 @@ class GetTopFashionCitiesNamesInteractor(
             .getAllCitiesData()
             .asSequence()
             .filter(::excludeNullPricesAndLowQualityData)
-            .sortedBy { it.clothesPrices.averagePrice() }
+            .sortedBy { it.clothesPrices.average() }
             .distinctBy { Pair(it.cityName, it.country) }
-            .takeIf { limit > 0 }
+            .takeIf { limit >= 0 }
+            ?.take(limit)
             ?.map { it.cityName }
-            ?.toList() ?: emptyList()
+            ?.toList() ?: throw InvalidLimitException(INVALID_LIMIT_EXCEPTION_MSG)
     }
 
     private fun excludeNullPricesAndLowQualityData(city: CityEntity) =
-        city.clothesPrices.hasNoNull() && city.dataQuality
+        city.clothesPrices.areNotNull() && city.dataQuality
 
 }
