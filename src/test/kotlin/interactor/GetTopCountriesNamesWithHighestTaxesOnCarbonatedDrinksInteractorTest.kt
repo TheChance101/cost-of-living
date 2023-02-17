@@ -1,6 +1,5 @@
 package interactor
 
-import fakeDataSource.FakeDataSource
 import fakeDataSource.TaxesFakeDataSource
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -11,10 +10,10 @@ import org.junit.jupiter.api.function.Executable
 import kotlin.IllegalArgumentException
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
+class GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
 
     private lateinit var getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor:
-            GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
+            GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
 
     private lateinit var taxesFakeDataSource: TaxesFakeDataSource
 
@@ -22,7 +21,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
     fun setUp() {
         taxesFakeDataSource = TaxesFakeDataSource()
         getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor =
-            GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(
+            GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(
                 taxesFakeDataSource.getTwentyFakeCityData())
     }
 
@@ -45,8 +44,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         // given
         val testCity = taxesFakeDataSource.checkDataQuality()
         // When
-        val result = getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
-            .excludeLowQualityData(testCity)
+        val result = excludeLowQualityData(testCity)
         // then
         assertTrue(result)
     }
@@ -56,8 +54,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         // given
         val testCity = taxesFakeDataSource.getLowQualityAssertion()
         // when
-        val result = getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
-            .excludeLowQualityData(testCity)
+        val result = excludeLowQualityData(testCity)
         // then
         assertFalse(result)
     }
@@ -69,8 +66,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         // given
         val testCity = taxesFakeDataSource.getValidCountry()
         // when
-        val result = getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
-            .excludeInvalidCountries(testCity)
+        val result = excludeInvalidCountries(testCity)
         // then
         assertTrue(result)
     }
@@ -80,8 +76,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         // given
         val testCity = taxesFakeDataSource.getEmptyCountry()
         // when
-        val result = getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
-            .excludeInvalidCountries(testCity)
+        val result = excludeInvalidCountries(testCity)
         // then
         assertFalse(result)
     }
@@ -91,8 +86,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         // given
         val testCity = taxesFakeDataSource.getInvalidLengthCity()
         // when
-        val result = getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
-            .excludeInvalidCountries(testCity)
+        val result = excludeInvalidCountries(testCity)
         // then
         assertFalse(result)
     }
@@ -102,8 +96,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         // given
         val testCity = taxesFakeDataSource.getInvalidLengthCity()
         // when
-        val result = getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
-            .excludeInvalidCountries(testCity)
+        val result = excludeInvalidCountries(testCity)
         // then
         assertFalse(result)
     }
@@ -113,8 +106,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         // given
         val city = taxesFakeDataSource.getCountryNameContainsDigits()
         // when
-        val result = getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
-            .excludeInvalidCountries(city)
+        val result = excludeInvalidCountries(city)
         // then
         assertFalse(result)
     }
@@ -124,8 +116,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         // given
         val city = taxesFakeDataSource.getCountryNameContainsSymbols()
         // when
-        val result = getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
-            .excludeInvalidCountries(city)
+        val result = excludeInvalidCountries(city)
         // then
         assertFalse(result)
     }
@@ -138,8 +129,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         val testCity = taxesFakeDataSource.getDataHasDrinkPriceIsNotNull()
 
         // when
-        val result = getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
-            .excludeInvalidDrinksPrice(testCity)
+        val result = excludeInvalidDrinksPrice(testCity)
         // then
         assertTrue(result)
     }
@@ -149,8 +139,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         // given
         val testCity = taxesFakeDataSource.getNullDrinkPrice()
         // when
-        val result = getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
-            .excludeInvalidDrinksPrice(testCity)
+        val result = excludeInvalidDrinksPrice(testCity)
         // then
         assertFalse(result)
     }
@@ -160,8 +149,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         // given
         val city = taxesFakeDataSource.getValidPrice()
         // when
-        val result = getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
-            .excludeInvalidDrinksPrice(city)
+        val result = excludeInvalidDrinksPrice(city)
         // then
         assertTrue(result)
     }
@@ -171,8 +159,7 @@ class GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
         // given
         val city = taxesFakeDataSource.getInvalidDrinkPrices()
         // when
-        val result = getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor
-            .excludeInvalidDrinksPrice(city)
+        val result = excludeInvalidDrinksPrice(city)
         // then
         assertFalse(result)
     }

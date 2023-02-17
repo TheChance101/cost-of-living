@@ -11,37 +11,29 @@ class TaxesFakeDataSource {
         }
 
     }
-    fun getInvalidLengthCity():CityEntity{
-        return invalidLengthCity
-    }
-    fun getCountryNameContainsDigits():CityEntity{
-        return countryNameContainsDigits
-    }
 
-    fun getCountryNameContainsSymbols():CityEntity{
-        return countryNameContainsSymbols
-    }
+    fun getInvalidLengthCity() = invalidLengthCity
 
-    fun getDataHasDrinkPriceIsNotNull():CityEntity{
-        return drinkPriceIsNotNull
-    }
-
-    fun checkDataQuality():CityEntity{
-        return isDataQualityHigh
-    }
-
-    fun getLowQualityAssertion():CityEntity{
-        return lowQualityAssertion
-    }
-
-    fun getValidCountry():CityEntity{
-        return validCountry
-    }
+    fun getCountryNameContainsDigits() = countryNameContainsDigits
 
 
-    fun createFakeCity(
+    fun getCountryNameContainsSymbols() = countryNameContainsSymbols
+
+
+    fun getDataHasDrinkPriceIsNotNull() = drinkPriceIsNotNull
+
+
+    fun checkDataQuality() = isDataQualityHigh
+
+
+    fun getLowQualityAssertion() = lowQualityAssertion
+
+    fun getValidCountry() = validCountry
+
+
+    private fun createFakeCity(
         countryName: String,
-        drinksPrice: Float?,
+        cokePrice: Float?,
         dataQuality: Boolean
     ): CityEntity = CityEntity(
         cityName = "Cairo",
@@ -53,7 +45,7 @@ class TaxesFakeDataSource {
         ),
         drinksPrices = DrinksPrices(
             cappuccinoRegularInRestaurants = 2.0f,
-            cokePepsiAThirdOfLiterBottleInRestaurants = drinksPrice,
+            cokePepsiAThirdOfLiterBottleInRestaurants = cokePrice,
             waterAThirdOfLiterBottleInRestaurants = 1.0f,
             milkRegularOneLiter = 3.8f,
             waterOneAndHalfLiterBottleAtTheMarket = 2.0f
@@ -180,9 +172,9 @@ class TaxesFakeDataSource {
     )
 
     private val countryNameContainsSymbols = createFakeCity(
-    "Symbols!@#",
-    17.5f,
-    true
+        "Symbols!@#",
+        17.5f,
+        true
     )
 
     private val invalidLengthCity = createFakeCity(
@@ -192,9 +184,9 @@ class TaxesFakeDataSource {
     )
 
     private val countryNameContainsDigits = createFakeCity(
-    "a123456",
-    17.5f,
-    true
+        "a123456",
+        17.5f,
+        true
     )
 
     val getTwentyFakeData = listOf(

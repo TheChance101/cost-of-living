@@ -44,7 +44,7 @@ fun main() {
     printSeparationLine()
 
     val getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor =
-        GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(dataSource)
+        GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(dataSource)
     println(getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.execute(limit))
     printSeparationLine()
 
