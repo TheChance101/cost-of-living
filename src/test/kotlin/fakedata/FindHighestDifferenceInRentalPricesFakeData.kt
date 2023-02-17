@@ -222,7 +222,6 @@ class FindHighestDifferenceInRentalPricesFakeData : CostOfLivingDataSource {
             )
         )
 }
-
 class MixedFakeData : CostOfLivingDataSource {
     override fun getAllCitiesData() =
         listOf(
