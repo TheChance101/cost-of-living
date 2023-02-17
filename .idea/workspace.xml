@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98a9a448-ff8f-4aa7-a8a9-6abeb012692b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCityHasHighestDifferentPayRentingApartment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCityHasHighestDifferentPayRentingApartment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetCityHasHighestDifferentPayRentingApartmentTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetCityHasHighestDifferentPayRentingApartmentTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -130,7 +128,7 @@
       <workItem from="1676657272588" duration="98000" />
       <workItem from="1676657428603" duration="85000" />
       <workItem from="1676657587645" duration="222000" />
-      <workItem from="1676657910244" duration="4244000" />
+      <workItem from="1676657910244" duration="4622000" />
     </task>
     <servers />
   </component>
