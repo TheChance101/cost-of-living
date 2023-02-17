@@ -27,7 +27,7 @@ class GetCitiesAndYearsToBuyApartmentInteractor(
                 .filter(::excludeNullValueAndSalaryIsZeroAndLowQualityData)
                 .sortedBy(::calculateYearsNeededToBuyApartment)
                 .take(limit)
-                .associate { it.cityName to calculateYearsNeededToBuyApartment(it) }
+                .associateBy (CityEntity::cityName , ::calculateYearsNeededToBuyApartment )
     }
 
 
