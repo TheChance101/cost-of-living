@@ -22,7 +22,7 @@ internal class GetLowestAveragePricesForFruitsAndVegetablesInteractorTest {
     fun `should return empty list when the limit is equal to zero`() {
         //given limit equal to zero
         val limit = 0
-        //when getting list of cities names with lowest average prices for fruits and vegetables
+        //when getting list of cities names with the lowest average prices for fruits and vegetables
         val actual = interactor.execute(limit)
         //then
         val expected = emptyList<String>()
@@ -33,7 +33,7 @@ internal class GetLowestAveragePricesForFruitsAndVegetablesInteractorTest {
     fun `should return list of cities names its size is equal to limit when correct cites is more than limit`() {
         //given limit less than number of correct cities
         val limit = 4
-        //when getting list of cities names with lowest average prices for fruits and vegetables
+        //when getting list of cities names with the lowest average prices for fruits and vegetables
         val actual = interactor.execute(limit)
         //then
         val expected = listOf(
@@ -49,7 +49,7 @@ internal class GetLowestAveragePricesForFruitsAndVegetablesInteractorTest {
     fun `should return list of cities names its size is equal to limit when  correct cites is equal to limit`() {
         //given limit equal to number of correct cities
         val limit = 7
-        //when getting list of cities names with lowest average prices for fruits and vegetables
+        //when getting list of cities names with the lowest average prices for fruits and vegetables
         val actual = interactor.execute(limit)
         //then
         val expected = listOf(
@@ -68,7 +68,7 @@ internal class GetLowestAveragePricesForFruitsAndVegetablesInteractorTest {
     fun `should return list of cities names its size equals correct cites when the limit is more than correct cites`(){
         //given limit more than number of correct cities
         val limit = 10
-        //when getting list of cities names with lowest average prices for fruits and vegetables
+        //when getting list of cities names with the lowest average prices for fruits and vegetables
         val actual = interactor.execute(limit)
         //then
         val expected = listOf(
