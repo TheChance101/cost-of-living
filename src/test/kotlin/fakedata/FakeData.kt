@@ -1,4 +1,5 @@
 package fakedata
+
 import interactor.CostOfLivingDataSource
 import model.*
 
@@ -299,7 +300,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
                 pricePerSquareMeterToBuyApartmentInCityCentre = null,
                 pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
             ),
-            averageMonthlyNetSalaryAfterTax = null,
+            averageMonthlyNetSalaryAfterTax = 4000f,
             dataQuality = false
         )
     }
@@ -340,7 +341,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
             servicesPrices = ServicesPrices(
                 basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
                 oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
-                internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = 50f,
                 fitnessClubMonthlyFeeForOneAdult = 100f,
                 tennisCourtRentOneHourOnWeekend = 100f,
                 cinemaInternationalReleaseOneSeat = 10f,
