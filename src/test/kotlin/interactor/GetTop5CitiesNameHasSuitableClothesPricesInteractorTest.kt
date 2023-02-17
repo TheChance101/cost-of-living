@@ -1,6 +1,5 @@
 package interactor
 
-import model.CityNameClothesPrices
 import org.junit.jupiter.api.*
 
 import org.junit.jupiter.api.Assertions.assertThrows
@@ -8,7 +7,7 @@ import org.junit.jupiter.api.function.Executable
 import kotlin.test.assertEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class GetTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractorTest {
+internal class GetTop5CitiesNameHasSuitableClothesPricesInteractorTest {
 
     private lateinit var fakeData: MutableList<CityNameClothesPrices>
     private lateinit var getTop5CitiesNameHasSuitableClothesPricesInteractor: GetTop5CitiesNameHasSuitableClothesPricesInteractor
