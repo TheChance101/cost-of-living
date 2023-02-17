@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetTopFashionCitiesNamesInteractorTest {
@@ -22,9 +23,9 @@ internal class GetTopFashionCitiesNamesInteractorTest {
         // given limit
         val limit = 5
         // when get top 5 cities names
-        val result = getTopFashionCitiesNamesInteractor.execute(limit).size
-        // then result should only contain the required number of cities
-        assertEquals(limit, result)
+        val actual = getTopFashionCitiesNamesInteractor.execute(limit).size
+        // then actual should only contain the required number of cities
+        assertEquals(limit, actual)
     }
 
     @Test
@@ -32,7 +33,7 @@ internal class GetTopFashionCitiesNamesInteractorTest {
         // given limit
         val limit = 5
         // when get top fashion cities names
-        val result = getTopFashionCitiesNamesInteractor.execute(limit)
+        val actual = getTopFashionCitiesNamesInteractor.execute(limit)
         val expected = listOf(
             "Dhangadhi",
             "Narayanganj",
@@ -40,8 +41,8 @@ internal class GetTopFashionCitiesNamesInteractorTest {
             "Kasese",
             "Sri Jayewardenepura Kotte"
         )
-        // then result should be equal to expected list
-        assertEquals(expected, result)
+        // then actual should be equal to expected list
+        assertEquals(expected, actual)
     }
 
     @Test
@@ -49,19 +50,20 @@ internal class GetTopFashionCitiesNamesInteractorTest {
         // given limit
         val limit = 0
         // when get top fashion cities names
-        val isEmpty = getTopFashionCitiesNamesInteractor.execute(limit).isEmpty()
-        // then result should be empty list
-        assertTrue(isEmpty)
+        val actual = getTopFashionCitiesNamesInteractor.execute(limit).isEmpty()
+        // then actual should be empty list
+        assertTrue(actual)
     }
 
     @Test
-    fun `should return empty list when limit is negative`() {
+    fun `should throw exception when limit is negative`() {
         // given limit in negative
         val limit = -1
         // when get top fashion cities names
-        val isEmpty = getTopFashionCitiesNamesInteractor.execute(limit).isEmpty()
-        // then result should be empty list
-        assertTrue(isEmpty)
+        val actual = Executable { getTopFashionCitiesNamesInteractor.execute(limit) }
+        val expected = InvalidLimitException::class.java
+        // then should throw exception
+        assertThrows(expected, actual)
     }
 
     @Test
@@ -69,10 +71,10 @@ internal class GetTopFashionCitiesNamesInteractorTest {
         // given limit
         val limit = 1000
         // when get top fashion cities names
-        val result = getTopFashionCitiesNamesInteractor.execute(limit).size
+        val actual = getTopFashionCitiesNamesInteractor.execute(limit).size
         val expected = 9
-        // then result should be equal to a valid available list
-        assertEquals(expected, result)
+        // then actual should be equal to a valid available list
+        assertEquals(expected, actual)
     }
 
     @Test
@@ -80,10 +82,10 @@ internal class GetTopFashionCitiesNamesInteractorTest {
         // given limit
         val limit = 9
         // when get top fashion cities names
-        val result = getTopFashionCitiesNamesInteractor.execute(limit).size
+        val actual = getTopFashionCitiesNamesInteractor.execute(limit).size
         val expected = getTopFashionCitiesNamesInteractor.execute(limit).toSet().size
-        // then result should not contain duplicates
-        assertEquals(expected, result)
+        // then actual should not contain duplicates
+        assertEquals(expected, actual)
     }
 
 }
