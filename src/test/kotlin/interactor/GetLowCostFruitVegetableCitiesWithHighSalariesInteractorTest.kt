@@ -36,45 +36,45 @@ internal class GetLowCostFruitVegetableCitiesWithHighSalariesInteractorTest {
         //given the limit of cities is 10
         val limit = 10
         // when
-        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit)
+        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit).size
 
         //then
-        assertEquals(10, result.size)
+        assertEquals(10,result)
     }
-
     @Test
-    fun should_return_emptyList_when_inputLimitIsMoreThanListSize() {
+    fun should_return_allTheList_when_limitIsMoreThanListSize() {
         //given the limit of cities is 20
         val limit = 20
         // when
-        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit)
+        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit).size
+
         //then
-        assertTrue(result.isEmpty())
+        assertEquals(19,result)
     }
 
+
     @Test
-    fun should_return_emptyList_when_inputIsZero() {
+    fun should_return_emptyList_when_limitIsZero() {
         //given the limit of cities is 0
         val limit = 0
         // when
-        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit)
+        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit).isEmpty()
+
         //then
-        assertTrue(result.isEmpty())
+        assertTrue(result)
     }
 
     @Test
-    fun should_return_emptyList_when_inputIsNegative() {
+    fun should_return_emptyList_when_limitIsNegative() {
         //given the limit of cities is -1
         val limit = -1
         // when
-        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit)
+        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit).isEmpty()
+
         //then
-        assertTrue(result.isEmpty())
+        assertTrue(result)
     }
 
 
 
-
-
-
-}
+    }
