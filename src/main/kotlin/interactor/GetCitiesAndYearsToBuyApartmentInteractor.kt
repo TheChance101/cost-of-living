@@ -10,33 +10,29 @@ class GetCitiesAndYearsToBuyApartmentInteractor(
     private val dataSource: CostOfLivingDataSource ,
 ) {
 
-    fun execute(limit: Int): List<Pair<String, String?>> {
+    fun execute(limit: Int) : Map<String, String> {
         return dataSource
-            .getAllCitiesData()
-            .filter(::excludeNullValueAndLowQualityData)
-            .sortedBy(::calculateYearsNeededToBuyApartment)
-            .take(limit)
-            .map { Pair(it.cityName, calculateYearsNeededToBuyApartment(it)?.toYear()) }
+                .getAllCitiesData()
+                .filter(::excludeNullValueAndSalaryIsZeroAndLowQualityData)
+                .sortedBy(::calculateYearsNeededToBuyApartment)
+                .take(limit)
+                .associateBy (CityEntity::cityName , ::calculateYearsNeededToBuyApartment )
     }
 
 
-    private fun excludeNullValueAndLowQualityData(city: CityEntity): Boolean {
+    private fun excludeNullValueAndSalaryIsZeroAndLowQualityData(city: CityEntity): Boolean {
         return city.let {
             it.dataQuality &&
-                    it.cityName.trim() !=""&&
+                    it.cityName.trim().isNotEmpty() &&
                     it.averageMonthlyNetSalaryAfterTax != null &&
-                    it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre != null
+                    it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre != null &&
+                    it.averageMonthlyNetSalaryAfterTax > 0f
         }
     }
 
-    private fun calculateYearsNeededToBuyApartment(city: CityEntity): Float? {
-        return city.let {
-            it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre?.let {
-                it.times(ONE_HUNDRED_SQUARE_METER)
-            }?.toDiv( it.averageMonthlyNetSalaryAfterTax?.let {
-                it.times(TWELVE_MONTH)
-            })
-        }
+     fun calculateYearsNeededToBuyApartment(city: CityEntity): String {
+        return (city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!! * ONE_HUNDRED_SQUARE_METER)
+                .toDiv( city.averageMonthlyNetSalaryAfterTax!! * TWELVE_MONTH ).toYear()
     }
 }
 
