@@ -8,7 +8,7 @@ class FindTheHighestDifferenceInRentalPricesInteractor(private val dataSource: C
 
         val citiesData = dataSource.getAllCitiesData()
 
-        val highestDifference = citiesData
+        return citiesData
             .filter(::excludeNullAndLowQualityData)
             .maxByOrNull {
                 val inCityCenter =
@@ -21,7 +21,6 @@ class FindTheHighestDifferenceInRentalPricesInteractor(private val dataSource: C
 
               abs(inCityCenter - outsideCity)
             }
-        return highestDifference
     }
 
     private fun excludeNullAndLowQualityData(city: CityEntity): Boolean {
