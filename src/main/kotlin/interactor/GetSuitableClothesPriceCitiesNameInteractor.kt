@@ -10,7 +10,6 @@ class GetSuitableClothesPriceCitiesNameInteractor(
             .getAllCitiesData()
             .filter (::excludeCityWitNoBrand)
             .sortedBy(::getAveragePriceForClothes)
-            .distinctBy { it.cityName }
             .takeIf { limit >0 }
             ?.take(limit)
             ?.map { it.cityName } ?: emptyList()
