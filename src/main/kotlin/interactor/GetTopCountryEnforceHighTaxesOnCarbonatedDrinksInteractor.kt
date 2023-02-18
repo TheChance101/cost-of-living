@@ -2,7 +2,7 @@ package interactor
 
 import model.CityEntity
 
-class GetTopTenCountryEnforceHighTaxesOnCarbonatedDrinksInteractor(private val dataSource: CostOfLivingDataSource) {
+class GetTopCountryEnforceHighTaxesOnCarbonatedDrinksInteractor(private val dataSource: CostOfLivingDataSource) {
     fun execute(limit: Int): List<Pair<String, Float?>> {
         return dataSource.getAllCitiesData()
             .asSequence()
