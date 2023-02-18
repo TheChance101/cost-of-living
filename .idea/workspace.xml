@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="88c63e2d-e5e7-49a2-9aa9-a2a1420a74be" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/interactor/GetTopFiveCitesNameInClothesFromFamousBrandsInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetTopCitesNameInFashionTaskInteractor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetTopCitesNameInFshionTaskInteractorTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/FakeDataSourceForFashionTask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/FakeDataSourceForFashionTask.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetTopCitesNameInFshionTaskInteractorTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetTopCitesNameInFshionTaskInteractorTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +25,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand />
@@ -52,7 +58,7 @@
     "Git.Branch.Popup.ShowAllRemotes": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "E:/انهانسمينت/cost-of-living/src/main/kotlin/interactor"
+    "last_opened_file_path": "E:/chance/cost-of-living"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -65,6 +71,29 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.GetTopCitesNameInFshionTaskInteractorTest">
+    <configuration name="GetAverageSalariesInCountryInteractorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;interactor.GetAverageSalariesInCountryInteractorTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="GetTopCitesNameInFshionTaskInteractorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -88,7 +117,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GetTopCitesNameInFshionTaskInteractorTest.should_returnCorrectAverage_when_averagePriceIsCorrect" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -101,7 +130,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;interactor.GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest&quot;" />
+            <option value="&quot;interactor.GetTopCitesNameInFshionTaskInteractorTest.should_returnCorrectAverage_when_averagePriceIsCorrect&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -111,7 +140,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest.should_returnFive_when_theListSizeIsFive" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GetTopCitesNameInFshionTaskInteractorTest.should_returnTopFiveCities_when_inputIsCorrect" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -124,7 +153,30 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;interactor.GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest.should_returnFive_when_theListSizeIsFive&quot;" />
+            <option value="&quot;interactor.GetTopCitesNameInFshionTaskInteractorTest.should_returnTopFiveCities_when_inputIsCorrect&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="GetTopCitesNameInFshionTaskInteractorTest.should_returnTrue_When_ClothesPriceDataIsComplete" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;interactor.GetTopCitesNameInFshionTaskInteractorTest.should_returnTrue_When_ClothesPriceDataIsComplete&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -135,13 +187,13 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
-      <module name="Cost-of-living-app" />
+      <module name="cost-of-living" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="Cost-of-living-app" />
+      <module name="cost-of-living" />
       <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -150,8 +202,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.GetTopCitesNameInFshionTaskInteractorTest" />
-        <item itemvalue="Gradle.GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest" />
-        <item itemvalue="Gradle.GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest.should_returnFive_when_theListSizeIsFive" />
+        <item itemvalue="Gradle.GetAverageSalariesInCountryInteractorTest" />
+        <item itemvalue="Gradle.GetTopCitesNameInFshionTaskInteractorTest.should_returnTrue_When_ClothesPriceDataIsComplete" />
+        <item itemvalue="Gradle.GetTopCitesNameInFshionTaskInteractorTest.should_returnCorrectAverage_when_averagePriceIsCorrect" />
+        <item itemvalue="Gradle.GetTopCitesNameInFshionTaskInteractorTest.should_returnTopFiveCities_when_inputIsCorrect" />
       </list>
     </recent_temporary>
   </component>

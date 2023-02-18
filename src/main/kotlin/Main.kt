@@ -26,9 +26,9 @@ fun main() {
     println(getCityWithHighestRentalPriceDifferenceInteractor.execute(dataSource.getAllCitiesData()))
     printSeparationLine()
 
-    val getTopFiveCitesNameInClothesFromFamousBrandsInteractor =
-        GetTopFiveCitesNameInClothesFromFamousBrandsInteractor(dataSource)
-    println(getTopFiveCitesNameInClothesFromFamousBrandsInteractor.execute())
+    val getTopCitesNameInFashionTaskInteractor =
+        GetTopCitesNameInFashionTaskInteractor(dataSource)
+    println(getTopCitesNameInFashionTaskInteractor.execute())
     printSeparationLine()
 
     val getFastest10CitiesToBuyAPTInteractor = GetFastest10CitiesToBuyAPTInteractor(dataSource)

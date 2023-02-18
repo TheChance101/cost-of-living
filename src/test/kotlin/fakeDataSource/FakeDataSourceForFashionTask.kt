@@ -3,8 +3,9 @@ package fakeDataSource
 import interactor.CostOfLivingDataSource
 import model.*
 
- class FakeDataSourceForFashionTask: CostOfLivingDataSource {
-    override fun getAllCitiesData(): List<CityEntity> {
+
+  class FakeDataSourceForFashionTask:CostOfLivingDataSource {
+         override fun getAllCitiesData(): List<CityEntity> {
         return listOf(
             CityEntity(
                 "city11",

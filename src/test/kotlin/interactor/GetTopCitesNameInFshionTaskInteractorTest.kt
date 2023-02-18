@@ -1,24 +1,30 @@
 package interactor
 
+import fakeDataSource.FakeDataSource
 import fakeDataSource.FakeDataSourceForFashionTask
 import model.*
 import org.junit.jupiter.api.*
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
+import org.junit.jupiter.api.Test
+
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetTopCitesNameInFshionTaskInteractorTest {
     private lateinit var topCitesNameInFashionTaskInteractor: GetTopCitesNameInFashionTaskInteractor
+
     @BeforeAll
     fun setUp() {
         val fakedata = FakeDataSourceForFashionTask()
-        topCitesNameInFashionTaskInteractor =
-            GetTopCitesNameInFashionTaskInteractor(fakedata)
+        topCitesNameInFashionTaskInteractor = GetTopCitesNameInFashionTaskInteractor(fakedata)
     }
 
     @Test
-    fun should_returnFive_when_theListSizeIsFive() {
+    fun should_ReturnFive_When_TheListSizeIsFive() {
         //given
         //when
         val result = topCitesNameInFashionTaskInteractor.execute().size
@@ -29,7 +35,7 @@ class GetTopCitesNameInFshionTaskInteractorTest {
 
 
     @Test
-    fun should_returnTopFiveCities_when_inputIsCorrect() {
+    fun should_ReturnTopFiveCities_When_InputIsCorrect() {
 
         //given
 
@@ -45,7 +51,7 @@ class GetTopCitesNameInFshionTaskInteractorTest {
     }
 
     @Test
-    fun should_returnCorrectAverage_when_averagePriceIsCorrect() {
+    fun should_ReturnCorrectAverage_When_AveragePriceIsCorrect() {
         //given
         val clothesPrices = ClothesPrices(
             onePairOfJeansLevis50oneOrSimilar = 170f,
@@ -64,7 +70,7 @@ class GetTopCitesNameInFshionTaskInteractorTest {
     }
 
     @Test
-    fun should_returnFalse_When_ClothesPriceDataIsMissing() {
+    fun should_ReturnFalse_When_ClothesPriceDataIsMissing() {
         //given
 
 
@@ -81,7 +87,7 @@ class GetTopCitesNameInFshionTaskInteractorTest {
     }
 
     @Test
-    fun should_returnTrue_When_ClothesPriceDataIsComplete() {
+    fun should_ReturnTrue_When_ClothesPriceDataIsComplete() {
         //given
         val clothesPrices = ClothesPrices(
             onePairOfJeansLevis50oneOrSimilar = 170f,
