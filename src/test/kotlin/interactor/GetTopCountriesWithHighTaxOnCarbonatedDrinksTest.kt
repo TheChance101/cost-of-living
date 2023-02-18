@@ -18,12 +18,11 @@ class GetTopCountriesWithHighTaxOnCarbonatedDrinksTest {
     }
 
     @Test
-    fun `should return list top country with high drink price when drink price high`() {
-        //given
-        val cities = fakeDataSource.getAllCitiesData()
+    fun `should return list top countries with high drink prices when high taxes on carbonated drinks`() {
+        //given limit
         val limit:Int=8;
-        //when
-        val actual = interactor.execute(limit,cities).toTypedArray()
+        //when getting a list of pair  contains the countries name and drink price
+        val actual = interactor.execute(limit).toTypedArray()
         val expected=listOf(
             Pair("Cuba", 2.2799999713897705),
             Pair("Syria", 0.8100000023841858),
@@ -40,20 +39,19 @@ class GetTopCountriesWithHighTaxOnCarbonatedDrinksTest {
     }
     @Test
     fun `should return empty list When list of city is empty`() {
-        //given
+        //given limit
         val limit:Int=10
-        //when
-        val actual = interactor.execute(limit,listOf()).isEmpty()
+        //when getting data source empty
+        val actual = interactor.execute(limit).isEmpty()
         // Then
         assertTrue(actual)
     }
     @Test
-    fun `should return not equals when the list less than limit`() {
-        //given
-        val cities = fakeDataSource.getAllCitiesData()
+    fun `should not return list when he actual list size less than limit`() {
+        //given limit
         val limit:Int=10
-        //when
-        val actual= interactor.execute(limit,cities).size
+        //when result less than limit
+        val actual= interactor.execute(limit).size
         //then
          assertNotEquals(limit , actual)
     }

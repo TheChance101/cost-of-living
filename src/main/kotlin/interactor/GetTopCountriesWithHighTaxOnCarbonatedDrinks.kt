@@ -3,9 +3,13 @@ import model.CityEntity
 import utils.isNotNull
 
 class GetTopCountriesWithHighTaxOnCarbonatedDrinks (private val dataSource: CostOfLivingDataSource){
-    fun execute(limit: Int, cities: List<CityEntity>): List<Pair<String, Double>> {
-        return cities.asSequence()
-            .filter(::excludeNullableLowQualityPrices)
+    fun execute(limit: Int): List<Pair<String, Double>> {
+        return dataSource.getAllCitiesData()
+            .also { if (it.isEmpty()){
+                throw NoReturnedDataException(message = "List Of Data is Empty " )
+            }}
+           .asSequence()
+            .filter(::excludeNullDrinkPriceAndNegativePriceAndLowQualityData)
             .groupBy { it.country }
             .mapValues { entry ->
                 entry.value.flatMap { city ->
@@ -17,18 +21,12 @@ class GetTopCountriesWithHighTaxOnCarbonatedDrinks (private val dataSource: Cost
             .sortedByDescending { it.second }
             .take(limit)
     }
-    private fun excludeNullableLowQualityPrices(city: CityEntity): Boolean {
-        return hasValidDrinkPrice(city) && hasValidCountry(city) && hasValidDataQuality(city)
-    }
-
-    private fun hasValidDrinkPrice(city: CityEntity): Boolean {
+    private fun excludeNullDrinkPriceAndNegativePriceAndLowQualityData(city: CityEntity): Boolean {
         return city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants.isNotNull()
-                && city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants!! >= 0
+                && city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants!! > 0
+                && city.country.isNotNull()
+                && city.dataQuality
     }
-
-    private fun hasValidCountry(city: CityEntity): Boolean =city.country.isNotNull()
-
-    private fun hasValidDataQuality(city: CityEntity): Boolean =city.dataQuality
 }
 
 

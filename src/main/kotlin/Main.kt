@@ -159,7 +159,7 @@ Side of Get Data element -> Instance Zone
  *********************************************************/
 fun getTop10CountriesWithHighTaxOnCarbonatedDrinks(limit: Int) {
     val getTop10CountriesWithHighTaxOnCarbonatedDrinks = GetTopCountriesWithHighTaxOnCarbonatedDrinks(dataSource)
-    println(getTop10CountriesWithHighTaxOnCarbonatedDrinks.execute(10, data))
+    println(getTop10CountriesWithHighTaxOnCarbonatedDrinks.execute(10))
 }
 
 fun getCitiesNamesSortedCheapestBananaPrices() {
