@@ -1,6 +1,8 @@
 package interactor
 import model.CityEntity
 import utils.isNotNull
+import java.lang.IllegalStateException
+import java.util.NoSuchElementException
 
 class GetCityHasTheHighestDifferentInApartmentRent (
     private val dataSource: CostOfLivingDataSource,
@@ -9,8 +11,9 @@ class GetCityHasTheHighestDifferentInApartmentRent (
 
     fun execute(limit: Int): CityEntity {
         return if (limit==1)
-            dataSource.getAllCitiesData()
-                .filter(::excludeNullApartmentBedroom).let { it.ifEmpty { return emptyList<CityEntity>().first() } }
+            dataSource.getAllCitiesData().also { if (it.isEmpty()) throw IllegalStateException("no data") }
+                .filter(::excludeNullApartmentBedroom)
+                .let { it.ifEmpty { throw NoSuchElementException("no filtered data") } }
                 .sortedByDescending { it.findHighestDifferentInCitiesRent() }
                 .take(limit)
                 .first()
