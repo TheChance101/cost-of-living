@@ -27,21 +27,22 @@ internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
         interactor = GetTopCitiesNameHasSuitableClothesPricesInteractor(mockData)
     }
 
-
     @Test
-    fun `should throw exception when list is empty`() {
+    fun `should throw exception when limit is zero`() {
         //Given empty List
+        val limit = 0
         val citiesData = listOf<CityEntity>()
         //when
         every { mockData.getAllCitiesData() } returns (citiesData)
-        val namesCityHasSuitableClothesPrices= Executable { interactor.execute(5) }
+        val namesCityHasSuitableClothesPrices = Executable { interactor.execute(limit) }
         //then
         assertThrows(Exception::class.java, namesCityHasSuitableClothesPrices)
     }
 
     @Test
-    fun `should throw exception when all citis haven't any onePairOfJeansLevis50oneOrSimilar`() {
+    fun `should throw exception when given on value in clothes prices is null`() {
         //Given list hasn't any type of onePairOfJeansLevis50oneOrSimilar
+        val limit = 1
         val citiesData = listOf(
             MockCityEntity.createMockCity(
                 "City 1",
@@ -56,84 +57,15 @@ internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
         //when
         every { mockData.getAllCitiesData() } returns (citiesData)
         val namesCityHasSuitableClothesPrices: Executable =
-            Executable { interactor.execute(5) }
-
+            Executable { interactor.execute(limit) }
         //then
         assertThrows(Exception::class.java, namesCityHasSuitableClothesPrices)
     }
 
     @Test
-    fun `should throw exception when all citis haven't any OneSummerDressInAChainStoreZaraHAndM`() {
-        //Given list hasn't any type of oneSummerDressInAChainStoreZaraHAndM
-        val citiesData = listOf(
-            MockCityEntity.createMockCity(
-                "City 1",
-                ClothesPrices(
-                    34f,
-                    null,
-                    24f,
-                    25f,
-                )
-            ),
-        )
-        //when
-        every { mockData.getAllCitiesData() } returns (citiesData)
-        val namesCityHasSuitableClothesPrices: Executable =
-            Executable { interactor.execute(5) }
-
-        //then
-        assertThrows(Exception::class.java, namesCityHasSuitableClothesPrices)
-    }
-
-    @Test
-    fun `should throw exception when all citis haven't any onePairOfNikeRunningShoesMidRange`() {
-        //Given list hasn't any type of onePairOfNikeRunningShoesMidRange
-        val citiesData = listOf(
-            MockCityEntity.createMockCity(
-                "City 1",
-                ClothesPrices(
-                    34f,
-                    45f,
-                    null,
-                    25f,
-                )
-            ),
-        )
-        //when
-        every { mockData.getAllCitiesData() } returns (citiesData)
-        val namesCityHasSuitableClothesPrices: Executable =
-            Executable { interactor.execute(5) }
-
-        //then
-        assertThrows(Exception::class.java, namesCityHasSuitableClothesPrices)
-    }
-
-    @Test
-    fun `should throw exception when all citis haven't any onePairOfMenLeatherBusinessShoes`() {
-        //Given list hasn't any type of onePairOfMenLeatherBusinessShoes
-        val citiesData = listOf(
-            MockCityEntity.createMockCity(
-                "City 1",
-                ClothesPrices(
-                    34f,
-                    45f,
-                    44f,
-                    null,
-                )
-            ),
-        )
-        //when
-        every { mockData.getAllCitiesData() } returns (citiesData)
-        val namesCityHasSuitableClothesPrices: Executable =
-            Executable { interactor.execute(5) }
-
-        //then
-        assertThrows(Exception::class.java, namesCityHasSuitableClothesPrices)
-    }
-
-    @Test
-    fun `should throw exception when all citis haven't any clothes`() {
+    fun `should throw exception when all cities haven't any clothes`() {
         //Given list hasn't any type of clothes
+        val limit = 1
         val citiesData = listOf(
             MockCityEntity.createMockCity(
                 "City 1",
@@ -147,16 +79,15 @@ internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
         )
         //when
         every { mockData.getAllCitiesData() } returns (citiesData)
-        val namesCityHasSuitableClothesPrices: Executable =
-            Executable { interactor.execute(5) }
-
+        val namesCityHasSuitableClothesPrices: Executable = Executable { interactor.execute(limit) }
         //then
         assertThrows(Exception::class.java, namesCityHasSuitableClothesPrices)
     }
 
     @Test
-    fun `should return 5 city name  when city has has suitable clothes prices`() {
-        //Given list has 6 city has clothes prices
+    fun `should return sorted correct cities when every city has suitable clothes prices`() {
+        //Given list has 3 cities has clothes prices
+        val limit = 3
         val citiesData = listOf(
             MockCityEntity.createMockCity(
                 "City1",
@@ -185,44 +116,24 @@ internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
                     onePairOfMenLeatherBusinessShoes = 39.0f,
                 )
             ),
-            MockCityEntity.createMockCity(
-                "City4",
-                ClothesPrices(
-                    onePairOfJeansLevis50oneOrSimilar = 37.0f,
-                    oneSummerDressInAChainStoreZaraHAndM = 50.0f,
-                    onePairOfNikeRunningShoesMidRange = 46.8f,
-                    onePairOfMenLeatherBusinessShoes = 38.0f,
-                )
-            ),
-            MockCityEntity.createMockCity(
-                "City5",
-                ClothesPrices(
-                    onePairOfJeansLevis50oneOrSimilar = 36.0f,
-                    oneSummerDressInAChainStoreZaraHAndM = 49.0f,
-                    onePairOfNikeRunningShoesMidRange = 45.8f,
-                    onePairOfMenLeatherBusinessShoes = 37.0f,
-                )
-            ),
-            MockCityEntity.createMockCity(
-                "City6",
-                ClothesPrices(
-                    onePairOfJeansLevis50oneOrSimilar = 35.0f,
-                    oneSummerDressInAChainStoreZaraHAndM = 48.0f,
-                    onePairOfNikeRunningShoesMidRange = 44.8f,
-                    onePairOfMenLeatherBusinessShoes = 36.0f,
-                )
-            ),
         )
-        //Given list of 5 name city  will return
-        val willReturnNamesCity = listOf("City6", "City5", "City4", "City3", "City2")
-
         //when
         every { mockData.getAllCitiesData() } returns (citiesData)
-        val namesCityHasSuitableClothesPrices = interactor.execute(5)
-
+        val namesCityHasSuitableClothesPrices = interactor.execute(limit)
         //then
-        assertEquals(willReturnNamesCity, namesCityHasSuitableClothesPrices)
+        assertEquals(listOf("City3", "City2", "City1"), namesCityHasSuitableClothesPrices)
     }
 
+    @Test
+    fun `should throw exception when limit is less zan zero`() {
+        //Given empty List
+        val limit = -1
+        val citiesData = listOf<CityEntity>()
+        //when
+        every { mockData.getAllCitiesData() } returns (citiesData)
+        val namesCityHasSuitableClothesPrices = Executable { interactor.execute(limit) }
+        //then
+        assertThrows(Exception::class.java, namesCityHasSuitableClothesPrices)
+    }
 
 }

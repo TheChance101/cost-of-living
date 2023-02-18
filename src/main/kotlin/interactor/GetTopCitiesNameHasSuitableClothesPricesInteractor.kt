@@ -15,29 +15,24 @@ class GetTopCitiesNameHasSuitableClothesPricesInteractor(
             .takeIf { it.isNotEmpty() } ?: throw Exception("the dataSource hasn't city has suitable clothes prices ")
     }
 
-
     private val calculateSumClothesPrices = { cityName: CityEntity ->
-        cityName.run {
-            clothesPrices.onePairOfMenLeatherBusinessShoes!! +
-                    clothesPrices.onePairOfJeansLevis50oneOrSimilar!! +
-                    clothesPrices.onePairOfNikeRunningShoesMidRange!! +
-                    clothesPrices.oneSummerDressInAChainStoreZaraHAndM!!
-
+        cityName.clothesPrices.run {
+            onePairOfMenLeatherBusinessShoes!! +
+                    onePairOfJeansLevis50oneOrSimilar!! +
+                    onePairOfNikeRunningShoesMidRange!! +
+                    oneSummerDressInAChainStoreZaraHAndM!!
         }
     }
-
 
     private val excludeNullClothes = { cityName: CityEntity ->
-        cityName.run{
-            clothesPrices.onePairOfJeansLevis50oneOrSimilar != null &&
-                    clothesPrices.onePairOfMenLeatherBusinessShoes != null &&
-                    clothesPrices.onePairOfNikeRunningShoesMidRange != null &&
-                    clothesPrices.oneSummerDressInAChainStoreZaraHAndM != null
-
+        cityName.clothesPrices.run {
+            onePairOfJeansLevis50oneOrSimilar != null &&
+                    onePairOfMenLeatherBusinessShoes != null &&
+                    onePairOfNikeRunningShoesMidRange != null &&
+                    oneSummerDressInAChainStoreZaraHAndM != null
         }
 
     }
-
 
 }
 
