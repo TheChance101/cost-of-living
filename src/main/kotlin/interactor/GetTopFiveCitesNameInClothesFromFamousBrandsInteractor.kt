@@ -19,12 +19,12 @@ class GetTopFiveCitesNameInClothesFromFamousBrandsInteractor(
 
     }
 
-    fun excludeNullClothesPrices(city: CityEntity) =
-        city.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null && city.clothesPrices.onePairOfMenLeatherBusinessShoes != null
-         && city.clothesPrices.onePairOfNikeRunningShoesMidRange != null && city.clothesPrices.oneSummerDressInAChainStoreZaraHAndM != null
-
 
 }
+fun excludeNullClothesPrices(city: CityEntity) =
+    city.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null && city.clothesPrices.onePairOfMenLeatherBusinessShoes != null
+            && city.clothesPrices.onePairOfNikeRunningShoesMidRange != null && city.clothesPrices.oneSummerDressInAChainStoreZaraHAndM != null
+
 
 fun averagePrice(clothesPrices: ClothesPrices) =
     (clothesPrices.onePairOfJeansLevis50oneOrSimilar!! + clothesPrices.onePairOfMenLeatherBusinessShoes!! +
