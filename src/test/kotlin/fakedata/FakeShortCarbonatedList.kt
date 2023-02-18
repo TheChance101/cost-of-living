@@ -233,7 +233,7 @@ val carbonatedPricesCase4 by lazy {
         ),
         drinksPrices = DrinksPrices(
             cappuccinoRegularInRestaurants = 7f,
-            cokePepsiAThirdOfLiterBottleInRestaurants = 10f,
+            cokePepsiAThirdOfLiterBottleInRestaurants = 10.356f,
             waterAThirdOfLiterBottleInRestaurants = 1f,
             milkRegularOneLiter = 2f,
             waterOneAndHalfLiterBottleAtTheMarket = 2.5f
@@ -298,7 +298,7 @@ val carbonatedPricesCase4 by lazy {
 val carbonatedPricesCase5 by lazy {
     CityEntity(
         cityName = "paris",
-        country = "France",
+        country = "france",
         mealsPrices = MealsPrices(
             mealInexpensiveRestaurant = 10f,
             mealFor2PeopleMidRangeRestaurant = 5f,
@@ -306,7 +306,7 @@ val carbonatedPricesCase5 by lazy {
         ),
         drinksPrices = DrinksPrices(
             cappuccinoRegularInRestaurants = 7f,
-            cokePepsiAThirdOfLiterBottleInRestaurants = 12f,
+            cokePepsiAThirdOfLiterBottleInRestaurants = 12.7123f,
             waterAThirdOfLiterBottleInRestaurants = 1f,
             milkRegularOneLiter = 2f,
             waterOneAndHalfLiterBottleAtTheMarket = 2.5f
@@ -589,8 +589,8 @@ val carbonatedPricesCase8 by lazy {
 }
 val carbonatedPricesCase9 by lazy {
     CityEntity(
-        cityName = "abu dhabi",
-        country = "uae",
+        cityName = "algiers",
+        country = "algeria",
         mealsPrices = MealsPrices(
             mealInexpensiveRestaurant = 10f,
             mealFor2PeopleMidRangeRestaurant = 5f,
@@ -598,7 +598,7 @@ val carbonatedPricesCase9 by lazy {
         ),
         drinksPrices = DrinksPrices(
             cappuccinoRegularInRestaurants = 7f,
-            cokePepsiAThirdOfLiterBottleInRestaurants = 10f,
+            cokePepsiAThirdOfLiterBottleInRestaurants = 1f,
             waterAThirdOfLiterBottleInRestaurants = 1f,
             milkRegularOneLiter = 2f,
             waterOneAndHalfLiterBottleAtTheMarket = 2.5f
