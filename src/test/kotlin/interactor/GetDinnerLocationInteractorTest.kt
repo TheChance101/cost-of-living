@@ -21,51 +21,23 @@ class GetDinnerLocationInteractorTest {
 
 
     @Test
-    fun should_returnsNull_When_ThereAreNoCities() {
-        // Given
-
-        val dataSource = object : CostOfLivingDataSource {
-            override fun getAllCitiesData(): List<CityEntity> {
-                return listOf()
-            }
-        }
-        interactor = GetDinnerLocationInteractor(dataSource)
-
+    fun should_ReturnNull_When_ThereAreNoCities() {
+        // given
+        interactor = GetDinnerLocationInteractor(
+            fakeDataSourceForDinnerLocation.getEmptyFakeDataSource())
+        // when
+        val result = interactor.execute()
+        //then
         assertDoesNotThrow("This block should not throw an exception") {
-            interactor.execute()
+            result
         }
-
-
     }
 
-
     @Test
-    fun should_ReutrnsNull_When_CitiesHaveMissingMealPrices() {
+    fun should_ReturnNull_When_CitiesHaveMissingMealPrices() {
         // Given
-
-        val dataSource = object : CostOfLivingDataSource {
-            override fun getAllCitiesData(): List<CityEntity> {
-                return listOf(
-                    CityEntity(
-                        "City1",
-                        "Country1",
-                        MealsPrices(58.6f, 913.1f, 34.6f),
-                        DrinksPrices(null, null, null, null, null),
-                        FruitAndVegetablesPrices(null, null, null, null, null, null, null),
-                        FoodPrices(null, null, null, null, null, null),
-                        ServicesPrices(null, null, null, null, null, null, null, null),
-                        ClothesPrices(null, null, null, null),
-                        TransportationsPrices(null, null, null, null, null, null),
-                        CarsPrices(null, null),
-                        RealEstatesPrices(null, null, null, null, null, null),
-                        14563f,
-                        true
-                    ),
-                )
-            }
-        }
-
-        val interactor = GetDinnerLocationInteractor(dataSource)
+        interactor = GetDinnerLocationInteractor(fakeDataSourceForDinnerLocation.
+            getDataWithNullInMealPrice())
 
         //when
         val result = interactor.execute()
@@ -74,9 +46,8 @@ class GetDinnerLocationInteractorTest {
     }
 
     @Test
-    fun should_ReturnsNull_When_CitiesAreFromCountriesOtherTHenUsa_Canda_Mexico() {
+    fun should_ReturnsNull_When_CitiesAreNotFromUSAOrCanadaOrMexico() {
         // Given
-
         val dataSource = object : CostOfLivingDataSource {
             override fun getAllCitiesData(): List<CityEntity> {
                 return listOf(

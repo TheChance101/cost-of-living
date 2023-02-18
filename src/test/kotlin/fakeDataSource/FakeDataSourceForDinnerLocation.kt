@@ -1,8 +1,30 @@
 package fakeDataSource
 
+import interactor.CostOfLivingDataSource
 import model.*
 
 class FakeDataSourceForDinnerLocation {
+
+    private val emptyDataSource = object : CostOfLivingDataSource {
+        override fun getAllCitiesData(): List<CityEntity> {
+            return listOf()
+        }
+    }
+
+    private val dataSourceWithNullInMealPrice = object : CostOfLivingDataSource {
+        override fun getAllCitiesData(): List<CityEntity> {
+            return listOf(
+                createFakeMealsPricesCity("USA", null, 913.1f, 34.6f),
+                createFakeMealsPricesCity("Mexico",null, 243.0f, 123.6f)
+            )
+        }
+    }
+
+    fun getDataWithNullInMealPrice() = dataSourceWithNullInMealPrice
+
+    fun getEmptyFakeDataSource() = emptyDataSource
+
+
 
 
 
