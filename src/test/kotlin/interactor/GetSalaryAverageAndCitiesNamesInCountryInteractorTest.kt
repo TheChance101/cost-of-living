@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
-import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
@@ -54,47 +53,46 @@ internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
     }
 
     @Test
-    fun `should throw exception when the country name is wrong`() {
+    fun `should return empty list when the country name is wrong`() {
         //given wrong country name
         val country = "lol"
-        //when getting a list of pair contains the city name and average salary of country with wrong name
-        val actual = Executable{ interactor.execute(country) }
-        val expected = Exception::class.java
+        //when getting a list of pair contains the city name and average salary of country
+        val actual = interactor.execute(country)
+        val expected = emptyList<Pair<String,Float>>()
         //then
-        assertThrows(expected,actual)
+        assertEquals(expected, actual)
     }
-
     @Test
-    fun `should throw exception when the country name is empty string`() {
+    fun `should return empty list when the country name is empty string`() {
         //given empty string
         val country = ""
-        //when getting a list of pair contains the city name and average salary of country with wrong name
-        val actual = Executable { interactor.execute(country) }
-        val expected = Exception::class.java
+        //when getting a list of pair contains the city name and average salary of country
+        val actual = interactor.execute(country)
+        val expected = emptyList<Pair<String,Float>>()
         //then
-        assertThrows(expected, actual)
+        assertEquals(expected, actual)
     }
 
     @Test
-    fun `should throw exception when the country name is correct but excluded`(){
+    fun `should return empty list when the country name is correct but excluded`(){
         //given excluded country name
         val country = "Ghana"
-        //when getting a list of pair contains the city name and average salary of country with wrong name
-        val actual = Executable { interactor.execute(country) }
-        val expected = Exception::class.java
+        //when getting a list of pair contains the city name and average salary of country
+        val actual = interactor.execute(country)
+        val expected = emptyList<Pair<String,Float>>()
         //then
-        assertThrows(expected, actual)
+        assertEquals(expected, actual)
 
     }
 
     @Test
-    fun `should throw exception when the country name is correct but not in the data`(){
+    fun `should return empty list when the country name is correct but not in the data`(){
         //given country name that is not in the data
         val country = "Egypt"
-        //when getting a list of pair contains the city name and average salary of country with wrong name
-        val actual = Executable { interactor.execute(country) }
-        val expected = Exception::class.java
+        //when getting a list of pair contains the city name and average salary of country
+        val actual = interactor.execute(country)
+        val expected = emptyList<Pair<String,Float>>()
         //then
-        assertThrows(expected, actual)
+        assertEquals(expected, actual)
     }
 }
