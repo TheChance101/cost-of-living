@@ -10,7 +10,8 @@ import org.junit.jupiter.api.function.Executable
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetCityHasHighestRentingBetweenApartmentsInteractorTest {
     private lateinit var dataSource: HardCodedFakeDataSource
-    private lateinit var getCityHasHighestRentingBetweenApartmentsInteractor: GetCityHasHighestRentingBetweenApartmentsInteractor
+    private lateinit var getCityHasHighestRentingBetweenApartmentsInteractor
+                        : GetCityHasHighestRentingBetweenApartmentsInteractor
 
     @BeforeAll
     fun init(){
@@ -25,9 +26,8 @@ internal class GetCityHasHighestRentingBetweenApartmentsInteractorTest {
         dataSource.setDatatype(HardCodedFakeDataSource.DataType.VALID)
         val expectedCity = dataSource.cairoHighQuality
         // when
-        val cityEntity = getCityHasHighestRentingBetweenApartmentsInteractor.run {
-            execute()
-        }
+        val cityEntity = getCityHasHighestRentingBetweenApartmentsInteractor.execute()
+
         // then
         assertEquals(expectedCity, cityEntity)
     }
@@ -38,9 +38,8 @@ internal class GetCityHasHighestRentingBetweenApartmentsInteractorTest {
         dataSource.setDatatype(HardCodedFakeDataSource.DataType.MIXED)
         val expectedCity = dataSource.cairoHighQuality
         // when
-        val cityEntity = getCityHasHighestRentingBetweenApartmentsInteractor.run {
-            execute()
-        }
+        val cityEntity = getCityHasHighestRentingBetweenApartmentsInteractor.execute()
+
         // then
         assertEquals(expectedCity, cityEntity)
     }
@@ -51,9 +50,8 @@ internal class GetCityHasHighestRentingBetweenApartmentsInteractorTest {
         dataSource.setDatatype(HardCodedFakeDataSource.DataType.EMPTY)
         // when
         val emptyCityEntity = Executable {
-            getCityHasHighestRentingBetweenApartmentsInteractor.run {
-                execute()
-            }
+            getCityHasHighestRentingBetweenApartmentsInteractor.execute()
+
         }
         // then
         assertThrows(Exception::class.java, emptyCityEntity)
@@ -65,9 +63,7 @@ internal class GetCityHasHighestRentingBetweenApartmentsInteractorTest {
         dataSource.setDatatype(HardCodedFakeDataSource.DataType.NULLABLE)
         // when
         val emptyCityEntity = Executable {
-            getCityHasHighestRentingBetweenApartmentsInteractor.run {
-                execute()
-            }
+            getCityHasHighestRentingBetweenApartmentsInteractor.execute()
         }
         // then
         assertThrows(Exception::class.java, emptyCityEntity)
