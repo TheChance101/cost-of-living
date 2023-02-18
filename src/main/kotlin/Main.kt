@@ -56,7 +56,7 @@ fun main() {
     //endregion
     //region 7-CheapestBananaCitiesNames
     val getCheapestBananaCitiesNames = GetCheapestBananaCitiesNamesInteractor(dataSource)
-    println(getCheapestBananaCitiesNames.execute(dataSource.getAllCitiesData()[0].cityName))
+    println(getCheapestBananaCitiesNames.execute(dataSource.getAllCitiesData()[0]))
     printSeparationLine()
     //endregion
     //region 8-CityHasCheapestMealPrices

@@ -1,6 +1,10 @@
 package interactor
 
-import fakeData.FakeData
+import io.mockk.clearAllMocks
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.unmockkAll
+import mockData.MockCityEntity.createMockCity
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -10,100 +14,113 @@ import kotlin.test.assertEquals
 internal class GetCheapestBananaCitiesNamesInteractorTest {
 
     private lateinit var interactor: GetCheapestBananaCitiesNamesInteractor
-    private val fakeData = FakeData()
+    private val mockData = mockk<CostOfLivingDataSource>()
 
     @BeforeAll
     fun setup() {
-        interactor = GetCheapestBananaCitiesNamesInteractor(fakeData)
+        unmockkAll()
+        clearAllMocks()
+        interactor = GetCheapestBananaCitiesNamesInteractor(mockData)
     }
 
     @Test
-    fun `should return entered single city when have correct city with not null banana price`() {
-        // given correct city with not null banana price
-        val city = "Giza"
+    fun `should return entered single city when have a city with not null banana price`() {
+        // given correct cityEntity with not null banana price
+        val mockCity = listOf(createMockCity("City 1", 0.25f))
+        every { mockData.getAllCitiesData() } returns mockCity
         // when get cities list
-        val cities = interactor.execute(city)
-        // then if getting entered city in a list
-        assertEquals(listOf("Giza"), cities)
+        val citiesResult = interactor.execute(*mockCity.toTypedArray())
+        // then check if getting entered city in a list
+        assertEquals(listOf("City 1"), citiesResult)
     }
 
     @Test
-    fun `should return empty list when have single correct city with null banana price`() {
+    fun `should return empty list when have only one city with null banana price`() {
         // given correct city with null banana price
-        val city = "Santa Clara"
+        val mockCity = listOf(createMockCity("City 1", null))
+        every { mockData.getAllCitiesData() } returns mockCity
         // when get cities list
-        val cities = interactor.execute(city)
-        // then if getting empty list
-        assertEquals(emptyList(), cities)
+        val citiesResult = interactor.execute(*mockCity.toTypedArray())
+        // then check if getting empty list
+        assertEquals(emptyList(), citiesResult)
     }
 
     @Test
-    fun `should return empty list when have single incorrect city`() {
-        // given Incorrect city
-        val city = "BlaBlaBla"
-        // when get cities list
-        val cities = interactor.execute(city)
-        // then if getting empty list
-        assertEquals(emptyList(), cities)
-    }
-
-    @Test
-    fun `should return sorted correct cities when have all correct cities data with not null banana price`() {
+    fun `should return sorted correct cities when have list of cities with not null banana price for all cities`() {
         // given varargs of correct cities with not null banana price
-        val citiesList = listOf("Sancti Spiritus", "Masin")
-        // when get sorted cities list by cheapest price
-        val cities = interactor.execute(*citiesList.toTypedArray())
-        // then if getting correct cities
-        assertEquals(listOf("Masin", "Sancti Spiritus"), cities)
+        val mockCity = listOf(
+            createMockCity("City 1", 2.54f),
+            createMockCity("City 2", 1.21f),
+            createMockCity("City 3", 4.6f)
+        )
+        every { mockData.getAllCitiesData() } returns mockCity
+        // when get sorted cities list by cheapest banana price
+        val citiesResult = interactor.execute(*mockCity.toTypedArray())
+        // then check if getting correct cities
+        assertEquals(listOf("City 2", "City 1", "City 3"), citiesResult)
     }
 
     @Test
-    fun `should return sorted correct cities when have list of correct cities with one or more city is not correct typing`() {
-        // given varargs of correct cities with Not null banana price but there is one incorrect typing
-        val citiesList = listOf("Sancti Spiritus", "Masin", "BlaBlaBla")
-        // when get sorted cities list by cheapest price
-        val cities = interactor.execute(*citiesList.toTypedArray())
-        // then if getting correct cities
-        assertEquals(listOf("Masin", "Sancti Spiritus"), cities)
-    }
-
-    @Test
-    fun `should return sorted correct cities when have list of correct cities with one or more city has a null banana price`() {
+    fun `should return sorted correct cities when have list of cities with one or more city has a null banana price`() {
         // given varargs of correct cities with correct banana price but there is one or more city has a null banana price
-        val citiesList = listOf("Sancti Spiritus", "Masin", "Santa Clara")
+        val mockCity = listOf(
+            createMockCity("City 1", 2.54f),
+            createMockCity("City 2", null),
+            createMockCity("City 3", 4.6f),
+            createMockCity("City 4", null),
+            createMockCity("City 5", 1.25f),
+        )
+        every { mockData.getAllCitiesData() } returns mockCity
         // when get sorted cities list by cheapest price
-        val cities = interactor.execute(*citiesList.toTypedArray())
-        // then if getting correct cities
-        assertEquals(listOf("Masin", "Sancti Spiritus"), cities)
+        val cities = interactor.execute(*mockCity.toTypedArray())
+        // then check if getting correct cities
+        assertEquals(listOf("City 5", "City 1", "City 3"), cities)
     }
 
     @Test
-    fun `should return empty list when have all cities incorrect typing or null banana price`() {
-        // given varargs of all Incorrect cities , or it's banana price is null
-        val citiesList = listOf("BlaBlaBla", "Fayrouz", "Almaza", "Nothing")
-        // when get empty list
-        val cities = interactor.execute(*citiesList.toTypedArray())
-        // then if getting empty list
-        assertEquals(listOf(), cities)
-    }
-
-    @Test
-    fun `should return the only correct city from many incorrect cities when  all given only one city satisfies conditions in all given cities`() {
-        // given varargs of all Incorrect cities except only one city satisfies all conditions
-        val citiesList = listOf("BlaBlaBla", "Uyo", "Tamale", "Moratuwa", "Giza")
-        // when get sorted cities list by cheapest price
-        val cities = interactor.execute(*citiesList.toTypedArray())
-        // then if the only correct city
-        assertEquals(listOf("Giza"), cities)
-    }
-
-    @Test
-    fun `should return only one of repeated correct city when given repeated correct city`() {
+    fun `should return only one of repeated city when given list of repeated city with not null banana price`() {
         // given varargs of correct city repeated more than one time
-        val citiesList = listOf("Sancti Spiritus", "Masin", "Masin", "Masin")
+        val mockCity = listOf(
+            createMockCity("City 1", 2.54f),
+            createMockCity("City 1", 2.54f),
+            createMockCity("City 1", 2.54f),
+        )
+        every { mockData.getAllCitiesData() } returns mockCity
         // when get sorted cities list by cheapest price
-        val cities = interactor.execute(*citiesList.toTypedArray())
-        // then if the only correct cities
-        assertEquals(listOf("Masin", "Sancti Spiritus"), cities)
+        val cities = interactor.execute(*mockCity.toTypedArray())
+        // then check if getting the only correct cities
+        assertEquals(listOf("City 1"), cities)
+    }
+
+    @Test
+    fun `should return empty list of repeated city when given list of repeated city with null banana price`() {
+        // given varargs of repeated cities with null banana price
+        val mockCity = listOf(
+            createMockCity("City 1", null),
+            createMockCity("City 1", null),
+            createMockCity("City 1", null),
+        )
+        every { mockData.getAllCitiesData() } returns mockCity
+        // when get sorted cities list by cheapest price
+        val cities = interactor.execute(*mockCity.toTypedArray())
+        // then check if getting empty list
+        assertEquals(emptyList(), cities)
+    }
+
+    @Test
+    fun `should return sorted correct cities when have more than cities repeated and also another cities not repeated`() {
+        // given varargs of repeated cities with null banana price
+        val mockCity = listOf(
+            createMockCity("City 1", null),
+            createMockCity("City 1", null),
+            createMockCity("City 1", null),
+            createMockCity("City 2", 3.5f),
+            createMockCity("City 3", 4.9f),
+        )
+        every { mockData.getAllCitiesData() } returns mockCity
+        // when get sorted cities list by cheapest banana price
+        val cities = interactor.execute(*mockCity.toTypedArray())
+        // then check if getting empty list
+        assertEquals(listOf("City 2", "City 3"), cities)
     }
 }
