@@ -1,6 +1,6 @@
 package interactor
 
-import FakeData
+import fakeDataSource.FakeData
 import model.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*

@@ -1,6 +1,6 @@
 package interactor
 
-import FakeData
+import fakeDataSource.FakeData
 import org.junit.jupiter.api.*
 import kotlin.test.assertEquals
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
