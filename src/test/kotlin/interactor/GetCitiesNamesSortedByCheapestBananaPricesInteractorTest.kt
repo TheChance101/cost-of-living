@@ -16,71 +16,62 @@ class GetCitiesNamesSortedByCheapestBananaPricesInteractorTest {
     }
 
     @Test
-    fun should_returnListOfCorrectCitiesName_when_haveCorrectListWithUpperCase() {
-        //given list of cities with upper case
-        val cities = listOf("Caracas", "Accra", "Giza")
+    fun should_ReturnListOfCorrectCitiesName_When_HaveCorrectListWithUpperCase() {
         //when
-        val result = getCitiesNamesSortedByCheapestBananaPrices.execute(*cities.toTypedArray())
+        val result = getCitiesNamesSortedByCheapestBananaPrices.execute("Caracas", "Accra", "Giza")
+        val expectedResult = listOf("Giza", "Accra", "Caracas")
+
+        //Then
+        assertEquals(expectedResult, result)
+    }
+
+    @Test
+    fun should_ReturnCorrectCitiesName_When_HaveCorrectListWithLowerCase() {
+        //when
+        val result = getCitiesNamesSortedByCheapestBananaPrices.execute("caracas", "accra", "giza")
+        val expectedResult = listOf("Giza", "Accra", "Caracas")
+
+        //Then
+        assertEquals(expectedResult, result)
+    }
+
+    @Test
+    fun should_ReturnListOfCorrectCitiesName_When_HaveSpaceAtTheEndAndTheStartOfCityName() {
+        //when
+        val result = getCitiesNamesSortedByCheapestBananaPrices.execute(" caracas ", "accra ", " giza")
         val expectedResult = listOf("Giza", "Accra", "Caracas")
         //Then
         assertEquals(expectedResult, result)
     }
 
     @Test
-    fun should_returnCorrectCitiesName_when_haveCorrectListWithLowerCase() {
-        //given list of cities with lower case
-        val cities = listOf("caracas", "accra", "giza")
+    fun should_ReturnCorrectListOfCitiesName_When_CitiesNameHaveLowerAndUpperCase() {
         //when
-        val result = getCitiesNamesSortedByCheapestBananaPrices.execute(*cities.toTypedArray())
+        val result = getCitiesNamesSortedByCheapestBananaPrices.execute("CarAcas", "ACCRA", "giZA")
         val expectedResult = listOf("Giza", "Accra", "Caracas")
+
         //Then
         assertEquals(expectedResult, result)
     }
 
     @Test
-    fun should_returnListOfCorrectCitiesName_when_haveSpaceAtTheEndAndTheStartOfCityName() {
-        //given a list of cities name with space at the end or the start or both
-        val cities = listOf(" caracas ", "accra ", " giza")
+    fun should_ReturnEmptyList_When_HaveEmptyList() {
         //when
-        val result = getCitiesNamesSortedByCheapestBananaPrices.execute(*cities.toTypedArray())
-        val expectedResult = listOf("Giza", "Accra", "Caracas")
-        //Then
-        assertEquals(expectedResult, result)
-    }
-
-    @Test
-    fun should_returnCorrectListOfCitiesName_when_citiesNameHaveLowerAndUpperCase() {
-        //given list of cities with lower and upper case
-        val cities = listOf("CarAcas", "ACCRA", "giZA")
-        //when
-        val result = getCitiesNamesSortedByCheapestBananaPrices.execute(*cities.toTypedArray())
-        val expectedResult = listOf("Giza", "Accra", "Caracas")
-        //Then
-        assertEquals(expectedResult, result)
-    }
-
-    @Test
-    fun should_returnEmptyList_when_haveEmptyList() {
-        //given empty list
-        val cities = listOf<String>()
-        //when
-        val result = getCitiesNamesSortedByCheapestBananaPrices.execute(*cities.toTypedArray())
+        val result = getCitiesNamesSortedByCheapestBananaPrices.execute("")
         val expectedResult: List<String> = emptyList()
         //Then
         assertEquals(expectedResult, result)
     }
 
     @Test
-    fun should_returnCorrectSortedByTheCheapestBananaList_when_haveCorrectCitiesName() {
-        //given list of correct cities name
-        val cities = listOf("Caracas", "Accra", "Giza")
+    fun should_ReturnCorrectSortedByTheCheapestBananaList_When_HaveCorrectCitiesName() {
         //when
-        val result = getCitiesNamesSortedByCheapestBananaPrices.execute(*cities.toTypedArray())
+        val result = getCitiesNamesSortedByCheapestBananaPrices.execute("Caracas", "Accra", "Giza")
         val expectedResult = listOf("Giza", "Accra", "Caracas")
         //Then
         assertEquals(expectedResult, result)
     }@Test
-    fun should_returnEmptyList_when_EnterBlank() {
+    fun should_ReturnEmptyList_When_EnterBlank() {
         //when
         val result = getCitiesNamesSortedByCheapestBananaPrices.execute("        ")
         val expectedResult = emptyList<String>()
@@ -88,7 +79,7 @@ class GetCitiesNamesSortedByCheapestBananaPricesInteractorTest {
         assertEquals(expectedResult, result)
     }
     @Test
-    fun should_returnTrue_when_EnterWoringCityName() {
+    fun should_ReturnTrue_When_EnterWoringCityName() {
         //when
         val result = getCitiesNamesSortedByCheapestBananaPrices.execute("example")
         val expectedResult = emptyList<String>()

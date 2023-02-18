@@ -11,19 +11,15 @@ class GetCitiesNamesSortedByCheapestBananaPricesInteractor(
         return dataSource
             .getAllCitiesData()
             .filter {
-                excludeNullBananaPrices(it) && compereCitiesNamesWithInputCities(
-                    cities.toList(),
-                    it.cityName
-                )
+                excludeNullBananaPrices(it) && compereCitiesNamesWithInputCities(cities.toList(), it.cityName)
             }
-
             .sortedBy { it.fruitAndVegetablesPrices.banana1kg }
             .takeUnless { it.isEmpty() }
             ?.map { it.cityName } ?: emptyList()
     }
 
     private fun compereCitiesNamesWithInputCities(cities: List<String>, city: String): Boolean {
-        return cities.map { it.formatSentence() }.contains(city.lowercase())
+        return cities.map { it.formatSentence() }.contains(city.formatSentence())
     }
 
     private fun excludeNullBananaPrices(city: CityEntity): Boolean {
