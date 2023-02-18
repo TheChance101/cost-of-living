@@ -6,51 +6,33 @@ class GetCityMakesFamilySaveMoreInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
 
+
     fun execute(): String {
+        return if (dataSource.getAllCitiesData().isNotEmpty()) {
+            dataSource.getAllCitiesData().filter(::excludeNullvalues).maxByOrNull {it.run {
+                (averageMonthlyNetSalaryAfterTax!!.toDouble() *2) -(
+                (foodPrices.riceWhite1kg!!.toDouble() * 2)+
+                (foodPrices.chickenFillets1kg!!.toDouble() * 10)+
+                (foodPrices.localCheese1kg!!.toDouble())+
+                (foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!!.toDouble() * 4)+
+                (foodPrices.loafOfFreshWhiteBread500g!!.toDouble() * 30)+
+                (realEstatesPrices.apartment3BedroomsInCityCentre!!.toDouble()) +250 )
+            } }!!.cityName
+        } else throw Exception("There is no Data")
+    }
 
-        if (dataSource.getAllCitiesData().isNotEmpty()) {
-
-            val cities = dataSource.getAllCitiesData().filter(::excludeNullFoodPrice)
-            var citiesAftercheck: List<CityEntity> = listOf()
-
-            cities.forEach {
-                var cost: Double = 250.0
-                cost += it.foodPrices.riceWhite1kg!!.toDouble() * 2
-                cost += it.foodPrices.chickenFillets1kg!!.toDouble() * 10
-                cost += it.foodPrices.localCheese1kg!!.toDouble()
-                cost += it.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!!.toDouble() * 4
-                cost += it.foodPrices.loafOfFreshWhiteBread500g!!.toDouble() * 30
-                cost += it.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!.toDouble()
-                if (cost <= (it.averageMonthlyNetSalaryAfterTax!!.toDouble() / 2)) {
-                    citiesAftercheck += it
-                }
-
-
-            }
-
-            val city = citiesAftercheck.sortedByDescending { it.averageMonthlyNetSalaryAfterTax }
-                .map { it.cityName }[0]
-            return city
+    fun excludeNullvalues(city: CityEntity): Boolean {
+        return city.run{
+            realEstatesPrices.apartment3BedroomsInCityCentre != null
+                    && averageMonthlyNetSalaryAfterTax != null
+                    && foodPrices.chickenFillets1kg != null
+                    && foodPrices.localCheese1kg != null
+                    && foodPrices.riceWhite1kg != null
+                    && foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null
+                    && foodPrices.loafOfFreshWhiteBread500g != null
+                    && dataQuality
         }
-
-
-        return "There is no Data"
-
     }
 
 
-    fun excludeNullFoodPrice(city: CityEntity): Boolean {
-        return city.realEstatesPrices.apartment3BedroomsOutsideOfCentre != null
-                && city.averageMonthlyNetSalaryAfterTax != null
-                && city.foodPrices.chickenFillets1kg != null
-                && city.foodPrices.localCheese1kg != null
-                && city.foodPrices.riceWhite1kg != null
-                && city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null
-                && city.foodPrices.loafOfFreshWhiteBread500g != null
-                && city.dataQuality
-    }
-
-    fun excludeInvalidSalary(city: CityEntity):Boolean{
-        return city.averageMonthlyNetSalaryAfterTax != null
-    }
 }
