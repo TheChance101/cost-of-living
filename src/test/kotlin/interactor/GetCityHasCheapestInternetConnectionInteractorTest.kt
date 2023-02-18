@@ -16,17 +16,17 @@ import kotlin.test.assertNull
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCityHasCheapestInternetConnectionInteractorTest {
-    // Create an instance of the interactor to test and a mock of the data source.
+
     private lateinit var interactor: GetCityHasCheapestInternetConnectionInteractor
     private val mockData = mockk<CostOfLivingDataSource>()
 
     @BeforeAll
     fun setup() {
-        // Reset all mocks and create a new interactor for each test.
         unmockkAll()
         clearAllMocks()
         interactor = GetCityHasCheapestInternetConnectionInteractor(mockData)
     }
+
     @Test
     fun `should return city with cheapest internet connection when given a limit with three correct cites`() {
         // given A list of cities with different average monthly net salaries and internet prices
@@ -37,10 +37,8 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
             createMockCity("City 3", 5000f, 200f)
         )
         every { mockData.getAllCitiesData() } returns (mockCities)
-
-        // when executing the interactor with the given limit
+        // when getting result
         val result = interactor.execute(limit)
-
         // then The city with the cheapest internet connection relative to salary is returned
         assertEquals(mockCities[1], result)
     }
@@ -55,10 +53,8 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
             createMockCity("City 3", 5000f, null)
         )
         every { mockData.getAllCitiesData() } returns (mockCities)
-
-        // when executing the interactor with the given limit
+        // when getting result
         val result = interactor.execute(limit)
-
         // then Null is returned since there are no cities with internet prices
         assertNull(result)
     }
@@ -73,10 +69,8 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
             createMockCity("City 3", null, 200f)
         )
         every { mockData.getAllCitiesData() } returns (mockCities)
-
-        // when
+        // when getting result
         val result = interactor.execute(limit)
-
         // then assert that null is returned since there are no cities with average net salary after tax
         assertNull(result)
     }
@@ -92,17 +86,15 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
             createMockCity("City 4", 5000f, null)
         )
         every { mockData.getAllCitiesData() } returns (mockCities)
-
-        // when
+        // when getting result
         val result = interactor.execute(limit)
-
         // then the correct city entity is returned
         assertEquals(mockCities[2], result)
     }
 
     @Test
     fun `should return city with cheapest internet connection when there are multiple cities with the same cheapest price`() {
-        // given: A list of cities with the same internet price
+        // given a list of cities with the same internet price
         val limit = 3
         val mockCities = listOf(
             createMockCity("City 1", 50f, 10f),
@@ -110,35 +102,30 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
             createMockCity("City 1", 50f, 10f),
         )
         every { mockData.getAllCitiesData() } returns (mockCities)
-
-        // when
+        // when getting result
         val result = interactor.execute(limit)
-
-        // then: The city with the cheapest internet connection is returned
+        // then check if getting correct city
         assertEquals(mockCities[0], result)
     }
 
     @Test
     fun `should return null when given a limit by zero`() {
-        // given: An empty list of cities
+        // given a limit by zero
         val limit = 0
         val mockCities = emptyList<CityEntity>()
         every { mockData.getAllCitiesData() } returns (mockCities)
-
-        // when
+        // when getting result
         val result = interactor.execute(limit)
-
-        // then: Null is returned since
+        // then check if getting null
         assertNull(result)
     }
+
     @Test
     fun `should throws exception when limit is negative`() {
         // given a limit that is less than zero
         val limit = -1
-
-        // when executing the interactor with the negative limit
+        // when getting result
         val result = Executable { interactor.execute(limit) }
-
         // then check if it throws exception or not
         Assertions.assertThrows(Exception::class.java, result)
     }
