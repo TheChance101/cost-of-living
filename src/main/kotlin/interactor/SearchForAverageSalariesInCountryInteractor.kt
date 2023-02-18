@@ -7,7 +7,7 @@ class SearchForAverageSalariesInCountryInteractor (
     fun execute(countryName: String): List<Pair<String,Float>> {
         return dataSource
             .getAllCitiesData()
-            .filter { excludeLowQualityData(it) && excludeNullSalaries(it) &&
+            .filter { excludeLowQualityCityEntityData(it) && excludeNullSalaries(it) &&
                     compareCountryNameWithInputName(it, countryName)
             }
             .map { Pair(it.cityName, it.averageMonthlyNetSalaryAfterTax!!) }
@@ -17,7 +17,7 @@ class SearchForAverageSalariesInCountryInteractor (
         (it.country.lowercase() == countryName.lowercase())
 
 }
-fun excludeLowQualityData(city: CityEntity): Boolean {
+fun excludeLowQualityCityEntityData(city: CityEntity): Boolean {
     return city.dataQuality
 }
 fun excludeNullSalaries(city: CityEntity): Boolean{
