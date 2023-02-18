@@ -194,6 +194,18 @@ internal class GetSuitableCityMoreSavingPerMonthInteractorTest {
                 ),
                 averageMonthlyNetSalaryAfterTax = 18.0f,
                 apartment3BedroomsInCityCentre = 7000.0f,
+            ),
+            createMockCity(
+                foodPrices = FoodPrices(
+                    loafOfFreshWhiteBread500g = 1.1f,
+                    riceWhite1kg = 1.1f,
+                    eggsRegular12 = 2.03f,
+                    localCheese1kg = 9.0f,
+                    chickenFillets1kg = 6.61f,
+                    beefRound1kgOrEquivalentBackLegRedMeat = 6.61f
+                ),
+                averageMonthlyNetSalaryAfterTax = 8718.0f,
+                apartment3BedroomsInCityCentre = 70.0f,
             )
         )
         every { mockData.getAllCitiesData() } returns (expectedResult)
