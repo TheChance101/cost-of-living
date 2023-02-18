@@ -13,7 +13,7 @@ import java.util.stream.Stream
 import kotlin.test.assertTrue
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class GetCityHasCheapestInternetConnectionInteractorTest {
+class GetCityHasCheapestInternetConnectionInteractorTest {
 
     private lateinit var getCityHasCheapestInternetConnection: GetCityHasCheapestInternetConnectionInteractor
     private lateinit var fakeData: FakeData

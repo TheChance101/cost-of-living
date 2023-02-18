@@ -555,8 +555,7 @@ class FakeData : CostOfLivingDataSource {
                 pricePerSquareMeterToBuyApartmentOutsideOfCentre = 245.54f
             ),
             averageMonthlyNetSalaryAfterTax = 163.76f, dataQuality = true
-        ),
-        CityEntity(
+        ), CityEntity(
             cityName = "Kampala", country = "Uganda",
             mealsPrices = MealsPrices(
                 mealInexpensiveRestaurant = 1.74f,
@@ -1322,11 +1321,531 @@ class FakeData : CostOfLivingDataSource {
             ),
             averageMonthlyNetSalaryAfterTax = 156.15f, dataQuality = true
         ),
+        CityEntity(
+            cityName = "Roseburg",
+            country = "United States",
+            mealsPrices = MealsPrices(
+                mealInexpensiveRestaurant = 15.0f,
+                mealFor2PeopleMidRangeRestaurant = 60.0f,
+                mealAtMcDonaldSOrEquivalent = 8.0f
+            ),
+            drinksPrices = DrinksPrices(
+                cappuccinoRegularInRestaurants = 4.49f,
+                cokePepsiAThirdOfLiterBottleInRestaurants = 2.22f,
+                waterAThirdOfLiterBottleInRestaurants = 1.26f,
+                milkRegularOneLiter = 0.98f,
+                waterOneAndHalfLiterBottleAtTheMarket = 1.0f
+            ),
+            fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                apples1kg = 2.3f,
+                banana1kg = 0.99f,
+                oranges1kg = 2.2f,
+                tomato1kg = 1.1f,
+                potato1kg = 1.71f,
+                onion1kg = 1.62f,
+                lettuceOneHead = 1.83f
+            ),
+            foodPrices = FoodPrices(
+                loafOfFreshWhiteBread500g = 3.04f,
+                riceWhite1kg = 2.2f,
+                eggsRegular12 = 1.69f,
+                localCheese1kg = 12.9f,
+                chickenFillets1kg = 16.17f,
+                beefRound1kgOrEquivalentBackLegRedMeat = 12.49f
+            ),
+            servicesPrices = ServicesPrices(
+                basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 100.0f,
+                oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.25f,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = 55.0f,
+                fitnessClubMonthlyFeeForOneAdult = 50.0f,
+                tennisCourtRentOneHourOnWeekend = null,
+                cinemaInternationalReleaseOneSeat = 12.5f,
+                preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 921.42f,
+                internationalPrimarySchoolYearlyForOneChild = 8950.0f
+            ),
+            clothesPrices = ClothesPrices(
+                onePairOfJeansLevis50oneOrSimilar = 41.67f,
+                oneSummerDressInAChainStoreZaraHAndM = 25.0f,
+                onePairOfNikeRunningShoesMidRange = 63.33f,
+                onePairOfMenLeatherBusinessShoes = 50.0f
+            ),
+            transportationsPrices = TransportationsPrices(
+                oneWayTicketLocalTransport = 2.0f,
+                monthlyPassRegularPrice = 20.0f,
+                taxiStartNormalTariff = 3.0f,
+                taxi1kmNormalTariff = 1.86f,
+                taxi1hourWaitingNormalTariff = 15.0f,
+                gasolineOneLiter = 1.36f
+            ),
+            carsPrices = CarsPrices(
+                volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 20000.0f,
+                toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 22328.2f
+            ),
+            realEstatesPrices = RealEstatesPrices(
+                apartmentOneBedroomInCityCentre = 1300.0f,
+                apartmentOneBedroomOutsideOfCentre = 1475.0f,
+                apartment3BedroomsInCityCentre = 2350.0f,
+                apartment3BedroomsOutsideOfCentre = 2625.0f,
+                pricePerSquareMeterToBuyApartmentInCityCentre = 1883.68f,
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1614.59f
+            ),
+            averageMonthlyNetSalaryAfterTax = 1200.0f,
+            dataQuality = false
+        ),
+        CityEntity(
+            cityName = "Queensbury",
+            country = "United States",
+            mealsPrices = MealsPrices(
+                mealInexpensiveRestaurant = null,
+                mealFor2PeopleMidRangeRestaurant = 65.0f,
+                mealAtMcDonaldSOrEquivalent = 9.0f
+            ),
+            drinksPrices = DrinksPrices(
+                cappuccinoRegularInRestaurants = 5.75f,
+                cokePepsiAThirdOfLiterBottleInRestaurants = 3.99f,
+                waterAThirdOfLiterBottleInRestaurants = 1.54f,
+                milkRegularOneLiter = 0.82f,
+                waterOneAndHalfLiterBottleAtTheMarket = 1.38f
+            ),
+            fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                apples1kg = 4.55f,
+                banana1kg = 1.3f,
+                oranges1kg = 5.11f,
+                tomato1kg = 6.01f,
+                potato1kg = 3.98f,
+                onion1kg = 3.19f,
+                lettuceOneHead = 1.5f
+            ),
+            foodPrices = FoodPrices(
+                loafOfFreshWhiteBread500g = 2.82f,
+                riceWhite1kg = 4.32f,
+                eggsRegular12 = 2.84f,
+                localCheese1kg = 11.0f,
+                chickenFillets1kg = 11.74f,
+                beefRound1kgOrEquivalentBackLegRedMeat = 8.8f
+            ),
+            servicesPrices = ServicesPrices(
+                basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 183.92f,
+                oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = null,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = 75.0f,
+                fitnessClubMonthlyFeeForOneAdult = 24.0f,
+                tennisCourtRentOneHourOnWeekend = null,
+                cinemaInternationalReleaseOneSeat = 11.0f,
+                preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 2000.0f,
+                internationalPrimarySchoolYearlyForOneChild = null
+            ),
+            clothesPrices = ClothesPrices(
+                onePairOfJeansLevis50oneOrSimilar = 40.0f,
+                oneSummerDressInAChainStoreZaraHAndM = 35.0f,
+                onePairOfNikeRunningShoesMidRange = 29.99f,
+                onePairOfMenLeatherBusinessShoes = 225.0f
+            ),
+            transportationsPrices = TransportationsPrices(
+                oneWayTicketLocalTransport = null,
+                monthlyPassRegularPrice = null,
+                taxiStartNormalTariff = null,
+                taxi1kmNormalTariff = null,
+                taxi1hourWaitingNormalTariff = null,
+                gasolineOneLiter = 1.05f
+            ),
+            carsPrices = CarsPrices(
+                volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 32000.0f,
+                toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 30333.33f
+            ),
+            realEstatesPrices = RealEstatesPrices(
+                apartmentOneBedroomInCityCentre = null,
+                apartmentOneBedroomOutsideOfCentre = null,
+                apartment3BedroomsInCityCentre = null,
+                apartment3BedroomsOutsideOfCentre = null,
+                pricePerSquareMeterToBuyApartmentInCityCentre = null,
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
+            ),
+            averageMonthlyNetSalaryAfterTax = null,
+            dataQuality = false
+        ),
+        CityEntity(
+            cityName = "Chateauguay",
+            country = "Canada",
+            mealsPrices = MealsPrices(
+                mealInexpensiveRestaurant = 8.89f,
+                mealFor2PeopleMidRangeRestaurant = 29.65f,
+                mealAtMcDonaldSOrEquivalent = 5.56f
+            ),
+            drinksPrices = DrinksPrices(
+                cappuccinoRegularInRestaurants = 2.59f,
+                cokePepsiAThirdOfLiterBottleInRestaurants = null,
+                waterAThirdOfLiterBottleInRestaurants = null,
+                milkRegularOneLiter = 1.46f,
+                waterOneAndHalfLiterBottleAtTheMarket = 1.62f
+            ),
+            fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                apples1kg = 2.44f,
+                banana1kg = 1.26f,
+                oranges1kg = 4.44f,
+                tomato1kg = 4.82f,
+                potato1kg = 1.67f,
+                onion1kg = 3.7f,
+                lettuceOneHead = 1.9f
+            ),
+            foodPrices = FoodPrices(
+                loafOfFreshWhiteBread500g = 2.55f,
+                riceWhite1kg = 2.59f,
+                eggsRegular12 = 2.22f,
+                localCheese1kg = 8.15f,
+                chickenFillets1kg = 15.31f,
+                beefRound1kgOrEquivalentBackLegRedMeat = null
+            ),
+            servicesPrices = ServicesPrices(
+                basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = null,
+                oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = null,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
+                fitnessClubMonthlyFeeForOneAdult = null,
+                tennisCourtRentOneHourOnWeekend = null,
+                cinemaInternationalReleaseOneSeat = null,
+                preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = null,
+                internationalPrimarySchoolYearlyForOneChild = null
+            ),
+            clothesPrices = ClothesPrices(
+                onePairOfJeansLevis50oneOrSimilar = null,
+                oneSummerDressInAChainStoreZaraHAndM = null,
+                onePairOfNikeRunningShoesMidRange = null,
+                onePairOfMenLeatherBusinessShoes = null
+            ),
+            transportationsPrices = TransportationsPrices(
+                oneWayTicketLocalTransport = null,
+                monthlyPassRegularPrice = null,
+                taxiStartNormalTariff = null,
+                taxi1kmNormalTariff = null,
+                taxi1hourWaitingNormalTariff = null,
+                gasolineOneLiter = 1.33f
+            ),
+            carsPrices = CarsPrices(
+                volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = null,
+                toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = null
+            ),
+            realEstatesPrices = RealEstatesPrices(
+                apartmentOneBedroomInCityCentre = null,
+                apartmentOneBedroomOutsideOfCentre = null,
+                apartment3BedroomsInCityCentre = null,
+                apartment3BedroomsOutsideOfCentre = null,
+                pricePerSquareMeterToBuyApartmentInCityCentre = null,
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
+            ),
+            averageMonthlyNetSalaryAfterTax = null,
+            dataQuality = false
+        ),
+        CityEntity(
+            cityName = "Tapachula",
+            country = "Mexico",
+            mealsPrices = MealsPrices(
+                mealInexpensiveRestaurant = 3.61f,
+                mealFor2PeopleMidRangeRestaurant = null,
+                mealAtMcDonaldSOrEquivalent = 7.86f
+            ),
+            drinksPrices = DrinksPrices(
+                cappuccinoRegularInRestaurants = 1.03f,
+                cokePepsiAThirdOfLiterBottleInRestaurants = 1.29f,
+                waterAThirdOfLiterBottleInRestaurants = 0.62f,
+                milkRegularOneLiter = 1.26f,
+                waterOneAndHalfLiterBottleAtTheMarket = 0.77f
+            ),
+            fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                apples1kg = 1.8f,
+                banana1kg = 1.29f,
+                oranges1kg = 1.55f,
+                tomato1kg = 1.29f,
+                potato1kg = 1.55f,
+                onion1kg = 1.29f,
+                lettuceOneHead = 1.03f
+            ),
+            foodPrices = FoodPrices(
+                loafOfFreshWhiteBread500g = 1.38f,
+                riceWhite1kg = 0.93f,
+                eggsRegular12 = 1.86f,
+                localCheese1kg = 6.19f,
+                chickenFillets1kg = 6.19f,
+                beefRound1kgOrEquivalentBackLegRedMeat = 14.44f
+            ),
+            servicesPrices = ServicesPrices(
+                basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 73.49f,
+                oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.1f,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = 30.94f,
+                fitnessClubMonthlyFeeForOneAdult = 23.21f,
+                tennisCourtRentOneHourOnWeekend = 10.31f,
+                cinemaInternationalReleaseOneSeat = 3.09f,
+                preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 162.44f,
+                internationalPrimarySchoolYearlyForOneChild = 2062.76f
+            ),
+            clothesPrices = ClothesPrices(
+                onePairOfJeansLevis50oneOrSimilar = 24.75f,
+                oneSummerDressInAChainStoreZaraHAndM = 25.78f,
+                onePairOfNikeRunningShoesMidRange = 48.99f,
+                onePairOfMenLeatherBusinessShoes = 46.41f
+            ),
+            transportationsPrices = TransportationsPrices(
+                oneWayTicketLocalTransport = 0.41f,
+                monthlyPassRegularPrice = 5.16f,
+                taxiStartNormalTariff = 1.93f,
+                taxi1kmNormalTariff = 1.6f,
+                taxi1hourWaitingNormalTariff = 4.13f,
+                gasolineOneLiter = 1.18f
+            ),
+            carsPrices = CarsPrices(
+                volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 10313.8f,
+                toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 18049.15f
+            ),
+            realEstatesPrices = RealEstatesPrices(
+                apartmentOneBedroomInCityCentre = null,
+                apartmentOneBedroomOutsideOfCentre = 77.35f,
+                apartment3BedroomsInCityCentre = 154.71f,
+                apartment3BedroomsOutsideOfCentre = 103.14f,
+                pricePerSquareMeterToBuyApartmentInCityCentre = null,
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = null
+            ),
+            averageMonthlyNetSalaryAfterTax = 360.98f,
+            dataQuality = false
+        ),
+    )
 
 
+
+    private val fakeDataSource = listOf<CityEntity>(
+
+        CityEntity(cityName="Asheville", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=430.56f),
+            averageMonthlyNetSalaryAfterTax=3400.0f, dataQuality=true),
+
+        CityEntity(cityName="Baltimore", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=430.56f),
+            averageMonthlyNetSalaryAfterTax=3380.0f, dataQuality=true),
+
+        CityEntity(cityName="Syracuse", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=430.56f),
+            averageMonthlyNetSalaryAfterTax=4480.0f, dataQuality=true),
+
+        CityEntity(cityName="El Paso", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=430.56f),
+            averageMonthlyNetSalaryAfterTax=3100.0f, dataQuality=true),
+
+        CityEntity(cityName="Tulsa", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=430.56f),
+            averageMonthlyNetSalaryAfterTax=2300.0f, dataQuality=true),
+
+
+        CityEntity(cityName="`Ajman", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=430.56f),
+            averageMonthlyNetSalaryAfterTax=1100.0f, dataQuality=true),
+
+
+        CityEntity(cityName="Wichita", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=430.56f),
+            averageMonthlyNetSalaryAfterTax=2280.0f, dataQuality=true),
+
+
+        CityEntity(cityName="Augusta", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=430.56f),
+            averageMonthlyNetSalaryAfterTax=900.0f, dataQuality=true),
+
+
+        CityEntity(cityName="Richmond", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=430.56f),
+            averageMonthlyNetSalaryAfterTax=3410.0f, dataQuality=true),
+
+
+        CityEntity(cityName="Mecca", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=430.56f),
+            averageMonthlyNetSalaryAfterTax=3000.0f, dataQuality=true),
+
+        CityEntity(cityName=" ", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=430.56f),
+            averageMonthlyNetSalaryAfterTax=340.0f, dataQuality=true),
+
+        CityEntity(cityName="", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=430.56f),
+            averageMonthlyNetSalaryAfterTax=14000.0f, dataQuality=true),
+
+        CityEntity(cityName="Lanka Lanka", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=430.56f),
+            averageMonthlyNetSalaryAfterTax=0f, dataQuality=true),
+
+        CityEntity(cityName="Lanka", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=430.56f),
+            averageMonthlyNetSalaryAfterTax=null, dataQuality=true),
+
+        CityEntity(cityName="Sria", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=null),
+            averageMonthlyNetSalaryAfterTax=3480.0f, dataQuality=true),
+
+        CityEntity(cityName="MeccaLow", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=430.56f),
+            averageMonthlyNetSalaryAfterTax=3000.0f, dataQuality=false),
+
+        CityEntity(cityName=" ", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=430.56f),
+            averageMonthlyNetSalaryAfterTax=3000.0f, dataQuality=true),
+
+        CityEntity(cityName="Lannull", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=430.56f),
+            averageMonthlyNetSalaryAfterTax=null, dataQuality=true),
+
+        CityEntity(cityName="Metanull", country="Sri Lanka",
+            mealsPrices=MealsPrices(mealInexpensiveRestaurant=1.36f, mealFor2PeopleMidRangeRestaurant=10.85f, mealAtMcDonaldSOrEquivalent=3.25f),
+            drinksPrices=DrinksPrices(cappuccinoRegularInRestaurants=1.46f, cokePepsiAThirdOfLiterBottleInRestaurants=0.35f, waterAThirdOfLiterBottleInRestaurants=0.18f, milkRegularOneLiter=1.15f, waterOneAndHalfLiterBottleAtTheMarket=0.4f),
+            fruitAndVegetablesPrices=FruitAndVegetablesPrices(apples1kg=4.27f, banana1kg=0.76f, oranges1kg=3.18f, tomato1kg=1.42f, potato1kg=1.02f, onion1kg=0.74f, lettuceOneHead=0.83f),
+            foodPrices=FoodPrices(loafOfFreshWhiteBread500g=0.64f, riceWhite1kg=0.66f, eggsRegular12=1.77f, localCheese1kg=7.4f, chickenFillets1kg=4.03f, beefRound1kgOrEquivalentBackLegRedMeat=5.89f),
+            servicesPrices=ServicesPrices(basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment=23.56f, oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans=0.01f, internet60MbpsOrMoreUnlimitedDataCableAdsl=9.61f, fitnessClubMonthlyFeeForOneAdult=9.43f, tennisCourtRentOneHourOnWeekend=3.73f, cinemaInternationalReleaseOneSeat=2.37f, preschoolOrKindergartenFullDayPrivateMonthlyForOneChild=26.55f, internationalPrimarySchoolYearlyForOneChild=425.77f),
+            clothesPrices=ClothesPrices(onePairOfJeansLevis50oneOrSimilar=20.59f, oneSummerDressInAChainStoreZaraHAndM=12.77f, onePairOfNikeRunningShoesMidRange=44.42f, onePairOfMenLeatherBusinessShoes=24.71f),
+            transportationsPrices=TransportationsPrices(oneWayTicketLocalTransport=0.11f, monthlyPassRegularPrice=4.07f, taxiStartNormalTariff=0.27f, taxi1kmNormalTariff=0.27f, taxi1hourWaitingNormalTariff=0.49f, gasolineOneLiter=1.17f),
+            carsPrices=CarsPrices(volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar=24406.97f, toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar=28672.95f),
+            realEstatesPrices=RealEstatesPrices(apartmentOneBedroomInCityCentre=295.76f, apartmentOneBedroomOutsideOfCentre=109.14f, apartment3BedroomsInCityCentre=549.78f, apartment3BedroomsOutsideOfCentre=221.96f, pricePerSquareMeterToBuyApartmentInCityCentre=1734.36f, pricePerSquareMeterToBuyApartmentOutsideOfCentre=null),
+            averageMonthlyNetSalaryAfterTax=3000.0f, dataQuality=true),
         )
 
     override fun getAllCitiesData(): List<CityEntity> {
-        return fakeData
+        return fakeDataSource
     }
 }
