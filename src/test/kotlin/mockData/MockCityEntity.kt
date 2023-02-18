@@ -773,4 +773,83 @@ object MockCityEntity {
 
     }
     // End region for GetSuitableCityMoreSavingPerMonthInteractor (Problem 10)
+    // Start region for GetCityWithCheapestInternationalPrimarySchoolForOneChildInteractor (Problem 11)
+    fun createMockCity(
+        internationalPrimarySchoolYearlyForOneChild: Float?,
+        cityName: String,
+        dataQuality: Boolean,
+    ): CityEntity {
+        return CityEntity(
+            cityName,
+            "Columbia",
+            MealsPrices(
+                null,
+                null,
+                null
+            ),
+            DrinksPrices(
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            FruitAndVegetablesPrices(
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            FoodPrices(
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            ServicesPrices(
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                internationalPrimarySchoolYearlyForOneChild            ),
+            ClothesPrices(
+                null,
+                null,
+                null,
+                null
+            ),
+            TransportationsPrices(
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            CarsPrices(
+                null,
+                null
+            ),
+            RealEstatesPrices(
+                null,
+                null,
+                null,
+                null,
+                null,
+               null ,
+            ),
+            null,
+            dataQuality,
+        )
+
+    }
+    // End region for GetCityWithCheapestInternationalPrimarySchoolForOneChildInteractor (Problem 11)
 }
