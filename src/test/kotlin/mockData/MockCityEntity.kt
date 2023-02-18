@@ -779,6 +779,7 @@ object MockCityEntity {
         countryName: String,
         cityName: String,
         carsPrices: CarsPrices,
+        averageMonthlyNetSalaryAfterTax: Float?
     ): CityEntity {
         return CityEntity(
             cityName,
@@ -845,7 +846,7 @@ object MockCityEntity {
                 null,
                 null
             ),
-            null,
+            averageMonthlyNetSalaryAfterTax,
             true,
         )
 
