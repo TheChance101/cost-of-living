@@ -1,14 +1,17 @@
 package interactor
 
 import model.CityEntity
+import utils.isNotNull
 
 class GetLowestAveragePricesForFruitsAndVegetablesInteractor (
     private val data: CostOfLivingDataSource
 ){
     fun execute(limit: Int): List<String> {
+
         return  data
             .getAllCitiesData()
             .filter(::excludeNullSalariesAndLowQualityDataAndNullFruitsAndVegetablesPrices)
+            .ifEmpty { throw IllegalStateException("Something went wrong, no valid data") }
             .sortedBy(::getPricesToSalaryAverage)
             .take(limit)
             .map { it.cityName }
@@ -29,14 +32,14 @@ class GetLowestAveragePricesForFruitsAndVegetablesInteractor (
 
 
     private fun excludeNullSalariesAndLowQualityDataAndNullFruitsAndVegetablesPrices(city: CityEntity) =
-                city.averageMonthlyNetSalaryAfterTax != null &&
                 city.dataQuality &&
-                city.fruitAndVegetablesPrices.apples1kg != null &&
-                city.fruitAndVegetablesPrices.banana1kg != null &&
-                city.fruitAndVegetablesPrices.oranges1kg != null &&
-                city.fruitAndVegetablesPrices.tomato1kg != null &&
-                city.fruitAndVegetablesPrices.potato1kg != null &&
-                city.fruitAndVegetablesPrices.onion1kg != null &&
-                city.fruitAndVegetablesPrices.lettuceOneHead != null
+                city.averageMonthlyNetSalaryAfterTax.isNotNull() &&
+                city.fruitAndVegetablesPrices.apples1kg.isNotNull() &&
+                city.fruitAndVegetablesPrices.banana1kg.isNotNull() &&
+                city.fruitAndVegetablesPrices.oranges1kg.isNotNull() &&
+                city.fruitAndVegetablesPrices.tomato1kg.isNotNull() &&
+                city.fruitAndVegetablesPrices.potato1kg.isNotNull() &&
+                city.fruitAndVegetablesPrices.onion1kg.isNotNull() &&
+                city.fruitAndVegetablesPrices.lettuceOneHead.isNotNull()
 
 }
