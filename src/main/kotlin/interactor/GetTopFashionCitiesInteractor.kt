@@ -15,10 +15,12 @@ class GetTopFashionCitiesInteractor(
     }
 
     private fun ClothesPrices.getAllPricesNotNull(): List<Float> {
-        return listOfNotNull(onePairOfJeansLevis50oneOrSimilar,
+        return listOfNotNull(
+            onePairOfJeansLevis50oneOrSimilar,
             onePairOfNikeRunningShoesMidRange,
             oneSummerDressInAChainStoreZaraHAndM,
-            onePairOfMenLeatherBusinessShoes)
+            onePairOfMenLeatherBusinessShoes
+        )
     }
 
     private fun excludeNullPricesAndLowQualityData(city: CityEntity): Boolean {
@@ -27,7 +29,9 @@ class GetTopFashionCitiesInteractor(
         }
     }
 
-    private fun getClothesAveragePrice(city: CityEntity) = city.clothesPrices.getAllPricesNotNull().average().toFloat()
+    private fun getClothesAveragePrice(city: CityEntity): Float {
+        return city.clothesPrices.getAllPricesNotNull().average().toFloat()
+    }
 }
 
 
