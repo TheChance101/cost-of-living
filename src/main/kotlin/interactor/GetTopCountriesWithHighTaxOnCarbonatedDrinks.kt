@@ -8,10 +8,10 @@ class GetTopCountriesWithHighTaxOnCarbonatedDrinks (private val dataSource: Cost
             .filter(::excludeNullDrinkPriceAndNegativePriceAndLowQualityData)
             .groupBy { it.country }
             .mapValues { entry ->
-                val drinksPrices = entry.value.flatMap { city ->
+                entry.value.flatMap { city ->
                     listOfNotNull(city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants)
                 }
-                drinksPrices.average()
+               .average()
             }
             .toList()
             .sortedByDescending { it.second }
