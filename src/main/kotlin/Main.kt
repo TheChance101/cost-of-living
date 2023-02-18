@@ -66,7 +66,7 @@ fun main() {
     //endregion
     //region 9-TopTenCountryEnforceHighTaxesOnCarbonatedDrinks
     val getTopTenCountryEnforceHighTaxesOnCarbonatedDrinks =
-        GetTopTenCountryEnforceHighTaxesOnCarbonatedDrinksInteractor(dataSource)
+        GetTopCountryEnforceHighTaxesOnCarbonatedDrinksInteractor(dataSource)
     println(getTopTenCountryEnforceHighTaxesOnCarbonatedDrinks.execute(10))
     printSeparationLine()
     //endregion
