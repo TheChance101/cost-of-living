@@ -42,3 +42,5 @@ bin/
 .DS_Store
 /.idea/uiDesigner.xml
 /.idea/kotlinc.xml
+/.idea/uiDesigner.xml
+/.idea/kotlinc.xml

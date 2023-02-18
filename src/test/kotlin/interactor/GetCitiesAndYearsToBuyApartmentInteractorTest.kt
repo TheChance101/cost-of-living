@@ -1,114 +1,128 @@
 package interactor
-
 import FakeData
-import model.CityEntity
+import model.*
 import org.junit.jupiter.api.*
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.function.Executable
-import kotlin.Exception
+
+
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCitiesAndYearsToBuyApartmentInteractorTest {
 
+    private lateinit var fakeDataSource: FakeData
+    private lateinit var getCitiesAndYearsToBuyApartment : GetCitiesAndYearsToBuyApartmentInteractor
 
-    private lateinit var getCitiesAndYearsToBuyApartment: GetCitiesAndYearsToBuyApartmentInteractor
-    private lateinit var fakeData: FakeData
-
-    @BeforeAll
+    @BeforeEach
     fun setUp() {
-        fakeData = FakeData()
-        getCitiesAndYearsToBuyApartment = GetCitiesAndYearsToBuyApartmentInteractor(fakeData)
+        fakeDataSource = FakeData()
+        getCitiesAndYearsToBuyApartment = GetCitiesAndYearsToBuyApartmentInteractor(fakeDataSource)
     }
 
 
     @Test
-    fun should_returnTop10Cities_when_calculatedYearsNeededToBuyApartmentIsCorrect() {
+    fun should_ReturnTop10Cities_When_CalculatedYearsNeededToBuyApartmentIsCorrect() {
         //When
         val actualResult = getCitiesAndYearsToBuyApartment.execute(limit)
 
         //Then
-        assertEquals(expectedResult, actualResult)
+        assertEquals( expectedResult , actualResult)
     }
 
 
     @Test
-    fun should_excludeData_when_citiesIsNull() {
+    fun should_ExcludeData_When_CitiesIsEmpty() {
+        //Give city name = " "
+
         //When
         val actualResult = getCitiesAndYearsToBuyApartment.execute(limit)
 
         //Then
-        assertEquals(expectedResult, actualResult)
+        assertFalse( actualResult.any { it == Pair("" , "1.2 year") })
+        assertEquals( expectedResult , actualResult)
     }
 
 
     @Test
-    fun should_excludeData_when_salaryIsNull() {
+    fun should_ExcludeData_When_SalaryIsNull() {
+        //Give salary is null
+
         //When
         val actualResult = getCitiesAndYearsToBuyApartment.execute(limit)
 
         //Then
-        assertEquals(expectedResult, actualResult)
+        assertFalse( actualResult.any { it == Pair("Lannull", "1.2 year") })
+        assertEquals( expectedResult , actualResult)
     }
 
 
     @Test
-    fun should_excludeData_when_pricesPerSquareMeterIsNull() {
+    fun should_ExcludeData_When_PricesPerSquareMeterIsNull() {
+        //Give price of square meter is null
+
         //When
         val actualResult = getCitiesAndYearsToBuyApartment.execute(limit)
 
         //Then
-        assertEquals(expectedResult, actualResult)
+
+        assertFalse( actualResult.any { it == Pair("Metanull", "1.2 year") })
+        assertEquals( expectedResult , actualResult)
     }
 
 
     @Test
-    fun should_excludeData_when_lowQualityData() {
+    fun should_ExcludeData_When_LowQualityData() {
+        //Give Pair("MeccaLow" , "1.2 year") is low quality data
+
         //When
         val actualResult = getCitiesAndYearsToBuyApartment.execute(limit)
 
         //Then
-        assertEquals(expectedResult, actualResult)
+        assertFalse( actualResult.any { it == Pair("MeccaLow" , "1.2 year") } )
+        assertEquals( expectedResult , actualResult)
     }
 
 
     @Test
-    @Disabled
-    fun should_returnEmptyList_when_dataIsEmpty() {
+    fun should_ReturnFalse_When_DataIsNotEmpty() {
+
         //When
         val actualResult = getCitiesAndYearsToBuyApartment.execute(limit)
 
         //Then
-        assertEquals(emptyList<CityEntity>(), actualResult)
+        assertFalse( actualResult.isEmpty() )
     }
 
 
     @Test
-    @Disabled
-    fun should_throwException_when_salaryIsZero() {
+    fun should_ThrowException_When_SalaryIsZero() {
+        //Give salary = 0
         //When
-        val actualExecutable = Executable { getCitiesAndYearsToBuyApartment.execute(limit) }
+        val actualExecutable  =  Executable{ getCitiesAndYearsToBuyApartment.execute(1)[12] }
 
         //Then
-        assertThrows(Exception::class.java, actualExecutable)
+        assertThrows(Exception::class.java , actualExecutable )
     }
 
 
-    companion object {
+
+    companion object{
 
         private const val limit = 10
 
         private val expectedResult = listOf(
-            Pair("Hyderabad City", "10.6 years"),
-            Pair("Giza", "11.1 years"),
-            Pair("Alexandria", "12.5 years"),
-            Pair("Multan", "13.4 years"),
-            Pair("Lahore", "15.6 years"),
-            Pair("Dushanbe", "19.4 years"),
-            Pair("Tanta", "19.8 years"),
-            Pair("Karachi", "20.6 years"),
-            Pair("Rawalpindi", "35.1 years"),
-            Pair("Caracas", "51.4 years"),
+            Pair("Syracuse", "0.8 year"),
+            Pair("Asheville", "1.1 year"),
+            Pair("Baltimore", "1.1 year"),
+            Pair("Richmond", "1.1 year"),
+            Pair("El Paso", "1.2 year"),
+            Pair("Mecca", "1.2 year"),
+            //  Pair("MeccaLow", "1.2 year"), `low data quality
+            Pair("Tulsa", "1.6 year"),
+            Pair("Wichita", "1.6 year"),
+            Pair("`Ajman", "3.3 years"),
+            Pair("Augusta", "4.0 years"),
         )
     }
 

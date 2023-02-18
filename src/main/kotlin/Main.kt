@@ -1,5 +1,6 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
+import interactor.*
 import interactor.CostOfLivingDataSource
 import interactor.GetCityHasCheapestInternetConnectionInteractor
 import interactor.GetHighestSalaryAverageCititesNamesInteractor
@@ -8,6 +9,7 @@ import interactor.GetCitiesAndYearsToBuyApartmentInteractor
 import interactor.GetTopFashionCitiesInteractor
 import interactor.GetCitiesNamesSortedByCheapestBananaPricesInteractor
 import interactor.*
+import interactor.util.TypeOfApartments
 
 fun main() {
     val csvParser = CsvParser()
@@ -19,6 +21,10 @@ fun main() {
 
     val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
     println(getHighestSalaryAverageCities.execute(limit = 10))
+    printSeparationLine()
+
+    val getHighestApartmentPriceDifferenceCity = GetHighestApartmentPriceDifferenceCityInteractor(dataSource)
+    println(getHighestApartmentPriceDifferenceCity.execute(TypeOfApartments.ONE_BEDROOM))
     printSeparationLine()
 
     val getTopFashionCities = GetTopFashionCitiesInteractor(dataSource)
@@ -42,11 +48,13 @@ fun main() {
     println(getLowCostFruitVegetableCitiesWithHighSalaries.execute())
     printSeparationLine()
 
+    val getTheCityThatMatchManagerExpectations = GetTheCityThatMatchManagerExpectationsInteractor(dataSource)
+    println(getTheCityThatMatchManagerExpectations.execute())
+    printSeparationLine()
 
     val getCityHasCheapestInternetConnection = GetCityHasCheapestInternetConnectionInteractor(dataSource)
     println(getCityHasCheapestInternetConnection.execute())
     printSeparationLine()
-
 
 
 }
