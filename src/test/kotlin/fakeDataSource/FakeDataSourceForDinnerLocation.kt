@@ -1,0 +1,4 @@
+package fakeDataSource
+
+class FakeDataSourceForDinnerLocation {
+}
