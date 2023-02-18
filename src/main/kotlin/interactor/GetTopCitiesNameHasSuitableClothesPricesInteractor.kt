@@ -17,19 +17,27 @@ class GetTopCitiesNameHasSuitableClothesPricesInteractor(
 
 
     private val calculateSumClothesPrices = { cityName: CityEntity ->
-        cityName.clothesPrices.onePairOfMenLeatherBusinessShoes!! +
-                cityName.clothesPrices.onePairOfJeansLevis50oneOrSimilar!! +
-                cityName.clothesPrices.onePairOfNikeRunningShoesMidRange!! +
-                cityName.clothesPrices.oneSummerDressInAChainStoreZaraHAndM!!
+        cityName.run {
+            clothesPrices.onePairOfMenLeatherBusinessShoes!! +
+                    clothesPrices.onePairOfJeansLevis50oneOrSimilar!! +
+                    clothesPrices.onePairOfNikeRunningShoesMidRange!! +
+                    clothesPrices.oneSummerDressInAChainStoreZaraHAndM!!
+
+        }
     }
 
 
     private val excludeNullClothes = { cityName: CityEntity ->
-        cityName.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null &&
-                cityName.clothesPrices.onePairOfMenLeatherBusinessShoes != null &&
-                cityName.clothesPrices.onePairOfNikeRunningShoesMidRange != null &&
-                cityName.clothesPrices.oneSummerDressInAChainStoreZaraHAndM != null
+        cityName.run{
+            clothesPrices.onePairOfJeansLevis50oneOrSimilar != null &&
+                    clothesPrices.onePairOfMenLeatherBusinessShoes != null &&
+                    clothesPrices.onePairOfNikeRunningShoesMidRange != null &&
+                    clothesPrices.oneSummerDressInAChainStoreZaraHAndM != null
+
+        }
+
     }
+
 
 }
 
