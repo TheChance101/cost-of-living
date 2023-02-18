@@ -2,7 +2,8 @@ package fakeDataSource
 
 import interactor.CostOfLivingDataSource
 import model.*
-open class TaxesFakeDataSource: CostOfLivingDataSource {
+
+open class TaxesFakeDataSource : CostOfLivingDataSource {
     override fun getAllCitiesData(): List<CityEntity> {
         return listOf(
             CityEntity(
@@ -67,7 +68,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -138,7 +139,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -209,7 +210,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -217,7 +218,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 15.0f,
                 dataQuality = true
-            ),CityEntity(
+            ), CityEntity(
                 cityName = "NY",
                 country = "USA",
                 mealsPrices = MealsPrices(
@@ -279,7 +280,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -350,7 +351,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -421,7 +422,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -492,7 +493,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -563,7 +564,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -571,7 +572,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 15.0f,
                 dataQuality = false
-            ),CityEntity(
+            ), CityEntity(
                 cityName = "Moscow",
                 country = "Russia",
                 mealsPrices = MealsPrices(
@@ -633,7 +634,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -704,7 +705,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -712,7 +713,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 15.0f,
                 dataQuality = true
-            ),CityEntity(
+            ), CityEntity(
                 cityName = "Ankara",
                 country = "Turkey",
                 mealsPrices = MealsPrices(
@@ -774,7 +775,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -797,7 +798,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                     waterAThirdOfLiterBottleInRestaurants = 1.5f,
                     milkRegularOneLiter = 4.5f,
                     waterOneAndHalfLiterBottleAtTheMarket = 2.7f
-            ),
+                ),
                 fruitAndVegetablesPrices = FruitAndVegetablesPrices(
                     apples1kg = 11.02f,
                     banana1kg = 4.44f,
@@ -845,7 +846,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -916,7 +917,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -924,7 +925,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 averageMonthlyNetSalaryAfterTax = 15.0f,
                 dataQuality = true
-            ),CityEntity(
+            ), CityEntity(
                 cityName = "Beijing",
                 country = "China",
                 mealsPrices = MealsPrices(
@@ -986,7 +987,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -1057,7 +1058,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -1074,7 +1075,8 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                     mealFor2PeopleMidRangeRestaurant = 5.0f,
                     mealAtMcDonaldSOrEquivalent = 12.0f
                 ),
-                drinksPrices = DrinksPrices(cappuccinoRegularInRestaurants = 2.5f,
+                drinksPrices = DrinksPrices(
+                    cappuccinoRegularInRestaurants = 2.5f,
                     cokePepsiAThirdOfLiterBottleInRestaurants = 1.8f,
                     waterAThirdOfLiterBottleInRestaurants = 0.5f,
                     milkRegularOneLiter = 3.2f,
@@ -1127,7 +1129,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -1144,7 +1146,8 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                     mealFor2PeopleMidRangeRestaurant = 5.0f,
                     mealAtMcDonaldSOrEquivalent = 20.0f
                 ),
-                drinksPrices = DrinksPrices(cappuccinoRegularInRestaurants = 2.5f,
+                drinksPrices = DrinksPrices(
+                    cappuccinoRegularInRestaurants = 2.5f,
                     cokePepsiAThirdOfLiterBottleInRestaurants = 1.8f,
                     waterAThirdOfLiterBottleInRestaurants = 0.5f,
                     milkRegularOneLiter = 3.2f,
@@ -1197,7 +1200,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -1214,7 +1217,8 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                     mealFor2PeopleMidRangeRestaurant = 5.0f,
                     mealAtMcDonaldSOrEquivalent = 15.0f
                 ),
-                drinksPrices = DrinksPrices(cappuccinoRegularInRestaurants = null,
+                drinksPrices = DrinksPrices(
+                    cappuccinoRegularInRestaurants = null,
                     cokePepsiAThirdOfLiterBottleInRestaurants = null,
                     waterAThirdOfLiterBottleInRestaurants = null,
                     milkRegularOneLiter = null,
@@ -1267,7 +1271,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -1284,7 +1288,8 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                     mealFor2PeopleMidRangeRestaurant = 5.0f,
                     mealAtMcDonaldSOrEquivalent = 15.0f
                 ),
-                drinksPrices = DrinksPrices(cappuccinoRegularInRestaurants = 2.5f,
+                drinksPrices = DrinksPrices(
+                    cappuccinoRegularInRestaurants = 2.5f,
                     cokePepsiAThirdOfLiterBottleInRestaurants = 1.8f,
                     waterAThirdOfLiterBottleInRestaurants = 0.5f,
                     milkRegularOneLiter = 3.2f,
@@ -1337,7 +1342,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -1354,7 +1359,8 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                     mealFor2PeopleMidRangeRestaurant = 5.0f,
                     mealAtMcDonaldSOrEquivalent = 15.0f
                 ),
-                drinksPrices = DrinksPrices(cappuccinoRegularInRestaurants = 2.5f,
+                drinksPrices = DrinksPrices(
+                    cappuccinoRegularInRestaurants = 2.5f,
                     cokePepsiAThirdOfLiterBottleInRestaurants = 1.8f,
                     waterAThirdOfLiterBottleInRestaurants = 0.5f,
                     milkRegularOneLiter = 3.2f,
@@ -1407,7 +1413,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
                 ),
                 realEstatesPrices = RealEstatesPrices(
                     apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre =null ,
+                    apartmentOneBedroomOutsideOfCentre = null,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -1423,7 +1429,8 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
     fun createFakeCity(
         countryName: String,
         drinksPrice: Float?,
-        dataQuality: Boolean): CityEntity = CityEntity(
+        dataQuality: Boolean
+    ): CityEntity = CityEntity(
         cityName = "Cairo",
         country = countryName,
         mealsPrices = MealsPrices(
@@ -1485,7 +1492,7 @@ open class TaxesFakeDataSource: CostOfLivingDataSource {
         ),
         realEstatesPrices = RealEstatesPrices(
             apartmentOneBedroomInCityCentre = null,
-            apartmentOneBedroomOutsideOfCentre =null ,
+            apartmentOneBedroomOutsideOfCentre = null,
             apartment3BedroomsInCityCentre = 7000.0f,
             apartment3BedroomsOutsideOfCentre = 100f,
             pricePerSquareMeterToBuyApartmentInCityCentre = null,
