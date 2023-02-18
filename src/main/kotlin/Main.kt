@@ -3,8 +3,22 @@ import dataSource.utils.CsvParser
 import interactor.*
 
 const val TEAM_VELVET_MESSAGE_WELCOME: String = "The Red Velvet team welcomes you in our application"
+const val TEXT_OF_CITY_NAME = "City Name"
+const val TEXT_OF_COUNTRY_NAME = "Country Name"
+/********************************************************************/
+/* Request INPUT FROM USER CONSTANT*/
+/********************************************************************/
+const val ENTER_THE_CORRECT_VALUE_MESSAGE = "please enter the correct value"
+const val ENTER_THE_LIMIT_OF_CITY_MESSAGE = "enter the limit number of countries you want :  "
+const val ENTER_THE_SALARY_MESSAGE = "Enter the Salary : "
+const val ENTER_YOUR_NAME_MESSAGE = "please enter your name : "
+const val QUESTION_ABOUT_DO_YOU_WANT_CONTINUE_IN_OUR_APPLICATION = "Do you want to continue for the trip in our application y/n"
+const val NOT_CORRECT_CHOOSE = "you don't choose the correct option "
+const val ENTER_YOUR_NUMBER_OPTION = "please enter the number of your option between [1-8]-> (Just receive INT Number)"
 
+/*********************************************************************/
 
+/*********************************************************************/
 val csvParser = CsvParser()
 val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
 val data = dataSource.getAllCitiesData()
@@ -17,7 +31,6 @@ val inputCitiesEntity = arrayOf(
 )
 
 fun main() {
-
     val isNeedContinue = true
     welcomeUserMessageWithUserNameOrNot(getUserName())
     while (isNeedContinue) {
@@ -25,7 +38,7 @@ fun main() {
             try {
                 getResultDependOnTheOption()
             } catch (error: Exception) {
-                println("please enter the correct value")
+                println(ENTER_THE_CORRECT_VALUE_MESSAGE)
             }
         }
     }
@@ -35,11 +48,10 @@ fun getResultDependOnTheOption() {
     when (getChooseOptionNumber()) {
         1 -> {
             horizontalRule()
-            print("enter the limit number of countries you want ")
+            print(ENTER_THE_LIMIT_OF_CITY_MESSAGE)
             getTopCountriesWithHighTaxOnCarbonatedDrinks((readln().toInt()))
             horizontalRule()
         }
-
         2 -> {
             horizontalRule()
             getCitiesNamesSortedCheapestBananaPrices()
@@ -50,41 +62,37 @@ fun getResultDependOnTheOption() {
             getCityHasCheapestInternetConnection()
             horizontalRule()
         }
-
         4 -> {
             horizontalRule()
             getMostSuitableCity()
             horizontalRule()
         }
-
         5 -> {
             horizontalRule()
-            print("Enter the Salary : ")
+            print(ENTER_THE_SALARY_MESSAGE)
             val salary = readln().toInt()
-            print("enter the limit of cities : ")
+            print(ENTER_THE_LIMIT_OF_CITY_MESSAGE)
             val limit = readln().toInt()
             print("enter square meter : ")
             val squareMeter = readln().toInt()
             getCitiesNameToBuyApartmentFaster(salary, limit, squareMeter)
             horizontalRule()
         }
-
         6 -> {
             horizontalRule()
-            println("This option is under maintenance")
+            print(ENTER_THE_LIMIT_OF_CITY_MESSAGE)
+            getTopFashionCitiesNames(readln().toInt())
             horizontalRule()
-
         }
-
         7 -> {
             horizontalRule()
-            print("enter the limit : ")
+            print(ENTER_THE_LIMIT_OF_CITY_MESSAGE)
             getHighestSalaryAverageCities(readln().toInt(), dataSource)
         }
 
         8 -> {
             horizontalRule()
-            print("Enter the Country Name : ")
+            print("Enter the $TEXT_OF_COUNTRY_NAME Name : ")
             try {
                 getSalaryAverageAndCitiesNamesInCountry(readln(), dataSource)
                 horizontalRule()
@@ -106,16 +114,13 @@ fun welcomeUserMessageWithUserNameOrNot(nameOfUser: String?) =
     if (nameOfUser != null && nameOfUser.trim() != "")
         println("Hi $nameOfUser $TEAM_VELVET_MESSAGE_WELCOME")
     else println("Hi There $TEAM_VELVET_MESSAGE_WELCOME")
-
-
 fun getUserName(): String {
-    print("please enter your name : ")
+    print(ENTER_YOUR_NAME_MESSAGE)
     return readln()
 }
-
 fun getUserChooseStartOrNot(): Boolean {
     horizontalRule()
-    println("Do you want to continue for the trip in our application y/n")
+    println(QUESTION_ABOUT_DO_YOU_WANT_CONTINUE_IN_OUR_APPLICATION)
     val userChoose: String = readln()
     return if (checkUserStatus(userChoose)) {
         horizontalRule()
@@ -124,14 +129,12 @@ fun getUserChooseStartOrNot(): Boolean {
         true
     } else {
         horizontalRule()
-        println("you don't choose the correct option ")
+        println(NOT_CORRECT_CHOOSE)
         horizontalRule()
         false
     }
 }
-
-fun checkUserStatus(userChoose: String): Boolean = userChoose.trimMargin() == "y"
-
+fun checkUserStatus(userChoose: String): Boolean = userChoose.trimMargin() .lowercase()== "y"
 fun printUserOptionList() {
     println(
         """
@@ -143,21 +146,18 @@ fun printUserOptionList() {
             5 - Cities Name To Buy Apartment Faster
             6 - Top Fashion Cities Names 
             7 - Highest Salary Average Cities Name
-            8 - Salary Average And Cities Names in Country
+            8 - Salary Average And Cities Names in $TEXT_OF_COUNTRY_NAME
         """.trimIndent()
     )
 }
-
 fun getChooseOptionNumber(): Int {
     horizontalRule()
-    println("please enter the number of your option between [1-8]-> (Just receive Number)")
+    println(ENTER_YOUR_NUMBER_OPTION)
     return readln().toInt()
 }
-
 fun horizontalRule() {
     println("_________________________________________________________________________")
 }
-
 /*******************************************************
 Side of Get Data element -> Instance Zone
  *********************************************************/
@@ -166,54 +166,63 @@ fun getTopCountriesWithHighTaxOnCarbonatedDrinks(limit: Int) {
     val interactWithData = getTopCountriesWithHighTaxOnCarbonatedDrinks.execute(limit, data)
     interactWithData.forEachIndexed{index,element ->
         println("""
-               ${index+1}-Country Name => ${element.first}
+               ${index+1}-$TEXT_OF_COUNTRY_NAME=> ${element.first}
             """.trimIndent())
-
     }}
 fun getCitiesNamesSortedCheapestBananaPrices() {
         val getCitiesNamesSortedCheapestBananaPrices = GetCitiesNamesSortedCheapestBananaPrices()
-        println(getCitiesNamesSortedCheapestBananaPrices.execute(*inputCitiesEntity))
+    getCitiesNamesSortedCheapestBananaPrices.execute(*inputCitiesEntity)
+        .forEach{ city ->
+            println("City Name => $city")
+        }
     }
-
-    fun getCityHasCheapestInternetConnection() {
+fun getCityHasCheapestInternetConnection() {
         val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor()
         val interactWithData = getCityHasCheapestInternetConnectionInteractor.execute(data)
         println("""
-City Cheapest Internet Connection with country name and 
-city name => ${interactWithData?.cityName}
-Country => ${interactWithData?.country}
+City Cheapest Internet Connection with $TEXT_OF_COUNTRY_NAME  and 
+$TEXT_OF_CITY_NAME => ${interactWithData?.cityName}
+$TEXT_OF_COUNTRY_NAME => ${interactWithData?.country}
 Internet 60 Mbps => ${interactWithData?.servicesPrices?.internet60MbpsOrMoreUnlimitedDataCableAdsl}$
 """.trimIndent())
     }
-    fun getMostSuitableCity() {
-        val getMostSuitableCity = GetMostSuitableCityInteractor()
-        val list = getMostSuitableCity.getAllCities(dataSource)
-        val cityNameResult = getMostSuitableCity.execute(list)
-        println(cityNameResult)
+fun getMostSuitableCity() {
+    val getMostSuitableCity = GetMostSuitableCityInteractor()
+    val list = getMostSuitableCity.getAllCities(dataSource)
+    val cityNameResult = getMostSuitableCity.execute(list)
+    println("$TEXT_OF_CITY_NAME => $cityNameResult")
+}
+fun getCitiesNameToBuyApartmentFaster(salary: Int, limit: Int, squareMeter: Int) {
+    val getCitiesNameToBuyApartmentFasterInteractor =
+        GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
+    val listOfCityName = getCitiesNameToBuyApartmentFasterInteractor.execute(salary, limit, squareMeter)
+    listOfCityName.forEachIndexed { index, pair ->
+        println("""${index + 1}- $TEXT_OF_CITY_NAME =>${pair.first} && Salary ${pair.second}""")
+}}
+fun getTopFashionCitiesNames(limit: Int) {
+    val topFashionCitiesNames = GetTopFashionCitiesNamesInteractor(dataSource)
+    println("Top Fashion Cities Names")
+    topFashionCitiesNames.execute(limit).forEachIndexed{index, cityName ->
+        println("""${index + 1} - $TEXT_OF_CITY_NAME => $cityName""")
     }
-
-    fun getCitiesNameToBuyApartmentFaster(salary: Int, limit: Int, squareMeter: Int) {
-        val getCitiesNameToBuyApartmentFasterInteractor =
-            GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
-        println(getCitiesNameToBuyApartmentFasterInteractor.execute(salary, limit, squareMeter))
-//    println(getCitiesNameToBuyApartmentFasterInteractor.execute(1000, 10, 100))
+}
+fun getSalaryAverageAndCitiesNamesInCountry(countryName: String, dataSource: CostOfLivingDataSource) {
+    val salaryAverageAndCitiesNamesInCountry = GetSalaryAverageAndCitiesNamesInCountryInteractor(dataSource)
+    println("Salary Average And Cities Names In Country")
+    salaryAverageAndCitiesNamesInCountry.execute(countryName).forEachIndexed{index, pair ->
+        println(
+            """${index + 1} - $TEXT_OF_CITY_NAME => ${pair.first}
+    Salary Average => ${pair.second}          
+        """.trimMargin())
     }
-
-    fun getTopFashionCitiesNames(limit: Int) {
-        val topFashionCitiesNames = GetTopFashionCitiesNamesInteractor(dataSource)
-        topFashionCitiesNames.execute(limit)
-    }
-
-    fun getHighestSalaryAverageCities(limit: Int, dataSource: CostOfLivingDataSource) {
-        val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
-        println(getHighestSalaryAverageCities.execute(limit))
-    }
-
-    fun getSalaryAverageAndCitiesNamesInCountry(countryName: String, dataSource: CostOfLivingDataSource) {
-        val salaryAverageAndCitiesNamesInCountry = GetSalaryAverageAndCitiesNamesInCountryInteractor(dataSource)
-        println(salaryAverageAndCitiesNamesInCountry.execute(countryName))
-    }
-
+}
+fun getHighestSalaryAverageCities(limit: Int, dataSource: CostOfLivingDataSource) {
+    val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
+    println("Highest Salary Average Cities")
+    getHighestSalaryAverageCities.execute(limit).forEachIndexed{index, cityName ->
+            println("""${index + 1} - $TEXT_OF_CITY_NAME => $cityName""")
+        }
+}
 
 
 
