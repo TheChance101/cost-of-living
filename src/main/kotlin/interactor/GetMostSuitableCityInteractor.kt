@@ -12,9 +12,9 @@ class GetMostSuitableCityInteractor
                 if (it.isEmpty()) throw IllegalStateException("Something wrong")
             }
             .filter(::excludeNullValuesInCityEntity)
-            .maxByOrNull(::getTotalSaving)
+            .maxByOrNull(::getTotalSavings)
             .also {
-                if (it == null) throw Exception("Error with data")
+                if (it == null) throw NoSuchElementException("Error with data")
             }
 
 
@@ -29,7 +29,7 @@ class GetMostSuitableCityInteractor
 
     }
 
-    private fun getTotalSaving(city: CityEntity) =
+    private fun getTotalSavings(city: CityEntity) =
         city.averageMonthlyNetSalaryAfterTax!! * AMOUNT_OF_SALARY_INCREASEMENT -
                 city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!! * NUMBERS_OF_BEEF_KILOS -
                 city.foodPrices.loafOfFreshWhiteBread500g!! * NUMBERS_OF_BREAD_KILOS -
@@ -51,5 +51,3 @@ class GetMostSuitableCityInteractor
 
 
 }
-
-
