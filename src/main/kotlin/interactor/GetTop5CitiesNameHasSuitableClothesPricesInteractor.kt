@@ -1,31 +1,35 @@
 package interactor
 
-import model.CityNameClothesPrices
+import model.CityEntity
 
 class GetTop5CitiesNameHasSuitableClothesPricesInteractor(
-    private val dataSource: List<CityNameClothesPrices>,
+    private val dataSource:  CostOfLivingDataSource,
 ) {
 
-    private val numberOfReturnCityName = 5
-    fun execute(): List<String> {
-
-        if (dataSource.filter(excludeNullClothes).size < numberOfReturnCityName) throw Exception("the dataSource has less than 5 city ")
-
+    fun execute(limit : Int ): List<String> {
         return dataSource
+            .getAllCitiesData()
             .filter(excludeNullClothes)
             .sortedBy(calculateSumClothesPrices)
-            .take(numberOfReturnCityName)
+            .take(limit)
             .map { it.cityName }
+            .takeIf { it.isNotEmpty() } ?: throw Exception("the dataSource hasn't city has suitable clothes prices ")
     }
 
 
-    private val calculateSumClothesPrices = { cityName: CityNameClothesPrices ->
-        cityName.onePairOfMenLeatherBusinessShoes!! + cityName.onePairOfJeansLevis50oneOrSimilar!! + cityName.onePairOfNikeRunningShoesMidRange!! + cityName.oneSummerDressInAChainStoreZaraHAndM!!
+    private val calculateSumClothesPrices = { cityName: CityEntity ->
+        cityName.clothesPrices.onePairOfMenLeatherBusinessShoes!! +
+                cityName.clothesPrices.onePairOfJeansLevis50oneOrSimilar!! +
+                cityName.clothesPrices.onePairOfNikeRunningShoesMidRange!! +
+                cityName.clothesPrices.oneSummerDressInAChainStoreZaraHAndM!!
     }
 
 
-    private val excludeNullClothes = { cityName: CityNameClothesPrices ->
-        cityName.onePairOfJeansLevis50oneOrSimilar != null && cityName.onePairOfMenLeatherBusinessShoes != null && cityName.onePairOfNikeRunningShoesMidRange != null && cityName.oneSummerDressInAChainStoreZaraHAndM != null
+    private val excludeNullClothes = { cityName: CityEntity ->
+        cityName.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null &&
+                cityName.clothesPrices.onePairOfMenLeatherBusinessShoes != null &&
+                cityName.clothesPrices.onePairOfNikeRunningShoesMidRange != null &&
+                cityName.clothesPrices.oneSummerDressInAChainStoreZaraHAndM != null
     }
 
 }

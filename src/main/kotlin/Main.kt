@@ -1,6 +1,5 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
-import dataSource.utils.GetCityNamesClothesPrices
 import enums.TheTypeOfApartments
 import interactor.*
 import interactor.CostOfLivingDataSource
@@ -43,10 +42,10 @@ fun main() {
     printSeparationLine()
     //endregion
     //region 5-Top5CitiesNameHasSuitableClothesPrices
-    val gitCityNamesClothesPrices = GetCityNamesClothesPrices(dataSource.getAllCitiesData())
+    val  numberOfCityShouldReturn = 5
     val getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor =
-        GetTop5CitiesNameHasSuitableClothesPricesInteractor(gitCityNamesClothesPrices.execute())
-    println(getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor.execute())
+        GetTop5CitiesNameHasSuitableClothesPricesInteractor(dataSource)
+    println(getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor.execute(numberOfCityShouldReturn))
     printSeparationLine()
     //endregion
     // region 6-CityHasLowestYearsToBuyApartment
