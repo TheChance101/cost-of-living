@@ -10,7 +10,7 @@ class GetCityHasCheapestInternetConnectionInteractor(
         return dataSource.getAllCitiesData()
             .filter(::excludeNullSalariesAndNullInternetPriceAndLowQualityData)
             .minByOrNull (::calculateInternetPercent)
-            ?: throw IllegalArgumentException("Invalid data")
+            ?: throw IllegalStateException("Invalid data")
     }
 
     private fun excludeNullSalariesAndNullInternetPriceAndLowQualityData(city: CityEntity): Boolean {
