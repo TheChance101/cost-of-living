@@ -98,7 +98,7 @@ fun getResultDependOnTheOption() {
         9 -> {
             horizontalRule()
             print("enter the limit : ")
-            getCityHasHighestDifferentInApartmentRent(readln().toInt(), dataSource)
+            getCityHasHighestDifferentInApartmentRent(dataSource)
         }
 
         else -> {
@@ -207,9 +207,9 @@ fun getSalaryAverageAndCitiesNamesInCountry(countryName: String, dataSource: Cos
     println(salaryAverageAndCitiesNamesInCountry.execute(countryName))
 }
 
-fun getCityHasHighestDifferentInApartmentRent(limit: Int,dataSource: CostOfLivingDataSource) {
+fun getCityHasHighestDifferentInApartmentRent(dataSource: CostOfLivingDataSource) {
     val getCityHasHighestDifferentInApartmentRent = GetCityHasTheHighestDifferentInApartmentRent(dataSource)
-    println(getCityHasHighestDifferentInApartmentRent.execute(limit))
+    println(getCityHasHighestDifferentInApartmentRent.execute())
 }
 
 fun horizontalRule() {
