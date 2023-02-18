@@ -5,7 +5,7 @@ import model.*
 object MockCityEntity {
 
     // region for GetCityHasCheapestInternetConnectionInteractor (Problem 1)
-    fun createMockCity(cityName: String, averageMonthlyNetSalaryAfterTax: Float, internetPrice: Float?): CityEntity {
+    fun createMockCity(cityName: String, averageMonthlyNetSalaryAfterTax: Float?, internetPrice: Float?): CityEntity {
         return CityEntity(
             cityName,
             "Egypt",
