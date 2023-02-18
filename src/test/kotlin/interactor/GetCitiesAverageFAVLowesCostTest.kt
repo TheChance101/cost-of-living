@@ -10,41 +10,41 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCitiesAverageFAVLowesCostTest {
 
-    private lateinit var fakeDataGetCitiesAverageFAVLowesCostThatCitiesHaveNotNullSalariesOrNullFruitsAndVegetablesPrices: FakeDataGetCitiesAverageFAVLowesCostThatCitiesHaveNotNullSalariesOrNullFruitsAndVegetablesPrices
-    private lateinit var fakeDataGetCitiesAverageFAVLowesCostThatSomeCitiesHaveNullSalariesOrNullFruitsAndVegetablesPrices: FakeDataGetCitiesAverageFAVLowesCostThatSomeCitiesHaveNullSalariesOrNullFruitsAndVegetablesPrices
-    private lateinit var fakeDataAllCitiesHaveNullSalaryCase: FakeDataAllCitiesHaveNullSalaryCase
-    private lateinit var fakeDataAllCitiesHaveNullPricesOfFruitsAndVegetables: FakeDataAllCitiesHaveNullPricesOfFruitsAndVegetables
+    private lateinit var fakeDataGetCitiesHaveNotNullSalariesAndNotNullFruitsAndVegetablesPrices: FakeDataGetCitiesHaveNotNullSalariesAndNotNullFruitsAndVegetablesPrices
+    private lateinit var fakeDataGetCitiesHaveSomeNullSalariesAndSomeNullFruitsAndVegetablesPrices: FakeDataGetCitiesHaveSomeNullSalariesAndSomeNullFruitsAndVegetablesPrices
+    private lateinit var fakeDataAllCitiesHaveNullSalary: FakeDataAllCitiesHaveNullSalary
+    private lateinit var fakeDataAllCitiesHaveNullFruitsAndVegetablesPrices: FakeDataAllCitiesHaveNullFruitsAndVegetablesPrices
     @BeforeAll
     fun setUp() {
-        fakeDataGetCitiesAverageFAVLowesCostThatCitiesHaveNotNullSalariesOrNullFruitsAndVegetablesPrices = FakeDataGetCitiesAverageFAVLowesCostThatCitiesHaveNotNullSalariesOrNullFruitsAndVegetablesPrices()
-        fakeDataGetCitiesAverageFAVLowesCostThatSomeCitiesHaveNullSalariesOrNullFruitsAndVegetablesPrices = FakeDataGetCitiesAverageFAVLowesCostThatSomeCitiesHaveNullSalariesOrNullFruitsAndVegetablesPrices()
-        fakeDataAllCitiesHaveNullSalaryCase = FakeDataAllCitiesHaveNullSalaryCase()
-        fakeDataAllCitiesHaveNullPricesOfFruitsAndVegetables =  FakeDataAllCitiesHaveNullPricesOfFruitsAndVegetables()
+        fakeDataGetCitiesHaveNotNullSalariesAndNotNullFruitsAndVegetablesPrices = FakeDataGetCitiesHaveNotNullSalariesAndNotNullFruitsAndVegetablesPrices()
+        fakeDataGetCitiesHaveSomeNullSalariesAndSomeNullFruitsAndVegetablesPrices = FakeDataGetCitiesHaveSomeNullSalariesAndSomeNullFruitsAndVegetablesPrices()
+        fakeDataAllCitiesHaveNullSalary = FakeDataAllCitiesHaveNullSalary()
+        fakeDataAllCitiesHaveNullFruitsAndVegetablesPrices =  FakeDataAllCitiesHaveNullFruitsAndVegetablesPrices()
     }
     @Test
-    fun should_ReturnAtLeastTenCitiesNames_When_GetCitiesNamesThatAverageOfFruitsAndVegetablesHaveLowestCostAndAllCitiesHaveNotNullSalariesOrNullFruitsAndVegetablesPrices() {
+    fun `should return at most ten cities names when given data with not null salaries and not null fruit and vegetable prices`() {
         //Given fakeDataOfCityEntities
-        val fakeDataOfCityEntities = fakeDataGetCitiesAverageFAVLowesCostThatCitiesHaveNotNullSalariesOrNullFruitsAndVegetablesPrices
+        val fakeDataOfCityEntities = fakeDataGetCitiesHaveNotNullSalariesAndNotNullFruitsAndVegetablesPrices
         //When execute to get Cities Names That Average Fruits And Vegetables Lowest Cost
         val citiesNames = GetCitiesAverageFAVLowesCost(fakeDataOfCityEntities).execute(10)
-        //Then Get At Least 10 Names Of Cities
+        //Then Get At Most 10 Names Of Cities
         assertEquals(listOf("Dendera","Deir Mawas","Dairut","Dekernes","Dar El Salam","Daraw","Dishna","Cairo","Dahab","Desouk"),citiesNames)
     }
 
     @Test
-    fun should_ReturnAtLeastTenCitiesNames_When_GetCitiesNamesThatAverageOfFruitsAndVegetablesHaveLowestCostAndSomeOfCitiesHaveNullSalariesAndNullFruitsAndVegetablesPrices() {
+    fun `should return at most ten cities names when given data with some null salaries and some null fruit and vegetable prices`() {
         //Given FakeDataOfCityEntities
-        val fakeDataOfCityEntities = fakeDataGetCitiesAverageFAVLowesCostThatSomeCitiesHaveNullSalariesOrNullFruitsAndVegetablesPrices
+        val fakeDataOfCityEntities = fakeDataGetCitiesHaveSomeNullSalariesAndSomeNullFruitsAndVegetablesPrices
         //When execute to get Cities Names That Average Fruits And Vegetables Lowest Cost
         val citiesNames = GetCitiesAverageFAVLowesCost(fakeDataOfCityEntities).execute(10)
-        //Then Get At Least 10 Names Of Cities
+        //Then Get At Most 10 Names Of Cities
         assertEquals(listOf("Edfu","Dishna","Dar El Salam","Dairut","Dahab","Desouk","Cairo","Daraw"),citiesNames)
     }
 
     @Test
-    fun should_ReturnEmptyList_When_GetCitiesNamesThatAverageOfFruitsAndVegetablesHaveLowestCostAndAllCitiesHaveNonOrNullSalaries() {
+    fun `should return empty list of cities names when given data with null salaries and not null fruit and vegetable prices`() {
         //Given fakeDataOfCitiesNullSalary
-        val fakeDataOfCitiesNullSalary = fakeDataAllCitiesHaveNullSalaryCase
+        val fakeDataOfCitiesNullSalary = fakeDataAllCitiesHaveNullSalary
         //When execute to get Cities Names That Average Fruits And Vegetables Lowest Cost
         val citiesNames = GetCitiesAverageFAVLowesCost(fakeDataOfCitiesNullSalary).execute(10)
         //Then Get EmptyList Of Cities
@@ -52,9 +52,9 @@ class GetCitiesAverageFAVLowesCostTest {
     }
 
     @Test
-    fun should_ReturnEmptyList_When_GetCitiesNamesThatAverageOfFruitsAndVegetablesHaveLowestCostAndPricesOfFruitsAndVegetablesOfAllCitiesAreNull() {
+    fun `should return empty list of cities names when given data with not null salaries and null fruit and vegetable prices`() {
         //Given fakeDataAllCitiesHaveNullPricesOfFAV
-        val fakeDataAllCitiesHaveNullPricesOfFAV = fakeDataAllCitiesHaveNullPricesOfFruitsAndVegetables
+        val fakeDataAllCitiesHaveNullPricesOfFAV = fakeDataAllCitiesHaveNullFruitsAndVegetablesPrices
         //When execute to get Cities Names That Average Fruits And Vegetables Lowest Cost
         val citiesNames = GetCitiesAverageFAVLowesCost(fakeDataAllCitiesHaveNullPricesOfFAV).execute(10)
         //Then Get EmptyList Of Cities

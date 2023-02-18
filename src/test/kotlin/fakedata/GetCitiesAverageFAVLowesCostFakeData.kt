@@ -1903,22 +1903,22 @@ val cityEntityNullPricesOfFruitsAndVegetables = CityEntity(
     dataQuality = true
 )
 
-class FakeDataGetCitiesAverageFAVLowesCostThatCitiesHaveNotNullSalariesOrNullFruitsAndVegetablesPrices: CostOfLivingDataSource {
+class FakeDataGetCitiesHaveNotNullSalariesAndNotNullFruitsAndVegetablesPrices: CostOfLivingDataSource {
     override fun getAllCitiesData() =
         listOf(cityEntity1, cityEntity2, cityEntity3,cityEntity4, cityEntity5, cityEntity6,cityEntity7, cityEntity8, cityEntity9,cityEntity10, cityEntity11, cityEntity12)
 }
 
-class FakeDataGetCitiesAverageFAVLowesCostThatSomeCitiesHaveNullSalariesOrNullFruitsAndVegetablesPrices: CostOfLivingDataSource {
+class FakeDataGetCitiesHaveSomeNullSalariesAndSomeNullFruitsAndVegetablesPrices: CostOfLivingDataSource {
     override fun getAllCitiesData() =
         listOf(cityEntity1NullCase, cityEntity2NullCase, cityEntity3NullCase,cityEntity4NullCase, cityEntity5NullCase, cityEntity6NullCase,cityEntity7NullCase, cityEntity8NullCase, cityEntity9NullCase,cityEntity10NullCase, cityEntity11NullCase, cityEntity12NullCase)
 }
 
-class FakeDataAllCitiesHaveNullSalaryCase : CostOfLivingDataSource {
+class FakeDataAllCitiesHaveNullSalary : CostOfLivingDataSource {
     override fun getAllCitiesData() =
         listOf(cityEntityNullSalaryCase,cityEntityNullSalaryCase, cityEntityNullSalaryCase, cityEntityNullSalaryCase,cityEntityNullSalaryCase, cityEntityNullSalaryCase, cityEntityNullSalaryCase,cityEntityNullSalaryCase, cityEntityNullSalaryCase, cityEntityNullSalaryCase,cityEntityNullSalaryCase, cityEntityNullSalaryCase, cityEntityNullSalaryCase)
 }
 
-class FakeDataAllCitiesHaveNullPricesOfFruitsAndVegetables : CostOfLivingDataSource {
+class FakeDataAllCitiesHaveNullFruitsAndVegetablesPrices : CostOfLivingDataSource {
     override fun getAllCitiesData() =
         listOf(cityEntityNullPricesOfFruitsAndVegetables,cityEntityNullPricesOfFruitsAndVegetables, cityEntityNullPricesOfFruitsAndVegetables, cityEntityNullPricesOfFruitsAndVegetables,cityEntityNullPricesOfFruitsAndVegetables, cityEntityNullPricesOfFruitsAndVegetables, cityEntityNullPricesOfFruitsAndVegetables,cityEntityNullPricesOfFruitsAndVegetables, cityEntityNullPricesOfFruitsAndVegetables, cityEntityNullPricesOfFruitsAndVegetables,cityEntityNullPricesOfFruitsAndVegetables, cityEntityNullPricesOfFruitsAndVegetables, cityEntityNullPricesOfFruitsAndVegetables)
 }
