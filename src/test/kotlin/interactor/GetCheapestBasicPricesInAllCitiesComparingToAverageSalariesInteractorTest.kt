@@ -74,4 +74,31 @@ internal class GetCheapestBasicPricesInAllCitiesComparingToAverageSalariesIntera
     }
 
 
+    @Test
+    fun `should return city entity when cities list is not empty`() {
+        // given list of cityEntity using mock
+        val citiesData = listOf(
+            createMockCity("Switzerland" , 5000.0F , 800.0F , 200.0F, 200.0F )
+            , createMockCity("united state", 3500.0F , 500.0F , 100.0F, 200.0F )
+            , createMockCity("london", 2000.0F , 500.0F , 100.0F, 200.0F )
+            , createMockCity("canada" , 1500.0F , 500.0F , 100.0F, 200.0F )
+        )
+        every { mockData.getAllCitiesData() } returns citiesData
+        // when execute return a cityEntity
+        val result = interactor.execute()
+        // then
+        assertEquals(citiesData[0], result)
+    }
+
+    @Test
+    fun `should return null when cities list is empty`() {
+        // given empty list
+        val citiesData = emptyList<CityEntity>()
+        every { mockData.getAllCitiesData() } returns citiesData
+        // when the result will be null
+        val result = interactor.execute()
+        // then
+        assertNull( result)
+    }
+
 }
