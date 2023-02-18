@@ -6,6 +6,10 @@ class GetCheapestApartmentsCitiesNamesInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
 
+    object Const {
+        const val MONTHS_OF_THE_YEAR = 12
+    }
+
     fun execute(limit: Int, meters: Int): List<Pair<String, Float>> {
 
         return dataSource.getAllCitiesData()
@@ -36,6 +40,6 @@ class GetCheapestApartmentsCitiesNamesInteractor(
     */
     private fun CityEntity.calculateNumberOfYears(meters: Int): Float {
         return this.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!! * meters /
-                (this.averageMonthlyNetSalaryAfterTax!! * 12)
+                (this.averageMonthlyNetSalaryAfterTax!! * Const.MONTHS_OF_THE_YEAR)
     }
 }
