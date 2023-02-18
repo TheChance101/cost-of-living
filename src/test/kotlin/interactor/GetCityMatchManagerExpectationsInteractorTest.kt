@@ -46,6 +46,17 @@ class GetCityMatchManagerExpectationsInteractorTest {
         assertFalse(expected)
     }
 
+    @Test
+    fun `should return correct city name with lowest mid-range meal price when given list of lowest, highest and mid prices`() {
+        // given list of lowest, highest and mid prices cities
+        interactor = GetCityMatchManagerExpectationsInteractor(fakeDataSourceCities)
+
+        // when making the logic on the list
+        val actual = interactor.execute()?.cityName
+        val expected = "Monterey Park"
+        // then
+        assertEquals(expected, actual)
+    }
 
 
 }
