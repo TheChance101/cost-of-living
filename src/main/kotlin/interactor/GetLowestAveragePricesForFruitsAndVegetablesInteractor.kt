@@ -8,6 +8,8 @@ class GetLowestAveragePricesForFruitsAndVegetablesInteractor (
 ){
     fun execute(limit: Int): List<String> {
 
+        if (limit < 0) throw InvalidLimitException("Limit cannot be negative")
+
         return  data
             .getAllCitiesData()
             .filter(::excludeNullSalariesAndLowQualityDataAndNullFruitsAndVegetablesPrices)
