@@ -1,41 +1,47 @@
 package interactor
 
 import model.CityEntity
+import model.MealsPrices
 import kotlin.math.abs
 
 class GetMostSuitableCityForCompanyDinner(private val dataSource: CostOfLivingDataSource) {
-    fun execute(boundary: Float = Float.MAX_VALUE): CityEntity? {
-
-        val cityDataHolders = dataSource.getAllCitiesData().filteredByCountries().map {
-            val mealsPrices = it.mealsPrices
-            CityMealsDataHolder(
-                it,
-                mealsPrices.mealInexpensiveRestaurant,
-                mealsPrices.mealFor2PeopleMidRangeRestaurant?.div(2),
-                mealsPrices.mealAtMcDonaldSOrEquivalent
-            )
-
-        }.filter { it.isValid() }
-        if (cityDataHolders.isEmpty()) return null
-        val wantedPrice = (cityDataHolders.maxOf { it.priciestMeal } + cityDataHolders.minOf { it.cheapestMeal }) / 2
-        val mostSuitableDataHolder = cityDataHolders.minBy { abs(it.minBoundary(wantedPrice)) }
-        return if (mostSuitableDataHolder.minBoundary(wantedPrice) <= boundary) mostSuitableDataHolder.city else null
-    }
-
-    private fun List<CityEntity>.filteredByCountries(
+    fun execute(
+        boundary: Float = Float.MAX_VALUE,
         countries: List<String> = listOf("usa", "canada", "mexico")
-    ) = filter { it.country.lowercase() in countries }
-
-    class CityMealsDataHolder(val city: CityEntity, vararg mealsPrices: Float?) {
-        private val filteredMeals = mealsPrices.filterNotNull().filterNot { it.isNaN() }
-        val cheapestMeal = filteredMeals.minOrNull() ?: Float.MAX_VALUE
-        val priciestMeal = filteredMeals.maxOrNull() ?: Float.MIN_VALUE
-        fun minBoundary(price: Float) =
-            filteredMeals.fold(Float.MAX_VALUE) { acc, fl ->
-                val x = abs(fl - price)
-                if (x < acc) x else acc
-            }
-
-        fun isValid() = cheapestMeal != Float.MAX_VALUE
+    ): CityEntity? {
+        val filteredCities = dataSource.getAllCitiesData().filteredByCountries(countries)
+        val listOfAllPricesList = filteredCities.map { it.mealsPrices.notNullPrices() }
+        val allPricesList = listOfAllPricesList.flatten()
+        val exactPrice = allPricesList.getExactPrice() ?: return null
+        val closestPrice = allPricesList.getClosestValueTo(exactPrice)
+        val mostSuitableCity = filteredCities[listOfAllPricesList.getMostSuitablePriceListIndex(closestPrice)]
+        return if (mostSuitableCity.isInBoundary(exactPrice, boundary)) mostSuitableCity else null
     }
+
+
+    private fun List<Float>.getExactPrice() = if (this.isEmpty()) null else (this.max() + this.min()) / 2
+    private fun List<List<Float>>.getMostSuitablePriceListIndex(
+        closestPrice: Float
+    ) = indexOfFirst { it.contains(closestPrice) }
+
+    private fun List<CityEntity>.filteredByCountries(countries: List<String>) =
+        filter { it.country.lowercase() in countries }
+
+    private fun List<Float>.getClosestValueTo(exactPrice: Float) =
+        fold(Float.MAX_VALUE to 0f) { preDifference, currentMealPrice ->
+            val currDifference = abs(currentMealPrice - exactPrice)
+            if (currDifference < preDifference.first) currDifference to currentMealPrice else preDifference
+        }.second
+
+    private fun CityEntity.isInBoundary(exactPrice: Float, boundary: Float) =
+        mealsPrices.notNullPrices().any { abs(it - exactPrice) <= boundary }
+
+    private fun MealsPrices.notNullPrices() = listOfNotNull(
+        mealInexpensiveRestaurant,
+        mealFor2PeopleMidRangeRestaurant?.div(2),
+        mealAtMcDonaldSOrEquivalent
+    )
+
+
 }
+
