@@ -8,14 +8,12 @@ class GetCitiesNamesAndAverageSalariesInCountry (
 
     fun execute(country: String): List<Pair<String, Float>> {
 
-        val list=dataSource
+       return dataSource
             .getAllCitiesData()
             .filter{it.country.lowercase()==country.lowercase()&&excludeNullSalariesAndLowQualityData(it)}
             .map{it.cityName to it.averageMonthlyNetSalaryAfterTax!!}
+            .takeIf{it.isNotEmpty() }?: throw Exception("wrong name")
 
-        if (list.isEmpty()) throw Exception("wrong name")
-
-        return list
     }
     private fun excludeNullSalariesAndLowQualityData(city: CityEntity): Boolean {
         return city.averageMonthlyNetSalaryAfterTax != null && city.dataQuality
