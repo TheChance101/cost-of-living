@@ -22,11 +22,11 @@ class GetTopCountriesWithHighTaxOnCarbonatedDrinks (private val dataSource: Cost
     }
 
     private fun hasValidDrinkPrice(city: CityEntity): Boolean {
-        val drinksPrices = city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants
-        return drinksPrices != null && drinksPrices >= 0
+        return city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants.isNotNull()
+                && city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants!! >= 0
     }
 
-    private fun hasValidCountry(city: CityEntity): Boolean =city.country != null
+    private fun hasValidCountry(city: CityEntity): Boolean =city.country.isNotNull()
 
     private fun hasValidDataQuality(city: CityEntity): Boolean =city.dataQuality
 }
