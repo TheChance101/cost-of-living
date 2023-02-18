@@ -1,20 +1,21 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import interactor.*
+import kotlin.system.exitProcess
 
-const val TEAM_VELVET_MESSAGE_WELCOME: String = "The Red Velvet team welcomes you in our application"
+const val TEAM_VELVET_MESSAGE_WELCOME: String = "The Red Velvet team🍰 welcomes you in our application 👋"
 const val TEXT_OF_CITY_NAME = "City Name"
 const val TEXT_OF_COUNTRY_NAME = "Country Name"
 /********************************************************************/
 /* Request INPUT FROM USER CONSTANT*/
 /********************************************************************/
 const val ENTER_THE_CORRECT_VALUE_MESSAGE = "please enter the correct value"
-const val ENTER_THE_LIMIT_OF_CITY_MESSAGE = "enter the limit number of countries you want :  "
+const val ENTER_THE_LIMIT_OF_CITY_MESSAGE = "enter the limit number of City you want :  "
 const val ENTER_THE_SALARY_MESSAGE = "Enter the Salary : "
 const val ENTER_YOUR_NAME_MESSAGE = "please enter your name : "
-const val QUESTION_ABOUT_DO_YOU_WANT_CONTINUE_IN_OUR_APPLICATION = "Do you want to continue for the trip in our application y/n"
+const val QUESTION_ABOUT_DO_YOU_WANT_CONTINUE_IN_OUR_APPLICATION = "Do you want to continue for the trip in our application (y/n)"
 const val NOT_CORRECT_CHOOSE = "you don't choose the correct option "
-const val ENTER_YOUR_NUMBER_OPTION = "please enter the number of your option between [1-8]-> (Just receive INT Number)"
+const val ENTER_YOUR_NUMBER_OPTION = "please enter the number of your option between [1-10]"
 
 /*********************************************************************/
 
@@ -29,7 +30,6 @@ val inputCitiesEntity = arrayOf(
     dataSource.getAllCitiesData()[12],
     dataSource.getAllCitiesData()[13]
 )
-
 fun main() {
     val isNeedContinue = true
     welcomeUserMessageWithUserNameOrNot(getUserName())
@@ -38,12 +38,12 @@ fun main() {
             try {
                 getResultDependOnTheOption()
             } catch (error: Exception) {
+                exitFromOurApplication()
                 println(ENTER_THE_CORRECT_VALUE_MESSAGE)
             }
         }
     }
 }
-
 fun getResultDependOnTheOption() {
     when (getChooseOptionNumber()) {
         1 -> {
@@ -89,7 +89,6 @@ fun getResultDependOnTheOption() {
             print(ENTER_THE_LIMIT_OF_CITY_MESSAGE)
             getHighestSalaryAverageCities(readln().toInt(), dataSource)
         }
-
         8 -> {
             horizontalRule()
             print("Enter the $TEXT_OF_COUNTRY_NAME Name : ")
@@ -101,7 +100,16 @@ fun getResultDependOnTheOption() {
                 println("this city is not Exist")
             }
         }
-
+        9 -> {
+            horizontalRule()
+            println("this option under maintain")
+            horizontalRule()
+        }
+        10 ->{
+            print(ENTER_THE_LIMIT_OF_CITY_MESSAGE)
+            getLowestAveragePricesForFruitsAndVegetables(dataSource, readln().toInt())
+            horizontalRule()
+        }
         else -> {
             println("You choose worse case")
             horizontalRule()
@@ -131,15 +139,16 @@ fun getUserChooseStartOrNot(): Boolean {
         horizontalRule()
         println(NOT_CORRECT_CHOOSE)
         horizontalRule()
+        exitFromOurApplication()
+
         false
     }
 }
-fun checkUserStatus(userChoose: String): Boolean = userChoose.trimMargin() .lowercase()== "y"
 fun printUserOptionList() {
     println(
         """
             enter your choose what do you need discover
-            1 - Top 10 Countries With High Tax On Carbonated Drinks
+            1 - Top Countries With High Tax On Carbonated Drinks
             2 - Cities Names Sorted By Cheapest Banana Price 
             3 - City Has Cheapest Internet Connection 
             4 - Most Suitable City
@@ -147,9 +156,12 @@ fun printUserOptionList() {
             6 - Top Fashion Cities Names 
             7 - Highest Salary Average Cities Name
             8 - Salary Average And Cities Names in $TEXT_OF_COUNTRY_NAME
+            9 - Highest Different In Apartment Rent
+            10 - Lowest Average Prices For Fruits And Vegetables
         """.trimIndent()
     )
 }
+fun checkUserStatus(userChoose: String): Boolean = userChoose.trimMargin() .lowercase()== "y"
 fun getChooseOptionNumber(): Int {
     horizontalRule()
     println(ENTER_YOUR_NUMBER_OPTION)
@@ -173,7 +185,7 @@ fun getCitiesNamesSortedCheapestBananaPrices() {
         val getCitiesNamesSortedCheapestBananaPrices = GetCitiesNamesSortedCheapestBananaPrices()
     getCitiesNamesSortedCheapestBananaPrices.execute(*inputCitiesEntity)
         .forEach{ city ->
-            println("City Name => $city")
+            println("$TEXT_OF_CITY_NAME => $city")
         }
     }
 fun getCityHasCheapestInternetConnection() {
@@ -223,6 +235,23 @@ fun getHighestSalaryAverageCities(limit: Int, dataSource: CostOfLivingDataSource
             println("""${index + 1} - $TEXT_OF_CITY_NAME => $cityName""")
         }
 }
+fun getHighestDifferentInApartmentRent(dataSource: CostOfLivingDataSource){
+    val highestDifferentInApartmentRent  = GetHighestDifferentInApartmentRent(dataSource)
+    println("This option under maintain")
+}
+fun getLowestAveragePricesForFruitsAndVegetables(dataSource: CostOfLivingDataSource, limit: Int){
+    val lowestAveragePricesForFruitsAndVegetablesInteractor = GetLowestAveragePricesForFruitsAndVegetablesInteractor(dataSource)
+    lowestAveragePricesForFruitsAndVegetablesInteractor.execute(limit).forEachIndexed{index ,cityName->
+        println("""${index + 1} -$TEXT_OF_CITY_NAME => $cityName""")
+    }
+}
 
-
-
+/**********************************************************************
+ EXIT FORM OUT APPLICATION
+ **********************************************************************/
+fun exitFromOurApplication(){
+    println("Do you want Exit form our Application (y/n) 😥")
+    val state = readln()
+    if(state.lowercase().trim() == "y")
+        exitProcess(0)
+}
