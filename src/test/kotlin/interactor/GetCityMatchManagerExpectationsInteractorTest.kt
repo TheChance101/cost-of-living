@@ -1,6 +1,8 @@
 package interactor
 
+import dataSource.FakeCityItems
 import dataSource.FakeDataSource
+import model.CityEntity
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
@@ -12,18 +14,20 @@ import utils.Constants
 class GetCityMatchManagerExpectationsInteractorTest {
 
     private lateinit var interactor: GetCityMatchManagerExpectationsInteractor
-    private lateinit var dataSource: FakeDataSource
+    private lateinit var dataSource: CostOfLivingDataSource
+    private lateinit var fakeDataSourceCities: CostOfLivingDataSource
 
 
     @BeforeEach
     fun setup() {
         dataSource = FakeDataSource()
+        fakeDataSourceCities = FakeCityItems()
         interactor = GetCityMatchManagerExpectationsInteractor(dataSource)
     }
 
 
     @Test
-    fun `should throw exception when country is not in one of north america countries`() {
+    fun `should throw exception when no data there`() {
         // when we check if it is one of the required countries
         val actual = Executable { interactor.execute() }
         val expected = Exception::class.java
@@ -31,6 +35,17 @@ class GetCityMatchManagerExpectationsInteractorTest {
         // then we should assert exception
         assertThrows(expected, actual)
     }
+
+    @Test
+    fun `should return empty list when list has not required country`() {
+        // when we check if there is no required countries
+        val actual = interactor.execute()
+        val expected = actual == null
+
+        // then we should return false
+        assertFalse(expected)
+    }
+
 
 
 }
