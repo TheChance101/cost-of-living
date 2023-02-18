@@ -20,7 +20,7 @@ class GetCitiesNamesSortedCheapestBananaPricesTest {
     }
 
     @Test
-    fun `should return correct result when price city banana isn't null And high Quality Data`(){
+    fun `should return correct result when banana isn't null and high quality data`(){
         //given cities to be sorted
         val cities = arrayOf(
             fakeDataSource.getAllCitiesData()[14],
