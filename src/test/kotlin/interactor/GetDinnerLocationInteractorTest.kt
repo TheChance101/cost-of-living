@@ -1,13 +1,24 @@
 package interactor
 
+import fakeDataSource.FakeDataSourceForDinnerLocation
 import model.*
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.assertDoesNotThrow
 
 
 class GetDinnerLocationInteractorTest {
+
+    private lateinit var fakeDataSourceForDinnerLocation: FakeDataSourceForDinnerLocation
+    private lateinit var interactor: GetDinnerLocationInteractor
+
+    @BeforeEach
+    fun setUp() {
+        fakeDataSourceForDinnerLocation = FakeDataSourceForDinnerLocation()
+    }
 
     @Test
     fun should_returnsNull_When_ThereAreNoCities() {
@@ -18,7 +29,7 @@ class GetDinnerLocationInteractorTest {
                 return listOf()
             }
         }
-        val interactor = GetDinnerLocationInteractor(dataSource)
+        interactor = GetDinnerLocationInteractor(dataSource)
 
         assertDoesNotThrow("This block should not throw an exception") {
             interactor.execute()
