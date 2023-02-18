@@ -6,7 +6,6 @@ import data.InvalidFakeData
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.function.Executable
-import java.lang.IllegalArgumentException
 
 
 
@@ -45,7 +44,7 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
         // when check for the cheapest city in the list
         val result =  Executable { cityHasCheapestInternet.execute() }
         // then check the result
-        assertThrows(IllegalArgumentException::class.java, result)
+        assertThrows(IllegalStateException::class.java, result)
     }
 
     @Test
@@ -55,7 +54,7 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
         // when check for the cheapest city in the list
         val result = Executable { cityHasCheapestInternet.execute() }
         // then check the result
-        assertThrows(IllegalArgumentException::class.java, result)
+        assertThrows(IllegalStateException::class.java, result)
     }
 
 }
