@@ -1,8 +1,10 @@
+package fakeDataSource
+
 import interactor.CostOfLivingDataSource
 import model.*
 
 
-class GetCountryCitiesAverageSalaryFakeData : CostOfLivingDataSource {
+class FakeDataOfGetCountryCitiesAverageSalary : CostOfLivingDataSource {
     override fun getAllCitiesData(): List<CityEntity> {
         return listOf(
             CityEntity(

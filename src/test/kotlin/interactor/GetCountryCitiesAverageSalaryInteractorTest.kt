@@ -1,6 +1,6 @@
 package interactor
 
-import GetCountryCitiesAverageSalaryFakeData
+import fakeDataSource.FakeDataOfGetCountryCitiesAverageSalary
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
@@ -12,12 +12,12 @@ import org.junit.jupiter.api.function.Executable
 class GetCountryCitiesAverageSalaryInteractorTest {
 
     private lateinit var getCountryCitiesAverageSalary: GetCountryCitiesAverageSalaryInteractor
-    private lateinit var fakeData: GetCountryCitiesAverageSalaryFakeData
+    private lateinit var fakeData: FakeDataOfGetCountryCitiesAverageSalary
 
 
     @BeforeAll
     fun setUp() {
-        fakeData = GetCountryCitiesAverageSalaryFakeData()
+        fakeData = FakeDataOfGetCountryCitiesAverageSalary()
         getCountryCitiesAverageSalary = GetCountryCitiesAverageSalaryInteractor(fakeData)
     }
 

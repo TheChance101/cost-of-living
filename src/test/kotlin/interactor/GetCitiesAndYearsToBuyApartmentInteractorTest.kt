@@ -1,5 +1,5 @@
 package interactor
-import fakeDataSource.FakeDataSourceOfGetCitiesAndYearsToBuyApartment
+import fakeDataSource.FakeDataOfGetCitiesAndYearsToBuyApartment
 import interactor.util.Constants.COLUMN_INDEX_OF_AVAREG_MONTHTY_NET_SALARY_AFTER_TEX_WHEN_IS_ZERO
 import model.*
 import org.junit.jupiter.api.*
@@ -17,7 +17,7 @@ class GetCitiesAndYearsToBuyApartmentInteractorTest {
 
     @BeforeEach
     fun setUp() {
-        fakeDataSource = FakeDataSourceOfGetCitiesAndYearsToBuyApartment()
+        fakeDataSource = FakeDataOfGetCitiesAndYearsToBuyApartment()
         getCitiesAndYearsToBuyApartment = GetCitiesAndYearsToBuyApartmentInteractor(fakeDataSource)
     }
 
