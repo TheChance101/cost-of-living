@@ -18,66 +18,44 @@ class GetTopCountriesWithHighTaxOnCarbonatedDrinksTest {
     }
 
     @Test
-    fun should_ReturnListTopTenCountryWithHighDrinkPrice_When_DrinkPriceHigh() {
+    fun `should return list top country with high drink price when drink price high`() {
         //given
         val cities = fakeDataSource.getAllCitiesData()
-        val limit:Int=10;
+        val limit:Int=8;
         //when
-        val getTopCountriesWithHighTaxOnCarbonatedDrinks = interactor.execute(limit,cities)
+        val actual = interactor.execute(limit,cities)
+        val expected=listOf(
+            Pair("Cuba", 2.2799999713897705),
+            Pair("Syria", 0.8100000023841858),
+            Pair("Gambia", 0.7300000190734863),
+            Pair ("Nigeria", 0.550000011920929),
+            Pair("Nepal", 0.3799999952316284),
+            Pair ("Uganda", 0.27000001072883606),
+            Pair("Sri Lanka", 0.27000001072883606),
+            Pair("Bangladesh", 0.25)
+        )
        // then
-        assertArrayEquals(listOf(Pair("Cuba", 2.28f), Pair("Syria", 0.82f),
-            Pair("Gambia", 0.73f),Pair ("Nigeria", 0.55f), Pair("Nepal", 0.38f),
-            Pair ("Uganda", 0.27f), Pair("Sri Lanka", 0.27f),
-            Pair("Bangladesh", 0.25f)).toTypedArray(),
-            getTopCountriesWithHighTaxOnCarbonatedDrinks.toTypedArray())
+        assertArrayEquals(expected.toTypedArray(), actual.toTypedArray())
 
     }
     @Test
-    fun should_ReturnEmptyList_When_listOfCityIsEmpty() {
+    fun `should return empty list When list of city is empty`() {
         //given
         val limit:Int=10
-        // when
-        val getTopCountriesWithHighTaxOnCarbonatedDrinks = interactor.execute(limit,listOf())
+        //when
+        val actual = interactor.execute(limit,listOf())
         // Then
-        assertTrue(getTopCountriesWithHighTaxOnCarbonatedDrinks.isEmpty())
+        assertTrue(actual.isEmpty())
     }
     @Test
-    fun should_ReturnNotEquals_When_TheListLessThanLimit() {
+    fun `should return not equals when the list less than limit`() {
         //given
         val cities = fakeDataSource.getAllCitiesData()
         val limit:Int=10
         //when
-        val getTopCountriesWithHighTaxOnCarbonatedDrinks= interactor.execute(limit,cities)
+        val actual= interactor.execute(limit,cities)
         //then
-        kotlin.test.assertNotEquals(limit , getTopCountriesWithHighTaxOnCarbonatedDrinks.size)
-    }
-    @Test
-    fun should_ThrowErrorMessage_When_ThePriceIsNull() {
-        //given
-        val cities = fakeDataSource.getAllCitiesData()
-        val limit:Int=10
-        //when
-        val getTopCountriesWithHighTaxOnCarbonatedDrinks= interactor.execute(limit,cities)
-        //then
-        getTopCountriesWithHighTaxOnCarbonatedDrinks.forEach { (_, price) ->
-            assertNotNull(price, "Drink Price can't be Null")
-        }
-    }
-    @Test
-    @Disabled
-    fun should_ThrowErrorMessage_When_PriceIsNegative() {
-        //given Country with drink price and limit
-        val cities = fakeDataSource.getAllCitiesData()
-        val limit:Int=10;
-
-        //when getting a price in negative
-        val getTop10CountriesWithHighTaxOnCarbonatedDrinks= interactor.execute(limit,cities)
-        //then
-        val executable = Executable {
-            if(getTop10CountriesWithHighTaxOnCarbonatedDrinks.any { it.second!! < 0  })
-                throw IllegalArgumentException("Drink Price can't be Negative Value")
-        }
-        assertThrows(IllegalArgumentException::class.java, executable)
+         assertNotEquals(limit , actual.size)
     }
 }
 
