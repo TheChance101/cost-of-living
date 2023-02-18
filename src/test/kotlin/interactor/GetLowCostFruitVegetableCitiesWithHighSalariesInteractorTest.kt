@@ -12,17 +12,29 @@ import kotlin.test.assertEquals
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetLowCostFruitVegetableCitiesWithHighSalariesInteractorTest {
     private lateinit var getLowCostFruitVegetableCitiesWithHighSalaries: GetLowCostFruitVegetableCitiesWithHighSalariesInteractor
+    private val fakeData by lazy { FakeData() }
 
     @BeforeAll
     fun setup() {
         getLowCostFruitVegetableCitiesWithHighSalaries =
-            GetLowCostFruitVegetableCitiesWithHighSalariesInteractor(FakeData())
+            GetLowCostFruitVegetableCitiesWithHighSalariesInteractor(fakeData)
     }
 
     @Test
     fun should_returnCorrectResult_when_correctListIsGiven() {
         //given the limit of cities is 10
-        val expectedResult = listOf("Giza","Rawalpindi","Alexandria","Hyderabad City","Karachi","Lahore","Multan","Tanta","Accra","Dushanbe")
+        val expectedResult = listOf(
+            "Giza",
+            "Rawalpindi",
+            "Alexandria",
+            "Hyderabad City",
+            "Karachi",
+            "Lahore",
+            "Multan",
+            "Tanta",
+            "Accra",
+            "Dushanbe"
+        )
         val limit = 10
         // when find 10 cities that has lowest fruitVeg prices comparing to salaries paid there
         val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit)
@@ -39,8 +51,9 @@ internal class GetLowCostFruitVegetableCitiesWithHighSalariesInteractorTest {
         val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit).size
 
         //then
-        assertEquals(10,result)
+        assertEquals(10, result)
     }
+
     @Test
     fun should_return_allTheList_when_limitIsMoreThanListSize() {
         //given the limit of cities is 20
@@ -49,7 +62,7 @@ internal class GetLowCostFruitVegetableCitiesWithHighSalariesInteractorTest {
         val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit).size
 
         //then
-        assertEquals(19,result)
+        assertEquals(19, result)
     }
 
 
@@ -76,5 +89,4 @@ internal class GetLowCostFruitVegetableCitiesWithHighSalariesInteractorTest {
     }
 
 
-
-    }
+}

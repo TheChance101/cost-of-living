@@ -10,13 +10,13 @@ class GetLowCostFruitVegetableCitiesWithHighSalariesInteractor(
 
     fun execute(limit: Int): List<String> {
         return dataSource.getAllCitiesData()
-            .filter(::excludeNullSalariesAndNullFruitVegPrices)
-            .sortedBy { calculateFruitVegTotalPrice(it.fruitAndVegetablesPrices).div(it.averageMonthlyNetSalaryAfterTax!!) }
+            .filter(::excludeNullSalariesAndNullFruitVegetablePrices)
+            .sortedBy { calculateFruitVegetableTotalPrice(it.fruitAndVegetablesPrices).div(it.averageMonthlyNetSalaryAfterTax!!) }
             .takeUnless { limit<=0 }
             ?.take(limit)
             ?.map { it.cityName } ?: emptyList()
     }
-    private fun excludeNullSalariesAndNullFruitVegPrices(city: CityEntity): Boolean {
+    private fun excludeNullSalariesAndNullFruitVegetablePrices(city: CityEntity): Boolean {
         return city.averageMonthlyNetSalaryAfterTax != null &&
                 with(city.fruitAndVegetablesPrices){
                     apples1kg!= null && banana1kg!= null && lettuceOneHead!= null &&
@@ -25,7 +25,7 @@ class GetLowCostFruitVegetableCitiesWithHighSalariesInteractor(
                 }
 
     }
-    private fun calculateFruitVegTotalPrice(fruitAndVegetablesPrices: FruitAndVegetablesPrices): Float =
+    private fun calculateFruitVegetableTotalPrice(fruitAndVegetablesPrices: FruitAndVegetablesPrices): Float =
         with(fruitAndVegetablesPrices){
                 return apples1kg!! + banana1kg!!+ lettuceOneHead!!+ onion1kg!!+ oranges1kg!!+
                    potato1kg!!+ tomato1kg!!
