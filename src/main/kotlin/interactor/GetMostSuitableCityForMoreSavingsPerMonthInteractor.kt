@@ -21,25 +21,27 @@ class GetMostSuitableCityForMoreSavingsPerMonthInteractor(
     }
 
     private fun getCitySavings(city: CityEntity): Float {
-        val foodPrices = city.foodPrices
-        val foodCosts = run { foodPrices.loafOfFreshWhiteBread500g!! * BREAD_AMOUNT
-            +foodPrices.localCheese1kg!! * CHEESE_AMOUNT
-            +foodPrices.chickenFillets1kg!! * CHICKEN_AMOUNT
-            +foodPrices.riceWhite1kg!! * RICE_AMOUNT + foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!! * BEEF_AMOUNT
+        val foodCosts = city.foodPrices.run {
+            loafOfFreshWhiteBread500g!! * BREAD_AMOUNT
+            +localCheese1kg!! * CHEESE_AMOUNT
+            +chickenFillets1kg!! * CHICKEN_AMOUNT
+            +riceWhite1kg!! * RICE_AMOUNT
+            +beefRound1kgOrEquivalentBackLegRedMeat!! * BEEF_AMOUNT
         }
         val salary = SALARY_DIFFERENCE * city.averageMonthlyNetSalaryAfterTax!!
         return salary - (foodCosts + OTHER_NEEDS_LIMIT)
     }
 
     private fun excludeNullSalariesAndNotHasAllPrimaryNeeds(city: CityEntity): Boolean {
-        return city.let { it.averageMonthlyNetSalaryAfterTax != null
-                && it.foodPrices.loafOfFreshWhiteBread500g != null
-                && it.foodPrices.localCheese1kg != null
-                && it.foodPrices.chickenFillets1kg != null
-                && it.foodPrices.riceWhite1kg != null
-                && it.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null
-                && it.realEstatesPrices.apartment3BedroomsInCityCentre != null
-                && it.realEstatesPrices.apartment3BedroomsOutsideOfCentre != null
+        return city.run {
+            averageMonthlyNetSalaryAfterTax != null
+                    && foodPrices.loafOfFreshWhiteBread500g != null
+                    && foodPrices.localCheese1kg != null
+                    && foodPrices.chickenFillets1kg != null
+                    && foodPrices.riceWhite1kg != null
+                    && foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null
+                    && realEstatesPrices.apartment3BedroomsInCityCentre != null
+                    && realEstatesPrices.apartment3BedroomsOutsideOfCentre != null
         }
     }
 
