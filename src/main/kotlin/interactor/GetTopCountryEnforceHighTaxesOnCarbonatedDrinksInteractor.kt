@@ -7,10 +7,10 @@ class GetTopCountryEnforceHighTaxesOnCarbonatedDrinksInteractor(private val data
         return dataSource.getAllCitiesData()
             .asSequence()
             .filter(::isLegalData)
-            .sortedByDescending { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants }
             .distinctBy { it.country }
+            .sortedByDescending { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants }
             .take(limit)
-            .map { (it.country to it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants) }
+            .map { Pair(it.country ,it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants) }
             .toList()
     }
 
