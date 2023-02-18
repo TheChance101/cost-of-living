@@ -14,11 +14,11 @@ class GetTopFashionCitiesNamesInteractor(
     fun execute(limit: Int): List<String> {
         return dataSource
             .getAllCitiesData()
-            .also { it.ifEmpty { throw NoReturnedDataException(EMPTY_DATA_SOURCE_EXCEPTION_MSG) } }
+            .ifEmpty { throw NoReturnedDataException(EMPTY_DATA_SOURCE_EXCEPTION_MSG) }
             .asSequence()
             .filter(::excludeNullPricesAndLowQualityData)
             .sortedBy { it.clothesPrices.average() }
-            .distinctBy { Pair(it.cityName, it.country) }
+            .distinctBy { it.cityName to it.country }
             .takeIf { limit >= 0 }
             ?.take(limit)
             ?.map { it.cityName }
