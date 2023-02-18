@@ -77,7 +77,7 @@ class GetCityHasLowestYearsToBuyApartmentInteractorTest {
     }
 
     @Test
-    fun `should return Correct List when Enter Postive limit`() {
+    fun `should return correct list when enter positive limit`() {
         //given
         val mockCity = listOf(
             MockCityEntity.createMockCity(
@@ -96,23 +96,23 @@ class GetCityHasLowestYearsToBuyApartmentInteractorTest {
     }
 
     @Test
-    fun `should throws exception when  enter negative limit `() {
+    fun `should throws exception when enter negative limit`() {
         //given
         val limit = -1
+        // when
         val resultList: Executable = Executable { interactor.execute(limit) }
-        // then eception should be thrown
+        // then exception should be thrown
         assertThrows(Exception::class.java, resultList)
     }
 
     @Test
-    fun `should throws exception when limit zero limit `() {
+    fun `should throws exception when limit is zero`() {
         //given
         val limit = 0
         //when
         val resultList: Executable = Executable { interactor.execute(limit) }
-        // then eception should be thrown
+        // then exception should be thrown
         assertThrows(Exception::class.java, resultList)
     }
-
 
 }
