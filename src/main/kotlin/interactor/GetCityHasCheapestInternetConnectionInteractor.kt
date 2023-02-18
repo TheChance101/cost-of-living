@@ -12,7 +12,7 @@ class GetCityHasCheapestInternetConnectionInteractor(
         return  dataSource.getAllCitiesData()
             .asSequence()
             .filter (::excludeNullSalariesAndLowQualityDataAndNullInternetPrice).toList()
-            .also { if (it.isEmpty()){throw IllegalStateException("List that you entered all of it has bad quality data " +
+            .also { if (it.isEmpty()){throw NoSuchElementException("List that you entered all of it has bad quality data " +
                     "or null average salary or null internet price")} }
             .sortedBy(::findTheRatioOfInternetPriceToSalaryAverage).first()
 

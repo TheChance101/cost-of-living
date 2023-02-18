@@ -52,7 +52,7 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
     fun `should throw exception when given empty list`(){
         // when check what is the cheapest city in list with giving emptyList
         val actual = Executable{cityHasCheapestInternetConnectionWithEmptyList.execute()}
-        val expected = IllegalStateException::class.java
+        val expected = NoSuchElementException::class.java
         // then check the result
         assertThrows(expected,actual)
     }
@@ -71,7 +71,7 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
     fun `should throw exception when all elements in the list is bad quality or internet Price is null or average salary is null`(){
         // when check what is the cheapest city in the list
         val actual = Executable{cityHasCheapestInternetConnectionWithLowQualityData.execute()}
-        val expected = IllegalStateException::class.java
+        val expected = NoSuchElementException::class.java
         // then check the result
         assertThrows(expected,actual)
     }
