@@ -25,7 +25,7 @@ class GetCitiesAverageFAVLowesCostTest {
     fun `should return at most ten cities names when given data with not null salaries and not null fruit and vegetable prices`() {
         //Given fakeDataOfCityEntities
         val fakeDataOfCityEntities = fakeDataGetCitiesHaveNotNullSalariesAndNotNullFruitsAndVegetablesPrices
-        //When execute to get Cities Names That Average Fruits And Vegetables Lowest Cost
+        //When execute to get Cities Names That Average Fruits And Vegetables The Lowest Cost
         val citiesNames = GetCitiesAverageFAVLowesCost(fakeDataOfCityEntities).execute(10)
         //Then Get At Most 10 Names Of Cities
         assertEquals(listOf("Dendera","Deir Mawas","Dairut","Dekernes","Dar El Salam","Daraw","Dishna","Cairo","Dahab","Desouk"),citiesNames)
@@ -35,28 +35,37 @@ class GetCitiesAverageFAVLowesCostTest {
     fun `should return at most ten cities names when given data with some null salaries and some null fruit and vegetable prices`() {
         //Given FakeDataOfCityEntities
         val fakeDataOfCityEntities = fakeDataGetCitiesHaveSomeNullSalariesAndSomeNullFruitsAndVegetablesPrices
-        //When execute to get Cities Names That Average Fruits And Vegetables Lowest Cost
+        //When execute to get Cities Names That Average Fruits And Vegetables The Lowest Cost
         val citiesNames = GetCitiesAverageFAVLowesCost(fakeDataOfCityEntities).execute(10)
         //Then Get At Most 10 Names Of Cities
         assertEquals(listOf("Edfu","Dishna","Dar El Salam","Dairut","Dahab","Desouk","Cairo","Daraw"),citiesNames)
     }
 
     @Test
-    fun `should return empty list of cities names when given data with null salaries and not null fruit and vegetable prices`() {
+    fun `should return empty list when given data with null salaries and not null fruit and vegetable prices`() {
         //Given fakeDataOfCitiesNullSalary
         val fakeDataOfCitiesNullSalary = fakeDataAllCitiesHaveNullSalary
-        //When execute to get Cities Names That Average Fruits And Vegetables Lowest Cost
+        //When execute to get Cities Names That Average Fruits And Vegetables The Lowest Cost
         val citiesNames = GetCitiesAverageFAVLowesCost(fakeDataOfCitiesNullSalary).execute(10)
         //Then Get EmptyList Of Cities
         assertEquals(emptyList<String>(),citiesNames)
     }
 
     @Test
-    fun `should return empty list of cities names when given data with not null salaries and null fruit and vegetable prices`() {
+    fun `should return empty list when given data with not null salaries and null fruit and vegetable prices`() {
         //Given fakeDataAllCitiesHaveNullPricesOfFAV
         val fakeDataAllCitiesHaveNullPricesOfFAV = fakeDataAllCitiesHaveNullFruitsAndVegetablesPrices
-        //When execute to get Cities Names That Average Fruits And Vegetables Lowest Cost
+        //When execute to get Cities Names That Average Fruits And Vegetables The Lowest Cost
         val citiesNames = GetCitiesAverageFAVLowesCost(fakeDataAllCitiesHaveNullPricesOfFAV).execute(10)
+        //Then Get EmptyList Of Cities
+        assertEquals(emptyList<String>(),citiesNames)
+    }
+    @Test
+    fun `should return empty list when given Any data with lower than 1`() {
+        //Given FakeDataOfCityEntities
+        val fakeDataOfCityEntities = fakeDataGetCitiesHaveNotNullSalariesAndNotNullFruitsAndVegetablesPrices
+        //When execute to get Cities Names That Average Fruits And Vegetables The Lowest Cost
+        val citiesNames = GetCitiesAverageFAVLowesCost(fakeDataOfCityEntities).execute(-1)
         //Then Get EmptyList Of Cities
         assertEquals(emptyList<String>(),citiesNames)
     }
