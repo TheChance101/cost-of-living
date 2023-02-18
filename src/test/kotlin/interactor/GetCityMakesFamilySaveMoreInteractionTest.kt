@@ -430,7 +430,7 @@ class GetCityMakesFamilySaveMoreInteractionTest {
             dataQuality = true
         )
 
-        assertFalse(city.excludeNullFoodPrice(nullCityTemp))
+        assertFalse(city.excludeNullvalues(nullCityTemp))
     }
 
 
@@ -508,11 +508,6 @@ class GetCityMakesFamilySaveMoreInteractionTest {
             averageMonthlyNetSalaryAfterTax = null,
             dataQuality = true
         )
-
-        assertFalse(city.excludeInvalidSalary(nullCityTemp))
+        assertFalse(city.excludeNullvalues(nullCityTemp))
     }
-
-
-
-
 }
