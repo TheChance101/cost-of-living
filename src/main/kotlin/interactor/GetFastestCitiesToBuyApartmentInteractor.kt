@@ -7,7 +7,7 @@ class GetFastestCitiesToBuyApartmentInteractor(
 ) {
     fun execute(limit: Int) = dataSource.getAllCitiesData()
         .also { require(limit >= 1) { "Invalid Argument!" } }
-        .filter { excludeInvalidSalaries(it) && excludeInvalidApartmentPrice(it) && excludeLowQualityData(it) }
+        .filter { excludeInvalidSalaries(it) && excludeInvalidApartmentPrice(it) && excludeLowQualityCityData(it) }
         .map { it.cityName to calculateNumberOfYearsToBuyAPT(it) }
         .sortedBy { it.second }
         .take(limit)
@@ -17,7 +17,7 @@ fun excludeInvalidSalaries(cityEntity: CityEntity) =
     cityEntity.averageMonthlyNetSalaryAfterTax != null &&
             cityEntity.averageMonthlyNetSalaryAfterTax > 0
 
-fun excludeLowQualityData(cityEntity: CityEntity) = cityEntity.dataQuality
+fun excludeLowQualityCityData(cityEntity: CityEntity)= cityEntity.dataQuality
 
 fun excludeInvalidApartmentPrice(cityEntity: CityEntity) =
     cityEntity.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre != null &&
