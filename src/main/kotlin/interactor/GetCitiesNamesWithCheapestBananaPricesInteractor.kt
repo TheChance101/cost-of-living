@@ -9,6 +9,8 @@ class GetCitiesNamesWithCheapestBananaPricesInteractor(private val dataSource: C
             .filter { isNotNullBananaPrice(it) && isContainsCitiesNames(it, cities.toList()) }
             .sortedBy { it.fruitAndVegetablesPrices.banana1kg }
             .map(CityEntity::cityName)
+            .takeIf { it.isNotEmpty() }
+            ?: throw IllegalStateException("maybe you entered invalid countries or something wrong in our server!")
     }
 
     private fun isNotNullBananaPrice(city: CityEntity): Boolean {
