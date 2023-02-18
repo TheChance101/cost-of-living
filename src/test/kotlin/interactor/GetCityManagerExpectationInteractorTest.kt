@@ -26,7 +26,7 @@ internal class GetCityManagerExpectationInteractorTest {
         dataSource = HardCodedFakeDataSource()
 
         //When list not equal null
-        val cityName = getCityManagerExpectationInteractor.execute()
+        val cityName = getCityManagerExpectationInteractor.execute("United States" , "Canada","Mexico")
 
         //Then
         assertNotNull(cityName)
@@ -38,7 +38,7 @@ internal class GetCityManagerExpectationInteractorTest {
         dataSource = HardCodedFakeDataSource()
 
         //When list Enter Valid Data
-        val cityName = getCityManagerExpectationInteractor.execute()
+        val cityName = getCityManagerExpectationInteractor.execute("United States" , "Canada","Mexico")
 
         //Then
         assertEquals("Mexico", cityName)
