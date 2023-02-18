@@ -858,4 +858,86 @@ object MockCityEntity {
 
     }
     // endregion for SearchCheapestCarInCountryInteractor (Problem 11)
+
+    fun createMockCity(
+        countryName: String,
+        averageMonthlyNetSalaryAfterTax: Float?,
+        apartmentOneBedroomInCityCentre: Float?,
+        basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment : Float? ,
+        monthlyPassRegularPrice : Float?
+    ): CityEntity {
+        return CityEntity(
+            "cityName",
+            countryName,
+            MealsPrices(
+                null,
+                null,
+                null
+            ),
+            DrinksPrices(
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            FruitAndVegetablesPrices(
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            FoodPrices(
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            ServicesPrices(
+                basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            ClothesPrices(
+                null,
+                null,
+                null,
+                null
+            ),
+            TransportationsPrices(
+                null,
+                monthlyPassRegularPrice,
+                null,
+                null,
+                null,
+                null
+            ),
+            CarsPrices(
+                null,
+                null
+            ),
+            RealEstatesPrices(
+                apartmentOneBedroomInCityCentre,
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            averageMonthlyNetSalaryAfterTax,
+            true
+        )
+
+    }
+
 }
