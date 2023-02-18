@@ -10,18 +10,17 @@ class GetCityMatchManagerExpectationsInteractor(
     fun execute(): CityEntity? {
         return dataSource.getAllCitiesData()
             .filter { it.country in onlyRequiredCountries }
-            .minByOrNull(::getMidRangePrices)
+            .takeIf { it.isNotEmpty() }
+            ?.minByOrNull(::getMidRangePrices)
     }
 
+
     private fun getMidRangePrices(city: CityEntity): Float = city.mealsPrices.run {
-        sequenceOf(
+        getNonNullableSequenceOfPrices(
             mealInexpensiveRestaurant,
             mealFor2PeopleMidRangeRestaurant,
             mealAtMcDonaldSOrEquivalent
-        ).filterNotNull()
-            .let {
-                getMidMealsPrice(city)
-            }
+        ).let { getMidMealsPrice(city) }
     }
 
     private fun getMidMealsPrice(city: CityEntity) =
@@ -31,23 +30,28 @@ class GetCityMatchManagerExpectationsInteractor(
         )
 
 
-    private fun getHighestPrice(city: CityEntity): Float {
-        println(city.mealsPrices)
-        return (sequenceOf(
+    private fun getHighestPrice(city: CityEntity): Float =
+        getNonNullableSequenceOfPrices(
             city.mealsPrices.mealInexpensiveRestaurant,
             city.mealsPrices.mealFor2PeopleMidRangeRestaurant,
             city.mealsPrices.mealAtMcDonaldSOrEquivalent
-        ).filterNotNull().maxOrNull() ?: Float.MIN_VALUE)
-    }
+        ).maxOrNull() ?: Float.MIN_VALUE
+
 
     private fun getLowestPrice(city: CityEntity) =
-        sequenceOf(
+        getNonNullableSequenceOfPrices(
             city.mealsPrices.mealInexpensiveRestaurant,
-            city.mealsPrices.mealFor2PeopleMidRangeRestaurant?.div(2) ?: Float.MIN_VALUE,
+            city.mealsPrices.mealFor2PeopleMidRangeRestaurant,
             city.mealsPrices.mealAtMcDonaldSOrEquivalent
         )
-            .filterNotNull()
             .minOrNull() ?: Float.MIN_VALUE
+
+    private fun getNonNullableSequenceOfPrices(price1: Float?, price2: Float?, price3: Float?): Sequence<Float> =
+        sequenceOf(
+            price1,
+            price2,
+            price3
+        ).filterNotNull()
 
 
     companion object {
