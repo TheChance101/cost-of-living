@@ -12,17 +12,17 @@ import kotlin.test.assertEquals
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCityThatMatchTheManagerExpectationsInteractorTest {
 
-    private lateinit var managerExpectationsFakeData: ManagerExpectationsFakeData
+    private lateinit var fakeData: ManagerExpectationsFakeData
 
     @BeforeAll
     fun setUp() {
-        managerExpectationsFakeData = ManagerExpectationsFakeData
+        fakeData = ManagerExpectationsFakeData
     }
 
     @Test
     fun `should return city when countries and prices of meals are valid`() {
         // Given that countries' names and prices of meals are valid
-        val validData = GetCityThatMatchTheManagerExpectationsInteractor(managerExpectationsFakeData.getValidCountriesAndPricesOfMeals)
+        val validData = GetCityThatMatchTheManagerExpectationsInteractor(fakeData.getValidCountriesAndPricesOfMeals)
         // When return city that match manager expectations
         val actualData = validData.execute().cityName
         // Then check the result
@@ -32,7 +32,8 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
     @Test
     fun `should return city when countries and some prices of meals are valid`() {
         // Given that countries' names and some prices of meals are valid
-        val mixedData = GetCityThatMatchTheManagerExpectationsInteractor(managerExpectationsFakeData.getValidCountriesAndSomeInvalidPricesOfMeals)
+        val mixedData =
+            GetCityThatMatchTheManagerExpectationsInteractor(fakeData.validCountriesAndSomeInvalidPricesOfMeals)
         // When return the city that match manager expectations
         val actualData = mixedData.execute().cityName
         // Then check the final result
@@ -42,7 +43,8 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
     @Test
     fun `should return city when some countries and prices of meals are valid`() {
         // Given that some countries' names and prices of meals are valid
-        val mixedData = GetCityThatMatchTheManagerExpectationsInteractor(managerExpectationsFakeData.getSomeInvalidCountriesAndValidPricesOfMeals)
+        val mixedData =
+            GetCityThatMatchTheManagerExpectationsInteractor(fakeData.someInvalidCountriesAndValidPricesOfMeals)
         // When return the city that match manager expectations
         val actualData = mixedData.execute().cityName
         // Then check the final result
@@ -52,7 +54,8 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
     @Test
     fun `should return city when some countries and some prices of meals are valid`() {
         // Given that some countries' names and some prices of meals are valid
-        val validData = GetCityThatMatchTheManagerExpectationsInteractor(managerExpectationsFakeData.getSomeInvalidCountriesAndSomeInvalidPricesOfMeals)
+        val validData =
+            GetCityThatMatchTheManagerExpectationsInteractor(fakeData.invalidSomeCountriesAndSomePricesOfMeals)
         // When return the city that match manager expectations
         val actualData = validData.execute().cityName
         // Then check the final result
@@ -62,7 +65,8 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
     @Test
     fun `should return exception when countries are valid and prices of meals are invalid`() {
         // Given that countries' names are valid and prices of meals are invalid
-        val invalidData = GetCityThatMatchTheManagerExpectationsInteractor(managerExpectationsFakeData.getValidCountriesAndInvalidPricesOfMeals)
+        val invalidData =
+            GetCityThatMatchTheManagerExpectationsInteractor(fakeData.validCountriesAndInvalidPricesOfMeals)
         // When return the city that match manager expectations
         val actualData = Executable {
             invalidData.execute().cityName
@@ -74,7 +78,8 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
     @Test
     fun `should return exception when countries and prices of meals are invalid`() {
         // Given that countries' names  and prices of meals are invalid
-        val invalidData = GetCityThatMatchTheManagerExpectationsInteractor(managerExpectationsFakeData.getAllInvalidData)
+        val invalidData =
+            GetCityThatMatchTheManagerExpectationsInteractor(fakeData.invalidData)
         // When return the city that match manager expectations
         val actualData = Executable {
             invalidData.execute().cityName

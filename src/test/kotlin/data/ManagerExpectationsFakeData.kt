@@ -210,7 +210,7 @@ object ManagerExpectationsFakeData {
             )
         )
     }
-    private val validCountriesAndSomePricesOfMealsInvalid by lazy {
+    private val _validCountriesAndSomePricesOfMealsInvalid by lazy {
         listOf(
             CityEntity(
                 cityName = "Great Falls",
@@ -415,7 +415,7 @@ object ManagerExpectationsFakeData {
             ),
         )
     }
-    private val invalidSomeCountriesAndPricesOfMealsValid by lazy {
+    private val _someInvalidCountriesAndPricesOfMealsValid by lazy {
         listOf(
             CityEntity(
                 cityName = "Great Falls",
@@ -691,7 +691,7 @@ object ManagerExpectationsFakeData {
             )
         )
     }
-    private val invalidSomeCountriesAndSomePricesOfMeals by lazy {
+    private val _invalidSomeCountriesAndSomePricesOfMeals by lazy {
         listOf(
             CityEntity(
                 cityName = "Great Falls",
@@ -896,7 +896,7 @@ object ManagerExpectationsFakeData {
             )
         )
     }
-    private val validCountriesAndInvalidPricesOfMeals by lazy {
+    private val _validCountriesAndInvalidPricesOfMeals by lazy {
         listOf(
             CityEntity(
                 cityName = "Great Falls",
@@ -1101,8 +1101,7 @@ object ManagerExpectationsFakeData {
             )
         )
     }
-
-    private val invalidData by lazy {
+    private val _invalidData by lazy {
         listOf(
             CityEntity(
                 cityName = "Great Falls",
@@ -1313,31 +1312,32 @@ object ManagerExpectationsFakeData {
             override fun getAllCitiesData() = validData
         }
     }
-    val getValidCountriesAndSomeInvalidPricesOfMeals by lazy {
+    val validCountriesAndSomeInvalidPricesOfMeals by lazy {
         object : CostOfLivingDataSource {
-            override fun getAllCitiesData() = validCountriesAndSomePricesOfMealsInvalid
+            override fun getAllCitiesData() = _validCountriesAndSomePricesOfMealsInvalid
         }
     }
-    val getSomeInvalidCountriesAndValidPricesOfMeals by lazy {
+    val someInvalidCountriesAndValidPricesOfMeals by lazy {
         object : CostOfLivingDataSource {
-            override fun getAllCitiesData() = invalidSomeCountriesAndPricesOfMealsValid
+            override fun getAllCitiesData() = _someInvalidCountriesAndPricesOfMealsValid
         }
     }
-    val getSomeInvalidCountriesAndSomeInvalidPricesOfMeals by lazy {
+    val invalidSomeCountriesAndSomePricesOfMeals by lazy {
         object : CostOfLivingDataSource {
-            override fun getAllCitiesData() = invalidSomeCountriesAndSomePricesOfMeals
+            override fun getAllCitiesData() = _invalidSomeCountriesAndSomePricesOfMeals
         }
     }
-    val getValidCountriesAndInvalidPricesOfMeals by lazy {
+    val validCountriesAndInvalidPricesOfMeals by lazy {
         object : CostOfLivingDataSource {
-            override fun getAllCitiesData() = validCountriesAndInvalidPricesOfMeals
+            override fun getAllCitiesData() = _validCountriesAndInvalidPricesOfMeals
         }
     }
-    val getAllInvalidData by lazy {
+    val invalidData by lazy {
         object : CostOfLivingDataSource {
-            override fun getAllCitiesData() = invalidData
+            override fun getAllCitiesData() = _invalidData
         }
     }
+
 }
 
 
