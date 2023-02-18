@@ -42,35 +42,37 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
     @Test
     fun `should return one city when given list has only one item in high quality data`(){
         // when check what is the cheapest city in list with giving only 1 city in list
-        val actualReturn = cityHasCheapestInternetConnectionWithOneItem.execute().cityName
-        val expectedReturn = fakeDataWithItemInHighQuality.getAllCitiesData()[0].cityName
+        val actual = cityHasCheapestInternetConnectionWithOneItem.execute().cityName
+        val expected = fakeDataWithItemInHighQuality.getAllCitiesData()[0].cityName
         // then check the result
-        assertEquals(expectedReturn,actualReturn)
+        assertEquals(expected,actual)
     }
 
     @Test
     fun `should throw exception when given empty list`(){
         // when check what is the cheapest city in list with giving emptyList
-        val actualReturn = Executable{cityHasCheapestInternetConnectionWithEmptyList.execute()}
+        val actual = Executable{cityHasCheapestInternetConnectionWithEmptyList.execute()}
+        val expected = NoReturnedDataException::class.java
         // then check the result
-        assertThrows(NoReturnedDataException::class.java,actualReturn)
+        assertThrows(expected,actual)
     }
 
     @Test
     fun `should return cheapest city when given list of cities`(){
         // when check what is the cheapest city in the list
-        val actualReturn = cityHasCheapestInternet.execute().cityName
-        val expectedReturn = fakeDataSource.getAllCitiesData()[17].cityName
+        val actual = cityHasCheapestInternet.execute().cityName
+        val expected = fakeDataSource.getAllCitiesData()[17].cityName
         // then check the result
-        assertEquals(expectedReturn,actualReturn)
+        assertEquals(expected,actual)
     }
 
 
     @Test
     fun `should throw exception when all elements in the list is bad quality or internet Price is null or average salary is null`(){
         // when check what is the cheapest city in the list
-        val actualReturn = Executable{cityHasCheapestInternetConnectionWithLowQualityData.execute()}
+        val actual = Executable{cityHasCheapestInternetConnectionWithLowQualityData.execute()}
+        val expected = NoReturnedDataException::class.java
         // then check the result
-        assertThrows(NoReturnedDataException::class.java,actualReturn)
+        assertThrows(expected,actual)
     }
 }
