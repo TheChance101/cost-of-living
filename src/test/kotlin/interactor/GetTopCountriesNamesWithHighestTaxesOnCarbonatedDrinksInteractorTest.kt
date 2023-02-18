@@ -3,7 +3,6 @@ package interactor
 import fakeDataSource.TaxesFakeDataSource
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
@@ -40,7 +39,7 @@ class GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
 
     //region data quality test
     @Test
-    fun should_returnTrue_when_theDataQualityIsHigh() {
+    fun should_Return_True_When_theDataQualityIsHigh() {
         // given
         val testCity = taxesFakeDataSource.checkDataQuality()
         // When
@@ -50,7 +49,7 @@ class GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
     }
 
     @Test
-    fun should_returnFalse_when_theDataQualityIsLow() {
+    fun should_ReturnFalse_When_theDataQualityIsLow() {
         // given
         val testCity = taxesFakeDataSource.getLowQualityAssertion()
         // when
@@ -62,7 +61,7 @@ class GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
 
     //region country test
     @Test
-    fun should_returnTrue_when_countryIsValid() {
+    fun should_Return_True_When_countryIsValid() {
         // given
         val testCity = taxesFakeDataSource.getValidCountry()
         // when
@@ -72,7 +71,7 @@ class GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
     }
 
     @Test
-    fun should_returnFalse_when_countryIsEmpty() {
+    fun should_Return_False_When_countryIsEmpty() {
         // given
         val testCity = taxesFakeDataSource.getEmptyCountry()
         // when
@@ -82,7 +81,7 @@ class GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
     }
 
     @Test
-    fun should_returnFalse_when_countryLengthIsInvalid() {
+    fun should_Return_False_When_countryLengthIsInvalid() {
         // given
         val testCity = taxesFakeDataSource.getInvalidLengthCity()
         // when
@@ -92,7 +91,7 @@ class GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
     }
 
     @Test
-    fun should_returnFalse_when_countryNameIsInvalidWithFirstCharacter() {
+    fun should_Return_False_When_countryNameIsInvalidWithFirstCharacter() {
         // given
         val testCity = taxesFakeDataSource.getInvalidLengthCity()
         // when
@@ -102,7 +101,7 @@ class GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
     }
 
     @Test
-    fun should_returnFalse_when_countryNameContainDigit() {
+    fun should_Return_False_When_CountryNameContainDigit() {
         // given
         val city = taxesFakeDataSource.getCountryNameContainsDigits()
         // when
@@ -112,7 +111,7 @@ class GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
     }
 
     @Test
-    fun should_returnFalse_when_countryNameContainSymbols() {
+    fun should_Return_False_When_countryNameContainSymbols() {
         // given
         val city = taxesFakeDataSource.getCountryNameContainsSymbols()
         // when
@@ -124,7 +123,7 @@ class GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
 
     //region drink price test
     @Test
-    fun should_returnTrue_when_drinkPriceIsNotNull() {
+    fun should_Return_True_When_drinkPriceIsNotNull() {
         // given
         val testCity = taxesFakeDataSource.getDataHasDrinkPriceIsNotNull()
 
@@ -135,7 +134,7 @@ class GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
     }
 
     @Test
-    fun should_returnFalse_when_drinkPriceIsNull() {
+    fun should_Return_False_When_drinkPriceIsNull() {
         // given
         val testCity = taxesFakeDataSource.getNullDrinkPrice()
         // when
@@ -145,7 +144,7 @@ class GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
     }
 
     @Test
-    fun should_returnTrue_when_drinkPriceIsValid() {
+    fun should_Return_True_When_drinkPriceIsValid() {
         // given
         val city = taxesFakeDataSource.getValidPrice()
         // when
@@ -155,7 +154,7 @@ class GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractorTest {
     }
 
     @Test
-    fun should_return_when_drinkPriceIsInvalid() {
+    fun should_Return_When_drinkPriceIsInvalid() {
         // given
         val city = taxesFakeDataSource.getInvalidDrinkPrices()
         // when
