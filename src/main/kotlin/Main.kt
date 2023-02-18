@@ -189,8 +189,8 @@ fun getCitiesNamesSortedCheapestBananaPrices() {
         }
     }
 fun getCityHasCheapestInternetConnection() {
-        val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor()
-        val interactWithData = getCityHasCheapestInternetConnectionInteractor.execute(data)
+        val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
+        val interactWithData = getCityHasCheapestInternetConnectionInteractor.execute()
         println("""
 City Cheapest Internet Connection with $TEXT_OF_COUNTRY_NAME  and 
 $TEXT_OF_CITY_NAME => ${interactWithData?.cityName}
