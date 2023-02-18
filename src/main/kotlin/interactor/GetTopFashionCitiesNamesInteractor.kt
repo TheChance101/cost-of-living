@@ -1,7 +1,7 @@
 package interactor
 
 import model.CityEntity
-import utils.Constants.EMPTY_DATA_SOURCE_EXCEPTION_MSG
+import utils.Constants.EMPTY_LIST_EXCEPTION_MSG
 import utils.Constants.INVALID_LIMIT_EXCEPTION_MSG
 import utils.areNotNull
 import utils.average
@@ -14,7 +14,7 @@ class GetTopFashionCitiesNamesInteractor(
     fun execute(limit: Int): List<String> {
         return dataSource
             .getAllCitiesData()
-            .ifEmpty { throw NoReturnedDataException(EMPTY_DATA_SOURCE_EXCEPTION_MSG) }
+            .ifEmpty { throw IllegalStateException(EMPTY_LIST_EXCEPTION_MSG) }
             .asSequence()
             .filter(::excludeNullPricesAndLowQualityData)
             .sortedBy { it.clothesPrices.average() }
