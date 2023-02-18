@@ -34,7 +34,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
     @Test
     fun should_returnFalse_When_CityNameIsEmpty() {
         //given an empty city name should
-        val emptyCityName = dataSource.createCustomCity("", 1000f, true)
+        val emptyCityName = dataSource.createCustomCity(cityName = "", salary = 1000f, dataQuality = true)
         //when executing
         val result = data.excludeEmptyCityNameAndLowQualityDataAndNullSalaries(emptyCityName)
         //then
@@ -79,7 +79,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
     @Test
     fun should_returnFalse_When_SalariesISNull() {
         //given null salaries
-        val nullSalaries = dataSource.createCustomCity("Baghdad",null,true)
+        val nullSalaries = dataSource.createCustomCity(cityName = "Baghdad", salary = null, dataQuality = true)
 
         //when SalariesISNull
         val result = data.excludeEmptyCityNameAndLowQualityDataAndNullSalaries(nullSalaries)
@@ -90,7 +90,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
     @Test
     fun should_returnFalse_When_LowQualityData() {
         //given low quality data
-        val lowQualityData = dataSource.createCustomCity("Baghdad",1000f,false)
+        val lowQualityData = dataSource.createCustomCity(cityName = "Baghdad", salary = 1000f, dataQuality = false)
         //when executing
         val result = data.excludeEmptyCityNameAndLowQualityDataAndNullSalaries(lowQualityData)
         //then

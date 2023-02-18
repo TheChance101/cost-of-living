@@ -9,6 +9,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor(
     fun execute(limit: Int): List<String> {
         return dataSource
             .getAllCitiesData()
+            .also { require(limit >= 1) { "Invalid Argument!" } }
             .filter {excludeEmptyCityNameAndLowQualityDataAndNullSalaries(it) &&
                     excludeNullFruitsAndVegetables(it.fruitAndVegetablesPrices)}
             .sortedByDescending { comparingFruitAndVegetablesWithSalaries(it.fruitAndVegetablesPrices.getAvreage(),
