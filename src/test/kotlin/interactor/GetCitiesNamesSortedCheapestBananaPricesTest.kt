@@ -87,24 +87,25 @@ class GetCitiesNamesSortedCheapestBananaPricesTest {
     }
 
     @Test
-    fun `should throw exception when city banana price is null and low quality data`(){
+    fun `should return empty list when city banana price is null and low quality data`(){
         //given cities null banana price and low quality data
         val cities = arrayOf(
             fakeDataSource.getAllCitiesData()[11],
             fakeDataSource.getAllCitiesData()[12])
 
         //When execute the use case
-        val actual=Executable{ citiesSortedCheapestBananaPrices.execute(*cities) }
+        val expected =citiesSortedCheapestBananaPrices.execute(*cities)
 
         //then
-        assertThrows(NoReturnedDataException::class.java,actual)
+        assertTrue(expected.isEmpty())
     }
 
     @Test
     fun `should throw exception when isn't given data`(){
         //When execute the use case
-        val actual=Executable{ citiesSortedCheapestBananaPrices.execute() }
+        val expected=Executable{ citiesSortedCheapestBananaPrices.execute() }
+
         //then
-        assertThrows(NoReturnedDataException::class.java,actual)
+        assertThrows(IllegalStateException::class.java,expected)
     }
 }
