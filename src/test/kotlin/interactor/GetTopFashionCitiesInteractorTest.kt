@@ -1,6 +1,6 @@
 package interactor
 
-import FakeData
+import fakeDataSource.FakeData
 import junit.framework.TestCase.assertEquals
 import org.junit.jupiter.api.*
 
