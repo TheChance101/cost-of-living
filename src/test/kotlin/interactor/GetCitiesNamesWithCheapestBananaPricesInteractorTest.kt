@@ -1,57 +1,57 @@
 package interactor
 
 import data.BananaCheapestFakeData
-import data.BananaCheapestFakeData.Companion.citiesListOf
-import data.BananaCheapestFakeData.Companion.makeCity
+import data.BananaCheapestFakeData.citiesListOf
+import data.BananaCheapestFakeData.makeCity
 import data.EmptyFakeData
 import data.InvalidFakeData
 import model.*
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetCitiesNamesWithCheapestBananaPricesInteractorTest {
     // region init
     private lateinit var getCitiesNamesWithCheapestBananaPrices: GetCitiesNamesWithCheapestBananaPricesInteractor
-    private lateinit var fakeData: BananaCheapestFakeData
 
     @BeforeEach
     fun setup() {
-        fakeData = BananaCheapestFakeData()
-        getCitiesNamesWithCheapestBananaPrices = GetCitiesNamesWithCheapestBananaPricesInteractor(fakeData)
+        getCitiesNamesWithCheapestBananaPrices = GetCitiesNamesWithCheapestBananaPricesInteractor(BananaCheapestFakeData)
     }
     // endregion
 
     // region one city cases
     @Test
-    fun `should return empty list when the data is invalid`() {
+    fun `should throw illegal state exception when the data is invalid`() {
         // change source of fake data to invalid data
-        getCitiesNamesWithCheapestBananaPrices = GetCitiesNamesWithCheapestBananaPricesInteractor(InvalidFakeData())
+        getCitiesNamesWithCheapestBananaPrices = GetCitiesNamesWithCheapestBananaPricesInteractor(InvalidFakeData)
 
         // given one city included
         val city = makeCity("Santiago de Cuba")
 
         // when the output is list of one city
-        val result = getCitiesNamesWithCheapestBananaPrices(city)
+        val result = Executable { getCitiesNamesWithCheapestBananaPrices(city) }
 
         // then check
-        assertEquals(emptyList<String>(), result)
+        assertThrows(IllegalStateException::class.java, result)
     }
     @Test
-    fun `should return empty list when the data is empty`() {
+    fun `should throw illegal state exception when the data is empty`() {
         // change source of fake data to empty data
-        getCitiesNamesWithCheapestBananaPrices = GetCitiesNamesWithCheapestBananaPricesInteractor(EmptyFakeData())
+        getCitiesNamesWithCheapestBananaPrices = GetCitiesNamesWithCheapestBananaPricesInteractor(EmptyFakeData)
 
         // given one city included
         val city = makeCity("Santiago de Cuba")
 
         // when the output is list of one city
-        val result = getCitiesNamesWithCheapestBananaPrices(city)
+        val result = Executable { getCitiesNamesWithCheapestBananaPrices(city) }
 
         // then check
-        assertEquals(emptyList<String>(), result)
+        assertThrows(IllegalStateException::class.java, result)
     }
 
     @Test
@@ -67,15 +67,15 @@ internal class GetCitiesNamesWithCheapestBananaPricesInteractorTest {
     }
 
     @Test
-    fun `should return empty list when the input is one city not included`() {
+    fun `should throw illegal state exception when the input is one city not included`() {
         // given one city is not included
         val city = makeCity("Galaxy")
 
         // when the output is empty list of city
-        val result = getCitiesNamesWithCheapestBananaPrices(city)
+        val result =  Executable { getCitiesNamesWithCheapestBananaPrices(city) }
 
         // then check 
-        assertEquals(emptyList<String>(), result)
+        assertThrows(IllegalStateException::class.java, result)
     }
 
     @Test
@@ -153,15 +153,15 @@ internal class GetCitiesNamesWithCheapestBananaPricesInteractorTest {
     }
 
     @Test
-    fun `should return sorted list when the input is multi city all not included`() {
+    fun `should throw illegal state exception when the input is multi city all not included`() {
         // given multi city all of this is not included
         val cities = citiesListOf("", "Farwala", "Galaxy")
 
         // when the output is empty list
-        val result = getCitiesNamesWithCheapestBananaPrices(*cities)
+        val result =  Executable { getCitiesNamesWithCheapestBananaPrices(*cities) }
 
         // then check
-        assertEquals(emptyList<String>(), result)
+        assertThrows(IllegalStateException::class.java, result)
     }
     // endregion
 }
