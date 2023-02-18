@@ -44,7 +44,7 @@ fun main() {
     printSeparationLine()
 
     val getLowCostFruitVegetableCitiesWithHighSalaries = GetLowCostFruitVegetableCitiesWithHighSalariesInteractor(dataSource)
-    println(getLowCostFruitVegetableCitiesWithHighSalaries.execute())
+    println(getLowCostFruitVegetableCitiesWithHighSalaries.execute(10))
     printSeparationLine()
 
     val getTheCityThatMatchManagerExpectations = GetTheCityThatMatchManagerExpectationsInteractor(dataSource)
