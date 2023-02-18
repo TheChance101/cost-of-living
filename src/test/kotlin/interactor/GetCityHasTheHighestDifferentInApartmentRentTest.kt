@@ -25,10 +25,10 @@ class GetCityHasTheHighestDifferentInApartmentRentTest {
         // given limit
         val limit=1
         // when the city has highest different in apartment rent
-        val result = cityHasTheHighestDifferentInApartmentRent.execute(limit)
+        val actual = cityHasTheHighestDifferentInApartmentRent.execute(limit)
         val expected=cities[16]
         // then
-        Assertions.assertEquals(expected, result)
+        Assertions.assertEquals(expected,actual)
     }
 
     @Test
@@ -39,7 +39,7 @@ class GetCityHasTheHighestDifferentInApartmentRentTest {
         val actual =Executable {cityHasTheHighestDifferentInApartmentRent.execute(limit)}
         val expected=InvalidLimitException::class.java
         // then
-        assertThrows(expected, actual)
+        assertThrows(expected,actual)
     }
 
     @Test
@@ -50,7 +50,7 @@ class GetCityHasTheHighestDifferentInApartmentRentTest {
         val actual =Executable {cityHasTheHighestDifferentInApartmentRent.execute(limit)}
         val expected=InvalidLimitException::class.java
         // then
-        assertThrows(expected, actual)
+        assertThrows(expected,actual)
     }
 
     @Test
