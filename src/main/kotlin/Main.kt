@@ -174,9 +174,8 @@ fun getCityHasCheapestInternetConnection() {
 }
 
 fun getMostSuitableCity() {
-    val getMostSuitableCity = GetMostSuitableCityInteractor()
-    val list = getMostSuitableCity.getAllCities(dataSource)
-    val cityNameResult = getMostSuitableCity.execute(list)
+    val getMostSuitableCity = GetMostSuitableCityInteractor(dataSource)
+    val cityNameResult = getMostSuitableCity.execute()
     println(cityNameResult)
 }
 
@@ -219,3 +218,4 @@ fun exitFromApplication() {
         exitProcess(0)
     }
 }
+

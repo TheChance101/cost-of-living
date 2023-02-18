@@ -1,39 +1,55 @@
 package interactor
 
 import model.CityEntity
+import utils.isNotNull
+import java.lang.Exception
 
-class GetMostSuitableCityInteractor {
+class GetMostSuitableCityInteractor
+    (private val dataSource: CostOfLivingDataSource) {
+    fun execute() =
+        dataSource.getAllCitiesData()
+            .also {
+                if (it.isEmpty()) throw IllegalStateException("Something wrong")
+            }
+            .filter(::excludeNullValuesInCityEntity)
+            .maxByOrNull(::getTotalSaving)
+            .also {
+                if (it == null) throw Exception("Error with data")
+            }
 
-    fun execute(list: List<CityEntity>) =
-        list.filter(::excludeNullPropertiesInCityEntity).maxByOrNull {
-            (it.averageMonthlyNetSalaryAfterTax!! * 2).minus(
-                (it.foodPrices.chickenFillets1kg!! * 10)
-                    .plus(it.foodPrices.loafOfFreshWhiteBread500g!! * 30)
-                    .plus(
-                        minOf(
-                            it.realEstatesPrices.apartment3BedroomsInCityCentre!!,
-                            it.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
-                        )
-                    )
-                    .plus(it.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!! * 4)
-                    .plus(it.foodPrices.localCheese1kg!!)
-                    .plus(it.foodPrices.riceWhite1kg!! * 2)
-                    .plus(250)
-            )
 
-        }!!.cityName
-
-    fun getAllCities(dataSource: CostOfLivingDataSource) = dataSource.getAllCitiesData()
-
-    private fun excludeNullPropertiesInCityEntity(city: CityEntity): Boolean {
-        return city.averageMonthlyNetSalaryAfterTax != null
-                && city.foodPrices.chickenFillets1kg != null
-                && city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null
-                && city.realEstatesPrices.apartment3BedroomsInCityCentre != null
-                && city.realEstatesPrices.apartment3BedroomsOutsideOfCentre != null
-                && city.foodPrices.localCheese1kg != null
-                && city.foodPrices.riceWhite1kg != null
-                && city.foodPrices.loafOfFreshWhiteBread500g != null
+    private fun excludeNullValuesInCityEntity(city: CityEntity): Boolean {
+        return city.averageMonthlyNetSalaryAfterTax.isNotNull()
+                && city.foodPrices.chickenFillets1kg.isNotNull()
+                && city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat.isNotNull()
+                && city.realEstatesPrices.apartment3BedroomsInCityCentre.isNotNull()
+                && city.foodPrices.localCheese1kg.isNotNull()
+                && city.foodPrices.riceWhite1kg.isNotNull()
+                && city.foodPrices.loafOfFreshWhiteBread500g.isNotNull()
 
     }
+
+    private fun getTotalSaving(city: CityEntity) =
+        city.averageMonthlyNetSalaryAfterTax!! * AMOUNT_OF_SALARY_INCREASEMENT -
+                city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!! * NUMBERS_OF_BEEF_KILOS -
+                city.foodPrices.loafOfFreshWhiteBread500g!! * NUMBERS_OF_BREAD_KILOS -
+                city.foodPrices.chickenFillets1kg!! * NUMBERS_OF_CHICKEN_KILOS -
+                city.realEstatesPrices.apartment3BedroomsInCityCentre!! -
+                city.foodPrices.riceWhite1kg!! * NUMBERS_OF_RICE_KILOS -
+                city.foodPrices.localCheese1kg!! -
+                COST_OF_OTHER_NEEDS
+
+
+    companion object {
+        private const val NUMBERS_OF_BEEF_KILOS = 4
+        private const val NUMBERS_OF_RICE_KILOS = 2
+        private const val COST_OF_OTHER_NEEDS = 250
+        private const val NUMBERS_OF_BREAD_KILOS = 30
+        private const val NUMBERS_OF_CHICKEN_KILOS = 10
+        private const val AMOUNT_OF_SALARY_INCREASEMENT = 2
+    }
+
+
 }
+
+
