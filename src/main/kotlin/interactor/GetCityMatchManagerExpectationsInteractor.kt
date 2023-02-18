@@ -10,12 +10,12 @@ class GetCityMatchManagerExpectationsInteractor(
 
     fun execute(): CityEntity? {
         return dataSource.getAllCitiesData()
-            .filter { it.country in onlyRequiredCountries }
             .let { it.ifEmpty { throw NoReturnedDataException(Constants.EMPTY_LIST_EXCEPTION) } }
+            .filter { it.country in onlyRequiredCountries }
+            .let { it.ifEmpty { emptyList() } }
             .minByOrNull(::getMidRangePrices)
     }
 
-// isNotNull
 
     private fun getMidRangePrices(city: CityEntity): Float = city.mealsPrices.run {
         getNonNullableSequenceOfPrices(
