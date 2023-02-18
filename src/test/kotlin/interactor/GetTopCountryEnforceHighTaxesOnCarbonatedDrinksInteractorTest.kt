@@ -70,6 +70,33 @@ class GetTopCountryEnforceHighTaxesOnCarbonatedDrinksInteractorTest {
         // Then should Throw Exception
         assertThrows(Exception::class.java, noData)
     }
+    @Test
+    fun `should return correct data list when has limit with correct data and null data`() {
+        //Given four countries as a limit and set mockk data
+        val limit = 4
+        val mockCountry = listOf(
+            createMockCity("Cuba", 0f, true),
+            createMockCity("Egypt", 2.0f, true),
+            createMockCity("Koura", 3.0f, true),
+            createMockCity("Lebanon", 1.0f, true),
+            createMockCity("Argentina", 0f, true),
+            createMockCity("Loliput", 0.5f, true),
+            createMockCity("Albania", 0f, true),
+            createMockCity("Syria", 4.4f, true)
+        )
+
+        every { dataSource.getAllCitiesData() } returns mockCountry
+        // When getting result
+        val actualList = testingData.execute(limit)
+        // Then return listOf Pair(country name and the average prices for those drinks for this country)
+        val expectedList = listOf(
+            Pair("Syria", 4.4f),
+            Pair("Koura", 3.0f),
+            Pair("Egypt", 2.0f),
+            Pair("Lebanon", 1.0f)
+        )
+        assertEquals(expectedList, actualList)
+    }
 
 
 }
