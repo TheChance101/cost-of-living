@@ -17,7 +17,7 @@ class GetMostSuitableCityForMoreSavingsPerMonthInteractor(
         return dataSource
             .getAllCitiesData()
             .filter(::excludeNullSalariesAndNotHasAllPrimaryNeeds)
-            .sortedByDescending { getCitySavings(it) }[0]
+            .maxByOrNull { getCitySavings(it) }!!
     }
 
     private fun getCitySavings(city: CityEntity): Float {
