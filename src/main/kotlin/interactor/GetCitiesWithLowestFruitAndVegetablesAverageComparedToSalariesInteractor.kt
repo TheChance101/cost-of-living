@@ -17,8 +17,6 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor(
             .map { it.cityName }
     }
 
-
-
     fun comparingFruitAndVegetablesWithSalaries(average: Float, salary: Float?): Float {
             return  average / salary!!
     }
