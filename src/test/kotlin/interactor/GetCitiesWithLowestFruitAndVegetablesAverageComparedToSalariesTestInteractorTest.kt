@@ -22,7 +22,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
     }
 
     @Test
-    fun should_return10CitiesWithLowestFruitAndVegetablesAverageComparedToSalaries_When_execute() {
+    fun should_Return10CitiesWithLowestFruitAndVegetablesAverageComparedToSalaries_When_execute() {
         //given clean data
         val cities = listOf("City10", "City2", "City9", "City8", "City7", "City11", "City6", "City5", "City1", "City4")
         //when executing
@@ -32,7 +32,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
     }
 
     @Test
-    fun should_returnFalse_When_CityNameIsEmpty() {
+    fun should_ReturnFalse_When_CityNameIsEmpty() {
         //given an empty city name should
         val emptyCityName = dataSource.createCustomCity(cityName = "", salary = 1000f, dataQuality = true)
         //when executing
@@ -43,7 +43,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
     }
 
     @Test
-    fun should_returnTheAverageOfFruitsAndVegetables_When_CountingAverage() {
+    fun should_ReturnTheAverageOfFruitsAndVegetables_When_CountingAverage() {
         //given clean data
         val fruitAndVegetables = FruitAndVegetablesPrices(1.0f, 2.0f, 3.0f,
             4.0f, 5.0f, 6.0f, 7.0f)
@@ -54,7 +54,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
     }
 
     @Test
-    fun should_returnTheResultOfComparingFruitAndVegetablesWithSalaries_When_ComparingFruitAndVegetablesWithSalaries() {
+    fun should_ReturnTheResultOfComparingFruitAndVegetablesWithSalaries_When_ComparingFruitAndVegetablesWithSalaries() {
         //given the average and the salaries
         val average = 4.0f
         val salaries = 5000.0f
@@ -65,7 +65,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
     }
 
     @Test
-    fun should_returnFalse_When_FruitAndVegetablesISNull() {
+    fun should_ReturnFalse_When_FruitAndVegetablesISNull() {
         //given null fruit and vegetables
         val nullFruitAndVegetables = FruitAndVegetablesPrices(null, 1.0f, null,
             null, null, null, null)
@@ -77,7 +77,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
     }
 
     @Test
-    fun should_returnFalse_When_SalariesISNull() {
+    fun should_ReturnFalse_When_SalariesISNull() {
         //given null salaries
         val nullSalaries = dataSource.createCustomCity(cityName = "Baghdad", salary = null, dataQuality = true)
 
@@ -88,7 +88,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
     }
 
     @Test
-    fun should_returnFalse_When_LowQualityData() {
+    fun should_ReturnFalse_When_LowQualityData() {
         //given low quality data
         val lowQualityData = dataSource.createCustomCity(cityName = "Baghdad", salary = 1000f, dataQuality = false)
         //when executing
