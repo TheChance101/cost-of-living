@@ -21,7 +21,7 @@ fun main() {
     //endregion
     //region 1-CityHasCheapestInternetConnection
     val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
-    println(getCityHasCheapestInternetConnectionInteractor.execute())
+    println(getCityHasCheapestInternetConnectionInteractor.execute(100))
     printSeparationLine()
     //endregion
     //region 2-TopCitiesFruitsAndVegetablesLowestCost
