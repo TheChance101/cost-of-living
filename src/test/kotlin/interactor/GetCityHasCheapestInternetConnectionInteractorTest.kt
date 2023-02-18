@@ -39,7 +39,7 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
     }
 
     @Test
-    fun `should return null when all city has null internet price`() {
+    fun `should return exception when all city has null internet price`() {
         // given city entity with invalid data
         cityHasCheapestInternet = GetCityHasCheapestInternetConnectionInteractor(invalidFakeData)
         // when check for the cheapest city in the list
@@ -49,7 +49,7 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
     }
 
     @Test
-    fun `should return null when given is empty fake data`() {
+    fun `should return exception when given is empty fake data`() {
         // given city entity with invalid data
         cityHasCheapestInternet = GetCityHasCheapestInternetConnectionInteractor(emptyFakeData)
         // when check for the cheapest city in the list
