@@ -94,12 +94,12 @@ internal class GetTopFashionCitiesNamesInteractorTest {
     }
 
     @Test
-    fun `should throw exception when data source is empty`() {
+    fun `should throw exception when data source returns empty list`() {
         // given limit
         val limit = 9
         // when get top fashion cities names
         val actual = Executable { emptyInteractor.execute(limit) }
-        val expected = NoReturnedDataException::class.java
+        val expected = IllegalStateException::class.java
         // then should throw exception
         assertThrows(expected, actual)
     }
