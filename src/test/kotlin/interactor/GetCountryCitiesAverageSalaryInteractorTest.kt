@@ -1,6 +1,6 @@
-package interactor.get_country_cities_average_salary
+package interactor
 
-import interactor.GetCountryCitiesAverageSalaryInteractor
+import GetCountryCitiesAverageSalaryFakeData
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
@@ -85,7 +85,7 @@ class GetCountryCitiesAverageSalaryInteractorTest {
         assertNotEquals(unexpected,cityAverage)
     }
     @Test
-    fun should_throwException_when_enteringEmptyString() {
+    fun should_ThrowException_When_EnteringEmptyString() {
         //given
         val country = ""
         // when
@@ -95,7 +95,7 @@ class GetCountryCitiesAverageSalaryInteractorTest {
     }
 
     @Test
-    fun should_throwErr_When_EntringSpaces() {
+    fun should_ThrowErr_When_EntringSpaces() {
         //given
         val country = "         "
         // when
@@ -104,7 +104,7 @@ class GetCountryCitiesAverageSalaryInteractorTest {
         assertThrows(Exception::class.java,result)
     }
     @Test
-    fun should_throwException_when_enteringCountryNameNotInEnglish() {
+    fun should_ThrowException_When_EnteringCountryNameNotInEnglish() {
         //given
         val country = "كوبا"
         // when
@@ -114,7 +114,7 @@ class GetCountryCitiesAverageSalaryInteractorTest {
     }
 
     @Test
-    fun should_returnCountryCities_when_enteringCountryInUpperCase() {
+    fun should_ReturnCountryCities_When_EnteringCountryInUpperCase() {
         //given
         val country = "CUBA"
         // when

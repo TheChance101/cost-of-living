@@ -1,5 +1,3 @@
-package interactor.get_country_cities_average_salary
-
 import interactor.CostOfLivingDataSource
 import model.*
 
