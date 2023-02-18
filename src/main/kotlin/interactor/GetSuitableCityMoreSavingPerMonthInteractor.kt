@@ -34,13 +34,15 @@ class GetSuitableCityMoreSavingPerMonthInteractor(private val dataSource: CostOf
     }
 
     fun excludeNullSalariesApartment3BedroomsAndFoodies(city: CityEntity): Boolean {
-        return city.averageMonthlyNetSalaryAfterTax != null &&
-                city.realEstatesPrices.apartment3BedroomsInCityCentre != null &&
-                city.foodPrices.localCheese1kg != null
-                && city.foodPrices.loafOfFreshWhiteBread500g != null
-                && city.foodPrices.chickenFillets1kg != null
-                && city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null
-                && city.foodPrices.riceWhite1kg != null
+        return city.run {
+            averageMonthlyNetSalaryAfterTax != null
+                    && realEstatesPrices.apartment3BedroomsInCityCentre != null
+                    && foodPrices.localCheese1kg != null
+                    && foodPrices.loafOfFreshWhiteBread500g != null
+                    && foodPrices.chickenFillets1kg != null
+                    && foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null
+                    && foodPrices.riceWhite1kg != null
+        }
     }
 
 }
