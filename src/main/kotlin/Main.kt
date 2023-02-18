@@ -14,6 +14,7 @@ fun main() {
 
     val getCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor =
         GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor(dataSource)
+        println(getCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor.execute(10))
     println(getCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor.execute(limit))
     printSeparationLine()
 
@@ -31,6 +32,8 @@ fun main() {
     println(getTopCitesNameInFashionTaskInteractor.execute())
     printSeparationLine()
 
+    val getFastest10CitiesToBuyAPTInteractor = GetFastest10CitiesToBuyAPTInteractor(dataSource)
+    println(getFastest10CitiesToBuyAPTInteractor.execute(10))
     val getFastest10CitiesToBuyAPTInteractor = GetFastestCitiesToBuyApartmentInteractor(dataSource)
     println(getFastest10CitiesToBuyAPTInteractor.execute(limit))
     printSeparationLine()
