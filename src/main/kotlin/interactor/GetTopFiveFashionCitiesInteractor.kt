@@ -29,20 +29,6 @@ class GetTopFiveFashionCitiesInteractor(
 
     }
 
-//fun execute(limit: Int): List<String>? {
-//    val allCitiesData:List<CityEntity>? = dataSource.getAllCitiesData()
-//    if (allCitiesData != null) {
-//        return allCitiesData
-//            .filter (::isValidData ) //before: it.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null | after fixed: I used isValidData function
-//            .sortedByDescending (::getClothesPrice)//before: it.clothesPrices.onePairOfJeansLevis50oneOrSimilar!! | after fixed: I used getClothesPrice function
-//            .take(limit)
-//            .map { it.cityName }
-//    }else{
-//        return null
-//    }
-//
-//}
-
     private fun isValidData(city: CityEntity): Boolean {
         return city.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null &&
                 city.clothesPrices.onePairOfMenLeatherBusinessShoes != null &&
