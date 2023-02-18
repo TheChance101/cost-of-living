@@ -2,6 +2,7 @@ package interactor
 
 import model.CityEntity
 import utils.isNotNull
+import utils.isNull
 import java.lang.Exception
 
 class GetMostSuitableCityInteractor
@@ -14,7 +15,7 @@ class GetMostSuitableCityInteractor
             .filter(::excludeNullValuesInCityEntity)
             .maxByOrNull(::getTotalSavings)
             .also {
-                if (it == null) throw NoSuchElementException("Error with data")
+                if (it.isNull()) throw NoSuchElementException("Error with data")
             }
 
 

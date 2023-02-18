@@ -2,7 +2,7 @@ package interactor
 
 import dataSource.CitiesHasNullFakeDataSource
 import dataSource.CitiesEmptyList
-import dataSource.ExpectedValuesForTesting
+import dataSource.MostSuitableCity
 import dataSource.FakeDataSource
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
@@ -35,7 +35,7 @@ internal class GetMostSuitableCityInteractorTest {
         //when
         val actual = interactor.execute()
         //then
-        val expected = ExpectedValuesForTesting().mostSuitableCityEntity
+        val expected = MostSuitableCity().mostSuitableCityEntity
         assertEquals(expected, actual)
     }
 
