@@ -29,6 +29,49 @@ internal class GetSalaryAverageAndCitiesNamesTest {
         dataSource = FakeCsvDataSource(csvParser)
         getSalaryAverageAndCitiesNames = GetSalaryAverageAndCitiesNames(dataSource)
     }
+    @Test
+    fun should_ReturnCities_When_EnterCountryNameFormally() {
+        //given
+        val country = "Sri Lanka"
+        val result = listOf(Pair("Colombo", 156.15f), Pair("Colombo", 156.15f))
+        //when
+        val cityAverage = getSalaryAverageAndCitiesNames.execute(countryName = country)
+        //then
+        assertEquals(result, cityAverage)
+    }
+
+    @Test
+    fun should_ReturnCities_When_EnterCountryNameWithSpace() {
+        //given
+        val country = "Sri   Lanka"
+        //when
+        val result = getSalaryAverageAndCitiesNames.execute(countryName = country)
+        val expectedResult = listOf(Pair("Colombo", 156.15f), Pair("Colombo", 156.15f))
+        //then
+        assertEquals(expectedResult, result)
+    }
+    @Test
+    fun should_ReturnCities_When_AddLeadAndTrialSpaces() {
+        //given
+        val country = "    Sri Lanka  "
+        val result = listOf(Pair("Colombo", 156.15f), Pair("Colombo", 156.15f))
+        //when
+        val cityAverage = getSalaryAverageAndCitiesNames.execute(countryName = country)
+        //then
+        assertEquals( result,cityAverage)
+    }
+    @Test
+    fun should_ReturnCountryCities_When_AddLeadAndTrailSpaces() {
+        //given
+        val country = "      Cuba   "
+        val result = listOf(Pair("Havana", 35.75f))
+
+        //when
+        val cityAverage = getSalaryAverageAndCitiesNames.execute(countryName = country)
+
+        //then
+        assertEquals(result,cityAverage)
+    }
 
 
 }
