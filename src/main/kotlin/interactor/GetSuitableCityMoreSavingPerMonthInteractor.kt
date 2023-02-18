@@ -21,17 +21,15 @@ class GetSuitableCityMoreSavingPerMonthInteractor(private val dataSource: CostOf
         return dataSource.getAllCitiesData()
             .filter(::excludeNullSalariesApartment3BedroomsAndFoodies)
             .maxByOrNull { city ->
-                city.let { city ->
-                    val totalExpenses = city.foodPrices.run {
-                        (riceWhite1kg!! * RICE_CONSUMPTION_BY_KG) +
-                                (beefRound1kgOrEquivalentBackLegRedMeat!! * MEET_CONSUMPTION_BY_KG) +
-                                (chickenFillets1kg!! * CHICKEN_CONSUMPTION_BY_KG) +
-                                (localCheese1kg!! * CHEESE_CONSUMPTION_BY_KG) +
-                                (loafOfFreshWhiteBread500g!! * BREAD_CONSUMPTION_BY_KG) +
-                                OTHER_NEEDS_CONSUMPTION
-                    } + city.realEstatesPrices.apartment3BedroomsInCityCentre!!
-                    (city.averageMonthlyNetSalaryAfterTax!! * AVERAGE_SALARY) - totalExpenses
-                }
+                val totalExpenses = with(city.foodPrices) {
+                    riceWhite1kg!! * RICE_CONSUMPTION_BY_KG +
+                            beefRound1kgOrEquivalentBackLegRedMeat!! * MEET_CONSUMPTION_BY_KG +
+                            chickenFillets1kg!! * CHICKEN_CONSUMPTION_BY_KG +
+                            localCheese1kg!! * CHEESE_CONSUMPTION_BY_KG +
+                            loafOfFreshWhiteBread500g!! * BREAD_CONSUMPTION_BY_KG +
+                            OTHER_NEEDS_CONSUMPTION
+                } + city.realEstatesPrices.apartment3BedroomsInCityCentre!!
+                (city.averageMonthlyNetSalaryAfterTax!! * AVERAGE_SALARY) - totalExpenses
             }!!
     }
 
