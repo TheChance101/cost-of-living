@@ -1,85 +1,91 @@
 package interactor
 
-import FakeData
+import fakeDataSource.FakeData
 import model.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.function.Executable
+import kotlin.test.assertEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetLowCostFruitVegetableCitiesWithHighSalariesInteractorTest {
     private lateinit var getLowCostFruitVegetableCitiesWithHighSalaries: GetLowCostFruitVegetableCitiesWithHighSalariesInteractor
-    private lateinit var fakeData: FakeData
-    private lateinit var expectedResult: List<CityEntity>
+    private val fakeData by lazy { FakeData() }
 
     @BeforeAll
     fun setup() {
-        fakeData = FakeData()
         getLowCostFruitVegetableCitiesWithHighSalaries =
             GetLowCostFruitVegetableCitiesWithHighSalariesInteractor(fakeData)
-        expectedResult = fakeData.getAllCitiesData().filter(::cityName).sortedBy { it.cityName }
     }
-
 
     @Test
     fun should_returnCorrectResult_when_correctListIsGiven() {
+        //given the limit of cities is 10
+        val expectedResult = listOf(
+            "Giza",
+            "Rawalpindi",
+            "Alexandria",
+            "Hyderabad City",
+            "Karachi",
+            "Lahore",
+            "Multan",
+            "Tanta",
+            "Accra",
+            "Dushanbe"
+        )
+        val limit = 10
         // when find 10 cities that has lowest fruitVeg prices comparing to salaries paid there
-        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute().sortedBy { it.cityName }
+        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit)
 
         //then
         assertEquals(expectedResult, result)
     }
 
     @Test
-    fun should_returnFalse_when_theNameOfCityIsNull() {
-        // when
-        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute()
-
-        //then
-        assertFalse(result.any { it.cityName == "" })
-    }
-
-    @Test
     fun should_returnTen_when_theSizeOfTheListIsTen() {
+        //given the limit of cities is 10
+        val limit = 10
         // when
-        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute()
+        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit).size
 
         //then
-        assertEquals(10, result.size)
+        assertEquals(10, result)
     }
 
     @Test
-    fun should_returnFalse_when_salaryIsNull() {
+    fun should_return_allTheList_when_limitIsMoreThanListSize() {
+        //given the limit of cities is 20
+        val limit = 20
         // when
-        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute()
+        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit).size
 
         //then
-        assertFalse(result.any { it.averageMonthlyNetSalaryAfterTax == null })
+        assertEquals(19, result)
+    }
+
+
+    @Test
+    fun should_return_emptyList_when_limitIsZero() {
+        //given the limit of cities is 0
+        val limit = 0
+        // when
+        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit).isEmpty()
+
+        //then
+        assertTrue(result)
     }
 
     @Test
-    fun should_returnFalse_when_salaryIsZero() {
+    fun should_return_emptyList_when_limitIsNegative() {
+        //given the limit of cities is -1
+        val limit = -1
         // when
-        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute()
+        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute(limit).isEmpty()
 
         //then
-        assertFalse(result.any { it.averageMonthlyNetSalaryAfterTax == 0f })
-    }
-
-    @Test
-    fun should_returnFalse_when_salaryIsNegative() {
-        // when
-        val result = getLowCostFruitVegetableCitiesWithHighSalaries.execute()
-
-        //then
-        assertFalse(result.any { it.averageMonthlyNetSalaryAfterTax!! < 0f })
-    }
-
-    private fun cityName(city: CityEntity): Boolean {
-        return city.cityName == "Giza" || city.cityName == "Rawalpindi" || city.cityName == "Alexandria"
-                || city.cityName == "Hyderabad City" || city.cityName == "Karachi" || city.cityName == "Lahore"
-                || city.cityName == "Multan" || city.cityName == "Tanta" || city.cityName == "Accra" || city.cityName == "Dushanbe"
+        assertTrue(result)
     }
 
 

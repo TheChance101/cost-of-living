@@ -1,6 +1,6 @@
 package interactor
 
-import FakeData
+import fakeDataSource.FakeData
 import interactor.util.Constants.CANADA
 import interactor.util.Constants.MEXICO
 import interactor.util.Constants.UNITED_STATES

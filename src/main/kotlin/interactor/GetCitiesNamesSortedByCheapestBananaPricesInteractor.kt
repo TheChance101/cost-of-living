@@ -1,27 +1,28 @@
 package interactor
 
+import interactor.util.formatSentence
 import model.CityEntity
 
 
 class GetCitiesNamesSortedByCheapestBananaPricesInteractor(
-    private val dataSource: CostOfLivingDataSource ,
+    private val dataSource: CostOfLivingDataSource
 ) {
-
     fun execute(vararg cities: String): List<String> {
         return dataSource
             .getAllCitiesData()
-            .filter { excludeNullBananaPricesAndLowQualityData(it) }
-            .filter { compereCitiesNamesWithInputCities(cities, it.cityName) }
+            .filter {
+                excludeNullBananaPrices(it) && compereCitiesNamesWithInputCities(cities.toList(), it.cityName)
+            }
             .sortedBy { it.fruitAndVegetablesPrices.banana1kg }
-            .map { it.cityName }
+            .takeUnless { it.isEmpty() }
+            ?.map { it.cityName } ?: emptyList()
     }
 
-
-    private fun compereCitiesNamesWithInputCities(inputCity: Array<out String>, city: String): Boolean {
-        return inputCity.map { it.toLowerCase().trim() }.contains(city.toLowerCase())
+    private fun compereCitiesNamesWithInputCities(cities: List<String>, city: String): Boolean {
+        return cities.map { it.formatSentence() }.contains(city.formatSentence())
     }
 
-    private fun excludeNullBananaPricesAndLowQualityData(city: CityEntity): Boolean {
+    private fun excludeNullBananaPrices(city: CityEntity): Boolean {
         return city.fruitAndVegetablesPrices.banana1kg != null
     }
 
