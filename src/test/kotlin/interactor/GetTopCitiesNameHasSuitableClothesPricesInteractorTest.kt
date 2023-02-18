@@ -40,7 +40,7 @@ internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
     }
 
     @Test
-    fun `should TrowException when allCitis Have Not Any onePairOfJeansLevis50oneOrSimilar`() {
+    fun `should throw exception when all citis haven't any onePairOfJeansLevis50oneOrSimilar`() {
         //Given list hasn't any type of onePairOfJeansLevis50oneOrSimilar
         val citiesData = listOf(
             MockCityEntity.createMockCity(
@@ -63,7 +63,7 @@ internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
     }
 
     @Test
-    fun `should TrowException when all Citis Have Not Any OneSummerDressInAChainStoreZaraHAndM`() {
+    fun `should throw exception when all citis haven't any OneSummerDressInAChainStoreZaraHAndM`() {
         //Given list hasn't any type of oneSummerDressInAChainStoreZaraHAndM
         val citiesData = listOf(
             MockCityEntity.createMockCity(
@@ -86,7 +86,7 @@ internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
     }
 
     @Test
-    fun `should TrowException when all Citis Have Not Any onePairOfNikeRunningShoesMidRange`() {
+    fun `should throw exception when all citis haven't any onePairOfNikeRunningShoesMidRange`() {
         //Given list hasn't any type of onePairOfNikeRunningShoesMidRange
         val citiesData = listOf(
             MockCityEntity.createMockCity(
@@ -109,7 +109,7 @@ internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
     }
 
     @Test
-    fun `should TrowException when all Citis Have Not Any onePairOfMenLeatherBusinessShoes`() {
+    fun `should throw exception when all citis haven't any onePairOfMenLeatherBusinessShoes`() {
         //Given list hasn't any type of onePairOfMenLeatherBusinessShoes
         val citiesData = listOf(
             MockCityEntity.createMockCity(
@@ -132,7 +132,7 @@ internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
     }
 
     @Test
-    fun `should TrowException when all Citis Have Not Any clothes`() {
+    fun `should throw exception when all citis haven't any clothes`() {
         //Given list hasn't any type of clothes
         val citiesData = listOf(
             MockCityEntity.createMockCity(
@@ -155,7 +155,7 @@ internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
     }
 
     @Test
-    fun `should Return 5 city name  when city has Has Suitable Clothes Prices`() {
+    fun `should return 5 city name  when city has has suitable clothes prices`() {
         //Given list has 6 city has clothes prices
         val citiesData = listOf(
             MockCityEntity.createMockCity(
