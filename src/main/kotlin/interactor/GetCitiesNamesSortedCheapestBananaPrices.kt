@@ -8,7 +8,7 @@ class GetCitiesNamesSortedCheapestBananaPrices {
 
     fun execute(vararg cities:CityEntity):List<String>{
         return cities
-            .also { it.ifEmpty { throw IllegalStateException("The list of cities you entered is empty") } }
+            .also { it.ifEmpty { throw NoSuchElementException("The list of cities you entered is empty") } }
             .filter(::excludeNullBananaPricesAndLowQualityData)
             .sortedBy { it.fruitAndVegetablesPrices.banana1kg }
             .map { it.cityName }

@@ -106,6 +106,6 @@ class GetCitiesNamesSortedCheapestBananaPricesTest {
         val expected=Executable{ citiesSortedCheapestBananaPrices.execute() }
 
         //then
-        assertThrows(IllegalStateException::class.java,expected)
+        assertThrows(NoSuchElementException::class.java,expected)
     }
 }
