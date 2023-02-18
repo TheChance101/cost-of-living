@@ -22,7 +22,7 @@ class GetCityHasCheapestInternetConnectionInteractor(
 
     private fun compareInternetCostToSalary(city: CityEntity): Float {
         return city.run {
-            (servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl!! / city.averageMonthlyNetSalaryAfterTax!!) * 100
+            (servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl!! / averageMonthlyNetSalaryAfterTax!!) * 100
         }
     }
 

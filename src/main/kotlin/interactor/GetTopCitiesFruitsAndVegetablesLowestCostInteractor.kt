@@ -18,13 +18,14 @@ class GetTopCitiesFruitsAndVegetablesLowestCostInteractor(
     fun excludeNullFruitAndVegetablePricesOrNullSalaries(city: CityEntity): Boolean {
         return city.run {
             fruitAndVegetablesPrices.getAverageFruitAndVegetablesPrices() != null
-                    && city.averageMonthlyNetSalaryAfterTax != null
+                    && averageMonthlyNetSalaryAfterTax != null
         }
     }
 
     private fun compareFruitsAndVegetablesCostToSalary(city: CityEntity): Float {
         return city.run {
-            fruitAndVegetablesPrices.getAverageFruitAndVegetablesPrices()!! / city.averageMonthlyNetSalaryAfterTax!!
+            fruitAndVegetablesPrices.getAverageFruitAndVegetablesPrices()!! /
+                    averageMonthlyNetSalaryAfterTax!!
         }
     }
 

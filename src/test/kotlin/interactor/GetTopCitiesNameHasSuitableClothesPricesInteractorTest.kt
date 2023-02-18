@@ -15,16 +15,16 @@ import org.junit.jupiter.api.function.Executable
 import kotlin.test.assertEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class GetTop5CitiesNameHasSuitableClothesPricesInteractorTest {
+internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
 
     private val fakeData= mockk<CostOfLivingDataSource>()
-    private lateinit var getTop5CitiesNameHasSuitableClothesPricesInteractor :GetTop5CitiesNameHasSuitableClothesPricesInteractor
+    private lateinit var getTop5CitiesNameHasSuitableClothesPricesInteractor :GetTopCitiesNameHasSuitableClothesPricesInteractor
 
     @BeforeAll
     fun Setup() {
         unmockkAll()
         clearAllMocks()
-        getTop5CitiesNameHasSuitableClothesPricesInteractor = GetTop5CitiesNameHasSuitableClothesPricesInteractor(fakeData)
+        getTop5CitiesNameHasSuitableClothesPricesInteractor = GetTopCitiesNameHasSuitableClothesPricesInteractor(fakeData)
     }
 
 
