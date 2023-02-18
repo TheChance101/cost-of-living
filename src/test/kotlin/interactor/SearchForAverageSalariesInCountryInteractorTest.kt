@@ -26,7 +26,7 @@ class SearchForAverageSalariesInCountryInteractorTest {
         //given
         val city = fake.getHighQualityCityEntity()
         //when
-        val dataQualityInCity = excludeLowQualityData(city)
+        val dataQualityInCity = excludeLowQualityCityEntityData(city)
         //then
         assertTrue(dataQualityInCity)
     }
@@ -37,7 +37,7 @@ class SearchForAverageSalariesInCountryInteractorTest {
         val city = fake.getLowQualityCityEntity()
 
         //when
-        val dataQualityInCity = excludeLowQualityData(city)
+        val dataQualityInCity = excludeLowQualityCityEntityData(city)
         //then
         assertFalse(dataQualityInCity)
     }
