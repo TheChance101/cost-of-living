@@ -24,8 +24,8 @@ class GetTopFashionCitiesInteractor(
     }
 
     private fun excludeNullPricesAndLowQualityData(city: CityEntity): Boolean {
-        return city.run {
-            clothesPrices.getAllPricesNotNull().isNotEmpty() && dataQuality
+        return city.let {
+           it.clothesPrices.getAllPricesNotNull().isNotEmpty() && it.dataQuality
         }
     }
 
