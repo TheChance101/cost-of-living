@@ -27,7 +27,7 @@ internal class GetCostlierCityInteractorTest {
     }
 
     @Test
-    fun should_ReturnCorrectCity_When_TheDataIsValid() {
+    fun `should return correct city when the data is valid`() {
         getCostlierCityInteractor = GetCostlierCityInteractor(fakeDataSource)
         //when The result is one city
         val city = getCostlierCityInteractor.execute()
@@ -36,7 +36,7 @@ internal class GetCostlierCityInteractorTest {
     }
 
     @Test
-    fun should_ReturnEmpty_When_TheDataIsEmpty() {
+    fun `should return empty when the data is empty`() {
         getCostlierCityInteractor =
             GetCostlierCityInteractor(emptyFakeData)
         //when The result is one city
@@ -47,7 +47,7 @@ internal class GetCostlierCityInteractorTest {
     }
 
     @Test
-    fun should_ReturnCorrectCity_When_TheDataIsInValid() {
+    fun `should throw exception when the data is inValid`() {
         getCostlierCityInteractor =
             GetCostlierCityInteractor(invalidFakeData)
         //when The result is one city
