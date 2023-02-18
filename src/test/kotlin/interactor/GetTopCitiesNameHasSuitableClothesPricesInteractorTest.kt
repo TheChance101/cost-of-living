@@ -17,25 +17,24 @@ import kotlin.test.assertEquals
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
 
-    private val fakeData= mockk<CostOfLivingDataSource>()
-    private lateinit var getTop5CitiesNameHasSuitableClothesPricesInteractor :GetTopCitiesNameHasSuitableClothesPricesInteractor
+    private lateinit var interactor: GetTopCitiesNameHasSuitableClothesPricesInteractor
+    private val mockData = mockk<CostOfLivingDataSource>()
 
     @BeforeAll
-    fun Setup() {
+    fun setup() {
         unmockkAll()
         clearAllMocks()
-        getTop5CitiesNameHasSuitableClothesPricesInteractor = GetTopCitiesNameHasSuitableClothesPricesInteractor(fakeData)
+        interactor = GetTopCitiesNameHasSuitableClothesPricesInteractor(mockData)
     }
 
 
     @Test
-    fun `should TrowException when listIsEmpty`() {
+    fun `should throw exception when list is empty`() {
         //Given empty List
         val citiesData = listOf<CityEntity>()
         //when
-        every { fakeData.getAllCitiesData() } returns (citiesData)
-        val namesCityHasSuitableClothesPrices: Executable = Executable { getTop5CitiesNameHasSuitableClothesPricesInteractor.execute(5) }
-
+        every { mockData.getAllCitiesData() } returns (citiesData)
+        val namesCityHasSuitableClothesPrices= Executable { interactor.execute(5) }
         //then
         assertThrows(Exception::class.java, namesCityHasSuitableClothesPrices)
     }
@@ -55,9 +54,9 @@ internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
             ),
         )
         //when
-        every { fakeData.getAllCitiesData() } returns (citiesData)
+        every { mockData.getAllCitiesData() } returns (citiesData)
         val namesCityHasSuitableClothesPrices: Executable =
-            Executable { getTop5CitiesNameHasSuitableClothesPricesInteractor.execute(5) }
+            Executable { interactor.execute(5) }
 
         //then
         assertThrows(Exception::class.java, namesCityHasSuitableClothesPrices)
@@ -78,9 +77,9 @@ internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
             ),
         )
         //when
-        every { fakeData.getAllCitiesData() } returns (citiesData)
+        every { mockData.getAllCitiesData() } returns (citiesData)
         val namesCityHasSuitableClothesPrices: Executable =
-            Executable { getTop5CitiesNameHasSuitableClothesPricesInteractor.execute(5) }
+            Executable { interactor.execute(5) }
 
         //then
         assertThrows(Exception::class.java, namesCityHasSuitableClothesPrices)
@@ -101,9 +100,9 @@ internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
             ),
         )
         //when
-        every { fakeData.getAllCitiesData() } returns (citiesData)
+        every { mockData.getAllCitiesData() } returns (citiesData)
         val namesCityHasSuitableClothesPrices: Executable =
-            Executable { getTop5CitiesNameHasSuitableClothesPricesInteractor.execute(5) }
+            Executable { interactor.execute(5) }
 
         //then
         assertThrows(Exception::class.java, namesCityHasSuitableClothesPrices)
@@ -124,9 +123,9 @@ internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
             ),
         )
         //when
-        every { fakeData.getAllCitiesData() } returns (citiesData)
+        every { mockData.getAllCitiesData() } returns (citiesData)
         val namesCityHasSuitableClothesPrices: Executable =
-            Executable { getTop5CitiesNameHasSuitableClothesPricesInteractor.execute(5) }
+            Executable { interactor.execute(5) }
 
         //then
         assertThrows(Exception::class.java, namesCityHasSuitableClothesPrices)
@@ -147,9 +146,9 @@ internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
             ),
         )
         //when
-        every { fakeData.getAllCitiesData() } returns (citiesData)
+        every { mockData.getAllCitiesData() } returns (citiesData)
         val namesCityHasSuitableClothesPrices: Executable =
-            Executable { getTop5CitiesNameHasSuitableClothesPricesInteractor.execute(5) }
+            Executable { interactor.execute(5) }
 
         //then
         assertThrows(Exception::class.java, namesCityHasSuitableClothesPrices)
@@ -215,17 +214,15 @@ internal class GetTopCitiesNameHasSuitableClothesPricesInteractorTest {
             ),
         )
         //Given list of 5 name city  will return
-        val willReturnNamesCity = listOf ( "City6" , "City5" ,"City4" ,"City3" , "City2"  )
+        val willReturnNamesCity = listOf("City6", "City5", "City4", "City3", "City2")
 
         //when
-        every { fakeData.getAllCitiesData() } returns (citiesData)
-        val namesCityHasSuitableClothesPrices =   getTop5CitiesNameHasSuitableClothesPricesInteractor.execute(5)
+        every { mockData.getAllCitiesData() } returns (citiesData)
+        val namesCityHasSuitableClothesPrices = interactor.execute(5)
 
         //then
         assertEquals(willReturnNamesCity, namesCityHasSuitableClothesPrices)
     }
-
-
 
 
 }

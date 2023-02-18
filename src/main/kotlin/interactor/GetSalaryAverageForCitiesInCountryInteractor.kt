@@ -16,7 +16,7 @@ class GetSalaryAverageForCitiesInCountryInteractor(
     }
 
     fun excludeNullSalariesAndLowQualityData(city: CityEntity) = city.run {
-        averageMonthlyNetSalaryAfterTax != null && dataQuality != null
+        averageMonthlyNetSalaryAfterTax != null && dataQuality
     }
 
 }
