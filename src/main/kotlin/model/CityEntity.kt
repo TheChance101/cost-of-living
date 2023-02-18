@@ -1,5 +1,7 @@
 package model
 
+import interactor.CostOfLivingDataSource
+
 data class CityEntity(
     val cityName: String,
     val country: String,
