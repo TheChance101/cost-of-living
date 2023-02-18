@@ -14,7 +14,6 @@ import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
-import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -33,6 +32,7 @@ internal class GetTopCitiesFruitsAndVegetablesLowestCostInteractorTest {
     @Test
     fun `should return null when sum of all fruit and vegetables prices less than and not equal zero`() {
         // given an entity that has sum of all fruits and vegetables < 0
+        val limit = 1
         val mockCity = listOf(
             createMockCity(
                 "City 1",
@@ -50,14 +50,15 @@ internal class GetTopCitiesFruitsAndVegetablesLowestCostInteractorTest {
         )
         every { mockData.getAllCitiesData() } returns mockCity
         // when make calculations
-        val result = interactor.getAverageFruitAndVegetablePricesForCity(mockCity[0])
+        val result = interactor.execute(limit)
         // then check if getting result is null
-        assertNull(result)
+        assertEquals(emptyList(), result)
     }
 
     @Test
     fun `should return correct value when all fruit and vegetable is not null`() {
         // given an entity all it's fruit and vegetables has a value
+        val limit = 1
         val mockCity = listOf(
             createMockCity(
                 "City 1",
@@ -75,14 +76,15 @@ internal class GetTopCitiesFruitsAndVegetablesLowestCostInteractorTest {
         )
         every { mockData.getAllCitiesData() } returns mockCity
         // when make calculations
-        val result = interactor.getAverageFruitAndVegetablePricesForCity(mockCity[0])
+        val result = interactor.execute(limit)
         // then check if getting correct value
-        assertEquals(3.8514285f, result)
+        assertEquals(listOf("City 1"), result)
     }
 
     @Test
     fun `should return correct value when there is at least one value is null`() {
         // given an entity that has at least a null value in fruit and vegetables
+        val limit = 1
         val mockCity = listOf(
             createMockCity(
                 "City 1",
@@ -100,9 +102,9 @@ internal class GetTopCitiesFruitsAndVegetablesLowestCostInteractorTest {
         )
         every { mockData.getAllCitiesData() } returns mockCity
         // when make calculations
-        val result = interactor.getAverageFruitAndVegetablePricesForCity(mockCity[0])
+        val result = interactor.execute(limit)
         // then check if getting correct value
-        assertEquals(3.1433334f, result)
+        assertEquals(listOf("City 1"), result)
     }
 
     @Test

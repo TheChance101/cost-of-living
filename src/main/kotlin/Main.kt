@@ -6,7 +6,6 @@ import interactor.CostOfLivingDataSource
 import interactor.GetCityHasLowestYearsToBuyApartmentInteractor
 import interactor.GetCityHasAverageMealPricesInteractor
 import interactor.GetSalaryAverageForCitiesInCountryInteractor
-import model.CityEntity
 
 fun main() {
     val csvParser = CsvParser()
@@ -44,7 +43,7 @@ fun main() {
     //region 5-Top5CitiesNameHasSuitableClothesPrices
     val  numberOfCityShouldReturn = 5
     val getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor =
-        GetTop5CitiesNameHasSuitableClothesPricesInteractor(dataSource)
+        GetTopCitiesNameHasSuitableClothesPricesInteractor(dataSource)
     println(getTop5NamesCitiesHasClothesFamousBrandsWithSuitablePricesInteractor.execute(numberOfCityShouldReturn))
     printSeparationLine()
     //endregion

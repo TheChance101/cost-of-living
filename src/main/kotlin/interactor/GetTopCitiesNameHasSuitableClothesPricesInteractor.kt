@@ -2,11 +2,10 @@ package interactor
 
 import model.CityEntity
 
-class GetTop5CitiesNameHasSuitableClothesPricesInteractor(
-    private val dataSource:  CostOfLivingDataSource,
+class GetTopCitiesNameHasSuitableClothesPricesInteractor(
+    private val dataSource: CostOfLivingDataSource,
 ) {
-
-    fun execute(limit : Int ): List<String> {
+    fun execute(limit: Int): List<String> {
         return dataSource
             .getAllCitiesData()
             .filter(excludeNullClothes)
