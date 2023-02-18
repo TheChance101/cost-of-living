@@ -10,7 +10,7 @@ class GetCityHasTheHighestDifferentInApartmentRent (
     fun execute(limit: Int): CityEntity {
         return if (limit==1)
             dataSource.getAllCitiesData()
-                .filter(::excludeNullApartmentBedroom)
+                .filter(::excludeNullApartmentBedroom).let { it.ifEmpty { return emptyList<CityEntity>().first() } }
                 .sortedByDescending { it.findHighestDifferentInCitiesRent() }
                 .take(limit)
                 .first()
@@ -25,12 +25,13 @@ class GetCityHasTheHighestDifferentInApartmentRent (
                 && city.dataQuality
     }
 
-    private fun CityEntity.findHighestDifferentInCitiesRent()=kotlin.math.abs(
-        realEstatesPrices.apartmentOneBedroomInCityCentre!!
-                - realEstatesPrices.apartmentOneBedroomOutsideOfCentre!!
-    )+
+    private fun CityEntity.findHighestDifferentInCitiesRent()=
             kotlin.math.abs(
-                realEstatesPrices.apartment3BedroomsInCityCentre!!
+                        realEstatesPrices.apartmentOneBedroomInCityCentre!!
+                         - realEstatesPrices.apartmentOneBedroomOutsideOfCentre!!
+            )+
+            kotlin.math.abs(
+                       realEstatesPrices.apartment3BedroomsInCityCentre!!
                         - realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
             )
 }
