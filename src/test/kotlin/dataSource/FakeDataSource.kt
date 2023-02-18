@@ -1568,7 +1568,10 @@ class CitiesEmptyList : CostOfLivingDataSource {
 
 }
 
-
+class ExpectedValuesForTesting {
+    private val fakeDataSource = FakeDataSource()
+    val mostSuitableCityEntity = fakeDataSource.getAllCitiesData()[15]
+}
 
 
 

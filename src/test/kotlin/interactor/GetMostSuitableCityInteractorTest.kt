@@ -2,6 +2,7 @@ package interactor
 
 import dataSource.CitiesHasNullFakeDataSource
 import dataSource.CitiesEmptyList
+import dataSource.ExpectedValuesForTesting
 import dataSource.FakeDataSource
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
@@ -9,7 +10,6 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
 
-val mostSuitableCityEntityWithMixedData = FakeDataSource().getAllCitiesData()[15]
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetMostSuitableCityInteractorTest {
@@ -35,7 +35,8 @@ internal class GetMostSuitableCityInteractorTest {
         //when
         val actual = interactor.execute()
         //then
-        assertEquals(mostSuitableCityEntityWithMixedData, actual)
+        val expected = ExpectedValuesForTesting().mostSuitableCityEntity
+        assertEquals(expected, actual)
     }
 
     @Test
