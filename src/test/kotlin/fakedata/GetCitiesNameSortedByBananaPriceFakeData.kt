@@ -3,7 +3,7 @@ package fakedata
 import interactor.CostOfLivingDataSource
 import model.*
 
-object GetCitiesNameSortedFakeData {
+object GetCitiesNameSortedByBananaPriceFakeData {
     val cityHighQuality1 by lazy {
         CityEntity(
             cityName = "high quality city in usa", country = "USA", mealsPrices = MealsPrices(
