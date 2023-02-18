@@ -20,7 +20,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
     }
 
     @Test
-    fun should_returnCity_when_countriesAndPricesOfMealsAreValid() {
+    fun `should return city when countries and prices of meals are valid`() {
         // Given that countries' names and prices of meals are valid
         val validData = GetCityThatMatchTheManagerExpectationsInteractor(managerExpectationsFakeData.getValidCountriesAndPricesOfMeals)
         // When return city that match manager expectations
@@ -30,7 +30,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
     }
 
     @Test
-    fun should_returnCity_when_countriesAndSomePricesOfMealsAreValid() {
+    fun `should return city when countries and some prices of meals are valid`() {
         // Given that countries' names and some prices of meals are valid
         val mixedData = GetCityThatMatchTheManagerExpectationsInteractor(managerExpectationsFakeData.getValidCountriesAndSomeInvalidPricesOfMeals)
         // When return the city that match manager expectations
@@ -40,7 +40,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
     }
 
     @Test
-    fun should_returnCity_when_someCountriesAndPricesOfMealsAreValid() {
+    fun `should return city when some countries and prices of meals are valid`() {
         // Given that some countries' names and prices of meals are valid
         val mixedData = GetCityThatMatchTheManagerExpectationsInteractor(managerExpectationsFakeData.getSomeInvalidCountriesAndValidPricesOfMeals)
         // When return the city that match manager expectations
@@ -50,7 +50,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
     }
 
     @Test
-    fun should_returnCity_when_someCountriesAndSomePricesOfMealsAreValid() {
+    fun `should return city when some countries and some prices of meals are valid`() {
         // Given that some countries' names and some prices of meals are valid
         val validData = GetCityThatMatchTheManagerExpectationsInteractor(managerExpectationsFakeData.getSomeInvalidCountriesAndSomeInvalidPricesOfMeals)
         // When return the city that match manager expectations
@@ -60,7 +60,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
     }
 
     @Test
-    fun should_returnException_when_countriesAreValidAndPricesOfMealsAreInvalid() {
+    fun `should return exception when countries are valid and prices of meals are invalid`() {
         // Given that countries' names are valid and prices of meals are invalid
         val invalidData = GetCityThatMatchTheManagerExpectationsInteractor(managerExpectationsFakeData.getValidCountriesAndInvalidPricesOfMeals)
         // When return the city that match manager expectations
@@ -72,7 +72,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
     }
 
     @Test
-    fun should_returnException_when_countriesAndPricesOfMealsAreInvalid() {
+    fun `should return exception when countries and prices of meals are invalid`() {
         // Given that countries' names  and prices of meals are invalid
         val invalidData = GetCityThatMatchTheManagerExpectationsInteractor(managerExpectationsFakeData.getAllInvalidData)
         // When return the city that match manager expectations
