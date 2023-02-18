@@ -65,13 +65,23 @@ class GetMostSuitableCityForCompanyDinnerTest {
     }
 
     @Test
-    fun `should return city with exact price when available`() {
+    fun `should return city with exact price when boundary is zero`() {
         //given interactor with valid cities
         val allCitiesData = GetMostSuitableCityForCompanyDinner(fakeData.allCities)
         //when execute function is called with boundary = 0 on data contains the exact price
         val executeOnAllCities = allCitiesData.execute(0f)
         //then it returns city with a price equal to  (min(prices)+max(prices))/2
         assertEquals(fakeData.cityLowQuality2, executeOnAllCities)
+
+    }
+    @Test
+    fun `should return city with abs(price diff) less or equal n when boundary is n`() {
+        //given interactor with valid cities
+        val highQualityCities = GetMostSuitableCityForCompanyDinner(fakeData.highQualityCities)
+        //when execute function is called with boundary = .5 on data contains the exact price
+        val executeOnHighQualityCities = highQualityCities.execute(.5f)
+        //then it returns city with a price equal to  (min(prices)+max(prices))/2 + (+,-).5
+        assertEquals(fakeData.cityHighQuality2, executeOnHighQualityCities)
 
     }
 
