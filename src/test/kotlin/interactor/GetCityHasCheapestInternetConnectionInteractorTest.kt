@@ -1,25 +1,18 @@
 package interactor
 
 import fakeDataSource.FakeDataSourceForInternet
-import model.CityEntity
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCityHasCheapestInternetConnectionInteractorTest {
 
-    private lateinit var fakeDataSource: FakeDataSourceForInternet
-
-    @BeforeAll
-    fun setUp() {
-        fakeDataSource = FakeDataSourceForInternet()
-    }
+    private val fakeDataSource: FakeDataSourceForInternet = FakeDataSourceForInternet()
 
     @Test
-    fun should_ThrowException_When_CityWithNullPrice() {
+    fun should_ReturnThrowException_When_CityWithNullPrice() {
         //given an object of Interactor with Null price
         val getCityHasCheapestInternetConnectionInteractor =
             GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCitiesWithNullPrice())
@@ -27,11 +20,12 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
         val result =
             Executable { getCityHasCheapestInternetConnectionInteractor.execute() }
         //then
-        assertThrows(Exception::class.java, result)
+        val expected = Exception::class.java
+        assertThrows(expected, result)
     }
 
     @Test
-    fun should_ThrowException_When_CityWithNullSalary() {
+    fun should_ReturnThrowException_When_CityWithNullSalary() {
         //given an object of Interactor with Null Salary
         val getCityHasCheapestInternetConnectionInteractor =
             GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCitiesWithNullSalary())
@@ -39,13 +33,13 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
         val result =
             Executable { getCityHasCheapestInternetConnectionInteractor.execute() }
         //then
-        assertThrows(Exception::class.java, result)
+        val expected = Exception::class.java
+        assertThrows(expected, result)
     }
 
 
-
     @Test
-    fun should_ThrowException_When_CityWithNegativeSalary() {
+    fun should_ReturnThrowException_When_CityWithNegativeSalary() {
         //given an object of Interactor with Negative Salary
         val getCityHasCheapestInternetConnectionInteractor =
             GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCitiesWithNegativeSalary())
@@ -53,11 +47,12 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
         val result =
             Executable { getCityHasCheapestInternetConnectionInteractor.execute() }
         //then
-        assertThrows(Exception::class.java, result)
+        val expected = Exception::class.java
+        assertThrows(expected, result)
     }
 
     @Test
-    fun should_ThrowException_When_CityWithNegativePrice() {
+    fun should_ReturnThrowException_When_CityWithNegativePrice() {
         //given an object of Interactor with negative price
         val getCityHasCheapestInternetConnectionInteractor =
             GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCitiesWithNegativePrice())
@@ -65,11 +60,12 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
         val result =
             Executable { getCityHasCheapestInternetConnectionInteractor.execute() }
         //then
-        assertThrows(Exception::class.java, result)
+        val expected = Exception::class.java
+        assertThrows(expected, result)
     }
 
     @Test
-    fun should_ThrowException_When_NegativePriceAndSalary(){
+    fun should_ReturnThrowException_When_NegativePriceAndSalary() {
         //given an object of Interactor with negative salary and price
         val getCityHasCheapestInternetConnectionInteractor =
             GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCitiesWithNegativePriceAndSalary())
@@ -77,11 +73,12 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
         val result =
             Executable { getCityHasCheapestInternetConnectionInteractor.execute() }
         //then
-        assertThrows(Exception::class.java, result)
+        val expected = Exception::class.java
+        assertThrows(expected, result)
     }
 
     @Test
-    fun should_Return_TheCityWithLowestPercentage_When_SameSalaryAndDifferentPrice() {
+    fun should_ReturnTheCityWithLowestPercentage_When_SameSalaryAndDifferentPrice() {
         //given an object of Interactor has a list of cityEntity with same salary
         val getCityHasCheapestInternetConnectionInteractor =
             GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCitiesWithSameSalaryAndDifferentPrice())
@@ -94,7 +91,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
 
 
     @Test
-    fun should_Return_TheCityWithLowestPercentage_When_SamePriceAndDifferentSalary() {
+    fun should_ReturnTheCityWithLowestPercentage_When_SamePriceAndDifferentSalary() {
         //given an object of Interactor has a list of cityEntity with same Price
         val getCityHasCheapestInternetConnectionInteractor =
             GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCitiesWithSamePriceAndDifferentSalary())
@@ -106,7 +103,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
     }
 
     @Test
-    fun should_Return_FirstCityWithCheapestInternetPrice_When_SamePercentage() {
+    fun should_ReturnFirstCityWithCheapestInternetPrice_When_SamePercentage() {
         //given an object of Interactor has a list of cityEntity with same percentage
         val getCityHasCheapestInternetConnectionInteractor =
             GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCitiesWithSamePercentage())
@@ -118,7 +115,7 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
     }
 
     @Test
-    fun should_Return_CityWithCheapestInternetPrice_When_AllCasesOfData() {
+    fun should_ReturnCityWithCheapestInternetPrice_When_AllCasesOfData() {
         //given an object of Interactor has a list of cityEntities
         val getCityHasCheapestInternetConnectionInteractor =
             GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCity())

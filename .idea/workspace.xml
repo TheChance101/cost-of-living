@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c325ed4-2e20-41bb-a5e6-9d41e464d111" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_16_2023_12_32_AM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCityHasCheapestInternetConnectionInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCityHasCheapestInternetConnectionInteractor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/FakeDataSourceForInternet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/FakeDataSourceForInternet.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/FakeDataSourceForRentalPrice.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/FakeDataSourceForRentalPrice.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/TaxesFakeDataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/TaxesFakeDataSource.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetCityHasCheapestInternetConnectionInteractorTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetCityHasCheapestInternetConnectionInteractorTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +51,7 @@
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Android/testing_course" />
   </component>
   <component name="RunManager" selected="Gradle.GetCityHasCheapestInternetConnectionInteractorTest">
     <configuration name="GetCityHasCheapestInternetConnectionInteractorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -121,27 +117,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="GetCityHasCheapestInternetConnectionInteractorTest.should_ReturnThrowException_When_CityWithNullSalary" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;interactor.GetCityHasCheapestInternetConnectionInteractorTest.should_ReturnThrowException_When_CityWithNullSalary&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="GetCityHasCheapestInternetConnectionInteractorTest.should_ThrowException_When_CityWithNegativeSalary" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -163,6 +138,13 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainKt" />
+      <module name="Cost-of-living-app.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -177,10 +159,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.GetCityHasCheapestInternetConnectionInteractorTest" />
+        <item itemvalue="Kotlin.MainKt" />
         <item itemvalue="Gradle.GetCityHasCheapestInternetConnectionInteractorTest.should_ThrowException_When_CityWithNegativeSalary" />
         <item itemvalue="Gradle.GetCityHasCheapestInternetConnectionInteractorTest.should_ReturnThrowException_When_CityWithNegativeSalary" />
         <item itemvalue="Gradle.GetCityHasCheapestInternetConnectionInteractorTest.should_ReturnThrowException_When_CityWithNullPrice" />
-        <item itemvalue="Gradle.GetCityHasCheapestInternetConnectionInteractorTest.should_ReturnThrowException_When_CityWithNullSalary" />
       </list>
     </recent_temporary>
   </component>

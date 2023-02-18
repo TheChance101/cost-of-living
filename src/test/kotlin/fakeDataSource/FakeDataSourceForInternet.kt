@@ -32,7 +32,6 @@ class FakeDataSourceForInternet {
                 createFakeCity("London", -4000f, -400f)
             )
         }
-
     }
 
     private val cityWithNegativePrice = object : CostOfLivingDataSource {
@@ -52,7 +51,6 @@ class FakeDataSourceForInternet {
                 createFakeCity("London", -7000f, 700f)
             )
         }
-
     }
     private val allCityData =
         object : CostOfLivingDataSource {
@@ -97,10 +95,8 @@ class FakeDataSourceForInternet {
     private val citiesWithSameSalary = object : CostOfLivingDataSource {
         override fun getAllCitiesData(): List<CityEntity> {
             return listOf(
-                // region data With Same Salary
                 createFakeCity("Egypt", 2000f, 10f),
                 createFakeCity("London", 2000f, 20f),
-                //endregion
             )
         }
     }
@@ -109,10 +105,8 @@ class FakeDataSourceForInternet {
         object : CostOfLivingDataSource {
             override fun getAllCitiesData(): List<CityEntity> {
                 return listOf(
-                    // region data With Same Price
                     createFakeCity("Egypt", 2000f, 500f),
                     createFakeCity("London", 4000f, 500f),
-                    //endregion
                 )
             }
         }
@@ -120,10 +114,8 @@ class FakeDataSourceForInternet {
     private val citiesWithNullSalary = object : CostOfLivingDataSource {
         override fun getAllCitiesData(): List<CityEntity> {
             return listOf(
-                // region null Salary
                 createFakeCity("Egypt", null, 1000f),
                 createFakeCity("London", null, 500f),
-                // endregion
             )
         }
     }
@@ -131,10 +123,8 @@ class FakeDataSourceForInternet {
     private val citiesWithNullPrice = object : CostOfLivingDataSource {
         override fun getAllCitiesData(): List<CityEntity> {
             return listOf(
-                // region data With Null Price
                 createFakeCity("Egypt", 2000f, null),
                 createFakeCity("London", 4000f, null),
-                //endregion
             )
         }
     }
