@@ -1,46 +1,68 @@
 package interactor
 
-import dataSource.utils.NorthAmericaCountries
 import model.CityEntity
+import utils.Constants
+import kotlin.math.abs
 
 class GetCityMatchManagerExpectationsInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
 
-    private fun getOnlyNorthAmericaCountries(city: CityEntity): Boolean =
-        city.country in NorthAmericaCountries.list
-
-    private fun getHighestPrice(sortedCities: List<CityEntity>) =
-        sortedCities.lastOrNull()?.mealsPrices?.mealFor2PeopleMidRangeRestaurant
-
-    private fun getLowestPrice(sortedCities: List<CityEntity>) =
-        sortedCities.firstOrNull()?.mealsPrices?.mealFor2PeopleMidRangeRestaurant
-
-    private fun getMidRangePrice(lowestPrice: Float?, highestPrice: Float?) =
-        (lowestPrice ?: 0.0f) + ((highestPrice ?: 0.0f) - (lowestPrice ?: 0.0f)) / 2
-
-
-    private fun getCityWithMidRangePrice(cities: List<CityEntity>): CityEntity? =
-        cities.find {
-            it.mealsPrices.mealFor2PeopleMidRangeRestaurant == getMidRangePrice(
-                getLowestPrice(cities),
-                getHighestPrice(cities)
-            )
-        }
-
-    private fun List<CityEntity>.getClosestMealPriceCity(midRangePrice: Float): CityEntity? =
-        minByOrNull { kotlin.math.abs(it.mealsPrices.mealFor2PeopleMidRangeRestaurant ?: (0.0f - midRangePrice)) }
-
-
-    fun execute(): CityEntity {
-        val sortedList = dataSource.getAllCitiesData()
-            .filter(::getOnlyNorthAmericaCountries)
-            .sortedBy { it.mealsPrices.mealFor2PeopleMidRangeRestaurant }
-        val cityWithMidRangePrice = getCityWithMidRangePrice(sortedList)?.mealsPrices?.mealFor2PeopleMidRangeRestaurant
-        return sortedList
-            .getClosestMealPriceCity(cityWithMidRangePrice ?: 0.0f) ?: dataSource.getAllCitiesData()[0]
+    fun execute(): CityEntity? {
+        return dataSource.getAllCitiesData()
+            .let { it.ifEmpty { throw NoReturnedDataException(Constants.EMPTY_LIST_EXCEPTION) } }
+            .filter { it.country in onlyRequiredCountries }
+            .let { it.ifEmpty { emptyList() } }
+            .minByOrNull(::getMidRangePrices)
     }
 
+
+    private fun getMidRangePrices(city: CityEntity): Float = city.mealsPrices.run {
+        getNonNullableSequenceOfPrices(
+            mealInexpensiveRestaurant,
+            mealFor2PeopleMidRangeRestaurant,
+            mealAtMcDonaldSOrEquivalent
+        ).let { getMidMealsPrice(city) }
+    }
+
+    private fun getMidMealsPrice(city: CityEntity) =
+        abs(
+            (getHighestPrice(city) + getLowestPrice(city)) / 2 - (city.mealsPrices.mealFor2PeopleMidRangeRestaurant
+                ?: 0f)
+        )
+
+
+    private fun getHighestPrice(city: CityEntity): Float =
+        getNonNullableSequenceOfPrices(
+            city.mealsPrices.mealInexpensiveRestaurant,
+            city.mealsPrices.mealFor2PeopleMidRangeRestaurant,
+            city.mealsPrices.mealAtMcDonaldSOrEquivalent
+        ).maxOrNull() ?: Float.MIN_VALUE
+
+
+    private fun getLowestPrice(city: CityEntity) =
+        getNonNullableSequenceOfPrices(
+            city.mealsPrices.mealInexpensiveRestaurant,
+            city.mealsPrices.mealFor2PeopleMidRangeRestaurant,
+            city.mealsPrices.mealAtMcDonaldSOrEquivalent
+        )
+            .minOrNull() ?: Float.MIN_VALUE
+
+    private fun getNonNullableSequenceOfPrices(price1: Float?, price2: Float?, price3: Float?): Sequence<Float> =
+        sequenceOf(
+            price1,
+            price2,
+            price3
+        ).filterNotNull()
+
+
+    companion object {
+        val onlyRequiredCountries: List<String> = listOf(
+            "United States",
+            "Canada",
+            "Mexico"
+        )
+    }
 
 }
 
