@@ -13,17 +13,17 @@ class GetDinnerLocationInteractor(private val dataSource: CostOfLivingDataSource
         val cheapestCity = citiesSortedByMealPrice.first()
         val mostExpensiveCity = citiesSortedByMealPrice.last()
         val averageMealPrice =
-            getAvg(cheapestCity.mealsPrices!!, mostExpensiveCity.mealsPrices!!)
-        val closestCity: CityEntity? = getClosesCity(citiesSortedByMealPrice, averageMealPrice)
+            getAverage(cheapestCity.mealsPrices!!, mostExpensiveCity.mealsPrices!!)
+        val closestCity: CityEntity? = getClosestCity(citiesSortedByMealPrice, averageMealPrice)
         return closestCity
     }
 }
-fun getAvg(cheapestCity: MealsPrices, mostExpensiveCity: MealsPrices): Float {
+fun getAverage(cheapestCity: MealsPrices, mostExpensiveCity: MealsPrices): Float {
     val averageMealPrice =
         (cheapestCity.mealInexpensiveRestaurant!! + mostExpensiveCity.mealInexpensiveRestaurant!!) / 2
     return averageMealPrice
 }
-fun getClosesCity(
+fun getClosestCity(
     citiesSortedByMealPrice: List<CityEntity>,
     averageMealPrice: Float,
 ): CityEntity? {
