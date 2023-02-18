@@ -6,13 +6,30 @@
   <component name="ChangeListManager">
     <list default="true" id="88c63e2d-e5e7-49a2-9aa9-a2a1420a74be" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/interactor/GetTopFiveCitesNameInClothesFromFamousBrandsInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetTopFiveCitesNameInClothesFromFamousBrandsInteractor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/interactor/GetTopFiveCitesNameInClothesFromFamousBrandsInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetTopCitesNameInFashionTaskInteractor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetTopCitesNameInFshionTaskInteractorTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -35,15 +52,88 @@
     "Git.Branch.Popup.ShowAllRemotes": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "E:/انهانسمينت/cost-of-living/src/test/kotlin/fakeDataSource"
+    "last_opened_file_path": "E:/انهانسمينت/cost-of-living/src/main/kotlin/interactor"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\انهانسمينت\cost-of-living\src\main\kotlin\interactor" />
       <recent name="E:\انهانسمينت\cost-of-living\src\test\kotlin\fakeDataSource" />
     </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="interactor" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.GetTopCitesNameInFshionTaskInteractorTest">
+    <configuration name="GetTopCitesNameInFshionTaskInteractorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;interactor.GetTopCitesNameInFshionTaskInteractorTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;interactor.GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest.should_returnFive_when_theListSizeIsFive" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;interactor.GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest.should_returnFive_when_theListSizeIsFive&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Cost-of-living-app" />
       <method v="2">
@@ -57,6 +147,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.GetTopCitesNameInFshionTaskInteractorTest" />
+        <item itemvalue="Gradle.GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest" />
+        <item itemvalue="Gradle.GetTopFiveCitesNameInClothesFromFamousBrandsInteractorTest.should_returnFive_when_theListSizeIsFive" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
