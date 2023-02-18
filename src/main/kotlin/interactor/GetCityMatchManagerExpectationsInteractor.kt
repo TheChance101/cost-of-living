@@ -1,6 +1,7 @@
 package interactor
 
 import model.CityEntity
+import utils.Constants
 import kotlin.math.abs
 
 class GetCityMatchManagerExpectationsInteractor(
@@ -10,10 +11,11 @@ class GetCityMatchManagerExpectationsInteractor(
     fun execute(): CityEntity? {
         return dataSource.getAllCitiesData()
             .filter { it.country in onlyRequiredCountries }
-            .takeIf { it.isNotEmpty() }
-            ?.minByOrNull(::getMidRangePrices)
+            .let { it.ifEmpty { throw NoReturnedDataException(Constants.EMPTY_LIST_EXCEPTION) } }
+            .minByOrNull(::getMidRangePrices)
     }
 
+// isNotNull
 
     private fun getMidRangePrices(city: CityEntity): Float = city.mealsPrices.run {
         getNonNullableSequenceOfPrices(
