@@ -11,6 +11,12 @@ class GetCheapestBasicPricesInAllCitiesComparingToAverageSalariesInteractor (
     }
 
     fun execludeNullSalaryAndQualityDataAndOtherBaicPrices(cityEntity: CityEntity): Boolean? {
-       return  true
+        return cityEntity.run {
+            dataQuality
+                    && averageMonthlyNetSalaryAfterTax != null
+                    && realEstatesPrices.apartmentOneBedroomInCityCentre != null
+                    && servicesPrices.basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment != null
+                    && transportationsPrices.monthlyPassRegularPrice != null
+        }
     }
 }
