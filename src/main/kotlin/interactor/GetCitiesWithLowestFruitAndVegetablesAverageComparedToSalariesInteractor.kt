@@ -9,20 +9,13 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor(
     fun execute(limit: Int): List<String> {
         return dataSource
             .getAllCitiesData()
+            .also { require(limit >= 1) { "Invalid Argument!" } }
             .filter {excludeEmptyCityNameAndLowQualityDataAndNullSalaries(it) &&
                     excludeNullFruitsAndVegetables(it.fruitAndVegetablesPrices)}
-            .sortedByDescending { comparingFruitAndVegetablesWithSalaries(average(it.fruitAndVegetablesPrices),
+            .sortedByDescending { comparingFruitAndVegetablesWithSalaries(it.fruitAndVegetablesPrices.getAvreage(),
                                  it.averageMonthlyNetSalaryAfterTax ) }
             .take(limit)
             .map { it.cityName }
-    }
-
-    fun average(fruitAndVegetables: FruitAndVegetablesPrices): Float {
-        val fruitAndVegetables = listOfNotNull(
-            fruitAndVegetables.apples1kg, fruitAndVegetables.banana1kg, fruitAndVegetables.onion1kg,
-                    fruitAndVegetables.lettuceOneHead, fruitAndVegetables.oranges1kg,
-            fruitAndVegetables.potato1kg,fruitAndVegetables.tomato1kg)
-        return fruitAndVegetables.sum() / fruitAndVegetables.size
     }
 
     fun comparingFruitAndVegetablesWithSalaries(average: Float, salary: Float?): Float {
