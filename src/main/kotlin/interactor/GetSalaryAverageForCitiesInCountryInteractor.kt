@@ -15,8 +15,7 @@ class GetSalaryAverageForCitiesInCountryInteractor(
             .map { Pair(it.cityName, it.averageMonthlyNetSalaryAfterTax!!) }
     }
 
-    fun excludeNullSalariesAndLowQualityData(city: CityEntity): Boolean {
-        return city.averageMonthlyNetSalaryAfterTax != null && city.dataQuality
+    fun excludeNullSalariesAndLowQualityData(city: CityEntity) = city.run {
+        averageMonthlyNetSalaryAfterTax != null && dataQuality != null
     }
 }
-
