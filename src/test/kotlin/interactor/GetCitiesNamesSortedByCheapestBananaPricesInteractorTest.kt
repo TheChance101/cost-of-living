@@ -7,10 +7,11 @@ import kotlin.test.assertEquals
 class GetCitiesNamesSortedByCheapestBananaPricesInteractorTest {
 
     private lateinit var getCitiesNamesSortedByCheapestBananaPrices: GetCitiesNamesSortedByCheapestBananaPricesInteractor
+    private lateinit var fakeData: FakeData
 
     @BeforeAll
     fun setUp() {
-        val fakeData = FakeData()
+        fakeData = FakeData()
         getCitiesNamesSortedByCheapestBananaPrices = GetCitiesNamesSortedByCheapestBananaPricesInteractor(fakeData)
     }
 

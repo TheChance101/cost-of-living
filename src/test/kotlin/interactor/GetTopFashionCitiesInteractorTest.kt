@@ -5,12 +5,14 @@ import junit.framework.TestCase.assertEquals
 import org.junit.jupiter.api.*
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class GetTopFashionCitiesInteractorTest {
+class GetTopFashionCitiesInteractorTest {
     private lateinit var getTopFashionCities: GetTopFashionCitiesInteractor
+    private lateinit var fakeData: FakeData
+
 
     @BeforeAll
     fun setUp() {
-       val fakeData = FakeData()
+        fakeData = FakeData()
         getTopFashionCities = GetTopFashionCitiesInteractor(fakeData)
     }
 
