@@ -32,9 +32,9 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
         cityHasCheapestInternet = GetCityHasCheapestInternetConnectionInteractor(fakeData)
         val expectedCity = fakeData.getAllCitiesData()[9]
         // when check for the cheapest city in the list
-        val result = cityHasCheapestInternet.execute()
+        val actual = cityHasCheapestInternet.execute()
         // then check the result
-        assertEquals(expectedCity, result)
+        assertEquals(expectedCity, actual)
     }
 
     @Test
@@ -42,9 +42,9 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
         // given city entity with invalid data
         cityHasCheapestInternet = GetCityHasCheapestInternetConnectionInteractor(invalidFakeData)
         // when check for the cheapest city in the list
-        val result =  Executable { cityHasCheapestInternet.execute() }
+        val actual =  Executable { cityHasCheapestInternet.execute() }
         // then check the result
-        assertThrows(IllegalStateException::class.java, result)
+        assertThrows(IllegalStateException::class.java, actual)
     }
 
     @Test
@@ -52,9 +52,9 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
         // given city entity with invalid data
         cityHasCheapestInternet = GetCityHasCheapestInternetConnectionInteractor(emptyFakeData)
         // when check for the cheapest city in the list
-        val result = Executable { cityHasCheapestInternet.execute() }
+        val actual = Executable { cityHasCheapestInternet.execute() }
         // then check the result
-        assertThrows(IllegalStateException::class.java, result)
+        assertThrows(IllegalStateException::class.java, actual)
     }
 
 }
