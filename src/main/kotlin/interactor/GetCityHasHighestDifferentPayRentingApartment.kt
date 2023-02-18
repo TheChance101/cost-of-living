@@ -1,5 +1,7 @@
 package interactor
 
+import dataSource.CsvDataSource
+import dataSource.utils.CsvParser
 import model.CityEntity
 import model.RealEstatesPrices
 
@@ -7,26 +9,32 @@ import model.RealEstatesPrices
 class GetCityWithHighestRentalPriceDifferenceInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
-
-
-    fun execute(cityData: List<CityEntity>): String {
+    fun execute(): String {
         var cityWithHighestDifference = ""
         var highestDifference = 0.0
-        cityData
-            .filter { excludeNullValues(it) }
-            .filter { excludeNullDataAndLowQuality(it) }
+        dataSource.getAllCitiesData()
+            .filter { excludeNullValues(it)
+                    && excludeNullDataAndLowQuality(it)}
             .forEach { city ->
-                val difference = city.realEstatesPrices.apartmentOneBedroomInCityCentre!! - city.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!!
-                if (difference > highestDifference) {
-                    highestDifference = difference.toDouble()
+                val oneBedroomDifference =
+                            city.realEstatesPrices.apartmentOneBedroomInCityCentre!! -
+                            city.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!!
+                val threeBedroomDifference =
+                            city.realEstatesPrices.apartment3BedroomsInCityCentre!! -
+                            city.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
+                val differencePricePerSquare =
+                            city.realEstatesPrices.pricePerSquareMeterToBuyApartmentInCityCentre!! -
+                            city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!
+                val averageDifference = (differencePricePerSquare +
+                        oneBedroomDifference +
+                        threeBedroomDifference) / 2
+                if (averageDifference > highestDifference) {
+                    highestDifference = averageDifference.toDouble()
                     cityWithHighestDifference = city.cityName
                 }
             }
         return cityWithHighestDifference
     }
-
-
-
 
     fun excludeNullValues(city: CityEntity): Boolean {
         return city.realEstatesPrices.apartmentOneBedroomInCityCentre != null
