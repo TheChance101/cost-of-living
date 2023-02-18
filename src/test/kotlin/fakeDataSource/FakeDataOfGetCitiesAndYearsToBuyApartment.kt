@@ -3,7 +3,7 @@ package fakeDataSource
 import interactor.CostOfLivingDataSource
 import model.*
 
-class FakeDataSourceOfGetCitiesAndYearsToBuyApartment :CostOfLivingDataSource {
+class FakeDataOfGetCitiesAndYearsToBuyApartment :CostOfLivingDataSource {
 
 
     private val fakeDataSource = listOf(
