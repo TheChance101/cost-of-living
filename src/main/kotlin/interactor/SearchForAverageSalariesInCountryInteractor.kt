@@ -13,7 +13,8 @@ class SearchForAverageSalariesInCountryInteractor (
             .map { Pair(it.cityName, it.averageMonthlyNetSalaryAfterTax!!) }
             .takeIf { it.isNotEmpty() } ?: throw IllegalArgumentException("Country name not found")
     }
-    private fun compareCountryNameWithInputName(it: CityEntity, countryName: String) = (it.country.lowercase() == countryName.lowercase())
+    private fun compareCountryNameWithInputName(it: CityEntity, countryName: String) =
+        (it.country.lowercase() == countryName.lowercase())
 
 }
 fun excludeLowQualityData(city: CityEntity): Boolean {
