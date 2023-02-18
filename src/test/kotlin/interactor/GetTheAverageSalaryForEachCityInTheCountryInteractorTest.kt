@@ -11,7 +11,7 @@ import org.junit.jupiter.api.function.Executable
 import kotlin.test.assertEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class getTheAverageSalaryForEachCityInTheCountryInteractorTest {
+internal class GetTheAverageSalaryForEachCityInTheCountryInteractorTest {
     lateinit var fakeData: FakeDataSource
 
     @BeforeAll
@@ -22,32 +22,35 @@ internal class getTheAverageSalaryForEachCityInTheCountryInteractorTest {
     @Test
     fun should_ReturnListOfPairsEachPairContainCityNameAndSalaryAverage_whenCountryNameIsLowerCase() {
         //given country name in lower case
-        val countryName = "cuba"
+        val countryName = "egypt"
+        val expectedOutput = listOf(Pair("Alex", 6000f))
         //when find the city name and salary average
-        val cityAndSalaryAverage = getTheAverageSalaryForEachCityInTheCountryInteractor(fakeData).execute(countryName)
+        val cityAndSalaryAverage = GetTheAverageSalaryForEachCityInTheCountryInteractor(fakeData).execute(countryName)
         //then check return a List of pairs each pair have city name and salary average for this city
-        assertEquals(listOf<Any>(listOf("Havana", 35.75)).toString(), cityAndSalaryAverage.toString())
+        assertEquals(expectedOutput, cityAndSalaryAverage)
 
     }
 
     @Test
     fun should_ReturnListOfPairsEachPairContainCityNameAndSalaryAverage_whenCountryNameIsUpperCase() {
         //given country name in upper case
-        val countryName = "CUBA"
+        val countryName = "EGYPT"
+        val expectedOutput = listOf(Pair("Alex", 6000f))
         //when find the city name and salary average
-        val cityAndSalaryAverage = getTheAverageSalaryForEachCityInTheCountryInteractor(fakeData).execute(countryName)
+        val cityAndSalaryAverage = GetTheAverageSalaryForEachCityInTheCountryInteractor(fakeData).execute(countryName)
         //then check return a List of pairs each pair have city name and salary average for this city
-        assertEquals(listOf<Any>(listOf("Havana", 35.75)).toString(), cityAndSalaryAverage.toString())
+        assertEquals(expectedOutput, cityAndSalaryAverage)
     }
 
     @Test
     fun should_ReturnListOfPairsEachPairContainCityNameAndSalaryAverage_whenCountryNameIsMixedCase() {
         //given country name in mix case
-        val countryName = "Cuba"
+        val countryName = "Egypt"
+        val expectedOutput = listOf(Pair("Alex", 6000f))
         //when  the city name and salary average
-        val cityAndSalaryAverage = getTheAverageSalaryForEachCityInTheCountryInteractor(fakeData).execute(countryName)
+        val cityAndSalaryAverage = GetTheAverageSalaryForEachCityInTheCountryInteractor(fakeData).execute(countryName)
         //then check return a List of pairs each pair have city name and salary average for this city
-        assertEquals(listOf<Any>(listOf("Havana", 35.75)).toString(), cityAndSalaryAverage.toString())
+        assertEquals(expectedOutput, cityAndSalaryAverage)
     }
 
     @Test
@@ -55,8 +58,8 @@ internal class getTheAverageSalaryForEachCityInTheCountryInteractorTest {
         //given empty country name
         val countryName = ""
         //when  the city name and salary average
-        val cityAndSalaryAverageExecutable: Executable = Executable {
-            getTheAverageSalaryForEachCityInTheCountryInteractor(fakeData)
+        val cityAndSalaryAverageExecutable = Executable {
+            GetTheAverageSalaryForEachCityInTheCountryInteractor(fakeData)
                 .execute(countryName)
         }
         //then check exception
@@ -68,8 +71,8 @@ internal class getTheAverageSalaryForEachCityInTheCountryInteractorTest {
         //given wrong country name
         val countryName = "test wrong name"
         //when  the city name and salary average
-        val cityAndSalaryAverageExecutable: Executable = Executable {
-            getTheAverageSalaryForEachCityInTheCountryInteractor(fakeData)
+        val cityAndSalaryAverageExecutable = Executable {
+            GetTheAverageSalaryForEachCityInTheCountryInteractor(fakeData)
                 .execute(countryName)
         }
         //then check exception
