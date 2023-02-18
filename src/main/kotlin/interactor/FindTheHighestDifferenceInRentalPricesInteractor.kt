@@ -6,9 +6,7 @@ import kotlin.math.abs
 class FindTheHighestDifferenceInRentalPricesInteractor(private val dataSource: CostOfLivingDataSource) {
     fun execute(): CityEntity? {
 
-        val citiesData = dataSource.getAllCitiesData()
-
-        return citiesData
+        return dataSource.getAllCitiesData()
             .filter(::excludeNullAndLowQualityData)
             .maxByOrNull {
                 val inCityCenter =
@@ -19,10 +17,9 @@ class FindTheHighestDifferenceInRentalPricesInteractor(private val dataSource: C
                     it.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!! +
                             it.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
 
-              abs(inCityCenter - outsideCity)
+                abs(inCityCenter - outsideCity)
             }
     }
-
     private fun excludeNullAndLowQualityData(city: CityEntity): Boolean {
         return city.realEstatesPrices.apartmentOneBedroomInCityCentre != null
                 && city.realEstatesPrices.apartmentOneBedroomOutsideOfCentre != null
