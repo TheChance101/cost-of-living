@@ -99,4 +99,27 @@ class GetTopCountryEnforceHighTaxesOnCarbonatedDrinksInteractorTest {
     }
 
 
+    @Test
+    fun `should return empty list when has a low data quality`() {
+        //Given eight countries as a limit and set mockk data
+        val limit = 8
+        val mockCountry = listOf(
+            createMockCity("Cuba", 3.0f, false),
+            createMockCity("Egypt", 2.0f, false),
+            createMockCity("Koura", 7.0f, false),
+            createMockCity("Lebanon", 3.50f, false),
+            createMockCity("Argentina", 2.0f, false),
+            createMockCity("Loliput", 5.0f, false),
+            createMockCity("Albania", 6.0f, false),
+            createMockCity("Syria", 0.82f, false)
+        )
+
+        every { dataSource.getAllCitiesData() } returns mockCountry
+        // When getting result
+        val actualList = testingData.execute(limit)
+        // Then return empty list
+        assertEquals(emptyList(), actualList)
+    }
+
+
 }
