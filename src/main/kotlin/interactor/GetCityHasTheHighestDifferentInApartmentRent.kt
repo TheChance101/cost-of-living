@@ -9,16 +9,13 @@ class GetCityHasTheHighestDifferentInApartmentRent (
 )
 {
 
-    fun execute(limit: Int): CityEntity {
-        return if (limit==1)
-            dataSource.getAllCitiesData().also { if (it.isEmpty()) throw IllegalStateException("no data") }
-                .filter(::excludeNullApartmentBedroom)
-                .let { it.ifEmpty { throw NoSuchElementException("no filtered data") } }
-                .sortedByDescending { it.findHighestDifferentInCitiesRent() }
-                .take(limit)
-                .first()
-        else throw InvalidLimitException("invalid limit value")
-    }
+    fun execute(): CityEntity =
+        dataSource.getAllCitiesData()
+            .asSequence()
+            .ifEmpty { throw IllegalStateException("Something went wrong") }
+            .filter(::excludeNullApartmentBedroom)
+            .maxByOrNull { it.findHighestDifferentInCitiesRent() }
+            ?: throw NoSuchElementException("No data matching the condition.")
 
     private fun excludeNullApartmentBedroom(city: CityEntity): Boolean {
         return city.realEstatesPrices.apartment3BedroomsInCityCentre.isNotNull()
