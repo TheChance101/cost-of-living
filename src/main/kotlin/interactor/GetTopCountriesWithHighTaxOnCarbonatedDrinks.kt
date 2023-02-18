@@ -1,5 +1,6 @@
 package interactor
 import model.CityEntity
+import utils.isNotNull
 
 class GetTopCountriesWithHighTaxOnCarbonatedDrinks (private val dataSource: CostOfLivingDataSource){
     fun execute(limit: Int, cities: List<CityEntity>): List<Pair<String, Double>> {
@@ -17,9 +18,11 @@ class GetTopCountriesWithHighTaxOnCarbonatedDrinks (private val dataSource: Cost
             .take(limit)
     }
     private fun excludeNullDrinkPriceAndNegativePriceAndLowQualityData(city: CityEntity): Boolean {
-        return  city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants != null
-                && city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants  > 0
-                && city.country!= null
+        return  city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants.isNotNull()
+                && city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants!!  > 0
+                && city.country.isNotNull()
                 && city.dataQuality
     }
 }
+
+
