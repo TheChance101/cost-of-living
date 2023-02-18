@@ -1,7 +1,6 @@
 package interactor
 
 import model.CityEntity
-import model.ClothesPrices
 import kotlin.math.max
 import kotlin.math.min
 
