@@ -62,9 +62,7 @@ class Helper(private val dataSource: CostOfLivingDataSource) {
                     val fullTimeSalary = readlnOrNull()?.toDouble()
                     if (fullTimeSalary != null) {
                         println(
-                            GetTopTenCitiesHasCheapestPriceOfApartmentsAndYearInteractor(dataSource).execute(
-                                fullTimeSalary
-                            )
+                            GetTopCitiesHasCheapestPriceOfApartmentsAndYearInteractor(dataSource)
                         )
                     } else {
                         print("your input not valid, try again.")
