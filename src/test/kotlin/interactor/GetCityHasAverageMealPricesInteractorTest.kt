@@ -4,7 +4,7 @@ import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.unmockkAll
-import mockData.MockCityEntity.createMockCity
+import mockdata.MockCityEntity.createMockCity
 import model.CityEntity
 import model.MealsPrices
 import org.junit.jupiter.api.BeforeAll

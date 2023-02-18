@@ -22,11 +22,9 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
             createCity("City 2", 2000f, 40f),
             createCity("City 3", 5000f, 200f)
         )
-        //when(dataSource.getAllCitiesData()).thenRetu(citiesData)
         every { dataSource.getAllCitiesData() } returns (citiesData)
         // when
         val result = interactor.execute()
-
         // then
         assertEquals("City 2", result?.cityName)
     }
@@ -40,10 +38,8 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
             createCity("City 3", 5000f, null)
         )
         every { dataSource.getAllCitiesData() } returns (citiesData)
-
         // when
         val result = interactor.execute()
-
         // then
         assertNull(result)
     }
@@ -53,7 +49,6 @@ class GetCityHasCheapestInternetConnectionInteractorTest {
         // given
         val exception = IllegalStateException("Error getting city data")
         every { dataSource.getAllCitiesData() } throws (exception)
-
         // then
         assertThrows<IllegalStateException> {
             interactor.execute()

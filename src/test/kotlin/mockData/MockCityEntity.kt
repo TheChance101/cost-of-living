@@ -773,4 +773,83 @@ object MockCityEntity {
 
     }
     // endregion for GetSuitableCityMoreSavingPerMonthInteractor (Problem 10)
+
+    // region for SearchCheapestCarInCountryInteractor (Problem 11)
+    fun createMockCity(
+        countryName: String,
+        cityName: String,
+        carsPrices: CarsPrices,
+        averageMonthlyNetSalaryAfterTax: Float?
+    ): CityEntity {
+        return CityEntity(
+            cityName,
+            countryName,
+            MealsPrices(
+                null,
+                null,
+                null
+            ),
+            DrinksPrices(
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            FruitAndVegetablesPrices(
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            FoodPrices(
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            ServicesPrices(
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            ClothesPrices(
+                null,
+                null,
+                null,
+                null
+            ),
+            TransportationsPrices(
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            carsPrices,
+            RealEstatesPrices(
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            averageMonthlyNetSalaryAfterTax,
+            true,
+        )
+
+    }
+    // endregion for SearchCheapestCarInCountryInteractor (Problem 11)
 }
