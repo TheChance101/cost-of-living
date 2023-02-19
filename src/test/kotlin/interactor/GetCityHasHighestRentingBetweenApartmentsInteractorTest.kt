@@ -20,7 +20,7 @@ internal class GetCityHasHighestRentingBetweenApartmentsInteractorTest {
     }
     @Test
     fun should_ReturnCorrectDifferent_when_HaveCorrectInput(){
-        //given correct city
+        //given valid city
         val expectedCity = dataSource.alexHighQuality
         // when calculate the best city to rent based on the rental price.
         val cityEntity = getDifferentBetweenApartmentRenting.getHighestQualityCityForRenting()
