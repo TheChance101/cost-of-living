@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
-import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -52,8 +51,7 @@ class GetCityMakesFamilySaveMoreInteractionTest {
         getCityMakesFamilySaveMoreInteractor =
             GetCityMakesFamilySaveMoreInteractor(fakeDataSourceForFamilySavings.getCityWithNull())
 
-        val result = getCityMakesFamilySaveMoreInteractor
-            .excludeInvalidData(fakeDataSourceForFamilySavings.getCityWithNull().getAllCitiesData()[0])
+        val result = excludeInvalidData(fakeDataSourceForFamilySavings.getCityWithNull().getAllCitiesData()[0])
 
         assertFalse(result)
     }
@@ -68,7 +66,7 @@ class GetCityMakesFamilySaveMoreInteractionTest {
         //Given
         val tempCity = fakeDataSourceForFamilySavings.nullSalaryCityFakeData()
 
-        val result = getCityMakesFamilySaveMoreInteractor.excludeInvalidData(tempCity)
+        val result = excludeInvalidData(tempCity)
         assertFalse(result)
     }
 }
