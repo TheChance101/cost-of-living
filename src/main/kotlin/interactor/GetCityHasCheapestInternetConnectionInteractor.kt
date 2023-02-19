@@ -7,12 +7,10 @@ class GetCityHasCheapestInternetConnectionInteractor(
 ) {
 
     fun execute(): CityEntity {
-        return dataSource.getAllCitiesData().filter(::excludeNullSalariesAndNullPriceAndNegativeOfThem)
-            .sortedBy {
-                (it.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl!!
-                    .div(it.averageMonthlyNetSalaryAfterTax!!)).times(100)
-            }
-            .first()
+        return dataSource.getAllCitiesData().filter(::excludeNullSalariesAndNullPriceAndNegativeOfThem).minByOrNull {
+            (it.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl!!
+                .div(it.averageMonthlyNetSalaryAfterTax!!)).times(100)
+        }!!
     }
 
     private fun excludeNullSalariesAndNullPriceAndNegativeOfThem(city: CityEntity): Boolean {
