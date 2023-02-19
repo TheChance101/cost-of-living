@@ -60,7 +60,7 @@ internal class GetCitiesNameWithCheapestTennisPriceOnWeekendInteractorTest {
         // when the actual result is exception
         val result = Executable { getCitiesNameWithCheapestTennisPrice(limit) }
         // then check of the result
-        assertThrows(Exception::class.java, result)
+        assertThrows(IllegalStateException::class.java, result)
     }
     @Test
     fun `should throw exception when the data is empty`() {
@@ -72,6 +72,6 @@ internal class GetCitiesNameWithCheapestTennisPriceOnWeekendInteractorTest {
         // when the actual result is exception
         val result = Executable { getCitiesNameWithCheapestTennisPrice(limit) }
         // then check of the result
-        assertThrows(Exception::class.java, result)
+        assertThrows(IllegalStateException::class.java, result)
     }
 }
