@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
-import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
@@ -23,51 +22,77 @@ internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
     @Test
     fun `should return correct list when the country name is correct and lowercase`() {
         //given lowercase country name
-        val country = fakeDataSource.getAllCitiesData()[3].country.lowercase()
-        //when getting a list of pair contains the city name and average salary of country with lowercase name
-        val getSalaryAverageAndCitiesNamesInCountry = interactor.execute(country)
+        val country = "syria"
+        //when getting a list of pairs contain the city name and average salary of country
+        val actual= interactor.execute(country)
+        val expected = listOf(Pair("Damascus",50.24f),Pair("Aleppo", 72.8f))
         //then
-        assertEquals(listOf(Pair("Damascus",50.24f),Pair("Aleppo", 72.8f)),getSalaryAverageAndCitiesNamesInCountry)
+        assertEquals(expected,actual)
     }
 
     @Test
     fun `should return correct list when the country name is correct and uppercase`() {
         //given uppercase country name
-        val country = fakeDataSource.getAllCitiesData()[3].country.uppercase()
-        //when getting a list of pair contains the city name and average salary of country with uppercase name
-        val getSalaryAverageAndCitiesNamesInCountry = interactor.execute(country)
+        val country = "SYRIA"
+        //when getting a list of pairs contain the city name and average salary of country
+        val actual = interactor.execute(country)
+        val expected = listOf(Pair("Damascus", 50.24f), Pair("Aleppo", 72.8f))
         //then
-        assertEquals(listOf(Pair("Damascus",50.24f),Pair("Aleppo", 72.8f)),getSalaryAverageAndCitiesNamesInCountry)
+        assertEquals(expected, actual)
     }
 
     @Test
     fun `should return correct list when the country name is correct and has lowercase and uppercase characters`() {
         //given mixture of lowercase and uppercase country name
-        val country = fakeDataSource.getAllCitiesData()[0].country.substring(0,2).uppercase() + fakeDataSource.getAllCitiesData()[0].country.substring(2).lowercase()
-        //when getting a list of pair contains the city name and average salary of country with mixture of lowercase and uppercase country name
-        val getSalaryAverageAndCitiesNamesInCountry = interactor.execute(country)
+        val country = "cUbA"
+        //when getting a list of pairs contain the city name and average salary of country
+        val actual = interactor.execute(country)
+        val expected = listOf(Pair("Havana",35.75f))
         //then
-        assertEquals(listOf(Pair("Havana",35.75f)),getSalaryAverageAndCitiesNamesInCountry)
+        assertEquals(expected,actual)
     }
 
     @Test
-    fun `should throw exception when the country name is wrong`() {
+    fun `should return empty list when the country name is wrong`() {
         //given wrong country name
-        val country = fakeDataSource.getAllCitiesData()[0].country.substring(0,2)
-        //when getting a list of pair contains the city name and average salary of country with wrong name
-        val getSalaryAverageAndCitiesNamesInCountry= Executable{interactor.execute(country)}
+        val country = "lol"
+        //when getting a list of pair contains the city name and average salary of country
+        val actual = interactor.execute(country)
+        val expected = emptyList<Pair<String,Float>>()
         //then
-        assertThrows(Exception::class.java,getSalaryAverageAndCitiesNamesInCountry)
+        assertEquals(expected, actual)
+    }
+    @Test
+    fun `should return empty list when the country name is empty string`() {
+        //given empty string
+        val country = ""
+        //when getting a list of pair contains the city name and average salary of country
+        val actual = interactor.execute(country)
+        val expected = emptyList<Pair<String,Float>>()
+        //then
+        assertEquals(expected, actual)
     }
 
     @Test
-    fun `should throw exception when the country name is empty string`() {
-        //given wrong country name
-        val country = " "
-        //when getting a list of pair contains the city name and average salary of country with wrong name
-        val getSalaryAverageAndCitiesNamesInCountry= Executable{interactor.execute(country)}
+    fun `should return empty list when the country name is correct but excluded`(){
+        //given excluded country name
+        val country = "Ghana"
+        //when getting a list of pair contains the city name and average salary of country
+        val actual = interactor.execute(country)
+        val expected = emptyList<Pair<String,Float>>()
         //then
-        assertThrows(Exception::class.java,getSalaryAverageAndCitiesNamesInCountry)
+        assertEquals(expected, actual)
+
     }
 
+    @Test
+    fun `should return empty list when the country name is correct but not in the data`(){
+        //given country name that is not in the data
+        val country = "Egypt"
+        //when getting a list of pair contains the city name and average salary of country
+        val actual = interactor.execute(country)
+        val expected = emptyList<Pair<String,Float>>()
+        //then
+        assertEquals(expected, actual)
+    }
 }

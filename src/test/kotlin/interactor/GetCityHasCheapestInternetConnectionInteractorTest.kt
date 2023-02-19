@@ -1,7 +1,9 @@
 package interactor
 
+import dataSource.FakeDataForLowQualityData
+import dataSource.FakeDataWithEmptyList
 import dataSource.FakeDataSource
-import model.CityEntity
+import dataSource.FakeDataWithItemInHighQuality
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
@@ -14,66 +16,63 @@ import org.junit.jupiter.api.function.Executable
 internal class GetCityHasCheapestInternetConnectionInteractorTest {
 
     private lateinit var cityHasCheapestInternet: GetCityHasCheapestInternetConnectionInteractor
-    private lateinit var fakeDataSource: FakeDataSource
+    private lateinit var fakeDataSource:CostOfLivingDataSource
+    private lateinit var fakeDataWithItemInHighQuality: CostOfLivingDataSource
+    private lateinit var fakeDataForLowQualityData: CostOfLivingDataSource
+    private lateinit var fakeDataWithEmptyList: CostOfLivingDataSource
+    private lateinit var cityHasCheapestInternetConnectionWithEmptyList:GetCityHasCheapestInternetConnectionInteractor
+    private lateinit var cityHasCheapestInternetConnectionWithOneItem: GetCityHasCheapestInternetConnectionInteractor
+    private lateinit var cityHasCheapestInternetConnectionWithLowQualityData: GetCityHasCheapestInternetConnectionInteractor
+
 
     @BeforeEach
     fun setup(){
         fakeDataSource = FakeDataSource()
-        cityHasCheapestInternet = GetCityHasCheapestInternetConnectionInteractor()
+        cityHasCheapestInternet = GetCityHasCheapestInternetConnectionInteractor(fakeDataSource)
+        fakeDataWithItemInHighQuality = FakeDataWithItemInHighQuality()
+        fakeDataForLowQualityData = FakeDataForLowQualityData()
+        fakeDataWithEmptyList = FakeDataWithEmptyList()
+        cityHasCheapestInternetConnectionWithEmptyList = GetCityHasCheapestInternetConnectionInteractor(fakeDataWithEmptyList)
+        cityHasCheapestInternetConnectionWithOneItem = GetCityHasCheapestInternetConnectionInteractor(fakeDataWithItemInHighQuality)
+        cityHasCheapestInternetConnectionWithLowQualityData = GetCityHasCheapestInternetConnectionInteractor(fakeDataForLowQualityData)
     }
 
 
 
     @Test
-    fun `should return the only city when given only 1 city in high quality data`(){
-        // given list of cityEntity
-        val cities = fakeDataSource.getAllCitiesData()[16]
-
+    fun `should return one city when given list has only one item in high quality data`(){
         // when check what is the cheapest city in list with giving only 1 city in list
-        val result = cityHasCheapestInternet.execute(listOf(cities))
+        val actual = cityHasCheapestInternetConnectionWithOneItem.execute().cityName
+        val expected = fakeDataWithItemInHighQuality.getAllCitiesData()[0].cityName
         // then check the result
-        assertEquals(cities.cityName,result?.cityName)
+        assertEquals(expected,actual)
     }
 
     @Test
-    fun should_ReturnNull_When_givenEmptyList(){
-        // given Empty list
-        val cities = emptyList<CityEntity>()
+    fun `should throw exception when given empty list`(){
         // when check what is the cheapest city in list with giving emptyList
-        val result = cityHasCheapestInternet.execute(cities)
+        val actual = Executable{cityHasCheapestInternetConnectionWithEmptyList.execute()}
+        val expected = NoSuchElementException::class.java
         // then check the result
-        assertNull(result)
+        assertThrows(expected,actual)
     }
 
     @Test
-    fun should_Return_CheapestCity_When_GivenListOfCities(){
-        // given list of cityEntity
-        val cities = fakeDataSource.getAllCitiesData()
+    fun `should return cheapest city when given list of cities`(){
         // when check what is the cheapest city in the list
-        val result = cityHasCheapestInternet.execute(cities)
+        val actual = cityHasCheapestInternet.execute().cityName
+        val expected = fakeDataSource.getAllCitiesData()[17].cityName
         // then check the result
-        assertEquals(cities[17].cityName,result?.cityName)
-    }
-
-
-    @Test
-    fun should_ReturnException_When_ThePrecentageOfInternetToSalaryEqualTo100OrAbove(){
-        // given list has precentage of internet to salary equal 80 or above
-        val cities = fakeDataSource.getAllCitiesData()[15]
-        // when check what is the cheapest city in the list
-        val result = Executable{cityHasCheapestInternet.execute(listOf(cities))}
-        // then check the result
-        assertThrows(Throwable::class.java,result)
+        assertEquals(expected,actual)
     }
 
 
     @Test
-    fun should_ReturnException_When_AllElementsInTheListThatEnteredIsBadQualityOrInternetPriceIsNullOrAverageSalaryIsNull(){
-        // given list has bad quality data or null internet price or null average salary
-        val cities = fakeDataSource.getAllCitiesData()[2]
+    fun `should throw exception when all elements in the list is bad quality or internet Price is null or average salary is null`(){
         // when check what is the cheapest city in the list
-        val result = Executable{cityHasCheapestInternet.execute(listOf(cities))}
+        val actual = Executable{cityHasCheapestInternetConnectionWithLowQualityData.execute()}
+        val expected = NoSuchElementException::class.java
         // then check the result
-        assertThrows(Throwable::class.java,result)
+        assertThrows(expected,actual)
     }
 }

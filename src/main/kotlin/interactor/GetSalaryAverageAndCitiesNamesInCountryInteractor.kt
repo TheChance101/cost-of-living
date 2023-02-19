@@ -1,6 +1,6 @@
 package interactor
 
-import model.CityEntity
+import utils.isNotNull
 
 
 class GetSalaryAverageAndCitiesNamesInCountryInteractor(
@@ -8,21 +8,19 @@ class GetSalaryAverageAndCitiesNamesInCountryInteractor(
     ) {
 
     fun execute(countryName:String):List<Pair<String,Float>> {
-        return if (checkIfCountryIsValid(countryName))
-            dataSource.getAllCitiesData()
-                .filter{excludeNullSalariesAndLowQualityData(it) && it.country.lowercase() == countryName.lowercase()}
-                .map{Pair(it.cityName,it.averageMonthlyNetSalaryAfterTax!!)}
-        else
-            throw Exception("Invalid country name")
-    }
+        return dataSource
+            .getAllCitiesData()
+            .also{
+                    if(it.isEmpty()) throw java.lang.IllegalStateException("Something went wrong")
+                    if(countryName.lowercase() !in it.map{city -> city.country.lowercase()}) return emptyList()
+            }
+            .filter{
+                    countryName.lowercase() == it.country.lowercase() &&
+                    it.averageMonthlyNetSalaryAfterTax.isNotNull() &&
+                    it.dataQuality
+            }
+            .map{Pair(it.cityName,it.averageMonthlyNetSalaryAfterTax!!)}
 
-    private fun checkIfCountryIsValid(countryName: String):Boolean{
-        return countryName.lowercase() in dataSource.getAllCitiesData()
-            .map{it.country.lowercase()}
-    }
-
-    private fun excludeNullSalariesAndLowQualityData(city: CityEntity): Boolean {
-        return city.averageMonthlyNetSalaryAfterTax != null && city.dataQuality
     }
 
 }
