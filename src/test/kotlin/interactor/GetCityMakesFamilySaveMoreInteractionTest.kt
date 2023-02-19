@@ -1,5 +1,6 @@
 package interactor
 
+import fakeDataSource.FakeDataSourceForFamilySavings
 import model.*
 import org.junit.jupiter.api.Test
 
@@ -12,9 +13,14 @@ class GetCityMakesFamilySaveMoreInteractionTest {
     private lateinit var city: GetCityMakesFamilySaveMoreInteractor
     private lateinit var cityEmpty: GetCityMakesFamilySaveMoreInteractor
     private lateinit var cityWithNull: GetCityMakesFamilySaveMoreInteractor
+    private lateinit var fakeDataSourceForFamilySavings: FakeDataSourceForFamilySavings
+    private lateinit var getCityMakesFamilySaveMoreInteractor: GetCityMakesFamilySaveMoreInteractor
 
     @BeforeAll
     fun setup() {
+
+        fakeDataSourceForFamilySavings = FakeDataSourceForFamilySavings()
+
         cityEmpty = GetCityMakesFamilySaveMoreInteractor(object : CostOfLivingDataSource {
             override fun getAllCitiesData(): List<CityEntity> {
                 return listOf()
@@ -432,7 +438,6 @@ class GetCityMakesFamilySaveMoreInteractionTest {
 
         assertFalse(city.excludeNullvalues(nullCityTemp))
     }
-
 
 
     @Test
