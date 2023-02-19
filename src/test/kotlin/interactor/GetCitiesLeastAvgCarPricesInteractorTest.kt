@@ -6,6 +6,7 @@ import fakedata.top10CitiesSorted
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import kotlin.test.assertContentEquals
+import kotlin.test.assertEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCitiesLeastAvgCarPricesInteractorTest {
@@ -34,6 +35,12 @@ class GetCitiesLeastAvgCarPricesInteractorTest {
 
     @Test
     fun should_ReturnMaxLimitSize_when_inputIsValid() {
+        // Given
+        interactor = GetCitiesLeastAvgCarPricesInteractor(QualityCities())
+        // When
+        val result = interactor.execute(10).size
+        // Then
+        assertEquals(10, result)
     }
 
     @Test
