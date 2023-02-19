@@ -1205,11 +1205,11 @@ class CitiesWithNullCarPrices : CostOfLivingDataSource {
     }
 }
 
-/** Size = 5, duplicates = 2*/
+/** Size = 10, duplicates = 2, size without duplicates = 8*/
 class CitiesWithTwoDuplicates : CostOfLivingDataSource {
     override fun getAllCitiesData(): List<CityEntity> {
         return listOf(
-            carCity1, carCity2, carCity3, carCity4, carCity5,
+            carCity1, carCity2, carCity1, carCity4, carCity1,
             carCity6, carCity7, carCity8, carCity9, carCity10
         )
     }
