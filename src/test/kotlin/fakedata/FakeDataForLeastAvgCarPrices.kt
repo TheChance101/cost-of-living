@@ -1251,4 +1251,13 @@ fun top10CitiesSorted() = listOf(
     carCity8,
     carCity9,
     carCity10
-).map { it.cityName }
+).map { Pair(it.cityName, getAvgCarPrices(it.carsPrices)) }
+
+
+private fun getAvgCarPrices(carPrices: CarsPrices): Float {
+    var sum = 0f
+    var count = 0f
+    carPrices.volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar?.let { sum += it; count++ }
+    carPrices.toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar?.let { sum += it; count++ }
+    return sum / count
+}
