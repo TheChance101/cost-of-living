@@ -29,7 +29,7 @@ internal class GetCityHasHighestRentingBetweenApartmentsInteractorTest {
     }
     @Test
     fun should_ReturnCityEntity_When_InCorrectResult() {
-        //given the not correct city
+        //given the not correct the city
 
         val expectedCity = dataSource.newYorkLowQuality
         // when  calculate the best city to rent based on the rental price.
