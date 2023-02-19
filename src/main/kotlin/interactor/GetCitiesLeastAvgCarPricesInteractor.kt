@@ -27,8 +27,8 @@ class GetCitiesLeastAvgCarPricesInteractor(private val dataSource: CostOfLivingD
             averageMonthlyNetSalaryAfterTax >= 0f
 
     private fun CarsPrices.isPositivePrice(): Boolean {
-        return volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar!! >= 0 &&
-                toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar!! >= 0
+        return (volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar != null && volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar >= 0) &&
+                (toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar != null && toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar >= 0)
 
     }
 }
