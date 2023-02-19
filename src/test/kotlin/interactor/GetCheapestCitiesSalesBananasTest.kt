@@ -1,6 +1,8 @@
 package interactor
 
+import data.ListCity
 import fakeDataSource.GetCheapestCitiesSalesBananasFakeData
+
 import model.*
 import org.junit.jupiter.api.Test
 
@@ -41,6 +43,19 @@ class GetCheapestCitiesSalesBananasTest {
         val result = getCheapestCitiesSalesBananas.execute(*args)
         //then
         assertEquals(expected, result)
+    }
+
+    @Test
+    fun should_ReturnSortedList_WhenTheInputIsMultiCityAllIncludedInDifferentCases() {
+        // given multi city all of this is included
+        val cities = ListCity.filterCity("SaNtiago de cuba", "sAncti spirItus")
+
+        // when the output is list of sorted cities by Banana Price
+        val getCheapestCitiesSalesBananas = GetCheapestCitiesSalesBananas()
+        val result = getCheapestCitiesSalesBananas.execute(*cities)
+
+        // then check
+        assertEquals(listOf("Santiago de Cuba", "Sancti Spiritus"), result)
     }
 
 }
