@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
+import utils.InvalidLimitException
+import utils.InvalidMetersException
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetCityNamesToBuyApartmentFasterInteractorTest {

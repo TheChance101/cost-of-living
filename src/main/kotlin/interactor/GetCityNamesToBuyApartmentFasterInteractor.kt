@@ -1,6 +1,8 @@
 package interactor
 
 import model.CityEntity
+import utils.InvalidLimitException
+import utils.InvalidMetersException
 import utils.isNotNull
 
 class GetCityNamesToBuyApartmentFasterInteractor(
