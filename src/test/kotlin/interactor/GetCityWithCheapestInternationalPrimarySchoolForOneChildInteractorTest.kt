@@ -37,4 +37,36 @@ class GetCityWithCheapestInternationalPrimarySchoolForOneChildInteractorTest{
         //then
         assertTrue(result)
     }
+    @Test
+    fun `should return false when cost of international primary school is null`(){
+        //given
+        val mockCity = listOf(
+            MockCityEntity.createMockCity(
+                internationalPrimarySchoolYearlyForOneChild = null ,
+                cityName = "Damascus",
+                dataQuality = true
+            )
+        )
+        every { dataSource.getAllCitiesData() } returns mockCity
+        //when
+        val result = interactor.excludeNullInterNationalPrimarySchoolYearlyForOneChildAndLowQualityData(mockCity[0])
+        //then
+        assertFalse(result)
+    }
+    @Test
+    fun `should return false when low data quality`(){
+        //given
+        val mockCity = listOf(
+            MockCityEntity.createMockCity(
+                internationalPrimarySchoolYearlyForOneChild = 2676.54f ,
+                cityName = "Damascus",
+                dataQuality = false
+            )
+        )
+        every { dataSource.getAllCitiesData() } returns mockCity
+        //when
+        val result = interactor.excludeNullInterNationalPrimarySchoolYearlyForOneChildAndLowQualityData(mockCity[0])
+        //then
+        assertFalse(result)
+    }
 }
