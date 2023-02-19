@@ -2,6 +2,7 @@ package interactor
 
 import jdk.internal.net.http.common.Pair
 import model.CityEntity
+import utils.isNotNull
 
 
 /**
@@ -16,28 +17,20 @@ data quality should be high
     fun execute(): CityEntity {
         return dataSource
             .getAllCitiesData()
-            .also { if (it.isEmpty() )throw  IllegalStateException() }
+            .ifEmpty { throw IllegalStateException() }
             .filter(::excludeNullFoodPricesAndLowQualityData)
-            .also { if (it.isNotEmpty()) throw NoReturnedDataException1 ("no data returned")}
-            .sortedByDescending { it.getCostOfFood() }
-            .take(1)
-            .map {
-                Pair.pair(it.cityName, it.getCostOfFood())
-            }
-        }
-
-    override fun getAllCitiesData(): List<CityEntity> {
-        TODO("Not yet implemented")
+            .minByOrNull { it.getCostOfFood() }
+            ?: throw NoSuchElementException("No any city matching the given condition")
     }
 
 }
 private fun excludeNullFoodPricesAndLowQualityData(city: CityEntity): Boolean {
-    return city.foodPrices.loafOfFreshWhiteBread500g != null&&
-            city.foodPrices.chickenFillets1kg != null&&
-            city.foodPrices.eggsRegular12 != null&&
-            city.foodPrices.riceWhite1kg != null&&
-            city.foodPrices.localCheese1kg != null&&
-            city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null
+    return city.foodPrices.loafOfFreshWhiteBread500g.isNotNull()
+    city.foodPrices.chickenFillets1kg.isNotNull()
+    city.foodPrices.eggsRegular12.isNotNull()
+    city.foodPrices.riceWhite1kg.isNotNull()
+    city.foodPrices.localCheese1kg.isNotNull()
+    city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat.isNotNull()
             && city.dataQuality
 }
 private fun CityEntity.getCostOfFood() : Float{
