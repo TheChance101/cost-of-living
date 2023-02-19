@@ -6,6 +6,11 @@ import utils.isNotNull
 class GetCityNamesToBuyApartmentFasterInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
+
+    companion object {
+        const val MONTHS_IN_YEAR = 12
+    }
+
     fun execute(
         limit: Int,
         squareMeter: Int
@@ -55,10 +60,6 @@ class GetCityNamesToBuyApartmentFasterInteractor(
     ): Float {
         if (squareMeter < 1) throw InvalidMetersException("Square meter can't be less than one")
         return pricePerSquareMeter * squareMeter / salary / MONTHS_IN_YEAR
-    }
-
-    companion object {
-        const val MONTHS_IN_YEAR = 12
     }
 
 }
