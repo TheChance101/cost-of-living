@@ -3,10 +3,8 @@ package dataSource
 import interactor.CostOfLivingDataSource
 import model.CityEntity
 
-class FakeDataWithEmptyList :CostOfLivingDataSource {
+class FakeEmptyDataSource:CostOfLivingDataSource {
     override fun getAllCitiesData(): List<CityEntity> {
-        return  emptyList()
+        return emptyList()
     }
-
-
 }
