@@ -63,9 +63,9 @@ internal class GetCityNamesToBuyApartmentFasterInteractorTest {
                 .execute(
                     limit = limit,
                     squareMeter = squareMeter
-                )
+                ).isEmpty()
         //Then
-        assertTrue(actual.isEmpty())
+        assertTrue(actual)
     }
 
     @Test
@@ -172,9 +172,9 @@ internal class GetCityNamesToBuyApartmentFasterInteractorTest {
                 .execute(
                     limit = limit,
                     squareMeter = squareMeter
-                )
+                ).isEmpty()
         //Then
-        assertTrue(actual.isEmpty())
+        assertTrue(actual)
     }
 
 
