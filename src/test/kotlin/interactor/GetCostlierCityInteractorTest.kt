@@ -1,46 +1,61 @@
 package interactor
 
-import data.FakeDataSource
-import data.TestCase
-import interactor.utils.BedroomOption
+import data.CostlierCityFakeData
+import data.EmptyFakeData
+import data.InvalidFakeData
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetCostlierCityInteractorTest {
-    private lateinit var getCostlierCityInteractor: GetCostlierCityInteractor
+    lateinit var getCostlierCityInteractor:
+            GetCostlierCityInteractor
 
-    private lateinit var fakeData: FakeDataSource
+    lateinit var fakeDataSource: CostlierCityFakeData
+    lateinit var emptyFakeData: EmptyFakeData
+    lateinit var invalidFakeData: InvalidFakeData
 
 
     @BeforeAll
     fun setup() {
-        fakeData = FakeDataSource()
-        getCostlierCityInteractor = GetCostlierCityInteractor(fakeData)
-        fakeData.changeDataSource(TestCase.CostlierCity)
+        fakeDataSource = CostlierCityFakeData()
+        emptyFakeData = EmptyFakeData()
+        invalidFakeData= InvalidFakeData()
     }
 
     @Test
-    fun should_ReturnCorrectCity_When_OptionIsOneBedroom() {
-        //given one bedroom
-        val option = BedroomOption.ONE_BEDROOM
-        //when the  city is correct
-        val highest = getCostlierCityInteractor.execute(option)
-        //then check names cities are equals
-        assertEquals("Sancti Spiritus", highest.cityName)
+    fun `should return correct city when the data is valid`() {
+        getCostlierCityInteractor = GetCostlierCityInteractor(fakeDataSource)
+        //when The result is one city
+        val city = getCostlierCityInteractor.execute()
+        //then check
+        assertEquals( "Seoul", city.cityName)
     }
 
     @Test
-    fun should_ReturnCorrectCity_When_OptionIsThreeBedroom() {
-        //given Three bedroom
-        val option = BedroomOption.THREE_BEDROOM
-        //when the  city is correct
-        val highest = getCostlierCityInteractor.execute(option)
-        //then check names cities are equals
-        assertEquals("Seoul", highest.cityName)
+    fun `should return empty when the data is empty`() {
+        getCostlierCityInteractor =
+            GetCostlierCityInteractor(emptyFakeData)
+        //when The result is one city
+        val result = Executable { getCostlierCityInteractor.execute() }
+        //then check
+        assertThrows(Exception::class.java , result )
+
     }
+
+    @Test
+    fun `should throw exception when the data is inValid`() {
+        getCostlierCityInteractor =
+            GetCostlierCityInteractor(invalidFakeData)
+        //when The result is one city
+        val result = Executable { getCostlierCityInteractor.execute() }
+        //then check
+        assertThrows(Exception::class.java , result )
+    }
+
 
 
 }

@@ -352,8 +352,8 @@ class CostlierCityFakeData : CostOfLivingDataSource {
                     toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = null
                 ),
                 realEstatesPrices = RealEstatesPrices(
-                    apartmentOneBedroomInCityCentre = null,
-                    apartmentOneBedroomOutsideOfCentre = null,
+                    apartmentOneBedroomInCityCentre = 678f,
+                    apartmentOneBedroomOutsideOfCentre = 500f,
                     apartment3BedroomsInCityCentre = 7000.0f,
                     apartment3BedroomsOutsideOfCentre = 100f,
                     pricePerSquareMeterToBuyApartmentInCityCentre = null,
@@ -367,6 +367,9 @@ class CostlierCityFakeData : CostOfLivingDataSource {
     }
 }
 
+fun main() {
+
+}
 
 
 

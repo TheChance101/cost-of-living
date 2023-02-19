@@ -42,15 +42,8 @@ class UserInterface(private val dataSource: CostOfLivingDataSource) {
                 }
 
                 "4" -> {
-                    print("choose:-")
-                    print("1- Apartment one bedroom.")
-                    print("2- Apartment three bedroom :-")
-                    print("enter 1 or 2")
-                    val count = readlnOrNull()
-                    var option = BedroomOption.ONE_BEDROOM
-                    if (count.equals("2"))
-                        option = BedroomOption.THREE_BEDROOM
-                    println(count?.let { GetCostlierCityInteractor(dataSource).execute(option) })
+
+                    println( GetCostlierCityInteractor(dataSource).execute() )
                     printSeparationLine()
                 }
 
