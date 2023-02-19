@@ -9,7 +9,7 @@ class GetCityWithCheapestInternationalPrimarySchoolForOneChildInteractor(
     }
 
     fun excludeNullInterNationalPrimarySchoolYearlyForOneChildAndLowQualityData(city: CityEntity): Boolean {
-        TODO("Not Implemented Yet")
+        return return city.servicesPrices.internationalPrimarySchoolYearlyForOneChild != null && city.dataQuality
     }
 
     
