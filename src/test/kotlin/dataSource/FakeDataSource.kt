@@ -19,10 +19,12 @@ class FakeDataSource : CostOfLivingDataSource {
         this.dataType = _dataType
     }
 
-    private val normalFixture = kotlinFixture {
-        nullabilityStrategy(NeverNullStrategy)
-        property(CityEntity::dataQuality) { true }
-        repeatCount { 20 }
+    private val normalFixture by lazy {
+        kotlinFixture {
+            nullabilityStrategy(NeverNullStrategy)
+            property(CityEntity::dataQuality) { true }
+            repeatCount { 20 }
+        }
     }
 
     /**
@@ -30,20 +32,25 @@ class FakeDataSource : CostOfLivingDataSource {
      */
     private fun getNormalData() = normalFixture<List<CityEntity>>()
 
-    private val nullableFixture = kotlinFixture {
-        nullabilityStrategy(AlwaysNullStrategy)
-        property(CityEntity::dataQuality) { true }
-        repeatCount { 20 }
+    private val nullableFixture by lazy {
+        kotlinFixture {
+            nullabilityStrategy(AlwaysNullStrategy)
+            property(CityEntity::dataQuality) { true }
+            repeatCount { 20 }
+        }
     }
+
     /**
      * @return data that have high dataQuality and null values.
      */
     private fun getDataWithNullValues() = nullableFixture<List<CityEntity>>()
 
-    private val lowQualityFixture = kotlinFixture {
-        nullabilityStrategy(NeverNullStrategy)
-        property(CityEntity::dataQuality) { false }
-        repeatCount { 20 }
+    private val lowQualityFixture by lazy {
+        kotlinFixture {
+            nullabilityStrategy(NeverNullStrategy)
+            property(CityEntity::dataQuality) { false }
+            repeatCount { 20 }
+        }
     }
 
     /**
@@ -51,8 +58,10 @@ class FakeDataSource : CostOfLivingDataSource {
      */
     private fun getDataWithLowQuality() = lowQualityFixture<List<CityEntity>>()
 
-    private val mixedFixture = kotlinFixture {
-        repeatCount { 20 }
+    private val mixedFixture by lazy {
+        kotlinFixture {
+            repeatCount { 20 }
+        }
     }
 
     /**
