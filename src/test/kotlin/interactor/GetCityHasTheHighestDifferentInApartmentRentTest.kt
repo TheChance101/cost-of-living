@@ -38,7 +38,7 @@ class GetCityHasTheHighestDifferentInApartmentRentTest {
 
 
     @Test
-    fun `should return empty city when list after filtering is empty`(){
+    fun `should throw exception when the filtered list is empty`(){
         // when the limit is greater than one
         val actual =Executable {listOfNullCity.execute()}
         val expected= NoSuchElementException::class.java
