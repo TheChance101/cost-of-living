@@ -20,7 +20,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
             ),
             drinksPrices = DrinksPrices(
                 cappuccinoRegularInRestaurants = 7f,
-                cokePepsiAThirdOfLiterBottleInRestaurants = 2f,
+                cokePepsiAThirdOfLiterBottleInRestaurants = 7f,
                 waterAThirdOfLiterBottleInRestaurants = 1f,
                 milkRegularOneLiter = 2f,
                 waterOneAndHalfLiterBottleAtTheMarket = 2.5f
@@ -168,7 +168,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
             ),
             drinksPrices = DrinksPrices(
                 cappuccinoRegularInRestaurants = 7f,
-                cokePepsiAThirdOfLiterBottleInRestaurants = 2f,
+                cokePepsiAThirdOfLiterBottleInRestaurants = 6f,
                 waterAThirdOfLiterBottleInRestaurants = 1f,
                 milkRegularOneLiter = 2f,
                 waterOneAndHalfLiterBottleAtTheMarket = 2.5f
@@ -242,7 +242,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
             ),
             drinksPrices = DrinksPrices(
                 cappuccinoRegularInRestaurants = 7f,
-                cokePepsiAThirdOfLiterBottleInRestaurants = 2f,
+                cokePepsiAThirdOfLiterBottleInRestaurants = 4f,
                 waterAThirdOfLiterBottleInRestaurants = 1f,
                 milkRegularOneLiter = 2f,
                 waterOneAndHalfLiterBottleAtTheMarket = 2.5f
@@ -316,7 +316,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
             ),
             drinksPrices = DrinksPrices(
                 cappuccinoRegularInRestaurants = 7f,
-                cokePepsiAThirdOfLiterBottleInRestaurants = 2f,
+                cokePepsiAThirdOfLiterBottleInRestaurants = 3f,
                 waterAThirdOfLiterBottleInRestaurants = 1f,
                 milkRegularOneLiter = 2f,
                 waterOneAndHalfLiterBottleAtTheMarket = 2.5f
@@ -392,7 +392,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
             ),
             drinksPrices = DrinksPrices(
                 cappuccinoRegularInRestaurants = 7f,
-                cokePepsiAThirdOfLiterBottleInRestaurants = 2f,
+                cokePepsiAThirdOfLiterBottleInRestaurants = 9f,
                 waterAThirdOfLiterBottleInRestaurants = 1f,
                 milkRegularOneLiter = 2f,
                 waterOneAndHalfLiterBottleAtTheMarket = 2.5f
@@ -467,7 +467,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
             ),
             drinksPrices = DrinksPrices(
                 cappuccinoRegularInRestaurants = 7f,
-                cokePepsiAThirdOfLiterBottleInRestaurants = 2f,
+                cokePepsiAThirdOfLiterBottleInRestaurants = 5f,
                 waterAThirdOfLiterBottleInRestaurants = 1f,
                 milkRegularOneLiter = 2f,
                 waterOneAndHalfLiterBottleAtTheMarket = 2.5f
@@ -615,7 +615,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
             ),
             drinksPrices = DrinksPrices(
                 cappuccinoRegularInRestaurants = 7f,
-                cokePepsiAThirdOfLiterBottleInRestaurants = 2f,
+                cokePepsiAThirdOfLiterBottleInRestaurants = 4f,
                 waterAThirdOfLiterBottleInRestaurants = 1f,
                 milkRegularOneLiter = 2f,
                 waterOneAndHalfLiterBottleAtTheMarket = 2.5f
