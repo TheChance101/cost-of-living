@@ -7,7 +7,7 @@ class GetCitiesLeastAvgCarPricesInteractor(private val dataSource: CostOfLivingD
     fun execute(limit: Int): List<String> {
         return dataSource
             .getAllCitiesData()
-            .filter { it.isDataQualityHighAndValidSalary() }
+            .filter { it.carsPrices.isPositivePrice() && it.isDataQualityHighAndValidSalary() }
             .sortedBy { it.carsPrices.getAvgCarPrices() }
             .distinctBy { it.cityName }
             .take(limit)
@@ -25,5 +25,11 @@ class GetCitiesLeastAvgCarPricesInteractor(private val dataSource: CostOfLivingD
     private fun CityEntity.isDataQualityHighAndValidSalary() = dataQuality &&
             averageMonthlyNetSalaryAfterTax != null &&
             averageMonthlyNetSalaryAfterTax >= 0f
+
+    private fun CarsPrices.isPositivePrice(): Boolean {
+        return volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar!! >= 0 &&
+                toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar!! >= 0
+
+    }
 }
 
