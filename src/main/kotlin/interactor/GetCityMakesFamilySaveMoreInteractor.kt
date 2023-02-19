@@ -9,7 +9,7 @@ class GetCityMakesFamilySaveMoreInteractor(
 
     fun execute(): String {
         return if (dataSource.getAllCitiesData().isNotEmpty()) {
-            dataSource.getAllCitiesData().filter(::excludeNullvalues).maxByOrNull {it.run {
+            dataSource.getAllCitiesData().filter(::excludeNullValues).maxByOrNull {it.run {
                 (averageMonthlyNetSalaryAfterTax!!.toDouble() *2) -(
                 (foodPrices.riceWhite1kg!!.toDouble() * 2)+
                 (foodPrices.chickenFillets1kg!!.toDouble() * 10)+
@@ -21,7 +21,7 @@ class GetCityMakesFamilySaveMoreInteractor(
         } else throw Exception("There is no Data")
     }
 
-    fun excludeNullvalues(city: CityEntity): Boolean {
+    fun excludeNullValues(city: CityEntity): Boolean {
         return city.run{
             realEstatesPrices.apartment3BedroomsInCityCentre != null
                     && averageMonthlyNetSalaryAfterTax != null

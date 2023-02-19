@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b2ca722-ce79-48ec-8557-4eb6df2410a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/FakeDataSourceForFamilySavings.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCityMakesFamilySaveMoreInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCityMakesFamilySaveMoreInteractor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/FakeDataSourceForFamilySavings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/FakeDataSourceForFamilySavings.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetCityMakesFamilySaveMoreInteractionTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetCityMakesFamilySaveMoreInteractionTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +25,13 @@
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -48,7 +54,30 @@
     "RunOnceActivity.ShowReadmeOnStart": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Kotlin.MainKt">
+  <component name="RunManager" selected="Gradle.GetCityMakesFamilySaveMoreInteractionTest.shouldReturnFalseWhenSalaryIsNull">
+    <configuration name="GetCityMakesFamilySaveMoreInteractionTest.shouldReturnFalseWhenSalaryIsNull" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;interactor.GetCityMakesFamilySaveMoreInteractionTest.shouldReturnFalseWhenSalaryIsNull&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="GetDinnerLocationInteractorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -127,6 +156,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.GetCityMakesFamilySaveMoreInteractionTest.shouldReturnFalseWhenSalaryIsNull" />
         <item itemvalue="Kotlin.MainKt" />
         <item itemvalue="Gradle.GetDinnerLocationInteractorTest" />
         <item itemvalue="Gradle.GetTopCitesNameInFshionTaskInteractorTest" />
