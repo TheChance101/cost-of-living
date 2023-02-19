@@ -310,9 +310,9 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
             cityName = "Madrid",
             country = "España",
             mealsPrices = MealsPrices(
-                mealInexpensiveRestaurant = 10f,
-                mealFor2PeopleMidRangeRestaurant = 5f,
-                mealAtMcDonaldSOrEquivalent = 3f
+                mealInexpensiveRestaurant = null,
+                mealFor2PeopleMidRangeRestaurant = null,
+                mealAtMcDonaldSOrEquivalent = null
             ),
             drinksPrices = DrinksPrices(
                 cappuccinoRegularInRestaurants = 7f,
