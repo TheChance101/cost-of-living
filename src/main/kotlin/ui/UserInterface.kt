@@ -10,7 +10,7 @@ class UserInterface(private val dataSource: CostOfLivingDataSource) {
         do {
             println(
                 "1- Get the city that has the cheapest internet connection. \n" +
-                        "2- Get 10 cities with lowest fruit/veg prices compared to salaries. \n" +
+                        "2- Get cities with lowest fruit/veg prices compared to salaries. \n" +
                         "3- Get country's salaries with mixed case input.\n" +
                         "4- Get city with highest apartment rent difference between city center and outside.\n" +
                         "5- Get top 5 cities to fashion shopping famous brands for most suitable prices.\n" +
@@ -28,7 +28,9 @@ class UserInterface(private val dataSource: CostOfLivingDataSource) {
                 }
 
                 "2" -> {
-                    println(GetAverageFruitAndVegetablesInteractor(dataSource).execute())
+                    print("How many cities would you like?")
+                    val limit = readln().toInt()
+                    println(GetAverageFruitAndVegetablesInteractor(dataSource).execute(limit))
                     printSeparationLine()
                 }
 
