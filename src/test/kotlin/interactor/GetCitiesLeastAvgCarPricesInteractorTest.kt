@@ -63,6 +63,7 @@ class GetCitiesLeastAvgCarPricesInteractorTest {
         // Then
         assertNotEquals(actual, result.size)
     }
+
     @Test
     fun should_ReturnEmptyList_when_inputIsLowQualityData() {
         // Given
@@ -72,6 +73,7 @@ class GetCitiesLeastAvgCarPricesInteractorTest {
         // Then
         assertEquals(emptyList(), result)
     }
+
     @Test
     fun should_ReturnEmptyList_when_carPricesAreNegative() {
         // Given
