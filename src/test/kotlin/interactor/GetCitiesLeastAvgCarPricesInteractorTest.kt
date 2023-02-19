@@ -1,6 +1,7 @@
 package interactor
 
 import fakedata.CitiesWithNullCarPrices
+import fakedata.CitiesWithNullSalary
 import fakedata.QualityCities
 import fakedata.top10CitiesSorted
 import org.junit.jupiter.api.Test
@@ -44,7 +45,13 @@ class GetCitiesLeastAvgCarPricesInteractorTest {
     }
 
     @Test
-    fun should_ReturnThrowException_when_salaryIsNull() {
+    fun should_ReturnEmptyList_when_salaryIsNull() {
+        // Given
+        interactor = GetCitiesLeastAvgCarPricesInteractor(CitiesWithNullSalary())
+        // When
+        val result = interactor.execute(10)
+        // Then
+        assertEquals(emptyList(), result)
     }
 
     @Test
