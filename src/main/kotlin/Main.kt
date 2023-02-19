@@ -1,3 +1,4 @@
+
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import interactor.*
@@ -61,13 +62,11 @@ fun getResultDependOnTheOption() {
 
         5 -> {
             horizontalRule()
-            print("Enter the Salary : ")
-            val salary = readln().toInt()
             print("enter the limit of cities : ")
             val limit = readln().toInt()
             print("enter square meter : ")
             val squareMeter = readln().toInt()
-            getCitiesNameToBuyApartmentFaster(salary, limit, squareMeter)
+            getCitiesNameToBuyApartmentFaster(limit, squareMeter)
             horizontalRule()
         }
 
@@ -178,10 +177,10 @@ fun getMostSuitableCity() {
     println(mostSuitableCity)
 }
 
-fun getCitiesNameToBuyApartmentFaster(salary: Int, limit: Int, squareMeter: Int) {
-    val getCitiesNameToBuyApartmentFasterInteractor =
-        GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
-    println(getCitiesNameToBuyApartmentFasterInteractor.execute(salary, limit, squareMeter))
+fun getCitiesNameToBuyApartmentFaster(limit: Int, squareMeter: Int) {
+    val getCityNamesToBuyApartmentFasterInteractor =
+        GetCityNamesToBuyApartmentFasterInteractor(dataSource)
+    println(getCityNamesToBuyApartmentFasterInteractor.execute(limit, squareMeter))
 //    println(getCitiesNameToBuyApartmentFasterInteractor.execute(1000, 10, 100))
 }
 
