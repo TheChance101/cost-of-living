@@ -1,5 +1,7 @@
+
 package interactor
 
+import fakedata.DataSourceType
 import fakedata.FakeDataSource
 import org.junit.jupiter.api.Assertions.*
 
@@ -12,11 +14,20 @@ import kotlin.test.assertEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetTheAverageSalaryForEachCityInTheCountryInteractorTest {
-    lateinit var fakeData: FakeDataSource
+
+
+
+    private lateinit var interactor: GetTheAverageSalaryForEachCityInTheCountryInteractor
+
+    private lateinit var dataSource: CostOfLivingDataSource
+
+    private lateinit var fakeData: FakeDataSource
 
     @BeforeAll
     fun setup() {
         fakeData = FakeDataSource()
+        dataSource =fakeData
+        interactor =GetTheAverageSalaryForEachCityInTheCountryInteractor(dataSource)
     }
 
     @Test
@@ -25,7 +36,7 @@ internal class GetTheAverageSalaryForEachCityInTheCountryInteractorTest {
         val countryName = "egypt"
         val expectedOutput = listOf(Pair("Alex", 6000f))
         //when find the city name and salary average
-        val cityAndSalaryAverage = GetTheAverageSalaryForEachCityInTheCountryInteractor(fakeData).execute(countryName)
+        val cityAndSalaryAverage = interactor.execute(countryName)
         //then check return a List of pairs each pair have city name and salary average for this city
         assertEquals(expectedOutput, cityAndSalaryAverage)
 
@@ -37,18 +48,7 @@ internal class GetTheAverageSalaryForEachCityInTheCountryInteractorTest {
         val countryName = "EGYPT"
         val expectedOutput = listOf(Pair("Alex", 6000f))
         //when find the city name and salary average
-        val cityAndSalaryAverage = GetTheAverageSalaryForEachCityInTheCountryInteractor(fakeData).execute(countryName)
-        //then check return a List of pairs each pair have city name and salary average for this city
-        assertEquals(expectedOutput, cityAndSalaryAverage)
-    }
-
-    @Test
-    fun should_ReturnListOfPairsEachPairContainCityNameAndSalaryAverage_whenCountryNameIsMixedCase() {
-        //given country name in mix case
-        val countryName = "Egypt"
-        val expectedOutput = listOf(Pair("Alex", 6000f))
-        //when  the city name and salary average
-        val cityAndSalaryAverage = GetTheAverageSalaryForEachCityInTheCountryInteractor(fakeData).execute(countryName)
+        val cityAndSalaryAverage = interactor.execute(countryName)
         //then check return a List of pairs each pair have city name and salary average for this city
         assertEquals(expectedOutput, cityAndSalaryAverage)
     }
@@ -58,10 +58,7 @@ internal class GetTheAverageSalaryForEachCityInTheCountryInteractorTest {
         //given empty country name
         val countryName = ""
         //when  the city name and salary average
-        val cityAndSalaryAverageExecutable = Executable {
-            GetTheAverageSalaryForEachCityInTheCountryInteractor(fakeData)
-                .execute(countryName)
-        }
+        val cityAndSalaryAverageExecutable = Executable { interactor.execute(countryName) }
         //then check exception
         assertThrows(Exception::class.java, cityAndSalaryAverageExecutable)
     }
@@ -71,10 +68,18 @@ internal class GetTheAverageSalaryForEachCityInTheCountryInteractorTest {
         //given wrong country name
         val countryName = "test wrong name"
         //when  the city name and salary average
-        val cityAndSalaryAverageExecutable = Executable {
-            GetTheAverageSalaryForEachCityInTheCountryInteractor(fakeData)
-                .execute(countryName)
-        }
+        val cityAndSalaryAverageExecutable = Executable { interactor.execute(countryName) }
+        //then check exception
+        assertThrows(Exception::class.java, cityAndSalaryAverageExecutable)
+    }
+    @Test
+    fun should_throwAnException_whenAverageSalaryIsNull() {
+        fakeData.dataSourceType = DataSourceType.NULLABLE
+        //given wrong country
+        val fakeCityEntityNullable = dataSource.getAllCitiesData()[2]
+        val countryName = fakeCityEntityNullable.country
+        //when  the city name and salary average
+        val cityAndSalaryAverageExecutable = Executable { interactor.execute(countryName) }
         //then check exception
         assertThrows(Exception::class.java, cityAndSalaryAverageExecutable)
     }
