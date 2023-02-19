@@ -1,5 +1,6 @@
 package interactor
 
+import data.EmptyFakeData
 import data.FruitsAndVegetablesFakeData
 import data.InvalidFakeData
 import org.junit.jupiter.api.Assertions.*
@@ -48,7 +49,22 @@ class GetAverageFruitAndVegetablesInteractorTest {
         // given a limit of cities and invalid data source
         val limit = 10
 
-        getAverageFruitAndVegetablesInteractor = GetAverageFruitAndVegetablesInteractor(InvalidFakeData())
+        getAverageFruitAndVegetablesInteractor = GetAverageFruitAndVegetablesInteractor(InvalidFakeData)
+
+        // when check and return empty list
+        val result = getAverageFruitAndVegetablesInteractor.execute(limit)
+
+        val expected = emptyList<String>()
+        // then asserted the return and the expected
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `should return empty list when given the data source is empty`() {
+        // given a limit of cities and invalid data source
+        val limit = 10
+
+        getAverageFruitAndVegetablesInteractor = GetAverageFruitAndVegetablesInteractor(EmptyFakeData)
 
         // when check and return empty list
         val result = getAverageFruitAndVegetablesInteractor.execute(limit)
