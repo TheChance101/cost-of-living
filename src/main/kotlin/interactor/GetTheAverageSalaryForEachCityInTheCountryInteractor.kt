@@ -11,7 +11,7 @@ class GetTheAverageSalaryForEachCityInTheCountryInteractor(
         return dataSource.getAllCitiesData()
             .filter { excludeNullSalariesAndLowQualityData(it) && allowCountryNameToBeLowerOrUpperOrMix(it,countryName) }
             .map { Pair(it.cityName, it.averageMonthlyNetSalaryAfterTax!!) }
-            .takeIf { it.isNotEmpty() }?:throw Exception("country name not found")
+            .takeIf { it.isNotEmpty() }?:throw Exception("country name or average salary not found ")
 
     }
 
