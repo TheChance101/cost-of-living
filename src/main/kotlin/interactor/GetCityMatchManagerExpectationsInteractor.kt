@@ -13,7 +13,8 @@ class GetCityMatchManagerExpectationsInteractor(
             .let { it.ifEmpty { throw NoReturnedDataException(EMPTY_LIST_EXCEPTION_MSG) } }
             .filter { it.country in onlyRequiredCountries }
             .let { it.ifEmpty { emptyList() } }
-            .minByOrNull(::getMidRangePrices)
+          .minByOrNull(::getMidRangePrices) 
+          ?: throw NoSuchElementException()
     }
 
 
