@@ -12,7 +12,7 @@ data quality should be high
  * **/
  class GetCityThatHasLowestCostOfFoodInteractor(
     private val dataSource: CostOfLivingDataSource,
-) : CostOfLivingDataSource {
+)  {
     fun execute(): List<Pair<String, Float>> {
         return dataSource
             .getAllCitiesData()
