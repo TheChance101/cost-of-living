@@ -11,14 +11,16 @@ class GetSalaryAverageAndCitiesNamesInCountryInteractor(
     fun execute(countryName:String):List<Pair<String,Float>> {
         return dataSource
             .getAllCitiesData()
-            .ifEmpty { throw java.lang.IllegalStateException("Something went wrong") }
-            .takeIf{ countryName.lowercase() in it.map{city -> city.country.lowercase()} }
-            .orEmpty()
+            .asSequence()
+            .ifEmpty { throw IllegalStateException("Something went wrong") }
+            .groupBy { it.country.lowercase() }
+            .getOrElse(countryName.lowercase()){throw NoSuchElementException("Country not found")}
             .filter{
                 isValidCountryName(countryName,it) &&
                 excludeNullSalaryAveragesAndLowQualityData(it)
             }
-            .map{Pair(it.cityName,it.averageMonthlyNetSalaryAfterTax!!)}
+            .toList()
+            .map{it.cityName to it.averageMonthlyNetSalaryAfterTax!!}
     }
 
     private fun isValidCountryName(countryName: String, city: CityEntity) =
