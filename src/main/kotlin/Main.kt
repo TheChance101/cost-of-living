@@ -208,7 +208,7 @@ fun getSalaryAverageAndCitiesNamesInCountry(countryName: String, dataSource: Cos
 }
 
 fun getCityHasHighestDifferentInApartmentRent(dataSource: CostOfLivingDataSource) {
-    val getCityHasHighestDifferentInApartmentRent = GetCityHasTheHighestDifferentInApartmentRent(dataSource)
+    val getCityHasHighestDifferentInApartmentRent = GetCityHasTheHighestDifferentInApartmentRentInteractor(dataSource)
     println(getCityHasHighestDifferentInApartmentRent.execute())
 }
 
