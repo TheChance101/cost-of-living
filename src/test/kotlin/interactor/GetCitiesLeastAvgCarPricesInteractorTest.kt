@@ -81,4 +81,14 @@ class GetCitiesLeastAvgCarPricesInteractorTest {
         // Then
         assertEquals(emptyList(), result)
     }
+
+    @Test
+    fun should_ReturnEmptyList_when_salaryIsNegative() {
+        // Given
+        interactor = GetCitiesLeastAvgCarPricesInteractor(CitiesWithNegativeSalary())
+        // When
+        val result = interactor.execute(10)
+        // Then
+        assertEquals(emptyList(), result)
+    }
 }
