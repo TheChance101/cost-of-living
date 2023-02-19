@@ -21,16 +21,16 @@ class GetCityNamesToBuyApartmentFasterInteractor(
             .toList()
             .map {
                 it.cityName to
-                        calculateYearsNeededToBuyApartment(
-                            it.averageMonthlyNetSalaryAfterTax!!,
-                            it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!,
-                            squareMeter
-                        )
+                calculateYearsNeededToBuyApartment(
+                    it.averageMonthlyNetSalaryAfterTax!!,
+                    it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!,
+                    squareMeter
+                )
             }
 
     private fun findSquareMeterPriceToSalaryAveragePercentage(it: CityEntity) =
         it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!! /
-                it.averageMonthlyNetSalaryAfterTax!!
+        it.averageMonthlyNetSalaryAfterTax!!
 
 
     private fun excludeNullApartmentPricesAndLowQualityData(
@@ -39,8 +39,8 @@ class GetCityNamesToBuyApartmentFasterInteractor(
         city.realEstatesPrices
     ) {
         pricePerSquareMeterToBuyApartmentOutsideOfCentre.isNotNull() &&
-                apartmentOneBedroomOutsideOfCentre.isNotNull() &&
-                city.dataQuality
+        apartmentOneBedroomOutsideOfCentre.isNotNull() &&
+        city.dataQuality
     }
 
     private fun excludeNullSalaryAverages(
