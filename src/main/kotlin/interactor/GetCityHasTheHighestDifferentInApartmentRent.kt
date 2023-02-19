@@ -4,7 +4,7 @@ import utils.isNotNull
 import java.lang.IllegalStateException
 import java.util.NoSuchElementException
 
-class GetCityHasTheHighestDifferentInApartmentRent (
+class GetCityHasTheHighestDifferentInApartmentRentInteractor (
     private val dataSource: CostOfLivingDataSource,
 )
 {
