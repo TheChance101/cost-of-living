@@ -34,7 +34,7 @@ internal class GetCityHasHighestRentingBetweenApartmentsInteractorTest {
 
     @Test
     fun should_ReturnCityEntity_When_EnterMixedCityList() {
-        // given a mixed data
+        // given a mixed data & expected city
         dataSource.setDatatype(HardCodedFakeDataSource.DataType.MIXED)
         val expectedCity = dataSource.cairoHighQuality
         // when data might include null
