@@ -63,7 +63,7 @@ class GetDinnerLocationInteractorTest {
             fakeDataSourceForDinnerLocation.getMeCustomDataSource())
         val expected = "Chicago"
         // When
-        val result = interactor.execute()!!.cityName
+        val result = interactor.execute()
         // Then
         assertEquals(expected, result)
     }
@@ -74,7 +74,7 @@ class GetDinnerLocationInteractorTest {
         val mealsPrices1 = fakeDataSourceForDinnerLocation.mealOne()
         val mealsPrices2 = fakeDataSourceForDinnerLocation.mealTwo()
         //when
-        val avg = getAverage(mealsPrices1.mealsPrices, mealsPrices2.mealsPrices)
+        val avg = getAverageBetweenTwoCities(mealsPrices1.mealsPrices, mealsPrices2.mealsPrices)
         //then
         assertEquals(145f, avg)
     }
@@ -85,7 +85,7 @@ class GetDinnerLocationInteractorTest {
         val cityList = fakeDataSourceForDinnerLocation.getMeClosestCity()
         val avg = 310f
         //when
-        val closestCity = getClosestCity(cityList,avg)?.cityName
+        val closestCity = getClosestCity(cityList).cityName
         val expected = "Ecatepec"
         //then
         assertEquals(expected, closestCity)
