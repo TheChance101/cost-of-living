@@ -5,8 +5,9 @@ import model.CityEntity
 class GetCityManagerExpectationInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
-    private var defaultInRange = 10
-    private var averageDivide = 3
+    private val defaultInRange = 10
+    private val averageDivide = 3
+
     fun execute(countryOne: String, countryTwo: String, countryThree: String): String? {
         val data =
             dataSource.getAllCitiesData()
@@ -14,9 +15,8 @@ class GetCityManagerExpectationInteractor(
                 .sortedBy {
                     sumAverage(it)
                 }
-        val cityName = findAverageBetweenHighestAndLowest(data)
 
-        return if (cityName != "") cityName else null
+        return findAverageBetweenHighestAndLowest(data)
     }
 
     private fun filterByCountry(
@@ -46,16 +46,15 @@ class GetCityManagerExpectationInteractor(
 
     private fun findAverageBetweenHighestAndLowest(
         data: List<CityEntity>,
-    ): String {
+    ): String? {
         val average = sumAverage(data.first()).plus(sumAverage(data.last())).div(2)
         val startRange = average.plus(defaultInRange)
         val endRange = average.minus(defaultInRange)
-        var cityName = ""
-        for (i in data.indices) {
-            if (sumAverage(data[i]) in startRange..endRange) {
-                cityName = data[i].cityName
-            }
+        var cityName: String? = null
+        data.forEach { city ->
+            cityName = city.takeIf { sumAverage(city) in startRange..endRange }?.cityName
         }
+
         return cityName
     }
 
