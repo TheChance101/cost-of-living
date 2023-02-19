@@ -1,74 +1,69 @@
 package interactor
 
+import dataSource.CitiesHasNullFakeDataSource
+import dataSource.CitiesEmptyList
+import dataSource.MostSuitableCity
 import dataSource.FakeDataSource
-import model.CityEntity
 import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
+
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetMostSuitableCityInteractorTest {
 
-    private lateinit var getMostSuitableCityInteractor: GetMostSuitableCityInteractor
     private lateinit var fakeDataSource: FakeDataSource
+    private lateinit var citiesEmptyList: CitiesEmptyList
+    private lateinit var citiesHasNullFakeDataSource: CitiesHasNullFakeDataSource
+    private lateinit var nullDataInteractor: GetMostSuitableCityToHaveMoreSavingsInteractor
+    private lateinit var emptyDataInteractor: GetMostSuitableCityToHaveMoreSavingsInteractor
+    private lateinit var mixedValidDataInteractor: GetMostSuitableCityToHaveMoreSavingsInteractor
 
-    @BeforeAll
+
+    @BeforeEach
     fun setUp() {
-        getMostSuitableCityInteractor = GetMostSuitableCityInteractor()
         fakeDataSource = FakeDataSource()
+        citiesEmptyList = CitiesEmptyList()
+        citiesHasNullFakeDataSource = CitiesHasNullFakeDataSource()
+        emptyDataInteractor = GetMostSuitableCityToHaveMoreSavingsInteractor(citiesEmptyList)
+        mixedValidDataInteractor = GetMostSuitableCityToHaveMoreSavingsInteractor(fakeDataSource)
+        nullDataInteractor = GetMostSuitableCityToHaveMoreSavingsInteractor(citiesHasNullFakeDataSource)
     }
 
+
     @Test
-    fun should_ReturnCityName_when_GivenListOfCities() {
+    fun `should return city when given list of cities`() {
         //given
-        val cityList = fakeDataSource.getAllCitiesData()
+        mixedValidDataInteractor = GetMostSuitableCityToHaveMoreSavingsInteractor(fakeDataSource)
         //when
-        val cityNameResult = getMostSuitableCityInteractor.execute(cityList)
+        val actual = mixedValidDataInteractor.execute()
         //then
-        assertEquals("Banjul", cityNameResult)
+        val expected = MostSuitableCity().mostSuitableCityEntity
+        assertEquals(expected, actual)
     }
 
     @Test
-    fun should_ReturnException_when_ListOfCitiesIsEmpty() {
+    fun `should throw exception when retrieved cities list from data source is empty`() {
         //given
-        val cityList = emptyList<CityEntity>()
+        emptyDataInteractor = GetMostSuitableCityToHaveMoreSavingsInteractor(citiesEmptyList)
         //when
-        val cityNameResult = Executable { getMostSuitableCityInteractor.execute(cityList) }
+        val actual = Executable { emptyDataInteractor.execute() }
         //then
-        assertThrows(Exception::class.java, cityNameResult)
+        assertThrows(IllegalStateException::class.java, actual)
     }
 
     @Test
-    fun should_ReturnCityName_when_ListHasOneItem() {
+    fun `should return empty list when all the cities list is filtered because it has only null data`() {
         //given
-        val cityList = listOf(fakeDataSource.getAllCitiesData().last())
+        nullDataInteractor = GetMostSuitableCityToHaveMoreSavingsInteractor(citiesHasNullFakeDataSource)
         //when
-        val cityNameResult = getMostSuitableCityInteractor.execute(cityList)
+        val actual = Executable { nullDataInteractor.execute() }
         //then
-        assertEquals("Sri Jayewardenepura Kotte", cityNameResult)
+        assertThrows(NoSuchElementException::class.java, actual)
     }
 
-    @Test
-    fun should_ReturnException_when_CityListEquelNull() {
-        //given
-        val cityList: List<CityEntity>? = null
-        //when
-        val cityNameResult = Executable { getMostSuitableCityInteractor.execute(cityList!!) }
-        //then
-        assertThrows(Exception::class.java, cityNameResult)
-    }
-
-    @Test
-    fun should_ReturnException_when_AllCitiesHasNullData() {
-        //given
-        val cityList = fakeDataSource.getAllCitiesData().take(3)
-        val cityNameResult = Executable { getMostSuitableCityInteractor.execute(cityList) }
-        //then
-        assertThrows(Exception::class.java, cityNameResult)
-
-    }
 
 }
+

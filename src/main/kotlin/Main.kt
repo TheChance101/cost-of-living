@@ -1,3 +1,4 @@
+
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import interactor.*
@@ -75,7 +76,7 @@ fun getResultDependOnTheOption() {
             val limit = readln().toInt()
             print("enter square meter : ")
             val squareMeter = readln().toInt()
-            getCitiesNameToBuyApartmentFaster(salary, limit, squareMeter)
+            getCitiesNameToBuyApartmentFaster(limit, squareMeter)
             horizontalRule()
         }
         6 -> {
@@ -110,6 +111,7 @@ fun getResultDependOnTheOption() {
             getLowestAveragePricesForFruitsAndVegetables(dataSource, readln().toInt())
             horizontalRule()
         }
+
         else -> {
             println("You choose worse case")
             horizontalRule()
@@ -158,6 +160,7 @@ fun printUserOptionList() {
             8 - Salary Average And Cities Names in $TEXT_OF_COUNTRY_NAME
             9 - Highest Different In Apartment Rent
             10 - Lowest Average Prices For Fruits And Vegetables
+
         """.trimIndent()
     )
 }
@@ -181,6 +184,7 @@ fun getTopCountriesWithHighTaxOnCarbonatedDrinks(limit: Int) {
                ${index+1}-$TEXT_OF_COUNTRY_NAME=> ${element.first}
             """.trimIndent())
     }}
+
 fun getCitiesNamesSortedCheapestBananaPrices() {
         val getCitiesNamesSortedCheapestBananaPrices = GetCitiesNamesSortedCheapestBananaPrices()
     getCitiesNamesSortedCheapestBananaPrices.execute(*inputCitiesEntity)
@@ -198,19 +202,22 @@ $TEXT_OF_COUNTRY_NAME => ${interactWithData?.country}
 Internet 60 Mbps => ${interactWithData?.servicesPrices?.internet60MbpsOrMoreUnlimitedDataCableAdsl}$
 """.trimIndent())
     }
-fun getMostSuitableCity() {
-    val getMostSuitableCity = GetMostSuitableCityInteractor()
-    val list = getMostSuitableCity.getAllCities(dataSource)
-    val cityNameResult = getMostSuitableCity.execute(list)
-    println("$TEXT_OF_CITY_NAME => $cityNameResult")
-}
-fun getCitiesNameToBuyApartmentFaster(salary: Int, limit: Int, squareMeter: Int) {
+
+fun getCitiesNameToBuyApartmentFaster(limit: Int, squareMeter: Int) {
     val getCitiesNameToBuyApartmentFasterInteractor =
         GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
-    val listOfCityName = getCitiesNameToBuyApartmentFasterInteractor.execute(salary, limit, squareMeter)
+    val listOfCityName = getCitiesNameToBuyApartmentFasterInteractor.execute(limit, squareMeter)
     listOfCityName.forEachIndexed { index, pair ->
         println("""${index + 1}- $TEXT_OF_CITY_NAME =>${pair.first} && Salary ${pair.second}""")
 }}
+
+
+fun getMostSuitableCity() {
+    val getMostSuitableCityToHaveMoreSavingsInteractor = GetMostSuitableCityToHaveMoreSavingsInteractor(dataSource)
+    val mostSuitableCity = getMostSuitableCityToHaveMoreSavingsInteractor.execute()
+    println("$TEXT_OF_CITY_NAME => $cityNameResult")
+}
+
 fun getTopFashionCitiesNames(limit: Int) {
     val topFashionCitiesNames = GetTopFashionCitiesNamesInteractor(dataSource)
     println("Top Fashion Cities Names")
@@ -244,7 +251,12 @@ fun getLowestAveragePricesForFruitsAndVegetables(dataSource: CostOfLivingDataSou
     lowestAveragePricesForFruitsAndVegetablesInteractor.execute(limit).forEachIndexed{index ,cityName->
         println("""${index + 1} -$TEXT_OF_CITY_NAME => $cityName""")
     }
+
+fun getCityHasHighestDifferentInApartmentRent(dataSource: CostOfLivingDataSource) {
+    val getCityHasHighestDifferentInApartmentRent = GetCityHasTheHighestDifferentInApartmentRentInteractor(dataSource)
+    println(getCityHasHighestDifferentInApartmentRent.execute())
 }
+
 
 /**********************************************************************
  EXIT FORM OUT APPLICATION
@@ -255,3 +267,4 @@ fun exitFromOurApplication(){
     if(state.lowercase().trim() == "y")
         exitProcess(0)
 }
+

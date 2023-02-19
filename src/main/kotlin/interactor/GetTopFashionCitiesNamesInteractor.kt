@@ -1,6 +1,7 @@
 package interactor
 
 import model.CityEntity
+import utils.Constants.EMPTY_LIST_EXCEPTION_MSG
 import utils.Constants.INVALID_LIMIT_EXCEPTION_MSG
 import utils.areNotNull
 import utils.average
@@ -13,10 +14,11 @@ class GetTopFashionCitiesNamesInteractor(
     fun execute(limit: Int): List<String> {
         return dataSource
             .getAllCitiesData()
+            .ifEmpty { throw IllegalStateException(EMPTY_LIST_EXCEPTION_MSG) }
             .asSequence()
             .filter(::excludeNullPricesAndLowQualityData)
             .sortedBy { it.clothesPrices.average() }
-            .distinctBy { Pair(it.cityName, it.country) }
+            .distinctBy { it.cityName to it.country }
             .takeIf { limit >= 0 }
             ?.take(limit)
             ?.map { it.cityName }

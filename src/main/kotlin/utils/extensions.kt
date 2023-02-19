@@ -4,6 +4,8 @@ import model.ClothesPrices
 
 fun <T> T.isNotNull() = this != null
 
+fun <T> T.isNull() = this == null
+
 fun ClothesPrices.areNotNull(): Boolean {
     return onePairOfJeansLevis50oneOrSimilar.isNotNull() &&
             onePairOfMenLeatherBusinessShoes.isNotNull() &&
