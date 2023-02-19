@@ -8,23 +8,19 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/interactor/GetTopCitesNameInFashionTaskInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetTopCitesNameInFashionTaskInteractor.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetTopCitesNameInFshionTaskInteractorTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetTopCitesNameInFshionTaskInteractorTest.kt" afterDir="false" />
+    <list default="true" id="2b2ca722-ce79-48ec-8557-4eb6df2410a1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCityMakesFamilySaveMoreInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCityMakesFamilySaveMoreInteractor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/FakeDataSourceForFamilySavings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/FakeDataSourceForFamilySavings.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetCityMakesFamilySaveMoreInteractionTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetCityMakesFamilySaveMoreInteractionTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExternalProjectsData">
-    <projectState path="$PROJECT_DIR$">
-      <ProjectState />
-    </projectState>
-  </component>
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
         <projects_view>
           <tree_state>
             <expand />
@@ -34,18 +30,24 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="fix/closest_average_dinner_prices" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2LtB5fV4udmEipOvtFtqQn5GvAu" />
+  <component name="ProjectId" id="2LvmHWLLaeAJoApmC5JjkLcyjIt" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -69,6 +71,13 @@
   </component>
   <component name="RunManager" selected="Gradle.GetTopCitesNameInFshionTaskInteractorTest">
     <configuration name="GetAverageSalariesInCountryInteractorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Git.Branch.Popup.ShowAllRemotes": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+  <component name="RunManager" selected="Gradle.GetCityMakesFamilySaveMoreInteractionTest.shouldReturnFalseWhenSalaryIsNull">
+    <configuration name="GetCityMakesFamilySaveMoreInteractionTest.shouldReturnFalseWhenSalaryIsNull" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -81,7 +90,53 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;interactor.GetAverageSalariesInCountryInteractorTest&quot;" />
+            <option value="&quot;interactor.GetCityMakesFamilySaveMoreInteractionTest.shouldReturnFalseWhenSalaryIsNull&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="GetDinnerLocationInteractorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;interactor.GetDinnerLocationInteractorTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="GetDinnerLocationInteractorTest.should_ReturnNull_When_CitiesAreFromCountriesOtherThan_Usa_Canda_Mexico" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;interactor.GetDinnerLocationInteractorTest.should_ReturnNull_When_CitiesAreFromCountriesOtherThan_Usa_Canda_Mexico&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -114,118 +169,32 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="GetTopCitesNameInFshionTaskInteractorTest.should_returnCorrectAverage_when_averagePriceIsCorrect" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;interactor.GetTopCitesNameInFshionTaskInteractorTest.should_returnCorrectAverage_when_averagePriceIsCorrect&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="GetTopCitesNameInFshionTaskInteractorTest.should_returnTopFiveCities_when_inputIsCorrect" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;interactor.GetTopCitesNameInFshionTaskInteractorTest.should_returnTopFiveCities_when_inputIsCorrect&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="GetTopCitesNameInFshionTaskInteractorTest.should_returnTrue_When_ClothesPriceDataIsComplete" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;interactor.GetTopCitesNameInFshionTaskInteractorTest.should_returnTrue_When_ClothesPriceDataIsComplete&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="cost-of-living" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="cost-of-living" />
-      <option name="filePath" />
+    <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainKt" />
+      <module name="Cost-of-living-app.main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.GetCityMakesFamilySaveMoreInteractionTest.shouldReturnFalseWhenSalaryIsNull" />
+        <item itemvalue="Kotlin.MainKt" />
+        <item itemvalue="Gradle.GetDinnerLocationInteractorTest" />
         <item itemvalue="Gradle.GetTopCitesNameInFshionTaskInteractorTest" />
-        <item itemvalue="Gradle.GetAverageSalariesInCountryInteractorTest" />
-        <item itemvalue="Gradle.GetTopCitesNameInFshionTaskInteractorTest.should_returnTrue_When_ClothesPriceDataIsComplete" />
-        <item itemvalue="Gradle.GetTopCitesNameInFshionTaskInteractorTest.should_returnCorrectAverage_when_averagePriceIsCorrect" />
-        <item itemvalue="Gradle.GetTopCitesNameInFshionTaskInteractorTest.should_returnTopFiveCities_when_inputIsCorrect" />
+        <item itemvalue="Gradle.GetDinnerLocationInteractorTest.should_ReturnNull_When_CitiesAreFromCountriesOtherThan_Usa_Canda_Mexico" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="88c63e2d-e5e7-49a2-9aa9-a2a1420a74be" name="Changes" comment="" />
-      <created>1676680321085</created>
+      <changelist id="2b2ca722-ce79-48ec-8557-4eb6df2410a1" name="Changes" comment="" />
+      <created>1676767793477</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1676680321085</updated>
+      <updated>1676767793477</updated>
     </task>
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>

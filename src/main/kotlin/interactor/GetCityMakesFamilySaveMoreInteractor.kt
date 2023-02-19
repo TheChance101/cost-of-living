@@ -7,50 +7,39 @@ class GetCityMakesFamilySaveMoreInteractor(
 ) {
 
     fun execute(): String {
+        return if (dataSource.getAllCitiesData().isNotEmpty()) {
+            dataSource.getAllCitiesData()
+                .filter(::excludeInvalidData)
+                .maxByOrNull {it.run { calculateSalaryAfterBuyingTheNeeds(it) }
+                }!!.cityName
+        } else throw Exception("There is no Data")
+    }
 
-        if (dataSource.getAllCitiesData().isNotEmpty()) {
-
-            val cities = dataSource.getAllCitiesData().filter(::excludeNullFoodPrice)
-            var citiesAftercheck: List<CityEntity> = listOf()
-
-            cities.forEach {
-                var cost: Double = 250.0
-                cost += it.foodPrices.riceWhite1kg!!.toDouble() * 2
-                cost += it.foodPrices.chickenFillets1kg!!.toDouble() * 10
-                cost += it.foodPrices.localCheese1kg!!.toDouble()
-                cost += it.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!!.toDouble() * 4
-                cost += it.foodPrices.loafOfFreshWhiteBread500g!!.toDouble() * 30
-                cost += it.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!.toDouble()
-                if (cost <= (it.averageMonthlyNetSalaryAfterTax!!.toDouble() / 2)) {
-                    citiesAftercheck += it
-                }
-
-
-            }
-
-            val city = citiesAftercheck.sortedByDescending { it.averageMonthlyNetSalaryAfterTax }
-                .map { it.cityName }[0]
-            return city
+    fun excludeInvalidData(city: CityEntity): Boolean {
+        return city.run{
+            realEstatesPrices.apartment3BedroomsInCityCentre != null
+                    && averageMonthlyNetSalaryAfterTax != null
+                    && foodPrices.chickenFillets1kg != null
+                    && foodPrices.localCheese1kg != null
+                    && foodPrices.riceWhite1kg != null
+                    && foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null
+                    && foodPrices.loafOfFreshWhiteBread500g != null
+                    && dataQuality
         }
-
-
-        return "There is no Data"
-
     }
 
-
-    fun excludeNullFoodPrice(city: CityEntity): Boolean {
-        return city.realEstatesPrices.apartment3BedroomsOutsideOfCentre != null
-                && city.averageMonthlyNetSalaryAfterTax != null
-                && city.foodPrices.chickenFillets1kg != null
-                && city.foodPrices.localCheese1kg != null
-                && city.foodPrices.riceWhite1kg != null
-                && city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null
-                && city.foodPrices.loafOfFreshWhiteBread500g != null
-                && city.dataQuality
+    private fun calculateSalaryAfterBuyingTheNeeds(city: CityEntity): Double {
+        val doubleOfSalary = city.averageMonthlyNetSalaryAfterTax!!.toDouble() * 2
+        val priceOf2KiloGramsOfRice = 2 * city.foodPrices.riceWhite1kg!!.toDouble()
+        val priceOf10KiloGramsOfChickenFillets = 10 * city.foodPrices.chickenFillets1kg!!.toDouble()
+        val priceOf4KiloGramsOfMeetBeef = 4 * city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!!.toDouble()
+        val priceOf15KgOfBread = 30 * city.foodPrices.loafOfFreshWhiteBread500g!!.toDouble()
+        val paymentForTheOtherTypeOfNeeds = 250
+        return (doubleOfSalary) - (
+                    priceOf2KiloGramsOfRice + priceOf10KiloGramsOfChickenFillets +
+                    city.foodPrices.localCheese1kg!!.toDouble()+ priceOf4KiloGramsOfMeetBeef +
+                    priceOf15KgOfBread + city.realEstatesPrices.apartment3BedroomsInCityCentre!!.toDouble() +
+                        paymentForTheOtherTypeOfNeeds)
     }
 
-    fun excludeInvalidSalary(city: CityEntity):Boolean{
-        return city.averageMonthlyNetSalaryAfterTax != null
-    }
 }
