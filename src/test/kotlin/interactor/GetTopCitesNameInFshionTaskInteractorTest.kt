@@ -1,6 +1,5 @@
 package interactor
 
-import fakeDataSource.FakeDataSource
 import fakeDataSource.FakeDataSourceForFashionTask
 import model.*
 import org.junit.jupiter.api.*
