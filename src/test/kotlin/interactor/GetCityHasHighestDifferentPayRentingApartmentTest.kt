@@ -1,7 +1,6 @@
 package interactor
 
 import fakeDataSource.FakeDataSourceForRentalPrice
-import model.CityEntity
 
 import org.junit.jupiter.api.Test
 
@@ -43,47 +42,47 @@ class TestGetCityWithHighestRentalPriceDifferenceInteractor {
     @Test
     fun ShouldReturn_AnEmptyString_IfNoCity_WithHigh_QualityDataIsFound() {
 
-        val result = getCityWithHighestRentalPriceDifference.execute()
-        assertEquals("Cairo", result)
+        val result = getCityWithHighestRentalPriceDifference.execute().cityName
+        assertEquals("Solue", result)
     }
 
     @Test
     fun Should_Return_TheCityWith_TheHighest_Rental_PriceDifference() {
-        val result = getCityWithHighestRentalPriceDifference.execute()
+        val result = getCityWithHighestRentalPriceDifference.execute().cityName
 
-        assertEquals("Cairo", result)
+        assertEquals("Solue", result)
     }
     @Test
     fun Should_Return_TheCityWith_TheHighestRental_PriceDifference_For1BedroomApartments() {
     //when
-        val result = getCityWithHighestRentalPriceDifference.execute()
+        val result = getCityWithHighestRentalPriceDifference.execute().cityName
     //then
-        assertEquals("Cairo", result)
+        assertEquals("Solue", result)
     }
 
     @Test
     fun Should_Return_TheCityWith_TheHighestRental_PriceDifference_For3BedroomApartments() {
 
-        val result = getCityWithHighestRentalPriceDifference.execute()
+        val result = getCityWithHighestRentalPriceDifference.execute().cityName
 
-        assertEquals("Cairo", result)
+        assertEquals("Solue", result)
     }
 
     @Test
     fun Should_Return_TheCityWith_TheHighestRental_PriceDifference_ForBuying1BedroomApartments() {
         //when
-        val result = getCityWithHighestRentalPriceDifference.execute()
+        val result = getCityWithHighestRentalPriceDifference.execute().cityName
         //then
-        assertEquals("Cairo", result)
+        assertEquals("Solue", result)
     }
 
     @Test
     fun Should_Return_TheCityWith_TheHighestRental_PriceDifference_ForBuying3BedroomApartments() {
 
         //when
-        val result = getCityWithHighestRentalPriceDifference.execute()
+        val result = getCityWithHighestRentalPriceDifference.execute().cityName
         //then
-        assertEquals("Cairo", result)
+        assertEquals("Solue", result)
     }
 
 
