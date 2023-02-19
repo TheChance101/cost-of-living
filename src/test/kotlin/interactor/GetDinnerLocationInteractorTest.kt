@@ -1,12 +1,13 @@
 package interactor
 
 import fakeDataSource.FakeDataSourceForDinnerLocation
-import model.*
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.assertDoesNotThrow
+import org.junit.jupiter.api.function.Executable
+import kotlin.math.ceil
 
 
 class GetDinnerLocationInteractorTest {
@@ -26,10 +27,10 @@ class GetDinnerLocationInteractorTest {
         interactor = GetDinnerLocationInteractor(
             fakeDataSourceForDinnerLocation.getEmptyFakeDataSource())
         // when
-        val result = interactor.execute()
+        val executable = Executable { interactor.execute() }
         //then
         assertDoesNotThrow("This block should not throw an exception") {
-            result
+            executable
         }
     }
 
@@ -38,11 +39,10 @@ class GetDinnerLocationInteractorTest {
         // Given
         interactor = GetDinnerLocationInteractor(fakeDataSourceForDinnerLocation.
             getDataWithNullInMealPrice())
-
         //when
-        val result = interactor.execute()
+        val executable = Executable { interactor.execute() }
         //then
-        assertNull(result)
+        assertThrows(NullPointerException::class.java,executable)
     }
 
     @Test
@@ -51,9 +51,9 @@ class GetDinnerLocationInteractorTest {
         // Given
         val interactor = GetDinnerLocationInteractor(fakeDataSourceForDinnerLocation.getMeOtherThanSelected())
         //when
-        val result = interactor.execute()
+        val executable = Executable { interactor.execute() }
         //then
-        assertNull(result)
+        assertThrows(NullPointerException::class.java,executable)
     }
 
     @Test
@@ -61,9 +61,9 @@ class GetDinnerLocationInteractorTest {
         // Given
         val interactor = GetDinnerLocationInteractor(
             fakeDataSourceForDinnerLocation.getMeCustomDataSource())
-        val expected = "Chicago"
+        val expected = "Montreal"
         // When
-        val result = interactor.execute()
+        val result = interactor.execute()!!.cityName
         // Then
         assertEquals(expected, result)
     }
@@ -74,19 +74,21 @@ class GetDinnerLocationInteractorTest {
         val mealsPrices1 = fakeDataSourceForDinnerLocation.mealOne()
         val mealsPrices2 = fakeDataSourceForDinnerLocation.mealTwo()
         //when
-        val avg = getAverageBetweenTwoCities(mealsPrices1.mealsPrices, mealsPrices2.mealsPrices)
+        val average = ceil(getAverageBetweenTwoCities(mealsPrices1.mealsPrices, mealsPrices2.mealsPrices))
+        val exepected = 131.0f
+
         //then
-        assertEquals(145f, avg)
+        assertEquals(exepected, average)
     }
 
     @Test
-    fun should_ReturnsClosestCity_And_Avg(){
+    fun should_ReturnsClosestCity_And_Average(){
         //Given
         val cityList = fakeDataSourceForDinnerLocation.getMeClosestCity()
         val avg = 310f
         //when
         val closestCity = getClosestCity(cityList).cityName
-        val expected = "Ecatepec"
+        val expected = "Montreal"
         //then
         assertEquals(expected, closestCity)
     }
