@@ -10,21 +10,21 @@ import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class GetCitiesNameToBuyApartmentFasterInteractorTest {
+internal class GetCityNamesToBuyApartmentFasterInteractorTest {
 
     private lateinit var dataSource: CostOfLivingDataSource
-    private lateinit var interactor: GetCitiesNameToBuyApartmentFasterInteractor
-    private lateinit var emptyListInteractor: GetCitiesNameToBuyApartmentFasterInteractor
-    private lateinit var nullPricesInteractor: GetCitiesNameToBuyApartmentFasterInteractor
+    private lateinit var interactor: GetCityNamesToBuyApartmentFasterInteractor
+    private lateinit var emptyListInteractor: GetCityNamesToBuyApartmentFasterInteractor
+    private lateinit var nullPricesInteractor: GetCityNamesToBuyApartmentFasterInteractor
 
 
     @BeforeEach
     fun setup() {
         dataSource = FakeDataSource()
-        interactor = GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
-        emptyListInteractor = GetCitiesNameToBuyApartmentFasterInteractor(FakeDataWithEmptyList())
+        interactor = GetCityNamesToBuyApartmentFasterInteractor(dataSource)
+        emptyListInteractor = GetCityNamesToBuyApartmentFasterInteractor(FakeDataWithEmptyList())
         nullPricesInteractor =
-            GetCitiesNameToBuyApartmentFasterInteractor(FakeDataForLowQualityData())
+            GetCityNamesToBuyApartmentFasterInteractor(FakeDataForLowQualityData())
     }
 
     @Test

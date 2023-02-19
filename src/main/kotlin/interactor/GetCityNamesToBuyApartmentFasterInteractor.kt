@@ -3,7 +3,7 @@ package interactor
 import model.CityEntity
 import utils.isNotNull
 
-class GetCitiesNameToBuyApartmentFasterInteractor(
+class GetCityNamesToBuyApartmentFasterInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
     fun execute(

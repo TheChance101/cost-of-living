@@ -178,9 +178,9 @@ fun getMostSuitableCity() {
 }
 
 fun getCitiesNameToBuyApartmentFaster(limit: Int, squareMeter: Int) {
-    val getCitiesNameToBuyApartmentFasterInteractor =
-        GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
-    println(getCitiesNameToBuyApartmentFasterInteractor.execute(limit, squareMeter))
+    val getCityNamesToBuyApartmentFasterInteractor =
+        GetCityNamesToBuyApartmentFasterInteractor(dataSource)
+    println(getCityNamesToBuyApartmentFasterInteractor.execute(limit, squareMeter))
 //    println(getCitiesNameToBuyApartmentFasterInteractor.execute(1000, 10, 100))
 }
 
