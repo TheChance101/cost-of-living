@@ -1,54 +1,38 @@
 package interactor
 
-class GetLowestFruitAndVegetablesPricesCitiesNamesInteractor(
+import model.CityEntity
+
+class GetTopCitiesFruitsAndVegetablesLowestCostInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
-    fun execute(limit: Int) :List<Pair<String,Pair<Float,Float?>>> {
-        val listOfFruitAndVegetablesPrices = ArrayList<Float>()
-        dataSource.getAllCitiesData().filter {
-            it.averageMonthlyNetSalaryAfterTax != null
-                    && it.fruitAndVegetablesPrices.apples1kg != null
-                    && it.fruitAndVegetablesPrices.onion1kg != null
-                    && it.fruitAndVegetablesPrices.oranges1kg != null
-                    && it.fruitAndVegetablesPrices.banana1kg != null
-                    && it.fruitAndVegetablesPrices.lettuceOneHead != null
-                    && it.fruitAndVegetablesPrices.potato1kg != null
-                    && it.fruitAndVegetablesPrices.tomato1kg != null
-        }.map { it.fruitAndVegetablesPrices }
-            .forEach {
-                listOfFruitAndVegetablesPrices.add(
-                    it.apples1kg!! + it.banana1kg!! + it.lettuceOneHead!!
-                            + it.onion1kg!! +
-                            it.oranges1kg!!
-                            + it.potato1kg!! + it.tomato1kg!!
-                )
-            }
+    fun execute(limit: Int=10): List<String> {
+        return dataSource
+            .getAllCitiesData()
+            .filter(::excludeNullSalaries)
+            .sortedBy(::getTheAverageBetweenFruitsAndVegetablesCostToAverageSalary)
+            .take(limit)
+            .map { it.cityName }
+    }
 
-        val cities = dataSource.getAllCitiesData().filter {
-            it.averageMonthlyNetSalaryAfterTax != null
-                    && it.fruitAndVegetablesPrices.apples1kg != null
-                    && it.fruitAndVegetablesPrices.onion1kg != null
-                    && it.fruitAndVegetablesPrices.oranges1kg != null
-                    && it.fruitAndVegetablesPrices.banana1kg != null
-                    && it.fruitAndVegetablesPrices.lettuceOneHead != null
-                    && it.fruitAndVegetablesPrices.potato1kg != null
-                    && it.fruitAndVegetablesPrices.tomato1kg != null
-        }.map { it.cityName }
-        val salaries = dataSource.getAllCitiesData().filter {
-            it.averageMonthlyNetSalaryAfterTax != null
-                    && it.fruitAndVegetablesPrices.apples1kg != null
-                    && it.fruitAndVegetablesPrices.onion1kg != null
-                    && it.fruitAndVegetablesPrices.oranges1kg != null
-                    && it.fruitAndVegetablesPrices.banana1kg != null
-                    && it.fruitAndVegetablesPrices.lettuceOneHead != null
-                    && it.fruitAndVegetablesPrices.potato1kg != null
-                    && it.fruitAndVegetablesPrices.tomato1kg != null
-        }.map { it.averageMonthlyNetSalaryAfterTax }
+    fun excludeNullSalaries(city: CityEntity) =
+        city.averageMonthlyNetSalaryAfterTax != null
 
-        return cities.zip(listOfFruitAndVegetablesPrices.zip(salaries))
-            .map { (cityName: String, pair: Pair<Float, Float?>) ->
-                cityName to pair
-            }
+    private fun getAverageOfFruitAndVegetablesPrices(city: CityEntity): Float {
+        val fruitsAndVegetablesPrices = city.fruitAndVegetablesPrices
+        val listOfPrices = listOfNotNull(
+            fruitsAndVegetablesPrices.apples1kg,
+            fruitsAndVegetablesPrices.banana1kg,
+            fruitsAndVegetablesPrices.oranges1kg,
+            fruitsAndVegetablesPrices.tomato1kg,
+            fruitsAndVegetablesPrices.potato1kg,
+            fruitsAndVegetablesPrices.onion1kg,
+            fruitsAndVegetablesPrices.lettuceOneHead
+        )
+        return (listOfPrices.sum()).div(listOfPrices.size)
+    }
+
+    private fun getTheAverageBetweenFruitsAndVegetablesCostToAverageSalary(city: CityEntity) =
+        getAverageOfFruitAndVegetablesPrices(city) / city.averageMonthlyNetSalaryAfterTax!!
 
 
-    }}
+}
