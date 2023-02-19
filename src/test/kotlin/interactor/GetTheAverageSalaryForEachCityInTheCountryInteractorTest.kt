@@ -75,7 +75,7 @@ internal class GetTheAverageSalaryForEachCityInTheCountryInteractorTest {
     @Test
     fun should_throwAnException_whenAverageSalaryIsNull() {
         fakeData.dataSourceType = DataSourceType.NULLABLE
-        //given wrong country
+        //given null average salary
         val fakeCityEntityNullable = dataSource.getAllCitiesData()[2]
         val countryName = fakeCityEntityNullable.country
         //when  the city name and salary average
