@@ -1,6 +1,7 @@
 package interactor
 
 import fakedata.*
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import kotlin.test.assertContentEquals
@@ -10,16 +11,21 @@ import kotlin.test.assertNotEquals
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCitiesLeastAvgCarPricesInteractorTest {
     private lateinit var interactor: GetCitiesLeastAvgCarPricesInteractor
+    private lateinit var expectedTop10Cities: List<Pair<String, Float>>
+
+    @BeforeAll
+    fun init() {
+        expectedTop10Cities = top10CitiesSorted()
+    }
 
     @Test
     fun should_ReturnTopCityNames_when_inputIsValid() {
         // Given
         interactor = GetCitiesLeastAvgCarPricesInteractor(QualityCities())
-        val expected = top10CitiesSorted()
         // When
         val result = interactor.execute(10)
         // Then
-        assertContentEquals(expected, result)
+        assertContentEquals(expectedTop10Cities, result)
     }
 
     @Test
