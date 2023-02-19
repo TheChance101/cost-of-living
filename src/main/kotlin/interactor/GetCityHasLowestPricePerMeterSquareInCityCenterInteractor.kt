@@ -6,7 +6,10 @@ class GetCityHasLowestPricePerMeterSquareInCityCenterInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
     fun execute(): CityEntity? {
-        return null
+        return dataSource
+            .getAllCitiesData()
+            .filter(::isValidPrices)
+            .minByOrNull { it.realEstatesPrices.pricePerSquareMeterToBuyApartmentInCityCentre!! }
     }
 
     private fun isValidPrices(city: CityEntity): Boolean {
