@@ -7,20 +7,20 @@ class GetTopFiveCitiesForFashionInteractor (
     val dataSource: CostOfLivingDataSource,
 ){
 
-    fun execute(limit: Int): List<String> {
-        return dataSource
+    fun execute(limit:Int)=
+             dataSource
             .getAllCitiesData()
-            .filter(::excludeNullSalariesAndLowQualityData)
-            .sortedBy { it.cityName }
-            .take(10)
+            .filter(::excludeNullClothesPricesValues)
             .sortedWith(compareBy({it.clothesPrices.onePairOfJeansLevis50oneOrSimilar},{it.clothesPrices.oneSummerDressInAChainStoreZaraHAndM},{it.clothesPrices.onePairOfNikeRunningShoesMidRange},{it.clothesPrices.onePairOfMenLeatherBusinessShoes}))
             .take(limit)
             .map { it.cityName }
 
-    }
 
-    private fun excludeNullSalariesAndLowQualityData(city: CityEntity): Boolean {
-        return city.averageMonthlyNetSalaryAfterTax != null && city.dataQuality
-    }
+
+    fun excludeNullClothesPricesValues(city: CityEntity)=
+                city.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null &&
+                city.clothesPrices.onePairOfMenLeatherBusinessShoes != null &&
+                city.clothesPrices.onePairOfNikeRunningShoesMidRange != null &&
+                city.clothesPrices.oneSummerDressInAChainStoreZaraHAndM != null
 
 }
