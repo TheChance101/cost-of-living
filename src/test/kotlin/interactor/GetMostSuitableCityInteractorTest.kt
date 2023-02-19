@@ -50,7 +50,7 @@ internal class GetMostSuitableCityInteractorTest {
     }
 
     @Test
-    fun `should throw exception when the cities list has only null data`() {
+    fun `should return empty list when all the cities list is filtered because it has only null data`() {
         //given
         interactor = GetMostSuitableCityInteractor(citiesHasNullFakeDataSource)
         //when
