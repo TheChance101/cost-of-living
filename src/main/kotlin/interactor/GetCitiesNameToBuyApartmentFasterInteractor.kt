@@ -6,7 +6,6 @@ class GetCitiesNameToBuyApartmentFasterInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
     fun execute(
-        salary: Int,
         limit: Int,
         squareMeter: Int
     ): List<Pair<String, Double>> {
@@ -21,7 +20,7 @@ class GetCitiesNameToBuyApartmentFasterInteractor(
                 Pair(
                     it.cityName,
                     calculateYearsNeededToBuyApartment(
-                        salary,
+                        it.averageMonthlyNetSalaryAfterTax!!,
                         it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!,
                         squareMeter
                     )
@@ -45,7 +44,7 @@ class GetCitiesNameToBuyApartmentFasterInteractor(
     }
 
     private fun calculateYearsNeededToBuyApartment(
-        salary: Int,
+        salary: Float,
         pricePerSquareMeter: Float,
         squareMeter: Int
     ): Double {
