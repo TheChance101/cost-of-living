@@ -1,22 +1,30 @@
 package interactor
 
 import dataSource.FakeDataSource
+import dataSource.FakeDataWithEmptyList
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.function.Executable
+
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
 
     private lateinit var fakeDataSource: CostOfLivingDataSource
-    lateinit var interactor: GetSalaryAverageAndCitiesNamesInCountryInteractor
+    private lateinit var fakeDataWithEmptyList: CostOfLivingDataSource
+    private lateinit var interactor: GetSalaryAverageAndCitiesNamesInCountryInteractor
+    private lateinit var interactorForEmptyData: GetSalaryAverageAndCitiesNamesInCountryInteractor
+
 
     @BeforeAll
     fun setup(){
         fakeDataSource = FakeDataSource()
+        fakeDataWithEmptyList = FakeDataWithEmptyList()
         interactor = GetSalaryAverageAndCitiesNamesInCountryInteractor(fakeDataSource)
+        interactorForEmptyData = GetSalaryAverageAndCitiesNamesInCountryInteractor(fakeDataWithEmptyList)
     }
 
     @Test
@@ -53,24 +61,24 @@ internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
     }
 
     @Test
-    fun `should return empty list when the country name is wrong`() {
+    fun `should throw exception when the country name is wrong`() {
         //given wrong country name
         val country = "lol"
         //when getting a list of pair contains the city name and average salary of country
-        val actual = interactor.execute(country)
-        val expected = emptyList<Pair<String,Float>>()
+        val actual = Executable { interactor.execute(country) }
+        val expected = NoSuchElementException::class.java
         //then
-        assertEquals(expected, actual)
+        assertThrows(expected, actual)
     }
     @Test
-    fun `should return empty list when the country name is empty string`() {
+    fun `should throw exception when the country name is empty string`() {
         //given empty string
         val country = ""
         //when getting a list of pair contains the city name and average salary of country
-        val actual = interactor.execute(country)
-        val expected = emptyList<Pair<String,Float>>()
+        val actual = Executable { interactor.execute(country) }
+        val expected = NoSuchElementException::class.java
         //then
-        assertEquals(expected, actual)
+        assertThrows(expected, actual)
     }
 
     @Test
@@ -86,13 +94,24 @@ internal class GetSalaryAverageAndCitiesNamesInCountryInteractorTest {
     }
 
     @Test
-    fun `should return empty list when the country name is correct but not in the data`(){
+    fun `should throw exception when the country name is correct but not in the data`(){
         //given country name that is not in the data
         val country = "Egypt"
         //when getting a list of pair contains the city name and average salary of country
-        val actual = interactor.execute(country)
-        val expected = emptyList<Pair<String,Float>>()
+        val actual = Executable { interactor.execute(country) }
+        val expected = NoSuchElementException::class.java
         //then
-        assertEquals(expected, actual)
+        assertThrows(expected, actual)
+    }
+
+    @Test
+    fun `should throw exception when there is no data`(){
+        //given correct or wrong country name
+        val country = "Ay 7aga"
+        //when getting a list of pair contains the city name and average salary of country
+        val actual = Executable { interactorForEmptyData.execute(country) }
+        val expected = IllegalStateException::class.java
+        //then
+        assertThrows(expected,actual)
     }
 }
