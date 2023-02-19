@@ -1,73 +1,66 @@
 package interactor
 
+import dataSource.FakeCityItems
 import dataSource.FakeDataSource
-import dataSource.utils.NorthAmericaCountries
+import dataSource.FakeEmptyDataSource
+import model.CityEntity
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.function.Executable
+import utils.Constants
 
 class GetCityMatchManagerExpectationsInteractorTest {
 
     private lateinit var interactor: GetCityMatchManagerExpectationsInteractor
-    private lateinit var dataSource: FakeDataSource
+    private lateinit var dataSource: CostOfLivingDataSource
+    private lateinit var fakeDataSourceCities: CostOfLivingDataSource
+    private lateinit var fakeEmptyDataSource: CostOfLivingDataSource
 
 
     @BeforeEach
     fun setup() {
         dataSource = FakeDataSource()
+        fakeDataSourceCities = FakeCityItems()
+        fakeEmptyDataSource = FakeEmptyDataSource()
         interactor = GetCityMatchManagerExpectationsInteractor(dataSource)
     }
 
+
     @Test
-    fun `should return true when country is not in one of north america countries`() {
-        // given a list of countries that are in north america
-        val givenList = NorthAmericaCountries.list
-        // when we check if the countries are in north america
-        val result = interactor.execute()
-        // then we should get true
-        assertTrue(!givenList.contains(result.country))
+    fun `should throw exception when no data there`() {
+        // when there is no data
+        interactor = GetCityMatchManagerExpectationsInteractor(fakeEmptyDataSource)
+
+        val actual = Executable { interactor.execute() }
+        val expected = Exception::class.java
+
+        // then we should assert exception
+        assertThrows(expected, actual)
     }
 
     @Test
-    fun `should return false when country is in one of north america countries`() {
-        // given a list of countries that are in north america
-        val givenList = NorthAmericaCountries.list
-        // when we check if the countries are in north america
-        val result = interactor.execute()
-        // then we should get true
-        assertFalse(givenList.contains(result.country))
+    fun `should return empty list when list has not required country`() {
+        // when we check if there is no required countries
+        val actual = interactor.execute()
+        val expected = actual != null
+
+        // then we should return false
+        assertFalse(expected)
     }
 
     @Test
-    fun `should return meal price when mealFor2PeopleMidRangeRestaurant is not null`() {
-        // given a null value
-        val givenValue = null
-        // when we check if mealFor2PeopleMidRangeRestaurant is not null
-        val result = interactor.execute()
-        // then we should get true
-        assertNotEquals(givenValue, result.mealsPrices.mealFor2PeopleMidRangeRestaurant)
-    }
+    fun `should return correct city name with lowest mid-range meal price when given list of lowest, highest and mid prices`() {
+        // given list of lowest, highest and mid prices cities
+        interactor = GetCityMatchManagerExpectationsInteractor(fakeDataSourceCities)
 
-
-    @Test
-    fun `should return meal price when mealInexpensiveRestaurant is not null`() {
-        // given a null value
-        val givenValue = null
-        // when we check if mealInexpensiveRestaurant is not null
-        val result = interactor.execute()
-        // then we should get true
-        assertNotEquals(givenValue, result.mealsPrices.mealInexpensiveRestaurant)
-    }
-
-    @Test
-    fun `should return meal price when mealAtMcDonaldSOrEquivalent is not null`() {
-        // given a null value
-        val givenValue = null
-        // when we check if mealAtMcDonaldSOrEquivalent is not null
-        val result = interactor.execute()
-        // then we should get true
-        assertNotEquals(givenValue, result.mealsPrices.mealAtMcDonaldSOrEquivalent)
+        // when making the logic on the list
+        val actual = interactor.execute()?.cityName
+        val expected = "Monterey Park"
+        // then
+        assertEquals(expected, actual)
     }
 
 

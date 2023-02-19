@@ -1,7 +1,6 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import interactor.*
-import java.lang.System.exit
 import kotlin.system.exitProcess
 
 val csvParser = CsvParser()
@@ -159,25 +158,24 @@ fun getChooseOptionNumber(): Int {
 Side of Get Data element -> Instance Zone
  *********************************************************/
 fun getTop10CountriesWithHighTaxOnCarbonatedDrinks(limit: Int) {
-    val getTop10CountriesWithHighTaxOnCarbonatedDrinks = GetTop10CountriesWithHighTaxOnCarbonatedDrinks(dataSource)
-    println(getTop10CountriesWithHighTaxOnCarbonatedDrinks.execute(10, data))
+    val getTop10CountriesWithHighTaxOnCarbonatedDrinks = GetTopCountriesWithHighTaxOnCarbonatedDrinks(dataSource)
+    println(getTop10CountriesWithHighTaxOnCarbonatedDrinks.execute(10))
 }
 
 fun getCitiesNamesSortedCheapestBananaPrices() {
     val getCitiesNamesSortedCheapestBananaPrices = GetCitiesNamesSortedCheapestBananaPrices()
-    println(getCitiesNamesSortedCheapestBananaPrices.excute(*inputCitiesEntity))
+    println(getCitiesNamesSortedCheapestBananaPrices.execute(*inputCitiesEntity))
 }
 
 fun getCityHasCheapestInternetConnection() {
-    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor()
-    println(getCityHasCheapestInternetConnectionInteractor.execute(data))
+    val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
+    println(getCityHasCheapestInternetConnectionInteractor.execute())
 }
 
 fun getMostSuitableCity() {
-    val getMostSuitableCity = GetMostSuitableCityInteractor()
-    val list = getMostSuitableCity.getAllCities(dataSource)
-    val cityNameResult = getMostSuitableCity.execute(list)
-    println(cityNameResult)
+    val getMostSuitableCityInteractor = GetMostSuitableCityInteractor(dataSource)
+    val mostSuitableCity = getMostSuitableCityInteractor.execute()
+    println(mostSuitableCity)
 }
 
 fun getCitiesNameToBuyApartmentFaster(salary: Int, limit: Int, squareMeter: Int) {
