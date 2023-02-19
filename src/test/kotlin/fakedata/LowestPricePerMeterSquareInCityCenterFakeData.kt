@@ -364,7 +364,7 @@ object LowestPricePerMeterSquareInCityCenterFakeData {
                 apartmentOneBedroomOutsideOfCentre = 300000f,
                 apartment3BedroomsInCityCentre = 800000f,
                 apartment3BedroomsOutsideOfCentre = 500000f,
-                pricePerSquareMeterToBuyApartmentInCityCentre = 5000f,
+                pricePerSquareMeterToBuyApartmentInCityCentre = 6000f,
                 pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
             ),
             averageMonthlyNetSalaryAfterTax = 20f,

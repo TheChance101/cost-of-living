@@ -71,6 +71,27 @@ class GetCityHasLowestPricePerMeterSquareInCityCenterInteractorTest {
         assertEquals(fakeData.highQualityCase1, lowestPricePerMeterSquareCity)
     }
 
+    @Test
+    fun `should return correct city when given low quality data`() {
+        //given low quality data
+        val getCityHasLowestPricePerMeterSquareInCityCenterInteractor =
+            GetCityHasLowestPricePerMeterSquareInCityCenterInteractor(fakeData.fakeLowQualityData)
+        //when find city with the lowest price per meter square in city center
+        val lowestPricePerMeterSquareCity = getCityHasLowestPricePerMeterSquareInCityCenterInteractor.execute()
+        //then check the city
+        assertEquals(fakeData.lowQualityCase1, lowestPricePerMeterSquareCity)
+    }
+
+    @Test
+    fun `should return correct city when given data with duplicates`() {
+        //given data with duplicates
+        val getCityHasLowestPricePerMeterSquareInCityCenterInteractor =
+            GetCityHasLowestPricePerMeterSquareInCityCenterInteractor(fakeData.fakeDataWithDuplicates)
+        //when find city with the lowest price per meter square in city center
+        val lowestPricePerMeterSquareCity = getCityHasLowestPricePerMeterSquareInCityCenterInteractor.execute()
+        //then check the city
+        assertEquals(fakeData.highQualityCase1, lowestPricePerMeterSquareCity)
+    }
 
 
 }
