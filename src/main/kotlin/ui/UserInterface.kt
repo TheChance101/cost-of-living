@@ -1,10 +1,11 @@
-package utils
+package ui
 
 import interactor.*
 import interactor.utils.BedroomOption
+import model.*
 
 
-class Helper(private val dataSource: CostOfLivingDataSource) {
+class UserInterface(private val dataSource: CostOfLivingDataSource) {
     fun init() {
         do {
             println(
@@ -20,8 +21,7 @@ class Helper(private val dataSource: CostOfLivingDataSource) {
                         "10-Get the most suitable city in the world that they can have more savings per month.\n" +
                         "Note: for exit write 'Exit/exit' \n\n"
             )
-            val input = readlnOrNull()
-            when (input) {
+            when (readlnOrNull()) {
                 "1" -> {
                     println(GetCityHasCheapestInternetConnectionInteractor(dataSource).execute())
                     printSeparationLine()
@@ -73,10 +73,11 @@ class Helper(private val dataSource: CostOfLivingDataSource) {
                 }
 
                 "7" -> {
-                    print("please enter name city:-")
-                    val nameCity = readlnOrNull()
-                    if (nameCity != null) {
-                        println(GetCitiesNamesWithCheapestBananaPricesInteractor(dataSource).execute(nameCity))
+                    print("please enter cities names seperated by dash :- ")
+                    val citiesNames = readlnOrNull()
+                    if (citiesNames != null) {
+                        val city = makeCities(citiesNames.split("-"))
+                            println(GetCitiesNamesWithCheapestBananaPricesInteractor(dataSource)(*city))
                     } else {
                         print("your input not valid, try again.")
                     }
@@ -127,3 +128,19 @@ class Helper(private val dataSource: CostOfLivingDataSource) {
         print("\n_______________________________\n")
     }
 }
+
+fun makeCities(cityNames: List<String>) = cityNames.map {
+    CityEntity(
+        it, "",
+        MealsPrices(null, null, null),
+        DrinksPrices(null, null, null, null, null),
+        FruitAndVegetablesPrices(null, null, null, null, null, null, null),
+        FoodPrices(null, null, null, null, null, null),
+        ServicesPrices(null, null, null, null, null, null, null, null),
+        ClothesPrices(null, null, null, null),
+        TransportationsPrices(null, null, null, null, null, null),
+        CarsPrices(null, null),
+        RealEstatesPrices(null, null, null, null, null, null),
+        null, false
+    )
+}.toTypedArray()
