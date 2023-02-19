@@ -17,6 +17,7 @@ import org.junit.jupiter.api.TestInstance
 class GetTopCitesNameInFshionTaskInteractorTest {
     private lateinit var topCitesNameInFashionTaskInteractor: GetTopCitesNameInFashionTaskInteractor
 
+
     @BeforeAll
     fun setUp() {
         val fakedata = FakeDataSourceForFashionTask()
@@ -24,13 +25,14 @@ class GetTopCitesNameInFshionTaskInteractorTest {
     }
 
     @Test
-    fun should_ReturnFive_When_TheListSizeIsFive() {
+    fun should_ReturnTrue_When_TheListSizeIsFive() {
         //given
+        val limit =10
         //when
-        val result = topCitesNameInFashionTaskInteractor.execute().size
+        val result = topCitesNameInFashionTaskInteractor.execute(limit).size == 5
 
         //then
-        assertEquals(5, result)
+        assertTrue(result)
     }
 
 
@@ -40,9 +42,10 @@ class GetTopCitesNameInFshionTaskInteractorTest {
         //given
 
         val topCiteNames = listOf("city11", "city12", "city23", "city24", "city47")
-
+//given
+val limit =5
         //when
-        val actualValue = topCitesNameInFashionTaskInteractor.execute()
+        val actualValue = topCitesNameInFashionTaskInteractor.execute(limit)
 
 
         //then
