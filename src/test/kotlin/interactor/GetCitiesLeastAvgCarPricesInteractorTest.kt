@@ -1,13 +1,11 @@
 package interactor
 
-import fakedata.CitiesWithNullCarPrices
-import fakedata.CitiesWithNullSalary
-import fakedata.QualityCities
-import fakedata.top10CitiesSorted
+import fakedata.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCitiesLeastAvgCarPricesInteractorTest {
@@ -56,5 +54,13 @@ class GetCitiesLeastAvgCarPricesInteractorTest {
 
     @Test
     fun should_ReturnLessSize_when_inputHasDuplicates() {
+        // Given
+        val testCity = CitiesWithTwoDuplicates()
+        interactor = GetCitiesLeastAvgCarPricesInteractor(testCity)
+        // When
+        val actual = testCity.getAllCitiesData().size
+        val result = interactor.execute(10)
+        // Then
+        assertNotEquals(actual, result.size)
     }
 }
