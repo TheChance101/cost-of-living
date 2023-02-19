@@ -24,7 +24,7 @@ internal class GetTopFashionCitiesNamesInteractorTest {
     }
 
     @Test
-    fun `should return only the required number of results`() {
+    fun `should return only the required number of cities`() {
         // given limit
         val limit = 5
         // when get top 5 cities names
