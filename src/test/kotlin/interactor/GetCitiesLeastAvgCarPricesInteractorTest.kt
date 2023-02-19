@@ -63,4 +63,13 @@ class GetCitiesLeastAvgCarPricesInteractorTest {
         // Then
         assertNotEquals(actual, result.size)
     }
+    @Test
+    fun should_ReturnEmptyList_when_inputIsLowQualityData() {
+        // Given
+        interactor = GetCitiesLeastAvgCarPricesInteractor(CitiesWithLowQualityData())
+        // When
+        val result = interactor.execute(10)
+        // Then
+        assertEquals(emptyList(), result)
+    }
 }
