@@ -4,30 +4,29 @@ import model.*
 import kotlin.math.abs
 
 class GetDinnerLocationInteractor(private val dataSource: CostOfLivingDataSource) {
-    fun execute(): CityEntity? {
-        return dataSource.getAllCitiesData()
-            .filter {
-                it.country in listOf("USA", "Canada", "Mexico") &&
-                        it.mealsPrices.mealInexpensiveRestaurant != null
-            }
-            .sortedBy { it.mealsPrices.mealInexpensiveRestaurant }
-            .also { if (it.size < 2) return null }
-            .run {
-                val averageMealPrice = getAverage(this.first().mealsPrices, this.last().mealsPrices)
-                getClosestCity(this, averageMealPrice)
-            }
-    }
+    fun execute() = dataSource.getAllCitiesData()
+        .filter { excludeNoneNorthAmericaCountries(it.country) && excludeNullMealPrices(it.mealsPrices) }
+        .sortedBy { getMealPricesAverage(it.mealsPrices) }
+        .let { getClosestCity(it, getAverageBetweenTwoCities(it.first().mealsPrices, it.last().mealsPrices)) }
 }
 
-fun getAverage(cheapestCity: MealsPrices, mostExpensiveCity: MealsPrices) =
-        (cheapestCity.mealInexpensiveRestaurant!! + mostExpensiveCity.mealInexpensiveRestaurant!!) / 2
+fun excludeNoneNorthAmericaCountries(country: String) = country in listOf("USA", "Canada", "Mexico")
+
+fun excludeNullMealPrices(mealsPrices: MealsPrices) = mealsPrices.mealInexpensiveRestaurant != null
+        && mealsPrices.mealAtMcDonaldSOrEquivalent != null
+        && mealsPrices.mealFor2PeopleMidRangeRestaurant != null
+fun getMealPricesAverage(mealsPrices: MealsPrices) =
+    (mealsPrices.mealInexpensiveRestaurant!! +
+            mealsPrices.mealAtMcDonaldSOrEquivalent!! + mealsPrices.mealFor2PeopleMidRangeRestaurant!!) / 3
+
+fun getAverageBetweenTwoCities(cheapestCityMealsPrices: MealsPrices, mostExpensiveCityMealsPrices: MealsPrices) =
+    (getMealPricesAverage(cheapestCityMealsPrices) + getMealPricesAverage(mostExpensiveCityMealsPrices)) / 2
 
 fun getClosestCity(
     citiesSortedByMealPrice: List<CityEntity>,
     averageMealPrice: Float,
-): CityEntity {
-    return citiesSortedByMealPrice.map {
-        it to abs(it.mealsPrices.mealInexpensiveRestaurant!! - averageMealPrice)
-    }.sortedBy { it.second }[0].first
-}
+): CityEntity =
+    citiesSortedByMealPrice.minByOrNull { abs(getMealPricesAverage(it.mealsPrices) - averageMealPrice) }!!
+
+
 
