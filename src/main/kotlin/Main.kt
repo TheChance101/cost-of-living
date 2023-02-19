@@ -1,7 +1,6 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import interactor.*
-import java.lang.System.exit
 import kotlin.system.exitProcess
 
 val csvParser = CsvParser()
@@ -174,8 +173,8 @@ fun getCityHasCheapestInternetConnection() {
 }
 
 fun getMostSuitableCity() {
-    val getMostSuitableCityInteractor = GetMostSuitableCityInteractor(dataSource)
-    val mostSuitableCity = getMostSuitableCityInteractor.execute()
+    val getMostSuitableCityToHaveMoreSavingsInteractor = GetMostSuitableCityToHaveMoreSavingsInteractor(dataSource)
+    val mostSuitableCity = getMostSuitableCityToHaveMoreSavingsInteractor.execute()
     println(mostSuitableCity)
 }
 
