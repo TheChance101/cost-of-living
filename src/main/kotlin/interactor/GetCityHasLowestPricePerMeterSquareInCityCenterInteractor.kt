@@ -9,4 +9,10 @@ class GetCityHasLowestPricePerMeterSquareInCityCenterInteractor(
         return null
     }
 
+    private fun isValidPrices(city: CityEntity): Boolean {
+        return city.realEstatesPrices.pricePerSquareMeterToBuyApartmentInCityCentre != null
+                && city.realEstatesPrices.pricePerSquareMeterToBuyApartmentInCityCentre > 0f
+    }
+
+
 }
