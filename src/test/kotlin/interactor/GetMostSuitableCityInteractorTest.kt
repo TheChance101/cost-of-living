@@ -1,12 +1,12 @@
 package interactor
 
-import dataSource.CitiesHasNullFakeDataSource
 import dataSource.CitiesEmptyList
-import dataSource.MostSuitableCity
+import dataSource.CitiesHasNullFakeDataSource
 import dataSource.FakeDataSource
-import org.junit.jupiter.api.Test
+import dataSource.MostSuitableCity
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
 
@@ -35,8 +35,6 @@ internal class GetMostSuitableCityInteractorTest {
 
     @Test
     fun `should return city when given list of cities`() {
-        //given
-        mixedValidDataInteractor = GetMostSuitableCityToHaveMoreSavingsInteractor(fakeDataSource)
         //when
         val actual = mixedValidDataInteractor.execute()
         //then
@@ -46,8 +44,6 @@ internal class GetMostSuitableCityInteractorTest {
 
     @Test
     fun `should throw exception when retrieved cities list from data source is empty`() {
-        //given
-        emptyDataInteractor = GetMostSuitableCityToHaveMoreSavingsInteractor(citiesEmptyList)
         //when
         val actual = Executable { emptyDataInteractor.execute() }
         //then
@@ -56,8 +52,6 @@ internal class GetMostSuitableCityInteractorTest {
 
     @Test
     fun `should return empty list when all the cities list is filtered because it has only null data`() {
-        //given
-        nullDataInteractor = GetMostSuitableCityToHaveMoreSavingsInteractor(citiesHasNullFakeDataSource)
         //when
         val actual = Executable { nullDataInteractor.execute() }
         //then
