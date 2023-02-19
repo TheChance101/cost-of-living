@@ -1,5 +1,6 @@
 package interactor
 
+import fakedata.CitiesWithNullCarPrices
 import fakedata.QualityCities
 import fakedata.top10CitiesSorted
 import org.junit.jupiter.api.Test
@@ -23,6 +24,12 @@ class GetCitiesLeastAvgCarPricesInteractorTest {
 
     @Test
     fun should_ReturnEmptyList_when_allCarsAreNull() {
+        // Given
+        interactor = GetCitiesLeastAvgCarPricesInteractor(CitiesWithNullCarPrices())
+        // When
+        val result = interactor.execute(10)
+        // Then
+        assertContentEquals(emptyList(), result)
     }
 
     @Test
