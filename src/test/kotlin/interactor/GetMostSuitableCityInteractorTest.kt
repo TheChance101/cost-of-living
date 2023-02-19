@@ -1,74 +1,64 @@
 package interactor
 
+import dataSource.CitiesHasNullFakeDataSource
+import dataSource.CitiesEmptyList
+import dataSource.MostSuitableCity
 import dataSource.FakeDataSource
-import model.CityEntity
 import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
+
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetMostSuitableCityInteractorTest {
 
-    private lateinit var getMostSuitableCityInteractor: GetMostSuitableCityInteractor
     private lateinit var fakeDataSource: FakeDataSource
+    private lateinit var citiesEmptyList: CitiesEmptyList
+    private lateinit var interactor: GetMostSuitableCityInteractor
+    private lateinit var citiesHasNullFakeDataSource: CitiesHasNullFakeDataSource
 
-    @BeforeAll
+
+    @BeforeEach
     fun setUp() {
-        getMostSuitableCityInteractor = GetMostSuitableCityInteractor()
         fakeDataSource = FakeDataSource()
+        citiesEmptyList = CitiesEmptyList()
+        citiesHasNullFakeDataSource = CitiesHasNullFakeDataSource()
     }
 
+
     @Test
-    fun should_ReturnCityName_when_GivenListOfCities() {
+    fun `should return city when given list of cities`() {
         //given
-        val cityList = fakeDataSource.getAllCitiesData()
+        interactor = GetMostSuitableCityInteractor(fakeDataSource)
         //when
-        val cityNameResult = getMostSuitableCityInteractor.execute(cityList)
+        val actual = interactor.execute()
         //then
-        assertEquals("Banjul", cityNameResult)
+        val expected = MostSuitableCity().mostSuitableCityEntity
+        assertEquals(expected, actual)
     }
 
     @Test
-    fun should_ReturnException_when_ListOfCitiesIsEmpty() {
+    fun `should throw exception when cities list is empty`() {
         //given
-        val cityList = emptyList<CityEntity>()
+        interactor = GetMostSuitableCityInteractor(citiesEmptyList)
         //when
-        val cityNameResult = Executable { getMostSuitableCityInteractor.execute(cityList) }
+        val actual = Executable { interactor.execute() }
         //then
-        assertThrows(Exception::class.java, cityNameResult)
+        assertThrows(IllegalStateException::class.java, actual)
     }
 
     @Test
-    fun should_ReturnCityName_when_ListHasOneItem() {
+    fun `should return empty list when all the cities list is filtered because it has only null data`() {
         //given
-        val cityList = listOf(fakeDataSource.getAllCitiesData().last())
+        interactor = GetMostSuitableCityInteractor(citiesHasNullFakeDataSource)
         //when
-        val cityNameResult = getMostSuitableCityInteractor.execute(cityList)
+        val actual = Executable { interactor.execute() }
         //then
-        assertEquals("Sri Jayewardenepura Kotte", cityNameResult)
+        assertThrows(Exception::class.java, actual)
     }
 
-    @Test
-    fun should_ReturnException_when_CityListEquelNull() {
-        //given
-        val cityList: List<CityEntity>? = null
-        //when
-        val cityNameResult = Executable { getMostSuitableCityInteractor.execute(cityList!!) }
-        //then
-        assertThrows(Exception::class.java, cityNameResult)
-    }
-
-    @Test
-    fun should_ReturnException_when_AllCitiesHasNullData() {
-        //given
-        val cityList = fakeDataSource.getAllCitiesData().take(3)
-        val cityNameResult = Executable { getMostSuitableCityInteractor.execute(cityList) }
-        //then
-        assertThrows(Exception::class.java, cityNameResult)
-
-    }
 
 }
+
