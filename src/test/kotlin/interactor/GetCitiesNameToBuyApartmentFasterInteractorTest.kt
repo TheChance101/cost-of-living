@@ -1,6 +1,8 @@
 package interactor
 
+import dataSource.FakeDataForLowQualityData
 import dataSource.FakeDataSource
+import dataSource.FakeDataWithEmptyList
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -12,18 +14,23 @@ internal class GetCitiesNameToBuyApartmentFasterInteractorTest {
 
     private lateinit var dataSource: CostOfLivingDataSource
     private lateinit var interactor: GetCitiesNameToBuyApartmentFasterInteractor
+    private lateinit var emptyListInteractor: GetCitiesNameToBuyApartmentFasterInteractor
+    private lateinit var nullPricesInteractor: GetCitiesNameToBuyApartmentFasterInteractor
 
 
     @BeforeEach
     fun setup() {
         dataSource = FakeDataSource()
         interactor = GetCitiesNameToBuyApartmentFasterInteractor(dataSource)
+        emptyListInteractor = GetCitiesNameToBuyApartmentFasterInteractor(FakeDataWithEmptyList())
+        nullPricesInteractor =
+            GetCitiesNameToBuyApartmentFasterInteractor(FakeDataForLowQualityData())
     }
 
     @Test
     fun `should return the top 5 cities names that he can buy this apartment faster`() {
         //Given a limit and squareMeter
-        val limit = 5
+        val limit = 10
         val squareMeter = 100
         //When find the cities to buy apartment faster
         val actual = interactor
@@ -33,11 +40,12 @@ internal class GetCitiesNameToBuyApartmentFasterInteractorTest {
             )
         //Then return the top 5 cities names that he can buy this apartment faster
         val expected = listOf(
-            Pair("Havana", 2.235250162760417),
-            Pair("Kasese", 3.3489166666666663),
-            Pair("Aleppo", 3.9583333333333335),
-            Pair("Damascus", 15.645000000000001),
-            Pair("Banjul", 20.161251302083333)
+            Pair("Kasese", 49.998753f),
+            Pair("Aleppo", 54.372707f),
+            Pair("Havana", 62.52448f),
+            Pair("Warri", 111.94312f),
+            Pair("Banjul", 267.85245f),
+            Pair("Damascus", 311.40524f)
         )
         //Then
         assertEquals(expected, actual)
@@ -91,11 +99,12 @@ internal class GetCitiesNameToBuyApartmentFasterInteractorTest {
             )
         //Then return the top 5 cities names that he can buy this apartment faster
         val expected = listOf(
-            Pair("Havana", 2.235250162760417),
-            Pair("Kasese", 3.3489166666666663),
-            Pair("Aleppo", 3.9583333333333335),
-            Pair("Damascus", 15.645000000000001),
-            Pair("Banjul", 20.161251302083333)
+            Pair("Kasese", 49.998753f),
+            Pair("Aleppo", 54.372707f),
+            Pair("Havana", 62.52448f),
+            Pair("Warri", 111.94312f),
+            Pair("Banjul", 267.85245f),
+            Pair("Damascus", 311.40524f)
         )
         //Then
         assertEquals(expected, actual)
@@ -142,7 +151,7 @@ internal class GetCitiesNameToBuyApartmentFasterInteractorTest {
         val squareMeter = 100
         //When find the cities to buy apartment faster
         val actual = Executable {
-            interactor
+            emptyListInteractor
                 .execute(
                     limit = limit,
                     squareMeter = squareMeter
@@ -159,7 +168,7 @@ internal class GetCitiesNameToBuyApartmentFasterInteractorTest {
         val squareMeter = 100
         //When find the cities to buy apartment faster
         val actual =
-            interactor
+            nullPricesInteractor
                 .execute(
                     limit = limit,
                     squareMeter = squareMeter

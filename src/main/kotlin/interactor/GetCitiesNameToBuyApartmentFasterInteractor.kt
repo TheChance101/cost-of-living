@@ -1,6 +1,7 @@
 package interactor
 
 import model.CityEntity
+import utils.isNotNull
 
 class GetCitiesNameToBuyApartmentFasterInteractor(
     private val dataSource: CostOfLivingDataSource
@@ -8,50 +9,56 @@ class GetCitiesNameToBuyApartmentFasterInteractor(
     fun execute(
         limit: Int,
         squareMeter: Int
-    ): List<Pair<String, Double>> {
-
-        return dataSource.getAllCitiesData()
+    ): List<Pair<String, Float>> =
+        dataSource.getAllCitiesData()
+            .ifEmpty { throw IllegalStateException("Something went wrong") }
+            .also { if (limit < 0) throw InvalidLimitException("Limit can't be less than one") }
             .asSequence()
-            .filter(::excludeNullApartmentPriceAndLowQualityData)
+            .filter(::excludeNullApartmentPricesAndLowQualityData)
+            .filter(::excludeNullSalaryAverages)
+            .sortedBy(::findSquareMeterPriceToSalaryAveragePercentage)
             .take(limit)
             .toList()
-            .sortedBy { it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre }
             .map {
-                Pair(
-                    it.cityName,
-                    calculateYearsNeededToBuyApartment(
-                        it.averageMonthlyNetSalaryAfterTax!!,
-                        it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!,
-                        squareMeter
-                    )
-                )
+                it.cityName to
+                        calculateYearsNeededToBuyApartment(
+                            it.averageMonthlyNetSalaryAfterTax!!,
+                            it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!,
+                            squareMeter
+                        )
             }
 
-    }
+    private fun findSquareMeterPriceToSalaryAveragePercentage(it: CityEntity) =
+        it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!! /
+                it.averageMonthlyNetSalaryAfterTax!!
 
-    private fun excludeNullApartmentPriceAndLowQualityData(
+
+    private fun excludeNullApartmentPricesAndLowQualityData(
         city: CityEntity
-    ): Boolean {
-
-        return with(
-            city.realEstatesPrices
-        ) {
-            this.pricePerSquareMeterToBuyApartmentOutsideOfCentre != null &&
-                    this.apartmentOneBedroomOutsideOfCentre != null &&
-                    city.dataQuality
-        }
-
+    ) = with(
+        city.realEstatesPrices
+    ) {
+        pricePerSquareMeterToBuyApartmentOutsideOfCentre.isNotNull() &&
+                apartmentOneBedroomOutsideOfCentre.isNotNull() &&
+                city.dataQuality
     }
+
+    private fun excludeNullSalaryAverages(
+        city: CityEntity
+    ) = city.averageMonthlyNetSalaryAfterTax.isNotNull()
+
 
     private fun calculateYearsNeededToBuyApartment(
         salary: Float,
         pricePerSquareMeter: Float,
         squareMeter: Int
-    ): Double {
-        if (salary < 1) throw ArithmeticException("Salary can't be less than one")
-        if (squareMeter < 1) throw ArithmeticException("Square meter can't be less than one")
-        val monthsNeeded = (pricePerSquareMeter * squareMeter).toDouble() / salary
-        return monthsNeeded / 12
+    ): Float {
+        if (squareMeter < 1) throw InvalidMetersException("Square meter can't be less than one")
+        return pricePerSquareMeter * squareMeter / salary / MONTHS_IN_YEAR
+    }
+
+    companion object {
+        const val MONTHS_IN_YEAR = 12
     }
 
 }
