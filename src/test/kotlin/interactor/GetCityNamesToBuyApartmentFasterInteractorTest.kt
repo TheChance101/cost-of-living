@@ -28,7 +28,7 @@ internal class GetCityNamesToBuyApartmentFasterInteractorTest {
     }
 
     @Test
-    fun `should return the top 5 cities names that he can buy this apartment faster`() {
+    fun `should return the top 5 city names to buy apartment faster`() {
         //Given a limit and squareMeter
         val limit = 10
         val squareMeter = 100
