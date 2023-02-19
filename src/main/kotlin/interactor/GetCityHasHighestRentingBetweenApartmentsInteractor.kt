@@ -10,7 +10,7 @@ class GetCityHasHighestRentingBetweenApartmentsInteractor(
             .getAllCitiesData()
             .filter(::excludeNullValuesAndLowQualityData)
             .sortingWithRentingPrices()
-            .take(1)[0]
+            .take(1).first()
     }
 
     private fun excludeNullValuesAndLowQualityData(city: CityEntity): Boolean {
@@ -23,9 +23,11 @@ class GetCityHasHighestRentingBetweenApartmentsInteractor(
 
     private fun List<CityEntity>.sortingWithRentingPrices(): List<CityEntity> {
         return this.sortedBy {
-            (it.realEstatesPrices.apartment3BedroomsInCityCentre?.plus(it.realEstatesPrices.apartmentOneBedroomInCityCentre!!))
+            (it.realEstatesPrices.apartment3BedroomsInCityCentre
+                ?.plus(it.realEstatesPrices.apartmentOneBedroomInCityCentre!!))
                 ?.div(
-                    it.realEstatesPrices.apartment3BedroomsOutsideOfCentre?.plus(it.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!!)!!
+                    it.realEstatesPrices.apartment3BedroomsOutsideOfCentre
+                        ?.plus(it.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!!)!!
                 )
         }
     }
