@@ -1,23 +1,19 @@
 package interactor
 
-import model.CityEntity
 import model.ClothesPrices
 
 class GetTopCitesNameInFashionTaskInteractor(
 
     private val dataSource: CostOfLivingDataSource,
 ) {
-    val limit = 5
+    fun execute(limit: Int) = dataSource
+        .also { require(limit >= 1) { "Invalid Argument!" } }
+        .getAllCitiesData()
+        .filter { excludeNullClothesPrices(it.clothesPrices) }
+        .sortedByDescending { averagePrice(it.clothesPrices) }
+        .take(limit)
+        .map { it.cityName }
 
-    fun execute(): List<String> {
-
-        return dataSource
-            .getAllCitiesData()
-            .filter { excludeNullClothesPrices(it.clothesPrices) }
-            .sortedByDescending { averagePrice(it.clothesPrices) }
-            .take(limit)
-            .map { it.cityName }
-    }
 }
 
 fun excludeNullClothesPrices(clothesPrices: ClothesPrices) =
