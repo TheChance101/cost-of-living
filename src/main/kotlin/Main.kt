@@ -1,8 +1,6 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
-import interactor.CostOfLivingDataSource
-import interactor.GetCityHasCheapestInternetConnectionInteractor
-import interactor.GetHighestSalaryAverageCititesNamesInteractor
+import interactor.*
 import model.CityEntity
 
 fun main() {
@@ -15,6 +13,12 @@ fun main() {
 
     val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
     println(getCityHasCheapestInternetConnectionInteractor.execute())
+    printSeparationLine()
+
+
+    val getTheMostExpensiveCitiesNamesIntTermOfCinemaTickets = GetTheMostExpensiveCitiesNamesIntTermOfCinemaTickets(dataSource)
+    println( getTheMostExpensiveCitiesNamesIntTermOfCinemaTickets.execute(10))
+    printSeparationLine()
 
 }
 private fun printSeparationLine(){
@@ -22,11 +26,11 @@ private fun printSeparationLine(){
 }
 private fun excludeNullSalariesAndApartmentAndFoodThings(cityEntity: CityEntity):Boolean{
     return cityEntity.averageMonthlyNetSalaryAfterTax!=null
-            && cityEntity.realEstatesPrices.apartment3BedroomsOutsideOfCentre!=null
-            && cityEntity.foodPrices.loafOfFreshWhiteBread500g!=null
+           && cityEntity.realEstatesPrices.apartment3BedroomsOutsideOfCentre!=null
+           && cityEntity.foodPrices.loafOfFreshWhiteBread500g!=null
             && cityEntity.foodPrices.localCheese1kg!=null
             && cityEntity.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!=null
-            && cityEntity.foodPrices.chickenFillets1kg!=null
+           && cityEntity.foodPrices.chickenFillets1kg!=null
             && cityEntity.foodPrices.riceWhite1kg!=null
 }
 private fun savesAfterPayAllThings(cityEntity: CityEntity):Float{
@@ -36,7 +40,7 @@ private fun savesAfterPayAllThings(cityEntity: CityEntity):Float{
             (foodPrices.localCheese1kg!!)-
             (foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!!*4)-
             (foodPrices.chickenFillets1kg!!*10)-
-            (foodPrices.riceWhite1kg!!*2)-
+          (foodPrices.riceWhite1kg!!*2)-
             250
 }
 
