@@ -4,32 +4,36 @@ import model.CarsPrices
 import model.CityEntity
 
 class GetCitiesLeastAvgCarPricesInteractor(private val dataSource: CostOfLivingDataSource) {
-    fun execute(limit: Int): List<String> {
+    fun execute(limit: Int): List<Pair<String, Float>> {
         return dataSource
             .getAllCitiesData()
-            .filter { it.carsPrices.isPositivePrice() && it.isDataQualityHighAndValidSalary() }
-            .sortedBy { it.carsPrices.getAvgCarPrices() }
+            .filter { isCarPricePositive(it.carsPrices) && isDataQualityHighAndSalaryValid(it) }
+            .sortedBy { getAvgCarPrices(it.carsPrices) }
             .distinctBy { it.cityName }
             .take(limit)
-            .map { it.cityName }
+            .map {
+                Pair(it.cityName, getAvgCarPrices(it.carsPrices))
+            }
     }
 
-    private fun CarsPrices.getAvgCarPrices(): Float {
+    private fun getAvgCarPrices(carPrices: CarsPrices): Float {
         var sum = 0f
         var count = 0f
-        volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar?.let { sum += it; count++ }
-        toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar?.let { sum += it; count++ }
+        carPrices.volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar?.let { sum += it; count++ }
+        carPrices.toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar?.let { sum += it; count++ }
         return sum / count
     }
 
-    private fun CityEntity.isDataQualityHighAndValidSalary() = dataQuality &&
-            averageMonthlyNetSalaryAfterTax != null &&
-            averageMonthlyNetSalaryAfterTax >= 0f
+    private fun isDataQualityHighAndSalaryValid(cityEntity: CityEntity) = cityEntity.dataQuality &&
+            cityEntity.averageMonthlyNetSalaryAfterTax != null &&
+            cityEntity.averageMonthlyNetSalaryAfterTax >= 0f
 
-    private fun CarsPrices.isPositivePrice(): Boolean {
-        return (volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar != null && volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar >= 0) &&
-                (toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar != null && toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar >= 0)
+    private fun isCarPricePositive(carPrices: CarsPrices): Boolean {
+        carPrices.run {
+            return (volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar != null && volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar >= 0) &&
+                    (toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar != null && toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar >= 0)
 
+        }
     }
 }
 
