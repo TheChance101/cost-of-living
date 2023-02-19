@@ -418,7 +418,7 @@ object ManagerExpectationsFakeData {
     private val _someInvalidCountriesAndPricesOfMealsValid by lazy {
         listOf(
             CityEntity(
-                cityName = "Great Falls",
+                cityName = "Cairo",
                 country = "Egypt",
                 mealsPrices = MealsPrices(
                     mealInexpensiveRestaurant = 4.12f,
@@ -688,13 +688,84 @@ object ManagerExpectationsFakeData {
                     pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
                 ), averageMonthlyNetSalaryAfterTax = 6000f, dataQuality = false
+            ),
+            CityEntity(
+                cityName = "New York",
+                country = "United States",
+                mealsPrices = MealsPrices(
+                    mealInexpensiveRestaurant = 25.0f,
+                    mealFor2PeopleMidRangeRestaurant = 100.0f,
+                    mealAtMcDonaldSOrEquivalent = 10.0f
+                ),
+                drinksPrices = DrinksPrices(
+                    cappuccinoRegularInRestaurants = 5.38f,
+                    cokePepsiAThirdOfLiterBottleInRestaurants = 2.72f,
+                    waterAThirdOfLiterBottleInRestaurants = 2.32f,
+                    milkRegularOneLiter = 1.26f,
+                    waterOneAndHalfLiterBottleAtTheMarket = 2.51f
+                ),
+                fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                    apples1kg = 5.62f,
+                    banana1kg = 2.59f,
+                    oranges1kg = 4.98f,
+                    tomato1kg = 6.22f,
+                    potato1kg = 4.04f,
+                    onion1kg = 3.73f,
+                    lettuceOneHead = 2.68f
+                ),
+                foodPrices = FoodPrices(
+                    loafOfFreshWhiteBread500g = 4.11f,
+                    riceWhite1kg = 8.03f,
+                    eggsRegular12 = 3.93f,
+                    localCheese1kg = 16.85f,
+                    chickenFillets1kg = 17.88f,
+                    beefRound1kgOrEquivalentBackLegRedMeat = 20.57f
+                ),
+                servicesPrices = ServicesPrices(
+                    basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 180.61f,
+                    oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.1f,
+                    internet60MbpsOrMoreUnlimitedDataCableAdsl = 69.77f,
+                    fitnessClubMonthlyFeeForOneAdult = 104.82f,
+                    tennisCourtRentOneHourOnWeekend = 38.85f,
+                    cinemaInternationalReleaseOneSeat = 18.0f,
+                    preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 2444.17f,
+                    internationalPrimarySchoolYearlyForOneChild = 40384.62f
+                ),
+                clothesPrices = ClothesPrices(
+                    onePairOfJeansLevis50oneOrSimilar = 62.13f,
+                    oneSummerDressInAChainStoreZaraHAndM = 57.42f,
+                    onePairOfNikeRunningShoesMidRange = 95.29f,
+                    onePairOfMenLeatherBusinessShoes = 145.62f
+                ),
+                transportationsPrices = TransportationsPrices(
+                    oneWayTicketLocalTransport = 2.75f,
+                    monthlyPassRegularPrice = 129.0f,
+                    taxiStartNormalTariff = 4.38f,
+                    taxi1kmNormalTariff = 1.86f,
+                    taxi1hourWaitingNormalTariff = 30.0f,
+                    gasolineOneLiter = 1.29f
+                ),
+                carsPrices = CarsPrices(
+                    volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 25000.0f,
+                    toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 23754.86f
+                ),
+                realEstatesPrices = RealEstatesPrices(
+                    apartmentOneBedroomInCityCentre = 3851.51f,
+                    apartmentOneBedroomOutsideOfCentre = 2347.1f,
+                    apartment3BedroomsInCityCentre = 7146.84f,
+                    apartment3BedroomsOutsideOfCentre = 4279.34f,
+                    pricePerSquareMeterToBuyApartmentInCityCentre = 14784.44f,
+                    pricePerSquareMeterToBuyApartmentOutsideOfCentre = 9531.27f
+                ),
+                averageMonthlyNetSalaryAfterTax = 5944.31f,
+                dataQuality = true
             )
         )
     }
     private val _invalidSomeCountriesAndSomePricesOfMeals by lazy {
         listOf(
             CityEntity(
-                cityName = "Great Falls",
+                cityName = "Cairo",
                 country = "Egypt",
                 mealsPrices = MealsPrices(
                     mealInexpensiveRestaurant = 4.12f,
@@ -893,6 +964,77 @@ object ManagerExpectationsFakeData {
                     pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
                     pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
                 ), averageMonthlyNetSalaryAfterTax = 6000f, dataQuality = false
+            ),
+            CityEntity(
+                cityName = "New York",
+                country = "United States",
+                mealsPrices = MealsPrices(
+                    mealInexpensiveRestaurant = 25.0f,
+                    mealFor2PeopleMidRangeRestaurant = 100.0f,
+                    mealAtMcDonaldSOrEquivalent = 10.0f
+                ),
+                drinksPrices = DrinksPrices(
+                    cappuccinoRegularInRestaurants = 5.38f,
+                    cokePepsiAThirdOfLiterBottleInRestaurants = 2.72f,
+                    waterAThirdOfLiterBottleInRestaurants = 2.32f,
+                    milkRegularOneLiter = 1.26f,
+                    waterOneAndHalfLiterBottleAtTheMarket = 2.51f
+                ),
+                fruitAndVegetablesPrices = FruitAndVegetablesPrices(
+                    apples1kg = 5.62f,
+                    banana1kg = 2.59f,
+                    oranges1kg = 4.98f,
+                    tomato1kg = 6.22f,
+                    potato1kg = 4.04f,
+                    onion1kg = 3.73f,
+                    lettuceOneHead = 2.68f
+                ),
+                foodPrices = FoodPrices(
+                    loafOfFreshWhiteBread500g = 4.11f,
+                    riceWhite1kg = 8.03f,
+                    eggsRegular12 = 3.93f,
+                    localCheese1kg = 16.85f,
+                    chickenFillets1kg = 17.88f,
+                    beefRound1kgOrEquivalentBackLegRedMeat = 20.57f
+                ),
+                servicesPrices = ServicesPrices(
+                    basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 180.61f,
+                    oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.1f,
+                    internet60MbpsOrMoreUnlimitedDataCableAdsl = 69.77f,
+                    fitnessClubMonthlyFeeForOneAdult = 104.82f,
+                    tennisCourtRentOneHourOnWeekend = 38.85f,
+                    cinemaInternationalReleaseOneSeat = 18.0f,
+                    preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 2444.17f,
+                    internationalPrimarySchoolYearlyForOneChild = 40384.62f
+                ),
+                clothesPrices = ClothesPrices(
+                    onePairOfJeansLevis50oneOrSimilar = 62.13f,
+                    oneSummerDressInAChainStoreZaraHAndM = 57.42f,
+                    onePairOfNikeRunningShoesMidRange = 95.29f,
+                    onePairOfMenLeatherBusinessShoes = 145.62f
+                ),
+                transportationsPrices = TransportationsPrices(
+                    oneWayTicketLocalTransport = 2.75f,
+                    monthlyPassRegularPrice = 129.0f,
+                    taxiStartNormalTariff = 4.38f,
+                    taxi1kmNormalTariff = 1.86f,
+                    taxi1hourWaitingNormalTariff = 30.0f,
+                    gasolineOneLiter = 1.29f
+                ),
+                carsPrices = CarsPrices(
+                    volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 25000.0f,
+                    toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 23754.86f
+                ),
+                realEstatesPrices = RealEstatesPrices(
+                    apartmentOneBedroomInCityCentre = 3851.51f,
+                    apartmentOneBedroomOutsideOfCentre = 2347.1f,
+                    apartment3BedroomsInCityCentre = 7146.84f,
+                    apartment3BedroomsOutsideOfCentre = 4279.34f,
+                    pricePerSquareMeterToBuyApartmentInCityCentre = 14784.44f,
+                    pricePerSquareMeterToBuyApartmentOutsideOfCentre = 9531.27f
+                ),
+                averageMonthlyNetSalaryAfterTax = 5944.31f,
+                dataQuality = true
             )
         )
     }
@@ -1104,7 +1246,7 @@ object ManagerExpectationsFakeData {
     private val _invalidData by lazy {
         listOf(
             CityEntity(
-                cityName = "Great Falls",
+                cityName = "Cairo",
                 country = "Egypt",
                 mealsPrices = MealsPrices(
                     mealInexpensiveRestaurant = null,
@@ -1175,7 +1317,7 @@ object ManagerExpectationsFakeData {
                 dataQuality = false
             ),
             CityEntity(
-                cityName = "Moose Jaw",
+                cityName = "Baghdad",
                 country = "Iraq",
                 mealsPrices = MealsPrices(
                     mealInexpensiveRestaurant = null,
@@ -1246,7 +1388,7 @@ object ManagerExpectationsFakeData {
                 dataQuality = false
             ),
             CityEntity(
-                cityName = "Chetumal", country = "syria", mealsPrices = MealsPrices(
+                cityName = "Damascus", country = "syria", mealsPrices = MealsPrices(
                     mealInexpensiveRestaurant = null,
                     mealFor2PeopleMidRangeRestaurant = null,
                     mealAtMcDonaldSOrEquivalent = null
@@ -1307,7 +1449,7 @@ object ManagerExpectationsFakeData {
         )
     }
 
-    val getValidCountriesAndPricesOfMeals by lazy {
+    val validCountriesAndPricesOfMeals by lazy {
         object : CostOfLivingDataSource {
             override fun getAllCitiesData() = validData
         }
@@ -1335,6 +1477,12 @@ object ManagerExpectationsFakeData {
     val invalidData by lazy {
         object : CostOfLivingDataSource {
             override fun getAllCitiesData() = _invalidData
+        }
+    }
+    val emptyData by lazy {
+        object : CostOfLivingDataSource {
+            override fun getAllCitiesData() = emptyList<CityEntity>()
+
         }
     }
 
