@@ -6,22 +6,16 @@ class GetCityMakesFamilySaveMoreInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
 
-
     fun execute(): String {
         return if (dataSource.getAllCitiesData().isNotEmpty()) {
-            dataSource.getAllCitiesData().filter(::excludeNullvalues).maxByOrNull {it.run {
-                (averageMonthlyNetSalaryAfterTax!!.toDouble() *2) -(
-                (foodPrices.riceWhite1kg!!.toDouble() * 2)+
-                (foodPrices.chickenFillets1kg!!.toDouble() * 10)+
-                (foodPrices.localCheese1kg!!.toDouble())+
-                (foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!!.toDouble() * 4)+
-                (foodPrices.loafOfFreshWhiteBread500g!!.toDouble() * 30)+
-                (realEstatesPrices.apartment3BedroomsInCityCentre!!.toDouble()) +250 )
-            } }!!.cityName
+            dataSource.getAllCitiesData()
+                .filter(::excludeInvalidData)
+                .maxByOrNull {it.run { calculateSalaryAfterBuyingTheNeeds(it) }
+                }!!.cityName
         } else throw Exception("There is no Data")
     }
 
-    fun excludeNullvalues(city: CityEntity): Boolean {
+    fun excludeInvalidData(city: CityEntity): Boolean {
         return city.run{
             realEstatesPrices.apartment3BedroomsInCityCentre != null
                     && averageMonthlyNetSalaryAfterTax != null
@@ -34,5 +28,18 @@ class GetCityMakesFamilySaveMoreInteractor(
         }
     }
 
+    private fun calculateSalaryAfterBuyingTheNeeds(city: CityEntity): Double {
+        val doubleOfSalary = city.averageMonthlyNetSalaryAfterTax!!.toDouble() * 2
+        val priceOf2KiloGramsOfRice = 2 * city.foodPrices.riceWhite1kg!!.toDouble()
+        val priceOf10KiloGramsOfChickenFillets = 10 * city.foodPrices.chickenFillets1kg!!.toDouble()
+        val priceOf4KiloGramsOfMeetBeef = 4 * city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat!!.toDouble()
+        val priceOf15KgOfBread = 30 * city.foodPrices.loafOfFreshWhiteBread500g!!.toDouble()
+        val paymentForTheOtherTypeOfNeeds = 250
+        return (doubleOfSalary) - (
+                    priceOf2KiloGramsOfRice + priceOf10KiloGramsOfChickenFillets +
+                    city.foodPrices.localCheese1kg!!.toDouble()+ priceOf4KiloGramsOfMeetBeef +
+                    priceOf15KgOfBread + city.realEstatesPrices.apartment3BedroomsInCityCentre!!.toDouble() +
+                        paymentForTheOtherTypeOfNeeds)
+    }
 
 }

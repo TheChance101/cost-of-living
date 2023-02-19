@@ -1,5 +1,6 @@
 package interactor
 
+import model.CityEntity
 import model.ClothesPrices
 
 class GetTopCitesNameInFashionTaskInteractor(
@@ -13,7 +14,6 @@ class GetTopCitesNameInFashionTaskInteractor(
         .sortedByDescending { averagePrice(it.clothesPrices) }
         .take(limit)
         .map { it.cityName }
-
 }
 
 fun excludeNullClothesPrices(clothesPrices: ClothesPrices) =
