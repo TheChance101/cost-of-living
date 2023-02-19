@@ -2,13 +2,14 @@ package interactor
 
 import model.CityEntity
 import utils.Constants.EMPTY_LIST_EXCEPTION_MSG
+import utils.NoReturnedDataException
 import kotlin.math.abs
 
 class GetCityMatchManagerExpectationsInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
 
-    fun execute(): CityEntity? {
+    fun execute(): CityEntity {
         return dataSource.getAllCitiesData()
             .let { it.ifEmpty { throw NoReturnedDataException(EMPTY_LIST_EXCEPTION_MSG) } }
             .filter { it.country in onlyRequiredCountries }

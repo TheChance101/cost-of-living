@@ -1,5 +1,6 @@
 package interactor
 import model.CityEntity
+import utils.NoReturnedDataException
 import utils.isNotNull
 
 class GetTopCountriesWithHighTaxOnCarbonatedDrinks (private val dataSource: CostOfLivingDataSource){

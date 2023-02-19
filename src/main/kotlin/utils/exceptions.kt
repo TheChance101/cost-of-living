@@ -1,4 +1,4 @@
-package interactor
+package utils
 
 class InvalidMetersException(message: String) : Exception(message)
 class InvalidLimitException(message: String) : Exception(message)
