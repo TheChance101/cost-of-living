@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCityWithCheapestInternationalPrimarySchoolForOneChildInteractorTest{
@@ -65,8 +66,32 @@ class GetCityWithCheapestInternationalPrimarySchoolForOneChildInteractorTest{
         )
         every { dataSource.getAllCitiesData() } returns mockCity
         //when
-        val result = interactor.excludeNullInterNationalPrimarySchoolYearlyForOneChildAndLowQualityData(mockCity[0])
+        val result = interactor
+            .excludeNullInterNationalPrimarySchoolYearlyForOneChildAndLowQualityData(mockCity[0])
         //then
         assertFalse(result)
     }
+
+    @Test
+    fun `should return correct list when enter positive limit`(){
+        //given
+        val limit = 2
+        val mockCity = listOf(
+            MockCityEntity.createMockCity(
+                internationalPrimarySchoolYearlyForOneChild = 2676.54f ,
+                cityName = "Damascus",
+                dataQuality = true
+            ),
+            MockCityEntity.createMockCity(
+                internationalPrimarySchoolYearlyForOneChild = 4500.9f ,
+                cityName = "Cairo",
+                dataQuality = true
+            ))
+        every { dataSource.getAllCitiesData() } returns mockCity
+        //when
+        val result = interactor.execute(limit)
+        //then
+        assertEquals(listOf(Pair("Damascus",2676.54f),Pair("Cairo",4500.9f)),result)
+    }
+
 }
