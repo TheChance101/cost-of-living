@@ -16,8 +16,10 @@ internal class GetMostSuitableCityInteractorTest {
 
     private lateinit var fakeDataSource: FakeDataSource
     private lateinit var citiesEmptyList: CitiesEmptyList
-    private lateinit var interactor: GetMostSuitableCityInteractor
     private lateinit var citiesHasNullFakeDataSource: CitiesHasNullFakeDataSource
+    private lateinit var nullDataInteractor: GetMostSuitableCityToHaveMoreSavingsInteractor
+    private lateinit var emptyDataInteractor: GetMostSuitableCityToHaveMoreSavingsInteractor
+    private lateinit var mixedValidDataInteractor: GetMostSuitableCityToHaveMoreSavingsInteractor
 
 
     @BeforeEach
@@ -25,26 +27,29 @@ internal class GetMostSuitableCityInteractorTest {
         fakeDataSource = FakeDataSource()
         citiesEmptyList = CitiesEmptyList()
         citiesHasNullFakeDataSource = CitiesHasNullFakeDataSource()
+        emptyDataInteractor = GetMostSuitableCityToHaveMoreSavingsInteractor(citiesEmptyList)
+        mixedValidDataInteractor = GetMostSuitableCityToHaveMoreSavingsInteractor(fakeDataSource)
+        nullDataInteractor = GetMostSuitableCityToHaveMoreSavingsInteractor(citiesHasNullFakeDataSource)
     }
 
 
     @Test
     fun `should return city when given list of cities`() {
         //given
-        interactor = GetMostSuitableCityInteractor(fakeDataSource)
+        mixedValidDataInteractor = GetMostSuitableCityToHaveMoreSavingsInteractor(fakeDataSource)
         //when
-        val actual = interactor.execute()
+        val actual = mixedValidDataInteractor.execute()
         //then
         val expected = MostSuitableCity().mostSuitableCityEntity
         assertEquals(expected, actual)
     }
 
     @Test
-    fun `should throw exception when cities list is empty`() {
+    fun `should throw exception when retrieved cities list from data source is empty`() {
         //given
-        interactor = GetMostSuitableCityInteractor(citiesEmptyList)
+        emptyDataInteractor = GetMostSuitableCityToHaveMoreSavingsInteractor(citiesEmptyList)
         //when
-        val actual = Executable { interactor.execute() }
+        val actual = Executable { emptyDataInteractor.execute() }
         //then
         assertThrows(IllegalStateException::class.java, actual)
     }
@@ -52,11 +57,11 @@ internal class GetMostSuitableCityInteractorTest {
     @Test
     fun `should return empty list when all the cities list is filtered because it has only null data`() {
         //given
-        interactor = GetMostSuitableCityInteractor(citiesHasNullFakeDataSource)
+        nullDataInteractor = GetMostSuitableCityToHaveMoreSavingsInteractor(citiesHasNullFakeDataSource)
         //when
-        val actual = Executable { interactor.execute() }
+        val actual = Executable { nullDataInteractor.execute() }
         //then
-        assertThrows(Exception::class.java, actual)
+        assertThrows(NoSuchElementException::class.java, actual)
     }
 
 

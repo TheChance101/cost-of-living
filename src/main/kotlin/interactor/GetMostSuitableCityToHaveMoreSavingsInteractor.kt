@@ -3,20 +3,16 @@ package interactor
 import model.CityEntity
 import utils.isNotNull
 import utils.isNull
-import java.lang.Exception
 
-class GetMostSuitableCityInteractor
+class GetMostSuitableCityToHaveMoreSavingsInteractor
     (private val dataSource: CostOfLivingDataSource) {
+
     fun execute() =
         dataSource.getAllCitiesData()
-            .also {
-                if (it.isEmpty()) throw IllegalStateException("Something wrong")
-            }
+            .ifEmpty { throw IllegalStateException("Something wrong") }
             .filter(::excludeNullValuesInCityEntity)
             .maxByOrNull(::getTotalSavings)
-            .also {
-                if (it.isNull()) throw NoSuchElementException("Error with data")
-            }
+            ?: throw NoSuchElementException("Error with data")
 
 
     private fun excludeNullValuesInCityEntity(city: CityEntity): Boolean {
