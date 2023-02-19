@@ -46,7 +46,7 @@ class GetCityHasTheHighestDifferentInApartmentRentTest {
         assertThrows(expected,actual)
     }
     @Test
-    fun `should return empty city when given empty list`(){
+    fun `should throw exception when retrieved list of data is empty`(){
         // when the city has highest different in apartment rent
         val actual =Executable{emptyListOfCityHasTheHighestDifferentInApartmentRent.execute()}
         val expected=IllegalStateException::class.java
