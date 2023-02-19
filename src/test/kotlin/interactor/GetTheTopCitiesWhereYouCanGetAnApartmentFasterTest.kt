@@ -1,26 +1,34 @@
-
 package interactor
+
+import fakedata.DataSourceType
 import org.junit.jupiter.api.Assertions.*
 import fakedata.FakeDataSource
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetTheTopCitiesWhereYouCanGetAnApartmentFasterTest {
+    private lateinit var dataSource: CostOfLivingDataSource
+
     private lateinit var fakeData: FakeDataSource
-    private lateinit var getTheRightApartment: GetTheTopCitiesWhereYouCanGetAnApartmentFaster
+
+    private lateinit var getTheTopCitiesWhereYouCanGetAnApartmentFaster: GetTheTopCitiesWhereYouCanGetAnApartmentFaster
 
 
     @BeforeEach
     fun setUp() {
         fakeData = FakeDataSource()
-        getTheRightApartment = GetTheTopCitiesWhereYouCanGetAnApartmentFaster(fakeData)
+        dataSource = fakeData
+        getTheTopCitiesWhereYouCanGetAnApartmentFaster = GetTheTopCitiesWhereYouCanGetAnApartmentFaster(fakeData)
     }
 
 
     @Test
     fun should_ReturnNotEqualIsTrue_when_OutPutInCorrect() {
-        //Give
+        //Give limit and list
+        val limit = 10
         val expectedResult = listOf(
             Pair("Alexandria", 1.0f),
             Pair("Bagdad", 1.2f),
@@ -33,9 +41,8 @@ class GetTheTopCitiesWhereYouCanGetAnApartmentFasterTest {
             Pair("Alexandria", 1.9f),
             Pair("Bagdad", 2.3f),
         )
-
         //When
-        val actualResult = getTheRightApartment.getListOfDetailsOfApartment(1000)
+        val actualResult = getTheTopCitiesWhereYouCanGetAnApartmentFaster.getListOfTopCitiesNamesAndNumberOfYearsToGetApartmentFaster(limit)
         //Then
         assertNotEquals(expectedResult, actualResult)
     }
@@ -45,23 +52,28 @@ class GetTheTopCitiesWhereYouCanGetAnApartmentFasterTest {
     fun should_ReturnEqualIsTrue_when_OutPutCorrect() {
         //Give
         val expectedResult = listOf(
-            Pair("Havana", 2.2352502f),
-            Pair("Damascus", 15.645f),
+            Pair("Lyon", 1.388889f),
+            Pair("Alex", 2.0833335f),
         )
         //When
-        val actualResult = getTheRightApartment.getListOfDetailsOfApartment(1000)
+        val actualResult = getTheTopCitiesWhereYouCanGetAnApartmentFaster.getListOfTopCitiesNamesAndNumberOfYearsToGetApartmentFaster(2)
         //Then
         assertEquals(expectedResult, actualResult)
     }
-
     @Test
-    fun should_Throw_when_salaryEqualZero() {
-        //Give
+    fun should_ReturnCorrectList_When_EnterValidData() {
+        //Given -Valid Data
+        val limit=10
+        fakeData.dataSourceType= DataSourceType.VALID
 
-        //When
-        val actualResult = Executable { getTheRightApartment.getListOfDetailsOfApartment(0) }
-        //Then
-        assertThrows(Exception::class.java, actualResult)
+        //When -limit is 10
+        val list = getTheTopCitiesWhereYouCanGetAnApartmentFaster
+            .getListOfTopCitiesNamesAndNumberOfYearsToGetApartmentFaster(limit)
+        println(list.size)
+        //Then -return 10 items of the list sorted ascending by years
+        assertTrue(list.size == 10 && list == list.sortedBy { it.second })
     }
+
+
 }
 

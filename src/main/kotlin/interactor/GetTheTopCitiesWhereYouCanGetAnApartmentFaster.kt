@@ -2,13 +2,16 @@ package interactor
 
 import model.CityEntity
 
-open class GetTheTopCitiesWhereYouCanGetAnApartmentFaster(
+class GetTheTopCitiesWhereYouCanGetAnApartmentFaster(
     private val dataSource: CostOfLivingDataSource,
-    private val limit: Int = 10
 ) {
+    fun getListOfTopCitiesNamesAndNumberOfYearsToGetApartmentFaster(limit:Int): List<Pair<String, Float>> {
+        return getTopCitesHasCanPayApartmentFaster(limit)
+            .map { Pair(it.cityName, getNumberOfYearsToBuyApartment(it)) }
+    }
 
     // function return top cities dependent on number of years to get apartment in the city and the prices of food and services  from lowest to highest
-    private fun getTopCitesHasCanPayApartmentFaster(): List<CityEntity> {
+    private fun getTopCitesHasCanPayApartmentFaster(limit:Int): List<CityEntity> {
         return dataSource
             .getAllCitiesData()
             .filter(::excludeNullPricePerSquareMeterAvargeSalaryFoodPricesServicesPricesAndLowQualityData)
@@ -19,31 +22,27 @@ open class GetTheTopCitiesWhereYouCanGetAnApartmentFaster(
 
     }
 
-    fun getListOfTopCitiesNamesAndNumberOfYearsToGetApartmentFaster(): List<Pair<String, Float>> {
-        return getTopCitesHasCanPayApartmentFaster()
-            .map { Pair(it.cityName, getNumberOfYearsToBuyApartment(it)) }
-    }
 
     private fun excludeNullPricePerSquareMeterAvargeSalaryFoodPricesServicesPricesAndLowQualityData(city: CityEntity): Boolean {
-        return city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre != null
-                && city.averageMonthlyNetSalaryAfterTax != null
-                && city.foodPrices.chickenFillets1kg != null
-                && city.foodPrices.eggsRegular12 != null
-                && city.foodPrices.localCheese1kg != null
-                && city.foodPrices.riceWhite1kg != null
-                && city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null
-                && city.foodPrices.loafOfFreshWhiteBread500g != null
-                && city.servicesPrices.basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment != null
-                && city.servicesPrices.cinemaInternationalReleaseOneSeat != null
-                && city.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl != null
-                && city.servicesPrices.internationalPrimarySchoolYearlyForOneChild != null
-                && city.dataQuality
+        return city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre != null &&
+                city.averageMonthlyNetSalaryAfterTax != null &&
+                city.foodPrices.chickenFillets1kg != null &&
+                city.foodPrices.eggsRegular12 != null &&
+                city.foodPrices.localCheese1kg != null &&
+                city.foodPrices.riceWhite1kg != null &&
+                city.foodPrices.beefRound1kgOrEquivalentBackLegRedMeat != null &&
+                city.foodPrices.loafOfFreshWhiteBread500g != null &&
+                city.servicesPrices.basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment != null &&
+                city.servicesPrices.cinemaInternationalReleaseOneSeat != null &&
+                city.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl != null &&
+                city.servicesPrices.internationalPrimarySchoolYearlyForOneChild != null &&
+                city.dataQuality
     }
 
     private fun getNumberOfYearsToBuyApartment(city: CityEntity): Float {
 
         return 100 * city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!
-            .div(city.averageMonthlyNetSalaryAfterTax!! * 12)
+            .div(city.averageMonthlyNetSalaryAfterTax!! * Const.numberOfMonthsInYear)
 
     }
 
@@ -59,4 +58,8 @@ open class GetTheTopCitiesWhereYouCanGetAnApartmentFaster(
             .plus(city.servicesPrices.internet60MbpsOrMoreUnlimitedDataCableAdsl!!)
             .plus(city.servicesPrices.internationalPrimarySchoolYearlyForOneChild!!)
     }
+    object Const {
+        const val numberOfMonthsInYear = 12
+    }
+
 }

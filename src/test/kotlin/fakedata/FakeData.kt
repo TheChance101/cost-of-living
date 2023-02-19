@@ -146,7 +146,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
             ),
             realEstatesPrices = RealEstatesPrices(
                 apartmentOneBedroomInCityCentre = 500000f,
-                apartmentOneBedroomOutsideOfCentre = 300000f,
+                apartmentOneBedroomOutsideOfCentre = 400000f,
                 apartment3BedroomsInCityCentre = 800000f,
                 apartment3BedroomsOutsideOfCentre = 500000f,
                 pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
@@ -220,7 +220,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
             ),
             realEstatesPrices = RealEstatesPrices(
                 apartmentOneBedroomInCityCentre = 500000f,
-                apartmentOneBedroomOutsideOfCentre = 300000f,
+                apartmentOneBedroomOutsideOfCentre = 55000f,
                 apartment3BedroomsInCityCentre = 800000f,
                 apartment3BedroomsOutsideOfCentre = 500000f,
                 pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
