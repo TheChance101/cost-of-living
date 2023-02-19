@@ -18,7 +18,6 @@ class TaxesFakeDataSource {
 
     fun getCountryNameContainsSymbols() = countryNameContainsSymbols
 
-
     fun getDataHasDrinkPriceIsNotNull() = drinkPriceIsNotNull
 
 
@@ -1609,4 +1608,3 @@ class TaxesFakeDataSource {
     )
 
 }
-
