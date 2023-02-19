@@ -7,8 +7,18 @@ class GetTheMostExpensiveCitiesNamesIntTermOfCinemaTickets(
 ) {
 
     fun execute(limit :Int ): List<String> {
-        return emptyList()
+        return dataSource
+            .getAllCitiesData()
+            .filter (::excludeNullCinemaTicketsPricesAndLowQualityData)
+            .sortedByDescending { it.servicesPrices.cinemaInternationalReleaseOneSeat }
+            .take(limit)
+            .map {it.cityName }
+
+
     }
 
+    private fun excludeNullCinemaTicketsPricesAndLowQualityData(city: CityEntity) :Boolean {
+        return  city.servicesPrices.cinemaInternationalReleaseOneSeat != null && city.dataQuality
+    }
 
 }
