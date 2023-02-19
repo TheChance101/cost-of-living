@@ -32,6 +32,25 @@ internal class GetTheMostExpensiveCitiesNamesIntTermOfCinemaTicketsTest {
         // then the result should return not null
         assertNotNull(result)
     }
+    @Test
+    fun should_ReturnEmptyList_When_TheLimitEqualZero(){
+        // given a zero number to this function to implement
+        val limit=0
+        // when execute this function
+        val result = getTheMostExpensiveCitiesNamesIntTermOfCinemaTickets.execute(limit)
+        // then the result should return empty list or []
+        assertEquals(emptyList<String>(),result)
+    }
+    @Test
+    fun should_ThrowException_When_TheLimitEqualsNegativeNumber(){
+        //given a negative number to this function to implement
+        val limit=  - 1
+        // when execute this function
+        val resultExecutable :Executable = Executable{ getTheMostExpensiveCitiesNamesIntTermOfCinemaTickets.execute(limit)}
+        // then exception should be Throwen
+        assertThrows(Exception::class.java,resultExecutable)
+    }
 
 
 }
+
