@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetLowestAveragePricesForFruitsAndVegetablesInteractorTest {
@@ -82,4 +83,19 @@ internal class GetLowestAveragePricesForFruitsAndVegetablesInteractorTest {
         )
         assertEquals(expected,actual)
     }
+
+    @Test
+    fun `should throw exception when the limit is negative `(){
+        //given a negative limit
+        val limit = -4
+        //when getting list of cities names with the lowest average prices for fruits and vegetables
+        val actual =  Executable { interactor.execute(limit) }
+        //then
+        val expected = InvalidLimitException::class.java
+
+        assertThrows(expected, actual)
+    }
+
+
+
 }
