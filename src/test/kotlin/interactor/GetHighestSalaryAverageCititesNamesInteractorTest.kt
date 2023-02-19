@@ -1,38 +1,38 @@
 package interactor
 import dataSource.FakeDataSource
-import model.CityEntity
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Test
+import dataSource.FakeDataWithEmptyList
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.function.Executable
 
 class GetCityThatHasLowestCostOfFoodInteractorTest {
 
     private lateinit var fakeData : CostOfLivingDataSource
-    private lateinit var GetCityThatHasLowestCostOfFood :GetCityThatHasLowestCostOfFoodInteractor
+    private lateinit var interactor :GetCityThatHasLowestCostOfFoodInteractor
+    private lateinit var emptyDataInteractor :GetCityThatHasLowestCostOfFoodInteractor
 
     @BeforeEach
     fun setUp(){
         fakeData= FakeDataSource()
-        GetCityThatHasLowestCostOfFood = GetCityThatHasLowestCostOfFoodInteractor(fakeData)
+        interactor = GetCityThatHasLowestCostOfFoodInteractor(fakeData)
+        emptyDataInteractor = GetCityThatHasLowestCostOfFoodInteractor(FakeDataWithEmptyList())
     }
 
     @Test
     fun `should return exception when list of cities is empty`() {
-        //given
-        val cityList = emptyList<CityEntity>()
         //when
-        val cityNameResult = Executable { GetCityThatHasLowestCostOfFood.execute() }
+        val actual = Executable { emptyDataInteractor.execute() }
         //then
-        Assertions.assertThrows(Exception::class.java, cityNameResult)
+        assertThrows(IllegalStateException::class.java, actual)
     }
     @Test
     fun `should return city name when given list 0f cities`() {
-        //given
-        val cityList = fakeData.getAllCitiesData()
         //when
-        val cityNameResult = GetCityThatHasLowestCostOfFood.execute()
+        val actual = interactor.execute().cityName
+        val expected = "Narayanganj"
         //then
-        Assertions.assertEquals(" ", cityNameResult)
+        assertEquals(expected, actual)
     }
 }
