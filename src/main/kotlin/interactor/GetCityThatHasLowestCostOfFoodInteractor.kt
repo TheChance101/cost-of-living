@@ -13,7 +13,7 @@ data quality should be high
  class GetCityThatHasLowestCostOfFoodInteractor(
     private val dataSource: CostOfLivingDataSource,
 )  {
-    fun execute(): List<Pair<String, Float>> {
+    fun execute(): CityEntity {
         return dataSource
             .getAllCitiesData()
             .also { if (it.isEmpty() )throw  IllegalStateException() }
