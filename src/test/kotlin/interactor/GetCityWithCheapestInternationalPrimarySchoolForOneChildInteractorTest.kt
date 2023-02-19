@@ -93,5 +93,49 @@ class GetCityWithCheapestInternationalPrimarySchoolForOneChildInteractorTest{
         //then
         assertEquals(listOf(Pair("Damascus",2676.54f),Pair("Cairo",4500.9f)),result)
     }
+    @Test
+    fun `should throw exeption correct list when enter negative limit`(){
+        //given
+        val limit = -2
+        val mockCity = listOf(
+            MockCityEntity.createMockCity(
+                internationalPrimarySchoolYearlyForOneChild = 2676.54f ,
+                cityName = "Damascus",
+                dataQuality = true
+            ),
+            MockCityEntity.createMockCity(
+                internationalPrimarySchoolYearlyForOneChild = 4500.9f ,
+                cityName = "Cairo",
+                dataQuality = true
+            ))
+        every { dataSource.getAllCitiesData() } returns mockCity
+        //when
+        val resultList: Executable = Executable { interactor.execute(limit) }
+        // then exception should be thrown
+        assertThrows(Exception::class.java , resultList)
+    }
+    @Test
+    fun `should throw exeption correct list when enter limit equal zero`(){
+        //given
+        val limit = 0
+
+        val mockCity = listOf(
+            MockCityEntity.createMockCity(
+                internationalPrimarySchoolYearlyForOneChild = 2676.54f ,
+                cityName = "Damascus",
+                dataQuality = true
+            ),
+            MockCityEntity.createMockCity(
+                internationalPrimarySchoolYearlyForOneChild = 4500.9f ,
+                cityName = "Cairo",
+                dataQuality = true
+            ))
+        every { dataSource.getAllCitiesData() } returns mockCity
+        //when
+        val resultList: Executable = Executable { interactor.execute(limit) }
+        // then exception should be thrown
+        assertThrows(Exception::class.java , resultList)
+    }
+
 
 }
