@@ -5,23 +5,21 @@ import model.CityEntity
 class GetCitiesNamesOrderedByBestHealthyBreakfastCost(
     private val dataSource: CostOfLivingDataSource) {
 
-    fun excute(): List<String> {
+    fun execute(limit : Int=10): List<String> {
 
         return dataSource.getAllCitiesData()
-            .map { CityBreakFast(it.cityName,getBreakfastcost(it)) }
-            .filter { it.breakfastCost!=-1f }
-            .sortedBy { it.breakfastCost }
-            .map { it.Name }
+            .filter (::excludeNulls)
+            .sortedBy { it.getBreakfastCost() }
+            .map { it.cityName }.take(limit)
             
     }
-   private fun getBreakfastcost(city : CityEntity): Float {
-     if (city.drinksPrices.milkRegularOneLiter!=null
-        &&city.foodPrices.eggsRegular12!=null && city.foodPrices.localCheese1kg!=null) {
-         return (city.drinksPrices.milkRegularOneLiter!! / 4) + (city.foodPrices.eggsRegular12!! / 12)
-         +(city.foodPrices.localCheese1kg!! / 4)
-     }else
-         return -1f
+   private fun CityEntity.getBreakfastCost(): Float {
+       return( (drinksPrices.milkRegularOneLiter!! / 4)
+            + (foodPrices.eggsRegular12!! / 12)
+            +(foodPrices.localCheese1kg!! / 4))
+    }
+   private fun excludeNulls (city : CityEntity):Boolean{
+       return city.drinksPrices.milkRegularOneLiter!=null
+               &&city.foodPrices.eggsRegular12!=null && city.foodPrices.localCheese1kg!=null
    }
-
-    private class CityBreakFast( var Name : String,var breakfastCost : Float )
 }
