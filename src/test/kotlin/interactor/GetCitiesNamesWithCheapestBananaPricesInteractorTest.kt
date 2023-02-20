@@ -1,71 +1,102 @@
 package interactor
 
-import dataSource.utils.FakeDataSourceM
-import jdk.jfr.Name
+import data.BananaCheapestFakeData
+import data.BananaCheapestFakeData.citiesListOf
+import data.BananaCheapestFakeData.makeCity
+import data.EmptyFakeData
+import data.InvalidFakeData
+import model.*
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Assertions.assertThrows
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetCitiesNamesWithCheapestBananaPricesInteractorTest {
     // region init
-    private lateinit var getCitiesNamesWithCheapestBananaPricesInteractor: GetCitiesNamesWithCheapestBananaPricesInteractor
-    @Name("FakeDataSource")
-    private lateinit var fakeDataSource: FakeDataSourceM
+    private lateinit var getCitiesNamesWithCheapestBananaPrices: GetCitiesNamesWithCheapestBananaPricesInteractor
 
-    @BeforeAll
+    @BeforeEach
     fun setup() {
-        fakeDataSource = FakeDataSourceM()
-        getCitiesNamesWithCheapestBananaPricesInteractor =
-            GetCitiesNamesWithCheapestBananaPricesInteractor(fakeDataSource)
+        getCitiesNamesWithCheapestBananaPrices = GetCitiesNamesWithCheapestBananaPricesInteractor(BananaCheapestFakeData)
     }
     // endregion
 
     // region one city cases
     @Test
-    fun should_ReturnOneCity_When_TheInputIsOneCityIncluded() {
+    fun `should throw illegal state exception when the data is invalid`() {
+        // change source of fake data to invalid data
+        getCitiesNamesWithCheapestBananaPrices = GetCitiesNamesWithCheapestBananaPricesInteractor(InvalidFakeData)
+
         // given one city included
-        val city = "Santiago de Cuba"
+        val city = makeCity("Santiago de Cuba")
 
         // when the output is list of one city
-        val result = getCitiesNamesWithCheapestBananaPricesInteractor.execute(city)
+        val result = Executable { getCitiesNamesWithCheapestBananaPrices(city) }
+
+        // then check
+        assertThrows(IllegalStateException::class.java, result)
+    }
+    @Test
+    fun `should throw illegal state exception when the data is empty`() {
+        // change source of fake data to empty data
+        getCitiesNamesWithCheapestBananaPrices = GetCitiesNamesWithCheapestBananaPricesInteractor(EmptyFakeData)
+
+        // given one city included
+        val city = makeCity("Santiago de Cuba")
+
+        // when the output is list of one city
+        val result = Executable { getCitiesNamesWithCheapestBananaPrices(city) }
+
+        // then check
+        assertThrows(IllegalStateException::class.java, result)
+    }
+
+    @Test
+    fun `should return one city when the input is one city included`() {
+        // given one city included
+        val city = makeCity("Santiago de Cuba")
+
+        // when the output is list of one city
+        val result = getCitiesNamesWithCheapestBananaPrices(city)
 
         // then check
         assertEquals(listOf("Santiago de Cuba"), result)
     }
 
     @Test
-    fun should_ReturnEmptyList_when_TheInputIsOneCityNotIncluded() {
+    fun `should throw illegal state exception when the input is one city not included`() {
         // given one city is not included
-        val city = "Galaxy"
+        val city = makeCity("Galaxy")
 
         // when the output is empty list of city
-        val result = getCitiesNamesWithCheapestBananaPricesInteractor.execute(city)
+        val result =  Executable { getCitiesNamesWithCheapestBananaPrices(city) }
 
         // then check 
-        assertEquals(emptyList<String>(), result)
+        assertThrows(IllegalStateException::class.java, result)
     }
 
     @Test
-    fun should_ReturnOneCity_When_TheInputIsOneCityIncludedInLowercase() {
+    fun `should return one city when the input is one city included in lowercase`() {
         // given one city included
-        val city = "santiago de cuba"
+        val city = makeCity("santiago de cuba")
 
         // when the output is list of one city
-        val result = getCitiesNamesWithCheapestBananaPricesInteractor.execute(city)
+        val result = getCitiesNamesWithCheapestBananaPrices(city)
 
         // then check
         assertEquals(listOf("Santiago de Cuba"), result)
     }
 
     @Test
-    fun should_ReturnOneCity_When_TheInputIsOneCityIncludedInLowercaseAndMoreOuterSpace() {
+    fun `should return one city when the input is one city included in lowercase and more outer spaces`() {
         // given one city included
-        val city = " santiago de cuba "
+        val city = makeCity(" santiago de cuba ")
 
         // when the output is list of one city
-        val result = getCitiesNamesWithCheapestBananaPricesInteractor.execute(city)
+        val result = getCitiesNamesWithCheapestBananaPrices(city)
 
         // then check
         assertEquals(listOf("Santiago de Cuba"), result)
@@ -74,68 +105,63 @@ internal class GetCitiesNamesWithCheapestBananaPricesInteractorTest {
 
     // region multi city cases
     @Test
-    fun should_ReturnSortedList_When_TheInputIsMultiCityAllIncluded() {
+    fun `should return sorted list when the input is multi city all included`() {
         // given multi city all of this is included
-        val cities = arrayOf("Santiago de Cuba", "Sancti Spiritus")
+        val cities = citiesListOf("Santiago de Cuba", "Sancti Spiritus")
 
         // when the output is list of sorted cities by Banana Price
-        val result = getCitiesNamesWithCheapestBananaPricesInteractor
-            .execute(*cities)
+        val result = getCitiesNamesWithCheapestBananaPrices(*cities)
 
         // then check
         assertEquals(listOf("Santiago de Cuba", "Sancti Spiritus"), result)
     }
 
     @Test
-    fun should_ReturnSortedList_When_TheInputIsMultiCityAllIncludedInDifferentCase() {
+    fun `should return sorted list when the input is multi city all included in different cases`() {
         // given multi city all of this is included
-        val cities = arrayOf("SaNtiago de cuba", "sAncti spirItus")
+        val cities = citiesListOf("SaNtiago de cuba", "sAncti spirItus")
 
         // when the output is list of sorted cities by Banana Price
-        val result = getCitiesNamesWithCheapestBananaPricesInteractor
-            .execute(*cities)
+        val result = getCitiesNamesWithCheapestBananaPrices(*cities)
 
         // then check
         assertEquals(listOf("Santiago de Cuba", "Sancti Spiritus"), result)
     }
 
     @Test
-    fun should_ReturnSortedList_When_TheInputIsMultiCitySomeIncluded() {
+    fun `should return sorted list when the input is multi city some included`() {
         // given multi city some of this is included
-        val cities = arrayOf("Santiago de Cuba", "Sancti Spiritus", "Galaxy")
+        val cities = citiesListOf("Santiago de Cuba", "Sancti Spiritus", "Galaxy")
 
         // when the output is list of sorted cities by Banana Price
-        val result = getCitiesNamesWithCheapestBananaPricesInteractor
-            .execute(*cities)
+        val result = getCitiesNamesWithCheapestBananaPrices(*cities)
 
         // then check
         assertEquals(listOf("Santiago de Cuba", "Sancti Spiritus"), result)
     }
 
     @Test
-    fun should_ReturnSortedList_When_TheInputIsMultiCitySomeIncludedInDifferentCases() {
+    fun `should return sorted list when the input is multi city some included in different cases`() {
         // given multi city some of this is included
-        val cities = arrayOf("santiago de cuba", "Sancti Spiritus", "Galaxy")
+        val cities = citiesListOf("santiago de cuba", "Sancti Spiritus", "Galaxy")
 
         // when the output is list of sorted cities by Banana Price
-        val result = getCitiesNamesWithCheapestBananaPricesInteractor
-            .execute(*cities)
+        val result = getCitiesNamesWithCheapestBananaPrices(*cities)
 
         // then check
         assertEquals(listOf("Santiago de Cuba", "Sancti Spiritus"), result)
     }
 
     @Test
-    fun should_ReturnSortedList_when_TheInputIsMultiCityAllNotIncluded() {
+    fun `should throw illegal state exception when the input is multi city all not included`() {
         // given multi city all of this is not included
-        val cities = arrayOf("", "Farwala", "Galaxy")
+        val cities = citiesListOf("", "Farwala", "Galaxy")
 
         // when the output is empty list
-        val result = getCitiesNamesWithCheapestBananaPricesInteractor
-            .execute(*cities)
+        val result =  Executable { getCitiesNamesWithCheapestBananaPrices(*cities) }
 
         // then check
-        assertEquals(emptyList<String>(), result)
+        assertThrows(IllegalStateException::class.java, result)
     }
     // endregion
 }

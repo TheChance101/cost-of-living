@@ -8,4 +8,7 @@ data class FruitAndVegetablesPrices(
     val potato1kg: Float?,
     val onion1kg: Float?,
     val lettuceOneHead: Float?,
-)
+) {
+    fun getAverageFruitsAndVegetablesPrice() =
+        listOfNotNull(tomato1kg, potato1kg, lettuceOneHead, oranges1kg, onion1kg, banana1kg, apples1kg).average()
+}
