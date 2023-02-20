@@ -51,7 +51,7 @@ internal class GetBest3CitiesForBuyingSoftDrinksInteractorTest{
             listOf(
             best3CitiesForBuyingSoftDrinks()[0].cityName,
             best3CitiesForBuyingSoftDrinks()[1].cityName,
-            best3CitiesForBuyingSoftDrinks()[3].cityName
+            best3CitiesForBuyingSoftDrinks()[2].cityName
             )
 
         // when check if the two lists are the same
@@ -65,7 +65,7 @@ internal class GetBest3CitiesForBuyingSoftDrinksInteractorTest{
     fun should_ReturnFalse_When_WePassTheFakeData() {
 
         // Given a cities names and the names of returned cities
-        val bestThreeCitiesNames = listOf("Moncks Corner" , "Keller" , "Pearl City")
+        val bestThreeCitiesNames = listOf("El Balyana" , "gerga" , "El Maragha")
         val namesOfReturnedCities =
             listOf(
                 best3CitiesForBuyingSoftDrinks()[0].cityName,
@@ -77,7 +77,6 @@ internal class GetBest3CitiesForBuyingSoftDrinksInteractorTest{
         val areEqual = bestThreeCitiesNames == namesOfReturnedCities
 
         // then check the result
-        Assertions.assertTrue(areEqual)
+        Assertions.assertFalse(areEqual)
     }
-
 }
