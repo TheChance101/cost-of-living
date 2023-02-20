@@ -23,9 +23,7 @@ class GetCheapestCityForCookPersonInteractor (
         dataSource.getAllCitiesData()
             .filter { excludeFalseDataQuality(it) && excludeNullSalaryAndNullMinutePrice(it)}
             .also { if (it.isEmpty()) throw NullPointerException() }
-            .sortedBy { calculateMinutePricePercentToSalary(it) }
-            .map { it.cityName }
-            .first()
+            .minByOrNull { calculateMinutePricePercentToSalary(it) }!!.cityName
 
     fun excludeFalseDataQuality(city:CityEntity) = city.dataQuality
 
