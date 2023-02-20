@@ -8,9 +8,9 @@ class GetCheapestCityForCookPersonInteractor (
 ) {
     fun execute():CityEntity{}
 
-    fun excludeFalseDataQuality():Boolean{}
+    fun excludeFalseDataQuality(city:CityEntity):Boolean{}
 
-    fun excludeNullSalaryOrNullMinutePrice():Boolean{}
+    fun excludeNullSalaryAndNullMinutePrice(city:CityEntity):Boolean{}
 
-    fun calculateMinutePricePercentToSalary():Float{}
+    fun calculateMinutePricePercentToSalary(city: CityEntity):Float{}
 }
