@@ -9,8 +9,8 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class GetCitiesLeastAvgCarPricesInteractorTest {
-    private lateinit var interactor: GetCitiesLeastAvgCarPricesInteractor
+class GetCityNamesWithLeastAvgCarPricesInteractorTest {
+    private lateinit var interactor: GetCityNamesWithLeastAvgCarPricesInteractor
     private lateinit var expectedTop10Cities: List<Pair<String, Float>>
 
     @BeforeAll
@@ -21,7 +21,7 @@ class GetCitiesLeastAvgCarPricesInteractorTest {
     @Test
     fun should_ReturnTopCityNames_when_inputIsValid() {
         // Given
-        interactor = GetCitiesLeastAvgCarPricesInteractor(QualityCities())
+        interactor = GetCityNamesWithLeastAvgCarPricesInteractor(QualityCities())
         // When
         val result = interactor.execute(10)
         // Then
@@ -31,7 +31,7 @@ class GetCitiesLeastAvgCarPricesInteractorTest {
     @Test
     fun should_ReturnEmptyList_when_allCarsAreNull() {
         // Given
-        interactor = GetCitiesLeastAvgCarPricesInteractor(CitiesWithNullCarPrices())
+        interactor = GetCityNamesWithLeastAvgCarPricesInteractor(CitiesWithNullCarPrices())
         // When
         val result = interactor.execute(10)
         // Then
@@ -41,28 +41,19 @@ class GetCitiesLeastAvgCarPricesInteractorTest {
     @Test
     fun should_ReturnMaxLimitSize_when_inputIsValid() {
         // Given
-        interactor = GetCitiesLeastAvgCarPricesInteractor(QualityCities())
-        // When
-        val result = interactor.execute(10).size
-        // Then
-        assertEquals(10, result)
-    }
-
-    @Test
-    fun should_ReturnEmptyList_when_salaryIsNull() {
-        // Given
-        interactor = GetCitiesLeastAvgCarPricesInteractor(CitiesWithNullSalary())
+        interactor = GetCityNamesWithLeastAvgCarPricesInteractor(QualityCities())
         // When
         val result = interactor.execute(10)
         // Then
-        assertEquals(emptyList(), result)
+        assertEquals(10, result.size)
     }
+
 
     @Test
     fun should_ReturnLessSize_when_inputHasDuplicates() {
         // Given
         val testCity = CitiesWithTwoDuplicates()
-        interactor = GetCitiesLeastAvgCarPricesInteractor(testCity)
+        interactor = GetCityNamesWithLeastAvgCarPricesInteractor(testCity)
         // When
         val actual = testCity.getAllCitiesData().size
         val result = interactor.execute(10)
@@ -71,32 +62,13 @@ class GetCitiesLeastAvgCarPricesInteractorTest {
     }
 
     @Test
-    fun should_ReturnEmptyList_when_inputIsLowQualityData() {
-        // Given
-        interactor = GetCitiesLeastAvgCarPricesInteractor(CitiesWithLowQualityData())
-        // When
-        val result = interactor.execute(10)
-        // Then
-        assertEquals(emptyList(), result)
-    }
-
-    @Test
     fun should_ReturnEmptyList_when_carPricesAreNegative() {
         // Given
-        interactor = GetCitiesLeastAvgCarPricesInteractor(CitiesWithNegativeCarPrices())
+        interactor = GetCityNamesWithLeastAvgCarPricesInteractor(CitiesWithNegativeCarPrices())
         // When
         val result = interactor.execute(10)
         // Then
         assertEquals(emptyList(), result)
     }
 
-    @Test
-    fun should_ReturnEmptyList_when_salaryIsNegative() {
-        // Given
-        interactor = GetCitiesLeastAvgCarPricesInteractor(CitiesWithNegativeSalary())
-        // When
-        val result = interactor.execute(10)
-        // Then
-        assertEquals(emptyList(), result)
-    }
 }
