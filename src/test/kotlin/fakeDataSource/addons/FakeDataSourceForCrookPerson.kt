@@ -1,11 +1,35 @@
 package fakeDataSource.addons
 
+import interactor.CostOfLivingDataSource
 import model.*
 
 class FakeDataSourceForCrookPerson {
 
+    fun testExecuteMethodLogic() = object : CostOfLivingDataSource {
+        override fun getAllCitiesData() = listOf(
+            createCrookTrueFakeCity("Cairo","Egypt",50.0f,1.0f),
+            createCrookTrueFakeCity("Benha","Egypt",40.0f,1.5f),
+            createCrookTrueFakeCity("Shobra","Egypt",20.0f,2.1f))
+    }
+
+    fun percentLogicTest() = object : CostOfLivingDataSource {
+        override fun getAllCitiesData() = listOf(
+            createCrookTrueFakeCity("Cairo","Egypt",50.0f,5.0f))
+    }
 
 
+    fun trueFalseCityEntityList() = object : CostOfLivingDataSource {
+        override fun getAllCitiesData() = listOf(
+        createCrookTrueFakeCity("Cairo","Egypt",50.0f,1.0f),
+        createCrookFalseFakeCity("Benha","Egypt",40.0f,1.5f))
+    }
+
+
+    fun getListWithNullSalaryAndNullPrice()  = object: CostOfLivingDataSource{
+        override fun getAllCitiesData() = listOf(
+            createCrookTrueFakeCity("Maadi","Egypt",null,0.5f),
+            createCrookTrueFakeCity("Helwan","Egypt",230.0f,null))
+    }
 
 
     private fun createCrookTrueFakeCity(
