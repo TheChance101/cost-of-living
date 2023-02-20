@@ -88,7 +88,7 @@ class Helper(private val dataSource: CostOfLivingDataSource) {
                     print("example iraq, usa:-")
                     val countries = readlnOrNull().toString().split(",")
                     if (countries.isNotEmpty()) {
-                        print(GetCityThatMatchTheManagerExpectationsInteractor(dataSource).invoke(countries))
+                        print(GetCityThatMatchTheManagerExpectationsInteractor(dataSource)(countries))
                     } else {
                         print("your input not valid, try again.")
                     }
