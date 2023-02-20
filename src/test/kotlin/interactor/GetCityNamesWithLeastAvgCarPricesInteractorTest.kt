@@ -12,62 +12,62 @@ import kotlin.test.assertNotEquals
 class GetCityNamesWithLeastAvgCarPricesInteractorTest {
     private lateinit var interactor: GetCityNamesWithLeastAvgCarPricesInteractor
     private lateinit var expectedTop10Cities: List<Pair<String, Float>>
+    private lateinit var duplicateCities : CitiesWithTwoDuplicates
 
     @BeforeAll
     fun init() {
         expectedTop10Cities = top10CitiesSorted()
+        duplicateCities = CitiesWithTwoDuplicates()
     }
 
     @Test
     fun should_ReturnTopCityNames_when_inputIsValid() {
-        // Given
+        // Given list of valid cities
         interactor = GetCityNamesWithLeastAvgCarPricesInteractor(QualityCities())
-        // When
+        // When get top 10 cities
         val result = interactor.execute(10)
-        // Then
+        // Then result must equal expected
         assertContentEquals(expectedTop10Cities, result)
     }
 
     @Test
     fun should_ReturnEmptyList_when_allCarsAreNull() {
-        // Given
+        // Given list of cities with null car prices
         interactor = GetCityNamesWithLeastAvgCarPricesInteractor(CitiesWithNullCarPrices())
-        // When
+        // When get top 10 cities
         val result = interactor.execute(10)
-        // Then
+        // Then result must equal an empty list
         assertContentEquals(emptyList(), result)
     }
 
     @Test
     fun should_ReturnMaxLimitSize_when_inputIsValid() {
-        // Given
+        // Given list of cities with null car prices
         interactor = GetCityNamesWithLeastAvgCarPricesInteractor(QualityCities())
-        // When
+        // When get top 10 cities
         val result = interactor.execute(10)
-        // Then
+        // Then size must equal 10
         assertEquals(10, result.size)
     }
 
 
     @Test
     fun should_ReturnLessSize_when_inputHasDuplicates() {
-        // Given
-        val testCity = CitiesWithTwoDuplicates()
-        interactor = GetCityNamesWithLeastAvgCarPricesInteractor(testCity)
-        // When
-        val actual = testCity.getAllCitiesData().size
+        // Given list of cities with duplicates
+        interactor = GetCityNamesWithLeastAvgCarPricesInteractor(duplicateCities)
+        // When get top 10 cities
         val result = interactor.execute(10)
-        // Then
-        assertNotEquals(actual, result.size)
+        // Then result size must equal expected
+        assertNotEquals(duplicateCities.getAllCitiesData().size, result.size)
     }
 
     @Test
     fun should_ReturnEmptyList_when_carPricesAreNegative() {
-        // Given
+        // Given list of cities with negative car prices
         interactor = GetCityNamesWithLeastAvgCarPricesInteractor(CitiesWithNegativeCarPrices())
-        // When
+        // When get top 10 cities
         val result = interactor.execute(10)
-        // Then
+        // Then result must be an empty list
         assertEquals(emptyList(), result)
     }
 
