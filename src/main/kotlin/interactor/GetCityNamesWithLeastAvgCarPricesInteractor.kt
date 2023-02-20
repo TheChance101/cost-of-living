@@ -1,19 +1,16 @@
 package interactor
 
 import model.CarsPrices
-import model.CityEntity
 
-class GetCitiesLeastAvgCarPricesInteractor(private val dataSource: CostOfLivingDataSource) {
+class GetCityNamesWithLeastAvgCarPricesInteractor(private val dataSource: CostOfLivingDataSource) {
     fun execute(limit: Int): List<Pair<String, Float>> {
         return dataSource
             .getAllCitiesData()
-            .filter { isCarPricePositive(it.carsPrices) && isDataQualityHighAndSalaryValid(it) }
+            .filter { isCarPriceNotNullAndPositive(it.carsPrices) }
             .sortedBy { getAvgCarPrices(it.carsPrices) }
-            .distinctBy { it.cityName }
+            .distinctBy { it.country }
+            .map { Pair(it.cityName, getAvgCarPrices(it.carsPrices)) }
             .take(limit)
-            .map {
-                Pair(it.cityName, getAvgCarPrices(it.carsPrices))
-            }
     }
 
     private fun getAvgCarPrices(carPrices: CarsPrices): Float {
@@ -24,11 +21,7 @@ class GetCitiesLeastAvgCarPricesInteractor(private val dataSource: CostOfLivingD
         return sum / count
     }
 
-    private fun isDataQualityHighAndSalaryValid(cityEntity: CityEntity) = cityEntity.dataQuality &&
-            cityEntity.averageMonthlyNetSalaryAfterTax != null &&
-            cityEntity.averageMonthlyNetSalaryAfterTax >= 0f
-
-    private fun isCarPricePositive(carPrices: CarsPrices): Boolean {
+    private fun isCarPriceNotNullAndPositive(carPrices: CarsPrices): Boolean {
         carPrices.run {
             return (volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar != null && volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar >= 0) &&
                     (toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar != null && toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar >= 0)
