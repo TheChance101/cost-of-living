@@ -105,7 +105,11 @@ class GetFastestCitiesToBuyApartmentInteractorTest {
     @Test
     fun should_returnTrue_when_theDataQualityIsHigh() {
         // Given a high quality data
-        val city = fastestCitiesToBuyApartmentFakeData.createFakeCity(12.5f, 15.4f, true)
+        val city = fastestCitiesToBuyApartmentFakeData.createFakeCity(
+            apartmentPrice = 12.5f,
+            salary = 15.4f,
+            dataQuality = true
+        )
         // When checking a high quality data
         val result = excludeLowQualityCityData(city)
         // Then the result should be true
@@ -115,7 +119,11 @@ class GetFastestCitiesToBuyApartmentInteractorTest {
     @Test
     fun should_returnFalse_when_theDataQualityIsLow() {
         // Given a low quality data
-        val city = fastestCitiesToBuyApartmentFakeData.createFakeCity(12.5f, 15.4f, false)
+        val city = fastestCitiesToBuyApartmentFakeData.createFakeCity(
+            apartmentPrice = 12.5f,
+            salary = 15.4f,
+            dataQuality = false
+        )
         // When checking low quality data
         val result = excludeLowQualityCityData(city)
         // Then the result should be false
@@ -127,7 +135,8 @@ class GetFastestCitiesToBuyApartmentInteractorTest {
     @Test
     fun should_returnTrue_when_salaryIsNotNull() {
         // Given a not null salary
-        val city = fastestCitiesToBuyApartmentFakeData.createFakeCity(12f, 13f, true)
+        val city =
+            fastestCitiesToBuyApartmentFakeData.createFakeCity(apartmentPrice = 12f, salary = 13f, dataQuality = true)
         // When checking for the not null salary
         val result = excludeInvalidSalaries(city)
         // Then the result should be true
@@ -137,7 +146,8 @@ class GetFastestCitiesToBuyApartmentInteractorTest {
     @Test
     fun should_returnFalse_when_salaryIsNull() {
         // Given a null salary
-        val city = fastestCitiesToBuyApartmentFakeData.createFakeCity(12f, null, true)
+        val city =
+            fastestCitiesToBuyApartmentFakeData.createFakeCity(apartmentPrice = 12f, salary = null, dataQuality = true)
         // When checking for the null salary
         val result = excludeInvalidSalaries(city)
         // Then the result should be false
@@ -147,7 +157,8 @@ class GetFastestCitiesToBuyApartmentInteractorTest {
     @Test
     fun should_returnTrue_when_salaryValueIsValid() {
         // Given a valid salary
-        val city = fastestCitiesToBuyApartmentFakeData.createFakeCity(12f, 14f, true)
+        val city =
+            fastestCitiesToBuyApartmentFakeData.createFakeCity(apartmentPrice = 12f, salary = 14f, dataQuality = true)
         // when checking for a valid salary
         val result = excludeInvalidSalaries(city)
         // then the result should be true
@@ -157,7 +168,8 @@ class GetFastestCitiesToBuyApartmentInteractorTest {
     @Test
     fun should_return_when_salaryValueIsInvalid() {
         // Given an Invalid salary
-        val city = fastestCitiesToBuyApartmentFakeData.createFakeCity(12f, -5f, true)
+        val city =
+            fastestCitiesToBuyApartmentFakeData.createFakeCity(apartmentPrice = 12f, salary = -5f, dataQuality = true)
         // when checking for an Invalid salary
         val result = excludeInvalidSalaries(city)
         // then the result should be false
@@ -170,7 +182,11 @@ class GetFastestCitiesToBuyApartmentInteractorTest {
     @Test
     fun should_returnTrue_when_apartmentPriceIsNotNull() {
         // Given a not null pricePerSquareMeter
-        val city = fastestCitiesToBuyApartmentFakeData.createFakeCity(12f, 873.35f, true)
+        val city = fastestCitiesToBuyApartmentFakeData.createFakeCity(
+            apartmentPrice = 12f,
+            salary = 873.35f,
+            dataQuality = true
+        )
         // When checking for a not null apartment price
         val result = excludeInvalidApartmentPrice(city)
         // Then the result should be true
@@ -180,7 +196,11 @@ class GetFastestCitiesToBuyApartmentInteractorTest {
     @Test
     fun should_returnFalse_when_apartmentPriceIsNull() {
         // Given a null pricePerSquareMeter
-        val city = fastestCitiesToBuyApartmentFakeData.createFakeCity(null, 45.4f, true)
+        val city = fastestCitiesToBuyApartmentFakeData.createFakeCity(
+            apartmentPrice = null,
+            salary = 45.4f,
+            dataQuality = true
+        )
         // When checking a null salary, null apartment price and low quality data
         val result = excludeInvalidApartmentPrice(city)
         // Then the result should be false
@@ -190,7 +210,11 @@ class GetFastestCitiesToBuyApartmentInteractorTest {
     @Test
     fun should_returnTrue_when_apartmentPriceIsValid() {
         // Given a valid pricePerSquareMeter
-        val city = fastestCitiesToBuyApartmentFakeData.createFakeCity(26f, 4569.4f, false)
+        val city = fastestCitiesToBuyApartmentFakeData.createFakeCity(
+            apartmentPrice = 26f,
+            salary = 4569.4f,
+            dataQuality = false
+        )
         // When checking a valid apartment price
         val result = excludeInvalidApartmentPrice(city)
         // Then the result should be true
@@ -200,7 +224,8 @@ class GetFastestCitiesToBuyApartmentInteractorTest {
     @Test
     fun should_returnFalse_when_apartmentPriceIsInvalid() {
         // Given an Invalid pricePerSquareMeter
-        val city = fastestCitiesToBuyApartmentFakeData.createFakeCity(0f, 56f, true)
+        val city =
+            fastestCitiesToBuyApartmentFakeData.createFakeCity(apartmentPrice = 0f, salary = 56f, dataQuality = true)
         // When checking an Invalid apartment price
         val result = excludeInvalidApartmentPrice(city)
         // Then the result should be false
