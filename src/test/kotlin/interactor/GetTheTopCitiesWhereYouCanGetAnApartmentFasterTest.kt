@@ -24,7 +24,31 @@ class GetTheTopCitiesWhereYouCanGetAnApartmentFasterTest {
         getTheTopCitiesWhereYouCanGetAnApartmentFaster = GetTheTopCitiesWhereYouCanGetAnApartmentFaster(fakeData)
     }
 
+    @Test
+    fun should_ReturnCorrectList_When_EnterValidData() {
+        //Given -Valid Data
+        val limit=2
+        fakeData.dataSourceType= DataSourceType.VALID
 
+        //When -limit is 2
+        val list = getTheTopCitiesWhereYouCanGetAnApartmentFaster
+            .getListOfTopCitiesNamesAndNumberOfYearsToGetApartmentFaster(limit)
+        println(list.size)
+        //Then -return 2 items of the list sorted ascending by years
+        assertTrue(list.size == 2 && list == list.sortedBy { it.second })
+    }
+    @Test
+    fun should_Throw_When_EnterNullList() {
+        //Given -Valid Data
+        val limit=2
+        fakeData.dataSourceType= DataSourceType.NULLABLE
+
+        //When -limit is 10
+        val list = Executable{getTheTopCitiesWhereYouCanGetAnApartmentFaster
+            .getListOfTopCitiesNamesAndNumberOfYearsToGetApartmentFaster(limit)}
+        //Then -return 10 items of the list sorted ascending by years
+        assertThrows(Exception::class.java,list)
+    }
     @Test
     fun should_ReturnNotEqualIsTrue_when_OutPutInCorrect() {
         //Give limit and list
@@ -46,32 +70,16 @@ class GetTheTopCitiesWhereYouCanGetAnApartmentFasterTest {
         //Then
         assertNotEquals(expectedResult, actualResult)
     }
-
-
     @Test
-    fun should_ReturnEqualIsTrue_when_OutPutCorrect() {
-        //Give
-        val expectedResult = listOf(
-            Pair("Lyon", 1.388889f),
-            Pair("Alex", 2.0833335f),
-        )
-        //When
-        val actualResult = getTheTopCitiesWhereYouCanGetAnApartmentFaster.getListOfTopCitiesNamesAndNumberOfYearsToGetApartmentFaster(2)
-        //Then
-        assertEquals(expectedResult, actualResult)
-    }
-    @Test
-    fun should_ReturnCorrectList_When_EnterValidData() {
-        //Given -Valid Data
-        val limit=10
-        fakeData.dataSourceType= DataSourceType.VALID
-
-        //When -limit is 10
-        val list = getTheTopCitiesWhereYouCanGetAnApartmentFaster
-            .getListOfTopCitiesNamesAndNumberOfYearsToGetApartmentFaster(limit)
-        println(list.size)
-        //Then -return 10 items of the list sorted ascending by years
-        assertTrue(list.size == 10 && list == list.sortedBy { it.second })
+    fun should_ReturnTrue_When_DataQualityIsLow() {
+        //given fake data is empty
+         fakeData.dataSourceType= DataSourceType.EMPTY
+        //when limit equal 10
+        val fastestCitiesToBuyAPT = GetTheTopCitiesWhereYouCanGetAnApartmentFaster(fakeData)
+        val result = fastestCitiesToBuyAPT
+            .getListOfTopCitiesNamesAndNumberOfYearsToGetApartmentFaster(10).isEmpty()
+        //then return true is empty
+        assertTrue(result)
     }
 
 

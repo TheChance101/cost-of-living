@@ -149,7 +149,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
                 apartmentOneBedroomOutsideOfCentre = 400000f,
                 apartment3BedroomsInCityCentre = 800000f,
                 apartment3BedroomsOutsideOfCentre = 500000f,
-                pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
+                pricePerSquareMeterToBuyApartmentInCityCentre = 250000f,
                 pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
             ),
             averageMonthlyNetSalaryAfterTax = 6000f,
@@ -224,7 +224,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
                 apartment3BedroomsInCityCentre = 800000f,
                 apartment3BedroomsOutsideOfCentre = 500000f,
                 pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
-                pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = 16500f
             ),
             averageMonthlyNetSalaryAfterTax = 9000f,
             dataQuality = true
@@ -523,7 +523,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
                 apartment3BedroomsInCityCentre = 800000f,
                 apartment3BedroomsOutsideOfCentre = 500000f,
                 pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
-                pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = 105050f
             ),
             averageMonthlyNetSalaryAfterTax = 6000f,
             dataQuality = true
@@ -597,7 +597,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
                 apartment3BedroomsInCityCentre = 800000f,
                 apartment3BedroomsOutsideOfCentre = 500000f,
                 pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
-                pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = 15800f
             ),
             averageMonthlyNetSalaryAfterTax = 6000f,
             dataQuality = true
@@ -671,7 +671,7 @@ class FakeDataSource(var dataSourceType: DataSourceType = DataSourceType.VALID) 
                 apartment3BedroomsInCityCentre = 800000f,
                 apartment3BedroomsOutsideOfCentre = 500000f,
                 pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
-                pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
+                pricePerSquareMeterToBuyApartmentOutsideOfCentre = 362000f
             ),
             averageMonthlyNetSalaryAfterTax = 6000f,
             dataQuality = true
