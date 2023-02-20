@@ -408,8 +408,8 @@ class FakeDataSourceForDinnerLocation {
         override fun getAllCitiesData(): List<CityEntity> {
             return listOf(
                 CityEntity(
-                    "City1",
-                    "Country1",
+                    "Russia",
+                    "Russia",
                     MealsPrices(55.6f, 963.1f, 31.6f),
                     DrinksPrices(null, null, null, null, null),
                     FruitAndVegetablesPrices(null, null, null, null, null, null, null),
@@ -421,7 +421,7 @@ class FakeDataSourceForDinnerLocation {
                     RealEstatesPrices(null, null, null, null, null, null),
                     14563f,
                     true
-                ),
+                )
             )
         }
     }

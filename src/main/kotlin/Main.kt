@@ -29,7 +29,7 @@ fun main() {
 
     val getTopCitesNameInFashionTaskInteractor =
         GetTopCitesNameInFashionTaskInteractor(dataSource)
-    println(getTopCitesNameInFashionTaskInteractor.execute())
+    println(getTopCitesNameInFashionTaskInteractor.execute(limit))
     printSeparationLine()
 
 
