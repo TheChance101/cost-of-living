@@ -17,7 +17,7 @@ class GetTopCitiesHasCheapestPriceOfApartmentsAndYearInteractor(
                     .sortedBy { it.second }
                     .take(limit).toList()
             }
-            ?: throw Exception("Invalid Data")
+            ?: throw Exception("Empty Data")
 
     }
 

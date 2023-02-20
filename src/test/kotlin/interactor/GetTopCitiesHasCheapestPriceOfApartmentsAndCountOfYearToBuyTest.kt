@@ -37,22 +37,22 @@ internal class GetTopCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest {
         val result =
             getTopCitiesHasCheapestPriceOfApartmentsAndYearInteractor(10)
 
-        // then check
-        assertEquals(
-            listOf(
-                Pair("Domyat", 20.0f),
-                Pair("Popeye Village", 66.66667f),
-                Pair("Hallstatt", 166.66667f),
-                Pair("Simiane La Rotonde", 266.66666f),
-                Pair("Cinque Terre", 300.0f),
-                Pair("Ortahisar", 333.33334f),
-                Pair("Oia", 400.0f),
-                Pair("Shirakawa-go", 500.0f),
-                Pair("Ait Ben-Haddou", 566.6667f),
-                Pair("Cua Van", 666.6667f),
-            ),
-            result
+        // expect list
+        val expectData=listOf(
+            Pair("Domyat", 20.0f),
+            Pair("Popeye Village", 66.66667f),
+            Pair("Hallstatt", 166.66667f),
+            Pair("Simiane La Rotonde", 266.66666f),
+            Pair("Cinque Terre", 300.0f),
+            Pair("Ortahisar", 333.33334f),
+            Pair("Oia", 400.0f),
+            Pair("Shirakawa-go", 500.0f),
+            Pair("Ait Ben-Haddou", 566.6667f),
+            Pair("Cua Van", 666.6667f),
         )
+
+        // then check
+        assertEquals(expectData ,result)
     }
 
 
