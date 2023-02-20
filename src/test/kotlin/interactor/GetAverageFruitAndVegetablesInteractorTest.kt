@@ -26,7 +26,7 @@ class GetAverageFruitAndVegetablesInteractorTest {
         val limit = 10
 
         // when check and return cities name
-        val result = getAverageFruitAndVegetablesInteractor.execute(limit)
+        val result = getAverageFruitAndVegetablesInteractor(limit)
 
         // then asserted the return and the expected
         val expected = listOf(
@@ -52,7 +52,7 @@ class GetAverageFruitAndVegetablesInteractorTest {
         getAverageFruitAndVegetablesInteractor = GetAverageFruitAndVegetablesInteractor(InvalidFakeData)
 
         // when check and return empty list
-        val result = getAverageFruitAndVegetablesInteractor.execute(limit)
+        val result = getAverageFruitAndVegetablesInteractor(limit)
 
         val expected = emptyList<String>()
         // then asserted the return and the expected
@@ -67,7 +67,7 @@ class GetAverageFruitAndVegetablesInteractorTest {
         getAverageFruitAndVegetablesInteractor = GetAverageFruitAndVegetablesInteractor(EmptyFakeData)
 
         // when check and return empty list
-        val result = getAverageFruitAndVegetablesInteractor.execute(limit)
+        val result = getAverageFruitAndVegetablesInteractor(limit)
 
         val expected = emptyList<String>()
         // then asserted the return and the expected
@@ -80,7 +80,7 @@ class GetAverageFruitAndVegetablesInteractorTest {
         val limit = 0
 
         // when check and return empty list
-        val result = getAverageFruitAndVegetablesInteractor.execute(limit)
+        val result = getAverageFruitAndVegetablesInteractor(limit)
 
         val expected = emptyList<String>()
 
@@ -94,7 +94,7 @@ class GetAverageFruitAndVegetablesInteractorTest {
         val limit = -1
 
         // when check and throw exception
-        val result = Executable { getAverageFruitAndVegetablesInteractor.execute(limit) }
+        val result = Executable { getAverageFruitAndVegetablesInteractor(limit) }
 
         // then asserted the return and the expected
         assertThrows(IllegalArgumentException::class.java, result)

@@ -30,7 +30,7 @@ class UserInterface(private val dataSource: CostOfLivingDataSource) {
                 "2" -> {
                     print("How many cities would you like?")
                     val limit = readln().toInt()
-                    println(GetAverageFruitAndVegetablesInteractor(dataSource).execute(limit))
+                    println(GetAverageFruitAndVegetablesInteractor(dataSource)(limit))
                     printSeparationLine()
                 }
 
