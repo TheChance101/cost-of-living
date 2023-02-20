@@ -1,37 +1,28 @@
 package interactor
 
 import model.CityEntity
-import model.FruitAndVegetablesPrices
 
 class GetAverageFruitAndVegetablesInteractor(private val dataSource: CostOfLivingDataSource) {
-    fun execute(): List<String> {
+
+    operator fun invoke(limit: Int): List<String> {
         return dataSource
             .getAllCitiesData()
-            .filter(::excludeNullAndNonNumberSalaries)
-            .sortedBy(::lowestCostComparingToTheSalaries)
-            .take(10)
-            .map { it.cityName }
+            .filter(::excludeNullFruitVegPriceAndNullSalaries)
+            .sortedBy(::calculateTheRatioBetweenFruitVegPriceAndSalary)
+            .take(limit)
+            .map(CityEntity::cityName)
     }
 
-    private fun excludeNullAndNonNumberSalaries(city: CityEntity): Boolean {
-        return city.averageMonthlyNetSalaryAfterTax != null && !city.averageMonthlyNetSalaryAfterTax.isNaN()
-    }
+    fun excludeNullFruitVegPriceAndNullSalaries(city: CityEntity) =
+        checkNullableFruitAndVegetablePrices(city) && city.averageMonthlyNetSalaryAfterTax != null
 
-    private fun FruitAndVegetablesPrices.getAverageFruitVegetablesPrice(): Double {
-        return mutableListOf(
-            tomato1kg,
-            potato1kg,
-            lettuceOneHead,
-            oranges1kg,
-            onion1kg,
-            banana1kg,
-            apples1kg
-        ).filterNotNull().average()
-    }
+    private fun checkNullableFruitAndVegetablePrices(city: CityEntity) =
+        with(city.fruitAndVegetablesPrices) {
+            apples1kg != null && banana1kg != null && oranges1kg != null && tomato1kg != null
+                    && potato1kg != null && onion1kg != null && lettuceOneHead != null
+        }
 
-    private fun lowestCostComparingToTheSalaries(city: CityEntity): Double {
-        return city.fruitAndVegetablesPrices.getAverageFruitVegetablesPrice()
-            .div(city.averageMonthlyNetSalaryAfterTax!!)
-    }
+    private fun calculateTheRatioBetweenFruitVegPriceAndSalary(city: CityEntity) =
+        city.fruitAndVegetablesPrices.getAverageFruitsAndVegetablesPrice() / city.averageMonthlyNetSalaryAfterTax!!
 
 }

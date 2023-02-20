@@ -1,32 +1,49 @@
 package interactor
 
-import data.FakeDataSource
-import data.TestCase
+import data.CheapestInternetFakeData
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.function.Executable
+
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetCityHasCheapestInternetConnectionInteractorTest {
 
     private lateinit var cityHasCheapestInternet: GetCityHasCheapestInternetConnectionInteractor
-    private lateinit var fakeData: FakeDataSource
 
-    @BeforeAll
-    fun setup() {
-        fakeData = FakeDataSource()
-        cityHasCheapestInternet = GetCityHasCheapestInternetConnectionInteractor(fakeData)
-        fakeData.changeDataSource(TestCase.CheapestInternet)
+    @Test
+    fun `should return cheapest city when given list of cities`() {
+        // change source of fake data to valid salary and internet prices
+        cityHasCheapestInternet = GetCityHasCheapestInternetConnectionInteractor(CheapestInternetFakeData
+            .validSalaryAndInternetPrices)
+        val expectedCity = CheapestInternetFakeData.validSalaryAndInternetPrices.getAllCitiesData()[9]
+        // when check for the cheapest city in the list
+        val actual = cityHasCheapestInternet()
+        // then check the result
+        assertEquals(expectedCity, actual)
     }
 
     @Test
-    fun should_Return_CheapestCity_When_GivenListOfCities() {
-        // given list of cityEntity
-        val citiesEntity = fakeData.getAllCitiesData()
+    fun `should return exception when all city has null internet price`() {
+        // change source of fake data to invalid data
+        cityHasCheapestInternet = GetCityHasCheapestInternetConnectionInteractor(CheapestInternetFakeData
+            .invalidData)
         // when check for the cheapest city in the list
-        val operation = cityHasCheapestInternet.execute()
+        val actual =  Executable { cityHasCheapestInternet() }
         // then check the result
-        assertEquals(citiesEntity[9].cityName, operation.cityName)
+        assertThrows(IllegalStateException::class.java, actual)
+    }
+
+    @Test
+    fun `should return exception when given is empty fake data`() {
+        // change source of fake data to empty data
+        cityHasCheapestInternet = GetCityHasCheapestInternetConnectionInteractor(CheapestInternetFakeData
+            .emptyData)
+        // when check for the cheapest city in the list
+        val actual = Executable { cityHasCheapestInternet() }
+        // then check the result
+        assertThrows(IllegalStateException::class.java, actual)
     }
 
 }
