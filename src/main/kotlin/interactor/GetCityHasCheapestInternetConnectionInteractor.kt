@@ -6,11 +6,11 @@ class GetCityHasCheapestInternetConnectionInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
 
-    fun execute(): CityEntity {
+   operator fun invoke(): CityEntity {
         return dataSource.getAllCitiesData()
             .filter(::excludeNullSalariesAndNullInternetPriceAndLowQualityData)
             .minByOrNull (::calculateInternetPercent)
-            ?: throw IllegalStateException("Empty data")
+            ?: throw IllegalStateException("Invalid data")
     }
 
     private fun excludeNullSalariesAndNullInternetPriceAndLowQualityData(city: CityEntity): Boolean {
