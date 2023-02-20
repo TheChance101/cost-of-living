@@ -1,6 +1,6 @@
 package interactor
 
-import fakedata.FakeData
+import fakedata.FakeDataSource
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -12,12 +12,12 @@ import kotlin.test.assertEquals
 internal class GetDifferetBetweenApartmentRentingTest {
     private lateinit var dataSource: CostOfLivingDataSource
 
-    private lateinit var fakeData: FakeData
+    private lateinit var fakeData: FakeDataSource
 
     private lateinit var getDifferentBetweenApartmentRenting: GetDifferentBetweenApartmentRenting
     @BeforeAll
     fun setup() {
-        fakeData = FakeData()
+        fakeData = FakeDataSource()
         dataSource = fakeData
         getDifferentBetweenApartmentRenting= GetDifferentBetweenApartmentRenting(dataSource)
 
