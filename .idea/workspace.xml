@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b2ca722-ce79-48ec-8557-4eb6df2410a1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCityMakesFamilySaveMoreInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/interactor/GetCityMakesFamilySaveMoreInteractor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/FakeDataSourceForFamilySavings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/fakeDataSource/FakeDataSourceForFamilySavings.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/interactor/GetCityMakesFamilySaveMoreInteractionTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/interactor/GetCityMakesFamilySaveMoreInteractionTest.kt" afterDir="false" />
-    </list>
+    <list default="true" id="d23b28a1-452e-4bfb-9f50-6e69db3f667f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
   </component>
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
@@ -48,12 +49,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Git.Branch.Popup.ShowAllRemotes": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Gradle.GetCityMakesFamilySaveMoreInteractionTest.shouldReturnFalseWhenSalaryIsNull">
     <configuration name="GetCityMakesFamilySaveMoreInteractionTest.shouldReturnFalseWhenSalaryIsNull" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>

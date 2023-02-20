@@ -10,15 +10,14 @@ class GetCityHasLowestCarsPriceInteractor(
     fun execute(): String {
         return dataSource.getAllCitiesData()
             .filter(::excludeNullValues)
-            .sortedByDescending{
+            .minByOrNull {
                 it.carsPrices.volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar!!.toDouble() +
-                it.carsPrices.toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar!!.toDouble()
-            }
-            .last().cityName
+                        it.carsPrices.toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar!!.toDouble()
+            }!!.cityName
     }
 
 
-    fun excludeNullValues(city: CityEntity): Boolean {
+    private fun excludeNullValues(city: CityEntity): Boolean {
         return city .run{
                 carsPrices.volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar!=null
                 &&carsPrices.toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar!=null
