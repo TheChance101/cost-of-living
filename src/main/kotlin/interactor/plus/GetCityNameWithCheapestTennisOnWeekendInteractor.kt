@@ -13,6 +13,6 @@ class GetCitiesNameWithCheapestTennisPriceOnWeekendInteractor(
             .take(limit)
             .map(CityEntity::cityName)
             .takeIf { it.isNotEmpty() }
-            ?: throw IllegalStateException("no data ot show!")
+            ?: throw IllegalStateException("Empty list!")
     }
 }
