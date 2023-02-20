@@ -1,6 +1,6 @@
 package interactor
 
-import dataSource.utils.FakeDataSource
+import data.FakeDataSource
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -23,14 +23,26 @@ class GetHighestTaxesByCountryTest {
 
 
     @Test
-    fun should_ReturnCorrectList_When_TheDataIsValid() {
+    fun `should return correct list when the data is valid`() {
         // when the result is correct list
-        val result = getHighestTaxesByCountry.execute()
+        val result = getHighestTaxesByCountry.execute(10)
         // then check
         val expected : List<Pair<String, Float>> =
             listOf(("Canada" to 2.16f), ("United States" to 2.12f), ("Mexico" to 0.71f), ("Iraq" to 0.34f))
         assertEquals(expected, result)
     }
 
+
+
+    @Test
+    fun `should throw exception when the data is inValid`() {
+
+        // when the result is correct list
+        val result = getHighestTaxesByCountry.execute(10)
+        // then check
+        val expected : List<Pair<String, Float>> =
+            listOf(("Canada" to 2.16f), ("United States" to 2.12f), ("Mexico" to 0.71f), ("Iraq" to 0.34f))
+        assertEquals(expected, result)
+    }
 
 }

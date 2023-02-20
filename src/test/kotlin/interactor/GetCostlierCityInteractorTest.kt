@@ -22,8 +22,8 @@ internal class GetCostlierCityInteractorTest {
     @BeforeAll
     fun setup() {
         fakeDataSource = CostlierCityFakeData()
-        emptyFakeData = EmptyFakeData()
-        invalidFakeData= InvalidFakeData()
+        emptyFakeData = EmptyFakeData
+        invalidFakeData= InvalidFakeData
     }
 
     @Test

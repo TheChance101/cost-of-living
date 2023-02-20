@@ -4,7 +4,7 @@ import model.CityEntity
 
 
 class GetHighestTaxesByCountry (private val dataSource : CostOfLivingDataSource) {
-    fun execute() : List<Pair<String, Float>> {
+    fun execute(limit:Int) : List<Pair<String, Float>> {
         return dataSource.getAllCitiesData()
             .filter(::excludeNullCokePepsiAndLowQualityData)
             .groupBy { it.country }
@@ -13,7 +13,7 @@ class GetHighestTaxesByCountry (private val dataSource : CostOfLivingDataSource)
             }
             .toList()
             .sortedByDescending { (_, avgPrice) -> avgPrice }
-            .take(10).map { (country, avgPrice) -> Pair(country, avgPrice.toFloat()) }
+            .take(limit).map { (country, avgPrice) -> Pair(country, avgPrice.toFloat()) }
     }
 
     private fun excludeNullCokePepsiAndLowQualityData(city : CityEntity) : Boolean {
