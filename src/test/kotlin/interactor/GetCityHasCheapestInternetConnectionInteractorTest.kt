@@ -1,101 +1,129 @@
 package interactor
 
 import fakeDataSource.FakeDataSourceForInternet
-import model.CityEntity
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.function.Executable
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCityHasCheapestInternetConnectionInteractorTest {
 
-    private lateinit var getCity: GetCityHasCheapestInternetConnectionInteractor
-    private lateinit var dataSource: FakeDataSourceForInternet
-
-    @BeforeAll
-    fun setUp() {
-        dataSource = FakeDataSourceForInternet()
-        getCity = GetCityHasCheapestInternetConnectionInteractor(dataSource)
-    }
+    private val fakeDataSource: FakeDataSourceForInternet = FakeDataSourceForInternet()
 
     @Test
-    fun `Should return false when input null price`() {
-        //given an object of CityEntity with Null price
-        val city = dataSource.getAllCitiesWithNullPrice()[0]
-
+    fun should_ReturnThrowException_When_CityWithNullPrice() {
+        //given an object of Interactor with Null price
+        val getCityHasCheapestInternetConnectionInteractor =
+            GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCitiesWithNullPrice())
         //when
-        val result = getCity.excludeNullPrice(city)
+        val result =
+            Executable { getCityHasCheapestInternetConnectionInteractor.execute() }
         //then
-        assertFalse(result)
+        val expected = Exception::class.java
+        assertThrows(expected, result)
     }
 
     @Test
-    fun `Should return false when input null salary`() {
-        //given an object of CityEntity with Null Salary
-        val city = dataSource.getAllCitiesWithNullSalary()[0]
+    fun should_ReturnThrowException_When_CityWithNullSalary() {
+        //given an object of Interactor with Null Salary
+        val getCityHasCheapestInternetConnectionInteractor =
+            GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCitiesWithNullSalary())
         //when
-        val result = getCity.excludeNullSalaries(city)
+        val result =
+            Executable { getCityHasCheapestInternetConnectionInteractor.execute() }
         //then
-        assertFalse(result)
+        val expected = Exception::class.java
+        assertThrows(expected, result)
     }
 
 
     @Test
-    fun `Should return The Country With Cheapest Internet Price when same salary and different price`() {
-        //given an object of GetCityHasCheapestInternetConnectionInteractor with return list of CityEntity That have Same Salary
-        val getDataWithSameSalary = GetCityHasCheapestInternetConnectionInteractor(object : CostOfLivingDataSource {
-            override fun getAllCitiesData(): List<CityEntity> {
-                return dataSource.getAllCitiesWithSameSalaryAndDifferentPrice()
-            }
-        })
-        //when run execute function
-        val result = getDataWithSameSalary.execute()
+    fun should_ReturnThrowException_When_CityWithNegativeSalary() {
+        //given an object of Interactor with Negative Salary
+        val getCityHasCheapestInternetConnectionInteractor =
+            GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCitiesWithNegativeSalary())
+        //when
+        val result =
+            Executable { getCityHasCheapestInternetConnectionInteractor.execute() }
         //then
-        assertEquals("Egypt", result)
+        val expected = Exception::class.java
+        assertThrows(expected, result)
+    }
+
+    @Test
+    fun should_ReturnThrowException_When_CityWithNegativePrice() {
+        //given an object of Interactor with negative price
+        val getCityHasCheapestInternetConnectionInteractor =
+            GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCitiesWithNegativePrice())
+        //when
+        val result =
+            Executable { getCityHasCheapestInternetConnectionInteractor.execute() }
+        //then
+        val expected = Exception::class.java
+        assertThrows(expected, result)
+    }
+
+    @Test
+    fun should_ReturnThrowException_When_NegativePriceAndSalary() {
+        //given an object of Interactor with negative salary and price
+        val getCityHasCheapestInternetConnectionInteractor =
+            GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCitiesWithNegativePriceAndSalary())
+        //when
+        val result =
+            Executable { getCityHasCheapestInternetConnectionInteractor.execute() }
+        //then
+        val expected = Exception::class.java
+        assertThrows(expected, result)
+    }
+
+    @Test
+    fun should_ReturnTheCityWithLowestPercentage_When_SameSalaryAndDifferentPrice() {
+        //given an object of Interactor has a list of cityEntity with same salary
+        val getCityHasCheapestInternetConnectionInteractor =
+            GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCitiesWithSameSalaryAndDifferentPrice())
+        //when run execute function
+        val result = getCityHasCheapestInternetConnectionInteractor.execute()
+        //then
+        val value = fakeDataSource.getAllCitiesWithSameSalaryAndDifferentPrice().getAllCitiesData()[0]
+        assertEquals(value, result)
     }
 
 
     @Test
-    fun `Should return The Country With Cheapest Internet Price when same price and different salary`() {
-        //given an object of GetCityHasCheapestInternetConnectionInteractor with return list of CityEntity That have Same Price
-        val getDataWithSamePrices = GetCityHasCheapestInternetConnectionInteractor(object : CostOfLivingDataSource {
-            override fun getAllCitiesData(): List<CityEntity> {
-                return dataSource.getAllCitiesWithSamePriceAndDifferentSalary()
-            }
-        })
+    fun should_ReturnTheCityWithLowestPercentage_When_SamePriceAndDifferentSalary() {
+        //given an object of Interactor has a list of cityEntity with same Price
+        val getCityHasCheapestInternetConnectionInteractor =
+            GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCitiesWithSamePriceAndDifferentSalary())
         //when run execute function
-        val result = getDataWithSamePrices.execute()
+        val result = getCityHasCheapestInternetConnectionInteractor.execute()
         //then
-        assertEquals("London", result)
+        val value = fakeDataSource.getAllCitiesWithSamePriceAndDifferentSalary().getAllCitiesData()[1]
+        assertEquals(value, result)
     }
 
     @Test
-    fun `Should return The Country With Cheapest Internet Price when same percentage`() {
-        //given an object of GetCityHasCheapestInternetConnectionInteractor with return list of CityEntity That have Same percentage
-        val getDataWithSamePercentage = GetCityHasCheapestInternetConnectionInteractor(object : CostOfLivingDataSource {
-            override fun getAllCitiesData(): List<CityEntity> {
-                return dataSource.getAllCitiesWithSamePercentage()
-            }
-        })
+    fun should_ReturnFirstCityWithCheapestInternetPrice_When_SamePercentage() {
+        //given an object of Interactor has a list of cityEntity with same percentage
+        val getCityHasCheapestInternetConnectionInteractor =
+            GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCitiesWithSamePercentage())
         //when run execute function
-        val result = getDataWithSamePercentage.execute()
+        val result = getCityHasCheapestInternetConnectionInteractor.execute()
         //then
-        assertEquals("Egypt", result)
+        val value = fakeDataSource.getAllCitiesWithSamePercentage().getAllCitiesData()[0]
+        assertEquals(value, result)
     }
 
     @Test
-    fun `Should return The Country With Cheapest Internet Price when all cases of Data`() {
-        //given an object of GetCityHasCheapestInternetConnectionInteractor with return list of CityEntity That have All Cases
-        val getAllData = GetCityHasCheapestInternetConnectionInteractor(object : CostOfLivingDataSource {
-            override fun getAllCitiesData(): List<CityEntity> {
-                return dataSource.getAllCitiesData()
-            }
-        })
+    fun should_ReturnCityWithCheapestInternetPrice_When_AllCasesOfData() {
+        //given an object of Interactor has a list of cityEntities
+        val getCityHasCheapestInternetConnectionInteractor =
+            GetCityHasCheapestInternetConnectionInteractor(fakeDataSource.getAllCity())
         //when run execute function
-        val result = getAllData.execute()
+        val result = getCityHasCheapestInternetConnectionInteractor.execute()
         //then
-        assertEquals("Jordan", result)
+        val value = fakeDataSource.getAllCity().getAllCitiesData()[12]
+        assertEquals(value, result)
     }
 
 }

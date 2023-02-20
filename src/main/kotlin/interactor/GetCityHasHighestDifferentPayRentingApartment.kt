@@ -2,71 +2,46 @@ package interactor
 
 import model.CityEntity
 import model.RealEstatesPrices
+import kotlin.math.abs
+import kotlin.math.max
 
 
 class GetCityWithHighestRentalPriceDifferenceInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
+    fun execute() = dataSource.getAllCitiesData()
+        .filter { excludeNullValues(it) && excludeNullDataAndLowQuality(it) }
+        .minByOrNull {
+            getHighestDifferentBetweenCityCenterAndOutsideWithDifferentTypeOfApartments(it.realEstatesPrices)
+        }!!
 
 
-    fun execute(cityData: List<CityEntity>): String {
-        var cityWithHighestDifference = ""
-        var highestDifference = 0.0
-        cityData
-            .filter { excludeNullValues(it) }
-            .filter { excludeNullDataAndLowQuality(it) }
-            .forEach { city ->
-                val difference = city.realEstatesPrices.apartmentOneBedroomInCityCentre!! - city.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!!
-                if (difference > highestDifference) {
-                    highestDifference = difference.toDouble()
-                    cityWithHighestDifference = city.cityName
-                }
-            }
-        return cityWithHighestDifference
-    }
+    private fun getHighestDifferentBetweenCityCenterAndOutsideWithDifferentTypeOfApartments(
+        realEstatesPrices: RealEstatesPrices
+    ) =
+        max(
+            abs(
+                realEstatesPrices.apartmentOneBedroomInCityCentre!! -
+                        realEstatesPrices.apartmentOneBedroomOutsideOfCentre!!
+            ), abs(
+                realEstatesPrices.apartment3BedroomsInCityCentre!! -
+                        realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
+            )
+        )
+
+    fun excludeNullValues(city: CityEntity) = city.realEstatesPrices.apartmentOneBedroomInCityCentre != null
+            && city.realEstatesPrices.apartmentOneBedroomOutsideOfCentre != null
+            && city.realEstatesPrices.apartment3BedroomsInCityCentre != null
+            && city.realEstatesPrices.apartment3BedroomsOutsideOfCentre != null
 
 
-
-
-    fun excludeNullValues(city: CityEntity): Boolean {
-        return city.realEstatesPrices.apartmentOneBedroomInCityCentre != null
-                && city.realEstatesPrices.apartmentOneBedroomOutsideOfCentre !=null
-                && city.realEstatesPrices.apartment3BedroomsInCityCentre !=null
-                && city.realEstatesPrices.apartment3BedroomsOutsideOfCentre !=null
-                && city.realEstatesPrices.pricePerSquareMeterToBuyApartmentInCityCentre !=null
-                && city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre !=null
-    }
-    private fun excludeNullDataAndLowQuality(city: CityEntity): Boolean {
-        return city.dataQuality
-    }
+    private fun excludeNullDataAndLowQuality(city: CityEntity) = city.dataQuality
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //class GetHighestDifferenceBetweenCityCenterAndOutsideCityCenter(
 //    private val dataSource:CostOfLivingDataSource
 //)  {
-
-
 
 
 //    fun execute_DifferentPayRentingBetweenIntCityCenter_OutCitycenter(limit: Int): List<String> {

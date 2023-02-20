@@ -14,25 +14,27 @@ fun main() {
 
     val getCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor =
         GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor(dataSource)
-    println(getCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor.execute())
+        println(getCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor.execute(10))
+    println(getCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor.execute(limit))
     printSeparationLine()
 
-    val getHighestSalaryAverageCities = GetAverageSalariesInCountryInteractor(dataSource)
-    println(getHighestSalaryAverageCities.execute("Egypt"))
+    val searchForAverageSalariesInCountryInteractor = SearchForAverageSalariesInCountryInteractor(dataSource)
+    println(searchForAverageSalariesInCountryInteractor.execute("Egypt"))
     printSeparationLine()
 
     val getCityWithHighestRentalPriceDifferenceInteractor =
         GetCityWithHighestRentalPriceDifferenceInteractor(dataSource)
-    println(getCityWithHighestRentalPriceDifferenceInteractor.execute(dataSource.getAllCitiesData()))
+    println(getCityWithHighestRentalPriceDifferenceInteractor.execute())
     printSeparationLine()
 
-    val getTopFiveCitesNameInClothesFromFamousBrandsInteractor =
-        GetTopFiveCitesNameInClothesFromFamousBrandsInteractor(dataSource)
-    println(getTopFiveCitesNameInClothesFromFamousBrandsInteractor.execute())
+    val getTopCitesNameInFashionTaskInteractor =
+        GetTopCitesNameInFashionTaskInteractor(dataSource)
+    println(getTopCitesNameInFashionTaskInteractor.execute(limit))
     printSeparationLine()
 
-    val getFastest10CitiesToBuyAPTInteractor = GetFastest10CitiesToBuyAPTInteractor(dataSource)
-    println(getFastest10CitiesToBuyAPTInteractor.execute())
+
+    val getFastestCitiesToBuyApartmentInteractor = GetFastestCitiesToBuyApartmentInteractor(dataSource)
+    println(getFastestCitiesToBuyApartmentInteractor.execute(limit))
     printSeparationLine()
 
     val  getCheapestCitiesSalesBananas = GetCheapestCitiesSalesBananas()
@@ -44,7 +46,7 @@ fun main() {
     printSeparationLine()
 
     val getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor =
-        GetTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(dataSource)
+        GetTopCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor(dataSource)
     println(getTopTenCountriesNamesWithHighestTaxesOnCarbonatedDrinksInteractor.execute(limit))
     printSeparationLine()
 
