@@ -14,18 +14,10 @@ internal class GetTopCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest {
     // region init
     private lateinit var getTopCitiesHasCheapestPriceOfApartmentsAndYearInteractor:
             GetTopCitiesHasCheapestPriceOfApartmentsAndYearInteractor
-    private lateinit var fakeDataSource: CheapestApartmentsInCitiesFakeData
-    private lateinit var emptyDataSource: EmptyFakeData
-    private lateinit var invalidDataSource: InvalidFakeData
-
     @BeforeEach
     fun setup() {
-        fakeDataSource = CheapestApartmentsInCitiesFakeData()
-        emptyDataSource = EmptyFakeData()
-        invalidDataSource = InvalidFakeData()
-
         getTopCitiesHasCheapestPriceOfApartmentsAndYearInteractor =
-            GetTopCitiesHasCheapestPriceOfApartmentsAndYearInteractor(fakeDataSource)
+            GetTopCitiesHasCheapestPriceOfApartmentsAndYearInteractor(CheapestApartmentsInCitiesFakeData)
     }
     // endregion
 
@@ -70,7 +62,7 @@ internal class GetTopCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest {
     fun `should throw exception when data is invalid`() {
 
         getTopCitiesHasCheapestPriceOfApartmentsAndYearInteractor =
-            GetTopCitiesHasCheapestPriceOfApartmentsAndYearInteractor(invalidDataSource)
+            GetTopCitiesHasCheapestPriceOfApartmentsAndYearInteractor(InvalidFakeData)
         // when the output list of a pair of cities names and count of years
         val result = org.junit.jupiter.api.function.Executable {
             getTopCitiesHasCheapestPriceOfApartmentsAndYearInteractor(10)
@@ -82,7 +74,7 @@ internal class GetTopCitiesHasCheapestPriceOfApartmentsAndCountOfYearToBuyTest {
     @Test
     fun should_throwException_when_dataIsEmpty() {
         getTopCitiesHasCheapestPriceOfApartmentsAndYearInteractor =
-            GetTopCitiesHasCheapestPriceOfApartmentsAndYearInteractor(emptyDataSource)
+            GetTopCitiesHasCheapestPriceOfApartmentsAndYearInteractor(EmptyFakeData)
         // when the output list of a pair of cities names and count of years
         val result = org.junit.jupiter.api.function.Executable {
             getTopCitiesHasCheapestPriceOfApartmentsAndYearInteractor(0)
