@@ -14,7 +14,7 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
 
     @Test
     fun `should return cheapest city when given list of cities`() {
-        // given list of city entity
+        // change source of fake data to valid salary and internet prices
         cityHasCheapestInternet = GetCityHasCheapestInternetConnectionInteractor(CheapestInternetFakeData
             .validSalaryAndInternetPrices)
         val expectedCity = CheapestInternetFakeData.validSalaryAndInternetPrices.getAllCitiesData()[9]
@@ -26,7 +26,7 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
 
     @Test
     fun `should return exception when all city has null internet price`() {
-        // given city entity with invalid data
+        // change source of fake data to invalid data
         cityHasCheapestInternet = GetCityHasCheapestInternetConnectionInteractor(CheapestInternetFakeData
             .invalidData)
         // when check for the cheapest city in the list
@@ -37,7 +37,7 @@ internal class GetCityHasCheapestInternetConnectionInteractorTest {
 
     @Test
     fun `should return exception when given is empty fake data`() {
-        // given city entity with invalid data
+        // change source of fake data to empty data
         cityHasCheapestInternet = GetCityHasCheapestInternetConnectionInteractor(CheapestInternetFakeData
             .emptyData)
         // when check for the cheapest city in the list
