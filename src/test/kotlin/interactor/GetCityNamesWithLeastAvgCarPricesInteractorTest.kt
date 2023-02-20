@@ -63,7 +63,7 @@ class GetCityNamesWithLeastAvgCarPricesInteractorTest {
 
     @Test
     fun should_ReturnEmptyList_when_inputIsAnEmptyList() {
-        // Given list of cities with negative car prices
+        // Given an empty list
         interactor = GetCityNamesWithLeastAvgCarPricesInteractor(EmptyCities())
         // When get top 10 cities
         val result = interactor.execute(10)
