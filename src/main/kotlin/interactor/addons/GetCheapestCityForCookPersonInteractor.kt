@@ -6,6 +6,19 @@ import model.CityEntity
 class GetCheapestCityForCookPersonInteractor (
     private val dataSource: CostOfLivingDataSource,
 ) {
+
+    /**
+     * Task brief :->
+     *
+     * There is a man who love to crook on people, he has a job, but he is a thief, stealing people runs in his blood.
+     * so one day he thought about cheating on the citizens, but first he had to check which city will be his target,
+     * as he will be forced to pay for his fake calls, so he had to choose the cheapest minute tariff city.
+     *
+     * @author Hassan Wasfy
+     * */
+
+
+
     fun execute()=
         dataSource.getAllCitiesData()
             .filter { excludeFalseDataQuality(it) && excludeNullSalaryAndNullMinutePrice(it)}
