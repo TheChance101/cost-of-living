@@ -41,9 +41,8 @@ class GetTheTopCitiesWhereYouCanGetAnApartmentFaster(
 
     private fun getNumberOfYearsToBuyApartment(city: CityEntity): Float {
 
-        return 100 * city.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!
-            .div(city.averageMonthlyNetSalaryAfterTax!! * Const.numberOfMonthsInYear)
-
+        return 100 * city.let{  it.realEstatesPrices.pricePerSquareMeterToBuyApartmentOutsideOfCentre!!
+            .div(it.averageMonthlyNetSalaryAfterTax!! * Const.numberOfMonthsInYear)}
     }
 
     private fun calculateTotalExpensesForFoodAndServices(city: CityEntity): Float {
