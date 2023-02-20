@@ -8,7 +8,7 @@ class FastestCitiesToBuyApartmentFakeData {
     private val lowQualityCities = listOf(
         // region low data quality
 
-        createFakeCity("City1", "Country1",332.83f, 5000f, false),
+        createFakeCity("City1", "Country1", 332.83f, 5000f, false),
         createFakeCity("City2", "Country2", 362.83f, 5000f, false),
         createFakeCity("City3", "Country3", 372.83f, 5000f, false),
         createFakeCity("City4", "Country4", 3332.83f, 5000f, false),
@@ -20,7 +20,7 @@ class FastestCitiesToBuyApartmentFakeData {
     private val missingPricePerSquareMeterOutsideCentre = listOf(
         //region null pricePerSquareMeter
 
-        createFakeCity("City9", "Country9",  null, 5000f, true),
+        createFakeCity("City9", "Country9", null, 5000f, true),
         createFakeCity("City10", "Country10", null, 5000f, true),
 
         //endregion
@@ -49,7 +49,7 @@ class FastestCitiesToBuyApartmentFakeData {
 
         //region average monthly salary barely  sufficing afford to buy the apartment
 
-        createFakeCity("City15", "Country15",4000f, 4000f, true),
+        createFakeCity("City15", "Country15", 4000f, 4000f, true),
         createFakeCity("City16", "Country16", 4500f, 4500f, true),
 
         //endregion
@@ -57,15 +57,17 @@ class FastestCitiesToBuyApartmentFakeData {
         //region average monthly salary not sufficing afford to buy the apartment
         createFakeCity("City17", "Country17", 3000f, 2500f, true),
         createFakeCity("City19", "Country19", 5000f, 2000f, true),
-        createFakeCity("City20", "Country20",  4500f, 1500f, true),
+        createFakeCity("City20", "Country20", 4500f, 1500f, true),
         createFakeCity("City18", "Country18", 4500f, 2000f, true)
 
         //endregion
 
     )
 
-    private val singleCityEntity = createFakeCity("City11", "Country11",
-        3000f,6900f, true)
+    private val singleCityEntity = createFakeCity(
+        "City11", "Country11",
+        3000f, 6900f, true
+    )
 
     fun getSingleCityEntity() = singleCityEntity
 
@@ -112,36 +114,13 @@ class FastestCitiesToBuyApartmentFakeData {
     }
 
     fun createFakeCity(
+        cityName: String = "City10",
+        countryName: String = "Country10",
         apartmentPrice: Float?,
         salary: Float?,
-        dataQuality: Boolean) = CityEntity(
-        "City10",
-        "Country10",
-        MealsPrices(null, null, null),
-        DrinksPrices(null, null, null, null, null),
-        FruitAndVegetablesPrices(null, null, null, null, null, null, null),
-        FoodPrices(null, null, null, null, null, null),
-        ServicesPrices(null, null, null, null, null, null, null, null),
-        ClothesPrices(null, null, null, null),
-        TransportationsPrices(null, null, null, null, null, null),
-        CarsPrices(null, null),
-        RealEstatesPrices(
-            apartmentOneBedroomInCityCentre = null,
-            apartmentOneBedroomOutsideOfCentre = null,
-            apartment3BedroomsInCityCentre = null,
-            apartment3BedroomsOutsideOfCentre = null,
-            pricePerSquareMeterToBuyApartmentInCityCentre = null,
-            pricePerSquareMeterToBuyApartmentOutsideOfCentre = apartmentPrice
-        ),
-        salary,
-        dataQuality
-    )
-
-    fun createFakeCity(cityName: String,
-                       countryName: String,
-                       apartmentPrice: Float?,
-                       salary: Float?,
-                       dataQuality: Boolean) = CityEntity(cityName, countryName,
+        dataQuality: Boolean
+    ) = CityEntity(
+        cityName, countryName,
         MealsPrices(null, null, null),
         DrinksPrices(null, null, null, null, null),
         FruitAndVegetablesPrices(null, null, null, null, null, null, null),
