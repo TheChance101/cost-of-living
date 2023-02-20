@@ -8,7 +8,7 @@ class GetCityThatMatchTheManagerExpectationsInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
 
-    fun execute(selectedCountries: List<String>): CityEntity {
+    operator fun invoke(selectedCountries: List<String>): CityEntity {
         val countries = selectedCountries.map { it.lowercase() }
 
         return dataSource.getAllCitiesData()

@@ -28,7 +28,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
                 ManagerExpectationsFakeData.validCountriesAndPricesOfMeals
             )
         // When return city that match manager expectations
-        val actualData = interactor.execute(countries).cityName
+        val actualData = interactor(countries).cityName
         // Then check the result
         assertEquals("Great Falls", actualData)
     }
@@ -41,7 +41,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
                 ManagerExpectationsFakeData.validCountriesAndSomeInvalidPricesOfMeals
             )
         // When return the city that match manager expectations
-        val actualData = interactor.execute(countries).cityName
+        val actualData = interactor(countries).cityName
         // Then check the final result
         assertEquals("Chetumal", actualData)
     }
@@ -54,7 +54,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
                 ManagerExpectationsFakeData.someInvalidCountriesAndValidPricesOfMeals
             )
         // When return the city that match manager expectations
-        val actualData = interactor.execute(countries).cityName
+        val actualData = interactor(countries).cityName
         // Then check the final result
         assertEquals("Moose Jaw", actualData)
     }
@@ -67,7 +67,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
                 ManagerExpectationsFakeData.invalidSomeCountriesAndSomePricesOfMeals
             )
         // When return the city that match manager expectations
-        val actualData = interactor.execute(countries).cityName
+        val actualData = interactor(countries).cityName
         // Then check the final result
         assertEquals("Chetumal", actualData)
     }
@@ -81,7 +81,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
             )
         // When return the city that match manager expectations
         val actualData = Executable {
-            interactor.execute(countries).cityName
+            interactor(countries).cityName
         }
         // Then check the final result
         assertThrows(NoSuchElementException::class.java, actualData)
@@ -96,7 +96,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
             )
         // When return the city that match manager expectations
         val actualData = Executable {
-            interactor.execute(countries).cityName
+            interactor(countries).cityName
         }
         // Then check the final result
         assertThrows(IllegalStateException::class.java, actualData)
@@ -111,7 +111,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
             )
         // When return the city that match manager expectations
         val actualData = Executable {
-            interactor.execute(countries).cityName
+            interactor(countries).cityName
         }
         // Then check the final result
         assertThrows(IllegalStateException::class.java, actualData)
