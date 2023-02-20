@@ -1,7 +1,6 @@
 package dataSource.utils
 
 import interactor.CostOfLivingDataSource
-import interactor.GetTopTenCountriesTaxesInteractor
 import model.*
 
 class FakeDataSource : CostOfLivingDataSource {

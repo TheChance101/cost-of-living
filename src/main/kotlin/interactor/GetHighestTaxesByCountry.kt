@@ -3,7 +3,7 @@ package interactor
 import model.CityEntity
 
 
-class GetTopTenCountriesTaxesInteractor(private val dataSource : CostOfLivingDataSource) {
+class GetHighestTaxesByCountry (private val dataSource : CostOfLivingDataSource) {
     fun execute() : List<Pair<String, Float>> {
         return dataSource.getAllCitiesData()
             .filter(::excludeNullCokePepsiAndLowQualityData)
@@ -20,8 +20,8 @@ class GetTopTenCountriesTaxesInteractor(private val dataSource : CostOfLivingDat
         return city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants != null && city.dataQuality
     }
 
-    private fun calculateAvgDrinkPrices( countries : List<CityEntity>) : Double {
-        return countries.sumOf { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants!!.toDouble() } .div(countries.size)
+    private fun calculateAvgDrinkPrices( city : List<CityEntity>) : Double {
+        return city.sumOf { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants!!.toDouble() } .div(city.size)
     }
 
 }

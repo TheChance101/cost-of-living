@@ -8,16 +8,16 @@ import kotlin.test.assertEquals
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class GetTopTenCountriesTaxesInteractorTest {
+class GetHighestTaxesByCountryTest {
 
-    lateinit var getTopTenCountriesTaxesInteractor : GetTopTenCountriesTaxesInteractor
+    lateinit var getHighestTaxesByCountry : GetHighestTaxesByCountry
     lateinit var fakeDataSource : FakeDataSource
 
     @BeforeAll
     fun setUp() {
         fakeDataSource = FakeDataSource()
-        getTopTenCountriesTaxesInteractor =
-            GetTopTenCountriesTaxesInteractor(fakeDataSource)
+        getHighestTaxesByCountry =
+            GetHighestTaxesByCountry(fakeDataSource)
 
     }
 
@@ -25,7 +25,7 @@ class GetTopTenCountriesTaxesInteractorTest {
     @Test
     fun should_ReturnCorrectList_When_TheDataIsValid() {
         // when the result is correct list
-        val result = getTopTenCountriesTaxesInteractor.execute()
+        val result = getHighestTaxesByCountry.execute()
         // then check
         val expected : List<Pair<String, Float>> =
             listOf(("Canada" to 2.16f), ("United States" to 2.12f), ("Mexico" to 0.71f), ("Iraq" to 0.34f))
