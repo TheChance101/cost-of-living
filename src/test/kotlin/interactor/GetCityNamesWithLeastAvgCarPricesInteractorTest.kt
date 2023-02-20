@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
-import kotlin.test.assertNotEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCityNamesWithLeastAvgCarPricesInteractorTest {
@@ -51,20 +50,21 @@ class GetCityNamesWithLeastAvgCarPricesInteractorTest {
     }
 
 
-    @Test
-    fun should_ReturnLessSize_when_inputHasDuplicates() {
-        // Given list of cities with duplicates
-        interactor = GetCityNamesWithLeastAvgCarPricesInteractor(duplicateCities)
-        // When get top 10 cities
-        val result = interactor.execute(10)
-        // Then result size must equal expected
-        assertNotEquals(duplicateCities.getAllCitiesData().size, result.size)
-    }
 
     @Test
     fun should_ReturnEmptyList_when_carPricesAreNegative() {
         // Given list of cities with negative car prices
         interactor = GetCityNamesWithLeastAvgCarPricesInteractor(CitiesWithNegativeCarPrices())
+        // When get top 10 cities
+        val result = interactor.execute(10)
+        // Then result must be an empty list
+        assertEquals(emptyList(), result)
+    }
+
+    @Test
+    fun should_ReturnEmptyList_when_inputIsAnEmptyList() {
+        // Given list of cities with negative car prices
+        interactor = GetCityNamesWithLeastAvgCarPricesInteractor(EmptyCities())
         // When get top 10 cities
         val result = interactor.execute(10)
         // Then result must be an empty list

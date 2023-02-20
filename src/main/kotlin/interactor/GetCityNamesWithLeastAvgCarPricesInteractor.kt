@@ -8,7 +8,6 @@ class GetCityNamesWithLeastAvgCarPricesInteractor(private val dataSource: CostOf
             .getAllCitiesData()
             .filter { isCarPriceNotNullAndPositive(it.carsPrices) }
             .sortedBy { getAvgCarPrices(it.carsPrices) }
-            .distinctBy { it.country }
             .map { Pair(it.cityName, getAvgCarPrices(it.carsPrices)) }
             .take(limit)
     }

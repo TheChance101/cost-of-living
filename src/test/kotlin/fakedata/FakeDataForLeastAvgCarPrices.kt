@@ -989,6 +989,11 @@ class CitiesWithNegativeCarPrices : CostOfLivingDataSource {
         )
     }
 }
+class EmptyCities : CostOfLivingDataSource {
+    override fun getAllCitiesData(): List<CityEntity> {
+        return emptyList()
+    }
+}
 
 
 fun top10CitiesSorted() = listOf(
