@@ -4,7 +4,7 @@ import interactor.CostOfLivingDataSource
 import model.*
 
 
-object ListCity : CostOfLivingDataSource {
+object FakeDataSourceForTestCase : CostOfLivingDataSource {
     fun filterCity(vararg citiesNames: String) = citiesNames.map(::makeCity).toTypedArray()
     fun makeCity(cityName: String) =
         CityEntity(

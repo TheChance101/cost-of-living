@@ -1,6 +1,6 @@
 package interactor
 
-import fakeDataSource.FruitAndVegetablesFakeDataSource
+import fakeDataSource.FakeDataSourceForFruitAndVegetables
 import model.*
 import org.junit.jupiter.api.Test
 
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteractorTest {
     private lateinit var data: GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor
-    private val dataSource = FruitAndVegetablesFakeDataSource()
+    private val dataSource = FakeDataSourceForFruitAndVegetables()
 
     @BeforeAll
     fun setup() {

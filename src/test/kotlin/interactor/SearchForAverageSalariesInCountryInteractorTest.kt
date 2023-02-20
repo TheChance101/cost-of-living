@@ -1,6 +1,6 @@
 package interactor
 
-import fakeDataSource.SearchForSalariesFakeDataSource
+import fakeDataSource.FakeDataSourceForSearchForSalaries
 import model.*
 import org.junit.jupiter.api.Test
 
@@ -14,7 +14,7 @@ import org.junit.jupiter.api.function.Executable
 class SearchForAverageSalariesInCountryInteractorTest {
 
     private lateinit var searchForAverageSalariesInCountryInteractor: SearchForAverageSalariesInCountryInteractor
-    private val fake = SearchForSalariesFakeDataSource()
+    private val fake = FakeDataSourceForSearchForSalaries()
 
     @BeforeAll
     fun setUp() {

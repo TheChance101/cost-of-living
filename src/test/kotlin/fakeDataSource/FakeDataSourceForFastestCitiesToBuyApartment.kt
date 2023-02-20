@@ -3,7 +3,7 @@ package fakeDataSource
 import interactor.CostOfLivingDataSource
 import model.*
 
-class FastestCitiesToBuyApartmentFakeData {
+class FakeDataSourceForFastestCitiesToBuyApartment {
 
     private val lowQualityCities = listOf(
         // region low data quality

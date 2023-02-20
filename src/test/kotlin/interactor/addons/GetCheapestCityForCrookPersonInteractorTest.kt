@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.function.Executable
 
-class GetCheapestCityForCookPersonInteractorTest {
+class GetCheapestCityForCrookPersonInteractorTest {
 
 
-    private lateinit var interactor: GetCheapestCityForCookPersonInteractor
+    private lateinit var interactor: GetCheapestCityForCrookPersonInteractor
     private lateinit var fakeDataSource:FakeDataSourceForCrookPerson
 
     @BeforeEach
@@ -19,7 +19,7 @@ class GetCheapestCityForCookPersonInteractorTest {
 
     @Test
     fun execute() {
-        interactor = GetCheapestCityForCookPersonInteractor(
+        interactor = GetCheapestCityForCrookPersonInteractor(
             fakeDataSource.trueFalseCityEntityList())
 
         val data = interactor.execute()
@@ -31,7 +31,7 @@ class GetCheapestCityForCookPersonInteractorTest {
 
     @Test
     fun should_Throw_Exception_When_List_Is_Empty(){
-        interactor = GetCheapestCityForCookPersonInteractor(
+        interactor = GetCheapestCityForCrookPersonInteractor(
             fakeDataSource.getListWithNullSalaryAndNullPrice())
 
         val data = Executable {interactor.execute()}
@@ -45,7 +45,7 @@ class GetCheapestCityForCookPersonInteractorTest {
 
     @Test
     fun should_Return_True_When_Data_Quality_High() {
-        interactor = GetCheapestCityForCookPersonInteractor(
+        interactor = GetCheapestCityForCrookPersonInteractor(
             fakeDataSource.trueFalseCityEntityList())
 
         val expected = interactor.excludeFalseDataQuality(
@@ -56,7 +56,7 @@ class GetCheapestCityForCookPersonInteractorTest {
 
     @Test
     fun should_Return_False_When_Data_Quality_Low() {
-        interactor = GetCheapestCityForCookPersonInteractor(
+        interactor = GetCheapestCityForCrookPersonInteractor(
             fakeDataSource.trueFalseCityEntityList())
 
         val expected = interactor.excludeFalseDataQuality(
@@ -67,7 +67,7 @@ class GetCheapestCityForCookPersonInteractorTest {
 
     @Test
     fun should_Return_False_When_Salary_Is_Null() {
-        interactor = GetCheapestCityForCookPersonInteractor(
+        interactor = GetCheapestCityForCrookPersonInteractor(
             fakeDataSource.trueFalseCityEntityList())
 
         val expected = interactor.excludeNullSalaryAndNullMinutePrice(
@@ -78,7 +78,7 @@ class GetCheapestCityForCookPersonInteractorTest {
 
     @Test
     fun should_Return_False_When_Price_Is_Null() {
-        interactor = GetCheapestCityForCookPersonInteractor(
+        interactor = GetCheapestCityForCrookPersonInteractor(
             fakeDataSource.trueFalseCityEntityList())
 
         val expected = interactor.excludeNullSalaryAndNullMinutePrice(
@@ -89,7 +89,7 @@ class GetCheapestCityForCookPersonInteractorTest {
 
     @Test
     fun calculateMinutePricePercentToSalary() {
-        interactor = GetCheapestCityForCookPersonInteractor(
+        interactor = GetCheapestCityForCrookPersonInteractor(
             fakeDataSource.trueFalseCityEntityList())
 
         val result = interactor.calculateMinutePricePercentToSalary(

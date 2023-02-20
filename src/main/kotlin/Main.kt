@@ -1,6 +1,9 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
 import interactor.*
+import interactor.addons.GetCheapestCityForCrookPersonInteractor
+import interactor.addons.GetCheapestCityForRaisingOneChildYearlyInteractor
+import interactor.addons.GetCityHasLowestCarsPriceInteractor
 
 fun main() {
     val csvParser = CsvParser()
@@ -53,6 +56,24 @@ fun main() {
     val getCityMakesFamilySaveMoreInteractor= GetCityMakesFamilySaveMoreInteractor(dataSource)
     println(getCityMakesFamilySaveMoreInteractor.execute())
     printSeparationLine()
+
+
+    printSeparationLine()
+    printSeparationLine()
+    printSeparationLine()
+
+    val getCheapestCityForCrookPersonInteractor = GetCheapestCityForCrookPersonInteractor(dataSource)
+    println(getCheapestCityForCrookPersonInteractor.execute())
+    printSeparationLine()
+
+    val getCheapestCityForRaisingOneChildYearlyInteractor = GetCheapestCityForRaisingOneChildYearlyInteractor(dataSource)
+    println(getCheapestCityForRaisingOneChildYearlyInteractor.execute())
+    printSeparationLine()
+
+    val getCityHasLowestCarsPriceInteractor = GetCityHasLowestCarsPriceInteractor(dataSource)
+    println(getCityHasLowestCarsPriceInteractor.execute())
+    printSeparationLine()
+
 
 }
 private fun printSeparationLine(){

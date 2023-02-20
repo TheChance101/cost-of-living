@@ -3,7 +3,7 @@ package fakeDataSource
 import interactor.CostOfLivingDataSource
 import model.*
 
-class FruitAndVegetablesFakeDataSource {
+class FakeDataSourceForFruitAndVegetables {
     private val lowQualityDataSource = object : CostOfLivingDataSource {
         override fun getAllCitiesData(): List<CityEntity> {
             return listOf(

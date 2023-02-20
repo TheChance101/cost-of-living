@@ -3,7 +3,7 @@ package interactor.addons
 import interactor.CostOfLivingDataSource
 import model.CityEntity
 
-class GetCheapestCityForCookPersonInteractor (
+class GetCheapestCityForCrookPersonInteractor (
     private val dataSource: CostOfLivingDataSource,
 ) {
 

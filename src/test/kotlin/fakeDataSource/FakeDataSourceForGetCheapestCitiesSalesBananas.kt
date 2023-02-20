@@ -2,7 +2,7 @@ package fakeDataSource
 
 import model.*
 
-class GetCheapestCitiesSalesBananasFakeData {
+class FakeDataSourceForGetCheapestCitiesSalesBananas {
     private val validData = arrayOf(
         CityEntity(
             "City1",
