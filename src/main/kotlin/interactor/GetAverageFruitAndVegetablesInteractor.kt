@@ -4,7 +4,7 @@ import model.CityEntity
 
 class GetAverageFruitAndVegetablesInteractor(private val dataSource: CostOfLivingDataSource) {
 
-    fun execute(limit: Int): List<String> {
+    operator fun invoke(limit: Int): List<String> {
         return dataSource
             .getAllCitiesData()
             .filter(::excludeNullFruitVegPriceAndNullSalaries)
