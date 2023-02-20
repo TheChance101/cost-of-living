@@ -12,5 +12,5 @@ class GetCheapestCityForCookPersonInteractor (
 
     fun excludeNullSalaryAndNullMinutePrice(city:CityEntity):Boolean{}
 
-    fun calculateMinutePricePercentToSalary(city: CityEntity):Float{}
+    fun calculateMinutePricePercentToSalary(city: CityEntity):Int{}
 }

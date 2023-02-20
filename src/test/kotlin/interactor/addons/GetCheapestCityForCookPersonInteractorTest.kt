@@ -20,6 +20,14 @@ class GetCheapestCityForCookPersonInteractorTest {
 
     @Test
     fun execute() {
+        interactor = GetCheapestCityForCookPersonInteractor(
+            fakeDataSource.trueFalseCityEntityList())
+
+        val data = interactor.execute().cityName
+
+        val expected = "Cairo"
+
+        assertEquals(expected,data)
     }
 
     @Test
@@ -68,5 +76,14 @@ class GetCheapestCityForCookPersonInteractorTest {
 
     @Test
     fun calculateMinutePricePercentToSalary() {
+        interactor = GetCheapestCityForCookPersonInteractor(
+            fakeDataSource.trueFalseCityEntityList())
+
+        val result = interactor.excludeFalseDataQuality(
+            fakeDataSource.percentLogicTest().getAllCitiesData()[0])
+
+        val expected = 10
+
+        assertEquals(expected,result)
     }
 }
