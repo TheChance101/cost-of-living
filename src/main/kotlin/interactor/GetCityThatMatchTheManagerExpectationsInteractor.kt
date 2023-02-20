@@ -16,25 +16,23 @@ class GetCityThatMatchTheManagerExpectationsInteractor(
             .takeIf { it.isNotEmpty() }
             ?.run {
                 excludeNullPricesOfMeals()
-               .getCityThatMatchExpectations()
+                .getCityThatMatchExpectations()
             } ?: throw IllegalStateException("List of cities is empty")
     }
 
-    private fun List<CityEntity>.excludeNullPricesOfMeals() = filter {
-        it.mealsPrices.mealFor2PeopleMidRangeRestaurant != null &&
-                it.mealsPrices.mealInexpensiveRestaurant != null &&
-                it.mealsPrices.mealAtMcDonaldSOrEquivalent != null
-    }
-
-    private fun CityEntity.getSummationPriceOfMeals(): Float {
-        return mealsPrices.mealFor2PeopleMidRangeRestaurant!!.div(2) +
-                mealsPrices.mealInexpensiveRestaurant!! +
-                mealsPrices.mealAtMcDonaldSOrEquivalent!!
+    private fun List<CityEntity>.excludeNullPricesOfMeals(): List<CityEntity> {
+        return filter {
+            with(it.mealsPrices){
+                mealInexpensiveRestaurant !=null &&
+                mealFor2PeopleMidRangeRestaurant !=null &&
+                mealAtMcDonaldSOrEquivalent != null
+            }
+        }
     }
 
     private fun List<CityEntity>.getCityThatMatchExpectations(): CityEntity {
-        val pricesOfMeals = map { it.getSummationPriceOfMeals() }
+        val pricesOfMeals = this.map { it.mealsPrices.getSummationPricesOfMeals() }
         val matchedPrice = (pricesOfMeals.maxOf { it } + pricesOfMeals.minOf { it }).div(2)
-        return minByOrNull { abs(matchedPrice - it.getSummationPriceOfMeals()) }!!
+        return minByOrNull { abs(matchedPrice - it.mealsPrices.getSummationPricesOfMeals()) }!!
     }
 }

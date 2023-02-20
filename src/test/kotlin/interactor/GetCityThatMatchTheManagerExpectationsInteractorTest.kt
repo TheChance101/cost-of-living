@@ -15,7 +15,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
     private lateinit var getCityThatMatchTheManagerExpectationsInteractor: GetCityThatMatchTheManagerExpectationsInteractor
 
     @BeforeAll
-    fun setUp() {
+    fun setup() {
         getCityThatMatchTheManagerExpectationsInteractor = GetCityThatMatchTheManagerExpectationsInteractor(ManagerExpectationsFakeData.emptyData)
     }
 
@@ -117,7 +117,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
         assertThrows(IllegalStateException::class.java, actualData)
     }
 
-    companion object{
+    private companion object{
         // Given the countries which will search on it
         val countries = listOf("united states", "canada", "mexico")
     }
