@@ -2,9 +2,7 @@ package interactor.addons
 
 import fakeDataSource.addons.FakeDataSourceForCrookPerson
 import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 
 class GetCheapestCityForCookPersonInteractorTest {
@@ -23,12 +21,14 @@ class GetCheapestCityForCookPersonInteractorTest {
         interactor = GetCheapestCityForCookPersonInteractor(
             fakeDataSource.trueFalseCityEntityList())
 
-        val data = interactor.execute().cityName
+        val data = interactor.execute()
 
         val expected = "Cairo"
 
         assertEquals(expected,data)
     }
+
+
 
     @Test
     fun should_Return_True_When_Data_Quality_High() {
@@ -49,7 +49,7 @@ class GetCheapestCityForCookPersonInteractorTest {
         val expected = interactor.excludeFalseDataQuality(
             fakeDataSource.trueFalseCityEntityList().getAllCitiesData()[1])
 
-        assertTrue(expected)
+        assertFalse(expected)
     }
 
     @Test
@@ -57,10 +57,10 @@ class GetCheapestCityForCookPersonInteractorTest {
         interactor = GetCheapestCityForCookPersonInteractor(
             fakeDataSource.trueFalseCityEntityList())
 
-        val expected = interactor.excludeFalseDataQuality(
+        val expected = interactor.excludeNullSalaryAndNullMinutePrice(
             fakeDataSource.getListWithNullSalaryAndNullPrice().getAllCitiesData()[0])
 
-        assertTrue(expected)
+        assertFalse(expected)
     }
 
     @Test
@@ -68,10 +68,10 @@ class GetCheapestCityForCookPersonInteractorTest {
         interactor = GetCheapestCityForCookPersonInteractor(
             fakeDataSource.trueFalseCityEntityList())
 
-        val expected = interactor.excludeFalseDataQuality(
+        val expected = interactor.excludeNullSalaryAndNullMinutePrice(
             fakeDataSource.getListWithNullSalaryAndNullPrice().getAllCitiesData()[1])
 
-        assertTrue(expected)
+        assertFalse(expected)
     }
 
     @Test
@@ -79,8 +79,9 @@ class GetCheapestCityForCookPersonInteractorTest {
         interactor = GetCheapestCityForCookPersonInteractor(
             fakeDataSource.trueFalseCityEntityList())
 
-        val result = interactor.excludeFalseDataQuality(
-            fakeDataSource.percentLogicTest().getAllCitiesData()[0])
+        val result = interactor.calculateMinutePricePercentToSalary(
+                fakeDataSource.percentLogicTest().getAllCitiesData()[0])
+
 
         val expected = 10
 
