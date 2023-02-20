@@ -34,11 +34,11 @@ internal class GetCitiesNameWithCheapestTennisPriceOnWeekendInteractorTest {
     fun `should return correct list of 1 city name when the data is valid`() {
         // given limit the return by 1
         val limit = 1
-        val expectedCitiesNames = listOf("Santiago de Cuba")
+        val expectedCityName = listOf("Santiago de Cuba")
         // when the actual result is list of 1 city name
         val result = getCitiesNameWithCheapestTennisPrice(limit)
         // then check of the result
-        assertEquals(expectedCitiesNames, result)
+        assertEquals(expectedCityName, result)
     }
 
     @Test
