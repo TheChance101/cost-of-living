@@ -28,17 +28,17 @@ class GetTopFiveFashionCitiesInteractor(
 
     }
 
-    private fun isValidData(city: CityEntity): Boolean {
-        return city.clothesPrices.onePairOfJeansLevis50oneOrSimilar != null &&
-                city.clothesPrices.onePairOfMenLeatherBusinessShoes != null &&
-                city.clothesPrices.onePairOfNikeRunningShoesMidRange != null &&
-                city.clothesPrices.oneSummerDressInAChainStoreZaraHAndM != null
+    private fun isValidData(city: CityEntity)= with(city.clothesPrices) {
+         onePairOfJeansLevis50oneOrSimilar != null &&
+         onePairOfMenLeatherBusinessShoes != null &&
+         onePairOfNikeRunningShoesMidRange != null &&
+         oneSummerDressInAChainStoreZaraHAndM != null
     }
 
-    private fun getClothesPrice(city: CityEntity):Float{
-        return city.clothesPrices.onePairOfJeansLevis50oneOrSimilar!! +
-               city.clothesPrices.onePairOfMenLeatherBusinessShoes!! +
-               city.clothesPrices.oneSummerDressInAChainStoreZaraHAndM!! +
-               city.clothesPrices.onePairOfNikeRunningShoesMidRange!!
+    private fun getClothesPrice(city: CityEntity)= with(city.clothesPrices){
+        onePairOfJeansLevis50oneOrSimilar!! +
+        onePairOfMenLeatherBusinessShoes!! +
+        oneSummerDressInAChainStoreZaraHAndM!! +
+        onePairOfNikeRunningShoesMidRange!!
     }
 }

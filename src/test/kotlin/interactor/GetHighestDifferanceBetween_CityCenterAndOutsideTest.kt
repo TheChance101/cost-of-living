@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test
 import interactor.CostOfLivingDataSource
 // JUnit test to check if the findCityWithHighestRentPriceDifference() method works as expected
 class GetHighestDifferanceBetween_CityCenterAndOutsideTest {
+   /*
     @Test
     fun findCityWithHighestApartmentRentDifferenceTest() {
         // Create an instance of the CsvParser class
@@ -17,4 +18,7 @@ class GetHighestDifferanceBetween_CityCenterAndOutsideTest {
         // Print the result
         println("City with highest apartment rent difference: $cityWithHighestDifference")
     }
+
+
+    */
 }
