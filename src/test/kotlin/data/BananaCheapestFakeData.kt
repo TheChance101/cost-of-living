@@ -42,7 +42,7 @@ object BananaCheapestFakeData : CostOfLivingDataSource {
                 oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.1f,
                 internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
                 fitnessClubMonthlyFeeForOneAdult = null,
-                tennisCourtRentOneHourOnWeekend = null,
+                tennisCourtRentOneHourOnWeekend = 1f,
                 cinemaInternationalReleaseOneSeat = 1.0f,
                 preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = null,
                 internationalPrimarySchoolYearlyForOneChild = null
@@ -118,7 +118,7 @@ object BananaCheapestFakeData : CostOfLivingDataSource {
                     oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.1f,
                     internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
                     fitnessClubMonthlyFeeForOneAdult = null,
-                    tennisCourtRentOneHourOnWeekend = null,
+                    tennisCourtRentOneHourOnWeekend = 2f,
                     cinemaInternationalReleaseOneSeat = 1.0f,
                     preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = null,
                     internationalPrimarySchoolYearlyForOneChild = null
@@ -189,7 +189,7 @@ object BananaCheapestFakeData : CostOfLivingDataSource {
                     oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = null,
                     internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
                     fitnessClubMonthlyFeeForOneAdult = null,
-                    tennisCourtRentOneHourOnWeekend = null,
+                    tennisCourtRentOneHourOnWeekend = 3f,
                     cinemaInternationalReleaseOneSeat = null,
                     preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = null,
                     internationalPrimarySchoolYearlyForOneChild = null
@@ -260,7 +260,7 @@ object BananaCheapestFakeData : CostOfLivingDataSource {
                     oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 0.26f,
                     internet60MbpsOrMoreUnlimitedDataCableAdsl = 80.0f,
                     fitnessClubMonthlyFeeForOneAdult = 6.0f,
-                    tennisCourtRentOneHourOnWeekend = null,
+                    tennisCourtRentOneHourOnWeekend = 4f,
                     cinemaInternationalReleaseOneSeat = 1.12f,
                     preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 70.0f,
                     internationalPrimarySchoolYearlyForOneChild = 15166.67f
