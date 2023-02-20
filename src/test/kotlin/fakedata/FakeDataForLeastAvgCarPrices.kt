@@ -7,7 +7,7 @@ import model.*
 val carCity1 by lazy {
     CityEntity(
         cityName = "city1",
-        country = "egypt",
+        country = "country1",
         mealsPrices = MealsPrices(
             mealInexpensiveRestaurant = 10f,
             mealFor2PeopleMidRangeRestaurant = 5f,
@@ -80,7 +80,7 @@ val carCity1 by lazy {
 val carCity2 by lazy {
     CityEntity(
         cityName = "city2",
-        country = "egypt",
+        country = "country2",
         mealsPrices = MealsPrices(
             mealInexpensiveRestaurant = 10f,
             mealFor2PeopleMidRangeRestaurant = 5f,
@@ -153,7 +153,7 @@ val carCity2 by lazy {
 val carCity3 by lazy {
     CityEntity(
         cityName = "city3",
-        country = "egypt",
+        country = "country3",
         mealsPrices = MealsPrices(
             mealInexpensiveRestaurant = 10f,
             mealFor2PeopleMidRangeRestaurant = 5f,
@@ -226,7 +226,7 @@ val carCity3 by lazy {
 val carCity4 by lazy {
     CityEntity(
         cityName = "city4",
-        country = "egypt",
+        country = "country4",
         mealsPrices = MealsPrices(
             mealInexpensiveRestaurant = 10f,
             mealFor2PeopleMidRangeRestaurant = 5f,
@@ -299,7 +299,7 @@ val carCity4 by lazy {
 val carCity5 by lazy {
     CityEntity(
         cityName = "city5",
-        country = "egypt",
+        country = "country5",
         mealsPrices = MealsPrices(
             mealInexpensiveRestaurant = 10f,
             mealFor2PeopleMidRangeRestaurant = 5f,
@@ -372,7 +372,7 @@ val carCity5 by lazy {
 val carCity6 by lazy {
     CityEntity(
         cityName = "city6",
-        country = "egypt",
+        country = "country6",
         mealsPrices = MealsPrices(
             mealInexpensiveRestaurant = 10f,
             mealFor2PeopleMidRangeRestaurant = 5f,
@@ -445,7 +445,7 @@ val carCity6 by lazy {
 val carCity7 by lazy {
     CityEntity(
         cityName = "city7",
-        country = "egypt",
+        country = "country7",
         mealsPrices = MealsPrices(
             mealInexpensiveRestaurant = 10f,
             mealFor2PeopleMidRangeRestaurant = 5f,
@@ -518,7 +518,7 @@ val carCity7 by lazy {
 val carCity8 by lazy {
     CityEntity(
         cityName = "city8",
-        country = "egypt",
+        country = "country8",
         mealsPrices = MealsPrices(
             mealInexpensiveRestaurant = 10f,
             mealFor2PeopleMidRangeRestaurant = 5f,
@@ -591,7 +591,7 @@ val carCity8 by lazy {
 val carCity9 by lazy {
     CityEntity(
         cityName = "city9",
-        country = "egypt",
+        country = "country9",
         mealsPrices = MealsPrices(
             mealInexpensiveRestaurant = 10f,
             mealFor2PeopleMidRangeRestaurant = 5f,
@@ -664,7 +664,7 @@ val carCity9 by lazy {
 val carCity10 by lazy {
     CityEntity(
         cityName = "city10",
-        country = "egypt",
+        country = "country10",
         mealsPrices = MealsPrices(
             mealInexpensiveRestaurant = 10f,
             mealFor2PeopleMidRangeRestaurant = 5f,
@@ -737,7 +737,7 @@ val carCity10 by lazy {
 val carCity11 by lazy {
     CityEntity(
         cityName = "city11",
-        country = "egypt",
+        country = "country11",
         mealsPrices = MealsPrices(
             mealInexpensiveRestaurant = 10f,
             mealFor2PeopleMidRangeRestaurant = 5f,
@@ -810,7 +810,7 @@ val carCity11 by lazy {
 val negCarCity by lazy {
     CityEntity(
         cityName = "negative car price",
-        country = "egypt",
+        country = "negative car country",
         mealsPrices = MealsPrices(
             mealInexpensiveRestaurant = 10f,
             mealFor2PeopleMidRangeRestaurant = 5f,
@@ -880,230 +880,6 @@ val negCarCity by lazy {
         dataQuality = true
     )
 }
-
-
-val nullSalaryCarCity by lazy {
-    CityEntity(
-        cityName = "null salary",
-        country = "egypt",
-        mealsPrices = MealsPrices(
-            mealInexpensiveRestaurant = 10f,
-            mealFor2PeopleMidRangeRestaurant = 5f,
-            mealAtMcDonaldSOrEquivalent = 3f
-        ),
-        drinksPrices = DrinksPrices(
-            cappuccinoRegularInRestaurants = 7f,
-            cokePepsiAThirdOfLiterBottleInRestaurants = 2f,
-            waterAThirdOfLiterBottleInRestaurants = 1f,
-            milkRegularOneLiter = 2f,
-            waterOneAndHalfLiterBottleAtTheMarket = 2.5f
-        ),
-        fruitAndVegetablesPrices = FruitAndVegetablesPrices(
-            apples1kg = 0.000001f,
-            banana1kg = 0.000002f,
-            oranges1kg = 0.000003f,
-            tomato1kg = 0.00003f,
-            potato1kg = 0.0000051f,
-            onion1kg = 0.0000016f,
-            lettuceOneHead = 0.0000025f
-        ),
-        foodPrices = FoodPrices(
-            loafOfFreshWhiteBread500g = 0.05f,
-            riceWhite1kg = 0.01f,
-            eggsRegular12 = 0.02f,
-            localCheese1kg = 0.04f,
-            chickenFillets1kg = 0.4f,
-            beefRound1kgOrEquivalentBackLegRedMeat = 0.6f
-        ),
-        servicesPrices = ServicesPrices(
-            basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
-            oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
-            internet60MbpsOrMoreUnlimitedDataCableAdsl = 20f,
-            fitnessClubMonthlyFeeForOneAdult = 100f,
-            tennisCourtRentOneHourOnWeekend = 100f,
-            cinemaInternationalReleaseOneSeat = 10f,
-            preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 100f,
-            internationalPrimarySchoolYearlyForOneChild = 1000f
-        ),
-        clothesPrices = ClothesPrices(
-            onePairOfJeansLevis50oneOrSimilar = 60f,
-            oneSummerDressInAChainStoreZaraHAndM = 90f,
-            onePairOfNikeRunningShoesMidRange = 80f,
-            onePairOfMenLeatherBusinessShoes = 300f
-        ),
-        transportationsPrices = TransportationsPrices(
-            oneWayTicketLocalTransport = 5f,
-            monthlyPassRegularPrice = 60f,
-            taxiStartNormalTariff = 20f,
-            taxi1kmNormalTariff = 30f,
-            taxi1hourWaitingNormalTariff = 60f,
-            gasolineOneLiter = 2f
-        ),
-        carsPrices = CarsPrices(
-            volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 1f,
-            toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 19f
-        ),
-        realEstatesPrices = RealEstatesPrices(
-            apartmentOneBedroomInCityCentre = 500000f,
-            apartmentOneBedroomOutsideOfCentre = 300000f,
-            apartment3BedroomsInCityCentre = 800000f,
-            apartment3BedroomsOutsideOfCentre = 500000f,
-            pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
-            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
-        ),
-        averageMonthlyNetSalaryAfterTax = null,
-        dataQuality = true
-    )
-}
-
-val negSalaryCarCity by lazy {
-    CityEntity(
-        cityName = "neg salary",
-        country = "egypt",
-        mealsPrices = MealsPrices(
-            mealInexpensiveRestaurant = 10f,
-            mealFor2PeopleMidRangeRestaurant = 5f,
-            mealAtMcDonaldSOrEquivalent = 3f
-        ),
-        drinksPrices = DrinksPrices(
-            cappuccinoRegularInRestaurants = 7f,
-            cokePepsiAThirdOfLiterBottleInRestaurants = 2f,
-            waterAThirdOfLiterBottleInRestaurants = 1f,
-            milkRegularOneLiter = 2f,
-            waterOneAndHalfLiterBottleAtTheMarket = 2.5f
-        ),
-        fruitAndVegetablesPrices = FruitAndVegetablesPrices(
-            apples1kg = 0.000001f,
-            banana1kg = 0.000002f,
-            oranges1kg = 0.000003f,
-            tomato1kg = 0.00003f,
-            potato1kg = 0.0000051f,
-            onion1kg = 0.0000016f,
-            lettuceOneHead = 0.0000025f
-        ),
-        foodPrices = FoodPrices(
-            loafOfFreshWhiteBread500g = 0.05f,
-            riceWhite1kg = 0.01f,
-            eggsRegular12 = 0.02f,
-            localCheese1kg = 0.04f,
-            chickenFillets1kg = 0.4f,
-            beefRound1kgOrEquivalentBackLegRedMeat = 0.6f
-        ),
-        servicesPrices = ServicesPrices(
-            basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
-            oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
-            internet60MbpsOrMoreUnlimitedDataCableAdsl = 20f,
-            fitnessClubMonthlyFeeForOneAdult = 100f,
-            tennisCourtRentOneHourOnWeekend = 100f,
-            cinemaInternationalReleaseOneSeat = 10f,
-            preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 100f,
-            internationalPrimarySchoolYearlyForOneChild = 1000f
-        ),
-        clothesPrices = ClothesPrices(
-            onePairOfJeansLevis50oneOrSimilar = 60f,
-            oneSummerDressInAChainStoreZaraHAndM = 90f,
-            onePairOfNikeRunningShoesMidRange = 80f,
-            onePairOfMenLeatherBusinessShoes = 300f
-        ),
-        transportationsPrices = TransportationsPrices(
-            oneWayTicketLocalTransport = 5f,
-            monthlyPassRegularPrice = 60f,
-            taxiStartNormalTariff = 20f,
-            taxi1kmNormalTariff = 30f,
-            taxi1hourWaitingNormalTariff = 60f,
-            gasolineOneLiter = 2f
-        ),
-        carsPrices = CarsPrices(
-            volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 1f,
-            toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 19f
-        ),
-        realEstatesPrices = RealEstatesPrices(
-            apartmentOneBedroomInCityCentre = 500000f,
-            apartmentOneBedroomOutsideOfCentre = 300000f,
-            apartment3BedroomsInCityCentre = 800000f,
-            apartment3BedroomsOutsideOfCentre = 500000f,
-            pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
-            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
-        ),
-        averageMonthlyNetSalaryAfterTax = -1000f,
-        dataQuality = true
-    )
-}
-
-val lowDataCarCity by lazy {
-    CityEntity(
-        cityName = "low quality",
-        country = "egypt",
-        mealsPrices = MealsPrices(
-            mealInexpensiveRestaurant = 10f,
-            mealFor2PeopleMidRangeRestaurant = 5f,
-            mealAtMcDonaldSOrEquivalent = 3f
-        ),
-        drinksPrices = DrinksPrices(
-            cappuccinoRegularInRestaurants = 7f,
-            cokePepsiAThirdOfLiterBottleInRestaurants = 2f,
-            waterAThirdOfLiterBottleInRestaurants = 1f,
-            milkRegularOneLiter = 2f,
-            waterOneAndHalfLiterBottleAtTheMarket = 2.5f
-        ),
-        fruitAndVegetablesPrices = FruitAndVegetablesPrices(
-            apples1kg = 0.000001f,
-            banana1kg = 0.000002f,
-            oranges1kg = 0.000003f,
-            tomato1kg = 0.00003f,
-            potato1kg = 0.0000051f,
-            onion1kg = 0.0000016f,
-            lettuceOneHead = 0.0000025f
-        ),
-        foodPrices = FoodPrices(
-            loafOfFreshWhiteBread500g = 0.05f,
-            riceWhite1kg = 0.01f,
-            eggsRegular12 = 0.02f,
-            localCheese1kg = 0.04f,
-            chickenFillets1kg = 0.4f,
-            beefRound1kgOrEquivalentBackLegRedMeat = 0.6f
-        ),
-        servicesPrices = ServicesPrices(
-            basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
-            oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
-            internet60MbpsOrMoreUnlimitedDataCableAdsl = 20f,
-            fitnessClubMonthlyFeeForOneAdult = 100f,
-            tennisCourtRentOneHourOnWeekend = 100f,
-            cinemaInternationalReleaseOneSeat = 10f,
-            preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 100f,
-            internationalPrimarySchoolYearlyForOneChild = 1000f
-        ),
-        clothesPrices = ClothesPrices(
-            onePairOfJeansLevis50oneOrSimilar = 60f,
-            oneSummerDressInAChainStoreZaraHAndM = 90f,
-            onePairOfNikeRunningShoesMidRange = 80f,
-            onePairOfMenLeatherBusinessShoes = 300f
-        ),
-        transportationsPrices = TransportationsPrices(
-            oneWayTicketLocalTransport = 5f,
-            monthlyPassRegularPrice = 60f,
-            taxiStartNormalTariff = 20f,
-            taxi1kmNormalTariff = 30f,
-            taxi1hourWaitingNormalTariff = 60f,
-            gasolineOneLiter = 2f
-        ),
-        carsPrices = CarsPrices(
-            volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 118f,
-            toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 19f
-        ),
-        realEstatesPrices = RealEstatesPrices(
-            apartmentOneBedroomInCityCentre = 500000f,
-            apartmentOneBedroomOutsideOfCentre = 300000f,
-            apartment3BedroomsInCityCentre = 800000f,
-            apartment3BedroomsOutsideOfCentre = 500000f,
-            pricePerSquareMeterToBuyApartmentInCityCentre = 2000f,
-            pricePerSquareMeterToBuyApartmentOutsideOfCentre = 1500f
-        ),
-        averageMonthlyNetSalaryAfterTax = 9000000f,
-        dataQuality = false
-    )
-}
-
 val nullCarsCarCity by lazy {
     CityEntity(
         cityName = "null cars",
@@ -1178,21 +954,12 @@ val nullCarsCarCity by lazy {
     )
 }
 
-
 class QualityCities : CostOfLivingDataSource {
     override fun getAllCitiesData(): List<CityEntity> {
         return listOf(
             carCity1, carCity2, carCity3, carCity4, carCity5,
             carCity6, carCity7, carCity8, carCity9, carCity10,
             carCity11
-        )
-    }
-}
-
-class CitiesWithNullSalary : CostOfLivingDataSource {
-    override fun getAllCitiesData(): List<CityEntity> {
-        return listOf(
-            nullSalaryCarCity
         )
     }
 }
@@ -1205,7 +972,6 @@ class CitiesWithNullCarPrices : CostOfLivingDataSource {
     }
 }
 
-/** Size = 10, duplicates = 2, size without duplicates = 8*/
 class CitiesWithTwoDuplicates : CostOfLivingDataSource {
     override fun getAllCitiesData(): List<CityEntity> {
         return listOf(
@@ -1215,13 +981,6 @@ class CitiesWithTwoDuplicates : CostOfLivingDataSource {
     }
 }
 
-class CitiesWithNegativeSalary : CostOfLivingDataSource {
-    override fun getAllCitiesData(): List<CityEntity> {
-        return listOf(
-            negSalaryCarCity
-        )
-    }
-}
 
 class CitiesWithNegativeCarPrices : CostOfLivingDataSource {
     override fun getAllCitiesData(): List<CityEntity> {
@@ -1231,14 +990,6 @@ class CitiesWithNegativeCarPrices : CostOfLivingDataSource {
     }
 }
 
-
-class CitiesWithLowQualityData : CostOfLivingDataSource {
-    override fun getAllCitiesData(): List<CityEntity> {
-        return listOf(
-            lowDataCarCity
-        )
-    }
-}
 
 fun top10CitiesSorted() = listOf(
     carCity1,
