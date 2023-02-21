@@ -7,16 +7,17 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
-import java.util.NoSuchElementException
 import kotlin.test.assertEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GetCityThatMatchTheManagerExpectationsInteractorTest {
-    private lateinit var getCityThatMatchTheManagerExpectationsInteractor: GetCityThatMatchTheManagerExpectationsInteractor
+    private lateinit var getCityThatMatchTheManagerExpectationsInteractor:
+            GetCityThatMatchTheManagerExpectationsInteractor
 
     @BeforeAll
     fun setup() {
-        getCityThatMatchTheManagerExpectationsInteractor = GetCityThatMatchTheManagerExpectationsInteractor(ManagerExpectationsFakeData.emptyData)
+        getCityThatMatchTheManagerExpectationsInteractor =
+            GetCityThatMatchTheManagerExpectationsInteractor(ManagerExpectationsFakeData.emptyData)
     }
 
 
@@ -28,9 +29,11 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
                 ManagerExpectationsFakeData.validCountriesAndPricesOfMeals
             )
         // When return city that match manager expectations
-        val actualData = interactor(countries).cityName
+        val actualData = interactor(countries)
+        val expectedCity = ManagerExpectationsFakeData.validCountriesAndPricesOfMeals.getAllCitiesData()[0]
+
         // Then check the result
-        assertEquals("Great Falls", actualData)
+        assertEquals(expectedCity, actualData)
     }
 
     @Test
@@ -41,9 +44,11 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
                 ManagerExpectationsFakeData.validCountriesAndSomeInvalidPricesOfMeals
             )
         // When return the city that match manager expectations
-        val actualData = interactor(countries).cityName
+        val actualData = interactor(countries)
+        val expectedCity = ManagerExpectationsFakeData.validCountriesAndSomeInvalidPricesOfMeals
+            .getAllCitiesData().find { it.cityName == "Chetumal" }
         // Then check the final result
-        assertEquals("Chetumal", actualData)
+        assertEquals(expectedCity, actualData)
     }
 
     @Test
@@ -54,9 +59,11 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
                 ManagerExpectationsFakeData.someInvalidCountriesAndValidPricesOfMeals
             )
         // When return the city that match manager expectations
-        val actualData = interactor(countries).cityName
+        val actualData = interactor(countries)
+        val expectedCity = ManagerExpectationsFakeData.someInvalidCountriesAndValidPricesOfMeals
+                            .getAllCitiesData().find { it.cityName == "Moose Jaw" }
         // Then check the final result
-        assertEquals("Moose Jaw", actualData)
+        assertEquals(expectedCity, actualData)
     }
 
     @Test
@@ -67,9 +74,11 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
                 ManagerExpectationsFakeData.invalidSomeCountriesAndSomePricesOfMeals
             )
         // When return the city that match manager expectations
-        val actualData = interactor(countries).cityName
+        val actualData = interactor(countries)
+        val expectedCity = ManagerExpectationsFakeData.invalidSomeCountriesAndSomePricesOfMeals
+            .getAllCitiesData().find { it.cityName == "Chetumal" }
         // Then check the final result
-        assertEquals("Chetumal", actualData)
+        assertEquals(expectedCity, actualData)
     }
 
     @Test
@@ -84,7 +93,7 @@ class GetCityThatMatchTheManagerExpectationsInteractorTest {
             interactor(countries).cityName
         }
         // Then check the final result
-        assertThrows(NoSuchElementException::class.java, actualData)
+        assertThrows(IllegalStateException::class.java, actualData)
     }
 
     @Test

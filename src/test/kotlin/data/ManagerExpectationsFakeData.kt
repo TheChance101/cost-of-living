@@ -1246,8 +1246,8 @@ object ManagerExpectationsFakeData {
     private val _invalidData by lazy {
         listOf(
             CityEntity(
-                cityName = "Cairo",
-                country = "Egypt",
+                cityName = "Great Falls",
+                country = "United States",
                 mealsPrices = MealsPrices(
                     mealInexpensiveRestaurant = null,
                     mealFor2PeopleMidRangeRestaurant = null,
