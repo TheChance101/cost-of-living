@@ -18,7 +18,6 @@ fun main() {
     val getCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor =
         GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor(dataSource)
         println(getCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor.execute(10))
-    println(getCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor.execute(limit))
     printSeparationLine()
 
     val searchForAverageSalariesInCountryInteractor = SearchForAverageSalariesInCountryInteractor(dataSource)
@@ -56,7 +55,6 @@ fun main() {
     val getCityMakesFamilySaveMoreInteractor= GetCityMakesFamilySaveMoreInteractor(dataSource)
     println(getCityMakesFamilySaveMoreInteractor.execute())
     printSeparationLine()
-
 
     printSeparationLine()
     printSeparationLine()
