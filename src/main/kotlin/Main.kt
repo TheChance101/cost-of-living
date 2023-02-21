@@ -16,22 +16,23 @@ fun main() {
     printSeparationLine()
 
     val getCheapestApartmentsCitiesNamesInteractor = GetCheapestApartmentsCitiesNamesInteractor(dataSource)
-    getCheapestApartmentsCitiesNamesInteractor.execute(10).forEach {
+    getCheapestApartmentsCitiesNamesInteractor.execute(10, 100).forEach {
         println("Number of years needed to buy a 100m apartment in ${it.first} city is : " + "%.2f".format(it.second))
     }
     printSeparationLine()
 
     val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
-    println(getCityHasCheapestInternetConnectionInteractor.execute( 1 ))
+    println(getCityHasCheapestInternetConnectionInteractor.execute(1))
     printSeparationLine()
 
     val getCheapestBananaPricesCitiesNamesInteractor=GetCheapestBananaPricesCitiesNamesInteractor(dataSource)
     getCheapestBananaPricesCitiesNamesInteractor.apply {
-       println(execute(*getCitiesVarArgs()))
+        println(execute(*getCitiesVarArgs().toTypedArray()))
     }
     printSeparationLine()
 
-    val getBestClothesPriceCitiesNameInteractor = GetTopFiveCitiesNamesForShoppingClothesFromFamousBrandsInteractor(dataSource)
+    val getBestClothesPriceCitiesNameInteractor =
+        GetTopFiveCitiesNamesForShoppingClothesFromFamousBrandsInteractor(dataSource)
     println(getBestClothesPriceCitiesNameInteractor.execute(limit = 5))
     printSeparationLine()
 
@@ -39,11 +40,12 @@ fun main() {
     println(getCityNameAndSalaryAverageInteractor.execute("Egypt"))
     printSeparationLine()
 
-    val getMostSuitableCityForMoreSavingsPerMonthInteractor = GetMostSuitableCityForMoreSavingsPerMonthInteractor(dataSource)
+    val getMostSuitableCityForMoreSavingsPerMonthInteractor =
+        GetMostSuitableCityForMoreSavingsPerMonthInteractor(dataSource)
     getMostSuitableCityForMoreSavingsPerMonthInteractor.apply {
         println(execute())
     }
-     printSeparationLine()
+    printSeparationLine()
 
     val getCityManagerExpectationInteractor = GetCityManagerExpectationInteractor(dataSource)
     println(getCityManagerExpectationInteractor.execute("United States" , "Canada","Mexico"))

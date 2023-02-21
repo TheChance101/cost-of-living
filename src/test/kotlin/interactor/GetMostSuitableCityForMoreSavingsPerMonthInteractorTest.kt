@@ -26,9 +26,7 @@ internal class GetMostSuitableCityForMoreSavingsPerMonthInteractorTest {
         dataSource.setDatatype(HardCodedFakeDataSource.DataType.VALID)
         val expectedCity = dataSource.parisHighQuality
         // when
-        val cityEntity = getMostSuitableCity.run {
-            execute()
-        }
+        val cityEntity = getMostSuitableCity.execute()
         // then
         assertEquals(expectedCity,cityEntity)
     }
@@ -39,9 +37,7 @@ internal class GetMostSuitableCityForMoreSavingsPerMonthInteractorTest {
         dataSource.setDatatype(HardCodedFakeDataSource.DataType.MIXED)
         val expectedCity = dataSource.parisHighQuality
         // when
-        val cityEntity = getMostSuitableCity.run {
-            execute()
-        }
+        val cityEntity = getMostSuitableCity.execute()
         // then
         assertEquals(expectedCity,cityEntity)
     }
@@ -52,9 +48,7 @@ internal class GetMostSuitableCityForMoreSavingsPerMonthInteractorTest {
         dataSource.setDatatype(HardCodedFakeDataSource.DataType.EMPTY)
         // when
         val emptyCityEntity = Executable {
-            getMostSuitableCity.run {
-                execute()
-            }
+            getMostSuitableCity.execute()
         }
         // then
         assertThrows(Exception::class.java,emptyCityEntity)
@@ -66,9 +60,7 @@ internal class GetMostSuitableCityForMoreSavingsPerMonthInteractorTest {
         dataSource.setDatatype(HardCodedFakeDataSource.DataType.NULLABLE)
         // when
         val emptyCityEntity = Executable {
-            getMostSuitableCity.run {
-                execute()
-            }
+            getMostSuitableCity.execute()
         }
         // then
         assertThrows(Exception::class.java,emptyCityEntity)

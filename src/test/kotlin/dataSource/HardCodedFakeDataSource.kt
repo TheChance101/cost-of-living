@@ -88,7 +88,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
         )
     }
 
-    val londonLowQuality by lazy {
+    private val londonLowQuality by lazy {
         CityEntity(
             cityName = "london",
             country = "england",
@@ -236,66 +236,66 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
         )
     }
 
-    val baghdadHighQualityNull by lazy {
+    private val baghdadHighQualityNull by lazy {
         CityEntity(
             cityName = "baghdad",
-            country = "iraq",
+            country = "null",
             mealsPrices = MealsPrices(
-                mealInexpensiveRestaurant = 10f,
-                mealFor2PeopleMidRangeRestaurant = 5f,
-                mealAtMcDonaldSOrEquivalent = 3f
+                mealInexpensiveRestaurant = null,
+                mealFor2PeopleMidRangeRestaurant = null,
+                mealAtMcDonaldSOrEquivalent = null
             ),
             drinksPrices = DrinksPrices(
-                cappuccinoRegularInRestaurants = 7f,
-                cokePepsiAThirdOfLiterBottleInRestaurants = 2f,
-                waterAThirdOfLiterBottleInRestaurants = 1f,
-                milkRegularOneLiter = 2f,
-                waterOneAndHalfLiterBottleAtTheMarket = 2.5f
+                cappuccinoRegularInRestaurants = null,
+                cokePepsiAThirdOfLiterBottleInRestaurants = null,
+                waterAThirdOfLiterBottleInRestaurants = null,
+                milkRegularOneLiter = null,
+                waterOneAndHalfLiterBottleAtTheMarket = null
             ),
             fruitAndVegetablesPrices = FruitAndVegetablesPrices(
-                apples1kg = 2f,
-                banana1kg = 1f,
-                oranges1kg = 1f,
-                tomato1kg = 3f,
-                potato1kg = 1f,
-                onion1kg = 1f,
-                lettuceOneHead = 0.25f
+                apples1kg = null,
+                banana1kg = null,
+                oranges1kg = null,
+                tomato1kg = null,
+                potato1kg = null,
+                onion1kg = null,
+                lettuceOneHead = null
             ),
             foodPrices = FoodPrices(
-                loafOfFreshWhiteBread500g = 9f,
-                riceWhite1kg = 4f,
+                loafOfFreshWhiteBread500g = null,
+                riceWhite1kg = null,
                 eggsRegular12 = null,
                 localCheese1kg = null,
-                chickenFillets1kg = 12f,
+                chickenFillets1kg = null,
                 beefRound1kgOrEquivalentBackLegRedMeat = null
             ),
             servicesPrices = ServicesPrices(
-                basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
-                oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
+                basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = null,
+                oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = null,
                 internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
-                fitnessClubMonthlyFeeForOneAdult = 100f,
-                tennisCourtRentOneHourOnWeekend = 100f,
-                cinemaInternationalReleaseOneSeat = 10f,
-                preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 100f,
-                internationalPrimarySchoolYearlyForOneChild = 1000f
+                fitnessClubMonthlyFeeForOneAdult = null,
+                tennisCourtRentOneHourOnWeekend = null,
+                cinemaInternationalReleaseOneSeat = null,
+                preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = null,
+                internationalPrimarySchoolYearlyForOneChild = null
             ),
             clothesPrices = ClothesPrices(
-                onePairOfJeansLevis50oneOrSimilar = 60f,
-                oneSummerDressInAChainStoreZaraHAndM = 90f,
-                onePairOfNikeRunningShoesMidRange = 80f,
-                onePairOfMenLeatherBusinessShoes = 300f
+                onePairOfJeansLevis50oneOrSimilar = null,
+                oneSummerDressInAChainStoreZaraHAndM = null,
+                onePairOfNikeRunningShoesMidRange = null,
+                onePairOfMenLeatherBusinessShoes = null
             ),
             transportationsPrices = TransportationsPrices(
-                oneWayTicketLocalTransport = 5f,
-                monthlyPassRegularPrice = 60f,
-                taxiStartNormalTariff = 20f,
-                taxi1kmNormalTariff = 30f,
-                taxi1hourWaitingNormalTariff = 60f,
-                gasolineOneLiter = 2f
+                oneWayTicketLocalTransport = null,
+                monthlyPassRegularPrice = null,
+                taxiStartNormalTariff = null,
+                taxi1kmNormalTariff = null,
+                taxi1hourWaitingNormalTariff = null,
+                gasolineOneLiter = null
             ),
             carsPrices = CarsPrices(
-                volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 300000f,
-                toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 250000f
+                volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = null,
+                toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = null
             ),
             realEstatesPrices = RealEstatesPrices(
                 apartmentOneBedroomInCityCentre = null,
@@ -310,66 +310,66 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
         )
     }
 
-    val rabatLowQualityNull by lazy {
+    private val rabatLowQualityNull by lazy {
         CityEntity(
             cityName = "rabat",
             country = "morocco",
             mealsPrices = MealsPrices(
-                mealInexpensiveRestaurant = 10f,
-                mealFor2PeopleMidRangeRestaurant = 5f,
-                mealAtMcDonaldSOrEquivalent = 3f
+                mealInexpensiveRestaurant = null,
+                mealFor2PeopleMidRangeRestaurant = null,
+                mealAtMcDonaldSOrEquivalent = null
             ),
             drinksPrices = DrinksPrices(
-                cappuccinoRegularInRestaurants = 7f,
-                cokePepsiAThirdOfLiterBottleInRestaurants = 2f,
-                waterAThirdOfLiterBottleInRestaurants = 1f,
-                milkRegularOneLiter = 2f,
-                waterOneAndHalfLiterBottleAtTheMarket = 2.5f
+                cappuccinoRegularInRestaurants = null,
+                cokePepsiAThirdOfLiterBottleInRestaurants = null,
+                waterAThirdOfLiterBottleInRestaurants = null,
+                milkRegularOneLiter = null,
+                waterOneAndHalfLiterBottleAtTheMarket = null
             ),
             fruitAndVegetablesPrices = FruitAndVegetablesPrices(
-                apples1kg = 2f,
-                banana1kg = 1f,
-                oranges1kg = 1f,
-                tomato1kg = 3f,
-                potato1kg = 1f,
-                onion1kg = 1f,
-                lettuceOneHead = 0.25f
+                apples1kg = null,
+                banana1kg = null,
+                oranges1kg = null,
+                tomato1kg = null,
+                potato1kg = null,
+                onion1kg = null,
+                lettuceOneHead = null
             ),
             foodPrices = FoodPrices(
-                loafOfFreshWhiteBread500g = 9f,
-                riceWhite1kg = 4f,
-                eggsRegular12 = 3f,
-                localCheese1kg = 1f,
-                chickenFillets1kg = 12f,
+                loafOfFreshWhiteBread500g = null,
+                riceWhite1kg = null,
+                eggsRegular12 = null,
+                localCheese1kg = null,
+                chickenFillets1kg = null,
                 beefRound1kgOrEquivalentBackLegRedMeat = null
             ),
             servicesPrices = ServicesPrices(
-                basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
-                oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
+                basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = null,
+                oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = null,
                 internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
-                fitnessClubMonthlyFeeForOneAdult = 100f,
-                tennisCourtRentOneHourOnWeekend = 100f,
-                cinemaInternationalReleaseOneSeat = 10f,
-                preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 100f,
-                internationalPrimarySchoolYearlyForOneChild = 1000f
+                fitnessClubMonthlyFeeForOneAdult = null,
+                tennisCourtRentOneHourOnWeekend = null,
+                cinemaInternationalReleaseOneSeat = null,
+                preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = null,
+                internationalPrimarySchoolYearlyForOneChild = null
             ),
             clothesPrices = ClothesPrices(
-                onePairOfJeansLevis50oneOrSimilar = 60f,
-                oneSummerDressInAChainStoreZaraHAndM = 90f,
-                onePairOfNikeRunningShoesMidRange = 80f,
-                onePairOfMenLeatherBusinessShoes = 300f
+                onePairOfJeansLevis50oneOrSimilar = null,
+                oneSummerDressInAChainStoreZaraHAndM = null,
+                onePairOfNikeRunningShoesMidRange = null,
+                onePairOfMenLeatherBusinessShoes = null
             ),
             transportationsPrices = TransportationsPrices(
-                oneWayTicketLocalTransport = 5f,
-                monthlyPassRegularPrice = 60f,
-                taxiStartNormalTariff = 20f,
-                taxi1kmNormalTariff = 30f,
-                taxi1hourWaitingNormalTariff = 60f,
-                gasolineOneLiter = 2f
+                oneWayTicketLocalTransport = null,
+                monthlyPassRegularPrice = null,
+                taxiStartNormalTariff = null,
+                taxi1kmNormalTariff = null,
+                taxi1hourWaitingNormalTariff = null,
+                gasolineOneLiter = null
             ),
             carsPrices = CarsPrices(
-                volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 300000f,
-                toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 250000f
+                volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = null,
+                toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = null
             ),
             realEstatesPrices = RealEstatesPrices(
                 apartmentOneBedroomInCityCentre = null,
@@ -384,66 +384,66 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
         )
     }
 
-    val berlinHighQualityNull by lazy {
+    private val berlinHighQualityNull by lazy {
         CityEntity(
             cityName = "berlin",
             country = "germany",
             mealsPrices = MealsPrices(
-                mealInexpensiveRestaurant = 10f,
-                mealFor2PeopleMidRangeRestaurant = 5f,
-                mealAtMcDonaldSOrEquivalent = 3f
+                mealInexpensiveRestaurant = null,
+                mealFor2PeopleMidRangeRestaurant = null,
+                mealAtMcDonaldSOrEquivalent = null
             ),
             drinksPrices = DrinksPrices(
-                cappuccinoRegularInRestaurants = 7f,
-                cokePepsiAThirdOfLiterBottleInRestaurants = 2f,
-                waterAThirdOfLiterBottleInRestaurants = 1f,
-                milkRegularOneLiter = 2f,
-                waterOneAndHalfLiterBottleAtTheMarket = 2.5f
+                cappuccinoRegularInRestaurants = null,
+                cokePepsiAThirdOfLiterBottleInRestaurants = null,
+                waterAThirdOfLiterBottleInRestaurants = null,
+                milkRegularOneLiter = null,
+                waterOneAndHalfLiterBottleAtTheMarket = null
             ),
             fruitAndVegetablesPrices = FruitAndVegetablesPrices(
-                apples1kg = 2f,
-                banana1kg = 1f,
-                oranges1kg = 1f,
-                tomato1kg = 3f,
-                potato1kg = 1f,
-                onion1kg = 1f,
-                lettuceOneHead = 0.25f
+                apples1kg = null,
+                banana1kg = null,
+                oranges1kg = null,
+                tomato1kg = null,
+                potato1kg = null,
+                onion1kg = null,
+                lettuceOneHead = null
             ),
             foodPrices = FoodPrices(
-                loafOfFreshWhiteBread500g = 9f,
-                riceWhite1kg = 4f,
-                eggsRegular12 = 3f,
-                localCheese1kg = 1f,
-                chickenFillets1kg = 12f,
-                beefRound1kgOrEquivalentBackLegRedMeat = 20f
+                loafOfFreshWhiteBread500g = null,
+                riceWhite1kg = null,
+                eggsRegular12 = null,
+                localCheese1kg = null,
+                chickenFillets1kg = null,
+                beefRound1kgOrEquivalentBackLegRedMeat = null
             ),
             servicesPrices = ServicesPrices(
-                basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
-                oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
+                basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = null,
+                oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = null,
                 internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
-                fitnessClubMonthlyFeeForOneAdult = 100f,
-                tennisCourtRentOneHourOnWeekend = 100f,
-                cinemaInternationalReleaseOneSeat = 10f,
-                preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = 100f,
-                internationalPrimarySchoolYearlyForOneChild = 1000f
+                fitnessClubMonthlyFeeForOneAdult = null,
+                tennisCourtRentOneHourOnWeekend = null,
+                cinemaInternationalReleaseOneSeat = null,
+                preschoolOrKindergartenFullDayPrivateMonthlyForOneChild = null,
+                internationalPrimarySchoolYearlyForOneChild = null
             ),
             clothesPrices = ClothesPrices(
-                onePairOfJeansLevis50oneOrSimilar = 60f,
-                oneSummerDressInAChainStoreZaraHAndM = 90f,
-                onePairOfNikeRunningShoesMidRange = 80f,
-                onePairOfMenLeatherBusinessShoes = 300f
+                onePairOfJeansLevis50oneOrSimilar = null,
+                oneSummerDressInAChainStoreZaraHAndM = null,
+                onePairOfNikeRunningShoesMidRange = null,
+                onePairOfMenLeatherBusinessShoes = null
             ),
             transportationsPrices = TransportationsPrices(
-                oneWayTicketLocalTransport = 5f,
-                monthlyPassRegularPrice = 60f,
-                taxiStartNormalTariff = 20f,
-                taxi1kmNormalTariff = 30f,
-                taxi1hourWaitingNormalTariff = 60f,
-                gasolineOneLiter = 2f
+                oneWayTicketLocalTransport = null,
+                monthlyPassRegularPrice = null,
+                taxiStartNormalTariff = null,
+                taxi1kmNormalTariff = null,
+                taxi1hourWaitingNormalTariff = null,
+                gasolineOneLiter = null
             ),
             carsPrices = CarsPrices(
-                volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = 300000f,
-                toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = 250000f
+                volkswagenGolf_1_4_90kwTrendLineOrEquivalentNewCar = null,
+                toyotaCorollaSedan_1_6l_97kwComfortOrEquivalentNewCar = null
             ),
             realEstatesPrices = RealEstatesPrices(
                 apartmentOneBedroomInCityCentre = null,
@@ -459,7 +459,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
     }
 
    
-    val canadaHighQuality by lazy {
+    private val canadaHighQuality by lazy {
         CityEntity(
             cityName = "Ottawa",
             country = "Canada",
@@ -495,7 +495,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
             servicesPrices = ServicesPrices(
                 basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
                 oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
-                internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = 20f,
                 fitnessClubMonthlyFeeForOneAdult = 100f,
                 tennisCourtRentOneHourOnWeekend = 100f,
                 cinemaInternationalReleaseOneSeat = 10f,
@@ -533,7 +533,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
         )
     }
 
-    val unitedStateHighQuality by lazy {
+    private val unitedStateHighQuality by lazy {
         CityEntity(
             cityName = "Washington",
             country = "United States",
@@ -569,7 +569,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
             servicesPrices = ServicesPrices(
                 basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
                 oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
-                internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = 20f,
                 fitnessClubMonthlyFeeForOneAdult = 100f,
                 tennisCourtRentOneHourOnWeekend = 100f,
                 cinemaInternationalReleaseOneSeat = 10f,
@@ -607,7 +607,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
         )
     }
 
-    val mexicoHighQuality by lazy {
+    private val mexicoHighQuality by lazy {
         CityEntity(
             cityName = "Mexico",
             country = "Mexico",
@@ -643,7 +643,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
             servicesPrices = ServicesPrices(
                 basicElectricityHeatingCoolingWaterGarbageFor85m2Apartment = 25f,
                 oneMinOfPrepaidMobileTariffLocalNoDiscountsOrPlans = 30f,
-                internet60MbpsOrMoreUnlimitedDataCableAdsl = null,
+                internet60MbpsOrMoreUnlimitedDataCableAdsl = 20f,
                 fitnessClubMonthlyFeeForOneAdult = 100f,
                 tennisCourtRentOneHourOnWeekend = 100f,
                 cinemaInternationalReleaseOneSeat = 10f,
@@ -705,7 +705,7 @@ class HardCodedFakeDataSource : CostOfLivingDataSource {
                 validCityList
             }
             DataType.EMPTY -> {
-                emptyList<CityEntity>()
+                emptyList()
             }
             DataType.NULLABLE -> {
                 nullableCityList

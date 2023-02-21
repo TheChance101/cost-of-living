@@ -22,11 +22,11 @@ internal class GetCheapestApartmentsCitiesNamesInteractorTest {
 
     @Test
     fun should_ReturnCorrectList_When_EnterValidData() {
-        //Given
+        //Given -Valid Data
         fakeData.setDataType(FakeDataSource.DataType.VALID)
 
-        //When
-        val list = getCheapestApartmentsCitiesNamesInteractor.execute(10)
+        //When -limit is 10
+        val list = getCheapestApartmentsCitiesNamesInteractor.execute(10, 100)
 
         //Then -return 10 items of the list sorted ascending by years
         assertTrue(list.size == 10 && list == list.sortedBy { it.second })
@@ -34,25 +34,37 @@ internal class GetCheapestApartmentsCitiesNamesInteractorTest {
 
     @Test
     fun should_ReturnNoValidList_When_EnterNull() {
-        //Given
+        //Given -Null Data
         fakeData.setDataType(FakeDataSource.DataType.NULLABLE)
 
-        //When
-        val list = getCheapestApartmentsCitiesNamesInteractor.execute(10)
+        //When -limit is 10
+        val list = getCheapestApartmentsCitiesNamesInteractor.execute(10, 100)
 
-        //Then
+        //Then -return error statement
         assertEquals(listOf(Pair("Couldn't find Cities that meet your requirements :(", 0.0f)), list)
     }
 
     @Test
     fun should_ReturnNotValidList_When_EnterLowQualityData() {
-        //Given
+        //Given -Low Quality Data
         fakeData.setDataType(FakeDataSource.DataType.LOWQUALITY)
 
-        //When
-        val list = getCheapestApartmentsCitiesNamesInteractor.execute(10)
+        //When -limit is 10
+        val list = getCheapestApartmentsCitiesNamesInteractor.execute(10, 100)
 
-        //Then
+        //Then -return error statement
+        assertEquals(listOf(Pair("Couldn't find Cities that meet your requirements :(", 0.0f)), list)
+    }
+
+    @Test
+    fun should_ReturnNotValidList_When_EnterNotEnoughData() {
+        //Given -Valid Data
+        fakeData.setDataType(FakeDataSource.DataType.VALID)
+
+        //When -limit is more than the size of existing data
+        val list = getCheapestApartmentsCitiesNamesInteractor.execute(30, 100)
+
+        //Then -return error statement
         assertEquals(listOf(Pair("Couldn't find Cities that meet your requirements :(", 0.0f)), list)
     }
 

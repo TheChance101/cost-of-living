@@ -27,7 +27,7 @@ internal class GetCheapestBananaPricesCitiesNamesInteractorTest {
         val data = getCheapestBananaPricesCitiesNamesInteractor.getCitiesVarArgs()
         //When valid data is entered
         val list = getCheapestBananaPricesCitiesNamesInteractor.run {
-            execute(*data)
+            execute(*data.toTypedArray())
         }
         //Then
         assertTrue(
@@ -38,16 +38,16 @@ internal class GetCheapestBananaPricesCitiesNamesInteractorTest {
     }
 
     @Test
-    fun should_ReturnEmptyList_When_EnterNullForAllBananaPrices() {
+    fun should_ReturnNotValidList_When_EnterNullForAllBananaPrices() {
         //Given
         fakeData.setDataType(FakeDataSource.DataType.NULLABLE)
         val data = getCheapestBananaPricesCitiesNamesInteractor.getCitiesVarArgs()
         //When entering null for all banana prices
         val list = getCheapestBananaPricesCitiesNamesInteractor.run {
-            execute(*data)
+            execute(*data.toTypedArray())
         }
         //Then
-        assertTrue(list.isEmpty())
+        assertEquals(listOf("No Valid Data is Entered !"), list)
     }
 
     @Test
@@ -59,8 +59,7 @@ internal class GetCheapestBananaPricesCitiesNamesInteractorTest {
         val list = getCheapestBananaPricesCitiesNamesInteractor.execute(*array)
 
         //Then
-        assertEquals(listOf("No Data is Entered !"), list)
+        assertEquals(listOf("No Valid Data is Entered !"), list)
     }
 
 }
-
