@@ -2,6 +2,7 @@ package interactor
 
 import model.CityEntity
 
+//task 2
 class GetCitiesAverageFAVLowesCost(
     private val dataSource: CostOfLivingDataSource,
 ) {
@@ -33,7 +34,10 @@ class GetCitiesAverageFAVLowesCost(
 
     private fun isNotNullSalaryAndNotNullFruitsAndVegetablesPrices(city: CityEntity): Boolean {
         city.fruitAndVegetablesPrices.apply {
-            return city.averageMonthlyNetSalaryAfterTax != null && (apples1kg != null || banana1kg != null || oranges1kg != null || tomato1kg != null || potato1kg != null || onion1kg != null || lettuceOneHead != null)
+            return city.averageMonthlyNetSalaryAfterTax != null && (apples1kg != null
+                    || banana1kg != null || oranges1kg != null
+                    || tomato1kg != null || potato1kg != null
+                    || onion1kg != null || lettuceOneHead != null)
         }
 
     }

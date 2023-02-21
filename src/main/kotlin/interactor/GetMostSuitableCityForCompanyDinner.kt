@@ -3,14 +3,14 @@ package interactor
 import model.CityEntity
 import model.MealsPrices
 import kotlin.math.abs
-
+//task 8
 class GetMostSuitableCityForCompanyDinner(private val dataSource: CostOfLivingDataSource) {
     fun execute(
         boundary: Float = Float.MAX_VALUE,
         countries: List<String> = listOf("usa", "canada", "mexico")
     ): CityEntity? {
         val filteredCities = dataSource.getAllCitiesData().filteredByCountries(countries)
-        val listOfAllPricesList = filteredCities.map { it.mealsPrices.notNullPrices() }
+        val listOfAllPricesList = filteredCities.map { it.mealsPrices.getNotNullPrices() }
         val allPricesList = listOfAllPricesList.flatten()
         val exactPrice = allPricesList.getExactPrice() ?: return null
         val closestPrice = allPricesList.getClosestValueTo(exactPrice)
@@ -34,9 +34,9 @@ class GetMostSuitableCityForCompanyDinner(private val dataSource: CostOfLivingDa
         }.second
 
     private fun CityEntity.isInBoundary(exactPrice: Float, boundary: Float) =
-        mealsPrices.notNullPrices().any { abs(it - exactPrice) <= boundary }
+        mealsPrices.getNotNullPrices().any { abs(it - exactPrice) <= boundary }
 
-    private fun MealsPrices.notNullPrices() = listOfNotNull(
+    private fun MealsPrices.getNotNullPrices() = listOfNotNull(
         mealInexpensiveRestaurant,
         mealFor2PeopleMidRangeRestaurant?.div(2),
         mealAtMcDonaldSOrEquivalent

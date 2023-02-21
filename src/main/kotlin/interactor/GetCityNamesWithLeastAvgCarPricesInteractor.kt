@@ -2,6 +2,7 @@ package interactor
 
 import model.CarsPrices
 
+//additional task
 class GetCityNamesWithLeastAvgCarPricesInteractor(private val dataSource: CostOfLivingDataSource) {
     fun execute(limit: Int): List<Pair<String, Float>> {
         return dataSource
@@ -9,7 +10,8 @@ class GetCityNamesWithLeastAvgCarPricesInteractor(private val dataSource: CostOf
             .filter { isCarPriceNotNullAndPositive(it.carsPrices) }
             .sortedBy { getAvgCarPrices(it.carsPrices) }
             .map { Pair(it.cityName, getAvgCarPrices(it.carsPrices)) }
-            .take(limit)
+            .takeIf { limit >= 0 }
+            ?.take(limit) ?: emptyList()
     }
 
     private fun getAvgCarPrices(carPrices: CarsPrices): Float {

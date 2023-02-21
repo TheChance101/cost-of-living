@@ -1,7 +1,7 @@
 package interactor
 
 import model.CityEntity
-
+//task 10
 class GetTheMostSuitableCityForSavingMoneyWhileAccommodation(
     private val dataSource: CostOfLivingDataSource,
 ) {

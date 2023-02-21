@@ -3,24 +3,26 @@ package interactor
 import model.CityEntity
 import kotlin.math.abs
 
+//task 4
 class FindTheHighestDifferenceInRentalPricesInteractor(private val dataSource: CostOfLivingDataSource) {
-    fun execute(): CityEntity? {
+    fun execute() = dataSource.getAllCitiesData()
+        .filter(::isHighQualityDataAndNotNullApartments)
+        .maxByOrNull(::getAbsDifferenceBetweenApartments)
 
-        return dataSource.getAllCitiesData()
-            .filter(::excludeNullAndLowQualityData)
-            .maxByOrNull {
-                val inCityCenter =
-                    it.realEstatesPrices.apartmentOneBedroomInCityCentre!! +
-                            it.realEstatesPrices.apartment3BedroomsInCityCentre!!
 
-                val outsideCity =
-                    it.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!! +
-                            it.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
+    private fun getAbsDifferenceBetweenApartments(city: CityEntity): Float {
+        val inCityCenter =
+            city.realEstatesPrices.apartmentOneBedroomInCityCentre!! +
+                    city.realEstatesPrices.apartment3BedroomsInCityCentre!!
 
-                abs(inCityCenter - outsideCity)
-            }
+        val outsideCity =
+            city.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!! +
+                    city.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
+
+        return abs(inCityCenter - outsideCity)
     }
-    private fun excludeNullAndLowQualityData(city: CityEntity): Boolean {
+
+    private fun isHighQualityDataAndNotNullApartments(city: CityEntity): Boolean {
         return city.realEstatesPrices.apartmentOneBedroomInCityCentre != null
                 && city.realEstatesPrices.apartmentOneBedroomOutsideOfCentre != null
                 && city.realEstatesPrices.apartment3BedroomsInCityCentre != null

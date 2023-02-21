@@ -2,6 +2,7 @@ package interactor
 
 import model.CityEntity
 
+//additional task
 class GetCityHasLowestPricePerMeterSquareInCityCenterInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {

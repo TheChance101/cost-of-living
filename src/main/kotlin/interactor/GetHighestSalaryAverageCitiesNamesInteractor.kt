@@ -1,7 +1,7 @@
 package interactor
 
 import model.CityEntity
-
+// this task is yours … good job uncle Bareq
 class GetHighestSalaryAverageCitiesNamesInteractor(
     private val dataSource: CostOfLivingDataSource,
 ) {
