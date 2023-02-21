@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
+import utils.InvalidLimitException
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetLowestAveragePricesForFruitsAndVegetablesInteractorTest {

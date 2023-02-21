@@ -1,8 +1,8 @@
 package interactor
 import dataSource.FakeDataSource
-import org.junit.jupiter.api.function.Executable
-import org.junit.jupiter.api.Assertions.*
+import dataSource.FakeNullDataSource
 import org.junit.jupiter.api.*
+import org.junit.jupiter.api.Assertions.*
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 
@@ -10,17 +10,19 @@ class GetTopCountriesWithHighTaxOnCarbonatedDrinksTest {
 
     private lateinit var interactor: GetTopCountriesWithHighTaxOnCarbonatedDrinks
     private lateinit var fakeDataSource: FakeDataSource
+    private lateinit var emptyDataInteractor: GetTopCountriesWithHighTaxOnCarbonatedDrinks
 
     @BeforeEach
     fun setUp() {
         fakeDataSource = FakeDataSource()
         interactor = GetTopCountriesWithHighTaxOnCarbonatedDrinks(fakeDataSource)
+        emptyDataInteractor = GetTopCountriesWithHighTaxOnCarbonatedDrinks(FakeNullDataSource())
     }
 
     @Test
     fun `should return list top countries with high drink prices when high taxes on carbonated drinks`() {
         //given limit
-        val limit:Int=8;
+        val limit =8
         //when getting a list of pair  contains the countries name and drink price
         val actual = interactor.execute(limit).toTypedArray()
         val expected=listOf(
@@ -38,18 +40,18 @@ class GetTopCountriesWithHighTaxOnCarbonatedDrinksTest {
 
     }
     @Test
-    fun `should return empty list When list of city is empty`() {
+    fun `should return empty list When filtered list of cities is empty`() {
         //given limit
-        val limit:Int=10
+        val limit =10
         //when getting data source empty
-        val actual = interactor.execute(limit).isEmpty()
+        val actual = emptyDataInteractor.execute(limit).isEmpty()
         // Then
         assertTrue(actual)
     }
     @Test
     fun `should not return list when he actual list size less than limit`() {
         //given limit
-        val limit:Int=10
+        val limit =10
         //when result less than limit
         val actual= interactor.execute(limit).size
         //then
