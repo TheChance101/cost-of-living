@@ -8,7 +8,7 @@ class GetCityMakesFamilySaveMoreInteractor(
     fun execute() = dataSource.getAllCitiesData()
         .also { require(it.isNotEmpty()) { "There is no Data" } }
         .filter(::excludeInvalidData)
-        .maxByOrNull { it.run { calculateSalaryAfterBuyingTheNeeds(it) } }!!.cityName
+        .maxByOrNull { it.run { calculateSalaryAfterBuyingTheNeeds(it) } }!!
 }
 
 fun excludeInvalidData(city: CityEntity): Boolean {

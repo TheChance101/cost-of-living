@@ -27,7 +27,7 @@ class GetCityMakesFamilySaveMoreInteractionTest {
         //given
         val expected = "Cairo"
         //when
-        val getCity = getCityMakesFamilySaveMoreInteractor.execute()
+        val getCity = getCityMakesFamilySaveMoreInteractor.execute().cityName
         //then
         assertEquals(expected, getCity)
     }
