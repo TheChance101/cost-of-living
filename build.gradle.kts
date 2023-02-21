@@ -13,7 +13,13 @@ repositories {
 }
 
 dependencies {
+    implementation("org.testng:testng:7.1.0")
+    //implementation(project(mapOf("path" to ":")))
     testImplementation(kotlin("test"))
+    testImplementation ("org.mockito.kotlin:mockito-kotlin:4.1.0")
+    implementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    implementation(kotlin("stdlib-jdk8"))
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
 }
 
 tasks.test {
@@ -26,4 +32,12 @@ tasks.withType<KotlinCompile> {
 
 application {
     mainClass.set("MainKt")
+}
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    jvmTarget = "1.8"
+}
+val compileTestKotlin: KotlinCompile by tasks
+compileTestKotlin.kotlinOptions {
+    jvmTarget = "1.8"
 }

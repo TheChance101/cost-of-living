@@ -1,22 +1,29 @@
 import dataSource.CsvDataSource
 import dataSource.utils.CsvParser
-import interactor.CostOfLivingDataSource
-import interactor.GetCityHasCheapestInternetConnectionInteractor
-import interactor.GetHighestSalaryAverageCititesNamesInteractor
+import interactor.*
 
 fun main() {
     val csvParser = CsvParser()
     val dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
 
-    val getHighestSalaryAverageCities = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
-    println(getHighestSalaryAverageCities.execute(limit = 10))
-    printSeparationLine()
-
+    val getTheTopCitiesWhereYouCanGetAnApartmentFaster = GetTheTopCitiesWhereYouCanGetAnApartmentFaster(dataSource)
     val getCityHasCheapestInternetConnectionInteractor = GetCityHasCheapestInternetConnectionInteractor(dataSource)
-    println(getCityHasCheapestInternetConnectionInteractor.execute())
+    val getHighestSalaryAverageCititesNamesInteractor = GetHighestSalaryAverageCititesNamesInteractor(dataSource)
+    val getCItyWithMealPriceBetweenTwo = GetCItyWithMealPriceBetweenTwo(dataSource)
+    val getMostSuitableSavingCityInteractor = GetMostSuitableSavingCityInteractor(dataSource)
+    val getTheAverageSalaryForEachCityInTheCountryInteractor =
+        GetTheAverageSalaryForEachCityInTheCountryInteractor(dataSource)
+    val getTopFiveCitiesForFashionInteractor = GetTopFiveCitiesForFashionInteractor(dataSource)
+    val reorderCitiesByCheapestBananaPrices = ReorderCitiesByCheapestBananaPrices(dataSource)
 
-}
-private fun printSeparationLine(){
-    print("\n_______________________________\n")
+    println(getCItyWithMealPriceBetweenTwo.execute())
+    println(getCityHasCheapestInternetConnectionInteractor.execute())
+    println(getMostSuitableSavingCityInteractor.execute())
+    println(getHighestSalaryAverageCititesNamesInteractor.execute(10))
+    println(getTheTopCitiesWhereYouCanGetAnApartmentFaster.getListOfTopCitiesNamesAndNumberOfYearsToGetApartmentFaster(10))
+    println(getTheAverageSalaryForEachCityInTheCountryInteractor.execute("Egypt"))
+    println(getTopFiveCitiesForFashionInteractor.execute(5))
+    println(reorderCitiesByCheapestBananaPrices.reorderTheGivenList())
+
 }
 
