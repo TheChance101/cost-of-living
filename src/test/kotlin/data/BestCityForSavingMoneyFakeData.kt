@@ -4,8 +4,9 @@ import interactor.CostOfLivingDataSource
 import model.*
 
 
-class BestCityForSavingMoneyFakeData : CostOfLivingDataSource {
+object BestCityForSavingMoneyFakeData : CostOfLivingDataSource {
     override fun getAllCitiesData(): List<CityEntity> {
+
         return listOf(
             CityEntity(
                 cityName = "Moncks Corner",
@@ -300,6 +301,13 @@ class BestCityForSavingMoneyFakeData : CostOfLivingDataSource {
 
         )
 
+    }
+
+    val emptyData by lazy {
+        object : CostOfLivingDataSource {
+
+            override fun getAllCitiesData() = emptyList<CityEntity>()
+        }
     }
 }
 
