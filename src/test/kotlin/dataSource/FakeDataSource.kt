@@ -73,7 +73,8 @@ class FakeDataSource : CostOfLivingDataSource {
     /**
      * @return list of CityEntity that have mixture of all values.
      */
-    private fun getMixedData() = mixedFixture<List<CityEntity>>()
+    private fun getMixedData() =
+        normalFixture<List<CityEntity>>() + nullableFixture<List<CityEntity>>()
 
     /**
      * retrieve data from FakeDataSource depending on the needed type
