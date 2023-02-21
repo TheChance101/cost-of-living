@@ -23,7 +23,7 @@ class UserInterface(private val dataSource: CostOfLivingDataSource) {
             )
             when (readlnOrNull()) {
                 "1" -> {
-                    println(GetCityHasCheapestInternetConnectionInteractor(dataSource).execute())
+                    println(GetCityHasCheapestInternetConnectionInteractor(dataSource)())
                     printSeparationLine()
                 }
 
