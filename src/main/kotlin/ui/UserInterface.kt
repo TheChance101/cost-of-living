@@ -92,7 +92,7 @@ class UserInterface(private val dataSource: CostOfLivingDataSource) {
                 }
 
                 "9" -> {
-                    println(GetTopTenCountriesTaxesInteractor(dataSource).execute())
+                    println(GetHighestTaxesByCountry(dataSource)(10))
                     printSeparationLine()
                 }
 

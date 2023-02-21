@@ -3,12 +3,12 @@ package interactor
 import model.CityEntity
 
 
-class GetHighestTaxesByCountry (private val dataSource : CostOfLivingDataSource) {
-    fun execute(limit:Int) : List<Pair<String, Float>> {
+class GetHighestTaxesByCountry(private val dataSource : CostOfLivingDataSource) {
+    operator fun invoke(limit : Int) : List<Pair<String, Float>> {
         return dataSource.getAllCitiesData()
             .filter(::excludeNullCokePepsiAndLowQualityData)
             .groupBy { it.country }
-            .mapValues{
+            .mapValues {
                 calculateAvgDrinkPrices(it.value)
             }
             .toList()
@@ -20,8 +20,10 @@ class GetHighestTaxesByCountry (private val dataSource : CostOfLivingDataSource)
         return city.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants != null && city.dataQuality
     }
 
-    private fun calculateAvgDrinkPrices( city : List<CityEntity>) : Double {
-        return city.sumOf { it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants!!.toDouble() } .div(city.size)
+    private fun calculateAvgDrinkPrices(city : List<CityEntity>) : Double {
+        return city.sumOf {
+            it.drinksPrices.cokePepsiAThirdOfLiterBottleInRestaurants!!.toDouble()
+        }.div(city.size)
     }
 
 }
