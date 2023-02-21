@@ -1,7 +1,6 @@
 package interactor
 
 import model.CityEntity
-import utils.InvalidLimitException
 import utils.isNotNull
 
 class GetLowestAveragePricesForFruitsAndVegetablesInteractor (
