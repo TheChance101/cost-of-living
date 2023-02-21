@@ -1,31 +1,33 @@
 package interactor
 
 import model.CityEntity
+import kotlin.math.abs
 
+//task 4
 class FindTheHighestDifferenceInRentalPricesInteractor(private val dataSource: CostOfLivingDataSource) {
-    fun execute(): CityEntity? {
+    fun execute() = dataSource.getAllCitiesData()
+        .filter(::isHighQualityDataAndNotNullApartments)
+        .maxByOrNull(::getAbsDifferenceBetweenApartments)
 
-        val citiesData = dataSource.getAllCitiesData()
-        if (citiesData.isEmpty())
-            return null
-        val highestDifference = citiesData
-            .filter(::isDataQuality)
-            .maxBy {
-                val oneBedroomDifference =
-                    it.realEstatesPrices.apartmentOneBedroomInCityCentre!! -
-                            it.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!!
 
-                val threeBedroomsDifference =
-                    it.realEstatesPrices.apartment3BedroomsInCityCentre!! -
-                            it.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
-                maxOf(
-                    oneBedroomDifference, threeBedroomsDifference,
-                )
-            }
-        return highestDifference
+    private fun getAbsDifferenceBetweenApartments(city: CityEntity): Float {
+        val inCityCenter =
+            city.realEstatesPrices.apartmentOneBedroomInCityCentre!! +
+                    city.realEstatesPrices.apartment3BedroomsInCityCentre!!
+
+        val outsideCity =
+            city.realEstatesPrices.apartmentOneBedroomOutsideOfCentre!! +
+                    city.realEstatesPrices.apartment3BedroomsOutsideOfCentre!!
+
+        return abs(inCityCenter - outsideCity)
     }
 
-    private fun isDataQuality(city: CityEntity): Boolean {
-        return city.dataQuality
+    private fun isHighQualityDataAndNotNullApartments(city: CityEntity): Boolean {
+        return city.realEstatesPrices.apartmentOneBedroomInCityCentre != null
+                && city.realEstatesPrices.apartmentOneBedroomOutsideOfCentre != null
+                && city.realEstatesPrices.apartment3BedroomsInCityCentre != null
+                && city.realEstatesPrices.apartment3BedroomsOutsideOfCentre != null
+                && city.dataQuality
     }
+
 }

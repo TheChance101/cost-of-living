@@ -1,104 +1,85 @@
 package interactor
 
-import dataSource.CsvDataSource
-import dataSource.utils.CsvParser
 import fakedata.*
-import org.hamcrest.CoreMatchers
-import org.hamcrest.MatcherAssert
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class CountriesNamesForTheHighestTaxesOnCokeInteractorTest {
-    private lateinit var getTheHighestTaxesOnCokeCountriesNames: CountriesNamesForTheHighestTaxesOnCokeInteractor
+internal class GetCountriesNamesWithHighestCokePriceTest {
+    private lateinit var getTheHighestTaxesOnCokeCountriesNames: GetCountriesNamesWithHighestCokePrice
     private lateinit var fakeCarbonatedTaxesOnCokeCountriesData: FakeCarbonatedTaxesOnCokeCountriesData
     private lateinit var fakeDuplicatedList: FakeDuplicatedList
     private lateinit var fakeShortCarbonatedList: FakeShortCarbonatedList
-    private var csvParser = CsvParser()
-    private var dataSource: CostOfLivingDataSource = CsvDataSource(csvParser)
 
     @BeforeAll
     fun setup() {
         fakeCarbonatedTaxesOnCokeCountriesData = FakeCarbonatedTaxesOnCokeCountriesData()
         fakeDuplicatedList = FakeDuplicatedList()
         fakeShortCarbonatedList = FakeShortCarbonatedList()
-        getTheHighestTaxesOnCokeCountriesNames = CountriesNamesForTheHighestTaxesOnCokeInteractor(dataSource)
+        getTheHighestTaxesOnCokeCountriesNames = GetCountriesNamesWithHighestCokePrice(dataSource)
     }
 
     @Test
     fun `should return False When The List of Pairs Size Is more than 10 `() {
         //given Country limit and Data
-
-        val countriesNamesForTheHighestTaxesOnCoke = CountriesNamesForTheHighestTaxesOnCokeInteractor(dataSource)
-
-        val limit = 10
-
+        val countriesNamesForTheHighestTaxesOnCoke = GetCountriesNamesWithHighestCokePrice(dataSource)
+        val CountiresLimit = 10
         //when pairOfCountryAndPrices is  less than 10 countries
-
         val pairOfCountryAndPrices =
-            countriesNamesForTheHighestTaxesOnCoke.execute(limitOfDesiredCountries = limit)
-
+            countriesNamesForTheHighestTaxesOnCoke.execute(limitOfCountries = CountiresLimit)
         //then
-
         assertTrue(pairOfCountryAndPrices.size <= 10)
     }
-
     @Test
-    fun `should Return False if list not equal to the top 10 countries Data `() {
+    fun `should Return the top ten Countries with given data`() {
         //given country limit and Data
-
         val countriesNamesForTheHighestTaxesOnCoke =
-            CountriesNamesForTheHighestTaxesOnCokeInteractor(dataSource)
-
+            GetCountriesNamesWithHighestCokePrice(fakeCarbonatedTaxesOnCokeCountriesData)
         val countriesLimit = 10
-
-        val expected: List<Pair<String, Float>> = countriesNamesForTheHighestTaxesOnCoke.execute(countriesLimit)
-
+        val expected: String =
+            listOf(
+                Pair("france", 12.7123),
+                Pair("japan", 10.356),
+                Pair("korea", 9.3),
+                Pair("turkey", 9.3),
+                Pair("usa", 6.0),
+                Pair("egypt", 5.0),
+                Pair("germany", 3.5),
+                Pair("pakistan", 1.5),
+                Pair("algeria", 1.0),
+                Pair("china", 0.5)
+            ).toString()
         //when pairOfCountryAndPrices is not Equal to top 10 countries data
-
         val pairOfCountryAndPrices =
-            countriesNamesForTheHighestTaxesOnCoke.execute(limitOfDesiredCountries = countriesLimit)
-
-        val actual: List<Pair<String, Float>> = pairOfCountryAndPrices
+            countriesNamesForTheHighestTaxesOnCoke.execute(limitOfCountries = countriesLimit)
+        val actual: String = pairOfCountryAndPrices.toString()
         //then
-
-        MatcherAssert.assertThat(actual, CoreMatchers.`is`(expected))
+        assertEquals(actual,(expected))
     }
 
     @Test
-    fun `should return false when Two countries Have The Same Name`() {
-
+    fun `should return List of Ten Countries when Two countries Does not Have The Same Name`() {
         //given country limit and Data
-
         val countriesNamesForTheHighestTaxesOnCoke =
-            CountriesNamesForTheHighestTaxesOnCokeInteractor(dataSource)
-
+            GetCountriesNamesWithHighestCokePrice(dataSource)
         //when pairOfCountryAndPrices have duplicates
-
         val pairOfCountryAndPrices = countriesNamesForTheHighestTaxesOnCoke.execute(10)
-
         //then
-
         assertEquals(pairOfCountryAndPrices.distinctBy { it.first }, pairOfCountryAndPrices)
     }
 
     @Test
-    fun `should fail test if  there is negative in the Prices`() {
+    fun `should return list with no negative in the Prices`() {
         //given country limit and Data
-
         val countriesNamesForTheHighestTaxesOnCoke =
-            CountriesNamesForTheHighestTaxesOnCokeInteractor(fakeCarbonatedTaxesOnCokeCountriesData)
+            GetCountriesNamesWithHighestCokePrice(fakeCarbonatedTaxesOnCokeCountriesData)
         val limit = 10
-
         //when pairOfCountryAndPrices null prices
-
         val pairOfCountryAndPrices =
-            countriesNamesForTheHighestTaxesOnCoke.execute(limitOfDesiredCountries = limit)
-
+            countriesNamesForTheHighestTaxesOnCoke.execute(limitOfCountries = limit)
         //then
-
         assertEquals(pairOfCountryAndPrices, pairOfCountryAndPrices.filter { it.second >= 0 })
     }
 

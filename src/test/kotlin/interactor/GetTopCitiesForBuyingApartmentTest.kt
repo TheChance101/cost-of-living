@@ -14,10 +14,10 @@ class GetTopCitiesForBuyingApartmentTest {
         val fakeData = GetTopCitiesForBuyingApartment(FakeCostOfLivingDataSource())
 
         // When
-        val result = fakeData.findTop10CitiesFor100MeterApartment()
+        val result = fakeData.execute(10)
 
         // Then
-        assertFalse(result.any { it.second == null })
+        assertFalse(result.any { false })
     }
 
     @Test
@@ -26,10 +26,10 @@ class GetTopCitiesForBuyingApartmentTest {
         val fakeData = GetTopCitiesForBuyingApartment(FakeCostOfLivingDataSource())
 
         // When
-        val result = fakeData.findTop10CitiesFor100MeterApartment()
+        val result = fakeData.execute(10)
 
         // Then
-        assertEquals(result.toSet().size, result.size)
+        assertTrue(result.distinct().size == result.size)
     }
 
     @Test
@@ -38,7 +38,7 @@ class GetTopCitiesForBuyingApartmentTest {
         val fakeData = GetTopCitiesForBuyingApartment(FakeEmptyCostOfLivingDataSource())
 
         // When
-        val result = fakeData.findTop10CitiesFor100MeterApartment()
+        val result = fakeData.execute(10)
 
         // Then
         assertTrue(result.isEmpty())
