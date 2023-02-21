@@ -25,7 +25,8 @@ class GetDinnerLocationInteractorTest {
     fun should_ReturnNull_When_ThereAreNoCities() {
         // given
         interactor = GetDinnerLocationInteractor(
-            fakeDataSourceForDinnerLocation.getEmptyFakeDataSource())
+            fakeDataSourceForDinnerLocation.getEmptyFakeDataSource()
+        )
         // when
         val executable = Executable { interactor.execute() }
         //then
@@ -35,35 +36,36 @@ class GetDinnerLocationInteractorTest {
     }
 
     @Test
-    fun should_ReturnNull_When_CitiesHaveMissingMealPrices() {
+    fun should_ThrowsException_When_CitiesHaveMissingMealPrices() {
         // Given
-        interactor = GetDinnerLocationInteractor(fakeDataSourceForDinnerLocation.
-            getDataWithNullInMealPrice())
+        interactor = GetDinnerLocationInteractor(
+            fakeDataSourceForDinnerLocation.getDataWithNullInMealPrice()
+        )
         //when
         val executable = Executable { interactor.execute() }
         //then
-        assertThrows(NullPointerException::class.java,executable)
+        assertThrows(Exception::class.java, executable)
     }
 
     @Test
-    fun should_ReturnsNull_When_CitiesAreNotFromUSAOrCanadaOrMexico()
-    {
+    fun should_ThrowsException_When_CitiesAreNotFromUSAOrCanadaOrMexico() {
         // Given
         val interactor = GetDinnerLocationInteractor(fakeDataSourceForDinnerLocation.getMeOtherThanSelected())
         //when
         val executable = Executable { interactor.execute() }
         //then
-        assertThrows(NullPointerException::class.java,executable)
+        assertThrows(Exception::class.java, executable)
     }
 
     @Test
     fun should_ReturnsClosestCityName() {
         // Given
         val interactor = GetDinnerLocationInteractor(
-            fakeDataSourceForDinnerLocation.getMeCustomDataSource())
+            fakeDataSourceForDinnerLocation.getMeCustomDataSource()
+        )
         val expected = "Montreal"
         // When
-        val result = interactor.execute()!!.cityName
+        val result = interactor.execute().cityName
         // Then
         assertEquals(expected, result)
     }
@@ -82,12 +84,15 @@ class GetDinnerLocationInteractorTest {
     }
 
     @Test
-    fun should_ReturnsClosestCity_And_Average(){
+    fun should_ReturnsClosestCity_And_Average() {
         //Given
         val cityList = fakeDataSourceForDinnerLocation.getMeClosestCity()
-        val avg = 310f
         //when
-        val closestCity = getClosestCity(cityList).cityName
+        val closestCity = getClosestCity(cityList,getAverageBetweenTwoCities(
+                cityList.first().mealsPrices,
+                cityList.last().mealsPrices
+            )
+        ).cityName
         val expected = "Montreal"
         //then
         assertEquals(expected, closestCity)

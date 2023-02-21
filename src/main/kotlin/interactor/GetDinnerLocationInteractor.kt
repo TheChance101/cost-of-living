@@ -7,7 +7,7 @@ class GetDinnerLocationInteractor(private val dataSource: CostOfLivingDataSource
     fun execute():CityEntity = dataSource.getAllCitiesData()
         .filter { excludeNoneNorthAmericaCountries(it.country) && excludeNullMealPrices(it.mealsPrices) }
         .sortedBy { getMealPricesAverage(it.mealsPrices) }
-        .let { getClosestCity(it) }
+        .let { getClosestCity(it,getAverageBetweenTwoCities(it.first().mealsPrices, it.last().mealsPrices)) }
 }
 
 fun excludeNoneNorthAmericaCountries(country: String) = country in listOf("USA", "Canada", "Mexico")
@@ -25,15 +25,9 @@ fun getAverageBetweenTwoCities(cheapestCityMealsPrices: MealsPrices, mostExpensi
 
 fun getClosestCity(
     citiesSortedByMealPrice: List<CityEntity>,
+    averageBetweenTwoCities: Float,
 ): CityEntity =
-    citiesSortedByMealPrice.minByOrNull {
-        abs(
-            getMealPricesAverage(it.mealsPrices) - getAverageBetweenTwoCities(
-                                                    citiesSortedByMealPrice.first().mealsPrices,
-                                                    citiesSortedByMealPrice.last().mealsPrices
-                                                        )
-        )
-    }!!
+    citiesSortedByMealPrice.minByOrNull { abs(getMealPricesAverage(it.mealsPrices) - averageBetweenTwoCities) }!!
 
 
 
