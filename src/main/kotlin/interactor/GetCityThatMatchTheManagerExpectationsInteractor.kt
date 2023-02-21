@@ -12,22 +12,21 @@ class GetCityThatMatchTheManagerExpectationsInteractor(
         val countries = selectedCountries.map { it.lowercase() }
 
         return dataSource.getAllCitiesData()
-            .filter { countries.contains(it.country.lowercase())  }
+            .filter {
+                countries.contains(it.country.lowercase()) &&
+                it.excludeNullPricesOfMeals()
+            }
             .takeIf { it.isNotEmpty() }
-            ?.run {
-                excludeNullPricesOfMeals()
-                .getCityThatMatchExpectations()
-            } ?: throw IllegalStateException("List of cities is empty")
+            ?.getCityThatMatchExpectations()
+            ?: throw IllegalStateException("List of cities is empty")
     }
 
-    private fun List<CityEntity>.excludeNullPricesOfMeals(): List<CityEntity> {
-        return filter {
-            with(it.mealsPrices){
+    private fun CityEntity.excludeNullPricesOfMeals(): Boolean {
+        return with(mealsPrices){
                 mealInexpensiveRestaurant !=null &&
                 mealFor2PeopleMidRangeRestaurant !=null &&
                 mealAtMcDonaldSOrEquivalent != null
             }
-        }
     }
 
     private fun List<CityEntity>.getCityThatMatchExpectations(): CityEntity {
