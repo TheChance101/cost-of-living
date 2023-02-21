@@ -3,14 +3,11 @@ package interactor
 import dataSource.FakeCityItems
 import dataSource.FakeDataSource
 import dataSource.FakeEmptyDataSource
-import model.CityEntity
-import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.function.Executable
-import utils.Constants
 
 class GetCityMatchManagerExpectationsInteractorTest {
 
@@ -44,11 +41,11 @@ class GetCityMatchManagerExpectationsInteractorTest {
     @Test
     fun `should return empty list when list has not required country`() {
         // when we check if there is no required countries
-        val actual = interactor.execute()
-        val expected = actual != null
+        val actual = Executable { interactor.execute() }
+        val expected = NoSuchElementException::class.java
 
         // then we should return false
-        assertFalse(expected)
+        assertThrows(expected, actual)
     }
 
     @Test
@@ -57,7 +54,7 @@ class GetCityMatchManagerExpectationsInteractorTest {
         interactor = GetCityMatchManagerExpectationsInteractor(fakeDataSourceCities)
 
         // when making the logic on the list
-        val actual = interactor.execute()?.cityName
+        val actual = interactor.execute().cityName
         val expected = "Monterey Park"
         // then
         assertEquals(expected, actual)
