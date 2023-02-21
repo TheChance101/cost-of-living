@@ -23,6 +23,8 @@ class FakeDataSource : CostOfLivingDataSource {
         kotlinFixture {
             nullabilityStrategy(NeverNullStrategy)
             property(CityEntity::dataQuality) { true }
+            property(CityEntity::country) { "United States" }
+            property(CityEntity::cityName) { "New York" }
             repeatCount { 20 }
         }
     }
@@ -35,6 +37,8 @@ class FakeDataSource : CostOfLivingDataSource {
     private val nullableFixture by lazy {
         kotlinFixture {
             nullabilityStrategy(AlwaysNullStrategy)
+            property(CityEntity::country) { "United States" }
+            property(CityEntity::cityName) { "New York" }
             property(CityEntity::dataQuality) { true }
             repeatCount { 20 }
         }
@@ -49,6 +53,8 @@ class FakeDataSource : CostOfLivingDataSource {
         kotlinFixture {
             nullabilityStrategy(NeverNullStrategy)
             property(CityEntity::dataQuality) { false }
+            property(CityEntity::country) { "United States" }
+            property(CityEntity::cityName) { "New York" }
             repeatCount { 20 }
         }
     }
