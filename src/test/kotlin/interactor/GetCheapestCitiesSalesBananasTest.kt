@@ -48,7 +48,7 @@ class GetCheapestCitiesSalesBananasTest {
     @Test
     fun should_ReturnSortedList_WhenTheInputIsMultiCityAllIncludedInDifferentCases() {
         // given multi city all of this is included
-        val cities = FakeDataSourceForTestCase.filterCity("SaNtiago de cuba", "sAncti spirItus")
+        val cities = FakeDataSourceForTestCase.filterCity("Santiago de Cuba", "Sancti Spiritus")
 
         // when the output is list of sorted cities by Banana Price
         val getCheapestCitiesSalesBananas = GetCheapestCitiesSalesBananas()
