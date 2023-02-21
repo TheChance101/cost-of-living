@@ -3,6 +3,7 @@ package interactor
 import model.CityEntity
 import utils.Constants.EMPTY_LIST_EXCEPTION_MSG
 import utils.Constants.INVALID_LIMIT_EXCEPTION_MSG
+import utils.InvalidLimitException
 import utils.areNotNull
 import utils.average
 

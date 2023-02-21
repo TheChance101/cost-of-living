@@ -1,13 +1,12 @@
 package interactor
 import model.CityEntity
+import utils.NoReturnedDataException
 import utils.isNotNull
 
 class GetTopCountriesWithHighTaxOnCarbonatedDrinks (private val dataSource: CostOfLivingDataSource){
     fun execute(limit: Int): List<Pair<String, Double>> {
         return dataSource.getAllCitiesData()
-            .also { if (it.isEmpty()){
-                throw NoReturnedDataException(message = "List Of Data is Empty " )
-            }}
+            .ifEmpty { throw IllegalStateException( "List Of Data is Empty " )}
            .asSequence()
             .filter(::excludeNullDrinkPriceAndNegativePriceAndLowQualityData)
             .groupBy { it.country }

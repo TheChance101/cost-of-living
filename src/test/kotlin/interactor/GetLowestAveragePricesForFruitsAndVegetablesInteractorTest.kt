@@ -25,8 +25,8 @@ internal class GetLowestAveragePricesForFruitsAndVegetablesInteractorTest {
         val limit = 0
         //when getting list of cities names with the lowest average prices for fruits and vegetables
         val actual = interactor.execute(limit)
-        //then
         val expected = emptyList<String>()
+        //then
         assertEquals(expected,actual)
     }
 
@@ -36,13 +36,13 @@ internal class GetLowestAveragePricesForFruitsAndVegetablesInteractorTest {
         val limit = 4
         //when getting list of cities names with the lowest average prices for fruits and vegetables
         val actual = interactor.execute(limit)
-        //then
         val expected = listOf(
             fakeDataSource.getAllCitiesData()[18].cityName,
             fakeDataSource.getAllCitiesData()[14].cityName,
             fakeDataSource.getAllCitiesData()[19].cityName,
             fakeDataSource.getAllCitiesData()[15].cityName
         )
+        //then
         assertEquals(expected, actual)
     }
 
@@ -52,7 +52,6 @@ internal class GetLowestAveragePricesForFruitsAndVegetablesInteractorTest {
         val limit = 7
         //when getting list of cities names with the lowest average prices for fruits and vegetables
         val actual = interactor.execute(limit)
-        //then
         val expected = listOf(
             fakeDataSource.getAllCitiesData()[18].cityName,
             fakeDataSource.getAllCitiesData()[14].cityName,
@@ -62,6 +61,7 @@ internal class GetLowestAveragePricesForFruitsAndVegetablesInteractorTest {
             fakeDataSource.getAllCitiesData()[13].cityName,
             fakeDataSource.getAllCitiesData()[4].cityName
         )
+        //then
         assertEquals(expected,actual)
     }
 
@@ -71,7 +71,6 @@ internal class GetLowestAveragePricesForFruitsAndVegetablesInteractorTest {
         val limit = 10
         //when getting list of cities names with the lowest average prices for fruits and vegetables
         val actual = interactor.execute(limit)
-        //then
         val expected = listOf(
             fakeDataSource.getAllCitiesData()[18].cityName,
             fakeDataSource.getAllCitiesData()[14].cityName,
@@ -81,6 +80,7 @@ internal class GetLowestAveragePricesForFruitsAndVegetablesInteractorTest {
             fakeDataSource.getAllCitiesData()[13].cityName,
             fakeDataSource.getAllCitiesData()[4].cityName
         )
+        //then
         assertEquals(expected,actual)
     }
 

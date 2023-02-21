@@ -3,26 +3,26 @@ package interactor
 import model.CityEntity
 import utils.isNotNull
 
-class GetLowestAveragePricesForFruitsAndVegetablesInteractor (
+class GetLowestAveragePricesForFruitsAndVegetablesInteractor(
     private val data: CostOfLivingDataSource
-){
+) {
     fun execute(limit: Int): List<String> {
+
         if (limit < 0) throw InvalidLimitException("Limit cannot be negative")
 
-        return  data
+        return data
             .getAllCitiesData()
-            .ifEmpty { throw IllegalStateException("Something went wrong, no valid data") }
             .filter(::excludeNullSalariesAndLowQualityDataAndNullFruitsAndVegetablesPrices)
+            .ifEmpty { throw IllegalStateException("Something went wrong, no valid data") }
             .sortedBy(::getPricesToSalaryAverage)
             .take(limit)
             .map { it.cityName }
-
 
     }
 
     private fun getPricesToSalaryAverage(city: CityEntity) =
         city.fruitAndVegetablesPrices.let {
-                   (it.apples1kg!! +
+            (it.apples1kg!! +
                     it.tomato1kg!! +
                     it.oranges1kg!! +
                     it.banana1kg!! +
@@ -34,7 +34,7 @@ class GetLowestAveragePricesForFruitsAndVegetablesInteractor (
 
 
     private fun excludeNullSalariesAndLowQualityDataAndNullFruitsAndVegetablesPrices(city: CityEntity) =
-                city.dataQuality &&
+        city.dataQuality &&
                 city.averageMonthlyNetSalaryAfterTax.isNotNull() &&
                 city.fruitAndVegetablesPrices.apples1kg.isNotNull() &&
                 city.fruitAndVegetablesPrices.banana1kg.isNotNull() &&
@@ -43,6 +43,5 @@ class GetLowestAveragePricesForFruitsAndVegetablesInteractor (
                 city.fruitAndVegetablesPrices.potato1kg.isNotNull() &&
                 city.fruitAndVegetablesPrices.onion1kg.isNotNull() &&
                 city.fruitAndVegetablesPrices.lettuceOneHead.isNotNull()
-
 
 }
