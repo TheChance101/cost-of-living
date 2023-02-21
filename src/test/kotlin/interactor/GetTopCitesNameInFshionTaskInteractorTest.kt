@@ -24,12 +24,11 @@ class GetTopCitesNameInFshionTaskInteractorTest {
     }
 
     @Test
-    fun should_ReturnTrue_When_TheListSizeIsFive() {
+    fun should_ReturnTrue_When_TheListSizeEqualsLimit() {
         //given
-        val limit =10
+        val limit = 5
         //when
-        val result = topCitesNameInFashionTaskInteractor.execute(limit).size == 5
-
+        val result = topCitesNameInFashionTaskInteractor.execute(limit).size == limit
         //then
         assertTrue(result)
     }
@@ -37,19 +36,13 @@ class GetTopCitesNameInFshionTaskInteractorTest {
 
     @Test
     fun should_ReturnTopFiveCities_When_InputIsCorrect() {
-
         //given
-
         val topCiteNames = listOf("city11", "city12", "city23", "city24", "city47")
-//given
-val limit =5
+        val limit = 5
         //when
         val actualValue = topCitesNameInFashionTaskInteractor.execute(limit)
-
-
         //then
         assertEquals(topCiteNames, actualValue)
-
     }
 
     @Test
@@ -65,26 +58,22 @@ val limit =5
         val average = averagePrice(
             clothesPrices
         )
-
         //then
-
         assertEquals(225f, average)
     }
 
     @Test
     fun should_ReturnFalse_When_ClothesPriceDataIsMissing() {
         //given
-
-
         val clothesPrices = ClothesPrices(
             onePairOfJeansLevis50oneOrSimilar = null,
             oneSummerDressInAChainStoreZaraHAndM = 350f,
             onePairOfNikeRunningShoesMidRange = null,
             onePairOfMenLeatherBusinessShoes = 200f
         )
-         //when
+        //when
         val result = excludeNullClothesPrices(clothesPrices)
-         //then
+        //then
         assertFalse { result }
     }
 
@@ -102,8 +91,6 @@ val limit =5
         //then
         assertTrue { result }
     }
-
-
 }
 
 
