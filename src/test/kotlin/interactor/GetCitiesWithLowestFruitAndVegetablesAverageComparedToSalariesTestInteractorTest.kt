@@ -24,7 +24,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesTestInteract
     @Test
     fun should_Return10CitiesWithLowestFruitAndVegetablesAverageComparedToSalaries_When_execute() {
         //given clean data
-        val cities = listOf("City10", "City2", "City9", "City8", "City7", "City11", "City6", "City5", "City1", "City4")
+        val cities = listOf("City3", "City4", "City1", "City5", "City6","City11", "City7", "City8", "City9", "City2")
         //when executing
         val result = data.execute(10)
         //then

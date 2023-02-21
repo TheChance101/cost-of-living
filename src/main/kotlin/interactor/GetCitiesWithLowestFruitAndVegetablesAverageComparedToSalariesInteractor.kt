@@ -12,7 +12,7 @@ class GetCitiesWithLowestFruitAndVegetablesAverageComparedToSalariesInteractor(
             .also { require(limit >= 1) { "Invalid Argument!" } }
             .filter {excludeEmptyCityNameAndLowQualityDataAndNullSalaries(it) &&
                     excludeNullFruitsAndVegetables(it.fruitAndVegetablesPrices)}
-            .sortedByDescending { comparingFruitAndVegetablesWithSalaries(it.fruitAndVegetablesPrices.getAvreage(),
+            .sortedBy { comparingFruitAndVegetablesWithSalaries(it.fruitAndVegetablesPrices.getAvreage(),
                                  it.averageMonthlyNetSalaryAfterTax ) }
             .take(limit)
             .map { it.cityName }
