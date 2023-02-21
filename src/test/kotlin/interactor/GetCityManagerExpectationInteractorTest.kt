@@ -9,7 +9,7 @@ import kotlin.test.assertNull
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class GetCityManagerExpectationInteractorTest {
-    private lateinit var getCityManagerExpectationInteractor: GetCityManagerExpectationInteractor
+    private lateinit var getCityManagerExpectationInteractor : GetCityManagerExpectationInteractor
     private lateinit var dataSource: FakeDataSource
 
     @BeforeEach
@@ -26,7 +26,7 @@ internal class GetCityManagerExpectationInteractorTest {
         dataSource.setDataType(FakeDataSource.DataType.NULLABLE)
 
         //When list not equal null
-        val cityName = getCityManagerExpectationInteractor.execute("United States" , "Canada","Mexico")
+        val cityName = getCityManagerExpectationInteractor.execute("United States" ,  "Canada","Mexico")
 
         //Then
         assertNull(cityName)
@@ -41,6 +41,18 @@ internal class GetCityManagerExpectationInteractorTest {
         val cityName = getCityManagerExpectationInteractor.execute("United States" , "Canada","Mexico")
 
         //Then
-        assertEquals("Mexico", cityName)
+        assertEquals("New York", cityName)
+    }
+
+    @Test
+    fun should_ReturnNull_When_EnterNonExitsCountries() {
+        //Given Valid data
+        dataSource.setDataType(FakeDataSource.DataType.VALID)
+
+        //When list Enter Valid Data
+        val cityName = getCityManagerExpectationInteractor.execute("Polanda" , "nour","ahmed")
+
+        //Then
+        assertNull(cityName)
     }
 }

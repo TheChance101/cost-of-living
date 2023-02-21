@@ -5,21 +5,19 @@ import model.CityEntity
 class GetCityManagerExpectationInteractor(
     private val dataSource: CostOfLivingDataSource
 ) {
-    private val defaultInRange = 10
-    private val averageDivide = 3
+    private val averageDivider = 3
+    private val averageHalfDivider = 2
 
     fun execute(countryOne: String, countryTwo: String, countryThree: String): String? {
         val data =
             dataSource.getAllCitiesData()
-                .filter { filterByCountry(it, countryOne, countryTwo, countryThree) }
-                .sortedBy {
-                    sumAverage(it)
-                }
+                .filter { filterByCountryExcludeNullValues(it, countryOne, countryTwo, countryThree) }
+                .sortedBy(::sumAverage)
 
-        return findAverageBetweenHighestAndLowest(data)
+        return if (data.isNotEmpty()) findAverageBetweenHighestAndLowest(data) else null
     }
 
-    private fun filterByCountry(
+    private fun filterByCountryExcludeNullValues(
         city: CityEntity,
         countryOne: String,
         countryTwo: String,
@@ -47,19 +45,15 @@ class GetCityManagerExpectationInteractor(
     private fun findAverageBetweenHighestAndLowest(
         data: List<CityEntity>,
     ): String? {
-        val average = sumAverage(data.first()).plus(sumAverage(data.last())).div(2)
-        val startRange = average.plus(defaultInRange)
-        val endRange = average.minus(defaultInRange)
-        var cityName: String? = null
-        data.forEach { city ->
-            cityName = city.takeIf { sumAverage(city) in startRange..endRange }?.cityName
-        }
+        val average = sumAverage(data.first()).plus(sumAverage(data.last())).div(averageHalfDivider)
 
-        return cityName
+        return data.minByOrNull {
+            average.minus(sumAverage(it))
+        }?.cityName
     }
 
     private fun sumAverage(city: CityEntity): Float {
         return city.mealsPrices.mealFor2PeopleMidRangeRestaurant?.plus(city.mealsPrices.mealInexpensiveRestaurant!!)
-            ?.plus(city.mealsPrices.mealAtMcDonaldSOrEquivalent!!)?.div(averageDivide)!!
+            ?.plus(city.mealsPrices.mealAtMcDonaldSOrEquivalent!!)?.div(averageDivider)!!
     }
 }
